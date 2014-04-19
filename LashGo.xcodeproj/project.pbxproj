@@ -19,6 +19,11 @@
 		845D859A19029EB0004E10AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858219029EB0004E10AB /* UIKit.framework */; };
 		845D85A219029EB0004E10AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 845D85A019029EB0004E10AB /* InfoPlist.strings */; };
 		845D85A419029EB0004E10AB /* LashGoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85A319029EB0004E10AB /* LashGoTests.m */; };
+		845D85B01902A543004E10AB /* Kernel.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85AF1902A543004E10AB /* Kernel.m */; };
+		845D85B31902A7FD004E10AB /* ViewControllersManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85B21902A7FD004E10AB /* ViewControllersManager.m */; };
+		845D85BC1902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85B71902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m */; };
+		845D85BD1902AA00004E10AB /* URLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85B91902AA00004E10AB /* URLConnection.m */; };
+		845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85BB1902AA00004E10AB /* URLConnectionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,16 @@
 		845D859F19029EB0004E10AB /* LashGoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LashGoTests-Info.plist"; sourceTree = "<group>"; };
 		845D85A119029EB0004E10AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		845D85A319029EB0004E10AB /* LashGoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LashGoTests.m; sourceTree = "<group>"; };
+		845D85AE1902A543004E10AB /* Kernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kernel.h; sourceTree = "<group>"; };
+		845D85AF1902A543004E10AB /* Kernel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Kernel.m; sourceTree = "<group>"; };
+		845D85B11902A7FD004E10AB /* ViewControllersManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllersManager.h; sourceTree = "<group>"; };
+		845D85B21902A7FD004E10AB /* ViewControllersManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllersManager.m; sourceTree = "<group>"; };
+		845D85B61902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableURLRequest+ParamsManipulation.h"; sourceTree = "<group>"; };
+		845D85B71902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableURLRequest+ParamsManipulation.m"; sourceTree = "<group>"; };
+		845D85B81902AA00004E10AB /* URLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLConnection.h; sourceTree = "<group>"; };
+		845D85B91902AA00004E10AB /* URLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLConnection.m; sourceTree = "<group>"; };
+		845D85BA1902AA00004E10AB /* URLConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLConnectionManager.h; sourceTree = "<group>"; };
+		845D85BB1902AA00004E10AB /* URLConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLConnectionManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +98,7 @@
 				845D857C19029EB0004E10AB /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		845D857C19029EB0004E10AB /* Products */ = {
 			isa = PBXGroup;
@@ -107,6 +123,7 @@
 		845D858419029EB0004E10AB /* LashGo */ = {
 			isa = PBXGroup;
 			children = (
+				845D85AD1902A52E004E10AB /* Classes */,
 				845D858D19029EB0004E10AB /* AppDelegate.h */,
 				845D858E19029EB0004E10AB /* AppDelegate.m */,
 				845D859019029EB0004E10AB /* Images.xcassets */,
@@ -142,6 +159,39 @@
 				845D85A019029EB0004E10AB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		845D85AD1902A52E004E10AB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				845D85B41902A90E004E10AB /* DataProvider */,
+				845D85AE1902A543004E10AB /* Kernel.h */,
+				845D85AF1902A543004E10AB /* Kernel.m */,
+				845D85B11902A7FD004E10AB /* ViewControllersManager.h */,
+				845D85B21902A7FD004E10AB /* ViewControllersManager.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		845D85B41902A90E004E10AB /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				845D85B51902AA00004E10AB /* Connection */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
+		845D85B51902AA00004E10AB /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				845D85B61902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.h */,
+				845D85B71902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m */,
+				845D85B81902AA00004E10AB /* URLConnection.h */,
+				845D85B91902AA00004E10AB /* URLConnection.m */,
+				845D85BA1902AA00004E10AB /* URLConnectionManager.h */,
+				845D85BB1902AA00004E10AB /* URLConnectionManager.m */,
+			);
+			path = Connection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,8 +289,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845D85B31902A7FD004E10AB /* ViewControllersManager.m in Sources */,
 				845D858F19029EB0004E10AB /* AppDelegate.m in Sources */,
+				845D85B01902A543004E10AB /* Kernel.m in Sources */,
+				845D85BD1902AA00004E10AB /* URLConnection.m in Sources */,
 				845D858B19029EB0004E10AB /* main.m in Sources */,
+				845D85BC1902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m in Sources */,
+				845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,10 +341,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -314,7 +369,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -324,10 +379,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -346,7 +401,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
