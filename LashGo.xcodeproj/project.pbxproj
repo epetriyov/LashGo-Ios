@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		845D857F19029EB0004E10AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D857E19029EB0004E10AB /* Foundation.framework */; };
+		845D858119029EB0004E10AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858019029EB0004E10AB /* CoreGraphics.framework */; };
+		845D858319029EB0004E10AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858219029EB0004E10AB /* UIKit.framework */; };
+		845D858919029EB0004E10AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 845D858719029EB0004E10AB /* InfoPlist.strings */; };
+		845D858B19029EB0004E10AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D858A19029EB0004E10AB /* main.m */; };
+		845D858F19029EB0004E10AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D858E19029EB0004E10AB /* AppDelegate.m */; };
+		845D859119029EB0004E10AB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 845D859019029EB0004E10AB /* Images.xcassets */; };
+		845D859819029EB0004E10AB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D859719029EB0004E10AB /* XCTest.framework */; };
+		845D859919029EB0004E10AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D857E19029EB0004E10AB /* Foundation.framework */; };
+		845D859A19029EB0004E10AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858219029EB0004E10AB /* UIKit.framework */; };
+		845D85A219029EB0004E10AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 845D85A019029EB0004E10AB /* InfoPlist.strings */; };
+		845D85A419029EB0004E10AB /* LashGoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85A319029EB0004E10AB /* LashGoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		845D859B19029EB0004E10AB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 845D857319029EB0004E10AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 845D857A19029EB0004E10AB;
+			remoteInfo = LashGo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		845D857B19029EB0004E10AB /* LashGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LashGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		845D857E19029EB0004E10AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		845D858019029EB0004E10AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		845D858219029EB0004E10AB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		845D858619029EB0004E10AB /* LashGo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LashGo-Info.plist"; sourceTree = "<group>"; };
+		845D858819029EB0004E10AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		845D858A19029EB0004E10AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		845D858C19029EB0004E10AB /* LashGo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LashGo-Prefix.pch"; sourceTree = "<group>"; };
+		845D858D19029EB0004E10AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		845D858E19029EB0004E10AB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		845D859019029EB0004E10AB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		845D859619029EB0004E10AB /* LashGoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LashGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		845D859719029EB0004E10AB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		845D859F19029EB0004E10AB /* LashGoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LashGoTests-Info.plist"; sourceTree = "<group>"; };
+		845D85A119029EB0004E10AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		845D85A319029EB0004E10AB /* LashGoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LashGoTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		845D857819029EB0004E10AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845D858119029EB0004E10AB /* CoreGraphics.framework in Frameworks */,
+				845D858319029EB0004E10AB /* UIKit.framework in Frameworks */,
+				845D857F19029EB0004E10AB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		845D859319029EB0004E10AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845D859819029EB0004E10AB /* XCTest.framework in Frameworks */,
+				845D859A19029EB0004E10AB /* UIKit.framework in Frameworks */,
+				845D859919029EB0004E10AB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		845D857219029EB0004E10AB = {
+			isa = PBXGroup;
+			children = (
+				845D858419029EB0004E10AB /* LashGo */,
+				845D859D19029EB0004E10AB /* LashGoTests */,
+				845D857D19029EB0004E10AB /* Frameworks */,
+				845D857C19029EB0004E10AB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		845D857C19029EB0004E10AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				845D857B19029EB0004E10AB /* LashGo.app */,
+				845D859619029EB0004E10AB /* LashGoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		845D857D19029EB0004E10AB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				845D857E19029EB0004E10AB /* Foundation.framework */,
+				845D858019029EB0004E10AB /* CoreGraphics.framework */,
+				845D858219029EB0004E10AB /* UIKit.framework */,
+				845D859719029EB0004E10AB /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		845D858419029EB0004E10AB /* LashGo */ = {
+			isa = PBXGroup;
+			children = (
+				845D858D19029EB0004E10AB /* AppDelegate.h */,
+				845D858E19029EB0004E10AB /* AppDelegate.m */,
+				845D859019029EB0004E10AB /* Images.xcassets */,
+				845D858519029EB0004E10AB /* Supporting Files */,
+			);
+			path = LashGo;
+			sourceTree = "<group>";
+		};
+		845D858519029EB0004E10AB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				845D858619029EB0004E10AB /* LashGo-Info.plist */,
+				845D858719029EB0004E10AB /* InfoPlist.strings */,
+				845D858A19029EB0004E10AB /* main.m */,
+				845D858C19029EB0004E10AB /* LashGo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		845D859D19029EB0004E10AB /* LashGoTests */ = {
+			isa = PBXGroup;
+			children = (
+				845D85A319029EB0004E10AB /* LashGoTests.m */,
+				845D859E19029EB0004E10AB /* Supporting Files */,
+			);
+			path = LashGoTests;
+			sourceTree = "<group>";
+		};
+		845D859E19029EB0004E10AB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				845D859F19029EB0004E10AB /* LashGoTests-Info.plist */,
+				845D85A019029EB0004E10AB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		845D857A19029EB0004E10AB /* LashGo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 845D85A719029EB0004E10AB /* Build configuration list for PBXNativeTarget "LashGo" */;
+			buildPhases = (
+				845D857719029EB0004E10AB /* Sources */,
+				845D857819029EB0004E10AB /* Frameworks */,
+				845D857919029EB0004E10AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LashGo;
+			productName = LashGo;
+			productReference = 845D857B19029EB0004E10AB /* LashGo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		845D859519029EB0004E10AB /* LashGoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 845D85AA19029EB0004E10AB /* Build configuration list for PBXNativeTarget "LashGoTests" */;
+			buildPhases = (
+				845D859219029EB0004E10AB /* Sources */,
+				845D859319029EB0004E10AB /* Frameworks */,
+				845D859419029EB0004E10AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				845D859C19029EB0004E10AB /* PBXTargetDependency */,
+			);
+			name = LashGoTests;
+			productName = LashGoTests;
+			productReference = 845D859619029EB0004E10AB /* LashGoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		845D857319029EB0004E10AB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Vitaliy Pykhtin";
+				TargetAttributes = {
+					845D859519029EB0004E10AB = {
+						TestTargetID = 845D857A19029EB0004E10AB;
+					};
+				};
+			};
+			buildConfigurationList = 845D857619029EB0004E10AB /* Build configuration list for PBXProject "LashGo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 845D857219029EB0004E10AB;
+			productRefGroup = 845D857C19029EB0004E10AB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				845D857A19029EB0004E10AB /* LashGo */,
+				845D859519029EB0004E10AB /* LashGoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		845D857919029EB0004E10AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845D858919029EB0004E10AB /* InfoPlist.strings in Resources */,
+				845D859119029EB0004E10AB /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		845D859419029EB0004E10AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845D85A219029EB0004E10AB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		845D857719029EB0004E10AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845D858F19029EB0004E10AB /* AppDelegate.m in Sources */,
+				845D858B19029EB0004E10AB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		845D859219029EB0004E10AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				845D85A419029EB0004E10AB /* LashGoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		845D859C19029EB0004E10AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 845D857A19029EB0004E10AB /* LashGo */;
+			targetProxy = 845D859B19029EB0004E10AB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		845D858719029EB0004E10AB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				845D858819029EB0004E10AB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		845D85A019029EB0004E10AB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				845D85A119029EB0004E10AB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		845D85A519029EB0004E10AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		845D85A619029EB0004E10AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		845D85A819029EB0004E10AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LashGo/LashGo-Prefix.pch";
+				INFOPLIST_FILE = "LashGo/LashGo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		845D85A919029EB0004E10AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LashGo/LashGo-Prefix.pch";
+				INFOPLIST_FILE = "LashGo/LashGo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		845D85AB19029EB0004E10AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LashGo.app/LashGo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LashGo/LashGo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "LashGoTests/LashGoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		845D85AC19029EB0004E10AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/LashGo.app/LashGo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LashGo/LashGo-Prefix.pch";
+				INFOPLIST_FILE = "LashGoTests/LashGoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		845D857619029EB0004E10AB /* Build configuration list for PBXProject "LashGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				845D85A519029EB0004E10AB /* Debug */,
+				845D85A619029EB0004E10AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		845D85A719029EB0004E10AB /* Build configuration list for PBXNativeTarget "LashGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				845D85A819029EB0004E10AB /* Debug */,
+				845D85A919029EB0004E10AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		845D85AA19029EB0004E10AB /* Build configuration list for PBXNativeTarget "LashGoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				845D85AB19029EB0004E10AB /* Debug */,
+				845D85AC19029EB0004E10AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 845D857319029EB0004E10AB /* Project object */;
+}
