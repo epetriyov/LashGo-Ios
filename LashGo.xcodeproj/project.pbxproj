@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84045AA819224A04006F2F24 /* UIView+CGExtension.m */; };
+		8406250A193082020067C1CA /* NetworkDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062505193082020067C1CA /* NetworkDownloader.m */; };
+		8406250B193082020067C1CA /* NetworkDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062507193082020067C1CA /* NetworkDownloadManager.m */; };
+		84062511193088F30067C1CA /* DownloadableImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406250E193088F30067C1CA /* DownloadableImageItem.m */; };
+		84062512193088F30067C1CA /* DownloadableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062510193088F30067C1CA /* DownloadableItem.m */; };
+		8406251519308BB20067C1CA /* CryptoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406251419308BB20067C1CA /* CryptoUtils.m */; };
+		8406251819308D110067C1CA /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406251719308D110067C1CA /* FileManager.m */; };
+		8426F351191A661D00B4E336 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F34E191A661D00B4E336 /* BaseViewController.m */; };
+		8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F350191A661D00B4E336 /* TitleBarViewController.m */; };
+		8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F356191A6F6400B4E336 /* TitleBarView.m */; };
+		8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F359191A6FF900B4E336 /* ViewFactory.m */; };
+		8426F35D191A754200B4E336 /* FontFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F35C191A754200B4E336 /* FontFactory.m */; };
 		845D857F19029EB0004E10AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D857E19029EB0004E10AB /* Foundation.framework */; };
 		845D858119029EB0004E10AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858019029EB0004E10AB /* CoreGraphics.framework */; };
 		845D858319029EB0004E10AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858219029EB0004E10AB /* UIKit.framework */; };
@@ -24,6 +36,8 @@
 		845D85BC1902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85B71902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m */; };
 		845D85BD1902AA00004E10AB /* URLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85B91902AA00004E10AB /* URLConnection.m */; };
 		845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85BB1902AA00004E10AB /* URLConnectionManager.m */; };
+		8491557A1907FC78008D9120 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 849155791907FC78008D9120 /* Common.m */; };
+		8491557E19080301008D9120 /* RootNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8491557D19080301008D9120 /* RootNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +51,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84045AA719224A04006F2F24 /* UIView+CGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CGExtension.h"; sourceTree = "<group>"; };
+		84045AA819224A04006F2F24 /* UIView+CGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CGExtension.m"; sourceTree = "<group>"; };
+		84045AAA19225879006F2F24 /* RootNavigationControllerItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootNavigationControllerItemProtocol.h; sourceTree = "<group>"; };
+		840624FF193082020067C1CA /* DownloadableContentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadableContentProtocol.h; sourceTree = "<group>"; };
+		84062504193082020067C1CA /* NetworkDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDownloader.h; sourceTree = "<group>"; };
+		84062505193082020067C1CA /* NetworkDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDownloader.m; sourceTree = "<group>"; };
+		84062506193082020067C1CA /* NetworkDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDownloadManager.h; sourceTree = "<group>"; };
+		84062507193082020067C1CA /* NetworkDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDownloadManager.m; sourceTree = "<group>"; };
+		8406250D193088F30067C1CA /* DownloadableImageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadableImageItem.h; sourceTree = "<group>"; };
+		8406250E193088F30067C1CA /* DownloadableImageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadableImageItem.m; sourceTree = "<group>"; };
+		8406250F193088F30067C1CA /* DownloadableItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadableItem.h; sourceTree = "<group>"; };
+		84062510193088F30067C1CA /* DownloadableItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadableItem.m; sourceTree = "<group>"; };
+		8406251319308BB20067C1CA /* CryptoUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptoUtils.h; sourceTree = "<group>"; };
+		8406251419308BB20067C1CA /* CryptoUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptoUtils.m; sourceTree = "<group>"; };
+		8406251619308D110067C1CA /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
+		8406251719308D110067C1CA /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		8426F34D191A661D00B4E336 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		8426F34E191A661D00B4E336 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		8426F34F191A661D00B4E336 /* TitleBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBarViewController.h; sourceTree = "<group>"; };
+		8426F350191A661D00B4E336 /* TitleBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleBarViewController.m; sourceTree = "<group>"; };
+		8426F355191A6F6400B4E336 /* TitleBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBarView.h; sourceTree = "<group>"; };
+		8426F356191A6F6400B4E336 /* TitleBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleBarView.m; sourceTree = "<group>"; };
+		8426F358191A6FF900B4E336 /* ViewFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewFactory.h; sourceTree = "<group>"; };
+		8426F359191A6FF900B4E336 /* ViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewFactory.m; sourceTree = "<group>"; };
+		8426F35B191A754200B4E336 /* FontFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontFactory.h; sourceTree = "<group>"; };
+		8426F35C191A754200B4E336 /* FontFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontFactory.m; sourceTree = "<group>"; };
 		845D857B19029EB0004E10AB /* LashGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LashGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845D857E19029EB0004E10AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		845D858019029EB0004E10AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,6 +103,10 @@
 		845D85B91902AA00004E10AB /* URLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLConnection.m; sourceTree = "<group>"; };
 		845D85BA1902AA00004E10AB /* URLConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLConnectionManager.h; sourceTree = "<group>"; };
 		845D85BB1902AA00004E10AB /* URLConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLConnectionManager.m; sourceTree = "<group>"; };
+		849155781907FC78008D9120 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		849155791907FC78008D9120 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
+		8491557C19080301008D9120 /* RootNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootNavigationController.h; sourceTree = "<group>"; };
+		8491557D19080301008D9120 /* RootNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +133,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		840624FE193082020067C1CA /* NetworkDownloads */ = {
+			isa = PBXGroup;
+			children = (
+				8406250C193088C70067C1CA /* Model */,
+				840624FF193082020067C1CA /* DownloadableContentProtocol.h */,
+				84062504193082020067C1CA /* NetworkDownloader.h */,
+				84062505193082020067C1CA /* NetworkDownloader.m */,
+				84062506193082020067C1CA /* NetworkDownloadManager.h */,
+				84062507193082020067C1CA /* NetworkDownloadManager.m */,
+			);
+			path = NetworkDownloads;
+			sourceTree = "<group>";
+		};
+		8406250C193088C70067C1CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8406250D193088F30067C1CA /* DownloadableImageItem.h */,
+				8406250E193088F30067C1CA /* DownloadableImageItem.m */,
+				8406250F193088F30067C1CA /* DownloadableItem.h */,
+				84062510193088F30067C1CA /* DownloadableItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8426F34C191A661D00B4E336 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8426F34D191A661D00B4E336 /* BaseViewController.h */,
+				8426F34E191A661D00B4E336 /* BaseViewController.m */,
+				8426F34F191A661D00B4E336 /* TitleBarViewController.h */,
+				8426F350191A661D00B4E336 /* TitleBarViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		8426F353191A6E8100B4E336 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8426F354191A6F6400B4E336 /* TitleBar */,
+				8426F35B191A754200B4E336 /* FontFactory.h */,
+				8426F35C191A754200B4E336 /* FontFactory.m */,
+				8426F358191A6FF900B4E336 /* ViewFactory.h */,
+				8426F359191A6FF900B4E336 /* ViewFactory.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8426F354191A6F6400B4E336 /* TitleBar */ = {
+			isa = PBXGroup;
+			children = (
+				8426F355191A6F6400B4E336 /* TitleBarView.h */,
+				8426F356191A6F6400B4E336 /* TitleBarView.m */,
+			);
+			path = TitleBar;
+			sourceTree = "<group>";
+		};
 		845D857219029EB0004E10AB = {
 			isa = PBXGroup;
 			children = (
@@ -164,11 +264,14 @@
 		845D85AD1902A52E004E10AB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				849155771907FC30008D9120 /* Common */,
 				845D85B41902A90E004E10AB /* DataProvider */,
-				845D85AE1902A543004E10AB /* Kernel.h */,
-				845D85AF1902A543004E10AB /* Kernel.m */,
+				8426F353191A6E8100B4E336 /* View */,
+				8491557B19080301008D9120 /* ViewControllers */,
 				845D85B11902A7FD004E10AB /* ViewControllersManager.h */,
 				845D85B21902A7FD004E10AB /* ViewControllersManager.m */,
+				845D85AE1902A543004E10AB /* Kernel.h */,
+				845D85AF1902A543004E10AB /* Kernel.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -184,6 +287,7 @@
 		845D85B51902AA00004E10AB /* Connection */ = {
 			isa = PBXGroup;
 			children = (
+				840624FE193082020067C1CA /* NetworkDownloads */,
 				845D85B61902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.h */,
 				845D85B71902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m */,
 				845D85B81902AA00004E10AB /* URLConnection.h */,
@@ -192,6 +296,32 @@
 				845D85BB1902AA00004E10AB /* URLConnectionManager.m */,
 			);
 			path = Connection;
+			sourceTree = "<group>";
+		};
+		849155771907FC30008D9120 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				849155781907FC78008D9120 /* Common.h */,
+				849155791907FC78008D9120 /* Common.m */,
+				8406251319308BB20067C1CA /* CryptoUtils.h */,
+				8406251419308BB20067C1CA /* CryptoUtils.m */,
+				8406251619308D110067C1CA /* FileManager.h */,
+				8406251719308D110067C1CA /* FileManager.m */,
+				84045AA719224A04006F2F24 /* UIView+CGExtension.h */,
+				84045AA819224A04006F2F24 /* UIView+CGExtension.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		8491557B19080301008D9120 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8426F34C191A661D00B4E336 /* Base */,
+				84045AAA19225879006F2F24 /* RootNavigationControllerItemProtocol.h */,
+				8491557C19080301008D9120 /* RootNavigationController.h */,
+				8491557D19080301008D9120 /* RootNavigationController.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,9 +420,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				845D85B31902A7FD004E10AB /* ViewControllersManager.m in Sources */,
+				8426F351191A661D00B4E336 /* BaseViewController.m in Sources */,
+				84062511193088F30067C1CA /* DownloadableImageItem.m in Sources */,
+				8406250B193082020067C1CA /* NetworkDownloadManager.m in Sources */,
 				845D858F19029EB0004E10AB /* AppDelegate.m in Sources */,
+				8406251819308D110067C1CA /* FileManager.m in Sources */,
+				8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */,
+				8406251519308BB20067C1CA /* CryptoUtils.m in Sources */,
 				845D85B01902A543004E10AB /* Kernel.m in Sources */,
+				8426F35D191A754200B4E336 /* FontFactory.m in Sources */,
 				845D85BD1902AA00004E10AB /* URLConnection.m in Sources */,
+				8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */,
+				8491557E19080301008D9120 /* RootNavigationController.m in Sources */,
+				8406250A193082020067C1CA /* NetworkDownloader.m in Sources */,
+				8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */,
+				8491557A1907FC78008D9120 /* Common.m in Sources */,
+				84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */,
+				84062512193088F30067C1CA /* DownloadableItem.m in Sources */,
 				845D858B19029EB0004E10AB /* main.m in Sources */,
 				845D85BC1902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m in Sources */,
 				845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */,
@@ -492,6 +636,7 @@
 				845D85A919029EB0004E10AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		845D85AA19029EB0004E10AB /* Build configuration list for PBXNativeTarget "LashGoTests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +645,7 @@
 				845D85AC19029EB0004E10AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

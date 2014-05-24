@@ -1,6 +1,6 @@
 //
 //  NSMutableURLRequest+ParamsManipulation.m
-//  LashGo
+//  DevLib
 //
 //  Created by Vitaliy Pykhtin on 19.04.14.
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
@@ -43,7 +43,7 @@
 	}
 	
 	NSString *getParamsString = [self getParamStringFrom: getParams];
-	if ([Common stringIsEmpty: getParamsString] == NO) {
+	if ([Common isEmpty: getParamsString] == NO) {
 		[request setGetParameters: getParamsString];
 	}
 	

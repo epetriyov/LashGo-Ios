@@ -1,0 +1,31 @@
+//
+//  DownloadableImageItem.m
+//  DevLib
+//
+//  Created by Vitaliy Pykhtin on 27.02.14.
+//  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
+//
+
+#import "DownloadableImageItem.h"
+
+@implementation DownloadableImageItem
+
+- (void) dealloc {
+	[image release];
+	
+	[super dealloc];
+}
+
+- (UIImage *) getImage {
+	if (image == nil) {
+		NSData *storedData = [self getStoredData];
+		if (storedData != nil) {
+			UIImage *unscaledImage = [UIImage imageWithData: storedData];
+			image = [[UIImage alloc] initWithCGImage: unscaledImage.CGImage scale: [UIScreen mainScreen].scale
+										 orientation: UIImageOrientationUp];
+		}
+	}
+	return image;
+}
+
+@end

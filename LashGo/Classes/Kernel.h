@@ -6,8 +6,13 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "ViewControllersManager.h"
 
-@interface Kernel : NSObject
+@interface Kernel : NSObject {
+	ViewControllersManager *viewControllersManager;
+}
+
+@property (nonatomic, readonly) UIViewController *rootViewController;
+@property (nonatomic, readonly) ViewControllersManager *viewControllersManager;
 
 @end

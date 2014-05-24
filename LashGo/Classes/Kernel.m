@@ -10,4 +10,28 @@
 
 @implementation Kernel
 
+@synthesize viewControllersManager;
+@dynamic rootViewController;
+
+#pragma mark - Properties
+
+- (UIViewController *) rootViewController {
+	return viewControllersManager.rootNavigationController;
+}
+
+#pragma mark - Overrides
+
+- (id) init {
+	if (self = [super init]) {
+		viewControllersManager = [[ViewControllersManager alloc] initWithKernel: self];
+	}
+	return self;
+}
+
+- (void) dealloc {
+	[viewControllersManager release];
+	
+	[super dealloc];
+}
+
 @end

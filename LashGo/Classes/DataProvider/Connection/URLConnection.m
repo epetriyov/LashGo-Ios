@@ -80,11 +80,11 @@
 	}
 	
 	[connection performSelectorOnMainThread: @selector(start) withObject: nil waitUntilDone: YES];
-	DLog(@"%@\n%@\n%@", request, [request allHTTPHeaderFields], [Common stringWithData: [request HTTPBody]]);
+	DLog(@"%@\n%@\n%@", request, [request allHTTPHeaderFields], [NSString stringWithData: [request HTTPBody]]);
 }
 
 - (void) startSync {
-	DLog(@"%@\n%@\n%@", request, [request allHTTPHeaderFields], [Common stringWithData: [request HTTPBody]]);
+	DLog(@"%@\n%@\n%@", request, [request allHTTPHeaderFields], [NSString stringWithData: [request HTTPBody]]);
 	
 	[downloadedData release];
 	[error release];
@@ -111,7 +111,7 @@
 
 - (void) connection: (NSURLConnection *) theConnection didReceiveResponse: (NSHTTPURLResponse *) theResponse {
 	response = [theResponse retain];
-	NSUInteger estimatedDownloadDataSize = MIN(NSUIntegerMax, MAX(0, [response expectedContentLength]));
+	NSUInteger estimatedDownloadDataSize = (NSUInteger)MIN(NSUIntegerMax, MAX(0, [response expectedContentLength]));
 	[downloadedData release];
 	downloadedData = [ [NSMutableData alloc] initWithCapacity: estimatedDownloadDataSize];
 }
