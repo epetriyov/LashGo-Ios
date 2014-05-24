@@ -14,6 +14,19 @@
 		84062512193088F30067C1CA /* DownloadableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062510193088F30067C1CA /* DownloadableItem.m */; };
 		8406251519308BB20067C1CA /* CryptoUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406251419308BB20067C1CA /* CryptoUtils.m */; };
 		8406251819308D110067C1CA /* FileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406251719308D110067C1CA /* FileManager.m */; };
+		840625511930AAD20067C1CA /* DataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625501930AAD20067C1CA /* DataProvider.m */; };
+		840625541930AB230067C1CA /* JSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625531930AB230067C1CA /* JSONParser.m */; };
+		840625581930AD760067C1CA /* LGCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625571930AD760067C1CA /* LGCheck.m */; };
+		8406255B1930B83B0067C1CA /* LGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406255A1930B83B0067C1CA /* LGUser.m */; };
+		8406255E1930BB850067C1CA /* LGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406255D1930BB850067C1CA /* LGComment.m */; };
+		840625611930BDF80067C1CA /* LGContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625601930BDF80067C1CA /* LGContent.m */; };
+		840625641930C8EF0067C1CA /* LGgcmRegistrationId.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625631930C8EF0067C1CA /* LGgcmRegistrationId.m */; };
+		840625671930C9E70067C1CA /* LGLoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625661930C9E70067C1CA /* LGLoginInfo.m */; };
+		8406256A1930CB0A0067C1CA /* LGPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625691930CB0A0067C1CA /* LGPhoto.m */; };
+		8406256D1930CDEA0067C1CA /* LGRecoverInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406256C1930CDEA0067C1CA /* LGRecoverInfo.m */; };
+		840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406256F1930CE850067C1CA /* LGRegisterInfo.m */; };
+		840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625721930D10E0067C1CA /* LGSessionInfo.m */; };
+		840625761930D1AA0067C1CA /* LGSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625751930D1AA0067C1CA /* LGSubscription.m */; };
 		8426F351191A661D00B4E336 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F34E191A661D00B4E336 /* BaseViewController.m */; };
 		8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F350191A661D00B4E336 /* TitleBarViewController.m */; };
 		8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F356191A6F6400B4E336 /* TitleBarView.m */; };
@@ -67,6 +80,32 @@
 		8406251419308BB20067C1CA /* CryptoUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptoUtils.m; sourceTree = "<group>"; };
 		8406251619308D110067C1CA /* FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManager.h; sourceTree = "<group>"; };
 		8406251719308D110067C1CA /* FileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManager.m; sourceTree = "<group>"; };
+		8406254F1930AAD20067C1CA /* DataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataProvider.h; sourceTree = "<group>"; };
+		840625501930AAD20067C1CA /* DataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataProvider.m; sourceTree = "<group>"; };
+		840625521930AB230067C1CA /* JSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONParser.h; sourceTree = "<group>"; };
+		840625531930AB230067C1CA /* JSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONParser.m; sourceTree = "<group>"; };
+		840625561930AD760067C1CA /* LGCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCheck.h; sourceTree = "<group>"; };
+		840625571930AD760067C1CA /* LGCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCheck.m; sourceTree = "<group>"; };
+		840625591930B83B0067C1CA /* LGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGUser.h; sourceTree = "<group>"; };
+		8406255A1930B83B0067C1CA /* LGUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGUser.m; sourceTree = "<group>"; };
+		8406255C1930BB850067C1CA /* LGComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGComment.h; sourceTree = "<group>"; };
+		8406255D1930BB850067C1CA /* LGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGComment.m; sourceTree = "<group>"; };
+		8406255F1930BDF80067C1CA /* LGContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGContent.h; sourceTree = "<group>"; };
+		840625601930BDF80067C1CA /* LGContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGContent.m; sourceTree = "<group>"; };
+		840625621930C8EF0067C1CA /* LGgcmRegistrationId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGgcmRegistrationId.h; sourceTree = "<group>"; };
+		840625631930C8EF0067C1CA /* LGgcmRegistrationId.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGgcmRegistrationId.m; sourceTree = "<group>"; };
+		840625651930C9E70067C1CA /* LGLoginInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGLoginInfo.h; sourceTree = "<group>"; };
+		840625661930C9E70067C1CA /* LGLoginInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGLoginInfo.m; sourceTree = "<group>"; };
+		840625681930CB0A0067C1CA /* LGPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGPhoto.h; sourceTree = "<group>"; };
+		840625691930CB0A0067C1CA /* LGPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGPhoto.m; sourceTree = "<group>"; };
+		8406256B1930CDEA0067C1CA /* LGRecoverInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGRecoverInfo.h; sourceTree = "<group>"; };
+		8406256C1930CDEA0067C1CA /* LGRecoverInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGRecoverInfo.m; sourceTree = "<group>"; };
+		8406256E1930CE850067C1CA /* LGRegisterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGRegisterInfo.h; sourceTree = "<group>"; };
+		8406256F1930CE850067C1CA /* LGRegisterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGRegisterInfo.m; sourceTree = "<group>"; };
+		840625711930D10E0067C1CA /* LGSessionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSessionInfo.h; sourceTree = "<group>"; };
+		840625721930D10E0067C1CA /* LGSessionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSessionInfo.m; sourceTree = "<group>"; };
+		840625741930D1AA0067C1CA /* LGSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSubscription.h; sourceTree = "<group>"; };
+		840625751930D1AA0067C1CA /* LGSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSubscription.m; sourceTree = "<group>"; };
 		8426F34D191A661D00B4E336 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8426F34E191A661D00B4E336 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		8426F34F191A661D00B4E336 /* TitleBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBarViewController.h; sourceTree = "<group>"; };
@@ -153,6 +192,35 @@
 				8406250E193088F30067C1CA /* DownloadableImageItem.m */,
 				8406250F193088F30067C1CA /* DownloadableItem.h */,
 				84062510193088F30067C1CA /* DownloadableItem.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		840625551930AD1C0067C1CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				840625561930AD760067C1CA /* LGCheck.h */,
+				840625571930AD760067C1CA /* LGCheck.m */,
+				8406255C1930BB850067C1CA /* LGComment.h */,
+				8406255D1930BB850067C1CA /* LGComment.m */,
+				8406255F1930BDF80067C1CA /* LGContent.h */,
+				840625601930BDF80067C1CA /* LGContent.m */,
+				840625621930C8EF0067C1CA /* LGgcmRegistrationId.h */,
+				840625631930C8EF0067C1CA /* LGgcmRegistrationId.m */,
+				840625651930C9E70067C1CA /* LGLoginInfo.h */,
+				840625661930C9E70067C1CA /* LGLoginInfo.m */,
+				840625681930CB0A0067C1CA /* LGPhoto.h */,
+				840625691930CB0A0067C1CA /* LGPhoto.m */,
+				8406256B1930CDEA0067C1CA /* LGRecoverInfo.h */,
+				8406256C1930CDEA0067C1CA /* LGRecoverInfo.m */,
+				8406256E1930CE850067C1CA /* LGRegisterInfo.h */,
+				8406256F1930CE850067C1CA /* LGRegisterInfo.m */,
+				840625711930D10E0067C1CA /* LGSessionInfo.h */,
+				840625721930D10E0067C1CA /* LGSessionInfo.m */,
+				840625741930D1AA0067C1CA /* LGSubscription.h */,
+				840625751930D1AA0067C1CA /* LGSubscription.m */,
+				840625591930B83B0067C1CA /* LGUser.h */,
+				8406255A1930B83B0067C1CA /* LGUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -266,6 +334,7 @@
 			children = (
 				849155771907FC30008D9120 /* Common */,
 				845D85B41902A90E004E10AB /* DataProvider */,
+				840625551930AD1C0067C1CA /* Model */,
 				8426F353191A6E8100B4E336 /* View */,
 				8491557B19080301008D9120 /* ViewControllers */,
 				845D85B11902A7FD004E10AB /* ViewControllersManager.h */,
@@ -280,6 +349,10 @@
 			isa = PBXGroup;
 			children = (
 				845D85B51902AA00004E10AB /* Connection */,
+				8406254F1930AAD20067C1CA /* DataProvider.h */,
+				840625501930AAD20067C1CA /* DataProvider.m */,
+				840625521930AB230067C1CA /* JSONParser.h */,
+				840625531930AB230067C1CA /* JSONParser.m */,
 			);
 			path = DataProvider;
 			sourceTree = "<group>";
@@ -422,24 +495,37 @@
 				845D85B31902A7FD004E10AB /* ViewControllersManager.m in Sources */,
 				8426F351191A661D00B4E336 /* BaseViewController.m in Sources */,
 				84062511193088F30067C1CA /* DownloadableImageItem.m in Sources */,
+				840625541930AB230067C1CA /* JSONParser.m in Sources */,
 				8406250B193082020067C1CA /* NetworkDownloadManager.m in Sources */,
+				8406256D1930CDEA0067C1CA /* LGRecoverInfo.m in Sources */,
 				845D858F19029EB0004E10AB /* AppDelegate.m in Sources */,
 				8406251819308D110067C1CA /* FileManager.m in Sources */,
 				8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */,
 				8406251519308BB20067C1CA /* CryptoUtils.m in Sources */,
+				840625511930AAD20067C1CA /* DataProvider.m in Sources */,
 				845D85B01902A543004E10AB /* Kernel.m in Sources */,
 				8426F35D191A754200B4E336 /* FontFactory.m in Sources */,
+				840625671930C9E70067C1CA /* LGLoginInfo.m in Sources */,
+				840625611930BDF80067C1CA /* LGContent.m in Sources */,
+				840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */,
 				845D85BD1902AA00004E10AB /* URLConnection.m in Sources */,
+				840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */,
+				840625581930AD760067C1CA /* LGCheck.m in Sources */,
 				8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */,
 				8491557E19080301008D9120 /* RootNavigationController.m in Sources */,
 				8406250A193082020067C1CA /* NetworkDownloader.m in Sources */,
 				8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */,
+				8406255E1930BB850067C1CA /* LGComment.m in Sources */,
 				8491557A1907FC78008D9120 /* Common.m in Sources */,
+				840625761930D1AA0067C1CA /* LGSubscription.m in Sources */,
 				84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */,
 				84062512193088F30067C1CA /* DownloadableItem.m in Sources */,
 				845D858B19029EB0004E10AB /* main.m in Sources */,
+				8406256A1930CB0A0067C1CA /* LGPhoto.m in Sources */,
 				845D85BC1902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m in Sources */,
 				845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */,
+				840625641930C8EF0067C1CA /* LGgcmRegistrationId.m in Sources */,
+				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
