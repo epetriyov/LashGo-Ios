@@ -37,9 +37,9 @@
 															 body: bodyJSON
 														 delegate: self];
 	if (connection != nil && target != nil) {
-		[targetsForURLConnections setObject: target forKey: connection.uid];
-		[didFinishSelectorsForURLConnections setObject: NSStringFromSelector(finishSelector) forKey: connection.uid];
-		[didFailSelectorsForURLConnections setObject: NSStringFromSelector(failSelector) forKey: connection.uid];
+		targetsForURLConnections[connection.uid] = target;
+		didFinishSelectorsForURLConnections[connection.uid] = NSStringFromSelector(finishSelector);
+		didFailSelectorsForURLConnections[connection.uid] = NSStringFromSelector(failSelector);
 	}
 	return connection;
 }
@@ -53,8 +53,8 @@
 #pragma mark URLConnectionDelegate methods
 
 - (void) connectionDidFinish: (URLConnection *) connection {
-	id target = [targetsForURLConnections objectForKey: connection.uid];
-	SEL selector = NSSelectorFromString([didFinishSelectorsForURLConnections objectForKey: connection.uid]);
+	id target = targetsForURLConnections[connection.uid];
+	SEL selector = NSSelectorFromString(didFinishSelectorsForURLConnections[connection.uid]);
 	if ([target respondsToSelector: selector]) {
 		[target performSelector: selector withObject: connection];
 	}
@@ -66,8 +66,8 @@
 }
 
 - (void) connectionDidFail: (URLConnection *) connection withError: (NSError *) error {
-	id target = [targetsForURLConnections objectForKey: connection.uid];
-	SEL selector = NSSelectorFromString([didFailSelectorsForURLConnections objectForKey: connection.uid]);
+	id target = targetsForURLConnections[connection.uid];
+	SEL selector = NSSelectorFromString(didFailSelectorsForURLConnections[connection.uid]);
 	if ([target respondsToSelector: selector]) {
 		[target performSelector: selector withObject: connection];
 	}

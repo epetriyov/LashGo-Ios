@@ -40,7 +40,7 @@ static NetworkDownloadManager *networkDownloadManager;
 
 - (void) setDelegate: (id<NetworkDownloadManagerDelegate>) delegate
 		   forObject: (id<DownloadableContentProtocol>) objectWithContent {
-	[delegatesforContentItem setObject: delegate forKey: objectWithContent.uid];
+	delegatesforContentItem[objectWithContent.uid] = delegate;
 }
 
 - (void) removeDelegate: (id<NetworkDownloadManagerDelegate>) delegate {
@@ -52,14 +52,14 @@ static NetworkDownloadManager *networkDownloadManager;
 
 - (void) networkDownloader: (NetworkDownloader *) downloader didDownloadContentForItem: (DownloadableItem *) objectItem
 				  inObject: (id<DownloadableContentProtocol>) objectWithContent {
-	id<NetworkDownloadManagerDelegate> delegate = [delegatesforContentItem objectForKey: objectWithContent.uid];
+	id<NetworkDownloadManagerDelegate> delegate = delegatesforContentItem[objectWithContent.uid];
 	if (delegate != nil && [delegate respondsToSelector: @selector(didDownloadContentForItem:inObject:)] == YES) {
 		[delegate didDownloadContentForItem: objectItem inObject: objectWithContent];
 	}
 }
 
 - (void) networkDownloader: (NetworkDownloader *) downloader didDownloadContentForAllItemsInObject: (id<DownloadableContentProtocol>) objectWithContent {
-	id<NetworkDownloadManagerDelegate> delegate = [delegatesforContentItem objectForKey: objectWithContent.uid];
+	id<NetworkDownloadManagerDelegate> delegate = delegatesforContentItem[objectWithContent.uid];
 	if (delegate != nil && [delegate respondsToSelector: @selector(didDownloadContentForAllItemsInObject:)] == YES) {
 		[delegate didDownloadContentForAllItemsInObject: objectWithContent];
 	}

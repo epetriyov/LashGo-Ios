@@ -7,7 +7,7 @@
     if ([paths count] <= 0) {
         return nil;
     }
-	NSString *cachesDirectory = [paths objectAtIndex: 0];
+	NSString *cachesDirectory = paths[0];
 	return cachesDirectory;
 }
 
@@ -16,7 +16,7 @@
 	if ([paths count] <= 0) {
         return nil;
     }
-	NSString *documentsDirectory = [paths objectAtIndex: 0];
+	NSString *documentsDirectory = paths[0];
 	
 	return documentsDirectory;
 }
