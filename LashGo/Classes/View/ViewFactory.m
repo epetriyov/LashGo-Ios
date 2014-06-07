@@ -19,12 +19,6 @@ static ViewFactory *viewFactory = nil;
 	return viewFactory;
 }
 
-- (void) dealloc {
-	[titleBarBackgroundImage release];
-	[titleBarLogoImage release];
-	
-	[super dealloc];
-}
 
 - (UIImage *) getImageWithName: (NSString *) imageName {
 	NSString *pathForResource = [[NSBundle mainBundle] pathForResource: imageName ofType: @"png"];
@@ -37,14 +31,14 @@ static ViewFactory *viewFactory = nil;
 
 - (UIImage *) titleBarBackgroundImage {
 	if (titleBarBackgroundImage == nil) {
-		titleBarBackgroundImage = [[self getImageWithName: @"title_bar_bg"] retain];
+		titleBarBackgroundImage = [self getImageWithName: @"title_bar_bg"];
 	}
 	return titleBarBackgroundImage;
 }
 
 - (UIImage *) titleBarLogoImage {
 	if (titleBarLogoImage == nil) {
-		titleBarLogoImage = [[self getImageWithName: @"title_bar_logo"] retain];
+		titleBarLogoImage = [self getImageWithName: @"title_bar_logo"];
 	}
 	return titleBarLogoImage;
 }
@@ -53,7 +47,7 @@ static ViewFactory *viewFactory = nil;
 
 - (UIButton *) buttonWithImageName:(NSString *) imageName target: (id) target action: (SEL) selector {
 	NSString *imageExt = @".png";
-	UIButton *button = [ [ [UIButton alloc] init] autorelease];
+	UIButton *button = [ [UIButton alloc] init];
 	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
 	
 	UIImage *image = [UIImage imageNamed: [imageName stringByAppendingString:imageExt]];
@@ -79,7 +73,7 @@ static ViewFactory *viewFactory = nil;
 
 - (UIButton *) buttonWithBGImageName:(NSString *) imageName target: (id) target action: (SEL) selector {
 	NSString *imageExt = @".png";
-	UIButton *button = [ [ [UIButton alloc] init] autorelease];
+	UIButton *button = [ [UIButton alloc] init];
 	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
 
 	UIImage *image = [UIImage imageNamed: [imageName stringByAppendingString:imageExt]];

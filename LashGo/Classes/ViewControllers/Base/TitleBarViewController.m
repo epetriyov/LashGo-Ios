@@ -35,7 +35,6 @@
 																			 self.view.frame.size.height)];
 	background.contentMode = UIViewContentModeBottomLeft;
 	[self.view addSubview: background];
-	[background release];
 	
 	titleBarView = [TitleBarView titleBarView];
 	[titleBarView.backButton addTarget: self action: @selector(backAction:) forControlEvents: UIControlEventTouchUpInside];
@@ -47,7 +46,6 @@
 		UIView *statusBarBgView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 20)];
 		statusBarBgView.backgroundColor = [ViewFactory sharedFactory].statusBarPreferredColor;
 		[self.view addSubview: statusBarBgView];
-		[statusBarBgView release];
 		
 		[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent animated: NO];
     }

@@ -13,7 +13,7 @@
 	NSString *text;
 }
 
-@property (nonatomic, retain) NSDate *createDate;
-@property (nonatomic, retain) NSString *text;
+@property (nonatomic, strong) NSDate *createDate;
+@property (nonatomic, strong) NSString *text;
 
 @end

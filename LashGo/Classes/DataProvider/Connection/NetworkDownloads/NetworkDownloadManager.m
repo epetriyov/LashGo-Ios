@@ -26,14 +26,9 @@ static NetworkDownloadManager *networkDownloadManager;
 	return self;
 }
 
-- (void) dealloc {
-	[delegatesforContentItem release];
-	
-	[super dealloc];
-}
 
 - (void) downloadFilesForObjectInBackground: (id<DownloadableContentProtocol>) objectWithContent {
-	NetworkDownloader *downloader = [[[NetworkDownloader alloc] init] autorelease];
+	NetworkDownloader *downloader = [[NetworkDownloader alloc] init];
 	downloader.delegate = self;
 	[downloader downloadFilesForObjectInBackground: objectWithContent];
 }

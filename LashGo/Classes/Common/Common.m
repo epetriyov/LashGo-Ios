@@ -11,7 +11,7 @@
 @implementation NSString (CommonExtension)
 
 + (NSString *) stringWithData: (NSData *) data {
-	return [ [ [NSString alloc] initWithData: data encoding: NSUTF8StringEncoding] autorelease];
+	return [ [NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
 }
 
 @end
@@ -29,7 +29,7 @@
 + (NSString *) generateUUID {
 	CFUUIDRef uuid = CFUUIDCreate(NULL);
 	CFStringRef str = CFUUIDCreateString(NULL, uuid);
-	NSString *result = [NSString stringWithString: (NSString *) str];
+	NSString *result = [NSString stringWithString: (__bridge NSString *) str];
 	CFRelease(uuid);
 	CFRelease(str);
 	

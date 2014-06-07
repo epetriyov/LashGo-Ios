@@ -15,12 +15,6 @@
 
 @synthesize objectWithContent, item;
 
-- (void) dealloc {
-	[objectWithContent release];
-	[item release];
-	
-	[super dealloc];
-}
 
 @end
 
@@ -30,16 +24,9 @@
 
 - (id) init {
 	if (self = [super init]) {
-		uid = [[Common generateUniqueString] retain];
+		uid = [Common generateUniqueString];
 	}
 	return self;
-}
-
-- (void) dealloc {
-	[uid release];
-	self.delegate = nil;
-	
-	[super dealloc];
 }
 
 - (void) didDownloadContentForItem: (DownloadedItemData *) objectItem {
@@ -85,7 +72,7 @@
 				item.pathToFile = path;
 			}
 			if ([Common isEmpty: item.pathToFile] == NO) {
-				DownloadedItemData *itemData = [[[DownloadedItemData alloc] init] autorelease];
+				DownloadedItemData *itemData = [[DownloadedItemData alloc] init];
 				itemData.objectWithContent = objectWithContent;
 				itemData.item = item;
 				[self performSelectorOnMainThread: @selector(didDownloadContentForItem:)

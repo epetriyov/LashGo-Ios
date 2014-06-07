@@ -12,17 +12,5 @@
 
 @synthesize uid, login, name, surname, about, city, birthDate, avatar, email;
 
-- (void) dealloc {
-	[login release];
-	[name release];
-	[surname release];
-	[about release];
-	[city release];
-	[birthDate release];
-	[avatar release];
-	[email release];
-	
-	[super dealloc];
-}
 
 @end

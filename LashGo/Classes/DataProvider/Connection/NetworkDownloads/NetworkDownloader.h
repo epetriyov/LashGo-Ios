@@ -14,19 +14,19 @@
 	DownloadableItem *item;
 }
 
-@property (nonatomic, retain) id<DownloadableContentProtocol> objectWithContent;
-@property (nonatomic, retain) DownloadableItem *item;
+@property (nonatomic, strong) id<DownloadableContentProtocol> objectWithContent;
+@property (nonatomic, strong) DownloadableItem *item;
 
 @end
 
 @protocol NetworkDownloaderDelegate;
 
 @interface NetworkDownloader : NSObject  {
-	id<NetworkDownloaderDelegate> delegate;
+	id<NetworkDownloaderDelegate> __weak delegate;
 	NSString *uid;
 }
 
-@property (nonatomic, assign) id<NetworkDownloaderDelegate> delegate;
+@property (nonatomic, weak) id<NetworkDownloaderDelegate> delegate;
 @property (nonatomic, readonly) NSString *uid;
 
 - (void) downloadFilesForObjectInBackground: (id<DownloadableContentProtocol>) objectWithContent;

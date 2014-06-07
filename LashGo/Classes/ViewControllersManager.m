@@ -25,8 +25,6 @@
     if (self = [super init]) {
         kernel = theKernel;
 		
-		viewControllersStorage = [[NSMutableArray alloc] init];
-		
 		startViewController = [self createViewControllerOfClass: [StartViewController class]];
 		
 		rootNavigationController = [[RootNavigationController alloc] initWithRootViewController: startViewController];
@@ -36,13 +34,6 @@
 	return self;
 }
 
-- (void) dealloc {
-	[viewControllersStorage release];
-	
-	[rootNavigationController release];
-	
-	[super dealloc];
-}
 
 - (id) createViewControllerOfClass: (Class) ViewControllerClass {
 	UIViewController *viewController;
@@ -52,9 +43,6 @@
 	} else {
 		viewController = [[ViewControllerClass alloc] init];
 	}
-	
-	[viewControllersStorage addObject: viewController];
-	[viewController release];
 	
 	return viewController;
 }

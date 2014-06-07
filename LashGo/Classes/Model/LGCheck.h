@@ -18,10 +18,10 @@
 }
 
 @property (nonatomic, assign) int64_t uid;
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *descr;
-@property (nonatomic, retain) NSDate *startDate;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *descr;
+@property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, assign) int32_t duration;
-@property (nonatomic, retain) NSString *photoUrl;
+@property (nonatomic, strong) NSString *photoUrl;
 
 @end

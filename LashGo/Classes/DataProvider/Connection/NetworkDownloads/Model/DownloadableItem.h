@@ -14,9 +14,9 @@
 	NSString *pathToFile;
 }
 
-@property (nonatomic, retain) NSString *url;
-@property (nonatomic, retain) NSString *hash;
-@property (nonatomic, retain) NSString *pathToFile;
+@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSString *hash;
+@property (nonatomic, strong) NSString *pathToFile;
 
 - (NSData *) getStoredData;
 

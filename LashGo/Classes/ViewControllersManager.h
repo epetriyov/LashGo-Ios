@@ -15,9 +15,6 @@
 @interface ViewControllersManager : NSObject {
 	Kernel *kernel;
 	
-	///Retains VC's for easy memory management
-	NSMutableArray *viewControllersStorage;
-    
     RootNavigationController *rootNavigationController;
 	
 	StartViewController *startViewController;

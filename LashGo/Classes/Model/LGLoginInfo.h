@@ -13,7 +13,7 @@
 	NSString *passwordHash;
 }
 
-@property (nonatomic, retain) NSString *login;
-@property (nonatomic, retain) NSString *passwordHash;
+@property (nonatomic, strong) NSString *login;
+@property (nonatomic, strong) NSString *passwordHash;
 
 @end

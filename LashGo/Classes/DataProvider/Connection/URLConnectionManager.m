@@ -14,13 +14,6 @@
 	return self;
 }
 
-- (void) dealloc {
-	[targetsForURLConnections release];
-	[didFinishSelectorsForURLConnections release];
-	[didFailSelectorsForURLConnections release];
-	
-	[super dealloc];
-}
 
 - (URLConnection *) connectionWithHost: (NSString *) host
 								  path: (NSString *) path

@@ -12,11 +12,5 @@
 
 @synthesize uid, userUID, userAvatarURL, userLogin;
 
-- (void) dealloc {
-	[userAvatarURL release];
-	[userLogin release];
-	
-	[super dealloc];
-}
 
 @end

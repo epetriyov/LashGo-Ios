@@ -17,7 +17,7 @@
 
 @property (nonatomic, assign) int32_t uid;
 @property (nonatomic, assign) int32_t userUID;
-@property (nonatomic, retain) NSString *userAvatarURL;
-@property (nonatomic, retain) NSString *userLogin;
+@property (nonatomic, strong) NSString *userAvatarURL;
+@property (nonatomic, strong) NSString *userLogin;
 
 @end

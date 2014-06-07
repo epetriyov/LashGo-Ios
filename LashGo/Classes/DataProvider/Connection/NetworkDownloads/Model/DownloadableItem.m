@@ -12,12 +12,6 @@
 
 @synthesize url, hash, pathToFile;
 
-- (void) dealloc {
-	[url release];
-	[hash release];
-	
-	[super dealloc];
-}
 
 - (NSData *) getStoredData {
 	NSData *data = [NSData dataWithContentsOfFile: self.pathToFile];

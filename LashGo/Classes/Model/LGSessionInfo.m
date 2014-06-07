@@ -12,10 +12,5 @@
 
 @synthesize uid;
 
-- (void) dealloc {
-	[uid release];
-	
-	[super dealloc];
-}
 
 @end

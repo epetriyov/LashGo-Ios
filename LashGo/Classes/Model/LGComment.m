@@ -12,12 +12,5 @@
 
 @synthesize uid, content, createDate, user;
 
-- (void) dealloc {
-	[content release];
-	[createDate release];
-	[user release];
-	
-	[super dealloc];
-}
 
 @end

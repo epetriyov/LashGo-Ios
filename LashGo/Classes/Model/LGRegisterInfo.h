@@ -20,14 +20,14 @@
 	NSString *passwordHash;
 }
 
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *surname;
-@property (nonatomic, retain) NSString *about;
-@property (nonatomic, retain) NSString *city;
-@property (nonatomic, retain) NSString *birthDate;
-@property (nonatomic, retain) NSString *avatar;
-@property (nonatomic, retain) NSString *email;
-@property (nonatomic, retain) NSString *login;
-@property (nonatomic, retain) NSString *passwordHash;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *surname;
+@property (nonatomic, strong) NSString *about;
+@property (nonatomic, strong) NSString *city;
+@property (nonatomic, strong) NSString *birthDate;
+@property (nonatomic, strong) NSString *avatar;
+@property (nonatomic, strong) NSString *email;
+@property (nonatomic, strong) NSString *login;
+@property (nonatomic, strong) NSString *passwordHash;
 
 @end

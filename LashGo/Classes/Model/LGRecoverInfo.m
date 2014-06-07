@@ -12,10 +12,5 @@
 
 @synthesize login;
 
-- (void) dealloc {
-	[login release];
-	
-	[super dealloc];
-}
 
 @end

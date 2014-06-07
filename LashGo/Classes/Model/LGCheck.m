@@ -12,13 +12,5 @@
 
 @synthesize uid, name, descr, startDate, duration, photoUrl;
 
-- (void) dealloc {
-	[name release];
-	[descr release];
-	[startDate release];
-	[photoUrl release];
-	
-	[super dealloc];
-}
 
 @end

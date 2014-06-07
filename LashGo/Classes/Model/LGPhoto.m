@@ -12,12 +12,5 @@
 
 @synthesize uid, url, rating, check, user;
 
-- (void) dealloc {
-	[url release];
-	[check release];
-	[user release];
-	
-	[super dealloc];
-}
 
 @end

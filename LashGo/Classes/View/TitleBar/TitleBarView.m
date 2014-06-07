@@ -16,7 +16,6 @@
 		backgroundImageView.contentMode = UIViewContentModeScaleToFill;
 		backgroundImageView.image = [[ViewFactory sharedFactory] titleBarBackgroundImage];
 		[self addSubview: backgroundImageView];
-		[backgroundImageView release];
 		
 		backButton = [[ViewFactory sharedFactory] titleBarBackButtonWithTarget: nil action: nil];
 		backButton.center = CGPointMake(backButton.frame.size.width / 2, backgroundImageView.center.y);
@@ -33,7 +32,6 @@
 		titleLabel.font = [FontFactory fontWithType: FontTypeTitleBarTitle];
 //		titleLabel.adjustsFontSizeToFitWidth = YES;
 		[self addSubview: titleLabel];
-		[titleLabel release];
     }
     return self;
 }
@@ -60,7 +58,6 @@
 	buildVersionLabel.adjustsFontSizeToFitWidth = YES;
 	buildVersionLabel.text = [NSString stringWithFormat: @"build %@#%@", [Common appVersion], [Common appBuild]];
 	[titleBar addSubview: buildVersionLabel];
-	[buildVersionLabel release];
 #endif
 	
 	titleBar.backButton.alpha = 0;
@@ -70,7 +67,6 @@
 	logoImageView.center = CGPointMake(titleBar.frame.size.width / 2, titleBar.frame.size.height / 2);
 	
 	[titleBar addSubview: logoImageView];
-	[logoImageView release];
 	
 	titleBar -> logoImageView = logoImageView;
 	
@@ -181,7 +177,7 @@
 }
 
 + (TitleBarView *) titleBarView {
-	TitleBarView *titleBar = [[[TitleBarView alloc] initWithFrame: [TitleBarView titleBarRect]] autorelease];
+	TitleBarView *titleBar = [[TitleBarView alloc] initWithFrame: [TitleBarView titleBarRect]];
 	
 	return titleBar;
 }

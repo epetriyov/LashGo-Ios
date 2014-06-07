@@ -16,8 +16,8 @@
 }
 
 @property (nonatomic, assign) int64_t uid;
-@property (nonatomic, retain) NSString *content;
-@property (nonatomic, retain) NSDate *createDate;
-@property (nonatomic, retain) LGUser *user;
+@property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSDate *createDate;
+@property (nonatomic, strong) LGUser *user;
 
 @end

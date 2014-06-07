@@ -10,11 +10,6 @@
 
 @implementation DownloadableImageItem
 
-- (void) dealloc {
-	[image release];
-	
-	[super dealloc];
-}
 
 - (UIImage *) getImage {
 	if (image == nil) {

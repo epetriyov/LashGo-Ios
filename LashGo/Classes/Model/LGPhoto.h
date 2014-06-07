@@ -18,9 +18,9 @@
 }
 
 @property (nonatomic, assign) int64_t uid;
-@property (nonatomic, retain) NSString *url;
+@property (nonatomic, strong) NSString *url;
 @property (nonatomic, assign) int32_t rating;
-@property (nonatomic, retain) LGCheck *check;
-@property (nonatomic, retain) LGUser *user;
+@property (nonatomic, strong) LGCheck *check;
+@property (nonatomic, strong) LGUser *user;
 
 @end

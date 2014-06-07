@@ -12,11 +12,5 @@
 
 @synthesize login, passwordHash;
 
-- (void) dealloc {
-	[login release];
-	[passwordHash release];
-	
-	[super dealloc];
-}
 
 @end

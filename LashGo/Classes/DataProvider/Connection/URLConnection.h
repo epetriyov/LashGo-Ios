@@ -10,7 +10,7 @@ typedef enum {
 @protocol URLConnectionDelegate;
 
 @interface URLConnection : NSObject <NSURLConnectionDataDelegate> {
-	id<URLConnectionDelegate> delegate;
+	id<URLConnectionDelegate> __weak delegate;
 	
 	URLConnectionStatus status;
 	
@@ -31,7 +31,7 @@ typedef enum {
 	id context;
 }
 
-@property (nonatomic, assign) id<URLConnectionDelegate> delegate;
+@property (nonatomic, weak) id<URLConnectionDelegate> delegate;
 @property (nonatomic, readonly) URLConnectionStatus status;
 @property (nonatomic, readonly) NSString *uid;
 @property (nonatomic, readonly) NSString *urlPath;
@@ -40,7 +40,7 @@ typedef enum {
 @property (nonatomic, readonly) NSHTTPURLResponse *response;
 @property (nonatomic, readonly) NSError *error;
 @property (nonatomic, readonly) NSMutableData *downloadedData;
-@property (nonatomic, retain) id context;
+@property (nonatomic, strong) id context;
 
 + (URLConnection *) connectionWithHost: (NSString *) host
 								  path: (NSString *) path

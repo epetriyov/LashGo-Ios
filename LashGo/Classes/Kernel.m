@@ -28,11 +28,6 @@
 	return self;
 }
 
-- (void) dealloc {
-	[viewControllersManager release];
-	
-	[super dealloc];
-}
 
 #pragma mark - Methods
 

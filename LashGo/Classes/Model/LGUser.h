@@ -21,13 +21,13 @@
 }
 
 @property (nonatomic, assign) int32_t uid;
-@property (nonatomic, retain) NSString *login;
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSString *surname;
-@property (nonatomic, retain) NSString *about;
-@property (nonatomic, retain) NSString *city;
-@property (nonatomic, retain) NSDate *birthDate;
-@property (nonatomic, retain) NSString *avatar;
-@property (nonatomic, retain) NSString *email;
+@property (nonatomic, strong) NSString *login;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *surname;
+@property (nonatomic, strong) NSString *about;
+@property (nonatomic, strong) NSString *city;
+@property (nonatomic, strong) NSDate *birthDate;
+@property (nonatomic, strong) NSString *avatar;
+@property (nonatomic, strong) NSString *email;
 
 @end

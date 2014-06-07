@@ -12,18 +12,5 @@
 
 @synthesize name, surname, about, city, birthDate, avatar, email, login, passwordHash;
 
-- (void) dealloc {
-	[name release];
-	[surname release];
-	[about release];
-	[city release];
-	[birthDate release];
-	[avatar release];
-	[email release];
-	[login release];
-	[passwordHash release];
-	
-	[super dealloc];
-}
 
 @end

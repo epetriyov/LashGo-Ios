@@ -12,6 +12,6 @@
 	NSString *login;
 }
 
-@property (nonatomic, retain) NSString *login;
+@property (nonatomic, strong) NSString *login;
 
 @end

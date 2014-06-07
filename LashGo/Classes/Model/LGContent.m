@@ -12,11 +12,5 @@
 
 @synthesize createDate, text;
 
-- (void) dealloc {
-	[createDate release];
-	[text release];
-	
-	[super dealloc];
-}
 
 @end
