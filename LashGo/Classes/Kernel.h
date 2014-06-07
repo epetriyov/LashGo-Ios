@@ -15,4 +15,6 @@
 @property (nonatomic, readonly) UIViewController *rootViewController;
 @property (nonatomic, readonly) ViewControllersManager *viewControllersManager;
 
+- (void) performOnColdWakeActions;
+
 @end

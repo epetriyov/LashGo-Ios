@@ -34,4 +34,10 @@
 	[super dealloc];
 }
 
+#pragma mark - Methods
+
+- (void) performOnColdWakeActions {
+	
+}
+
 @end

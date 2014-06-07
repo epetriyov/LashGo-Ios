@@ -51,6 +51,8 @@
 		845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85BB1902AA00004E10AB /* URLConnectionManager.m */; };
 		8491557A1907FC78008D9120 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 849155791907FC78008D9120 /* Common.m */; };
 		8491557E19080301008D9120 /* RootNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8491557D19080301008D9120 /* RootNavigationController.m */; };
+		84EB473A1943025F001DEF81 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EB47391943025F001DEF81 /* FacebookSDK.framework */; };
+		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,6 +148,9 @@
 		849155791907FC78008D9120 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		8491557C19080301008D9120 /* RootNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootNavigationController.h; sourceTree = "<group>"; };
 		8491557D19080301008D9120 /* RootNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootNavigationController.m; sourceTree = "<group>"; };
+		84EB47391943025F001DEF81 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		84EB473B1943044C001DEF81 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
+		84EB473C1943044C001DEF81 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84EB473A1943025F001DEF81 /* FacebookSDK.framework in Frameworks */,
 				845D858119029EB0004E10AB /* CoreGraphics.framework in Frameworks */,
 				845D858319029EB0004E10AB /* UIKit.framework in Frameworks */,
 				845D857F19029EB0004E10AB /* Foundation.framework in Frameworks */,
@@ -280,6 +286,7 @@
 		845D857D19029EB0004E10AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84EB47391943025F001DEF81 /* FacebookSDK.framework */,
 				845D857E19029EB0004E10AB /* Foundation.framework */,
 				845D858019029EB0004E10AB /* CoreGraphics.framework */,
 				845D858219029EB0004E10AB /* UIKit.framework */,
@@ -393,6 +400,8 @@
 				84045AAA19225879006F2F24 /* RootNavigationControllerItemProtocol.h */,
 				8491557C19080301008D9120 /* RootNavigationController.h */,
 				8491557D19080301008D9120 /* RootNavigationController.m */,
+				84EB473B1943044C001DEF81 /* StartViewController.h */,
+				84EB473C1943044C001DEF81 /* StartViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -509,6 +518,7 @@
 				840625611930BDF80067C1CA /* LGContent.m in Sources */,
 				840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */,
 				845D85BD1902AA00004E10AB /* URLConnection.m in Sources */,
+				84EB473D1943044C001DEF81 /* StartViewController.m in Sources */,
 				840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */,
 				840625581930AD760067C1CA /* LGCheck.m in Sources */,
 				8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */,
@@ -642,6 +652,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/admin/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LashGo/LashGo-Prefix.pch";
 				INFOPLIST_FILE = "LashGo/LashGo-Info.plist";
@@ -655,6 +669,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/admin/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LashGo/LashGo-Prefix.pch";
 				INFOPLIST_FILE = "LashGo/LashGo-Info.plist";

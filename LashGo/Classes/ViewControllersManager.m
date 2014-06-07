@@ -27,7 +27,7 @@
 		
 		viewControllersStorage = [[NSMutableArray alloc] init];
 		
-		startViewController = [self createViewControllerOfClass: [TitleBarViewController class]];
+		startViewController = [self createViewControllerOfClass: [StartViewController class]];
 		
 		rootNavigationController = [[RootNavigationController alloc] initWithRootViewController: startViewController];
 		rootNavigationController.navigationBarHidden = YES;

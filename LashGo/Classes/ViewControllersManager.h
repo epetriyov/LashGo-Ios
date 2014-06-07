@@ -8,7 +8,7 @@
 
 #import "RootNavigationController.h"
 
-#import "TitleBarViewController.h"
+#import "StartViewController.h"
 
 @class Kernel;
 
@@ -20,7 +20,7 @@
     
     RootNavigationController *rootNavigationController;
 	
-	TitleBarViewController *startViewController;
+	StartViewController *startViewController;
 }
 
 @property (nonatomic, readonly) BOOL isReturnToPreviousAvaliable;
