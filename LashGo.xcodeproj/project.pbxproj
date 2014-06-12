@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84001FEB1949AA53004D9D7A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84001FEA1949AA53004D9D7A /* Social.framework */; };
+		84001FF01949ADDD004D9D7A /* AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84001FEF1949ADDD004D9D7A /* AuthorizationManager.m */; };
+		84001FF41949AF68004D9D7A /* AppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84001FF31949AF68004D9D7A /* AppAccount.m */; };
+		84001FF91949F7F3004D9D7A /* FacebookAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84001FF81949F7F3004D9D7A /* FacebookAppAccount.m */; };
 		84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84045AA819224A04006F2F24 /* UIView+CGExtension.m */; };
 		8406250A193082020067C1CA /* NetworkDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062505193082020067C1CA /* NetworkDownloader.m */; };
 		8406250B193082020067C1CA /* NetworkDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062507193082020067C1CA /* NetworkDownloadManager.m */; };
@@ -66,6 +70,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84001FEA1949AA53004D9D7A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		84001FEE1949ADDD004D9D7A /* AuthorizationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationManager.h; sourceTree = "<group>"; };
+		84001FEF1949ADDD004D9D7A /* AuthorizationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationManager.m; sourceTree = "<group>"; };
+		84001FF21949AF68004D9D7A /* AppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAccount.h; sourceTree = "<group>"; };
+		84001FF31949AF68004D9D7A /* AppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppAccount.m; sourceTree = "<group>"; };
+		84001FF61949B4FF004D9D7A /* Singleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		84001FF71949F7F3004D9D7A /* FacebookAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAppAccount.h; sourceTree = "<group>"; };
+		84001FF81949F7F3004D9D7A /* FacebookAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAppAccount.m; sourceTree = "<group>"; };
 		84045AA719224A04006F2F24 /* UIView+CGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CGExtension.h"; sourceTree = "<group>"; };
 		84045AA819224A04006F2F24 /* UIView+CGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CGExtension.m"; sourceTree = "<group>"; };
 		84045AAA19225879006F2F24 /* RootNavigationControllerItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootNavigationControllerItemProtocol.h; sourceTree = "<group>"; };
@@ -158,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84001FEB1949AA53004D9D7A /* Social.framework in Frameworks */,
 				84EB473A1943025F001DEF81 /* FacebookSDK.framework in Frameworks */,
 				845D858119029EB0004E10AB /* CoreGraphics.framework in Frameworks */,
 				845D858319029EB0004E10AB /* UIKit.framework in Frameworks */,
@@ -178,6 +191,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84001FEC1949ACE6004D9D7A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				84001FED1949AD8B004D9D7A /* Authorization */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		84001FED1949AD8B004D9D7A /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				84001FF11949ADF3004D9D7A /* Model */,
+				84001FEE1949ADDD004D9D7A /* AuthorizationManager.h */,
+				84001FEF1949ADDD004D9D7A /* AuthorizationManager.m */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		84001FF11949ADF3004D9D7A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				84001FF21949AF68004D9D7A /* AppAccount.h */,
+				84001FF31949AF68004D9D7A /* AppAccount.m */,
+				84001FF71949F7F3004D9D7A /* FacebookAppAccount.h */,
+				84001FF81949F7F3004D9D7A /* FacebookAppAccount.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		840624FE193082020067C1CA /* NetworkDownloads */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +328,7 @@
 		845D857D19029EB0004E10AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84001FEA1949AA53004D9D7A /* Social.framework */,
 				84EB47391943025F001DEF81 /* FacebookSDK.framework */,
 				845D857E19029EB0004E10AB /* Foundation.framework */,
 				845D858019029EB0004E10AB /* CoreGraphics.framework */,
@@ -340,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				849155771907FC30008D9120 /* Common */,
+				84001FEC1949ACE6004D9D7A /* Components */,
 				845D85B41902A90E004E10AB /* DataProvider */,
 				840625551930AD1C0067C1CA /* Model */,
 				8426F353191A6E8100B4E336 /* View */,
@@ -387,6 +431,7 @@
 				8406251419308BB20067C1CA /* CryptoUtils.m */,
 				8406251619308D110067C1CA /* FileManager.h */,
 				8406251719308D110067C1CA /* FileManager.m */,
+				84001FF61949B4FF004D9D7A /* Singleton.h */,
 				84045AA719224A04006F2F24 /* UIView+CGExtension.h */,
 				84045AA819224A04006F2F24 /* UIView+CGExtension.m */,
 			);
@@ -505,6 +550,7 @@
 				8426F351191A661D00B4E336 /* BaseViewController.m in Sources */,
 				84062511193088F30067C1CA /* DownloadableImageItem.m in Sources */,
 				840625541930AB230067C1CA /* JSONParser.m in Sources */,
+				84001FF41949AF68004D9D7A /* AppAccount.m in Sources */,
 				8406250B193082020067C1CA /* NetworkDownloadManager.m in Sources */,
 				8406256D1930CDEA0067C1CA /* LGRecoverInfo.m in Sources */,
 				845D858F19029EB0004E10AB /* AppDelegate.m in Sources */,
@@ -514,6 +560,7 @@
 				840625511930AAD20067C1CA /* DataProvider.m in Sources */,
 				845D85B01902A543004E10AB /* Kernel.m in Sources */,
 				8426F35D191A754200B4E336 /* FontFactory.m in Sources */,
+				84001FF01949ADDD004D9D7A /* AuthorizationManager.m in Sources */,
 				840625671930C9E70067C1CA /* LGLoginInfo.m in Sources */,
 				840625611930BDF80067C1CA /* LGContent.m in Sources */,
 				840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */,
@@ -536,6 +583,7 @@
 				845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */,
 				840625641930C8EF0067C1CA /* LGgcmRegistrationId.m in Sources */,
 				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
+				84001FF91949F7F3004D9D7A /* FacebookAppAccount.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

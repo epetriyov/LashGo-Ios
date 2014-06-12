@@ -7,7 +7,7 @@
 //
 
 #import "StartViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
+#import "AuthorizationManager.h"
 
 @interface StartViewController ()
 
@@ -18,10 +18,15 @@
 - (void) loadView {
 	[super loadView];
 	
-	FBLoginView *loginView = [[FBLoginView alloc] init];
-	// Align the button in the center horizontally
-	loginView.frame = CGRectOffset(loginView.frame, (self.view.center.x - (loginView.frame.size.width / 2)), 5);
-	[self.view addSubview:loginView];
+	UIButton *loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+	[loginButton setTitle: @"Login with Facebook" forState: UIControlStateNormal];
+	loginButton.frame = CGRectMake(self.contentFrame.origin.y, 0, 320, 20);
+	[loginButton addTarget: self action: @selector(loginWithFacebook:) forControlEvents: UIControlEventTouchUpInside];
+	[self.view addSubview: loginButton];
+}
+
+- (void) loginWithFacebook: (id) sender {
+	[[AuthorizationManager sharedManager] loginUsingFacebook];
 }
 
 @end

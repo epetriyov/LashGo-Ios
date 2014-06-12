@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Singleton.h"
 
 @interface NSString (CommonExtension)
 

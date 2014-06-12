@@ -7,6 +7,7 @@
 //
 
 #import "ViewControllersManager.h"
+#import "AuthorizationManager.h"
 
 @interface Kernel : NSObject {
 	ViewControllersManager *viewControllersManager;
