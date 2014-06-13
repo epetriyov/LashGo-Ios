@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
+//LashGo app id 417722991695914
+
 #import "FacebookAppAccount.h"
 
 @implementation FacebookAppAccount
@@ -28,15 +30,20 @@
         // we check here to make sure we have a token before calling open
         if (_session.state == FBSessionStateCreatedTokenLoaded) {
             // even though we had a cached token, we need to login to make the session usable
-            [_session openWithCompletionHandler:^(FBSession *session,
-												  FBSessionState status,
-												  NSError *error) {
-				[self onSessionOpen];
+            [_session openWithBehavior: FBSessionLoginBehaviorUseSystemAccountIfPresent
+					 completionHandler:^(FBSession *session,
+										 FBSessionState status,
+										 NSError *error) {
+				[self sessionStateChanged:session state:status error:error];
             }];
         }
 	}
 	
 	return self;
+}
+
+- (void) dealloc {
+	[_session close];
 }
 
 // FBSample logic
@@ -91,8 +98,40 @@
                         withSession: _session];
 }
 
-- (void) onSessionOpen {
-	DLog(@"Facebook session was opened");
+#pragma mark - Methods
+
+- (void)sessionStateChanged:(FBSession *)session
+                      state:(FBSessionState) state
+                      error:(NSError *)error {
+	if(FB_ISSESSIONOPENWITHSTATE(state)){
+		NSAssert(error == nil, @"ShareKit: Facebook sessionStateChanged open session, but errors?!?!");
+//		if(requestingPermisSHKFacebook == self){
+//			// in this case, we basically want to ignore the state change because the
+//			// completion handler for the permission request handles the post.
+//			// this happens when the permissions just get extended
+//		}else{
+		[self.delegate authDidFinish: YES forAccount: self];
+//		}
+	}else if (FB_ISSESSIONSTATETERMINAL(state)){
+//		if (authingSHKFacebook == self) {	// the state can change for a lot of reasons that are out of the login loop
+		[self.delegate authDidFinish: NO forAccount: self];
+//		}else{
+//			// seems that if you expire the tolken that it thinks is valid it will close the session without reporting
+//			// errors super awesome. So look for the errors in the FBRequestHandlerCallback
+//		}
+	}
+	
+    if (error && error.fberrorShouldNotifyUser) {
+		[FBSession.activeSession closeAndClearTokenInformation];
+        
+        UIAlertView *alertView = [[UIAlertView alloc]
+                                  initWithTitle:@"Error"
+                                  message:error.fberrorUserMessage
+                                  delegate:nil
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil];
+        [alertView show];
+    }
 }
 
 - (void) login {
@@ -104,11 +143,19 @@
 	// if the session isn't open, let's open it now and present the login UX to the user
 	[_session openWithBehavior: FBSessionLoginBehaviorUseSystemAccountIfPresent
 			 completionHandler:^(FBSession *session,
-													 FBSessionState status,
-													 NSError *error) {
+								 FBSessionState status,
+								 NSError *error) {
 		// and here we make sure to update our UX according to the new session state
-		[self onSessionOpen];
+		[self sessionStateChanged: session state: status error: error];
 	}];
+}
+
+- (void) logout {
+	// if a user logs out explicitly, we delete any cached token information, and next
+	// time they run the applicaiton they will be presented with log in UX again; most
+	// users will simply close the app or switch away, without logging out; this will
+	// cause the implicit cached-token login to occur on next launch of the application
+	[_session closeAndClearTokenInformation];
 }
 
 @end

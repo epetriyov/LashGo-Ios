@@ -31,6 +31,8 @@
 		840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406256F1930CE850067C1CA /* LGRegisterInfo.m */; };
 		840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625721930D10E0067C1CA /* LGSessionInfo.m */; };
 		840625761930D1AA0067C1CA /* LGSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625751930D1AA0067C1CA /* LGSubscription.m */; };
+		840E19EB194B41E60023C0F6 /* TwitterAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E19EA194B41E60023C0F6 /* TwitterAppAccount.m */; };
+		840E19ED194B43210023C0F6 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840E19EC194B43210023C0F6 /* Accounts.framework */; };
 		8426F351191A661D00B4E336 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F34E191A661D00B4E336 /* BaseViewController.m */; };
 		8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F350191A661D00B4E336 /* TitleBarViewController.m */; };
 		8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F356191A6F6400B4E336 /* TitleBarView.m */; };
@@ -120,6 +122,9 @@
 		840625721930D10E0067C1CA /* LGSessionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSessionInfo.m; sourceTree = "<group>"; };
 		840625741930D1AA0067C1CA /* LGSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSubscription.h; sourceTree = "<group>"; };
 		840625751930D1AA0067C1CA /* LGSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSubscription.m; sourceTree = "<group>"; };
+		840E19E9194B41E60023C0F6 /* TwitterAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAppAccount.h; sourceTree = "<group>"; };
+		840E19EA194B41E60023C0F6 /* TwitterAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAppAccount.m; sourceTree = "<group>"; };
+		840E19EC194B43210023C0F6 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		8426F34D191A661D00B4E336 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8426F34E191A661D00B4E336 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		8426F34F191A661D00B4E336 /* TitleBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBarViewController.h; sourceTree = "<group>"; };
@@ -170,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840E19ED194B43210023C0F6 /* Accounts.framework in Frameworks */,
 				84001FEB1949AA53004D9D7A /* Social.framework in Frameworks */,
 				84EB473A1943025F001DEF81 /* FacebookSDK.framework in Frameworks */,
 				845D858119029EB0004E10AB /* CoreGraphics.framework in Frameworks */,
@@ -216,6 +222,8 @@
 				84001FF31949AF68004D9D7A /* AppAccount.m */,
 				84001FF71949F7F3004D9D7A /* FacebookAppAccount.h */,
 				84001FF81949F7F3004D9D7A /* FacebookAppAccount.m */,
+				840E19E9194B41E60023C0F6 /* TwitterAppAccount.h */,
+				840E19EA194B41E60023C0F6 /* TwitterAppAccount.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,6 +336,7 @@
 		845D857D19029EB0004E10AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				840E19EC194B43210023C0F6 /* Accounts.framework */,
 				84001FEA1949AA53004D9D7A /* Social.framework */,
 				84EB47391943025F001DEF81 /* FacebookSDK.framework */,
 				845D857E19029EB0004E10AB /* Foundation.framework */,
@@ -584,6 +593,7 @@
 				840625641930C8EF0067C1CA /* LGgcmRegistrationId.m in Sources */,
 				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
 				84001FF91949F7F3004D9D7A /* FacebookAppAccount.m in Sources */,
+				840E19EB194B41E60023C0F6 /* TwitterAppAccount.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +670,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -692,6 +703,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

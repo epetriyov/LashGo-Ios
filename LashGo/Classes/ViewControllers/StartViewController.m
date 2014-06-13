@@ -18,15 +18,29 @@
 - (void) loadView {
 	[super loadView];
 	
+	float offsetY = self.contentFrame.origin.y;
+	
 	UIButton *loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
 	[loginButton setTitle: @"Login with Facebook" forState: UIControlStateNormal];
-	loginButton.frame = CGRectMake(self.contentFrame.origin.y, 0, 320, 20);
+	loginButton.frame = CGRectMake(0, offsetY, 320, 40);
 	[loginButton addTarget: self action: @selector(loginWithFacebook:) forControlEvents: UIControlEventTouchUpInside];
+	[self.view addSubview: loginButton];
+	
+	offsetY += loginButton.frame.size.height + 10;
+	
+	loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+	[loginButton setTitle: @"Login with Twitter" forState: UIControlStateNormal];
+	loginButton.frame = CGRectMake(0, offsetY, 320, 40);
+	[loginButton addTarget: self action: @selector(loginWithTwitter:) forControlEvents: UIControlEventTouchUpInside];
 	[self.view addSubview: loginButton];
 }
 
 - (void) loginWithFacebook: (id) sender {
 	[[AuthorizationManager sharedManager] loginUsingFacebook];
+}
+
+- (void) loginWithTwitter: (id) sender {
+	[[AuthorizationManager sharedManager] loginUsingTwitter];
 }
 
 @end

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AppAccount.h"
 
-@interface AuthorizationManager : NSObject {
+@interface AuthorizationManager : NSObject <AppAccountDelegate> {
 	AppAccount *_account;
 }
 
@@ -18,5 +18,6 @@
 + (instancetype) sharedManager;
 
 - (void) loginUsingFacebook;
+- (void) loginUsingTwitter;
 
 @end

@@ -10,6 +10,7 @@
 #import "Common.h"
 
 #import "FacebookAppAccount.h"
+#import "TwitterAppAccount.h"
 
 @implementation AuthorizationManager
 
@@ -22,10 +23,35 @@
 #pragma mark - Methods
 
 - (void) loginUsingFacebook {
+	if (_account != nil && [_account isKindOfClass: [FacebookAppAccount class]] == NO) {
+		[_account logout];
+		_account = nil;
+	}
 	if (_account == nil) {
 		_account = [[FacebookAppAccount alloc] init];
+		_account.delegate = self;
 	}
-	[(FacebookAppAccount*)_account login];
+	[_account login];
+}
+
+- (void) loginUsingTwitter {
+	if (_account != nil && [_account isKindOfClass: [TwitterAppAccount class]] == NO) {
+		[_account logout];
+		_account = nil;
+	}
+	if (_account == nil) {
+		_account = [[TwitterAppAccount alloc] init];
+		_account.delegate = self;
+	}
+	[_account login];
+}
+
+#pragma mark - AppAccountDelegate implementation
+
+- (void) authDidFinish: (BOOL) success forAccount: (AppAccount *) account {
+	if (success == NO && account == _account) {
+		_account = nil;
+	}
 }
 
 @end

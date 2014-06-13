@@ -14,15 +14,27 @@ typedef NS_ENUM(short, AppAccountType) {
 	AppAccountTypeVkontakte
 };
 
-@interface AppAccount : NSObject {
-}
+@protocol AppAccountDelegate;
 
+@interface AppAccount : NSObject
+
+@property (nonatomic, weak) id<AppAccountDelegate> delegate;
 @property (nonatomic, readonly) AppAccountType *accountType;
 @property (nonatomic, readonly) NSString *accessToken;
+
+- (void) login;
+- (void) logout;
 
 - (void) handleApplicationDidBecomeActive;
 - (void) handleApplicationWillTerminate;
 - (BOOL) handleOpenURL:(NSURL *)url
 	 sourceApplication:(NSString *)sourceApplication;
+
+@end
+
+@protocol AppAccountDelegate <NSObject>
+
+@required
+- (void) authDidFinish: (BOOL) success forAccount: (AppAccount *) account;
 
 @end

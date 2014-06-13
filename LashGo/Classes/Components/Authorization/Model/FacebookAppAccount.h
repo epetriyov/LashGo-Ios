@@ -13,6 +13,4 @@
 	FBSession __strong *_session;
 }
 
-- (void) login;
-
 @end
