@@ -34,14 +34,16 @@
 	[_account login];
 }
 
-- (void) loginUsingTwitter {
+- (void) loginUsingTwitterFromView: (UIView *) loginView {
 	if (_account != nil && [_account isKindOfClass: [TwitterAppAccount class]] == NO) {
 		[_account logout];
 		_account = nil;
 	}
 	if (_account == nil) {
-		_account = [[TwitterAppAccount alloc] init];
-		_account.delegate = self;
+		TwitterAppAccount *account = [[TwitterAppAccount alloc] init];
+		account.delegate = self;
+		account.selectAccountParentView = loginView;
+		_account = account;
 	}
 	[_account login];
 }

@@ -18,6 +18,6 @@
 + (instancetype) sharedManager;
 
 - (void) loginUsingFacebook;
-- (void) loginUsingTwitter;
+- (void) loginUsingTwitterFromView: (UIView *) loginView;
 
 @end

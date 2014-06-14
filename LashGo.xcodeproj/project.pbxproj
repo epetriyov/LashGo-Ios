@@ -10,7 +10,6 @@
 		84001FEB1949AA53004D9D7A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84001FEA1949AA53004D9D7A /* Social.framework */; };
 		84001FF01949ADDD004D9D7A /* AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84001FEF1949ADDD004D9D7A /* AuthorizationManager.m */; };
 		84001FF41949AF68004D9D7A /* AppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84001FF31949AF68004D9D7A /* AppAccount.m */; };
-		84001FF91949F7F3004D9D7A /* FacebookAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84001FF81949F7F3004D9D7A /* FacebookAppAccount.m */; };
 		84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84045AA819224A04006F2F24 /* UIView+CGExtension.m */; };
 		8406250A193082020067C1CA /* NetworkDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062505193082020067C1CA /* NetworkDownloader.m */; };
 		8406250B193082020067C1CA /* NetworkDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062507193082020067C1CA /* NetworkDownloadManager.m */; };
@@ -31,7 +30,6 @@
 		840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406256F1930CE850067C1CA /* LGRegisterInfo.m */; };
 		840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625721930D10E0067C1CA /* LGSessionInfo.m */; };
 		840625761930D1AA0067C1CA /* LGSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625751930D1AA0067C1CA /* LGSubscription.m */; };
-		840E19EB194B41E60023C0F6 /* TwitterAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E19EA194B41E60023C0F6 /* TwitterAppAccount.m */; };
 		840E19ED194B43210023C0F6 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840E19EC194B43210023C0F6 /* Accounts.framework */; };
 		8426F351191A661D00B4E336 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F34E191A661D00B4E336 /* BaseViewController.m */; };
 		8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F350191A661D00B4E336 /* TitleBarViewController.m */; };
@@ -59,6 +57,13 @@
 		8491557E19080301008D9120 /* RootNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8491557D19080301008D9120 /* RootNavigationController.m */; };
 		84EB473A1943025F001DEF81 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EB47391943025F001DEF81 /* FacebookSDK.framework */; };
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
+		84FD8956194C44E7001139DF /* TwitterAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD894D194C44E7001139DF /* TwitterAppAccount.m */; };
+		84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8951194C44E7001139DF /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84FD8958194C44E7001139DF /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8953194C44E7001139DF /* OAuth+Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84FD8959194C44E7001139DF /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8955194C44E7001139DF /* OAuthCore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84FD8961194C4684001139DF /* TWAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD895C194C4684001139DF /* TWAPIManager.m */; };
+		84FD8962194C4684001139DF /* TWSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD895E194C4684001139DF /* TWSignedRequest.m */; };
+		84FD8968194C84EB001139DF /* FacebookAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8967194C84EB001139DF /* FacebookAppAccount.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,8 +83,6 @@
 		84001FF21949AF68004D9D7A /* AppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAccount.h; sourceTree = "<group>"; };
 		84001FF31949AF68004D9D7A /* AppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppAccount.m; sourceTree = "<group>"; };
 		84001FF61949B4FF004D9D7A /* Singleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
-		84001FF71949F7F3004D9D7A /* FacebookAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAppAccount.h; sourceTree = "<group>"; };
-		84001FF81949F7F3004D9D7A /* FacebookAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAppAccount.m; sourceTree = "<group>"; };
 		84045AA719224A04006F2F24 /* UIView+CGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CGExtension.h"; sourceTree = "<group>"; };
 		84045AA819224A04006F2F24 /* UIView+CGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CGExtension.m"; sourceTree = "<group>"; };
 		84045AAA19225879006F2F24 /* RootNavigationControllerItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootNavigationControllerItemProtocol.h; sourceTree = "<group>"; };
@@ -122,8 +125,6 @@
 		840625721930D10E0067C1CA /* LGSessionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSessionInfo.m; sourceTree = "<group>"; };
 		840625741930D1AA0067C1CA /* LGSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSubscription.h; sourceTree = "<group>"; };
 		840625751930D1AA0067C1CA /* LGSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSubscription.m; sourceTree = "<group>"; };
-		840E19E9194B41E60023C0F6 /* TwitterAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAppAccount.h; sourceTree = "<group>"; };
-		840E19EA194B41E60023C0F6 /* TwitterAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAppAccount.m; sourceTree = "<group>"; };
 		840E19EC194B43210023C0F6 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		8426F34D191A661D00B4E336 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8426F34E191A661D00B4E336 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
@@ -168,6 +169,20 @@
 		84EB47391943025F001DEF81 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		84EB473B1943044C001DEF81 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		84EB473C1943044C001DEF81 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		84FD894C194C44E7001139DF /* TwitterAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAppAccount.h; sourceTree = "<group>"; };
+		84FD894D194C44E7001139DF /* TwitterAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAppAccount.m; sourceTree = "<group>"; };
+		84FD8950194C44E7001139DF /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		84FD8951194C44E7001139DF /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		84FD8952194C44E7001139DF /* OAuth+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAuth+Additions.h"; sourceTree = "<group>"; };
+		84FD8953194C44E7001139DF /* OAuth+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAuth+Additions.m"; sourceTree = "<group>"; };
+		84FD8954194C44E7001139DF /* OAuthCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthCore.h; sourceTree = "<group>"; };
+		84FD8955194C44E7001139DF /* OAuthCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthCore.m; sourceTree = "<group>"; };
+		84FD895B194C4684001139DF /* TWAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWAPIManager.h; sourceTree = "<group>"; };
+		84FD895C194C4684001139DF /* TWAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWAPIManager.m; sourceTree = "<group>"; };
+		84FD895D194C4684001139DF /* TWSignedRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSignedRequest.h; sourceTree = "<group>"; };
+		84FD895E194C4684001139DF /* TWSignedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSignedRequest.m; sourceTree = "<group>"; };
+		84FD8966194C84EB001139DF /* FacebookAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAppAccount.h; sourceTree = "<group>"; };
+		84FD8967194C84EB001139DF /* FacebookAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAppAccount.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,12 +233,10 @@
 		84001FF11949ADF3004D9D7A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84FD8965194C84EB001139DF /* Facebook */,
+				84FD894B194C44E7001139DF /* Twitter */,
 				84001FF21949AF68004D9D7A /* AppAccount.h */,
 				84001FF31949AF68004D9D7A /* AppAccount.m */,
-				84001FF71949F7F3004D9D7A /* FacebookAppAccount.h */,
-				84001FF81949F7F3004D9D7A /* FacebookAppAccount.m */,
-				840E19E9194B41E60023C0F6 /* TwitterAppAccount.h */,
-				840E19EA194B41E60023C0F6 /* TwitterAppAccount.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -460,6 +473,58 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		84FD894B194C44E7001139DF /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				84FD895A194C4684001139DF /* TWClasses */,
+				84FD894E194C44E7001139DF /* Vendor */,
+				84FD894C194C44E7001139DF /* TwitterAppAccount.h */,
+				84FD894D194C44E7001139DF /* TwitterAppAccount.m */,
+			);
+			path = Twitter;
+			sourceTree = "<group>";
+		};
+		84FD894E194C44E7001139DF /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				84FD894F194C44E7001139DF /* ABOAuthCore */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		84FD894F194C44E7001139DF /* ABOAuthCore */ = {
+			isa = PBXGroup;
+			children = (
+				84FD8950194C44E7001139DF /* NSData+Base64.h */,
+				84FD8951194C44E7001139DF /* NSData+Base64.m */,
+				84FD8952194C44E7001139DF /* OAuth+Additions.h */,
+				84FD8953194C44E7001139DF /* OAuth+Additions.m */,
+				84FD8954194C44E7001139DF /* OAuthCore.h */,
+				84FD8955194C44E7001139DF /* OAuthCore.m */,
+			);
+			path = ABOAuthCore;
+			sourceTree = "<group>";
+		};
+		84FD895A194C4684001139DF /* TWClasses */ = {
+			isa = PBXGroup;
+			children = (
+				84FD895B194C4684001139DF /* TWAPIManager.h */,
+				84FD895C194C4684001139DF /* TWAPIManager.m */,
+				84FD895D194C4684001139DF /* TWSignedRequest.h */,
+				84FD895E194C4684001139DF /* TWSignedRequest.m */,
+			);
+			path = TWClasses;
+			sourceTree = "<group>";
+		};
+		84FD8965194C84EB001139DF /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				84FD8966194C84EB001139DF /* FacebookAppAccount.h */,
+				84FD8967194C84EB001139DF /* FacebookAppAccount.m */,
+			);
+			path = Facebook;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -565,6 +630,7 @@
 				845D858F19029EB0004E10AB /* AppDelegate.m in Sources */,
 				8406251819308D110067C1CA /* FileManager.m in Sources */,
 				8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */,
+				84FD8962194C4684001139DF /* TWSignedRequest.m in Sources */,
 				8406251519308BB20067C1CA /* CryptoUtils.m in Sources */,
 				840625511930AAD20067C1CA /* DataProvider.m in Sources */,
 				845D85B01902A543004E10AB /* Kernel.m in Sources */,
@@ -573,11 +639,13 @@
 				840625671930C9E70067C1CA /* LGLoginInfo.m in Sources */,
 				840625611930BDF80067C1CA /* LGContent.m in Sources */,
 				840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */,
+				84FD8959194C44E7001139DF /* OAuthCore.m in Sources */,
 				845D85BD1902AA00004E10AB /* URLConnection.m in Sources */,
 				84EB473D1943044C001DEF81 /* StartViewController.m in Sources */,
 				840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */,
 				840625581930AD760067C1CA /* LGCheck.m in Sources */,
 				8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */,
+				84FD8968194C84EB001139DF /* FacebookAppAccount.m in Sources */,
 				8491557E19080301008D9120 /* RootNavigationController.m in Sources */,
 				8406250A193082020067C1CA /* NetworkDownloader.m in Sources */,
 				8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */,
@@ -591,9 +659,11 @@
 				845D85BC1902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m in Sources */,
 				845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */,
 				840625641930C8EF0067C1CA /* LGgcmRegistrationId.m in Sources */,
+				84FD8958194C44E7001139DF /* OAuth+Additions.m in Sources */,
 				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
-				84001FF91949F7F3004D9D7A /* FacebookAppAccount.m in Sources */,
-				840E19EB194B41E60023C0F6 /* TwitterAppAccount.m in Sources */,
+				84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */,
+				84FD8961194C4684001139DF /* TWAPIManager.m in Sources */,
+				84FD8956194C44E7001139DF /* TwitterAppAccount.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

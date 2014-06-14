@@ -40,7 +40,7 @@
 }
 
 - (void) loginWithTwitter: (id) sender {
-	[[AuthorizationManager sharedManager] loginUsingTwitter];
+	[[AuthorizationManager sharedManager] loginUsingTwitterFromView: self.view];
 }
 
 @end

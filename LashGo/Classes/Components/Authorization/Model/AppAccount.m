@@ -16,6 +16,14 @@
 	return nil;
 }
 
+- (void) login {
+	
+}
+
+- (void) logout {
+	
+}
+
 - (void) handleApplicationDidBecomeActive {
 	
 }

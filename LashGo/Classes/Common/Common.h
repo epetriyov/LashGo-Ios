@@ -12,6 +12,8 @@
 @interface NSString (CommonExtension)
 
 + (NSString *) stringWithData: (NSData *) data;
+- (NSString *) stringBetweenString:(NSString*)start
+						 andString:(NSString*)end;
 
 @end
 
