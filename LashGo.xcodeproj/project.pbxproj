@@ -55,7 +55,8 @@
 		845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85BB1902AA00004E10AB /* URLConnectionManager.m */; };
 		8491557A1907FC78008D9120 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 849155791907FC78008D9120 /* Common.m */; };
 		8491557E19080301008D9120 /* RootNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8491557D19080301008D9120 /* RootNavigationController.m */; };
-		84EB473A1943025F001DEF81 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84EB47391943025F001DEF81 /* FacebookSDK.framework */; };
+		84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */; };
+		84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */; };
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
 		84FD8956194C44E7001139DF /* TwitterAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD894D194C44E7001139DF /* TwitterAppAccount.m */; };
 		84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8951194C44E7001139DF /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -64,6 +65,8 @@
 		84FD8961194C4684001139DF /* TWAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD895C194C4684001139DF /* TWAPIManager.m */; };
 		84FD8962194C4684001139DF /* TWSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD895E194C4684001139DF /* TWSignedRequest.m */; };
 		84FD8968194C84EB001139DF /* FacebookAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8967194C84EB001139DF /* FacebookAppAccount.m */; };
+		84FF0239195EB47200B90CF9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0238195EB47200B90CF9 /* FacebookSDK.framework */; };
+		84FF0294195ED69600B90CF9 /* libVKSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0235195EB21800B90CF9 /* libVKSdk.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 845D857A19029EB0004E10AB;
 			remoteInfo = LashGo;
+		};
+		84FF0234195EB21800B90CF9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84E99C01194F26F3000C55E4 /* sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3C7542D182133CC00964716;
+			remoteInfo = VKSdk;
+		};
+		84FF0236195EB21800B90CF9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84E99C01194F26F3000C55E4 /* sdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3BACC401865905B003158DA;
+			remoteInfo = VKSdkResources;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -166,6 +183,10 @@
 		849155791907FC78008D9120 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		8491557C19080301008D9120 /* RootNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootNavigationController.h; sourceTree = "<group>"; };
 		8491557D19080301008D9120 /* RootNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootNavigationController.m; sourceTree = "<group>"; };
+		84E99B9B194F1CA3000C55E4 /* VkontakteAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VkontakteAppAccount.h; sourceTree = "<group>"; };
+		84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkontakteAppAccount.m; sourceTree = "<group>"; };
+		84E99C01194F26F3000C55E4 /* sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = sdk.xcodeproj; path = LashGo/VKlib/sdk/sdk.xcodeproj; sourceTree = "<group>"; };
+		84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VKSdkResources.bundle; path = LashGo/VKlib/VKSdkResources.bundle; sourceTree = "<group>"; };
 		84EB47391943025F001DEF81 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		84EB473B1943044C001DEF81 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		84EB473C1943044C001DEF81 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
@@ -183,6 +204,7 @@
 		84FD895E194C4684001139DF /* TWSignedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSignedRequest.m; sourceTree = "<group>"; };
 		84FD8966194C84EB001139DF /* FacebookAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAppAccount.h; sourceTree = "<group>"; };
 		84FD8967194C84EB001139DF /* FacebookAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAppAccount.m; sourceTree = "<group>"; };
+		84FF0238195EB47200B90CF9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = LashGo/FBlib/FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,9 +212,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84FF0294195ED69600B90CF9 /* libVKSdk.a in Frameworks */,
+				84FF0239195EB47200B90CF9 /* FacebookSDK.framework in Frameworks */,
 				840E19ED194B43210023C0F6 /* Accounts.framework in Frameworks */,
 				84001FEB1949AA53004D9D7A /* Social.framework in Frameworks */,
-				84EB473A1943025F001DEF81 /* FacebookSDK.framework in Frameworks */,
 				845D858119029EB0004E10AB /* CoreGraphics.framework in Frameworks */,
 				845D858319029EB0004E10AB /* UIKit.framework in Frameworks */,
 				845D857F19029EB0004E10AB /* Foundation.framework in Frameworks */,
@@ -235,6 +258,7 @@
 			children = (
 				84FD8965194C84EB001139DF /* Facebook */,
 				84FD894B194C44E7001139DF /* Twitter */,
+				84E99B9A194F1C54000C55E4 /* Vkontakte */,
 				84001FF21949AF68004D9D7A /* AppAccount.h */,
 				84001FF31949AF68004D9D7A /* AppAccount.m */,
 			);
@@ -329,6 +353,8 @@
 		845D857219029EB0004E10AB = {
 			isa = PBXGroup;
 			children = (
+				84E99C01194F26F3000C55E4 /* sdk.xcodeproj */,
+				84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */,
 				845D858419029EB0004E10AB /* LashGo */,
 				845D859D19029EB0004E10AB /* LashGoTests */,
 				845D857D19029EB0004E10AB /* Frameworks */,
@@ -349,6 +375,7 @@
 		845D857D19029EB0004E10AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				84FF0238195EB47200B90CF9 /* FacebookSDK.framework */,
 				840E19EC194B43210023C0F6 /* Accounts.framework */,
 				84001FEA1949AA53004D9D7A /* Social.framework */,
 				84EB47391943025F001DEF81 /* FacebookSDK.framework */,
@@ -473,6 +500,15 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		84E99B9A194F1C54000C55E4 /* Vkontakte */ = {
+			isa = PBXGroup;
+			children = (
+				84E99B9B194F1CA3000C55E4 /* VkontakteAppAccount.h */,
+				84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */,
+			);
+			path = Vkontakte;
+			sourceTree = "<group>";
+		};
 		84FD894B194C44E7001139DF /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +559,15 @@
 				84FD8967194C84EB001139DF /* FacebookAppAccount.m */,
 			);
 			path = Facebook;
+			sourceTree = "<group>";
+		};
+		84FF0230195EB21800B90CF9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84FF0235195EB21800B90CF9 /* libVKSdk.a */,
+				84FF0237195EB21800B90CF9 /* VKSdkResources.bundle */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -587,6 +632,12 @@
 			mainGroup = 845D857219029EB0004E10AB;
 			productRefGroup = 845D857C19029EB0004E10AB /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 84FF0230195EB21800B90CF9 /* Products */;
+					ProjectRef = 84E99C01194F26F3000C55E4 /* sdk.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				845D857A19029EB0004E10AB /* LashGo */,
@@ -595,6 +646,23 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		84FF0235195EB21800B90CF9 /* libVKSdk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libVKSdk.a;
+			remoteRef = 84FF0234195EB21800B90CF9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		84FF0237195EB21800B90CF9 /* VKSdkResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VKSdkResources.bundle;
+			remoteRef = 84FF0236195EB21800B90CF9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		845D857919029EB0004E10AB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
@@ -602,6 +670,7 @@
 			files = (
 				845D858919029EB0004E10AB /* InfoPlist.strings in Resources */,
 				845D859119029EB0004E10AB /* Images.xcassets in Resources */,
+				84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +712,7 @@
 				845D85BD1902AA00004E10AB /* URLConnection.m in Sources */,
 				84EB473D1943044C001DEF81 /* StartViewController.m in Sources */,
 				840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */,
+				84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */,
 				840625581930AD760067C1CA /* LGCheck.m in Sources */,
 				8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */,
 				84FD8968194C84EB001139DF /* FacebookAppAccount.m in Sources */,
@@ -730,6 +800,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					"VKDEBUG=1",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -742,6 +813,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/LashGo/VKlib/**";
 			};
 			name = Debug;
 		};
@@ -775,6 +847,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/LashGo/VKlib/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -786,7 +859,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/admin/Documents/FacebookSDK,
+					"$(PROJECT_DIR)/LashGo/FBlib",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LashGo/LashGo-Prefix.pch";
@@ -803,7 +876,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/admin/Documents/FacebookSDK,
+					"$(PROJECT_DIR)/LashGo/FBlib",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LashGo/LashGo-Prefix.pch";

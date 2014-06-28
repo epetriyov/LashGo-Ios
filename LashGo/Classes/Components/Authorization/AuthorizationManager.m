@@ -11,6 +11,7 @@
 
 #import "FacebookAppAccount.h"
 #import "TwitterAppAccount.h"
+#import "VkontakteAppAccount.h"
 
 @implementation AuthorizationManager
 
@@ -48,12 +49,26 @@
 	[_account login];
 }
 
+- (void) loginUsingVkontakte {
+	if (_account != nil && [_account isKindOfClass: [VkontakteAppAccount class]] == NO) {
+		[_account logout];
+		_account = nil;
+	}
+	if (_account == nil) {
+		_account = [[VkontakteAppAccount alloc] init];
+		_account.delegate = self;
+	}
+	[_account login];
+}
+
 #pragma mark - AppAccountDelegate implementation
 
 - (void) authDidFinish: (BOOL) success forAccount: (AppAccount *) account {
 	if (success == NO && account == _account) {
 		_account = nil;
 	}
+	[[NSNotificationCenter defaultCenter] postNotificationName: kAuthorizationNotification object: nil];
+	
 }
 
 @end

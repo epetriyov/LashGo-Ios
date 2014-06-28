@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "AppAccount.h"
 
+static NSString *const kAuthorizationNotification = @"SocialLoginNotification";
+
 @interface AuthorizationManager : NSObject <AppAccountDelegate> {
 	AppAccount *_account;
 }
@@ -19,5 +21,6 @@
 
 - (void) loginUsingFacebook;
 - (void) loginUsingTwitterFromView: (UIView *) loginView;
+- (void) loginUsingVkontakte;
 
 @end

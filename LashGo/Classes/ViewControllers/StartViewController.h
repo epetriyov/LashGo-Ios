@@ -8,6 +8,8 @@
 
 #import "TitleBarViewController.h"
 
-@interface StartViewController : TitleBarViewController
+@interface StartViewController : TitleBarViewController {
+	UILabel *_tokenLabel;
+}
 
 @end
