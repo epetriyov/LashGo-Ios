@@ -7,7 +7,10 @@
 //
 
 #import "StartViewController.h"
+
 #import "AuthorizationManager.h"
+#import "Common.h"
+#import "Kernel.h"
 
 @interface StartViewController ()
 
@@ -18,59 +21,39 @@
 - (void) loadView {
 	[super loadView];
 	
-	float offsetY = self.contentFrame.origin.y;
+	float offsetY = self.view.frame.origin.y;
+	
+	UIButton *startButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+	[startButton setTitle: @"StartViewControllerStartButtonTitle".commonLocalizedString
+				 forState: UIControlStateNormal];
+	startButton.frame = CGRectMake(0, offsetY, 320, 40);
+	[startButton addTarget: self action: @selector(startAction:) forControlEvents: UIControlEventTouchUpInside];
+	[self.view addSubview: startButton];
+	
+	offsetY += startButton.frame.size.height + 10;
 	
 	UIButton *loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-	[loginButton setTitle: @"Login with Facebook" forState: UIControlStateNormal];
+	[loginButton setTitle: @"StartViewControllerLoginButtonTitle".commonLocalizedString
+				 forState: UIControlStateNormal];
 	loginButton.frame = CGRectMake(0, offsetY, 320, 40);
-	[loginButton addTarget: self action: @selector(loginWithFacebook:) forControlEvents: UIControlEventTouchUpInside];
+	[loginButton addTarget: self action: @selector(loginAction:) forControlEvents: UIControlEventTouchUpInside];
 	[self.view addSubview: loginButton];
 	
-	offsetY += loginButton.frame.size.height + 10;
-	
-	loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-	[loginButton setTitle: @"Login with Twitter" forState: UIControlStateNormal];
-	loginButton.frame = CGRectMake(0, offsetY, 320, 40);
-	[loginButton addTarget: self action: @selector(loginWithTwitter:) forControlEvents: UIControlEventTouchUpInside];
-	[self.view addSubview: loginButton];
-	
-	offsetY += loginButton.frame.size.height + 10;
-	
-	loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-	[loginButton setTitle: @"Login with Vkontakte" forState: UIControlStateNormal];
-	loginButton.frame = CGRectMake(0, offsetY, 320, 40);
-	[loginButton addTarget: self action: @selector(loginWithVkontakte:) forControlEvents: UIControlEventTouchUpInside];
-	[self.view addSubview: loginButton];
-	
-	offsetY += loginButton.frame.size.height + 10;
+	offsetY += startButton.frame.size.height + 10;
 	
 	_tokenLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, 320, 120)];
 	_tokenLabel.text = [AuthorizationManager sharedManager].account.accessToken;
 	[self.view addSubview: _tokenLabel];
 }
 
-- (void) loginWithFacebook: (id) sender {
-	[[NSNotificationCenter defaultCenter] addObserver: self
-											 selector: @selector(authorizationSuccess)
-												 name: kAuthorizationNotification
-											   object: nil];
-	[[AuthorizationManager sharedManager] loginUsingFacebook];
+#pragma mark - Actions
+
+- (void) startAction: (id) sender {
+	
 }
 
-- (void) loginWithTwitter: (id) sender {
-	[[NSNotificationCenter defaultCenter] addObserver: self
-											 selector: @selector(authorizationSuccess)
-												 name: kAuthorizationNotification
-											   object: nil];
-	[[AuthorizationManager sharedManager] loginUsingTwitterFromView: self.view];
-}
-
-- (void) loginWithVkontakte: (id) sender {
-	[[NSNotificationCenter defaultCenter] addObserver: self
-											 selector: @selector(authorizationSuccess)
-												 name: kAuthorizationNotification
-											   object: nil];
-	[[AuthorizationManager sharedManager] loginUsingVkontakte];
+- (void) loginAction: (id) sender {
+	[kernel.viewControllersManager openLoginViewController];
 }
 
 - (void) authorizationSuccess {

@@ -10,6 +10,16 @@
 
 @implementation NSString (CommonExtension)
 
+@dynamic commonLocalizedString;
+
+#pragma mark - Properties
+
+- (NSString *) commonLocalizedString {
+	return NSLocalizedStringFromTable(self, @"Localizable", nil);
+}
+
+#pragma mark - Methods
+
 + (NSString *) stringWithData: (NSData *) data {
 	return [ [NSString alloc] initWithData: data encoding: NSUTF8StringEncoding];
 }

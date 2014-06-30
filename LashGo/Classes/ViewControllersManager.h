@@ -8,6 +8,8 @@
 
 #import "RootNavigationController.h"
 
+#import "LoginViewController.h"
+
 #import "StartViewController.h"
 
 @class Kernel;
@@ -16,6 +18,8 @@
 	Kernel *kernel;
 	
     RootNavigationController *rootNavigationController;
+	
+	LoginViewController *_loginViewController;
 	
 	StartViewController *startViewController;
 }
@@ -26,5 +30,7 @@
 - (id) initWithKernel: (Kernel *) theKernel;
 
 - (void) returnToPreviousViewController;
+
+- (void) openLoginViewController;
 
 @end

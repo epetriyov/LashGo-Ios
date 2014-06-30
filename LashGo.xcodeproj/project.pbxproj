@@ -58,6 +58,8 @@
 		84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */; };
 		84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */; };
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
+		84FA068719619F86006A72AE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FA068619619F86006A72AE /* LoginViewController.m */; };
+		84FA06891961A15A006A72AE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84FA06881961A15A006A72AE /* Localizable.strings */; };
 		84FD8956194C44E7001139DF /* TwitterAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD894D194C44E7001139DF /* TwitterAppAccount.m */; };
 		84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8951194C44E7001139DF /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84FD8958194C44E7001139DF /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8953194C44E7001139DF /* OAuth+Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -190,6 +192,9 @@
 		84EB47391943025F001DEF81 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		84EB473B1943044C001DEF81 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		84EB473C1943044C001DEF81 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		84FA068519619F86006A72AE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		84FA068619619F86006A72AE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		84FA06881961A15A006A72AE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		84FD894C194C44E7001139DF /* TwitterAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAppAccount.h; sourceTree = "<group>"; };
 		84FD894D194C44E7001139DF /* TwitterAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAppAccount.m; sourceTree = "<group>"; };
 		84FD8950194C44E7001139DF /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -406,6 +411,7 @@
 				845D858719029EB0004E10AB /* InfoPlist.strings */,
 				845D858A19029EB0004E10AB /* main.m */,
 				845D858C19029EB0004E10AB /* LashGo-Prefix.pch */,
+				84FA06881961A15A006A72AE /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -491,6 +497,7 @@
 			isa = PBXGroup;
 			children = (
 				8426F34C191A661D00B4E336 /* Base */,
+				84FA068219619F2B006A72AE /* Login */,
 				84045AAA19225879006F2F24 /* RootNavigationControllerItemProtocol.h */,
 				8491557C19080301008D9120 /* RootNavigationController.h */,
 				8491557D19080301008D9120 /* RootNavigationController.m */,
@@ -507,6 +514,15 @@
 				84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */,
 			);
 			path = Vkontakte;
+			sourceTree = "<group>";
+		};
+		84FA068219619F2B006A72AE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				84FA068519619F86006A72AE /* LoginViewController.h */,
+				84FA068619619F86006A72AE /* LoginViewController.m */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		84FD894B194C44E7001139DF /* Twitter */ = {
@@ -669,6 +685,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				845D858919029EB0004E10AB /* InfoPlist.strings in Resources */,
+				84FA06891961A15A006A72AE /* Localizable.strings in Resources */,
 				845D859119029EB0004E10AB /* Images.xcassets in Resources */,
 				84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */,
 			);
@@ -713,6 +730,7 @@
 				84EB473D1943044C001DEF81 /* StartViewController.m in Sources */,
 				840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */,
 				84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */,
+				84FA068719619F86006A72AE /* LoginViewController.m in Sources */,
 				840625581930AD760067C1CA /* LGCheck.m in Sources */,
 				8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */,
 				84FD8968194C84EB001139DF /* FacebookAppAccount.m in Sources */,

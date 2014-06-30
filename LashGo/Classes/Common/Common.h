@@ -11,6 +11,8 @@
 
 @interface NSString (CommonExtension)
 
+@property (nonatomic, readonly) NSString *commonLocalizedString;
+
 + (NSString *) stringWithData: (NSData *) data;
 - (NSString *) stringBetweenString:(NSString*)start
 						 andString:(NSString*)end;

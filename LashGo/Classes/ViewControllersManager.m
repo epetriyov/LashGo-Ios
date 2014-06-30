@@ -25,6 +25,8 @@
     if (self = [super init]) {
         kernel = theKernel;
 		
+		_loginViewController = [self createViewControllerOfClass: [LoginViewController class]];
+		
 		startViewController = [self createViewControllerOfClass: [StartViewController class]];
 		
 		rootNavigationController = [[RootNavigationController alloc] initWithRootViewController: startViewController];
@@ -34,6 +36,7 @@
 	return self;
 }
 
+#pragma mark - Common
 
 - (id) createViewControllerOfClass: (Class) ViewControllerClass {
 	UIViewController *viewController;
@@ -47,8 +50,30 @@
 	return viewController;
 }
 
+- (void) openViewController: (UIViewController *) viewController animated: (BOOL) animated {
+	if (rootNavigationController.topViewController != viewController) {
+		if ([rootNavigationController.viewControllers indexOfObject: viewController] == NSNotFound) {
+			[rootNavigationController pushViewController: viewController animated: animated];
+		} else {
+			[rootNavigationController popToViewController: viewController animated: animated];
+		}
+	}
+}
+
+- (void) openViewControllerAndMakeItFirst: (UIViewController *) viewController animated: (BOOL) animated {
+	[rootNavigationController setViewControllers: @[viewController] animated: animated];
+}
+
+#pragma mark - Methods
+
 - (void) returnToPreviousViewController {
 	[rootNavigationController popViewControllerAnimated: YES];
+}
+
+#pragma mark -
+
+- (void) openLoginViewController {
+	[self openViewController: _loginViewController animated: YES];
 }
 
 @end

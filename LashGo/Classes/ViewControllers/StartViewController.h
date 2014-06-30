@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "TitleBarViewController.h"
+#import "BaseViewController.h"
 
-@interface StartViewController : TitleBarViewController {
+@interface StartViewController : BaseViewController {
 	UILabel *_tokenLabel;
 }
 
