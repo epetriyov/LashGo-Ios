@@ -24,23 +24,23 @@
 		
 		CALayer *imageLayer = imageView.layer;
         [imageLayer setCornerRadius: imageView.frame.size.width / 2];
-//        [imageLayer setBorderWidth:1];
+//        [imageLayer setBorderWidth:10];
         [imageLayer setMasksToBounds:YES];
 		
 		[self addSubview: imageView];
 		
-//		UIBezierPath *path=[UIBezierPath bezierPath];
-//		
-//		[path addArcWithCenter: imageView.center radius: imageView.frame.size.width / 2 startAngle: -M_PI_2 endAngle:3 * M_PI_2 clockwise: YES];
-//		_arcLayer=[CAShapeLayer layer];
-//		_arcLayer.path=path.CGPath;
-//		_arcLayer.backgroundColor = [UIColor clearColor].CGColor;
-//		_arcLayer.fillColor = [UIColor colorWithWhite: 0 alpha: 1].CGColor;
-//		_arcLayer.strokeColor=[UIColor colorWithWhite:1 alpha:0.7].CGColor;
-//		_arcLayer.lineWidth=5;
-//		_arcLayer.frame = imageView.frame;
-//		[self.layer addSublayer: _arcLayer];
-//		[self performSelector: @selector(drawLineAnimation:) withObject: _arcLayer afterDelay: 3];
+		UIBezierPath *path=[UIBezierPath bezierPath];
+		
+		[path addArcWithCenter: imageView.center radius: imageView.frame.size.width / 2 startAngle: -M_PI_2 endAngle:3 * M_PI_2 clockwise: YES];
+		_arcLayer=[CAShapeLayer layer];
+		_arcLayer.path=path.CGPath;
+		_arcLayer.fillColor = [UIColor clearColor].CGColor;
+		_arcLayer.strokeColor=[UIColor colorWithRed: 0.5 green: 0 blue: 0 alpha: 1].CGColor;
+		_arcLayer.strokeEnd = 0;
+		_arcLayer.lineWidth=5;
+		_arcLayer.frame = imageView.frame;
+		[self.layer addSublayer: _arcLayer];
+		[self performSelector: @selector(drawLineAnimation:) withObject: _arcLayer afterDelay: 3];
 //		[self drawLineAnimation: _arcLayer];
     }
     return self;
