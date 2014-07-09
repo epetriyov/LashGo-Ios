@@ -7,6 +7,7 @@
 //
 
 #import "CheckCardViewController.h"
+#import "CheckDetailView.h"
 
 @interface CheckCardViewController ()
 
@@ -17,6 +18,8 @@
 - (void) loadView {
 	[super loadView];
 	
+	CheckDetailView *cv = [[CheckDetailView alloc] initWithFrame: CGRectMake(0, 50, 320, 200)];
+	[self.view addSubview: cv];
 }
 
 /*

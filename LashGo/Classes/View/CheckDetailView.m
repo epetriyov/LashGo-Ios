@@ -7,6 +7,7 @@
 //
 
 #import "CheckDetailView.h"
+#import "ViewFactory.h"
 
 @implementation CheckDetailView
 
@@ -15,8 +16,89 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+		NSString *pathForResource = [[NSBundle mainBundle] pathForResource: @"DemoImage" ofType: @"jpg"];
+		UIImage *image = [UIImage imageWithContentsOfFile: pathForResource];
+		_image = [self generateThumbnailForImage: image];
+		
+		UIImageView *imageView = [[UIImageView alloc] initWithImage: _image];
+		
+		CALayer *imageLayer = imageView.layer;
+        [imageLayer setCornerRadius: imageView.frame.size.width / 2];
+//        [imageLayer setBorderWidth:1];
+        [imageLayer setMasksToBounds:YES];
+		
+		[self addSubview: imageView];
+		
+//		UIBezierPath *path=[UIBezierPath bezierPath];
+//		
+//		[path addArcWithCenter: imageView.center radius: imageView.frame.size.width / 2 startAngle: -M_PI_2 endAngle:3 * M_PI_2 clockwise: YES];
+//		_arcLayer=[CAShapeLayer layer];
+//		_arcLayer.path=path.CGPath;
+//		_arcLayer.backgroundColor = [UIColor clearColor].CGColor;
+//		_arcLayer.fillColor = [UIColor colorWithWhite: 0 alpha: 1].CGColor;
+//		_arcLayer.strokeColor=[UIColor colorWithWhite:1 alpha:0.7].CGColor;
+//		_arcLayer.lineWidth=5;
+//		_arcLayer.frame = imageView.frame;
+//		[self.layer addSublayer: _arcLayer];
+//		[self performSelector: @selector(drawLineAnimation:) withObject: _arcLayer afterDelay: 3];
+//		[self drawLineAnimation: _arcLayer];
     }
     return self;
+}
+
+-(void)drawLineAnimation:(CALayer*)layer
+{
+    CABasicAnimation *bas=[CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    bas.duration=1;
+    bas.delegate=self;
+    bas.fromValue=[NSNumber numberWithInteger:0];
+    bas.toValue=[NSNumber numberWithInteger:1];
+    [layer addAnimation:bas forKey:@"key"];
+}
+
+- (UIImage *) squareImageFromImage: (UIImage *) image {
+    UIImage *squareImage = nil;
+    CGSize imageSize = [image size];
+    
+    if (imageSize.width == imageSize.height) {
+        squareImage = image;
+    } else {
+        // Compute square crop rect
+        CGFloat smallerDimension = MIN(imageSize.width, imageSize.height);
+        CGRect cropRect = CGRectMake(0, 0, smallerDimension, smallerDimension);
+        
+        // Center the crop rect either vertically or horizontally, depending on which dimension is smaller
+        if (imageSize.width <= imageSize.height) {
+            cropRect.origin = CGPointMake(0, rintf((imageSize.height - smallerDimension) / 2.0));
+        } else {
+            cropRect.origin = CGPointMake(rintf((imageSize.width - smallerDimension) / 2.0), 0);
+        }
+        
+        CGImageRef croppedImageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+        squareImage = [UIImage imageWithCGImage:croppedImageRef scale: image.scale orientation: UIImageOrientationUp];
+        CGImageRelease(croppedImageRef);
+    }
+    
+    return squareImage;
+}
+
+- (UIImage *) generateThumbnailForImage: (UIImage *) image {
+	CGFloat screenScale = [[UIScreen mainScreen] scale];
+	CGFloat imageDiameter = MIN(self.frame.size.width, self.frame.size.height) * screenScale;
+	CGRect contextBounds = CGRectZero;
+	contextBounds.size = CGSizeMake(imageDiameter, imageDiameter);
+	
+	UIImage *sourceImage = image;
+	UIImage *squareImage = [self squareImageFromImage: sourceImage];
+	
+	UIGraphicsBeginImageContext(contextBounds.size);
+	
+	[squareImage drawInRect:contextBounds];
+	UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+	
+	UIGraphicsEndImageContext();
+	
+	return scaledImage;
 }
 
 /*

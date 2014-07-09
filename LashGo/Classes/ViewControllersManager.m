@@ -25,7 +25,8 @@
     if (self = [super init]) {
         kernel = theKernel;
 		
-		_loginViewController = [self createViewControllerOfClass: [LoginViewController class]];
+		_checkCardViewController =	[self createViewControllerOfClass: [CheckCardViewController class]];
+		_loginViewController =		[self createViewControllerOfClass: [LoginViewController class]];
 		
 		startViewController = [self createViewControllerOfClass: [StartViewController class]];
 		
@@ -71,6 +72,10 @@
 }
 
 #pragma mark -
+
+- (void) openCheckCardViewController {
+	[self openViewController: _checkCardViewController animated: YES];
+}
 
 - (void) openLoginViewController {
 	[self openViewController: _loginViewController animated: YES];

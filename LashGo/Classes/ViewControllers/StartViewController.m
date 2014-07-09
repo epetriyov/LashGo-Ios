@@ -49,7 +49,7 @@
 #pragma mark - Actions
 
 - (void) startAction: (id) sender {
-	
+	[kernel.viewControllersManager openCheckCardViewController];
 }
 
 - (void) loginAction: (id) sender {

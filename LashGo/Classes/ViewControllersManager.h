@@ -8,6 +8,8 @@
 
 #import "RootNavigationController.h"
 
+#import "CheckCardViewController.h"
+
 #import "LoginViewController.h"
 
 #import "StartViewController.h"
@@ -18,6 +20,8 @@
 	Kernel *kernel;
 	
     RootNavigationController *rootNavigationController;
+	
+	CheckCardViewController *_checkCardViewController;
 	
 	LoginViewController *_loginViewController;
 	
@@ -31,6 +35,7 @@
 
 - (void) returnToPreviousViewController;
 
+- (void) openCheckCardViewController;
 - (void) openLoginViewController;
 
 @end

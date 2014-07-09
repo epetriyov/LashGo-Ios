@@ -12,8 +12,11 @@ NS_ENUM(ushort, CheckDetailType) {
 	CheckDetailTypeClosed
 };
 
-@interface CheckDetailView : UIView
+@interface CheckDetailView : UIView {
+	CAShapeLayer *_arcLayer;
+}
 
 @property (nonatomic, assign) enum CheckDetailType type;
+@property (nonatomic, strong) UIImage *image;
 
 @end

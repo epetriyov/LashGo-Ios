@@ -71,6 +71,7 @@
 		84FD8968194C84EB001139DF /* FacebookAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8967194C84EB001139DF /* FacebookAppAccount.m */; };
 		84FF0239195EB47200B90CF9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0238195EB47200B90CF9 /* FacebookSDK.framework */; };
 		84FF0294195ED69600B90CF9 /* libVKSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0235195EB21800B90CF9 /* libVKSdk.a */; };
+		FE8F9618196D2CE400769722 /* DemoImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE8F9617196D2CE400769722 /* DemoImage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +217,7 @@
 		84FD8966194C84EB001139DF /* FacebookAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAppAccount.h; sourceTree = "<group>"; };
 		84FD8967194C84EB001139DF /* FacebookAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAppAccount.m; sourceTree = "<group>"; };
 		84FF0238195EB47200B90CF9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = LashGo/FBlib/FacebookSDK.framework; sourceTree = "<group>"; };
+		FE8F9617196D2CE400769722 /* DemoImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DemoImage.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,6 +405,7 @@
 		845D858419029EB0004E10AB /* LashGo */ = {
 			isa = PBXGroup;
 			children = (
+				FE8F9616196D2CE400769722 /* Resources */,
 				845D85AD1902A52E004E10AB /* Classes */,
 				845D858D19029EB0004E10AB /* AppDelegate.h */,
 				845D858E19029EB0004E10AB /* AppDelegate.m */,
@@ -604,6 +607,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FE8F9616196D2CE400769722 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FE8F9617196D2CE400769722 /* DemoImage.jpg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -705,6 +716,7 @@
 				845D858919029EB0004E10AB /* InfoPlist.strings in Resources */,
 				84FA06891961A15A006A72AE /* Localizable.strings in Resources */,
 				845D859119029EB0004E10AB /* Images.xcassets in Resources */,
+				FE8F9618196D2CE400769722 /* DemoImage.jpg in Resources */,
 				84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
