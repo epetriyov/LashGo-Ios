@@ -10,6 +10,7 @@
 
 @implementation AppAccount
 
+@dynamic accountType;
 @dynamic accessToken;
 
 - (NSString *) accessToken {

@@ -31,6 +31,12 @@
 
 @synthesize accessToken = _accessToken;
 
+#pragma mark - Properties
+
+- (AppAccountType) accountType {
+	return AppAccountTypeTwitter;
+}
+
 #pragma mark - Standard overrides
 
 - (id) init {

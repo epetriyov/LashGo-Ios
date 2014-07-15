@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(short, AppAccountType) {
+	AppAccountTypeUnknown = 0,
 	AppAccountTypeFacebook,
 	AppAccountTypeTwitter,
 	AppAccountTypeVkontakte
@@ -19,7 +20,7 @@ typedef NS_ENUM(short, AppAccountType) {
 @interface AppAccount : NSObject
 
 @property (nonatomic, weak) id<AppAccountDelegate> delegate;
-@property (nonatomic, readonly) AppAccountType *accountType;
+@property (nonatomic, readonly) AppAccountType accountType;
 @property (nonatomic, readonly) NSString *accessToken;
 
 - (void) login;

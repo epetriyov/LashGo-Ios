@@ -14,6 +14,10 @@ static NSString *const TOKEN_KEY = @"my_application_access_token";
 
 #pragma mark - Properties
 
+- (AppAccountType) accountType {
+	return AppAccountTypeVkontakte;
+}
+
 - (NSString *) accessToken {
 	return [VKSdk getAccessToken].accessToken;
 }
@@ -32,7 +36,7 @@ static NSString *const TOKEN_KEY = @"my_application_access_token";
 }
 
 - (void) login {
-	[VKSdk authorize: @[VK_PER_STATS] revokeAccess:YES forceOAuth: YES];
+	[VKSdk authorize: @[VK_PER_STATS] revokeAccess:YES forceOAuth: YES inApp: NO];
 }
 
 - (void) logout {

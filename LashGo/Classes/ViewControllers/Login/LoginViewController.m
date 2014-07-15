@@ -51,6 +51,7 @@
 	offsetY += loginButton.frame.size.height + 10;
 	
 	_tokenLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, 320, 120)];
+	_tokenLabel.numberOfLines = 4;
 	_tokenLabel.text = [AuthorizationManager sharedManager].account.accessToken;
 	[self.view addSubview: _tokenLabel];
 }

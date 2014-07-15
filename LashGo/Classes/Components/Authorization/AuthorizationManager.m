@@ -14,6 +14,7 @@
 #import "VkontakteAppAccount.h"
 
 NSString *const kAuthorizationNotification = @"SocialLoginNotification";
+NSString *const kLastUsedAccountKey = @"lg_last_used_accoun_type";
 
 @implementation AuthorizationManager
 
@@ -21,6 +22,25 @@ NSString *const kAuthorizationNotification = @"SocialLoginNotification";
 	SHARED_INSTANCE_WITH_BLOCK(^{
 		return [[self alloc] init];
 	})
+}
+
+- (id) init {
+	if (self = [super init]) {
+		AppAccountType accType = (short)[[NSUserDefaults standardUserDefaults] integerForKey: kLastUsedAccountKey];
+		switch (accType) {
+			case AppAccountTypeFacebook:
+				_account = [[FacebookAppAccount alloc] init];
+				_account.delegate = self;
+				break;
+			case AppAccountTypeVkontakte:
+				_account = [[VkontakteAppAccount alloc] init];
+				_account.delegate = self;
+				break;
+			default:
+				break;
+		}
+	}
+	return self;
 }
 
 #pragma mark - Methods
@@ -66,8 +86,15 @@ NSString *const kAuthorizationNotification = @"SocialLoginNotification";
 #pragma mark - AppAccountDelegate implementation
 
 - (void) authDidFinish: (BOOL) success forAccount: (AppAccount *) account {
-	if (success == NO && account == _account) {
-		_account = nil;
+	if (account == _account) {
+		NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+		if (success == NO) {
+			_account = nil;
+			[defs removeObjectForKey: kLastUsedAccountKey];
+		} else {
+			[defs setInteger: account.accountType forKey: kLastUsedAccountKey];
+		}
+		[defs synchronize];
 	}
 	[[NSNotificationCenter defaultCenter] postNotificationName: kAuthorizationNotification object: nil];
 	

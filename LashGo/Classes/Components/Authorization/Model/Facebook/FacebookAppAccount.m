@@ -14,6 +14,10 @@
 
 #pragma mark - Properties
 
+- (AppAccountType) accountType {
+	return AppAccountTypeFacebook;
+}
+
 - (NSString *) accessToken {
 	return _session.accessTokenData.accessToken;
 }
