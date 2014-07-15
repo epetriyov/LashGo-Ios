@@ -72,6 +72,7 @@
 		84FF0239195EB47200B90CF9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0238195EB47200B90CF9 /* FacebookSDK.framework */; };
 		84FF0294195ED69600B90CF9 /* libVKSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0235195EB21800B90CF9 /* libVKSdk.a */; };
 		FE8F9618196D2CE400769722 /* DemoImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE8F9617196D2CE400769722 /* DemoImage.jpg */; };
+		FEE8DD241973C6550008A25C /* CheckCardCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE8DD231973C6550008A25C /* CheckCardCollectionCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -218,6 +219,8 @@
 		84FD8967194C84EB001139DF /* FacebookAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAppAccount.m; sourceTree = "<group>"; };
 		84FF0238195EB47200B90CF9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = LashGo/FBlib/FacebookSDK.framework; sourceTree = "<group>"; };
 		FE8F9617196D2CE400769722 /* DemoImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DemoImage.jpg; sourceTree = "<group>"; };
+		FEE8DD221973C6550008A25C /* CheckCardCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCardCollectionCell.h; sourceTree = "<group>"; };
+		FEE8DD231973C6550008A25C /* CheckCardCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCardCollectionCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +355,8 @@
 				8426F359191A6FF900B4E336 /* ViewFactory.m */,
 				84E6D9B4196C286E0021D417 /* CheckDetailView.h */,
 				84E6D9B5196C286E0021D417 /* CheckDetailView.m */,
+				FEE8DD221973C6550008A25C /* CheckCardCollectionCell.h */,
+				FEE8DD231973C6550008A25C /* CheckCardCollectionCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -758,6 +763,7 @@
 				84FD8959194C44E7001139DF /* OAuthCore.m in Sources */,
 				845D85BD1902AA00004E10AB /* URLConnection.m in Sources */,
 				84EB473D1943044C001DEF81 /* StartViewController.m in Sources */,
+				FEE8DD241973C6550008A25C /* CheckCardCollectionCell.m in Sources */,
 				840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */,
 				84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */,
 				84E6D9B6196C286E0021D417 /* CheckDetailView.m in Sources */,
@@ -914,6 +920,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LashGo/LashGo-Prefix.pch";
 				INFOPLIST_FILE = "LashGo/LashGo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -931,6 +938,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LashGo/LashGo-Prefix.pch";
 				INFOPLIST_FILE = "LashGo/LashGo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

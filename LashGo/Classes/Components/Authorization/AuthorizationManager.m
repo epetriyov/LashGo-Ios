@@ -13,6 +13,8 @@
 #import "TwitterAppAccount.h"
 #import "VkontakteAppAccount.h"
 
+NSString *const kAuthorizationNotification = @"SocialLoginNotification";
+
 @implementation AuthorizationManager
 
 + (instancetype) sharedManager {

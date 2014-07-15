@@ -8,7 +8,7 @@
 
 #import "TitleBarViewController.h"
 
-@interface CheckCardViewController : TitleBarViewController {
+@interface CheckCardViewController : TitleBarViewController <UICollectionViewDataSource> {
 	UILabel *_titleLabel;
 	UILabel *_descriptionLabel;
 }

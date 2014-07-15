@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AppAccount.h"
 
-static NSString *const kAuthorizationNotification = @"SocialLoginNotification";
+extern NSString *const kAuthorizationNotification;
 
 @interface AuthorizationManager : NSObject <AppAccountDelegate> {
 	AppAccount *_account;

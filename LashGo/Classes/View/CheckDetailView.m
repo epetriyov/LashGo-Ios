@@ -37,9 +37,10 @@
 		_arcLayer.fillColor = [UIColor clearColor].CGColor;
 		_arcLayer.strokeColor=[UIColor colorWithRed: 0.5 green: 0 blue: 0 alpha: 1].CGColor;
 		_arcLayer.strokeEnd = 0;
-		_arcLayer.lineWidth=5;
+		_arcLayer.lineWidth=15;
+		_arcLayer.lineCap = kCALineCapRound;
 		_arcLayer.frame = imageView.frame;
-		[self.layer addSublayer: _arcLayer];
+//		[self.layer addSublayer: _arcLayer];
 		[self performSelector: @selector(drawLineAnimation:) withObject: _arcLayer afterDelay: 3];
 //		[self drawLineAnimation: _arcLayer];
     }
@@ -49,11 +50,24 @@
 -(void)drawLineAnimation:(CALayer*)layer
 {
     CABasicAnimation *bas=[CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    bas.duration=1;
+    bas.duration=5;
     bas.delegate=self;
     bas.fromValue=[NSNumber numberWithInteger:0];
     bas.toValue=[NSNumber numberWithInteger:1];
+	bas.removedOnCompletion = NO;
+	bas.repeatCount = 5;
     [layer addAnimation:bas forKey:@"key"];
+	
+	CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+    gradientLayer.frame = layer.frame;
+    gradientLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor yellowColor].CGColor ];
+    gradientLayer.startPoint = CGPointMake(0,0.5);
+    gradientLayer.endPoint = CGPointMake(1,0.5);
+	
+    [self.layer addSublayer:gradientLayer];
+	//Using arc as a mask instead of adding it as a sublayer.
+	//[self.view.layer addSublayer:arc];
+	gradientLayer.mask = layer;
 }
 
 - (UIImage *) squareImageFromImage: (UIImage *) image {
