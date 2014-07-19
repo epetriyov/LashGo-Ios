@@ -9,6 +9,9 @@
 - (id) initWithKernel:(Kernel *)theKernel {
 	if (self = [super init]) {
 		kernel = theKernel;
+		if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+			self.wantsFullScreenLayout = YES;
+		}
 	}
 	
 	return self;

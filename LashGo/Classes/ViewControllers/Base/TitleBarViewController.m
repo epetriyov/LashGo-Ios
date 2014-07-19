@@ -40,15 +40,15 @@
 	[titleBarView.backButton addTarget: self action: @selector(backAction:) forControlEvents: UIControlEventTouchUpInside];
 	[self.view addSubview: titleBarView];
 	
-	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
-//		work only if navigationBarHidden == NO
-//		self.edgesForExtendedLayout = UIRectEdgeNone;
-		UIView *statusBarBgView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 20)];
-		statusBarBgView.backgroundColor = [ViewFactory sharedFactory].statusBarPreferredColor;
-		[self.view addSubview: statusBarBgView];
-		
-		[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent animated: NO];
-    }
+//	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+////		work only if navigationBarHidden == NO
+////		self.edgesForExtendedLayout = UIRectEdgeNone;
+//		UIView *statusBarBgView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 20)];
+//		statusBarBgView.backgroundColor = [ViewFactory sharedFactory].statusBarPreferredColor;
+//		[self.view addSubview: statusBarBgView];
+//		
+//		[[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent animated: NO];
+//    }
 }
 
 - (void) viewWillAppear:(BOOL)animated {

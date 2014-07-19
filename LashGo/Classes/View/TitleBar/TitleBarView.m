@@ -27,7 +27,7 @@
 		titleLabel.adjustsFontSizeToFitWidth = YES;
 		titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		titleLabel.backgroundColor = [UIColor clearColor];
-		titleLabel.textAlignment = UITextAlignmentCenter;
+		titleLabel.textAlignment = NSTextAlignmentCenter;
 		titleLabel.textColor = [UIColor whiteColor];
 		titleLabel.font = [FontFactory fontWithType: FontTypeTitleBarTitle];
 //		titleLabel.adjustsFontSizeToFitWidth = YES;
@@ -37,15 +37,16 @@
 }
 
 + (CGRect) titleBarRect {
-	UIImage *image = [[ViewFactory sharedFactory] titleBarBackgroundImage];
-
-	float offsetY = 0;
-	
-	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
-		offsetY = 20;
-	}
-	return CGRectMake(0, offsetY, [UIScreen mainScreen].bounds.size.width,
-					  image.size.height);
+//	UIImage *image = [[ViewFactory sharedFactory] titleBarBackgroundImage];
+//
+//	float offsetY = 0;
+//	
+//	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+//		offsetY = 20;
+//	}
+//	return CGRectMake(0, offsetY, [UIScreen mainScreen].bounds.size.width,
+//					  image.size.height);
+	return CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 20);
 }
 
 + (TitleBarView *) titleBarViewWithLogo {
@@ -178,6 +179,7 @@
 
 + (TitleBarView *) titleBarView {
 	TitleBarView *titleBar = [[TitleBarView alloc] initWithFrame: [TitleBarView titleBarRect]];
+	titleBar.backgroundColor = [UIColor greenColor];
 	
 	return titleBar;
 }

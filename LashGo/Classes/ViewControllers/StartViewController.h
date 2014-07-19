@@ -8,8 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface StartViewController : BaseViewController {
-	UILabel *_tokenLabel;
-}
+@interface StartViewController : BaseViewController
 
 @end
