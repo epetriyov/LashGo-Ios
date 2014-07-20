@@ -62,6 +62,7 @@
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
 		84FA068719619F86006A72AE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FA068619619F86006A72AE /* LoginViewController.m */; };
 		84FA06891961A15A006A72AE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84FA06881961A15A006A72AE /* Localizable.strings */; };
+		84FC40E9197AA3D7000ADFE7 /* CircleGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC40E8197AA3D7000ADFE7 /* CircleGradientLayer.m */; };
 		84FD8956194C44E7001139DF /* TwitterAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD894D194C44E7001139DF /* TwitterAppAccount.m */; };
 		84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8951194C44E7001139DF /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84FD8958194C44E7001139DF /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8953194C44E7001139DF /* OAuth+Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -203,6 +204,8 @@
 		84FA068519619F86006A72AE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		84FA068619619F86006A72AE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		84FA06881961A15A006A72AE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		84FC40E7197AA3D7000ADFE7 /* CircleGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleGradientLayer.h; sourceTree = "<group>"; };
+		84FC40E8197AA3D7000ADFE7 /* CircleGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleGradientLayer.m; sourceTree = "<group>"; };
 		84FD894C194C44E7001139DF /* TwitterAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAppAccount.h; sourceTree = "<group>"; };
 		84FD894D194C44E7001139DF /* TwitterAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAppAccount.m; sourceTree = "<group>"; };
 		84FD8950194C44E7001139DF /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -357,6 +360,8 @@
 				84E6D9B5196C286E0021D417 /* CheckDetailView.m */,
 				FEE8DD221973C6550008A25C /* CheckCardCollectionCell.h */,
 				FEE8DD231973C6550008A25C /* CheckCardCollectionCell.m */,
+				84FC40E7197AA3D7000ADFE7 /* CircleGradientLayer.h */,
+				84FC40E8197AA3D7000ADFE7 /* CircleGradientLayer.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -788,6 +793,7 @@
 				84FD8958194C44E7001139DF /* OAuth+Additions.m in Sources */,
 				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
 				84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */,
+				84FC40E9197AA3D7000ADFE7 /* CircleGradientLayer.m in Sources */,
 				84FD8961194C4684001139DF /* TWAPIManager.m in Sources */,
 				84FD8956194C44E7001139DF /* TwitterAppAccount.m in Sources */,
 			);
