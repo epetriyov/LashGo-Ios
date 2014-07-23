@@ -8,6 +8,8 @@
 
 #import "DataProvider.h"
 
+#import "Common.h"
+
 #define kWebServiceURL @"http://90.188.31.70:8080/lashgo-api"
 
 #define kUsersLoginPath		@"/users/login" //POST
@@ -18,6 +20,18 @@
 #define kUsersSubscriptionsPath			@"/users/subscriptions" //GET
 #define kUsersSubscriptionsManagePath	@"/users/subscriptions/%d" //DELETE, POST
 
+static NSString *const kRequestClientType =	@"client_type";
+static NSString *const kRequestSessionID =	@"session_id";
+static NSString *const kRequestUUID =		@"uuid";
+
 @implementation DataProvider
+
+- (NSMutableDictionary *) dictionaryWithHeaderParams {
+	NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+									   @"IOS",				kRequestClientType,
+									   @"session",			kRequestSessionID,
+									   [Common deviceUUID],	kRequestUUID, nil];
+	return dictionary;
+}
 
 @end

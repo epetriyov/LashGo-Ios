@@ -8,6 +8,8 @@
 
 #import "Common.h"
 
+static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
+
 @implementation NSString (CommonExtension)
 
 @dynamic commonLocalizedString;
@@ -50,6 +52,26 @@
 	return [ [ [NSBundle mainBundle] infoDictionary] valueForKey: @"CFBundleShortVersionString"];
 }
 
+#pragma mark -
+
++ (NSString *) deviceUUID {
+	static NSString *deviceID = nil;
+	static dispatch_once_t onceToken;
+	
+	dispatch_once(&onceToken, ^{
+		NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+		NSString *udid = [userDefaults stringForKey: kUUIDDeviceKey];
+		if ([Common isEmpty:udid] == YES) {
+			udid = [Common generateUUID];
+			[userDefaults setValue:udid forKey:kUUIDDeviceKey];
+			[userDefaults synchronize];
+		}
+		deviceID = udid;
+	});
+	
+	return deviceID;
+}
+
 + (NSString *) generateUUID {
 	CFUUIDRef uuid = CFUUIDCreate(NULL);
 	CFStringRef str = CFUUIDCreateString(NULL, uuid);
@@ -66,6 +88,8 @@
 								 range: NSMakeRange(0, [result length]) ];
 	return result;
 }
+
+#pragma mark -
 
 + (BOOL) isEmpty: (NSString *) string {
 	if (string != nil &&

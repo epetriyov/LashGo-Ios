@@ -24,6 +24,7 @@
 + (NSString *) appBuild;
 + (NSString *) appVersion;
 
++ (NSString *) deviceUUID;
 + (NSString *) generateUUID;
 + (NSString *) generateUniqueString;
 
