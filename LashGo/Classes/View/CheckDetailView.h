@@ -6,17 +6,20 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-NS_ENUM(ushort, CheckDetailType) {
+#import "CircleGradientLayer.h"
+
+typedef NS_ENUM(ushort, CheckDetailType) {
 	CheckDetailTypeOpen,
 	CheckDetailTypeVote,
 	CheckDetailTypeClosed
 };
 
 @interface CheckDetailView : UIView {
+	CircleGradientLayer *_gradientLayer;
 	CAShapeLayer *_arcLayer;
 }
 
-@property (nonatomic, assign) enum CheckDetailType type;
+@property (nonatomic, assign) CheckDetailType type;
 @property (nonatomic, strong) UIImage *image;
 
 @end
