@@ -104,9 +104,14 @@ static ViewFactory *viewFactory = nil;
 }
 
 - (UIButton *) titleBarRightButtonWithText: (NSString *) text target: (id) target action: (SEL) selector {
-	UIButton *button = [self buttonWithBGImageName: @"title_bar_right_btn" target: target action: selector];
+	UIButton *button = [ [UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, 32)];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	
+	button.titleLabel.adjustsFontSizeToFitWidth = YES;
 	button.titleLabel.font = [FontFactory fontWithType: FontTypeTitleBarButtons];
 	[button setTitle: text forState: UIControlStateNormal];
+	[button setTitleColor: [FontFactory fontColorForType: FontTypeTitleBarButtons] forState: UIControlStateNormal];
+	
 	return button;
 }
 

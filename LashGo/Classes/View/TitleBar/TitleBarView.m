@@ -1,11 +1,28 @@
 #import "TitleBarView.h"
-#import "ViewFactory.h"
-#import "FontFactory.h"
+
 #import "Common.h"
+#import "FontFactory.h"
+#import "UIView+CGExtension.h"
+#import "ViewFactory.h"
+
 
 @implementation TitleBarView
 
 @synthesize titleLabel, backButton, rightButton;
+@dynamic contentFrame;
+
+#pragma mark - Properties
+
+- (CGRect) contentFrame {
+	CGFloat offsetY = 20;
+	CGRect contentFrame = [TitleBarView titleBarRect];
+	contentFrame.origin.y = 20;
+	contentFrame.size.height -= offsetY;
+	
+	return contentFrame;
+}
+
+#pragma mark - Overrides
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -46,7 +63,7 @@
 //	}
 //	return CGRectMake(0, offsetY, [UIScreen mainScreen].bounds.size.width,
 //					  image.size.height);
-	return CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 20);
+	return CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 63);
 }
 
 + (TitleBarView *) titleBarViewWithLogo {
@@ -135,6 +152,24 @@
 		
 		titleBar -> rightButton = rightButton;
 	}
+	
+	return titleBar;
+}
+
++ (TitleBarView *) titleBarViewWithSearchAndRightButtonWithText: (NSString *) text {
+	TitleBarView *titleBar = [TitleBarView titleBarView];
+	
+	titleBar.backButton.alpha = 0;
+	
+	UIButton *rightButton = [[ViewFactory sharedFactory] titleBarRightButtonWithText: text target: nil action: nil];
+	float capX = 3;
+	
+	rightButton.frameX = titleBar.frame.size.width - (rightButton.frame.size.width + capX);
+	rightButton.centerY = CGRectGetMidY(titleBar.contentFrame);
+	
+	[titleBar addSubview: rightButton];
+	
+	titleBar -> rightButton = rightButton;
 	
 	return titleBar;
 }
