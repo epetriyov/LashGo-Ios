@@ -66,4 +66,17 @@
 	[[AuthorizationManager sharedManager].account handleApplicationWillTerminate];
 }
 
+#pragma mark - Methods
+
+- (void)setNetworkActivityIndicatorVisible:(BOOL) value {
+	static short requestsCount = 0;
+	if (value == YES) {
+        requestsCount++;
+	} else {
+        requestsCount--;
+	}
+	
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: (requestsCount > 0)];
+}
+
 @end
