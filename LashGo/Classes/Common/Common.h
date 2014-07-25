@@ -28,6 +28,6 @@
 + (NSString *) generateUUID;
 + (NSString *) generateUniqueString;
 
-+ (BOOL) isEmpty: (NSString *) string;
++ (BOOL) isEmptyString: (NSString *) string;
 
 @end

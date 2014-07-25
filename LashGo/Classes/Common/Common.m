@@ -61,7 +61,7 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 	dispatch_once(&onceToken, ^{
 		NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 		NSString *udid = [userDefaults stringForKey: kUUIDDeviceKey];
-		if ([Common isEmpty:udid] == YES) {
+		if ([Common isEmptyString:udid] == YES) {
 			udid = [Common generateUUID];
 			[userDefaults setValue:udid forKey:kUUIDDeviceKey];
 			[userDefaults synchronize];
@@ -91,7 +91,7 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 
 #pragma mark -
 
-+ (BOOL) isEmpty: (NSString *) string {
++ (BOOL) isEmptyString: (NSString *) string {
 	if (string != nil &&
 		[[string stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]]
 		 isEqualToString: @""] == NO) {

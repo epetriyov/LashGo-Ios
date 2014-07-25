@@ -15,7 +15,7 @@
 	if (image == nil) {
 		NSData *storedData = [self getStoredData];
 		if (storedData != nil) {
-			UIImage *unscaledImage = [UIImage imageWithData: storedData];
+			UIImage *unscaledImage = [[UIImage alloc] initWithData: storedData];
 			image = [[UIImage alloc] initWithCGImage: unscaledImage.CGImage scale: [UIScreen mainScreen].scale
 										 orientation: UIImageOrientationUp];
 		}

@@ -14,9 +14,21 @@
 #import "VkontakteAppAccount.h"
 
 NSString *const kAuthorizationNotification = @"SocialLoginNotification";
-NSString *const kLastUsedAccountKey = @"lg_last_used_accoun_type";
+NSString *const kLastUsedAccountKey = @"lg_last_used_account_type";
+NSString *const kLastUsedSessionId = @"lg_last_used_session_id";
 
 @implementation AuthorizationManager
+
+#pragma mark - Properties
+
+- (void) setSessionID:(NSString *)sessionID {
+	_sessionID = sessionID;
+	
+	[[NSUserDefaults standardUserDefaults] setObject: sessionID forKey: kLastUsedSessionId];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark - Overrides
 
 + (instancetype) sharedManager {
 	SHARED_INSTANCE_WITH_BLOCK(^{

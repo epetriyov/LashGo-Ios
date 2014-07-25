@@ -1,9 +1,11 @@
 #import "URLConnection.h"
 #import "Common.h"
+//#import "FileManager.h"
 
 @implementation URLConnection
 
 @synthesize delegate, status, uid, urlPath, type, request, response, error, downloadedData, context;
+@synthesize security;
 
 #pragma mark - Standard overrides
 
@@ -14,10 +16,11 @@
 		uid = [Common generateUniqueString];
 		
 		status = URLConnectionStatusInitialized;
+		
+		security = [[URLSecurity alloc] init];
 	}
 	return self;
 }
-
 
 #pragma mark - Methods
 
@@ -128,16 +131,18 @@
 
 #pragma mark - Authentication
 
--(BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
-    return [protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
-    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-		[challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
-	}
-    
-    [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
+- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+	if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+//		[URLSecurity storeCertificatesForServerTrust: challenge.protectionSpace.serverTrust
+//											  atPath: [[FileManager sharedManager] documentsDirectory]];
+        if ([self.security validateServerTrust: challenge.protectionSpace.serverTrust
+									   forHost: challenge.protectionSpace.host]) {
+            NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+            [challenge.sender useCredential:credential forAuthenticationChallenge:challenge];
+        } else {
+            [challenge.sender cancelAuthenticationChallenge:challenge];
+        }
+    }
 }
 
 @end

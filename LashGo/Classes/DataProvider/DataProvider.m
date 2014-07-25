@@ -8,6 +8,7 @@
 
 #import "DataProvider.h"
 
+#import "AuthorizationManager.h"
 #import "Common.h"
 
 #define kWebServiceURL @"http://90.188.31.70:8080/lashgo-api"
@@ -28,9 +29,9 @@ static NSString *const kRequestUUID =		@"uuid";
 
 - (NSMutableDictionary *) dictionaryWithHeaderParams {
 	NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-									   @"IOS",				kRequestClientType,
-									   @"session",			kRequestSessionID,
-									   [Common deviceUUID],	kRequestUUID, nil];
+									   @"IOS",											kRequestClientType,
+									   [AuthorizationManager sharedManager].sessionID,	kRequestSessionID,
+									   [Common deviceUUID],								kRequestUUID, nil];
 	return dictionary;
 }
 

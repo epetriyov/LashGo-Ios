@@ -66,6 +66,7 @@ typedef UIColor * (^floatColorBlock)(float);
         CGPathRef scaledPath = CGPathCreateCopyByTransformingPath(trapezoid, &concat);
 		
         CGContextAddPath(ctx, scaledPath);
+		CFRelease(scaledPath);
         CGContextSetFillColorWithColor(ctx,colorBlock(fraction).CGColor);
         CGContextSetStrokeColorWithColor(ctx, colorBlock(fraction).CGColor);
         CGContextSetMiterLimit(ctx, 0);

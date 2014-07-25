@@ -16,6 +16,7 @@ extern NSString *const kAuthorizationNotification;
 }
 
 @property (nonatomic, readonly) AppAccount *account;
+@property (nonatomic, strong) NSString *sessionID;
 
 + (instancetype) sharedManager;
 

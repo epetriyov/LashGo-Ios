@@ -43,7 +43,7 @@
 	}
 	
 	NSString *getParamsString = [self getParamStringFrom: getParams];
-	if ([Common isEmpty: getParamsString] == NO) {
+	if ([Common isEmptyString: getParamsString] == NO) {
 		[request setGetParameters: getParamsString];
 	}
 	

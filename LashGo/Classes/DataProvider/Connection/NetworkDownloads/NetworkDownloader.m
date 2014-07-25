@@ -11,57 +11,52 @@
 #import "CryptoUtils.h"
 #import "FileManager.h"
 
-@implementation DownloadedItemData
-
-@synthesize objectWithContent, item;
-
+@implementation DownloadedItemInfo
 
 @end
 
 @implementation NetworkDownloader
 
-@synthesize delegate, uid;
-
 - (id) init {
 	if (self = [super init]) {
-		uid = [Common generateUniqueString];
+		_uid = [Common generateUniqueString];
 	}
 	return self;
 }
 
-- (void) didDownloadContentForItem: (DownloadedItemData *) objectItem {
-	if ([self.delegate respondsToSelector: @selector(networkDownloader:didDownloadContentForItem:inObject:)] == YES) {
-		[self.delegate networkDownloader: self didDownloadContentForItem: objectItem.item
-								inObject: objectItem.objectWithContent];
+- (instancetype) initWithDelegate: (id<NetworkDownloaderDelegate>) delegate
+				objectWithContent: (id<DownloadableContentProtocol>) object {
+	if (self = [self init]) {
+		self.delegate = delegate;
+		self.objectWithContent = object;
 	}
+	return self;
 }
 
-- (void) didDownloadContentForAllItemsInObject: (id<DownloadableContentProtocol>) objectWithContent {
-	if ([self.delegate respondsToSelector: @selector(networkDownloader:didDownloadContentForAllItemsInObject:)] == YES) {
-		[self.delegate networkDownloader: self didDownloadContentForAllItemsInObject: objectWithContent];
-	}
-}
-
-- (void) downloadFilesForObject: (id<DownloadableContentProtocol>) objectWithContent {
+- (void) main {
 	@autoreleasepool {
-		for (DownloadableItem *item in objectWithContent.itemsToDownload) {
+		for (DownloadableItem *item in self.objectWithContent.itemsToDownload) {
+			if (self.isCancelled == YES) {
+				return;
+			}
+			
 			NSString *cachesDirectory = [FileManager cachesDirectory];
 			NSString *path = [cachesDirectory stringByAppendingPathComponent: item.hash];
 			
-			if ([Common isEmpty: item.hash] == YES ||
+			if ([Common isEmptyString: item.hash] == YES ||
 				[FileManager fileExistsAtPath: path] == NO) {
-				if ([Common isEmpty: item.url] == NO) {
+				if ([Common isEmptyString: item.url] == NO) {
 					NSURL *url = [NSURL URLWithString: item.url];
 					NSData *data = [NSData dataWithContentsOfURL: url];
 					
 					if (data.length > 0) {
 						NSString *fileNameToSave = item.hash;
-						if ([Common isEmpty: fileNameToSave] == YES) {
+						if ([Common isEmptyString: fileNameToSave] == YES) {
 							fileNameToSave = data.md5;
 							item.hash = fileNameToSave;
 						}
 						NSString *newPath = [cachesDirectory stringByAppendingPathComponent: fileNameToSave];
-						DLog(@"File is downloaded: %@\nmd5: %@", item.url, item.hash);
+						DLog(@"File is downloaded: %@\n md5: %@\n fromThread: %@", item.url, item.hash, [NSThread currentThread].name);
 						
 						// Save image to cache folder
 						[FileManager createFileAtPath: newPath withData: data];
@@ -71,22 +66,20 @@
 			} else {
 				item.pathToFile = path;
 			}
-			if ([Common isEmpty: item.pathToFile] == NO) {
-				DownloadedItemData *itemData = [[DownloadedItemData alloc] init];
-				itemData.objectWithContent = objectWithContent;
-				itemData.item = item;
-				[self performSelectorOnMainThread: @selector(didDownloadContentForItem:)
-									   withObject: itemData waitUntilDone: YES];
+			if ([Common isEmptyString: item.pathToFile] == NO) {
+				DownloadedItemInfo *itemInfo = [[DownloadedItemInfo alloc] init];
+				itemInfo.downloader = self;
+				itemInfo.item = item;
+				[self.delegate performSelectorOnMainThread: @selector(networkDownloaderProcessedForItem:)
+												withObject: itemInfo waitUntilDone: YES];
 			}
 		}
 		
-		[self performSelectorOnMainThread: @selector(didDownloadContentForAllItemsInObject:)
-							   withObject: objectWithContent waitUntilDone: YES];
+		if ([self.delegate respondsToSelector: @selector(networkDownloaderFinished:)] == YES) {
+			[self.delegate performSelectorOnMainThread: @selector(networkDownloaderFinished:)
+											withObject: self waitUntilDone: YES];
+		}
 	}
-}
-
-- (void) downloadFilesForObjectInBackground: (id<DownloadableContentProtocol>) objectWithContent {
-	[self performSelectorInBackground: @selector(downloadFilesForObject:) withObject: objectWithContent];
 }
 
 @end

@@ -61,6 +61,7 @@
 		84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */; };
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
 		84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC84F1197D4666001FA1F6 /* SearchViewController.m */; };
+		84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F65A8E19827CFE003BF42A /* URLSecurity.m */; };
 		84FA068719619F86006A72AE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FA068619619F86006A72AE /* LoginViewController.m */; };
 		84FA06891961A15A006A72AE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84FA06881961A15A006A72AE /* Localizable.strings */; };
 		84FC40E9197AA3D7000ADFE7 /* CircleGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC40E8197AA3D7000ADFE7 /* CircleGradientLayer.m */; };
@@ -204,6 +205,8 @@
 		84EB473C1943044C001DEF81 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		84EC84F0197D4666001FA1F6 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		84EC84F1197D4666001FA1F6 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		84F65A8D19827CFE003BF42A /* URLSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLSecurity.h; sourceTree = "<group>"; };
+		84F65A8E19827CFE003BF42A /* URLSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLSecurity.m; sourceTree = "<group>"; };
 		84FA068519619F86006A72AE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		84FA068619619F86006A72AE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		84FA06881961A15A006A72AE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -497,6 +500,8 @@
 				845D85B91902AA00004E10AB /* URLConnection.m */,
 				845D85BA1902AA00004E10AB /* URLConnectionManager.h */,
 				845D85BB1902AA00004E10AB /* URLConnectionManager.m */,
+				84F65A8D19827CFE003BF42A /* URLSecurity.h */,
+				84F65A8E19827CFE003BF42A /* URLSecurity.m */,
 			);
 			path = Connection;
 			sourceTree = "<group>";
@@ -798,6 +803,7 @@
 				840625641930C8EF0067C1CA /* LGgcmRegistrationId.m in Sources */,
 				84FD8958194C44E7001139DF /* OAuth+Additions.m in Sources */,
 				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
+				84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */,
 				84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */,
 				84FC40E9197AA3D7000ADFE7 /* CircleGradientLayer.m in Sources */,
 				84FD8961194C4684001139DF /* TWAPIManager.m in Sources */,

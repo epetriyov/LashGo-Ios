@@ -14,6 +14,8 @@
 	NSMutableDictionary *delegatesforContentItem;
 }
 
+@property (nonatomic, readonly) NSOperationQueue *downloadingQueue;
+
 + (NetworkDownloadManager *) sharedManager;
 
 - (void) downloadFilesForObjectInBackground: (id<DownloadableContentProtocol>) objectWithContent;

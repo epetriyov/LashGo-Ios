@@ -1,5 +1,6 @@
 
 #import "NSMutableURLRequest+ParamsManipulation.h"
+#import "URLSecurity.h"
 
 typedef enum {
 	URLConnectionStatusInitialized = 0,
@@ -10,8 +11,6 @@ typedef enum {
 @protocol URLConnectionDelegate;
 
 @interface URLConnection : NSObject <NSURLConnectionDataDelegate> {
-	id<URLConnectionDelegate> __weak delegate;
-	
 	URLConnectionStatus status;
 	
 	//Required if async request called from BG thread
@@ -27,8 +26,6 @@ typedef enum {
 	NSError *error;
 	
 	NSMutableData *downloadedData;
-	
-	id context;
 }
 
 @property (nonatomic, weak) id<URLConnectionDelegate> delegate;
@@ -40,6 +37,7 @@ typedef enum {
 @property (nonatomic, readonly) NSHTTPURLResponse *response;
 @property (nonatomic, readonly) NSError *error;
 @property (nonatomic, readonly) NSMutableData *downloadedData;
+@property (nonatomic, strong) URLSecurity *security;
 @property (nonatomic, strong) id context;
 
 + (URLConnection *) connectionWithHost: (NSString *) host
