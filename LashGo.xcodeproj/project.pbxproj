@@ -196,6 +196,7 @@
 		84E6D9B2196C226A0021D417 /* CheckCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCardViewController.m; sourceTree = "<group>"; };
 		84E6D9B4196C286E0021D417 /* CheckDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailView.h; sourceTree = "<group>"; };
 		84E6D9B5196C286E0021D417 /* CheckDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailView.m; sourceTree = "<group>"; };
+		84E98F321984ED7D00B422F4 /* JSONSerializableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSerializableProtocol.h; sourceTree = "<group>"; };
 		84E99B9B194F1CA3000C55E4 /* VkontakteAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VkontakteAppAccount.h; sourceTree = "<group>"; };
 		84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkontakteAppAccount.m; sourceTree = "<group>"; };
 		84E99C01194F26F3000C55E4 /* sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = sdk.xcodeproj; path = LashGo/VKlib/sdk/sdk.xcodeproj; sourceTree = "<group>"; };
@@ -317,6 +318,7 @@
 		840625551930AD1C0067C1CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84E98F311984ED7D00B422F4 /* RequestInput */,
 				840625561930AD760067C1CA /* LGCheck.h */,
 				840625571930AD760067C1CA /* LGCheck.m */,
 				8406255C1930BB850067C1CA /* LGComment.h */,
@@ -546,6 +548,14 @@
 				84E6D9B2196C226A0021D417 /* CheckCardViewController.m */,
 			);
 			path = Check;
+			sourceTree = "<group>";
+		};
+		84E98F311984ED7D00B422F4 /* RequestInput */ = {
+			isa = PBXGroup;
+			children = (
+				84E98F321984ED7D00B422F4 /* JSONSerializableProtocol.h */,
+			);
+			path = RequestInput;
 			sourceTree = "<group>";
 		};
 		84E99B9A194F1C54000C55E4 /* Vkontakte */ = {

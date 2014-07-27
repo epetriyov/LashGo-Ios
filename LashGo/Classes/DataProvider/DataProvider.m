@@ -107,4 +107,22 @@ static NSString *const kRequestUUID =		@"uuid";
 	}
 }
 
+- (void) didFailGetImportantData: (URLConnection *) connection {
+	
+}
+
+#pragma mark - Login
+
+- (void) didRegisterUser: (URLConnection *) connection {
+	
+}
+
+- (void) registerUser: (LGLoginInfo *) inputData {
+	[self startConnectionWithPath: kUsersRegisterPath type: URLConnectionTypePOST
+							 body: inputData.JSONObject
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didRegisterUser:) failSelector: @selector(didFailGetImportantData:)];
+}
+
 @end

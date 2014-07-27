@@ -12,5 +12,9 @@
 
 @synthesize login, passwordHash;
 
+- (NSDictionary *) JSONObject {
+	return @{@"login" :			login,
+			 @"passwordHash" :	passwordHash};
+}
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "JSONSerializableProtocol.h"
 
-@interface LGLoginInfo : NSObject {
+@interface LGLoginInfo : NSObject <JSONSerializableProtocol> {
 	NSString *login;
 	NSString *passwordHash;
 }
