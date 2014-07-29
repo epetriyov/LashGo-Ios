@@ -9,3 +9,6 @@
 //StartViewController
 "StartViewControllerStartButtonTitle" = "Начать";
 "StartViewControllerLoginButtonTitle" = "Войти";
+
+"Отмена" = "Отмена";
+"Поиск" = "Поиск";

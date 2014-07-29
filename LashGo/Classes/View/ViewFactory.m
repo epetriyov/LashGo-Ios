@@ -103,6 +103,16 @@ static ViewFactory *viewFactory = nil;
 	return button;
 }
 
+- (UIButton *) titleBarCheckCardsButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"title_bar_check_cards" target: target action: selector];
+	return button;
+}
+
+- (UIButton *) titleBarCheckListButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"title_bar_check_list" target: target action: selector];
+	return button;
+}
+
 - (UIButton *) titleBarRightButtonWithText: (NSString *) text target: (id) target action: (SEL) selector {
 	UIButton *button = [ [UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, 32)];
 	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
@@ -112,6 +122,16 @@ static ViewFactory *viewFactory = nil;
 	[button setTitle: text forState: UIControlStateNormal];
 	[button setTitleColor: [FontFactory fontColorForType: FontTypeTitleBarButtons] forState: UIControlStateNormal];
 	
+	return button;
+}
+
+- (UIButton *) titleBarRightIncomeButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"title_bar_income" target: target action: selector];
+	return button;
+}
+
+- (UIButton *) titleBarRightSearchButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"title_bar_search" target: target action: selector];
 	return button;
 }
 

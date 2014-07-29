@@ -5,6 +5,11 @@
 #import "UIView+CGExtension.h"
 #import "ViewFactory.h"
 
+@interface TitleBarView () {
+	UISearchBar *_searchBar;
+}
+
+@end
 
 @implementation TitleBarView
 
@@ -171,6 +176,41 @@
 	
 	titleBar -> rightButton = rightButton;
 	
+	UISearchBar *bar = [[UISearchBar alloc] initWithFrame: CGRectMake(0, 0, titleBar.contentFrame.size.width,
+																	  titleBar.contentFrame.size.height)];
+	bar.placeholder = @"Поиск".commonLocalizedString;
+	bar.backgroundImage = nil;
+	[titleBar addSubview: bar];
+	
+	titleBar -> _searchBar = bar;
+	
+	return titleBar;
+}
+
++ (TitleBarView *) titleBarViewWithSearchButtonAndRightButton {
+	TitleBarView *titleBar = [TitleBarView titleBarView];
+	
+	titleBar.backButton.alpha = 0;
+	
+	UIButton *rightButton = [[ViewFactory sharedFactory] titleBarRightIncomeButtonWithTarget: nil action: nil];
+	float capX = 3;
+	
+	rightButton.frameX = titleBar.frame.size.width - (rightButton.frame.size.width + capX);
+	rightButton.centerY = CGRectGetMidY(titleBar.contentFrame);
+	
+	[titleBar addSubview: rightButton];
+	
+	titleBar -> rightButton = rightButton;
+	
+	UIButton *searchButton = [[ViewFactory sharedFactory] titleBarRightSearchButtonWithTarget: nil action: nil];
+	
+	searchButton.frameX = rightButton.frame.origin.x - (searchButton.frame.size.width + capX);
+	searchButton.centerY = rightButton.center.y;
+	
+	[titleBar addSubview: searchButton];
+	
+	titleBar -> _searchButton = searchButton;
+	
 	return titleBar;
 }
 
@@ -214,7 +254,7 @@
 
 + (TitleBarView *) titleBarView {
 	TitleBarView *titleBar = [[TitleBarView alloc] initWithFrame: [TitleBarView titleBarRect]];
-	titleBar.backgroundColor = [UIColor greenColor];
+	titleBar.backgroundColor = [UIColor colorWithRed:0 green: 0.67 blue: 0.76 alpha: 1.0];
 	
 	return titleBar;
 }

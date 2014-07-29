@@ -19,6 +19,10 @@
 - (void) loadView {
 	[super loadView];
 	
+	[titleBarView removeFromSuperview];
+	titleBarView = [TitleBarView titleBarViewWithSearchButtonAndRightButton];
+	[self.view addSubview: titleBarView];
+	
 //	CheckDetailView *cv = [[CheckDetailView alloc] initWithFrame: CGRectMake(0, 50, 320, 200)];
 //	[self.view addSubview: cv];
 //

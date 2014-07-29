@@ -15,6 +15,10 @@
 
 //Title bar
 - (UIButton *) titleBarBackButtonWithTarget: (id) target action: (SEL) selector;
+- (UIButton *) titleBarCheckCardsButtonWithTarget: (id) target action: (SEL) selector;
+- (UIButton *) titleBarCheckListButtonWithTarget: (id) target action: (SEL) selector;
 - (UIButton *) titleBarRightButtonWithText: (NSString *) text target: (id) target action: (SEL) selector;
+- (UIButton *) titleBarRightIncomeButtonWithTarget: (id) target action: (SEL) selector;
+- (UIButton *) titleBarRightSearchButtonWithTarget: (id) target action: (SEL) selector;
 
 @end
