@@ -10,7 +10,8 @@
 
 @implementation LGRecoverInfo
 
-@synthesize login;
-
+- (NSDictionary *) JSONObject {
+	return @{@"email": self.email};
+}
 
 @end

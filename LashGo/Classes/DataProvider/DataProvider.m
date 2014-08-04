@@ -16,11 +16,20 @@
 
 #define kWebServiceURL @"http://90.188.31.70:8080/lashgo-api"
 
-#define kUsersLoginPath		@"/users/login" //POST
-#define kUsersPhotosPath	@"/users/photos" //GET
-#define kUsersProfilePath	@"/users/profile" //GET
-#define kUsersRecoverPath	@"/users/recover" //PUT
-#define kUsersRegisterPath	@"/users/register" //POST
+#define kChecksPath			@"/checks" //POST
+#define kChecksCurrentPath	@"/checks/current" //GET
+#define kChecksCommentsPath	@"/checks/%ld/comments" //GET, POST
+#define kChecksPhotosPath	@"/checks/%ld/photos" //GET, POST
+
+
+#define kUsersLoginPath				@"/users/login" //POST
+#define kUsersMainScreenInfoPath	@"/users/main-screen-info" //GET
+#define kUsersPhotosPath			@"/users/photos" //GET
+#define kUsersProfilePath			@"/users/profile" //GET
+#define kUsersRecoverPath			@"/users/recover" //PUT
+#define kUsersRegisterPath			@"/users/register" //POST
+#define kUsersSocialSignInPath		@"/users/social-sign-in" //POST
+#define kUsersSocialSignUpPath		@"/users/social-sign-up" //POST
 #define kUsersSubscriptionsPath			@"/users/subscriptions" //GET
 #define kUsersSubscriptionsManagePath	@"/users/subscriptions/%d" //DELETE, POST
 
@@ -113,16 +122,160 @@ static NSString *const kRequestUUID =		@"uuid";
 
 #pragma mark - Login
 
+- (void) didLogin: (URLConnection *) connection {
+	
+}
+
+- (void) userLogin: (LGLoginInfo *) inputData {
+	[self startConnectionWithPath: kUsersLoginPath type: URLConnectionTypePOST
+							 body: inputData.JSONObject
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didLogin:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didGetMainScreenInfo: (URLConnection *) connection {
+	
+}
+
+- (void) userMainScreenInfo {
+	[self startConnectionWithPath: kUsersMainScreenInfoPath type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetMainScreenInfo:)
+					 failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didGetPhotos: (URLConnection *) connection {
+	
+}
+
+- (void) userPhotos {
+	[self startConnectionWithPath: kUsersPhotosPath type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetPhotos:)
+					 failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didGetProfile: (URLConnection *) connection {
+	
+}
+
+- (void) userProfile {
+	[self startConnectionWithPath: kUsersProfilePath type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetProfile:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didRecover: (URLConnection *) connection {
+	
+}
+
+- (void) userRecover: (LGRecoverInfo *) inputData {
+	[self startConnectionWithPath: kUsersRecoverPath type: URLConnectionTypePUT
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didRecover:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
 - (void) didRegisterUser: (URLConnection *) connection {
 	
 }
 
-- (void) registerUser: (LGLoginInfo *) inputData {
+- (void) userRegister: (LGLoginInfo *) inputData {
 	[self startConnectionWithPath: kUsersRegisterPath type: URLConnectionTypePOST
 							 body: inputData.JSONObject
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didRegisterUser:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didSocialSignIn: (URLConnection *) connection {
+	
+}
+
+- (void) userSocialSignIn: (LGSocialInfo *) inputData {
+	[self startConnectionWithPath: kUsersSocialSignInPath type: URLConnectionTypePOST
+							 body: inputData.JSONObject
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didSocialSignIn:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didSocialSignUp: (URLConnection *) connection {
+	
+}
+
+- (void) userSocialSignUp: (LGSocialInfo *) inputData {
+	[self startConnectionWithPath: kUsersRegisterPath type: URLConnectionTypePOST
+							 body: inputData.JSONObject
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didSocialSignUp:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didSubscribe: (URLConnection *) connection {
+	
+}
+
+- (void) userSubscribeTo: (int32_t) userID {
+	[self startConnectionWithPath: [NSString stringWithFormat: kUsersSubscriptionsManagePath, userID]
+							 type: URLConnectionTypePOST
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didSubscribe:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didGetSubscriptions: (URLConnection *) connection {
+	
+}
+
+- (void) userSubscriptions {
+	[self startConnectionWithPath: kUsersSubscriptionsPath type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetSubscriptions:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didUnsubscribe: (URLConnection *) connection {
+	
+}
+
+- (void) userUnsubscribeFrom: (int32_t) userID {
+	[self startConnectionWithPath: [NSString stringWithFormat: kUsersSubscriptionsManagePath, userID]
+							 type: URLConnectionTypeDELETE
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetSubscriptions:) failSelector: @selector(didFailGetImportantData:)];
 }
 
 @end

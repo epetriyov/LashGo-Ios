@@ -6,12 +6,10 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "JSONSerializableProtocol.h"
 
-@interface LGRecoverInfo : NSObject {
-	NSString *login;
-}
+@interface LGRecoverInfo : NSObject <JSONSerializableProtocol>
 
-@property (nonatomic, strong) NSString *login;
+@property (nonatomic, strong) NSString *email;
 
 @end

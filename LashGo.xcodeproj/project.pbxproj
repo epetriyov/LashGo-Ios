@@ -62,6 +62,7 @@
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
 		84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC84F1197D4666001FA1F6 /* SearchViewController.m */; };
 		84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F65A8E19827CFE003BF42A /* URLSecurity.m */; };
+		84F8AE75198FB4E7009EC5A6 /* LGSocialInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AE74198FB4E7009EC5A6 /* LGSocialInfo.m */; };
 		84FA068719619F86006A72AE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FA068619619F86006A72AE /* LoginViewController.m */; };
 		84FA06891961A15A006A72AE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84FA06881961A15A006A72AE /* Localizable.strings */; };
 		84FC40E9197AA3D7000ADFE7 /* CircleGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC40E8197AA3D7000ADFE7 /* CircleGradientLayer.m */; };
@@ -208,6 +209,8 @@
 		84EC84F1197D4666001FA1F6 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		84F65A8D19827CFE003BF42A /* URLSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLSecurity.h; sourceTree = "<group>"; };
 		84F65A8E19827CFE003BF42A /* URLSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLSecurity.m; sourceTree = "<group>"; };
+		84F8AE73198FB4E7009EC5A6 /* LGSocialInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSocialInfo.h; sourceTree = "<group>"; };
+		84F8AE74198FB4E7009EC5A6 /* LGSocialInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSocialInfo.m; sourceTree = "<group>"; };
 		84FA068519619F86006A72AE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		84FA068619619F86006A72AE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		84FA06881961A15A006A72AE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 				8406256F1930CE850067C1CA /* LGRegisterInfo.m */,
 				840625711930D10E0067C1CA /* LGSessionInfo.h */,
 				840625721930D10E0067C1CA /* LGSessionInfo.m */,
+				84F8AE73198FB4E7009EC5A6 /* LGSocialInfo.h */,
+				84F8AE74198FB4E7009EC5A6 /* LGSocialInfo.m */,
 				840625741930D1AA0067C1CA /* LGSubscription.h */,
 				840625751930D1AA0067C1CA /* LGSubscription.m */,
 				840625591930B83B0067C1CA /* LGUser.h */,
@@ -777,6 +782,7 @@
 				8406251819308D110067C1CA /* FileManager.m in Sources */,
 				8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */,
 				84FD8962194C4684001139DF /* TWSignedRequest.m in Sources */,
+				84F8AE75198FB4E7009EC5A6 /* LGSocialInfo.m in Sources */,
 				8406251519308BB20067C1CA /* CryptoUtils.m in Sources */,
 				840625511930AAD20067C1CA /* DataProvider.m in Sources */,
 				845D85B01902A543004E10AB /* Kernel.m in Sources */,
