@@ -12,6 +12,20 @@
 
 @interface DataProvider : NSObject
 
+- (void) checks;
+- (void) checkCurrent;
+- (void) checkAddCommentFor: (int64_t) checkID;//Not finished
+- (void) checkCommentsFor: (int64_t) checkID;
+//- (void) checkAddPhoto
+- (void) checkPhotosFor: (int64_t) checkID;
+
+- (void) commentRemove: (int64_t) commentID;
+
+//- (void) photo: (NSString *) name;
+- (void) photoCommentsFor: (int64_t) photoID;
+//- (void) photoAddCommentFor: (int64_t) photoID;
+- (void) photoVoteFor: (int64_t) photoID;
+
 - (void) userLogin: (LGLoginInfo *) inputData;
 - (void) userMainScreenInfo;
 - (void) userPhotos;

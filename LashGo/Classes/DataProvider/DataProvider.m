@@ -18,9 +18,14 @@
 
 #define kChecksPath			@"/checks" //POST
 #define kChecksCurrentPath	@"/checks/current" //GET
-#define kChecksCommentsPath	@"/checks/%ld/comments" //GET, POST
-#define kChecksPhotosPath	@"/checks/%ld/photos" //GET, POST
+#define kChecksCommentsPath	@"/checks/%lld/comments" //GET, POST
+#define kChecksPhotosPath	@"/checks/%lld/photos" //GET, POST
 
+#define kCommentsPath @"/comments/%lld" //DELETE
+
+#define kPhotosPath			@"/photos/%@" //GET
+#define kPhotosCommentsPath	@"/photos/%lld/comments" //GET, POST
+#define kPhotosVotePath		@"/photos/%lld/vote" //PUT
 
 #define kUsersLoginPath				@"/users/login" //POST
 #define kUsersMainScreenInfoPath	@"/users/main-screen-info" //GET
@@ -63,9 +68,13 @@ static NSString *const kRequestUUID =		@"uuid";
 
 - (NSMutableDictionary *) dictionaryWithHeaderParams {
 	NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-									   @"IOS",											kRequestClientType,
-									   [AuthorizationManager sharedManager].sessionID,	kRequestSessionID,
-									   [Common deviceUUID],								kRequestUUID, nil];
+									   @"IOS",				kRequestClientType,
+									   [Common deviceUUID],	kRequestUUID, nil];
+	
+	NSString *sessionID = [AuthorizationManager sharedManager].sessionID;
+	if ([Common isEmptyString: sessionID] == NO) {
+		dictionary[kRequestSessionID] = sessionID;
+	}
 	return dictionary;
 }
 
@@ -120,7 +129,127 @@ static NSString *const kRequestUUID =		@"uuid";
 	
 }
 
-#pragma mark - Login
+#pragma mark - Checks
+
+- (void) didGetChecks: (URLConnection *) connection {
+	
+}
+
+- (void) checks {
+	[self startConnectionWithPath: kChecksPath type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetChecks:)
+					 failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didGetCheckCurrent: (URLConnection *) connection {
+	
+}
+
+- (void) checkCurrent {
+	[self startConnectionWithPath: kChecksCurrentPath type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetCheckCurrent:)
+					 failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didCheckAddComment: (URLConnection *) connection {
+	
+}
+
+- (void) checkAddCommentFor: (int64_t) checkID {
+	[self startConnectionWithPath: [NSString stringWithFormat: kChecksCommentsPath, checkID]
+							 type: URLConnectionTypePOST
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didCheckAddComment:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didGetCheckComments: (URLConnection *) connection {
+	
+}
+
+- (void) checkCommentsFor: (int64_t) checkID {
+	[self startConnectionWithPath: [NSString stringWithFormat: kChecksCommentsPath, checkID]
+							 type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetCheckComments:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didGetCheckPhotos: (URLConnection *) connection {
+	
+}
+
+- (void) checkPhotosFor: (int64_t) checkID {
+	[self startConnectionWithPath: [NSString stringWithFormat: kChecksPhotosPath, checkID]
+							 type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetCheckPhotos:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark - Comment
+
+- (void) didCommentRemove: (URLConnection *) connection {
+	
+}
+
+- (void) commentRemove: (int64_t) commentID {
+	[self startConnectionWithPath: [NSString stringWithFormat: kCommentsPath, commentID]
+							 type: URLConnectionTypeDELETE
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didCommentRemove:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark - Photo
+
+- (void) didGetPhotoComments: (URLConnection *) connection {
+	
+}
+
+- (void) photoCommentsFor: (int64_t) photoID {
+	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosCommentsPath, photoID]
+							 type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetPhotoComments:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didPhotoVote: (URLConnection *) connection {
+	
+}
+
+- (void) photoVoteFor: (int64_t) photoID {
+	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosVotePath, photoID]
+							 type: URLConnectionTypePUT
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didPhotoVote:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark - User
 
 - (void) didLogin: (URLConnection *) connection {
 	
