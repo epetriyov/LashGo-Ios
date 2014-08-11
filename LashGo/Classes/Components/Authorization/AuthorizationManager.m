@@ -24,7 +24,11 @@ NSString *const kLastUsedSessionId = @"lg_last_used_session_id";
 - (void) setSessionID:(NSString *)sessionID {
 	_sessionID = sessionID;
 	
-	[[NSUserDefaults standardUserDefaults] setObject: sessionID forKey: kLastUsedSessionId];
+	if (sessionID == nil) {
+		[[NSUserDefaults standardUserDefaults] removeObjectForKey: kLastUsedSessionId];
+	} else {
+		[[NSUserDefaults standardUserDefaults] setObject: sessionID forKey: kLastUsedSessionId];
+	}
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -101,6 +105,7 @@ NSString *const kLastUsedSessionId = @"lg_last_used_session_id";
 	if (account == _account) {
 		NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 		if (success == NO) {
+			self.sessionID = nil;
 			_account = nil;
 			[defs removeObjectForKey: kLastUsedAccountKey];
 		} else {

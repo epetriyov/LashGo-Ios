@@ -41,6 +41,7 @@ static NSString *const TOKEN_KEY = @"my_application_access_token";
 
 - (void) logout {
 	[VKSdk forceLogout];
+	[self.delegate authDidFinish: NO forAccount: self];
 }
 
 - (BOOL) handleOpenURL:(NSURL *)url

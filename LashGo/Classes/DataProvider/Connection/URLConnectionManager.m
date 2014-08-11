@@ -45,14 +45,24 @@
 
 #pragma mark URLConnectionDelegate methods
 
+- (void) performARCSelector: (SEL) selector forTarget: (id) target withConnection: (URLConnection *) connection {
+	IMP imp = [target methodForSelector:selector];
+	void (*func)(id, SEL, URLConnection *) = (void *)imp;
+	func(target, selector, connection);
+}
+
 - (void) connectionDidFinish: (URLConnection *) connection {
 	id target = targetsForURLConnections[connection.uid];
 	SEL selector = NSSelectorFromString(didFinishSelectorsForURLConnections[connection.uid]);
 	if ([target respondsToSelector: selector]) {
-		[target performSelector: selector withObject: connection];
+		[self performARCSelector: selector forTarget: target withConnection: connection];
+		
+//		[target performSelector: selector withObject: connection];
 	}
 	if ([target respondsToSelector: prepareToRemoveConnectionSelector]) {
-		[target performSelector: prepareToRemoveConnectionSelector withObject: connection];
+		[self performARCSelector: prepareToRemoveConnectionSelector forTarget: target withConnection: connection];
+		
+//		[target performSelector: prepareToRemoveConnectionSelector withObject: connection];
 	}
 
 	[self removeConnection: connection];
@@ -62,10 +72,14 @@
 	id target = targetsForURLConnections[connection.uid];
 	SEL selector = NSSelectorFromString(didFailSelectorsForURLConnections[connection.uid]);
 	if ([target respondsToSelector: selector]) {
-		[target performSelector: selector withObject: connection];
+		[self performARCSelector: selector forTarget: target withConnection: connection];
+		
+//		[target performSelector: selector withObject: connection];
 	}
 	if ([target respondsToSelector: prepareToRemoveConnectionSelector]) {
-		[target performSelector: prepareToRemoveConnectionSelector withObject: connection];
+		[self performARCSelector: prepareToRemoveConnectionSelector forTarget: target withConnection: connection];
+		
+//		[target performSelector: prepareToRemoveConnectionSelector withObject: connection];
 	}
 
 	[self removeConnection: connection];

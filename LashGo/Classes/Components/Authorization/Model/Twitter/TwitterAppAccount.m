@@ -54,7 +54,7 @@
 }
 
 - (void) logout {
-	
+	[self.delegate authDidFinish: NO forAccount: self];
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -70,9 +70,7 @@
 				_accessToken = [responseStr stringBetweenString: @"oauth_token=" andString: @"&"];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success!" message: self.accessToken
-																   delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    [alert show];
+					[self.delegate authDidFinish: YES forAccount: self];
                 });
             }
             else {

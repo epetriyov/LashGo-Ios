@@ -55,6 +55,7 @@
 		845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85BB1902AA00004E10AB /* URLConnectionManager.m */; };
 		8491557A1907FC78008D9120 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 849155791907FC78008D9120 /* Common.m */; };
 		8491557E19080301008D9120 /* RootNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8491557D19080301008D9120 /* RootNavigationController.m */; };
+		84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6240A1998F4CD003BC2F1 /* Storage.m */; };
 		84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B2196C226A0021D417 /* CheckCardViewController.m */; };
 		84E6D9B6196C286E0021D417 /* CheckDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B5196C286E0021D417 /* CheckDetailView.m */; };
 		84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */; };
@@ -193,6 +194,8 @@
 		849155791907FC78008D9120 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		8491557C19080301008D9120 /* RootNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootNavigationController.h; sourceTree = "<group>"; };
 		8491557D19080301008D9120 /* RootNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootNavigationController.m; sourceTree = "<group>"; };
+		84E624091998F4CD003BC2F1 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
+		84E6240A1998F4CD003BC2F1 /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
 		84E6D9B1196C226A0021D417 /* CheckCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCardViewController.h; sourceTree = "<group>"; };
 		84E6D9B2196C226A0021D417 /* CheckCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCardViewController.m; sourceTree = "<group>"; };
 		84E6D9B4196C286E0021D417 /* CheckDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailView.h; sourceTree = "<group>"; };
@@ -481,6 +484,8 @@
 				845D85B21902A7FD004E10AB /* ViewControllersManager.m */,
 				845D85AE1902A543004E10AB /* Kernel.h */,
 				845D85AF1902A543004E10AB /* Kernel.m */,
+				84E624091998F4CD003BC2F1 /* Storage.h */,
+				84E6240A1998F4CD003BC2F1 /* Storage.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -806,6 +811,7 @@
 				8491557E19080301008D9120 /* RootNavigationController.m in Sources */,
 				8406250A193082020067C1CA /* NetworkDownloader.m in Sources */,
 				8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */,
+				84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */,
 				8406255E1930BB850067C1CA /* LGComment.m in Sources */,
 				8491557A1907FC78008D9120 /* Common.m in Sources */,
 				840625761930D1AA0067C1CA /* LGSubscription.m in Sources */,
