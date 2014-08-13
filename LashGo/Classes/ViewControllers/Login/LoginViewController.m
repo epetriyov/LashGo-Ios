@@ -21,8 +21,9 @@
 	
 	float offsetY = self.contentFrame.origin.y;
 	
-	_emailField = [[UITextField alloc] initWithFrame: CGRectMake(0, offsetY, 320, 40)];
-	[self.view addSubview: _emailField];
+	UITextField *emailField = [[UITextField alloc] initWithFrame: CGRectMake(0, offsetY, 320, 40)];
+	[self.view addSubview: emailField];
+	_emailField = emailField;
 	
 	offsetY += _emailField.frame.size.height + 10;
 	
@@ -50,10 +51,11 @@
 	
 	offsetY += loginButton.frame.size.height + 10;
 	
-	_tokenLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, 320, 120)];
-	_tokenLabel.numberOfLines = 4;
-	_tokenLabel.text = [AuthorizationManager sharedManager].account.accessToken;
-	[self.view addSubview: _tokenLabel];
+	UILabel *tokenLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, 320, 120)];
+	tokenLabel.numberOfLines = 4;
+	tokenLabel.text = [AuthorizationManager sharedManager].account.accessToken;
+	[self.view addSubview: tokenLabel];
+	_tokenLabel = tokenLabel;
 }
 
 - (void) loginWithFacebook: (id) sender {

@@ -12,6 +12,8 @@
 
 #import "Kernel.h"
 
+#import "LGCheck.h"
+
 @interface CheckCardViewController () {
 	UICollectionView __weak *_collectionView;
 }
@@ -23,13 +25,12 @@
 - (void) loadView {
 	[super loadView];
 	
-	[titleBarView removeFromSuperview];
-	titleBarView = [TitleBarView titleBarViewWithSearchButtonAndRightButton];
-	[self.view addSubview: titleBarView];
+	[_titleBarView removeFromSuperview];
+	_titleBarView = [TitleBarView titleBarViewWithSearchButtonAndRightButton];
+	[self.view addSubview: _titleBarView];
 	
-//	CheckDetailView *cv = [[CheckDetailView alloc] initWithFrame: CGRectMake(0, 50, 320, 200)];
-//	[self.view addSubview: cv];
-//
+	self.view.backgroundColor = [UIColor colorWithRed: 0.16 green: 0.18 blue: 0.23 alpha:1.0];
+	
 	UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
 	flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
 	flowLayout.itemSize = self.contentFrame.size;
@@ -69,6 +70,9 @@
 	DLog(@"New cell degueue");
 	CheckCardCollectionCell* newCell = [collectionView dequeueReusableCellWithReuseIdentifier: kCheckCardCollectionCellReusableId
 																		   forIndexPath:indexPath];
+	LGCheck *check = kernel.storage.checks[indexPath.row];
+	newCell.textLabel.text = check.name;
+	newCell.detailTextLabel.text = check.descr;
 	return newCell;
 }
 

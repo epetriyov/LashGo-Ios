@@ -58,7 +58,6 @@
 		84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6240A1998F4CD003BC2F1 /* Storage.m */; };
 		84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E624101998FBAD003BC2F1 /* ChecksManager.m */; };
 		84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B2196C226A0021D417 /* CheckCardViewController.m */; };
-		84E6D9B6196C286E0021D417 /* CheckDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B5196C286E0021D417 /* CheckDetailView.m */; };
 		84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */; };
 		84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */; };
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
@@ -66,9 +65,12 @@
 		84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F65A8E19827CFE003BF42A /* URLSecurity.m */; };
 		84F8AE75198FB4E7009EC5A6 /* LGSocialInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AE74198FB4E7009EC5A6 /* LGSocialInfo.m */; };
 		84F8E89D199A2DB00054C9F8 /* AlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E89C199A2DB00054C9F8 /* AlertViewManager.m */; };
+		84F8E8A7199B5C580054C9F8 /* CheckCardCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E8A2199B5C580054C9F8 /* CheckCardCollectionCell.m */; };
+		84F8E8A8199B5C580054C9F8 /* CheckDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E8A4199B5C580054C9F8 /* CheckDetailView.m */; };
+		84F8E8A9199B5C580054C9F8 /* CircleGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E8A6199B5C580054C9F8 /* CircleGradientLayer.m */; };
+		84F8E8AC199BA7620054C9F8 /* CheckListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E8AB199BA7620054C9F8 /* CheckListViewController.m */; };
 		84FA068719619F86006A72AE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FA068619619F86006A72AE /* LoginViewController.m */; };
 		84FA06891961A15A006A72AE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84FA06881961A15A006A72AE /* Localizable.strings */; };
-		84FC40E9197AA3D7000ADFE7 /* CircleGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC40E8197AA3D7000ADFE7 /* CircleGradientLayer.m */; };
 		84FD8956194C44E7001139DF /* TwitterAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD894D194C44E7001139DF /* TwitterAppAccount.m */; };
 		84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8951194C44E7001139DF /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84FD8958194C44E7001139DF /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8953194C44E7001139DF /* OAuth+Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -79,7 +81,6 @@
 		84FF0239195EB47200B90CF9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0238195EB47200B90CF9 /* FacebookSDK.framework */; };
 		84FF0294195ED69600B90CF9 /* libVKSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0235195EB21800B90CF9 /* libVKSdk.a */; };
 		FE8F9618196D2CE400769722 /* DemoImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE8F9617196D2CE400769722 /* DemoImage.jpg */; };
-		FEE8DD241973C6550008A25C /* CheckCardCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEE8DD231973C6550008A25C /* CheckCardCollectionCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,8 +203,6 @@
 		84E624101998FBAD003BC2F1 /* ChecksManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChecksManager.m; sourceTree = "<group>"; };
 		84E6D9B1196C226A0021D417 /* CheckCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCardViewController.h; sourceTree = "<group>"; };
 		84E6D9B2196C226A0021D417 /* CheckCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCardViewController.m; sourceTree = "<group>"; };
-		84E6D9B4196C286E0021D417 /* CheckDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailView.h; sourceTree = "<group>"; };
-		84E6D9B5196C286E0021D417 /* CheckDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailView.m; sourceTree = "<group>"; };
 		84E98F321984ED7D00B422F4 /* JSONSerializableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSerializableProtocol.h; sourceTree = "<group>"; };
 		84E99B9B194F1CA3000C55E4 /* VkontakteAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VkontakteAppAccount.h; sourceTree = "<group>"; };
 		84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkontakteAppAccount.m; sourceTree = "<group>"; };
@@ -220,11 +219,17 @@
 		84F8AE74198FB4E7009EC5A6 /* LGSocialInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSocialInfo.m; sourceTree = "<group>"; };
 		84F8E89B199A2DB00054C9F8 /* AlertViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewManager.h; sourceTree = "<group>"; };
 		84F8E89C199A2DB00054C9F8 /* AlertViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewManager.m; sourceTree = "<group>"; };
+		84F8E8A1199B5C580054C9F8 /* CheckCardCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCardCollectionCell.h; sourceTree = "<group>"; };
+		84F8E8A2199B5C580054C9F8 /* CheckCardCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCardCollectionCell.m; sourceTree = "<group>"; };
+		84F8E8A3199B5C580054C9F8 /* CheckDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailView.h; sourceTree = "<group>"; };
+		84F8E8A4199B5C580054C9F8 /* CheckDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailView.m; sourceTree = "<group>"; };
+		84F8E8A5199B5C580054C9F8 /* CircleGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleGradientLayer.h; sourceTree = "<group>"; };
+		84F8E8A6199B5C580054C9F8 /* CircleGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleGradientLayer.m; sourceTree = "<group>"; };
+		84F8E8AA199BA7620054C9F8 /* CheckListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckListViewController.h; sourceTree = "<group>"; };
+		84F8E8AB199BA7620054C9F8 /* CheckListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckListViewController.m; sourceTree = "<group>"; };
 		84FA068519619F86006A72AE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		84FA068619619F86006A72AE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		84FA06881961A15A006A72AE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		84FC40E7197AA3D7000ADFE7 /* CircleGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleGradientLayer.h; sourceTree = "<group>"; };
-		84FC40E8197AA3D7000ADFE7 /* CircleGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleGradientLayer.m; sourceTree = "<group>"; };
 		84FD894C194C44E7001139DF /* TwitterAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAppAccount.h; sourceTree = "<group>"; };
 		84FD894D194C44E7001139DF /* TwitterAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAppAccount.m; sourceTree = "<group>"; };
 		84FD8950194C44E7001139DF /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -241,8 +246,6 @@
 		84FD8967194C84EB001139DF /* FacebookAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAppAccount.m; sourceTree = "<group>"; };
 		84FF0238195EB47200B90CF9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = LashGo/FBlib/FacebookSDK.framework; sourceTree = "<group>"; };
 		FE8F9617196D2CE400769722 /* DemoImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DemoImage.jpg; sourceTree = "<group>"; };
-		FEE8DD221973C6550008A25C /* CheckCardCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCardCollectionCell.h; sourceTree = "<group>"; };
-		FEE8DD231973C6550008A25C /* CheckCardCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCardCollectionCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,17 +377,12 @@
 		8426F353191A6E8100B4E336 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84F8E8A0199B5C580054C9F8 /* Check */,
 				8426F354191A6F6400B4E336 /* TitleBar */,
 				8426F35B191A754200B4E336 /* FontFactory.h */,
 				8426F35C191A754200B4E336 /* FontFactory.m */,
 				8426F358191A6FF900B4E336 /* ViewFactory.h */,
 				8426F359191A6FF900B4E336 /* ViewFactory.m */,
-				84E6D9B4196C286E0021D417 /* CheckDetailView.h */,
-				84E6D9B5196C286E0021D417 /* CheckDetailView.m */,
-				FEE8DD221973C6550008A25C /* CheckCardCollectionCell.h */,
-				FEE8DD231973C6550008A25C /* CheckCardCollectionCell.m */,
-				84FC40E7197AA3D7000ADFE7 /* CircleGradientLayer.h */,
-				84FC40E8197AA3D7000ADFE7 /* CircleGradientLayer.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -573,6 +571,8 @@
 			children = (
 				84E6D9B1196C226A0021D417 /* CheckCardViewController.h */,
 				84E6D9B2196C226A0021D417 /* CheckCardViewController.m */,
+				84F8E8AA199BA7620054C9F8 /* CheckListViewController.h */,
+				84F8E8AB199BA7620054C9F8 /* CheckListViewController.m */,
 			);
 			path = Check;
 			sourceTree = "<group>";
@@ -601,6 +601,19 @@
 				84F8E89C199A2DB00054C9F8 /* AlertViewManager.m */,
 			);
 			path = AlertViewManager;
+			sourceTree = "<group>";
+		};
+		84F8E8A0199B5C580054C9F8 /* Check */ = {
+			isa = PBXGroup;
+			children = (
+				84F8E8A1199B5C580054C9F8 /* CheckCardCollectionCell.h */,
+				84F8E8A2199B5C580054C9F8 /* CheckCardCollectionCell.m */,
+				84F8E8A3199B5C580054C9F8 /* CheckDetailView.h */,
+				84F8E8A4199B5C580054C9F8 /* CheckDetailView.m */,
+				84F8E8A5199B5C580054C9F8 /* CircleGradientLayer.h */,
+				84F8E8A6199B5C580054C9F8 /* CircleGradientLayer.m */,
+			);
+			path = Check;
 			sourceTree = "<group>";
 		};
 		84FA068219619F2B006A72AE /* Login */ = {
@@ -806,6 +819,7 @@
 				8426F351191A661D00B4E336 /* BaseViewController.m in Sources */,
 				84062511193088F30067C1CA /* DownloadableImageItem.m in Sources */,
 				840625541930AB230067C1CA /* JSONParser.m in Sources */,
+				84F8E8A7199B5C580054C9F8 /* CheckCardCollectionCell.m in Sources */,
 				84001FF41949AF68004D9D7A /* AppAccount.m in Sources */,
 				8406250B193082020067C1CA /* NetworkDownloadManager.m in Sources */,
 				8406256D1930CDEA0067C1CA /* LGRecoverInfo.m in Sources */,
@@ -826,10 +840,8 @@
 				845D85BD1902AA00004E10AB /* URLConnection.m in Sources */,
 				84EB473D1943044C001DEF81 /* StartViewController.m in Sources */,
 				84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */,
-				FEE8DD241973C6550008A25C /* CheckCardCollectionCell.m in Sources */,
 				840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */,
 				84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */,
-				84E6D9B6196C286E0021D417 /* CheckDetailView.m in Sources */,
 				84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */,
 				84FA068719619F86006A72AE /* LoginViewController.m in Sources */,
 				840625581930AD760067C1CA /* LGCheck.m in Sources */,
@@ -838,10 +850,13 @@
 				8491557E19080301008D9120 /* RootNavigationController.m in Sources */,
 				8406250A193082020067C1CA /* NetworkDownloader.m in Sources */,
 				8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */,
+				84F8E8AC199BA7620054C9F8 /* CheckListViewController.m in Sources */,
 				84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */,
 				8406255E1930BB850067C1CA /* LGComment.m in Sources */,
+				84F8E8A9199B5C580054C9F8 /* CircleGradientLayer.m in Sources */,
 				8491557A1907FC78008D9120 /* Common.m in Sources */,
 				840625761930D1AA0067C1CA /* LGSubscription.m in Sources */,
+				84F8E8A8199B5C580054C9F8 /* CheckDetailView.m in Sources */,
 				84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */,
 				84062512193088F30067C1CA /* DownloadableItem.m in Sources */,
 				845D858B19029EB0004E10AB /* main.m in Sources */,
@@ -855,7 +870,6 @@
 				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
 				84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */,
 				84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */,
-				84FC40E9197AA3D7000ADFE7 /* CircleGradientLayer.m in Sources */,
 				84FD8961194C4684001139DF /* TWAPIManager.m in Sources */,
 				84FD8956194C44E7001139DF /* TwitterAppAccount.m in Sources */,
 			);

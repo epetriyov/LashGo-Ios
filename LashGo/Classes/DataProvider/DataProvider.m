@@ -142,13 +142,26 @@ static NSString *const kRequestUUID =		@"uuid";
 	}
 }
 
+- (void) didGetChecksDEBUG: (NSData *) data {
+	NSArray *checks = [_parser parseChecks: data];
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetChecks:)] == YES) {
+		[self.delegate dataProvider: self didGetChecks: checks];
+	}
+}
+
 - (void) checks {
+#ifdef DEBUG
+	NSString *str = @"{\"resultCollection\":[{\"id\":6,\"name\":\"new check\",\"description\":\"new check\",\"startDate\":\"03.08.2014 10:11:56 GMT+07:00\",\"duration\":3,\"voteDuration\":3},{\"id\":3,\"name\":\"Test check\",\"description\":\"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\",\"startDate\":\"21.07.2014 00:31:29 GMT+07:00\",\"duration\":2,\"photoUrl\":\"2.jpg\",\"voteDuration\":2},{\"id\":5,\"name\":\"Фото с кружкой пива\",\"description\":\"Идея в том, что парень с кружкой пива на детском утреннике в разных позах\",\"startDate\":\"21.07.2014 00:27:00 GMT+07:00\",\"duration\":2,\"photoUrl\":\"1.jpg\",\"voteDuration\":2}]}";
+	[self didGetChecksDEBUG: [str dataUsingEncoding: NSUTF8StringEncoding]];
+#else
 	[self startConnectionWithPath: kChecksPath type: URLConnectionTypeGET
 							 body: nil
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didGetChecks:)
 					 failSelector: @selector(didFailGetImportantData:)];
+#endif
 }
 
 #pragma mark -

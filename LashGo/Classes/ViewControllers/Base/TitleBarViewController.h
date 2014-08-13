@@ -4,8 +4,8 @@
 #import "TitleBarView.h"
 
 @interface TitleBarViewController : BaseViewController <RootNavigationControllerItemProtocol> {
-	TitleBarView *titleBarView;
-	UIImageView *background;
+	TitleBarView __weak *_titleBarView;
+	UIImageView __weak *_background;
 }
 
 @property (nonatomic, readonly) CGRect contentFrame;

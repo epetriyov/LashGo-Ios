@@ -1,9 +1,11 @@
 
-typedef enum {
-	FontTypeTitleBarButtons = 0,
+typedef NS_ENUM(NSInteger, FontType) {
+	FontTypeCheckCardDescription,
+	FontTypeCheckCardTitle,
+	FontTypeTitleBarButtons,
 	FontTypeTitleBarLogoDescription,
-	FontTypeTitleBarTitle,
-} FontType;
+	FontTypeTitleBarTitle
+};
 
 @interface FontFactory : NSObject
 

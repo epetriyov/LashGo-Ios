@@ -9,8 +9,8 @@
 #import "TitleBarViewController.h"
 
 @interface LoginViewController : TitleBarViewController {
-	UITextField *_emailField;
-	UILabel *_tokenLabel;
+	UITextField __weak *_emailField;
+	UILabel __weak *_tokenLabel;
 }
 
 @end

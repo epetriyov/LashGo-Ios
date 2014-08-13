@@ -12,4 +12,7 @@ extern NSString *const kCheckCardCollectionCellReusableId;
 
 @interface CheckCardCollectionCell : UICollectionViewCell
 
+@property (nonatomic, readonly) UILabel *textLabel;
+@property (nonatomic, readonly) UILabel *detailTextLabel;
+
 @end

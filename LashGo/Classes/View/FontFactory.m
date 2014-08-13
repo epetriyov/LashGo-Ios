@@ -9,7 +9,9 @@
 
 + (UIFont *) fontWithType: (FontType) fontType {
 	switch (fontType) {
+		case FontTypeCheckCardTitle:
 		case FontTypeTitleBarButtons:			return [UIFont fontWithName: kDefaultFont size: 17];
+		case FontTypeCheckCardDescription:
 		case FontTypeTitleBarLogoDescription:	return [UIFont fontWithName: kDefaultFontCondensedBold size: 9];
 		case FontTypeTitleBarTitle:				return [UIFont fontWithName: kDefaultFontMedium size: 17];
 		default:
@@ -20,6 +22,8 @@
 
 + (UIColor *) fontColorForType: (FontType) fontType {
 	switch (fontType) {
+		case FontTypeCheckCardDescription:
+		case FontTypeCheckCardTitle:
 		case FontTypeTitleBarButtons:				return [UIColor whiteColor];
 		default: return [UIColor blackColor];
 	}

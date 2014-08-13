@@ -19,11 +19,11 @@
 - (void) loadView {
 	[super loadView];
 	
-	[titleBarView removeFromSuperview];
-	titleBarView = [TitleBarView titleBarViewWithSearchAndRightButtonWithText: @"Отмена".commonLocalizedString];
-	[titleBarView.rightButton addTarget: self action: @selector(backAction:)
+	[_titleBarView removeFromSuperview];
+	_titleBarView = [TitleBarView titleBarViewWithSearchAndRightButtonWithText: @"Отмена".commonLocalizedString];
+	[_titleBarView.rightButton addTarget: self action: @selector(backAction:)
 					   forControlEvents: UIControlEventTouchUpInside];
-	[self.view addSubview: titleBarView];
+	[self.view addSubview: _titleBarView];
 }
 
 @end

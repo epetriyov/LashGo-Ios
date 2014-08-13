@@ -1,7 +1,7 @@
 @class Kernel;
 
 @interface BaseViewController : UIViewController {
-	Kernel *kernel;
+	Kernel __weak *kernel;
 }
 
 - (id) initWithKernel: (Kernel *) theKernel;
