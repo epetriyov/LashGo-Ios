@@ -8,12 +8,18 @@
 
 #import "ViewControllersManager.h"
 #import "AuthorizationManager.h"
+#import "ChecksManager.h"
+#import "DataProvider.h"
+#import "Storage.h"
 
-@interface Kernel : NSObject {
+@interface Kernel : NSObject <DataProviderDelegate> {
 	ViewControllersManager *viewControllersManager;
 }
 
 @property (nonatomic, readonly) UIViewController *rootViewController;
+
+@property (nonatomic, readonly) ChecksManager *checksManager;
+@property (nonatomic, readonly) Storage *storage;
 @property (nonatomic, readonly) ViewControllersManager *viewControllersManager;
 
 - (void) performOnColdWakeActions;

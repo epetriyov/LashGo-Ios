@@ -6,8 +6,13 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "LGCheck.h"
+#import "URLConnection.h"
 
 @interface JSONParser : NSObject
+
+- (NSError *) parseError: (URLConnection *) connection;
+
+- (NSArray *) parseChecks: (NSData *) jsonData;
 
 @end

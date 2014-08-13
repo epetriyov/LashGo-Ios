@@ -10,6 +10,8 @@
 
 @interface Storage : NSObject
 
-@property (nonatomic, readonly, setter = replaceWithObjectsFromArrayChecks:) NSArray *checks;
+@property (nonatomic, readonly) NSArray *checks;
+
+- (void) updateChecksWith: (NSArray *) newValues;
 
 @end

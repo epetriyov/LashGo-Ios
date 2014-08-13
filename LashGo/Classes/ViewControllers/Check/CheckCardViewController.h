@@ -13,4 +13,6 @@
 	UILabel *_descriptionLabel;
 }
 
+- (void) refresh;
+
 @end

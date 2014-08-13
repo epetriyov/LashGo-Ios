@@ -10,7 +10,11 @@
 #import "LGRecoverInfo.h"
 #import "LGSocialInfo.h"
 
+@protocol DataProviderDelegate;
+
 @interface DataProvider : NSObject
+
+@property (nonatomic, weak) id<DataProviderDelegate> delegate;
 
 - (void) checks;
 - (void) checkCurrent;
@@ -37,5 +41,12 @@
 - (void) userSubscribeTo: (int32_t) userID;
 - (void) userSubscriptions;
 - (void) userUnsubscribeFrom: (int32_t) userID;
+
+@end
+
+@protocol DataProviderDelegate <NSObject>
+
+@optional
+- (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks;
 
 @end

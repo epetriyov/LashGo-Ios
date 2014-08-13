@@ -31,6 +31,8 @@
 @property (nonatomic, readonly) BOOL isReturnToPreviousAvaliable;
 @property (nonatomic, readonly) RootNavigationController *rootNavigationController;
 
+@property (nonatomic, readonly) CheckCardViewController *checkCardViewController;
+
 - (id) initWithKernel: (Kernel *) theKernel;
 
 - (void) returnToPreviousViewController;

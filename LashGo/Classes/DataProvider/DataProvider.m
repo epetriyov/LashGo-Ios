@@ -8,6 +8,7 @@
 
 #import "DataProvider.h"
 
+#import "AlertViewManager.h"
 #import "AppDelegate.h"
 #import "AuthorizationManager.h"
 #import "Common.h"
@@ -126,13 +127,19 @@ static NSString *const kRequestUUID =		@"uuid";
 }
 
 - (void) didFailGetImportantData: (URLConnection *) connection {
+	NSError *error = [_parser parseError: connection];
 	
+	[[AlertViewManager sharedManager] showAlertViewWithError: error];
 }
 
 #pragma mark - Checks
 
 - (void) didGetChecks: (URLConnection *) connection {
-	
+	NSArray *checks = [_parser parseChecks: connection.downloadedData];
+
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetChecks:)] == YES) {
+		[self.delegate dataProvider: self didGetChecks: checks];
+	}
 }
 
 - (void) checks {

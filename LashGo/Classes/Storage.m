@@ -16,11 +16,9 @@
 
 @implementation Storage
 
-#pragma mark - Properties
+@synthesize checks = _checks;
 
-- (void) replaceWithObjectsFromArrayChecks: (NSArray *) newValues {
-	[_checks replaceObjectsInRange: NSMakeRange(0, [_checks count]) withObjectsFromArray: newValues];
-}
+#pragma mark - Properties
 
 #pragma mark - Standard
 
@@ -29,6 +27,12 @@
 		_checks = [[NSMutableArray alloc] init];
 	}
 	return self;
+}
+
+#pragma mark - Methods
+
+- (void) updateChecksWith: (NSArray *) newValues {
+	[_checks replaceObjectsInRange: NSMakeRange(0, [_checks count]) withObjectsFromArray: newValues];
 }
 
 @end

@@ -56,6 +56,7 @@
 		8491557A1907FC78008D9120 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 849155791907FC78008D9120 /* Common.m */; };
 		8491557E19080301008D9120 /* RootNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8491557D19080301008D9120 /* RootNavigationController.m */; };
 		84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6240A1998F4CD003BC2F1 /* Storage.m */; };
+		84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E624101998FBAD003BC2F1 /* ChecksManager.m */; };
 		84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B2196C226A0021D417 /* CheckCardViewController.m */; };
 		84E6D9B6196C286E0021D417 /* CheckDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B5196C286E0021D417 /* CheckDetailView.m */; };
 		84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */; };
@@ -64,6 +65,7 @@
 		84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC84F1197D4666001FA1F6 /* SearchViewController.m */; };
 		84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F65A8E19827CFE003BF42A /* URLSecurity.m */; };
 		84F8AE75198FB4E7009EC5A6 /* LGSocialInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AE74198FB4E7009EC5A6 /* LGSocialInfo.m */; };
+		84F8E89D199A2DB00054C9F8 /* AlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E89C199A2DB00054C9F8 /* AlertViewManager.m */; };
 		84FA068719619F86006A72AE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FA068619619F86006A72AE /* LoginViewController.m */; };
 		84FA06891961A15A006A72AE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 84FA06881961A15A006A72AE /* Localizable.strings */; };
 		84FC40E9197AA3D7000ADFE7 /* CircleGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FC40E8197AA3D7000ADFE7 /* CircleGradientLayer.m */; };
@@ -196,6 +198,8 @@
 		8491557D19080301008D9120 /* RootNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootNavigationController.m; sourceTree = "<group>"; };
 		84E624091998F4CD003BC2F1 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
 		84E6240A1998F4CD003BC2F1 /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
+		84E6240F1998FBAD003BC2F1 /* ChecksManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChecksManager.h; sourceTree = "<group>"; };
+		84E624101998FBAD003BC2F1 /* ChecksManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChecksManager.m; sourceTree = "<group>"; };
 		84E6D9B1196C226A0021D417 /* CheckCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCardViewController.h; sourceTree = "<group>"; };
 		84E6D9B2196C226A0021D417 /* CheckCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCardViewController.m; sourceTree = "<group>"; };
 		84E6D9B4196C286E0021D417 /* CheckDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailView.h; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 		84F65A8E19827CFE003BF42A /* URLSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLSecurity.m; sourceTree = "<group>"; };
 		84F8AE73198FB4E7009EC5A6 /* LGSocialInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSocialInfo.h; sourceTree = "<group>"; };
 		84F8AE74198FB4E7009EC5A6 /* LGSocialInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSocialInfo.m; sourceTree = "<group>"; };
+		84F8E89B199A2DB00054C9F8 /* AlertViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewManager.h; sourceTree = "<group>"; };
+		84F8E89C199A2DB00054C9F8 /* AlertViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewManager.m; sourceTree = "<group>"; };
 		84FA068519619F86006A72AE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		84FA068619619F86006A72AE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		84FA06881961A15A006A72AE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -270,6 +276,7 @@
 		84001FEC1949ACE6004D9D7A /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				84F8E89A199A2DB00054C9F8 /* AlertViewManager */,
 				84001FED1949AD8B004D9D7A /* Authorization */,
 			);
 			path = Components;
@@ -477,6 +484,7 @@
 				849155771907FC30008D9120 /* Common */,
 				84001FEC1949ACE6004D9D7A /* Components */,
 				845D85B41902A90E004E10AB /* DataProvider */,
+				84E6240E1998FB28003BC2F1 /* Managers */,
 				840625551930AD1C0067C1CA /* Model */,
 				8426F353191A6E8100B4E336 /* View */,
 				8491557B19080301008D9120 /* ViewControllers */,
@@ -551,6 +559,15 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		84E6240E1998FB28003BC2F1 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				84E6240F1998FBAD003BC2F1 /* ChecksManager.h */,
+				84E624101998FBAD003BC2F1 /* ChecksManager.m */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		84E6D9AE196C20F00021D417 /* Check */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,6 +592,15 @@
 				84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */,
 			);
 			path = Vkontakte;
+			sourceTree = "<group>";
+		};
+		84F8E89A199A2DB00054C9F8 /* AlertViewManager */ = {
+			isa = PBXGroup;
+			children = (
+				84F8E89B199A2DB00054C9F8 /* AlertViewManager.h */,
+				84F8E89C199A2DB00054C9F8 /* AlertViewManager.m */,
+			);
+			path = AlertViewManager;
 			sourceTree = "<group>";
 		};
 		84FA068219619F2B006A72AE /* Login */ = {
@@ -804,6 +830,7 @@
 				840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */,
 				84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */,
 				84E6D9B6196C286E0021D417 /* CheckDetailView.m in Sources */,
+				84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */,
 				84FA068719619F86006A72AE /* LoginViewController.m in Sources */,
 				840625581930AD760067C1CA /* LGCheck.m in Sources */,
 				8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */,
@@ -818,6 +845,7 @@
 				84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */,
 				84062512193088F30067C1CA /* DownloadableItem.m in Sources */,
 				845D858B19029EB0004E10AB /* main.m in Sources */,
+				84F8E89D199A2DB00054C9F8 /* AlertViewManager.m in Sources */,
 				8406256A1930CB0A0067C1CA /* LGPhoto.m in Sources */,
 				84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */,
 				845D85BC1902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m in Sources */,

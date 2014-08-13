@@ -6,6 +6,19 @@
   Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 */
 
+"ErrorServerErrorParsingTitle" = "Ошибка обработки";
+"ErrorServerErrorParsingMessage" = "Ошибка сервера";
+
+"OK" = "OK";
+"Да" = "Да";
+"Нет" = "Нет";
+
+//AlertViewManager
+"AlertAuthErrorTitle" = "Ошибка авторизации";
+"AlertAuthErrorMessage" = "Неудалось авторизоваться на сервере, повторите попытку позже";
+"AlertErrorTitle" = "Ошибка";
+"AlertLogoutTitle" = "Выход";
+"AlertLogoutMessage" = "Вы действительно хотите выйти?";
 //StartViewController
 "StartViewControllerStartButtonTitle" = "Начать";
 "StartViewControllerLoginButtonTitle" = "Войти";

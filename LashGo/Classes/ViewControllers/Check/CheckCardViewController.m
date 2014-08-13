@@ -10,7 +10,11 @@
 #import "CheckDetailView.h"
 #import "CheckCardCollectionCell.h"
 
-@interface CheckCardViewController ()
+#import "Kernel.h"
+
+@interface CheckCardViewController () {
+	UICollectionView __weak *_collectionView;
+}
 
 @end
 
@@ -40,6 +44,14 @@
 	[collectionView registerClass: [CheckCardCollectionCell class]
 	   forCellWithReuseIdentifier: kCheckCardCollectionCellReusableId];
 	[self.view addSubview: collectionView];
+	
+	_collectionView = collectionView;
+}
+
+#pragma mark - Methods
+
+- (void) refresh {
+	[_collectionView reloadData];
 }
 
 #pragma mark - UICollectionViewDataSource implementation
@@ -49,7 +61,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-	return 5;
+	return [kernel.storage.checks count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
