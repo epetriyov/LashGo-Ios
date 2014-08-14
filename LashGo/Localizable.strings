@@ -24,7 +24,12 @@
 "StartViewControllerStartButtonTitle" = "Начать";
 "StartViewControllerLoginButtonTitle" = "Войти";
 
+//SearchViewController
+"SearchPeople" = "Людей";
+"SearchChecks" = "Чеков";
+
 //Checks
+"ChecksTitle" = "Задания";
 "ChecksActiveHeaderTitle" = "Активные";
 "ChecksVoteHeaderTitle" = "Идет голосование";
 "ChecksClosedHeaderTitle" = "Завершенные";

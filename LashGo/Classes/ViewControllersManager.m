@@ -8,6 +8,12 @@
 
 #import "ViewControllersManager.h"
 
+@interface ViewControllersManager () {
+	SearchViewController *_searchViewController;
+}
+
+@end
+
 @implementation ViewControllersManager
 
 @synthesize rootNavigationController;
@@ -28,6 +34,8 @@
 		_checkCardViewController =	[self createViewControllerOfClass: [CheckCardViewController class]];
 		_checkListViewController =	[self createViewControllerOfClass: [CheckListViewController class]];
 		_loginViewController =		[self createViewControllerOfClass: [LoginViewController class]];
+		
+		_searchViewController =		[self createViewControllerOfClass: [SearchViewController class]];
 		
 		startViewController = [self createViewControllerOfClass: [StartViewController class]];
 		
@@ -84,6 +92,10 @@
 
 - (void) openLoginViewController {
 	[self openViewController: _loginViewController animated: YES];
+}
+
+- (void) openSearchViewController {
+	[self openViewController: _searchViewController animated: YES];
 }
 
 @end

@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
+#import "SegmentedTextControl.h"
 #import "TitleBarViewController.h"
 
-@interface SearchViewController : TitleBarViewController
+@interface SearchViewController : TitleBarViewController <SegmentedTextControlDelegate, UISearchBarDelegate>
 
 @end

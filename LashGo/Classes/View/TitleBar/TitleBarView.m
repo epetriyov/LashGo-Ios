@@ -39,13 +39,15 @@
 		backgroundImageView.image = [[ViewFactory sharedFactory] titleBarBackgroundImage];
 		[self addSubview: backgroundImageView];
 		
+		CGRect contentFrame = self.contentFrame;
+		
 		backButton = [[ViewFactory sharedFactory] titleBarBackButtonWithTarget: nil action: nil];
-		backButton.center = CGPointMake(backButton.frame.size.width / 2, backgroundImageView.center.y);
+		backButton.center = CGPointMake(backButton.frame.size.width / 2, CGRectGetMidY(contentFrame));
 		[self addSubview: backButton];
 
 		float offsetX = backButton.frame.origin.x + backButton.frame.size.width + 15;
-		titleLabel = [ [UILabel alloc] initWithFrame: CGRectMake(offsetX, 0,
-																 self.frame.size.width - offsetX * 2, self.frame.size.height)];
+		titleLabel = [ [UILabel alloc] initWithFrame: CGRectMake(offsetX, contentFrame.origin.y,
+																 contentFrame.size.width - offsetX * 2, contentFrame.size.height)];
 		titleLabel.adjustsFontSizeToFitWidth = YES;
 		titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		titleLabel.backgroundColor = [UIColor clearColor];
@@ -161,25 +163,28 @@
 	return titleBar;
 }
 
-+ (TitleBarView *) titleBarViewWithSearchAndRightButtonWithText: (NSString *) text {
++ (TitleBarView *) titleBarViewWithRightButtonWithText: (NSString *) text
+										searchDelegate: (id<UISearchBarDelegate>) delegate {
 	TitleBarView *titleBar = [TitleBarView titleBarView];
 	
 	titleBar.backButton.alpha = 0;
 	
 	UIButton *rightButton = [[ViewFactory sharedFactory] titleBarRightButtonWithText: text target: nil action: nil];
-	float capX = 3;
 	
-	rightButton.frameX = titleBar.frame.size.width - (rightButton.frame.size.width + capX);
-	rightButton.centerY = CGRectGetMidY(titleBar.contentFrame);
+	CGFloat capX = 3;
+	CGRect contentFrame = titleBar.contentFrame;
 	
+	rightButton.frameX = contentFrame.size.width - (rightButton.frame.size.width + capX);
+	rightButton.centerY = CGRectGetMidY(contentFrame);
 	[titleBar addSubview: rightButton];
 	
 	titleBar -> rightButton = rightButton;
 	
-	UISearchBar *bar = [[UISearchBar alloc] initWithFrame: CGRectMake(0, 0, titleBar.contentFrame.size.width,
-																	  titleBar.contentFrame.size.height)];
+	UISearchBar *bar = [[UISearchBar alloc] initWithFrame: CGRectMake(0, contentFrame.origin.y, rightButton.frame.origin.x + capX,
+																	  contentFrame.size.height)];
+	bar.backgroundImage = [[UIImage alloc] init];
+	bar.delegate = delegate;
 	bar.placeholder = @"Поиск".commonLocalizedString;
-	bar.backgroundImage = nil;
 	[titleBar addSubview: bar];
 	
 	titleBar -> _searchBar = bar;

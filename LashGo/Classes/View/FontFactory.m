@@ -16,6 +16,8 @@
 		case FontTypeCheckCardDescription:
 		case FontTypeCheckListCellDescription:
 		case FontTypeTitleBarLogoDescription:	return [UIFont fontWithName: kDefaultFontCondensedBold size: 9];
+		case FontTypeSegmentedTextControl:
+		case FontTypeSegmentedTextControlSelected:	return [UIFont fontWithName: kDefaultFont size: 14];
 		case FontTypeTitleBarTitle:				return [UIFont fontWithName: kDefaultFontMedium size: 17];
 		default:
 			break;

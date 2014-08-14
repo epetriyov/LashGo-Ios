@@ -13,6 +13,7 @@
 
 #import "LoginViewController.h"
 
+#import "SearchViewController.h"
 #import "StartViewController.h"
 
 @class Kernel;
@@ -42,5 +43,6 @@
 - (void) openCheckCardViewController;
 - (void) openCheckListViewController;
 - (void) openLoginViewController;
+- (void) openSearchViewController;
 
 @end

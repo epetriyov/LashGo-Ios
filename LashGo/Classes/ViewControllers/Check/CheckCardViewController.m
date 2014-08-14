@@ -10,6 +10,8 @@
 #import "CheckDetailView.h"
 #import "CheckCardCollectionCell.h"
 
+#import "Common.h"
+
 #import "Kernel.h"
 
 #import "LGCheck.h"
@@ -36,6 +38,7 @@
 	_titleBarView = [TitleBarView titleBarViewWithLeftButton: listButton
 												 rightButton: incomeButton
 												searchButton: searchButton];
+	_titleBarView.titleLabel.text = @"ChecksTitle".commonLocalizedString;
 	[self.view addSubview: _titleBarView];
 	
 	self.view.backgroundColor = [UIColor colorWithRed: 0.16 green: 0.18 blue: 0.23 alpha:1.0];
@@ -69,7 +72,7 @@
 }
 
 - (void) openSearchAction: (id) sender {
-	
+	[kernel.viewControllersManager openSearchViewController];
 }
 
 - (void) openIncomeAction: (id) sender {

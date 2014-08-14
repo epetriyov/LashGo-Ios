@@ -43,6 +43,7 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	_titleBarView = [TitleBarView titleBarViewWithLeftButton: cardsButton
 												 rightButton: incomeButton
 												searchButton: searchButton];
+	_titleBarView.titleLabel.text = @"ChecksTitle".commonLocalizedString;
 	[self.view addSubview: _titleBarView];
 	
 	UITableView *tableView = [[UITableView alloc] initWithFrame: self.contentFrame style: UITableViewStylePlain];
@@ -72,7 +73,7 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 }
 
 - (void) openSearchAction: (id) sender {
-	
+	[kernel.viewControllersManager openSearchViewController];
 }
 
 - (void) openIncomeAction: (id) sender {
