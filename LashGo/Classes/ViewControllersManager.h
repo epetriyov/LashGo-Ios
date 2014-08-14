@@ -9,6 +9,7 @@
 #import "RootNavigationController.h"
 
 #import "CheckCardViewController.h"
+#import "CheckListViewController.h"
 
 #import "LoginViewController.h"
 
@@ -32,12 +33,14 @@
 @property (nonatomic, readonly) RootNavigationController *rootNavigationController;
 
 @property (nonatomic, readonly) CheckCardViewController *checkCardViewController;
+@property (nonatomic, readonly) CheckListViewController *checkListViewController;
 
 - (id) initWithKernel: (Kernel *) theKernel;
 
 - (void) returnToPreviousViewController;
 
 - (void) openCheckCardViewController;
+- (void) openCheckListViewController;
 - (void) openLoginViewController;
 
 @end

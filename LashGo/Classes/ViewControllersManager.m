@@ -26,6 +26,7 @@
         kernel = theKernel;
 		
 		_checkCardViewController =	[self createViewControllerOfClass: [CheckCardViewController class]];
+		_checkListViewController =	[self createViewControllerOfClass: [CheckListViewController class]];
 		_loginViewController =		[self createViewControllerOfClass: [LoginViewController class]];
 		
 		startViewController = [self createViewControllerOfClass: [StartViewController class]];
@@ -74,7 +75,11 @@
 #pragma mark -
 
 - (void) openCheckCardViewController {
-	[self openViewController: _checkCardViewController animated: YES];
+	[self openViewControllerAndMakeItFirst: _checkCardViewController animated: YES];
+}
+
+- (void) openCheckListViewController {
+	[self openViewControllerAndMakeItFirst: _checkListViewController animated: YES];
 }
 
 - (void) openLoginViewController {

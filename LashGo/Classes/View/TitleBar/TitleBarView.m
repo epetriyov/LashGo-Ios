@@ -187,29 +187,29 @@
 	return titleBar;
 }
 
-+ (TitleBarView *) titleBarViewWithSearchButtonAndRightButton {
++ (TitleBarView *) titleBarViewWithLeftButton: (UIButton *) leftButton
+								  rightButton: (UIButton *) rightButton
+								 searchButton: (UIButton *) searchButton {
 	TitleBarView *titleBar = [TitleBarView titleBarView];
 	
 	titleBar.backButton.alpha = 0;
 	
-	UIButton *rightButton = [[ViewFactory sharedFactory] titleBarRightIncomeButtonWithTarget: nil action: nil];
-	float capX = 3;
+	CGFloat capX = 5;
+	CGFloat centerY = CGRectGetMidY(titleBar.contentFrame);
 	
-	rightButton.frameX = titleBar.frame.size.width - (rightButton.frame.size.width + capX);
-	rightButton.centerY = CGRectGetMidY(titleBar.contentFrame);
+	leftButton.frameX = capX;
+	leftButton.centerY = centerY;
+	[titleBar addSubview: leftButton];
 	
+	rightButton.frameX = titleBar.frame.size.width - (rightButton.frame.size.width + capX * 2);
+	rightButton.centerY = centerY;
 	[titleBar addSubview: rightButton];
 	
 	titleBar -> rightButton = rightButton;
 	
-	UIButton *searchButton = [[ViewFactory sharedFactory] titleBarRightSearchButtonWithTarget: nil action: nil];
-	
-	searchButton.frameX = rightButton.frame.origin.x - (searchButton.frame.size.width + capX);
+	searchButton.frameX = rightButton.frame.origin.x - (searchButton.frame.size.width + capX * 2);
 	searchButton.centerY = rightButton.center.y;
-	
 	[titleBar addSubview: searchButton];
-	
-	titleBar -> _searchButton = searchButton;
 	
 	return titleBar;
 }

@@ -55,6 +55,7 @@
 		845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 845D85BB1902AA00004E10AB /* URLConnectionManager.m */; };
 		8491557A1907FC78008D9120 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 849155791907FC78008D9120 /* Common.m */; };
 		8491557E19080301008D9120 /* RootNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8491557D19080301008D9120 /* RootNavigationController.m */; };
+		849DD0C3199C9D5800DC86F6 /* CheckListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DD0C2199C9D5800DC86F6 /* CheckListTableViewCell.m */; };
 		84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6240A1998F4CD003BC2F1 /* Storage.m */; };
 		84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E624101998FBAD003BC2F1 /* ChecksManager.m */; };
 		84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B2196C226A0021D417 /* CheckCardViewController.m */; };
@@ -197,6 +198,8 @@
 		849155791907FC78008D9120 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		8491557C19080301008D9120 /* RootNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootNavigationController.h; sourceTree = "<group>"; };
 		8491557D19080301008D9120 /* RootNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootNavigationController.m; sourceTree = "<group>"; };
+		849DD0C1199C9D5800DC86F6 /* CheckListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckListTableViewCell.h; sourceTree = "<group>"; };
+		849DD0C2199C9D5800DC86F6 /* CheckListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckListTableViewCell.m; sourceTree = "<group>"; };
 		84E624091998F4CD003BC2F1 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
 		84E6240A1998F4CD003BC2F1 /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
 		84E6240F1998FBAD003BC2F1 /* ChecksManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChecksManager.h; sourceTree = "<group>"; };
@@ -608,6 +611,8 @@
 			children = (
 				84F8E8A1199B5C580054C9F8 /* CheckCardCollectionCell.h */,
 				84F8E8A2199B5C580054C9F8 /* CheckCardCollectionCell.m */,
+				849DD0C1199C9D5800DC86F6 /* CheckListTableViewCell.h */,
+				849DD0C2199C9D5800DC86F6 /* CheckListTableViewCell.m */,
 				84F8E8A3199B5C580054C9F8 /* CheckDetailView.h */,
 				84F8E8A4199B5C580054C9F8 /* CheckDetailView.m */,
 				84F8E8A5199B5C580054C9F8 /* CircleGradientLayer.h */,
@@ -853,6 +858,7 @@
 				84F8E8AC199BA7620054C9F8 /* CheckListViewController.m in Sources */,
 				84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */,
 				8406255E1930BB850067C1CA /* LGComment.m in Sources */,
+				849DD0C3199C9D5800DC86F6 /* CheckListTableViewCell.m in Sources */,
 				84F8E8A9199B5C580054C9F8 /* CircleGradientLayer.m in Sources */,
 				8491557A1907FC78008D9120 /* Common.m in Sources */,
 				840625761930D1AA0067C1CA /* LGSubscription.m in Sources */,

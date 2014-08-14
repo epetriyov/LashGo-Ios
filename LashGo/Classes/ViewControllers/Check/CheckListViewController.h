@@ -8,6 +8,8 @@
 
 #import "TitleBarViewController.h"
 
-@interface CheckListViewController : TitleBarViewController
+@interface CheckListViewController : TitleBarViewController <UITableViewDataSource, UITableViewDelegate>
+
+- (void) refresh;
 
 @end

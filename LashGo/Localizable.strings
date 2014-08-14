@@ -19,9 +19,15 @@
 "AlertErrorTitle" = "Ошибка";
 "AlertLogoutTitle" = "Выход";
 "AlertLogoutMessage" = "Вы действительно хотите выйти?";
+
 //StartViewController
 "StartViewControllerStartButtonTitle" = "Начать";
 "StartViewControllerLoginButtonTitle" = "Войти";
+
+//Checks
+"ChecksActiveHeaderTitle" = "Активные";
+"ChecksVoteHeaderTitle" = "Идет голосование";
+"ChecksClosedHeaderTitle" = "Завершенные";
 
 "Отмена" = "Отмена";
 "Поиск" = "Поиск";

@@ -13,6 +13,7 @@
 #import "Kernel.h"
 
 #import "LGCheck.h"
+#import "ViewFactory.h"
 
 @interface CheckCardViewController () {
 	UICollectionView __weak *_collectionView;
@@ -26,7 +27,15 @@
 	[super loadView];
 	
 	[_titleBarView removeFromSuperview];
-	_titleBarView = [TitleBarView titleBarViewWithSearchButtonAndRightButton];
+	UIButton *listButton = [[ViewFactory sharedFactory] titleBarCheckListButtonWithTarget: self
+																				   action: @selector(switchToListAction:)];
+	UIButton *searchButton = [[ViewFactory sharedFactory] titleBarRightSearchButtonWithTarget: self
+																					   action: @selector(openSearchAction:)];
+	UIButton *incomeButton = [[ViewFactory sharedFactory] titleBarRightIncomeButtonWithTarget: self
+																					   action: @selector(openIncomeAction:)];
+	_titleBarView = [TitleBarView titleBarViewWithLeftButton: listButton
+												 rightButton: incomeButton
+												searchButton: searchButton];
 	[self.view addSubview: _titleBarView];
 	
 	self.view.backgroundColor = [UIColor colorWithRed: 0.16 green: 0.18 blue: 0.23 alpha:1.0];
@@ -53,6 +62,18 @@
 
 - (void) refresh {
 	[_collectionView reloadData];
+}
+
+- (void) switchToListAction: (id) sender {
+	[kernel.checksManager openCheckListViewController];
+}
+
+- (void) openSearchAction: (id) sender {
+	
+}
+
+- (void) openIncomeAction: (id) sender {
+	
 }
 
 #pragma mark - UICollectionViewDataSource implementation

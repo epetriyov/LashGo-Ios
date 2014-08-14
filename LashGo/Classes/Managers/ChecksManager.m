@@ -35,7 +35,16 @@
 
 - (void) openCheckCardViewController {
 	[_viewControllersManager openCheckCardViewController];
-	[_dataProvider checks];
+	if ([_kernel.storage.checks count] <= 0) {
+		[_dataProvider checks];
+	}
+}
+
+- (void) openCheckListViewController {
+	[_viewControllersManager openCheckListViewController];
+	if ([_kernel.storage.checks count] <= 0) {
+		[_dataProvider checks];
+	}
 }
 
 @end
