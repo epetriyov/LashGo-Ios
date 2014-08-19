@@ -22,11 +22,12 @@
 	[super loadView];
 	
 	[_titleBarView removeFromSuperview];
-	_titleBarView = [TitleBarView titleBarViewWithRightButtonWithText: @"Отмена".commonLocalizedString
+	TitleBarView *tbView = [TitleBarView titleBarViewWithRightButtonWithText: @"Отмена".commonLocalizedString
 													   searchDelegate: self];
-	[_titleBarView.rightButton addTarget: self action: @selector(backAction:)
+	[tbView.rightButton addTarget: self action: @selector(backAction:)
 					   forControlEvents: UIControlEventTouchUpInside];
-	[self.view addSubview: _titleBarView];
+	[self.view addSubview: tbView];
+	_titleBarView = tbView;
 	
 	float offsetY = self.contentFrame.origin.y;
 	

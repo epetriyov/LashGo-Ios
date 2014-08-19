@@ -41,7 +41,7 @@
 		
 		rootNavigationController = [[RootNavigationController alloc] initWithRootViewController: startViewController];
 		rootNavigationController.navigationBarHidden = YES;
-		rootNavigationController.view.backgroundColor = [UIColor whiteColor];
+		rootNavigationController.view.backgroundColor = [UIColor blackColor];
     }
 	return self;
 }

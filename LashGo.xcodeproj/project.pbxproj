@@ -30,6 +30,7 @@
 		840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406256F1930CE850067C1CA /* LGRegisterInfo.m */; };
 		840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625721930D10E0067C1CA /* LGSessionInfo.m */; };
 		840625761930D1AA0067C1CA /* LGSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625751930D1AA0067C1CA /* LGSubscription.m */; };
+		840B4EB519A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B4EB419A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m */; };
 		840E19ED194B43210023C0F6 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840E19EC194B43210023C0F6 /* Accounts.framework */; };
 		8426F351191A661D00B4E336 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F34E191A661D00B4E336 /* BaseViewController.m */; };
 		8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F350191A661D00B4E336 /* TitleBarViewController.m */; };
@@ -158,6 +159,8 @@
 		840625721930D10E0067C1CA /* LGSessionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSessionInfo.m; sourceTree = "<group>"; };
 		840625741930D1AA0067C1CA /* LGSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSubscription.h; sourceTree = "<group>"; };
 		840625751930D1AA0067C1CA /* LGSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSubscription.m; sourceTree = "<group>"; };
+		840B4EB319A387E700AA6DE1 /* NSDateFormatter+CustomFormats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+CustomFormats.h"; sourceTree = "<group>"; };
+		840B4EB419A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+CustomFormats.m"; sourceTree = "<group>"; };
 		840E19EC194B43210023C0F6 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		8426F34D191A661D00B4E336 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8426F34E191A661D00B4E336 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
@@ -540,6 +543,8 @@
 				8406251419308BB20067C1CA /* CryptoUtils.m */,
 				8406251619308D110067C1CA /* FileManager.h */,
 				8406251719308D110067C1CA /* FileManager.m */,
+				840B4EB319A387E700AA6DE1 /* NSDateFormatter+CustomFormats.h */,
+				840B4EB419A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m */,
 				84001FF61949B4FF004D9D7A /* Singleton.h */,
 				84045AA719224A04006F2F24 /* UIView+CGExtension.h */,
 				84045AA819224A04006F2F24 /* UIView+CGExtension.m */,
@@ -856,6 +861,7 @@
 				840625611930BDF80067C1CA /* LGContent.m in Sources */,
 				840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */,
 				84FD8959194C44E7001139DF /* OAuthCore.m in Sources */,
+				840B4EB519A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m in Sources */,
 				845D85BD1902AA00004E10AB /* URLConnection.m in Sources */,
 				84EB473D1943044C001DEF81 /* StartViewController.m in Sources */,
 				84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */,

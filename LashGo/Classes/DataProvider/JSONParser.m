@@ -9,6 +9,7 @@
 #import "JSONParser.h"
 
 #import "Common.h"
+#import "NSDateFormatter+CustomFormats.h"
 #import "URLConnection.h"
 
 @implementation JSONParser
@@ -89,8 +90,15 @@
 		
 		check.name =		rawCheck[@"name"];
 		check.descr	=		rawCheck[@"description"];
-		check.startDate =	rawCheck[@"startDate"];
+		
+		NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatterWithFullDateFormat];
+		
+		NSString *str =		rawCheck[@"startDate"];
+		check.startDate =	[dateFormatter dateFromString: str];
+		
+		
 		check.duration =	[rawCheck[@"duration"] intValue];
+		check.voteDuration = [rawCheck[@"voteDuration"] intValue];
 		check.photoUrl =	rawCheck[@"photoURL"];
 		
 		[checks addObject: check];

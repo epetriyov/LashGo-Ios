@@ -8,20 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LGCheck : NSObject {
-	int64_t uid;
-	NSString *name;
-	NSString *descr;
-	NSDate *startDate;
-	int32_t duration;
-	NSString *photoUrl;
-}
+@interface LGCheck : NSObject
 
 @property (nonatomic, assign) int64_t uid;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *descr;
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, assign) int32_t duration;
+@property (nonatomic, assign) int32_t voteDuration;
 @property (nonatomic, strong) NSString *photoUrl;
 
 @end

@@ -37,9 +37,10 @@
 	[self.view addSubview: background];
 	_background = background;
 	
-	_titleBarView = [TitleBarView titleBarView];
-	[_titleBarView.backButton addTarget: self action: @selector(backAction:) forControlEvents: UIControlEventTouchUpInside];
-	[self.view addSubview: _titleBarView];
+	TitleBarView *tbView = [TitleBarView titleBarView];
+	[tbView.backButton addTarget: self action: @selector(backAction:) forControlEvents: UIControlEventTouchUpInside];
+	[self.view addSubview: tbView];
+	_titleBarView = tbView;
 	
 //	if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
 ////		work only if navigationBarHidden == NO

@@ -95,18 +95,28 @@ typedef UIColor * (^floatColorBlock)(float);
 - (void) drawInContext:(CGContextRef)ctx {
     float radius=MIN(self.frame.size.width, self.frame.size.height) / 2;// / [UIScreen mainScreen].scale;
 	
-    [self drawGradientInContext:ctx  startingAngle: -M_PI_2 endingAngle:M_PI intRadius:^float(float f) {
+    [self drawGradientInContext:ctx  startingAngle: -M_PI_2 endingAngle: 3*M_PI_2 intRadius:^float(float f) {
         return 0;
     } outRadius:^float(float f) {
         return radius;
     } withGradientBlock:^UIColor *(float f) {
 		
 		//        return [UIColor colorWithHue:f saturation:1 brightness:1 alpha:1];
-        float sr=90, sg=54, sb=255;
-        float er=218, eg=0, eb=255;
-        return [UIColor colorWithRed:(f*sr+(1-f)*er)/255. green:(f*sg+(1-f)*eg)/255. blue:(f*sb+(1-f)*eb)/255. alpha:1];
+        float sr=246, sg=188, sb=87;
+		float mr=237, mg=37, mb=73;
+        float er=255, eg=60, eb=189;
 		
-    } withSubdiv:100 withCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds)) withScale: 1];
+		float k; //Gradient increment koefficient
+		
+		if (f > 0.5) {
+			k = f * 2 - 1;
+			return [UIColor colorWithRed:(k*er+(1-k)*mr)/255. green:(k*eg+(1-k)*mg)/255. blue:(k*eb+(1-k)*mb)/255. alpha:1];
+		} else {
+			k = f * 2;
+			return [UIColor colorWithRed:(k*mr+(1-k)*sr)/255. green:(k*mg+(1-k)*sg)/255. blue:(k*mb+(1-k)*sb)/255. alpha:1];
+		}
+		
+    } withSubdiv:64 withCenter:CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds)) withScale: 1];
 }
 
 //- (void) drawInContext:(CGContextRef)ctx {

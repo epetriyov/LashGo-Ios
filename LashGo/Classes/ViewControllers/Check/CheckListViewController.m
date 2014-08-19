@@ -40,11 +40,12 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 																					   action: @selector(openSearchAction:)];
 	UIButton *incomeButton = [[ViewFactory sharedFactory] titleBarRightIncomeButtonWithTarget: self
 																					   action: @selector(openIncomeAction:)];
-	_titleBarView = [TitleBarView titleBarViewWithLeftButton: cardsButton
+	TitleBarView *tbView = [TitleBarView titleBarViewWithLeftButton: cardsButton
 												 rightButton: incomeButton
 												searchButton: searchButton];
-	_titleBarView.titleLabel.text = @"ChecksTitle".commonLocalizedString;
-	[self.view addSubview: _titleBarView];
+	tbView.titleLabel.text = @"ChecksTitle".commonLocalizedString;
+	[self.view addSubview: tbView];
+	_titleBarView = tbView;
 	
 	UITableView *tableView = [[UITableView alloc] initWithFrame: self.contentFrame style: UITableViewStylePlain];
 	tableView.backgroundColor = [UIColor colorWithRed: 0.92 green: 0.925 blue: 0.93 alpha: 1.0];

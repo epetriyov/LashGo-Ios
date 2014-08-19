@@ -15,11 +15,18 @@ typedef NS_ENUM(ushort, CheckDetailType) {
 };
 
 @interface CheckDetailView : UIView {
-	CircleGradientLayer *_gradientLayer;
+	CALayer *_arcBgLayer;
 	CAShapeLayer *_arcLayer;
 }
 
 @property (nonatomic, assign) CheckDetailType type;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, readonly) CGFloat imageCaps;
+@property (nonatomic, readonly) CGFloat progressLineWidth;
+@property (nonatomic, assign) CGFloat progressValue;
+
+- (instancetype) initWithFrame: (CGRect) frame
+					 imageCaps: (CGFloat) imageCaps
+			 progressLineWidth: (CGFloat) progressLineWidth;
 
 @end

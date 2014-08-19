@@ -19,9 +19,9 @@
 #pragma mark - Properties
 
 - (CGRect) contentFrame {
-	CGFloat offsetY = 20;
+	CGFloat offsetY = 18;
 	CGRect contentFrame = [TitleBarView titleBarRect];
-	contentFrame.origin.y = 20;
+	contentFrame.origin.y = offsetY;
 	contentFrame.size.height -= offsetY;
 	
 	return contentFrame;
@@ -70,7 +70,7 @@
 //	}
 //	return CGRectMake(0, offsetY, [UIScreen mainScreen].bounds.size.width,
 //					  image.size.height);
-	return CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 63);
+	return CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 65);
 }
 
 + (TitleBarView *) titleBarViewWithLogo {
@@ -259,7 +259,7 @@
 
 + (TitleBarView *) titleBarView {
 	TitleBarView *titleBar = [[TitleBarView alloc] initWithFrame: [TitleBarView titleBarRect]];
-	titleBar.backgroundColor = [UIColor colorWithRed:0 green: 0.67 blue: 0.76 alpha: 1.0];
+	titleBar.backgroundColor = [UIColor colorWithRed:0 green: 172.0/255.0 blue: 193.0/255.0 alpha: 1.0];
 	
 	return titleBar;
 }

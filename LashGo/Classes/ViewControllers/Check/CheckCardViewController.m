@@ -35,13 +35,24 @@
 																					   action: @selector(openSearchAction:)];
 	UIButton *incomeButton = [[ViewFactory sharedFactory] titleBarRightIncomeButtonWithTarget: self
 																					   action: @selector(openIncomeAction:)];
-	_titleBarView = [TitleBarView titleBarViewWithLeftButton: listButton
+	TitleBarView *tbView = [TitleBarView titleBarViewWithLeftButton: listButton
 												 rightButton: incomeButton
 												searchButton: searchButton];
-	_titleBarView.titleLabel.text = @"ChecksTitle".commonLocalizedString;
-	[self.view addSubview: _titleBarView];
+	tbView.titleLabel.text = @"ChecksTitle".commonLocalizedString;
+	[self.view addSubview: tbView];
+	_titleBarView = tbView;
 	
-	self.view.backgroundColor = [UIColor colorWithRed: 0.16 green: 0.18 blue: 0.23 alpha:1.0];
+	CAGradientLayer *gradientLayer = [[CAGradientLayer alloc] init];
+	gradientLayer.frame = self.contentFrame;
+	gradientLayer.colors = @[(__bridge id)[UIColor colorWithRed:61.0/255.0
+														  green:66.0/255.0
+														   blue:90.0/255.0 alpha:1.0].CGColor,
+							 (__bridge id)[UIColor colorWithRed:24.0/255.0
+														  green:28.0/255.0
+														   blue:34.0/255.0 alpha:1.0].CGColor];
+//		gradientLayer.startPoint = CGPointMake(0,0.5);
+//		gradientLayer.endPoint = CGPointMake(1,0.5);
+	[self.view.layer insertSublayer: gradientLayer atIndex: 0];
 	
 	UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
 	flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -53,6 +64,7 @@
 														  collectionViewLayout: flowLayout];
 	collectionView.backgroundColor = [UIColor clearColor];
 	collectionView.dataSource = self;
+	collectionView.delegate = self;
 	collectionView.pagingEnabled = YES;
 	[collectionView registerClass: [CheckCardCollectionCell class]
 	   forCellWithReuseIdentifier: kCheckCardCollectionCellReusableId];
@@ -91,13 +103,19 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
 				  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-	DLog(@"New cell degueue");
+	DLog(@"New cell degueue for index: %ld", (long)indexPath.row);
 	CheckCardCollectionCell* newCell = [collectionView dequeueReusableCellWithReuseIdentifier: kCheckCardCollectionCellReusableId
 																		   forIndexPath:indexPath];
 	LGCheck *check = kernel.storage.checks[indexPath.row];
 	newCell.textLabel.text = check.name;
 	newCell.detailTextLabel.text = check.descr;
 	return newCell;
+}
+
+#pragma mark - UICollectionViewDelegate implementation
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+	DLog(@"Cell removed for index: %ld", (long)indexPath.row);
 }
 
 /*

@@ -10,7 +10,4 @@
 
 @implementation LGCheck
 
-@synthesize uid, name, descr, startDate, duration, photoUrl;
-
-
 @end

@@ -17,4 +17,8 @@
 	return self;
 }
 
+- (UIStatusBarStyle) preferredStatusBarStyle {
+	return UIStatusBarStyleDefault;
+}
+
 @end
