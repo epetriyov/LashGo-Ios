@@ -9,11 +9,11 @@
 
 + (UIFont *) fontWithType: (FontType) fontType {
 	switch (fontType) {
-		case FontTypeCheckCardTitle:
+		case FontTypeCheckCardDescription:		return [UIFont fontWithName: kDefaultFontMedium size: 16];
+		case FontTypeCheckCardTitle:			return [UIFont fontWithName: kDefaultFont size: 20];
 		case FontTypeCheckListCellTitle:
 		case FontTypeCheckListHeaderTitle:
 		case FontTypeTitleBarButtons:			return [UIFont fontWithName: kDefaultFont size: 17];
-		case FontTypeCheckCardDescription:
 		case FontTypeCheckListCellDescription:
 		case FontTypeTitleBarLogoDescription:	return [UIFont fontWithName: kDefaultFontCondensedBold size: 9];
 		case FontTypeSegmentedTextControl:

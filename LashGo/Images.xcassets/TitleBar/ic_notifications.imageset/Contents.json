@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "title_bar_income.png"
+      "filename" : "ic_notifications.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "title_bar_income@2x.png"
+      "filename" : "ic_notifications@2x.png"
     }
   ],
   "info" : {

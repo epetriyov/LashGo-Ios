@@ -109,7 +109,7 @@ static ViewFactory *viewFactory = nil;
 }
 
 - (UIButton *) titleBarCheckListButtonWithTarget: (id) target action: (SEL) selector {
-	UIButton *button = [self buttonWithBGImageName: @"title_bar_check_list" target: target action: selector];
+	UIButton *button = [self buttonWithBGImageName: @"ic_switch_feed" target: target action: selector];
 	return button;
 }
 
@@ -126,12 +126,12 @@ static ViewFactory *viewFactory = nil;
 }
 
 - (UIButton *) titleBarRightIncomeButtonWithTarget: (id) target action: (SEL) selector {
-	UIButton *button = [self buttonWithBGImageName: @"title_bar_income" target: target action: selector];
+	UIButton *button = [self buttonWithBGImageName: @"ic_notifications" target: target action: selector];
 	return button;
 }
 
 - (UIButton *) titleBarRightSearchButtonWithTarget: (id) target action: (SEL) selector {
-	UIButton *button = [self buttonWithBGImageName: @"title_bar_search" target: target action: selector];
+	UIButton *button = [self buttonWithBGImageName: @"ic_search" target: target action: selector];
 	return button;
 }
 

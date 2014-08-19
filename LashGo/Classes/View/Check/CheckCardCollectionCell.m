@@ -43,10 +43,11 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		
 		offsetY += _cv.frame.size.height + 23;
 		
-		CGFloat descrHeight = 60;
+		CGFloat descrHeight = 69;
 		
-		_detailTextLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, self.contentView.frame.size.height - descrHeight, self.contentView.frame.size.width, descrHeight)];
+		_detailTextLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.contentView.frame.size.width, descrHeight)];
 		_detailTextLabel.font = [FontFactory fontWithType: FontTypeCheckCardDescription];
+		_detailTextLabel.numberOfLines = 3;
 		_detailTextLabel.textAlignment = NSTextAlignmentCenter;
 		_detailTextLabel.textColor = [FontFactory fontColorForType: FontTypeCheckCardDescription];
 		_detailTextLabel.backgroundColor = [UIColor clearColor];

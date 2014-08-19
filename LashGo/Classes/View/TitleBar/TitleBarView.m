@@ -199,21 +199,19 @@
 	
 	titleBar.backButton.alpha = 0;
 	
-	CGFloat capX = 5;
 	CGFloat centerY = CGRectGetMidY(titleBar.contentFrame);
 	
-	leftButton.frameX = capX;
 	leftButton.centerY = centerY;
 	[titleBar addSubview: leftButton];
 	
-	rightButton.frameX = titleBar.frame.size.width - (rightButton.frame.size.width + capX * 2);
+	rightButton.frameX = titleBar.frame.size.width - (rightButton.frame.size.width);
 	rightButton.centerY = centerY;
 	[titleBar addSubview: rightButton];
 	
 	titleBar -> rightButton = rightButton;
 	
-	searchButton.frameX = rightButton.frame.origin.x - (searchButton.frame.size.width + capX * 2);
-	searchButton.centerY = rightButton.center.y;
+	searchButton.frameX = rightButton.frame.origin.x - (searchButton.frame.size.width);
+	searchButton.centerY = centerY;
 	[titleBar addSubview: searchButton];
 	
 	return titleBar;

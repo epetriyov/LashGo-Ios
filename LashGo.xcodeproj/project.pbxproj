@@ -32,6 +32,10 @@
 		840625761930D1AA0067C1CA /* LGSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625751930D1AA0067C1CA /* LGSubscription.m */; };
 		840B4EB519A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B4EB419A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m */; };
 		840E19ED194B43210023C0F6 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840E19EC194B43210023C0F6 /* Accounts.framework */; };
+		841C624119A397ED00BAEDBB /* TaskbarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C623A19A397ED00BAEDBB /* TaskbarManager.m */; };
+		841C624219A397ED00BAEDBB /* Taskbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C623D19A397ED00BAEDBB /* Taskbar.m */; };
+		841C624319A397ED00BAEDBB /* TaskbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C623F19A397ED00BAEDBB /* TaskbarButton.m */; };
+		841C624419A397ED00BAEDBB /* TaskbarButtonLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 841C624019A397ED00BAEDBB /* TaskbarButtonLocalizable.strings */; };
 		8426F351191A661D00B4E336 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F34E191A661D00B4E336 /* BaseViewController.m */; };
 		8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F350191A661D00B4E336 /* TitleBarViewController.m */; };
 		8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F356191A6F6400B4E336 /* TitleBarView.m */; };
@@ -162,6 +166,13 @@
 		840B4EB319A387E700AA6DE1 /* NSDateFormatter+CustomFormats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+CustomFormats.h"; sourceTree = "<group>"; };
 		840B4EB419A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+CustomFormats.m"; sourceTree = "<group>"; };
 		840E19EC194B43210023C0F6 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		841C623919A397ED00BAEDBB /* TaskbarManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskbarManager.h; sourceTree = "<group>"; };
+		841C623A19A397ED00BAEDBB /* TaskbarManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskbarManager.m; sourceTree = "<group>"; };
+		841C623C19A397ED00BAEDBB /* Taskbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Taskbar.h; sourceTree = "<group>"; };
+		841C623D19A397ED00BAEDBB /* Taskbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Taskbar.m; sourceTree = "<group>"; };
+		841C623E19A397ED00BAEDBB /* TaskbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskbarButton.h; sourceTree = "<group>"; };
+		841C623F19A397ED00BAEDBB /* TaskbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskbarButton.m; sourceTree = "<group>"; };
+		841C624019A397ED00BAEDBB /* TaskbarButtonLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = TaskbarButtonLocalizable.strings; sourceTree = "<group>"; };
 		8426F34D191A661D00B4E336 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8426F34E191A661D00B4E336 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		8426F34F191A661D00B4E336 /* TitleBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBarViewController.h; sourceTree = "<group>"; };
@@ -373,6 +384,28 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		841C623819A397ED00BAEDBB /* TaskBar */ = {
+			isa = PBXGroup;
+			children = (
+				841C623919A397ED00BAEDBB /* TaskbarManager.h */,
+				841C623A19A397ED00BAEDBB /* TaskbarManager.m */,
+				841C623B19A397ED00BAEDBB /* UI */,
+			);
+			path = TaskBar;
+			sourceTree = "<group>";
+		};
+		841C623B19A397ED00BAEDBB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				841C623C19A397ED00BAEDBB /* Taskbar.h */,
+				841C623D19A397ED00BAEDBB /* Taskbar.m */,
+				841C623E19A397ED00BAEDBB /* TaskbarButton.h */,
+				841C623F19A397ED00BAEDBB /* TaskbarButton.m */,
+				841C624019A397ED00BAEDBB /* TaskbarButtonLocalizable.strings */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		8426F34C191A661D00B4E336 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,6 +420,7 @@
 		8426F353191A6E8100B4E336 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				841C623819A397ED00BAEDBB /* TaskBar */,
 				84F8E8A0199B5C580054C9F8 /* Check */,
 				8426F354191A6F6400B4E336 /* TitleBar */,
 				8426F35B191A754200B4E336 /* FontFactory.h */,
@@ -815,6 +849,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841C624419A397ED00BAEDBB /* TaskbarButtonLocalizable.strings in Resources */,
 				845D858919029EB0004E10AB /* InfoPlist.strings in Resources */,
 				84FA06891961A15A006A72AE /* Localizable.strings in Resources */,
 				845D859119029EB0004E10AB /* Images.xcassets in Resources */,
@@ -850,6 +885,7 @@
 				845D858F19029EB0004E10AB /* AppDelegate.m in Sources */,
 				8406251819308D110067C1CA /* FileManager.m in Sources */,
 				8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */,
+				841C624219A397ED00BAEDBB /* Taskbar.m in Sources */,
 				84FD8962194C4684001139DF /* TWSignedRequest.m in Sources */,
 				84F8AE75198FB4E7009EC5A6 /* LGSocialInfo.m in Sources */,
 				8406251519308BB20067C1CA /* CryptoUtils.m in Sources */,
@@ -877,6 +913,7 @@
 				8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */,
 				84F8E8AC199BA7620054C9F8 /* CheckListViewController.m in Sources */,
 				84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */,
+				841C624319A397ED00BAEDBB /* TaskbarButton.m in Sources */,
 				8406255E1930BB850067C1CA /* LGComment.m in Sources */,
 				849DD0C3199C9D5800DC86F6 /* CheckListTableViewCell.m in Sources */,
 				84F8E8A9199B5C580054C9F8 /* CircleGradientLayer.m in Sources */,
@@ -889,6 +926,7 @@
 				84F8E89D199A2DB00054C9F8 /* AlertViewManager.m in Sources */,
 				8406256A1930CB0A0067C1CA /* LGPhoto.m in Sources */,
 				84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */,
+				841C624119A397ED00BAEDBB /* TaskbarManager.m in Sources */,
 				845D85BC1902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m in Sources */,
 				845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */,
 				840625641930C8EF0067C1CA /* LGgcmRegistrationId.m in Sources */,
