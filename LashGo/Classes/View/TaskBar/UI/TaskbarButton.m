@@ -16,7 +16,7 @@
 													  kResourceSuffixSelected, imageExt]]
 					forState: UIControlStateSelected];
 	[self setBackgroundImage: [UIImage imageNamed: [imageName stringByAppendingFormat: @"%@%@",
-													  kResourceSuffixSelected, imageExt]]
+													  kResourceSuffixHighlighted, imageExt]]
 					forState: UIControlStateHighlighted];
 	self.frame = CGRectMake(0, 0, image.size.width, image.size.height);
 }
@@ -47,7 +47,7 @@
 	if (self = [super init]) {
 		type = buttonType;
 		
-		[self loadImagesWithName: [NSString stringWithFormat: @"taskbar_btn_%d", buttonType]];
+		[self loadImagesWithName: [NSString stringWithFormat: @"tb_btn_%d", buttonType]];
 		
 		NSString *title = [self localizedTitleForType: buttonType];
 		if (title != nil) {

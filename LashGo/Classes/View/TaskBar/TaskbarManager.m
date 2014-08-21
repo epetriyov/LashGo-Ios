@@ -1,10 +1,9 @@
 #import "TaskbarManager.h"
+#import "UIView+CGExtension.h"
 #import "ViewFactory.h"
 
 #define kAnimationDuration 0.5
 #define kTaskbarHeight 49
-
-static TaskbarManager *taskbarManager;
 
 @interface TaskbarManager (private)
 
@@ -20,9 +19,11 @@ static TaskbarManager *taskbarManager;
 @synthesize visibleTaskbar;
 
 + (TaskbarManager *) sharedManager {
-	if (taskbarManager == nil) {
+	static TaskbarManager *taskbarManager = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
 		taskbarManager = [ [TaskbarManager alloc] init];
-	}
+	});
 	return taskbarManager;
 }
 
@@ -30,7 +31,7 @@ static TaskbarManager *taskbarManager;
 	if (self = [super init]) {
 		taskbars = [ [NSMutableArray alloc] init];
 		
-		taskbarBackgroundImage = [[ViewFactory sharedFactory].taskbarBackgroundImage retain];
+		taskbarBackgroundView = [ViewFactory sharedFactory].taskbarBackgroundView;
 		
 		usedButtonTypesStack = [ [NSMutableArray alloc] init];
 		
@@ -39,29 +40,17 @@ static TaskbarManager *taskbarManager;
 	return nil;
 }
 
-- (void) dealloc {
-	self.delegate = nil;
-	self.visibleTaskbar = nil;
-	
-	[taskbars release];
-	[taskbarBackgroundImage release];
-	[usedButtonTypesStack release];
-	
-	[super dealloc];
-}
-
 - (CGFloat) taskbarHeight {
-	return taskbarBackgroundImage.size.height;
+	return taskbarBackgroundView.frame.size.height;
 }
 
 - (Taskbar *) taskbarWithButtonTypes: (NSArray *) buttonTypes {
     Taskbar *taskbar;
-    taskbar = [ [ [Taskbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, taskbarBackgroundImage.size.height)] autorelease];
+    taskbar = [[Taskbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, taskbarBackgroundView.frame.size.height)];
 	taskbar.delegate = self;
-	UIImageView *imageView = [[UIImageView alloc] initWithImage: taskbarBackgroundImage];
-	imageView.contentMode = UIViewContentModeScaleToFill;
-	[taskbar setBackgroundView: imageView];
-	[imageView release];
+	
+	taskbarBackgroundView.frameWidth = taskbar.frame.size.width;
+	[taskbar setBackgroundView: taskbarBackgroundView];
 	
 	[taskbar setButtonsTypes: buttonTypes];
 	

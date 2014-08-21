@@ -42,12 +42,7 @@
 - (void) backgroundLoading {
 	@autoreleasepool {
 		[self loadContents];
-		
-		[self performSelectorOnMainThread: @selector(loadingIsFinished) withObject: nil waitUntilDone: NO];
 	}
-}
-
-- (void) loadingIsFinished {
 }
 
 - (void) load {
@@ -61,13 +56,6 @@
 @synthesize delegate;
 
 #pragma mark Standard overrides
-
-- (void) dealloc {
-	[buttonsTypes release];
-	[buttons release];
-	
-	[super dealloc];
-}
 
 - (id) initWithFrame: (CGRect) theFrame {
 	if (self = [super initWithFrame: theFrame]) {
@@ -90,10 +78,7 @@
 }
 
 - (void) setTypes: (NSArray *) btnTypes {
-	if (buttonsTypes != btnTypes) {
-		[buttonsTypes release];
-		buttonsTypes = [btnTypes retain];
-	}
+	buttonsTypes = btnTypes;
 	[self loadContents];
 }
 
@@ -143,9 +128,7 @@
 }
 
 - (void) taskbarButtonPressed: (UIButton *) sender {
-	if ([self.delegate respondsToSelector: @selector(taskbar:didSelectedButton:)] == YES) {
-		[self.delegate taskbar:self didSelectedButton: (TaskbarButton*)sender];
-	}
+	[self.delegate taskbar:self didSelectedButton: (TaskbarButton*)sender];
 }
 
 @end

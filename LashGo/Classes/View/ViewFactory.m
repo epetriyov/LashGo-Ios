@@ -10,7 +10,7 @@ static ViewFactory *viewFactory = nil;
 #define kResourceSuffixSelected @"_sel"
 #define kResourceSuffixBackground @"_bg"
 
-@dynamic statusBarPreferredColor, titleBarBackgroundImage, titleBarLogoImage;
+@dynamic statusBarPreferredColor, taskbarBackgroundView, titleBarBackgroundImage, titleBarLogoImage;
 
 + (ViewFactory *) sharedFactory {
 	if (viewFactory == nil) {
@@ -27,6 +27,12 @@ static ViewFactory *viewFactory = nil;
 
 - (UIColor *) statusBarPreferredColor {
 	return [UIColor blackColor];
+}
+
+- (UIView *) taskbarBackgroundView {
+	UIView *view = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 1, 49)];
+	view.backgroundColor = [UIColor colorWithWhite: 226.0/255.0 alpha: 1.0];
+	return view;
 }
 
 - (UIImage *) titleBarBackgroundImage {

@@ -11,6 +11,7 @@
 	switch (fontType) {
 		case FontTypeCheckCardDescription:		return [UIFont fontWithName: kDefaultFontMedium size: 16];
 		case FontTypeCheckCardTitle:			return [UIFont fontWithName: kDefaultFont size: 20];
+		case FontTypeTaskbarButtons:			return [UIFont fontWithName: kDefaultFont size: 10];
 		case FontTypeCheckListCellTitle:
 		case FontTypeCheckListHeaderTitle:
 		case FontTypeTitleBarButtons:			return [UIFont fontWithName: kDefaultFont size: 17];
@@ -27,9 +28,12 @@
 
 + (UIColor *) fontColorForType: (FontType) fontType {
 	switch (fontType) {
+		case FontTypeTaskbarButtons:		return [UIColor colorWithRed:141.0/255.0
+															 green:144.0/255.0
+															  blue:144.0/255.0 alpha:1.0];
 		case FontTypeCheckCardDescription:
 		case FontTypeCheckCardTitle:
-		case FontTypeTitleBarButtons:				return [UIColor whiteColor];
+		case FontTypeTitleBarButtons:		return [UIColor whiteColor];
 		default: return [UIColor blackColor];
 	}
 	return nil;

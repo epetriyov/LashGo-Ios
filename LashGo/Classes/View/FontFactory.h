@@ -7,6 +7,7 @@ typedef NS_ENUM(NSInteger, FontType) {
 	FontTypeCheckListHeaderTitle,
 	FontTypeSegmentedTextControl,
 	FontTypeSegmentedTextControlSelected,
+	FontTypeTaskbarButtons,
 	FontTypeTitleBarButtons,
 	FontTypeTitleBarLogoDescription,
 	FontTypeTitleBarTitle

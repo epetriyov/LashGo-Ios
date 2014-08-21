@@ -5,6 +5,7 @@
 }
 
 @property (nonatomic, readonly) UIColor *statusBarPreferredColor;
+@property (nonatomic, readonly) UIView *taskbarBackgroundView;
 @property (nonatomic, readonly) UIImage *titleBarBackgroundImage;
 @property (nonatomic, readonly) UIImage *titleBarLogoImage;
 

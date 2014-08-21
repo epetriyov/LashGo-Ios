@@ -1,10 +1,10 @@
 typedef NS_ENUM(short, TaskbarButtonType) {
 	TaskbarButtonTypeNone = 0,
-	TaskbarButtonTypeKeeper = 1,
-	TaskbarButtonTypeInfo = 2,
-	TaskbarButtonTypeOffer = 3,
-	TaskbarButtonTypeSettings = 4,
-	TaskbarButtonTypeSearch = 5
+	TaskbarButtonTypeTask = 1,
+	TaskbarButtonTypeFollow = 2,
+	TaskbarButtonTypeNews = 3,
+	TaskbarButtonTypeProfile = 4,
+	TaskbarButtonTypeMore = 5
 };
 
 @protocol TaskbarButtonDelegate;

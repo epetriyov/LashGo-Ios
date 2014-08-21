@@ -3,11 +3,7 @@
 @protocol TaskbarManagerDelegate;
 
 @interface TaskbarManager : NSObject <TaskbarDelegate> {
-	id<TaskbarManagerDelegate> delegate;
-	
-	UIImage *taskbarBackgroundImage;
-	
-	Taskbar *visibleTaskbar;
+	UIView *taskbarBackgroundView;
 	
 	NSMutableArray *taskbars;
 	
@@ -16,7 +12,7 @@
     TaskbarButtonType lastHighlightedButtonType;
 }
 
-@property (nonatomic, assign) id<TaskbarManagerDelegate> delegate;
+@property (nonatomic, weak) id<TaskbarManagerDelegate> delegate;
 @property (nonatomic, retain) Taskbar *visibleTaskbar;
 
 + (TaskbarManager *) sharedManager;

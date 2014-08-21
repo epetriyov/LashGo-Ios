@@ -3,14 +3,12 @@
 @protocol TaskbarDelegate;
 
 @interface Taskbar : UIView {
-	id<TaskbarDelegate> delegate;
-	
 	UIView *backgroundView;
 	NSArray *buttonsTypes;
 	NSMutableArray *buttons;
 }
 
-@property (nonatomic, assign) id<TaskbarDelegate> delegate;
+@property (nonatomic, weak) id<TaskbarDelegate> delegate;
 
 - (void) setBackgroundView: (UIView *) bgView;
 - (void) setButtonsTypes: (NSArray *) btnTypes;
