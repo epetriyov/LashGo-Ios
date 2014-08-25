@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "TitleBarViewController.h"
+#import "TaskBarViewController.h"
 
-@interface CheckListViewController : TitleBarViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CheckListViewController : TaskBarViewController <UITableViewDataSource, UITableViewDelegate>
 
 - (void) refresh;
 

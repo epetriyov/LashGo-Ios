@@ -47,8 +47,15 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	[self.view addSubview: tbView];
 	_titleBarView = tbView;
 	
-	UITableView *tableView = [[UITableView alloc] initWithFrame: self.contentFrame style: UITableViewStylePlain];
+	CGRect contentFrame = self.contentFrame;
+	
+	CGRect tableFrame = self.view.frame;
+	tableFrame.origin.y += contentFrame.origin.y;
+	tableFrame.size.height -= contentFrame.origin.y;
+	
+	UITableView *tableView = [[UITableView alloc] initWithFrame: tableFrame style: UITableViewStylePlain];
 	tableView.backgroundColor = [UIColor colorWithRed: 0.92 green: 0.925 blue: 0.93 alpha: 1.0];
+	tableView.contentInset = UIEdgeInsetsMake(0, 0, tableFrame.size.height - contentFrame.size.height, 0);
 	tableView.dataSource = self;
 	tableView.delegate = self;
 	tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

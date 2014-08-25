@@ -69,6 +69,7 @@
 		84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */; };
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
 		84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC84F1197D4666001FA1F6 /* SearchViewController.m */; };
+		84F5003B19AB6C1400DC21C7 /* TaskBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5003A19AB6C1400DC21C7 /* TaskBarViewController.m */; };
 		84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F65A8E19827CFE003BF42A /* URLSecurity.m */; };
 		84F8AE75198FB4E7009EC5A6 /* LGSocialInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AE74198FB4E7009EC5A6 /* LGSocialInfo.m */; };
 		84F8E89D199A2DB00054C9F8 /* AlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E89C199A2DB00054C9F8 /* AlertViewManager.m */; };
@@ -233,6 +234,8 @@
 		84EB473C1943044C001DEF81 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		84EC84F0197D4666001FA1F6 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		84EC84F1197D4666001FA1F6 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		84F5003919AB6C1400DC21C7 /* TaskBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskBarViewController.h; sourceTree = "<group>"; };
+		84F5003A19AB6C1400DC21C7 /* TaskBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskBarViewController.m; sourceTree = "<group>"; };
 		84F65A8D19827CFE003BF42A /* URLSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLSecurity.h; sourceTree = "<group>"; };
 		84F65A8E19827CFE003BF42A /* URLSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLSecurity.m; sourceTree = "<group>"; };
 		84F8AE73198FB4E7009EC5A6 /* LGSocialInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSocialInfo.h; sourceTree = "<group>"; };
@@ -413,6 +416,8 @@
 				8426F34E191A661D00B4E336 /* BaseViewController.m */,
 				8426F34F191A661D00B4E336 /* TitleBarViewController.h */,
 				8426F350191A661D00B4E336 /* TitleBarViewController.m */,
+				84F5003919AB6C1400DC21C7 /* TaskBarViewController.h */,
+				84F5003A19AB6C1400DC21C7 /* TaskBarViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -898,6 +903,7 @@
 				840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */,
 				84FD8959194C44E7001139DF /* OAuthCore.m in Sources */,
 				840B4EB519A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m in Sources */,
+				84F5003B19AB6C1400DC21C7 /* TaskBarViewController.m in Sources */,
 				845D85BD1902AA00004E10AB /* URLConnection.m in Sources */,
 				84EB473D1943044C001DEF81 /* StartViewController.m in Sources */,
 				84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */,

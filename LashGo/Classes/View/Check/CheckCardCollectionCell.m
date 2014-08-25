@@ -36,10 +36,19 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		offsetY += _textLabel.frame.size.height + 24;
 		
 		float cvOffsetX = 58;
-		_cv = [[CheckDetailView alloc] initWithFrame: CGRectMake(cvOffsetX, offsetY,
-																 self.contentView.frame.size.width - cvOffsetX * 2, 204)
+		
+		UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(cvOffsetX, offsetY,
+																				   self.contentView.frame.size.width - cvOffsetX * 2, 204)];
+		scrollView.clipsToBounds = NO;
+		scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * 2, scrollView.frame.size.height);
+		scrollView.pagingEnabled = YES;
+		scrollView.showsHorizontalScrollIndicator = NO;
+		[self.contentView addSubview: scrollView];
+		
+		_cv = [[CheckDetailView alloc] initWithFrame: CGRectMake(0, 0,
+																 204, 204)
 										   imageCaps: 18 progressLineWidth: 10];
-		[self.contentView addSubview: _cv];
+		[scrollView addSubview: _cv];
 		
 		offsetY += _cv.frame.size.height + 23;
 		

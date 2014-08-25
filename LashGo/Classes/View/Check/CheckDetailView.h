@@ -11,7 +11,8 @@
 typedef NS_ENUM(ushort, CheckDetailType) {
 	CheckDetailTypeOpen,
 	CheckDetailTypeVote,
-	CheckDetailTypeClosed
+	CheckDetailTypeClosed,
+	CheckDetailTypePreview
 };
 
 @interface CheckDetailView : UIView {

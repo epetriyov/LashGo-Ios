@@ -40,6 +40,8 @@
 		_checksManager = [[ChecksManager alloc] initWithKernel: self
 												  dataProvider: _dataProvider
 													 vcManager: viewControllersManager];
+		
+		[TaskbarManager sharedManager].delegate = self;
 	}
 	return self;
 }
@@ -56,6 +58,25 @@
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks {
 	[self.storage updateChecksWith: checks];
 	[self.viewControllersManager.checkCardViewController refresh];
+}
+
+#pragma mark - TaskbarManagerDelegate implementation
+
+- (void) taskbarManager: (TaskbarManager *) manager didPressTaskbarButtonWithType: (TaskbarButtonType) type {
+	switch (type) {
+		case TaskbarButtonTypeFollow:
+			break;
+		case TaskbarButtonTypeMore:
+			break;
+		case TaskbarButtonTypeNews:
+			break;
+		case TaskbarButtonTypeProfile:
+			break;
+		case TaskbarButtonTypeTask:
+			break;
+		default:
+			break;
+	}
 }
 
 @end

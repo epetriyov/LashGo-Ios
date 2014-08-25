@@ -11,8 +11,9 @@
 #import "ChecksManager.h"
 #import "DataProvider.h"
 #import "Storage.h"
+#import "TaskbarManager.h"
 
-@interface Kernel : NSObject <DataProviderDelegate> {
+@interface Kernel : NSObject <DataProviderDelegate, TaskbarManagerDelegate> {
 	ViewControllersManager *viewControllersManager;
 }
 

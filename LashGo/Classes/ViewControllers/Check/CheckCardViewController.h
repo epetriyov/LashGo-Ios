@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "TitleBarViewController.h"
+#import "TaskBarViewController.h"
 
-@interface CheckCardViewController : TitleBarViewController <UICollectionViewDataSource, UICollectionViewDelegate> {
+@interface CheckCardViewController : TaskBarViewController <UICollectionViewDataSource, UICollectionViewDelegate> {
 	UILabel *_titleLabel;
 	UILabel *_descriptionLabel;
 }
