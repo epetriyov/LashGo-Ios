@@ -11,8 +11,7 @@
 typedef NS_ENUM(ushort, CheckDetailType) {
 	CheckDetailTypeOpen,
 	CheckDetailTypeVote,
-	CheckDetailTypeClosed,
-	CheckDetailTypePreview
+	CheckDetailTypeClosed
 };
 
 @interface CheckDetailView : UIView {
@@ -20,6 +19,7 @@ typedef NS_ENUM(ushort, CheckDetailType) {
 	CAShapeLayer *_arcLayer;
 }
 
+@property (nonatomic, assign) BOOL displayPreview;
 @property (nonatomic, assign) CheckDetailType type;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, readonly) CGFloat imageCaps;
@@ -29,5 +29,7 @@ typedef NS_ENUM(ushort, CheckDetailType) {
 - (instancetype) initWithFrame: (CGRect) frame
 					 imageCaps: (CGFloat) imageCaps
 			 progressLineWidth: (CGFloat) progressLineWidth;
+
+- (void) refresh;
 
 @end

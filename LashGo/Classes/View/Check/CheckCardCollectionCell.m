@@ -7,18 +7,29 @@
 //
 
 #import "CheckCardCollectionCell.h"
-#import "CheckDetailView.h"
 #import "FontFactory.h"
 
 NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellReusableId";
 
 @interface CheckCardCollectionCell () {
-	CheckDetailView *_cv;
+	CheckDetailView *_checkView;
+	CheckDetailView *_userPhotoView;
 }
 
 @end
 
 @implementation CheckCardCollectionCell
+
+@dynamic type;
+
+- (CheckDetailType) type {
+	return _checkView.type;
+}
+
+- (void) setType:(CheckDetailType) type {
+	_checkView.type = type;
+	[_checkView refresh];
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -41,16 +52,25 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 																				   self.contentView.frame.size.width - cvOffsetX * 2, 204)];
 		scrollView.clipsToBounds = NO;
 		scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * 2, scrollView.frame.size.height);
+		scrollView.delegate = self;
 		scrollView.pagingEnabled = YES;
 		scrollView.showsHorizontalScrollIndicator = NO;
 		[self.contentView addSubview: scrollView];
 		
-		_cv = [[CheckDetailView alloc] initWithFrame: CGRectMake(0, 0,
-																 204, 204)
-										   imageCaps: 18 progressLineWidth: 10];
-		[scrollView addSubview: _cv];
+		CGRect checkViewFrame = CGRectMake(0, 0, 204, 204);
 		
-		offsetY += _cv.frame.size.height + 23;
+		_checkView = [[CheckDetailView alloc] initWithFrame: checkViewFrame
+												  imageCaps: 18 progressLineWidth: 10];
+		[scrollView addSubview: _checkView];
+		
+		checkViewFrame.origin.x += checkViewFrame.size.width;
+		
+		_userPhotoView = [[CheckDetailView alloc] initWithFrame: checkViewFrame
+													  imageCaps: 18 progressLineWidth: 10];
+		_userPhotoView.displayPreview = YES;
+		[scrollView addSubview: _userPhotoView];
+		
+		offsetY += scrollView.frame.size.height + 23;
 		
 		CGFloat descrHeight = 69;
 		
@@ -74,7 +94,20 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 - (void) updateProgress {
 	static CGFloat a = 0;
 	a += 0.1;
-	_cv.progressValue = a;
+	if (a < 2.0) {
+		_checkView.progressValue = a;
+		_userPhotoView.progressValue = a;
+	}
+}
+
+#pragma mark - UIScrollViewDelegate implementation
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	_checkView.displayPreview = scrollView.contentOffset.x > 0;
+//	if (scrollView.contentOffset.x < scrollView.frame.size.width) {
+		_userPhotoView.displayPreview = scrollView.contentOffset.x < scrollView.frame.size.width;
+//	}
+	
 }
 
 /*

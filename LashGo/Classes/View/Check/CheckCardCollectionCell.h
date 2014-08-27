@@ -6,13 +6,14 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CheckDetailView.h"
 
 extern NSString *const kCheckCardCollectionCellReusableId;
 
-@interface CheckCardCollectionCell : UICollectionViewCell
+@interface CheckCardCollectionCell : UICollectionViewCell <UIScrollViewDelegate>
 
 @property (nonatomic, readonly) UILabel *textLabel;
 @property (nonatomic, readonly) UILabel *detailTextLabel;
+@property (nonatomic, assign) CheckDetailType type;
 
 @end

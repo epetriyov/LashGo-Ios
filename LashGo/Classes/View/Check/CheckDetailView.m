@@ -9,11 +9,37 @@
 #import "CheckDetailView.h"
 #import "ViewFactory.h"
 
+#define kAnimationDuration 0.4
+
+@interface CheckDetailView () {
+	UIView *_drawingView;
+}
+
+@end
+
 @implementation CheckDetailView
 
 @dynamic progressValue;
 
 #pragma mark - Properties
+
+- (void) setDisplayPreview:(BOOL)displayPreview {
+	if (_displayPreview != displayPreview) {
+		if (displayPreview == YES) {
+			[UIView animateWithDuration: kAnimationDuration
+							 animations:^{
+								 _drawingView.alpha = 0;
+							 }];
+		} else {
+			[UIView animateWithDuration: kAnimationDuration
+							 animations:^{
+								 _drawingView.alpha = 1;
+							 }];
+		}
+	}
+	
+	_displayPreview = displayPreview;
+}
 
 - (CGFloat) progressValue {
 	return _arcLayer.strokeEnd;
@@ -60,11 +86,14 @@
 		CGFloat drawingWidth = MIN(frame.size.width, frame.size.height);
 		CGRect drawingFrame = CGRectMake(0, 0, drawingWidth, drawingWidth);
 		
+		_drawingView = [[UIView alloc] initWithFrame: drawingFrame];
+		[self addSubview: _drawingView];
+		
 		UIBezierPath *path = [UIBezierPath bezierPath];
 		
 		CGFloat startOffset = 0.06;
 		
-		[path addArcWithCenter: imageView.center radius: drawingFrame.size.width / 2 - self.progressLineWidth / 2
+		[path addArcWithCenter: _drawingView.center radius: drawingFrame.size.width / 2 - self.progressLineWidth / 2
 					startAngle: -M_PI_2 + startOffset endAngle:3 * M_PI_2 + startOffset clockwise: YES];
 		_arcLayer=[CAShapeLayer layer];
 		_arcLayer.path=path.CGPath;
@@ -75,21 +104,21 @@
 		_arcLayer.lineCap = kCALineCapRound;
 		_arcLayer.frame = drawingFrame;
 		
-		//Configure background for layer
+//		//Configure background for layer
+//		
+//		_arcBgLayer = [[CircleGradientLayer alloc] init];
+//		_arcBgLayer.frame = drawingFrame;
+//		
+////		_arcBgLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor yellowColor].CGColor ];
+////		_arcBgLayer.startPoint = CGPointMake(0,0.5);
+////		_arcBgLayer.endPoint = CGPointMake(1,0.5);
+//		_arcBgLayer.mask = _arcLayer;
+//		
+//		
+//		[self.layer addSublayer: _arcBgLayer];
+//		[_arcBgLayer setNeedsDisplay];
 		
-		_arcBgLayer = [[CircleGradientLayer alloc] init];
-		_arcBgLayer.frame = drawingFrame;
-		
-//		_arcBgLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor yellowColor].CGColor ];
-//		_arcBgLayer.startPoint = CGPointMake(0,0.5);
-//		_arcBgLayer.endPoint = CGPointMake(1,0.5);
-		_arcBgLayer.mask = _arcLayer;
-		
-		
-		[self.layer addSublayer: _arcBgLayer];
-		[_arcBgLayer setNeedsDisplay];
-		//Using arc as a mask instead of adding it as a sublayer.
-		//[self.view.layer addSublayer:arc];
+		[self refresh];
 	}
 	return self;
 }
@@ -101,6 +130,95 @@
 //}
 
 #pragma mark - Methods
+
+- (void) animateFadeIn {
+	CABasicAnimation *bas=[CABasicAnimation animationWithKeyPath:@"opacity"];
+	bas.duration = 0.5;
+	bas.delegate=self;
+	bas.fillMode = kCAFillModeForwards;
+	bas.fromValue = [NSNumber numberWithInteger:0];
+	bas.toValue = [NSNumber numberWithInteger:1];
+	bas.removedOnCompletion = NO;
+//		bas.additive = YES;
+	[_arcBgLayer addAnimation:bas forKey:@"fadeIn"];
+}
+
+- (void) animateFadeOut {
+	CABasicAnimation *bas=[CABasicAnimation animationWithKeyPath:@"opacity"];
+	bas.duration = 0.5;
+	bas.delegate=self;
+	bas.fillMode = kCAFillModeForwards;
+	bas.fromValue=[NSNumber numberWithInteger:1];
+	bas.toValue=[NSNumber numberWithInteger:0];
+	bas.removedOnCompletion = NO;
+//		bas.additive = YES;
+	[_arcBgLayer addAnimation:bas forKey:@"fadeOut"];
+}
+
+- (void) refresh {
+	if (self.type == CheckDetailTypeOpen) {
+		//Configure background for layer
+		if (_arcBgLayer != nil && [_arcBgLayer isKindOfClass: [CircleGradientLayer class]] == NO) {
+			[_arcBgLayer removeFromSuperlayer];
+			_arcBgLayer = nil;
+		}
+		
+		if (_arcBgLayer == nil) {
+			_arcBgLayer = [[CircleGradientLayer alloc] init];
+			_arcBgLayer.frame = _drawingView.bounds;
+			_arcBgLayer.mask = _arcLayer;
+			
+			[_drawingView.layer addSublayer: _arcBgLayer];
+			[_arcBgLayer setNeedsDisplay];
+		}
+	} else if (self.type == CheckDetailTypeVote) {
+		//Configure background for layer
+		if (_arcBgLayer != nil && [_arcBgLayer isKindOfClass: [CircleGradientLayer class]] == YES) {
+			[_arcBgLayer removeFromSuperlayer];
+			_arcBgLayer = nil;
+		}
+		
+		if (_arcBgLayer == nil) {
+			_arcBgLayer = [[CALayer alloc] init];
+			
+			_arcBgLayer.frame = _drawingView.bounds;
+			_arcBgLayer.backgroundColor = [UIColor colorWithRed: 255.0/255.0
+														  green: 94.0/255.0
+														   blue: 124.0/255.0 alpha: 1.0].CGColor;
+			
+			//		_arcBgLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor yellowColor].CGColor ];
+			//		_arcBgLayer.startPoint = CGPointMake(0,0.5);
+			//		_arcBgLayer.endPoint = CGPointMake(1,0.5);
+			_arcBgLayer.mask = _arcLayer;
+			
+			
+			[_drawingView.layer addSublayer: _arcBgLayer];
+			[_arcBgLayer setNeedsDisplay];
+		}
+	} else if (self.type == CheckDetailTypeClosed) {
+		//Configure background for layer
+		if (_arcBgLayer != nil && [_arcBgLayer isKindOfClass: [CircleGradientLayer class]] == YES) {
+			[_arcBgLayer removeFromSuperlayer];
+			_arcBgLayer = nil;
+		}
+		
+		if (_arcBgLayer == nil) {
+			_arcBgLayer = [[CALayer alloc] init];
+			
+			_arcBgLayer.frame = _drawingView.bounds;
+			_arcBgLayer.backgroundColor = [UIColor lightGrayColor].CGColor;
+			
+			//		_arcBgLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor yellowColor].CGColor ];
+			//		_arcBgLayer.startPoint = CGPointMake(0,0.5);
+			//		_arcBgLayer.endPoint = CGPointMake(1,0.5);
+			_arcBgLayer.mask = _arcLayer;
+			
+			
+			[_drawingView.layer addSublayer: _arcBgLayer];
+			[_arcBgLayer setNeedsDisplay];
+		}
+	}
+}
 
 -(void)drawLineAnimation:(CALayer*)layer
 {

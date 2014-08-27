@@ -55,7 +55,7 @@
 	[self.view.layer insertSublayer: gradientLayer atIndex: 0];
 	
 	UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-	flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+	flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
 	flowLayout.itemSize = self.contentFrame.size;
 	flowLayout.minimumInteritemSpacing = 0;
 	flowLayout.minimumLineSpacing = 0;
@@ -109,6 +109,9 @@
 	LGCheck *check = kernel.storage.checks[indexPath.row];
 	newCell.textLabel.text = check.name;
 	newCell.detailTextLabel.text = check.descr;
+	if (indexPath.row == 1) {
+		newCell.type = CheckDetailTypeVote;
+	}
 	return newCell;
 }
 
