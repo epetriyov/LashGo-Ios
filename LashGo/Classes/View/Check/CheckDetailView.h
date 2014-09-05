@@ -14,10 +14,7 @@ typedef NS_ENUM(ushort, CheckDetailType) {
 	CheckDetailTypeClosed
 };
 
-@interface CheckDetailView : UIView {
-	CALayer *_arcBgLayer;
-	CAShapeLayer *_arcLayer;
-}
+@interface CheckDetailView : UIView
 
 @property (nonatomic, assign) BOOL displayPreview;
 @property (nonatomic, assign) CheckDetailType type;

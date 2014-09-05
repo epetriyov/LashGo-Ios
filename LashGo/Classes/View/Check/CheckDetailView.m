@@ -12,6 +12,12 @@
 #define kAnimationDuration 0.4
 
 @interface CheckDetailView () {
+	UIImageView *_imageView;
+	
+	CAShapeLayer *_arcLayer;
+	CALayer *_arcBgLayer;
+	CAShapeLayer *_arcFillLayer;
+	
 	UIView *_drawingView;
 }
 
@@ -42,12 +48,23 @@
 }
 
 - (CGFloat) progressValue {
-	return _arcLayer.strokeEnd;
+	CGFloat progress = 0;
+	if (self.type == CheckDetailTypeOpen) {
+		progress = _arcLayer.strokeEnd;
+	} else if (self.type == CheckDetailTypeVote) {
+		progress = _arcFillLayer.strokeEnd;
+	}
+	return progress;
 }
 
 - (void) setProgressValue:(CGFloat)progressValue {
-	_arcLayer.strokeEnd = progressValue;
-	[_arcLayer setNeedsDisplay];
+	if (self.type == CheckDetailTypeOpen) {
+		_arcLayer.strokeEnd = progressValue;
+		[_arcLayer setNeedsDisplay];
+	} else if (self.type == CheckDetailTypeVote) {
+		_arcFillLayer.strokeEnd = progressValue;
+		[_arcFillLayer setNeedsDisplay];
+	}
 }
 
 #pragma mark - Standard
@@ -71,29 +88,42 @@
 		UIImage *image = [[UIImage alloc] initWithContentsOfFile: pathForResource];
 		_image = [self generateThumbnailForImage: image];
 		
-		UIImageView *imageView = [[UIImageView alloc] initWithImage: _image];
+		_imageView = [[UIImageView alloc] initWithImage: _image];
 		
-		CALayer *imageLayer = imageView.layer;
-        [imageLayer setCornerRadius: imageView.frame.size.width / 2];
+		CALayer *imageLayer = _imageView.layer;
+        [imageLayer setCornerRadius: _imageView.frame.size.width / 2];
 //        [imageLayer setBorderWidth:10];
         [imageLayer setMasksToBounds:YES];
 		
-		imageView.center = CGPointMake(imageView.center.x + self.imageCaps, imageView.center.y + self.imageCaps);
-		[self addSubview: imageView];
+		_imageView.center = CGPointMake(_imageView.center.x + self.imageCaps, _imageView.center.y + self.imageCaps);
+		[self addSubview: _imageView];
 		
 		//Configure shape layer - which user actually see
 		
 		CGFloat drawingWidth = MIN(frame.size.width, frame.size.height);
 		CGRect drawingFrame = CGRectMake(0, 0, drawingWidth, drawingWidth);
+		CGFloat drawingRadius = drawingFrame.size.width / 2 - self.progressLineWidth / 2;
 		
 		_drawingView = [[UIView alloc] initWithFrame: drawingFrame];
 		[self addSubview: _drawingView];
+		
+		UIBezierPath *emptyTimelinePath = [UIBezierPath bezierPathWithArcCenter: _drawingView.center
+																		 radius: drawingRadius
+																	 startAngle: -M_PI_2 endAngle: 3 * M_PI_2
+																	  clockwise: YES];
+		CAShapeLayer *emptyTimelineLayer = [[CAShapeLayer alloc] init];
+		emptyTimelineLayer.frame = drawingFrame;
+		emptyTimelineLayer.path = emptyTimelinePath.CGPath;
+		emptyTimelineLayer.fillColor = [UIColor clearColor].CGColor;
+		emptyTimelineLayer.strokeColor = [UIColor colorWithWhite: 1.0 alpha: 38.0/255.0].CGColor;
+		emptyTimelineLayer.lineWidth = self.progressLineWidth;
+		[_drawingView.layer addSublayer: emptyTimelineLayer];
 		
 		UIBezierPath *path = [UIBezierPath bezierPath];
 		
 		CGFloat startOffset = 0.06;
 		
-		[path addArcWithCenter: _drawingView.center radius: drawingFrame.size.width / 2 - self.progressLineWidth / 2
+		[path addArcWithCenter: _drawingView.center radius: drawingRadius
 					startAngle: -M_PI_2 + startOffset endAngle:3 * M_PI_2 + startOffset clockwise: YES];
 		_arcLayer=[CAShapeLayer layer];
 		_arcLayer.path=path.CGPath;
@@ -178,6 +208,8 @@
 			_arcBgLayer = nil;
 		}
 		
+		_arcLayer.strokeEnd = 1.0;
+		
 		if (_arcBgLayer == nil) {
 			_arcBgLayer = [[CALayer alloc] init];
 			
@@ -186,14 +218,39 @@
 														  green: 94.0/255.0
 														   blue: 124.0/255.0 alpha: 1.0].CGColor;
 			
-			//		_arcBgLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor yellowColor].CGColor ];
-			//		_arcBgLayer.startPoint = CGPointMake(0,0.5);
-			//		_arcBgLayer.endPoint = CGPointMake(1,0.5);
+	//		_arcBgLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor yellowColor].CGColor ];
+	//		_arcBgLayer.startPoint = CGPointMake(0,0.5);
+	//		_arcBgLayer.endPoint = CGPointMake(1,0.5);
 			_arcBgLayer.mask = _arcLayer;
-			
 			
 			[_drawingView.layer addSublayer: _arcBgLayer];
 			[_arcBgLayer setNeedsDisplay];
+			
+			CGRect drawingFrame = _imageView.bounds;
+			drawingFrame.origin.x = (_drawingView.frame.size.width - drawingFrame.size.width) / 2;
+			drawingFrame.origin.y = (_drawingView.frame.size.height - drawingFrame.size.height) / 2;
+			
+			UIBezierPath *path = [UIBezierPath bezierPath];
+			
+//			[path addArcWithCenter: CGPointMake(CGRectGetMidX(_drawingView.frame), CGRectGetMidY(_drawingView.frame))
+//							radius: _drawingView.frame.size.width / 2 - self.imageCaps
+//						startAngle: -M_PI_2 endAngle:3 * M_PI_2 clockwise: YES];
+			[path moveToPoint: CGPointMake(drawingFrame.size.width / 2, drawingFrame.size.height)];
+			[path addLineToPoint: CGPointMake(drawingFrame.size.width / 2, 0)];
+//			[path closePath];
+			
+			_arcFillLayer=[CAShapeLayer layer];
+			_arcFillLayer.backgroundColor = [UIColor colorWithWhite: 0 alpha: 128.0/255.0].CGColor;
+			_arcFillLayer.cornerRadius = drawingFrame.size.width / 2;
+			_arcFillLayer.masksToBounds = YES;
+			_arcFillLayer.path = path.CGPath;
+			_arcFillLayer.lineWidth = drawingFrame.size.width;
+			_arcFillLayer.strokeColor = [UIColor colorWithRed: 247.0/255.0 green: 43.0/255.0 blue: 146.0/255.0
+														alpha: 204.0/255.0].CGColor;
+			_arcFillLayer.strokeEnd = 0;
+			_arcFillLayer.frame = drawingFrame;
+			[_drawingView.layer addSublayer: _arcFillLayer];
+			[_arcFillLayer setNeedsDisplay];
 		}
 	} else if (self.type == CheckDetailTypeClosed) {
 		//Configure background for layer
@@ -208,9 +265,9 @@
 			_arcBgLayer.frame = _drawingView.bounds;
 			_arcBgLayer.backgroundColor = [UIColor lightGrayColor].CGColor;
 			
-			//		_arcBgLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor yellowColor].CGColor ];
-			//		_arcBgLayer.startPoint = CGPointMake(0,0.5);
-			//		_arcBgLayer.endPoint = CGPointMake(1,0.5);
+	//		_arcBgLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor yellowColor].CGColor ];
+	//		_arcBgLayer.startPoint = CGPointMake(0,0.5);
+	//		_arcBgLayer.endPoint = CGPointMake(1,0.5);
 			_arcBgLayer.mask = _arcLayer;
 			
 			
