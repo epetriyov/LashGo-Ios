@@ -15,7 +15,7 @@
 #import "JSONParser.h"
 #import "URLConnectionManager.h"
 
-#define kWebServiceURL @"http://109.195.38.41:8080/lashgo-api"
+#define kWebServiceURL @"http://78.47.39.245:8080/lashgo-api"
 
 #define kChecksPath			@"/checks" //POST
 #define kChecksCurrentPath	@"/checks/current" //GET

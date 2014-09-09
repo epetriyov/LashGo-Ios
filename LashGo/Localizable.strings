@@ -21,8 +21,9 @@
 "AlertLogoutMessage" = "Вы действительно хотите выйти?";
 
 //StartViewController
-"StartViewControllerStartButtonTitle" = "Начать";
-"StartViewControllerLoginButtonTitle" = "Войти";
+"StartViewControllerSlogan" = "Удивляй!";
+"StartViewControllerStartButtonTitle" = "ПРОДОЛЖИТЬ";
+"StartViewControllerLoginButtonTitle" = "ВХОД";
 
 //SearchViewController
 "SearchPeople" = "Людей";

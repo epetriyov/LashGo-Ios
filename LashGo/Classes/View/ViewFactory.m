@@ -4,13 +4,20 @@
 
 static ViewFactory *viewFactory = nil;
 
+@interface ViewFactory () {
+}
+
+@end
+
 @implementation ViewFactory
 
 #define kResourceSuffixHighlighted @"_hl"
 #define kResourceSuffixSelected @"_sel"
 #define kResourceSuffixBackground @"_bg"
 
-@dynamic statusBarPreferredColor, taskbarBackgroundView, titleBarBackgroundImage, titleBarLogoImage;
+@dynamic lgLogoImage;
+@dynamic startViewControllerBgImage, startViewControllerFrameImage, startViewControllerGradientImage, statusBarPreferredColor;
+@dynamic taskbarBackgroundView, titleBarBackgroundImage, titleBarLogoImage;
 
 + (ViewFactory *) sharedFactory {
 	if (viewFactory == nil) {
@@ -23,6 +30,24 @@ static ViewFactory *viewFactory = nil;
 - (UIImage *) getImageWithName: (NSString *) imageName {
 	NSString *pathForResource = [[NSBundle mainBundle] pathForResource: imageName ofType: @"png"];
 	return [UIImage imageWithContentsOfFile: pathForResource];
+}
+
+#pragma mark -
+
+- (UIImage *) lgLogoImage {
+	return [self getImageWithName: @"logo_lg"];
+}
+
+- (UIImage *) startViewControllerBgImage {
+	return [self getImageWithName: @"photo_intro"];
+}
+
+- (UIImage *) startViewControllerFrameImage {
+	return [self getImageWithName: @"frame"];
+}
+
+- (UIImage *) startViewControllerGradientImage {
+	return [self getImageWithName: @"gradient_intro"];
 }
 
 - (UIColor *) statusBarPreferredColor {

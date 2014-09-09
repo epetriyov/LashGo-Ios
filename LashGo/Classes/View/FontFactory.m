@@ -19,6 +19,8 @@
 		case FontTypeTitleBarLogoDescription:	return [UIFont fontWithName: kDefaultFontCondensedBold size: 9];
 		case FontTypeSegmentedTextControl:
 		case FontTypeSegmentedTextControlSelected:	return [UIFont fontWithName: kDefaultFont size: 14];
+		case FontTypeSlogan:					return [UIFont fontWithName: kDefaultFont size: 24];
+		case FontTypeStartScreenButtons:		return [UIFont fontWithName: kDefaultFontMedium size: 12];
 		case FontTypeTitleBarTitle:				return [UIFont fontWithName: kDefaultFontMedium size: 17];
 		default:
 			break;
@@ -33,6 +35,7 @@
 															  blue:144.0/255.0 alpha:1.0];
 		case FontTypeCheckCardDescription:
 		case FontTypeCheckCardTitle:
+		case FontTypeStartScreenButtons:
 		case FontTypeTitleBarButtons:		return [UIColor whiteColor];
 		default: return [UIColor blackColor];
 	}

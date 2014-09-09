@@ -10,7 +10,10 @@
 
 #import "AuthorizationManager.h"
 #import "Common.h"
+#import "FontFactory.h"
 #import "Kernel.h"
+#import "UIView+CGExtension.h"
+#import "ViewFactory.h"
 
 @interface StartViewController ()
 
@@ -21,21 +24,53 @@
 - (void) loadView {
 	[super loadView];
 	
+	UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].startViewControllerBgImage];
+	[self.view addSubview: backgroundImageView];
+	
+	UIImageView *gradientImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].startViewControllerGradientImage];
+	gradientImageView.frameWidth = backgroundImageView.frame.size.width;
+	[backgroundImageView addSubview: gradientImageView];
+	
+	UIImageView *logoImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].lgLogoImage];
+	logoImageView.frameX = 175;
+	logoImageView.frameY = 57;
+	[self.view addSubview: logoImageView];
+	
+	UIImageView *frameImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].startViewControllerFrameImage];
+	frameImageView.frameY = 176;
+	frameImageView.centerX = self.view.frame.size.width / 2;
+	[self.view addSubview: frameImageView];
+	
+	UILabel *sloganLabel = [[UILabel alloc] initWithFrame: CGRectMake(178, 71, 120, 22)];
+	sloganLabel.backgroundColor = [UIColor clearColor];
+	sloganLabel.font = [FontFactory fontWithType: FontTypeSlogan];
+	sloganLabel.text = @"StartViewControllerSlogan".commonLocalizedString;
+	sloganLabel.textAlignment = NSTextAlignmentLeft;
+	sloganLabel.textColor = [FontFactory fontColorForType: FontTypeSlogan];
+	[frameImageView addSubview: sloganLabel];
+	
+	
 	float buttonsWidth = self.view.frame.size.width / 2;
-	float buttonsHeight = 60;
+	float buttonsHeight = 44;
 	float offsetY = self.view.frame.size.height - buttonsHeight;
 	
-	UIButton *startButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+	UIButton *startButton = [[UIButton alloc] initWithFrame: CGRectMake(buttonsWidth, offsetY, buttonsWidth, buttonsHeight)];
+	startButton.backgroundColor = [UIColor colorWithWhite: 0 alpha: 1.0];
+	startButton.titleLabel.font = [FontFactory fontWithType: FontTypeStartScreenButtons];
+	[startButton setTitleColor: [FontFactory fontColorForType: FontTypeStartScreenButtons]
+					  forState: UIControlStateNormal];
 	[startButton setTitle: @"StartViewControllerStartButtonTitle".commonLocalizedString
 				 forState: UIControlStateNormal];
-	startButton.frame = CGRectMake(0, offsetY, buttonsWidth, buttonsHeight);
 	[startButton addTarget: self action: @selector(startAction:) forControlEvents: UIControlEventTouchUpInside];
 	[self.view addSubview: startButton];
 	
-	UIButton *loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+	UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(0, offsetY, buttonsWidth, buttonsHeight)];
+	loginButton.backgroundColor = [UIColor colorWithRed: 1.0 green: 94.0/255.0 blue: 124.0/255.0 alpha: 1.0];
+	loginButton.titleLabel.font = [FontFactory fontWithType: FontTypeStartScreenButtons];
+	[loginButton setTitleColor: [FontFactory fontColorForType: FontTypeStartScreenButtons]
+					  forState: UIControlStateNormal];
 	[loginButton setTitle: @"StartViewControllerLoginButtonTitle".commonLocalizedString
 				 forState: UIControlStateNormal];
-	loginButton.frame = CGRectMake(buttonsWidth, offsetY, buttonsWidth, buttonsHeight);
 	[loginButton addTarget: self action: @selector(loginAction:) forControlEvents: UIControlEventTouchUpInside];
 	[self.view addSubview: loginButton];
 }

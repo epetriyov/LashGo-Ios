@@ -4,6 +4,10 @@
 	UIImage *titleBarLogoImage;
 }
 
+@property (nonatomic, readonly) UIImage *lgLogoImage;
+@property (nonatomic, readonly) UIImage *startViewControllerBgImage;
+@property (nonatomic, readonly) UIImage *startViewControllerFrameImage;
+@property (nonatomic, readonly) UIImage *startViewControllerGradientImage;
 @property (nonatomic, readonly) UIColor *statusBarPreferredColor;
 @property (nonatomic, readonly) UIView *taskbarBackgroundView;
 @property (nonatomic, readonly) UIImage *titleBarBackgroundImage;
