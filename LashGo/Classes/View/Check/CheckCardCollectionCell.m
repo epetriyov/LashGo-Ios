@@ -20,7 +20,26 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 
 @implementation CheckCardCollectionCell
 
+@dynamic mainImage, secondImage;
 @dynamic type;
+
+#pragma mark - Properties
+
+- (UIImage *) mainImage {
+	return _checkView.image;
+}
+
+- (void) setMainImage:(UIImage *)mainImage {
+	_checkView.image = mainImage;
+}
+
+- (UIImage *) secondImage {
+	return _userPhotoView.image;
+}
+
+- (void) setSecondImage:(UIImage *)secondImage {
+	_userPhotoView.image = secondImage;
+}
 
 - (CheckDetailType) type {
 	return _checkView.type;
@@ -30,6 +49,8 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	_checkView.type = type;
 	[_checkView refresh];
 }
+
+#pragma mark -
 
 - (id)initWithFrame:(CGRect)frame
 {

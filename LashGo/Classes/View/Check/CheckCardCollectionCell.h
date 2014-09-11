@@ -12,6 +12,8 @@ extern NSString *const kCheckCardCollectionCellReusableId;
 
 @interface CheckCardCollectionCell : UICollectionViewCell <UIScrollViewDelegate>
 
+@property (nonatomic, assign) UIImage *mainImage;
+@property (nonatomic, assign) UIImage *secondImage;
 @property (nonatomic, readonly) UILabel *textLabel;
 @property (nonatomic, readonly) UILabel *detailTextLabel;
 @property (nonatomic, assign) CheckDetailType type;

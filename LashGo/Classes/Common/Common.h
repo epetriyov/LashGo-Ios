@@ -30,4 +30,6 @@
 
 + (BOOL) isEmptyString: (NSString *) string;
 
+- (UIImage *) generateThumbnailForImage: (UIImage *) image withSize: (CGSize) size;
+
 @end

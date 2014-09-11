@@ -109,8 +109,18 @@
 	LGCheck *check = kernel.storage.checks[indexPath.row];
 	newCell.textLabel.text = check.name;
 	newCell.detailTextLabel.text = check.descr;
+	
+	NSString *pathForResource = [[NSBundle mainBundle] pathForResource: @"DemoImage" ofType: @"jpg"];
+
+	UIImage *image = [[UIImage alloc] initWithContentsOfFile: pathForResource];
+	
+	newCell.mainImage = image;
+	newCell.secondImage = image;
+
 	if (indexPath.row == 1) {
 		newCell.type = CheckDetailTypeVote;
+	} else {
+		newCell.type = CheckDetailTypeOpen;
 	}
 	return newCell;
 }

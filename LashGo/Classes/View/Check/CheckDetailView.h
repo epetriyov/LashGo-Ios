@@ -17,6 +17,7 @@ typedef NS_ENUM(ushort, CheckDetailType) {
 @interface CheckDetailView : UIView
 
 @property (nonatomic, assign) BOOL displayPreview;
+///By default, CheckDetailTypeClosed
 @property (nonatomic, assign) CheckDetailType type;
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, readonly) CGFloat imageCaps;

@@ -99,7 +99,7 @@
 		
 		check.duration =	[rawCheck[@"duration"] intValue];
 		check.voteDuration = [rawCheck[@"voteDuration"] intValue];
-		check.photoUrl =	rawCheck[@"photoURL"];
+		check.taskPhotoUrl =	rawCheck[@"taskPhotoUrl"];
 		
 		[checks addObject: check];
 	}

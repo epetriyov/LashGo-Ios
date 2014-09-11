@@ -101,4 +101,72 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 	}
 }
 
+#pragma mark - 
+
+- (UIImage *) squareImageFromImage: (UIImage *) image {
+    UIImage *squareImage = nil;
+    CGSize imageSize = [image size];
+    
+    if (imageSize.width == imageSize.height) {
+        squareImage = image;
+    } else {
+        // Compute square crop rect
+        CGFloat smallerDimension = MIN(imageSize.width, imageSize.height);
+        CGRect cropRect = CGRectMake(0, 0, smallerDimension, smallerDimension);
+        
+        // Center the crop rect either vertically or horizontally, depending on which dimension is smaller
+        if (imageSize.width <= imageSize.height) {
+            cropRect.origin = CGPointMake(0, rintf((imageSize.height - smallerDimension) / 2.0));
+        } else {
+            cropRect.origin = CGPointMake(rintf((imageSize.width - smallerDimension) / 2.0), 0);
+        }
+        
+        CGImageRef croppedImageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+        squareImage = [UIImage imageWithCGImage:croppedImageRef scale: image.scale orientation: UIImageOrientationUp];
+        CGImageRelease(croppedImageRef);
+		//	// Create path.
+		//	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		//	NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Image.png"];
+		//
+		//	// Save image.
+		//	[UIImagePNGRepresentation(squareImage) writeToFile:filePath atomically:YES];
+		//
+		//	UIImage *storedImage = [UIImage imageWithContentsOfFile: filePath];
+    }
+    
+    return squareImage;
+}
+
+- (UIImage *) generateThumbnailForImage: (UIImage *) image withSize: (CGSize) size {
+//	CGFloat imageDiameter = MIN(self.frame.size.width, self.frame.size.height) - self.imageCaps * 2;
+	CGRect contextBounds = CGRectZero;
+//	contextBounds.size = CGSizeMake(imageDiameter, imageDiameter);
+	contextBounds.size = size;
+	
+	UIImage *sourceImage = image;
+	UIImage *squareImage = [self squareImageFromImage: sourceImage];
+	
+	UIGraphicsBeginImageContextWithOptions(contextBounds.size, YES, 0.0);
+	
+	[squareImage drawInRect:contextBounds];
+	UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
+	//	//Should be stored with scale == 1 for correct image dpi settings
+	//	UIImage *imageToStore = [UIImage imageWithCGImage: scaledImage.CGImage
+	//												scale: 1
+	//										  orientation: UIImageOrientationUp];
+	
+	UIGraphicsEndImageContext();
+	
+	//	// Create path.
+	//	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	//	NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Image@2x.png"];
+	//
+	//	// Save image.
+	//	[UIImagePNGRepresentation(imageToStore) writeToFile:filePath atomically:YES];
+	//
+	//	UIImage *storedImage = [UIImage imageWithContentsOfFile: filePath];
+	
+	return scaledImage;
+}
+
 @end

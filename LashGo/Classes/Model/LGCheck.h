@@ -16,6 +16,6 @@
 @property (nonatomic, strong) NSDate *startDate;
 @property (nonatomic, assign) int32_t duration;
 @property (nonatomic, assign) int32_t voteDuration;
-@property (nonatomic, strong) NSString *photoUrl;
+@property (nonatomic, strong) NSString *taskPhotoUrl;
 
 @end

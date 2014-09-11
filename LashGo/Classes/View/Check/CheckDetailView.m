@@ -17,6 +17,7 @@
 	CAShapeLayer *_arcLayer;
 	CALayer *_arcBgLayer;
 	CAShapeLayer *_arcFillLayer;
+	CAShapeLayer *_emptyTimelineLayer;
 	
 	UIView *_drawingView;
 }
@@ -25,6 +26,7 @@
 
 @implementation CheckDetailView
 
+@dynamic image;
 @dynamic progressValue;
 
 #pragma mark - Properties
@@ -47,6 +49,16 @@
 	_displayPreview = displayPreview;
 }
 
+- (UIImage *) image {
+	return _imageView.image;
+}
+
+- (void) setImage:(UIImage *)image {
+	if (self.image != image) {
+		_imageView.image = image;
+	}
+}
+
 - (CGFloat) progressValue {
 	CGFloat progress = 0;
 	if (self.type == CheckDetailTypeOpen) {
@@ -60,10 +72,10 @@
 - (void) setProgressValue:(CGFloat)progressValue {
 	if (self.type == CheckDetailTypeOpen) {
 		_arcLayer.strokeEnd = progressValue;
-		[_arcLayer setNeedsDisplay];
+//		[_arcLayer setNeedsDisplay];
 	} else if (self.type == CheckDetailTypeVote) {
 		_arcFillLayer.strokeEnd = progressValue;
-		[_arcFillLayer setNeedsDisplay];
+//		[_arcFillLayer setNeedsDisplay];
 	}
 }
 
@@ -81,14 +93,12 @@
 	if (self = [super initWithFrame: frame]) {
 		_imageCaps = imageCaps;
 		_progressLineWidth = progressLineWidth;
+		_type = CheckDetailTypeClosed;
 		
 		//Configure image
-		NSString *pathForResource = [[NSBundle mainBundle] pathForResource: @"DemoImage" ofType: @"jpg"];
-		
-		UIImage *image = [[UIImage alloc] initWithContentsOfFile: pathForResource];
-		_image = [self generateThumbnailForImage: image];
-		
-		_imageView = [[UIImageView alloc] initWithImage: _image];
+		CGFloat imageViewDiameter = MIN(self.frame.size.width, self.frame.size.height) - self.imageCaps * 2;
+		_imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, imageViewDiameter, imageViewDiameter)];
+		_imageView.contentMode = UIViewContentModeScaleAspectFill;
 		
 		CALayer *imageLayer = _imageView.layer;
         [imageLayer setCornerRadius: _imageView.frame.size.width / 2];
@@ -115,24 +125,12 @@
 		emptyTimelineLayer.frame = drawingFrame;
 		emptyTimelineLayer.path = emptyTimelinePath.CGPath;
 		emptyTimelineLayer.fillColor = [UIColor clearColor].CGColor;
-		emptyTimelineLayer.strokeColor = [UIColor colorWithWhite: 1.0 alpha: 38.0/255.0].CGColor;
+//		emptyTimelineLayer.strokeColor = [UIColor colorWithWhite: 1.0 alpha: 38.0/255.0].CGColor;
 		emptyTimelineLayer.lineWidth = self.progressLineWidth;
 		[_drawingView.layer addSublayer: emptyTimelineLayer];
+		_emptyTimelineLayer = emptyTimelineLayer;
 		
-		UIBezierPath *path = [UIBezierPath bezierPath];
 		
-		CGFloat startOffset = 0.06;
-		
-		[path addArcWithCenter: _drawingView.center radius: drawingRadius
-					startAngle: -M_PI_2 + startOffset endAngle:3 * M_PI_2 + startOffset clockwise: YES];
-		_arcLayer=[CAShapeLayer layer];
-		_arcLayer.path=path.CGPath;
-		_arcLayer.fillColor = [UIColor clearColor].CGColor;
-		_arcLayer.strokeColor = [UIColor whiteColor].CGColor;
-		_arcLayer.strokeEnd = 0;
-		_arcLayer.lineWidth = self.progressLineWidth;
-		_arcLayer.lineCap = kCALineCapRound;
-		_arcLayer.frame = drawingFrame;
 		
 //		//Configure background for layer
 //		
@@ -161,38 +159,51 @@
 
 #pragma mark - Methods
 
-- (void) animateFadeIn {
-	CABasicAnimation *bas=[CABasicAnimation animationWithKeyPath:@"opacity"];
-	bas.duration = 0.5;
-	bas.delegate=self;
-	bas.fillMode = kCAFillModeForwards;
-	bas.fromValue = [NSNumber numberWithInteger:0];
-	bas.toValue = [NSNumber numberWithInteger:1];
-	bas.removedOnCompletion = NO;
-//		bas.additive = YES;
-	[_arcBgLayer addAnimation:bas forKey:@"fadeIn"];
-}
-
-- (void) animateFadeOut {
-	CABasicAnimation *bas=[CABasicAnimation animationWithKeyPath:@"opacity"];
-	bas.duration = 0.5;
-	bas.delegate=self;
-	bas.fillMode = kCAFillModeForwards;
-	bas.fromValue=[NSNumber numberWithInteger:1];
-	bas.toValue=[NSNumber numberWithInteger:0];
-	bas.removedOnCompletion = NO;
-//		bas.additive = YES;
-	[_arcBgLayer addAnimation:bas forKey:@"fadeOut"];
-}
+//- (void) animateFadeIn {
+//	CABasicAnimation *bas=[CABasicAnimation animationWithKeyPath:@"opacity"];
+//	bas.duration = 0.5;
+//	bas.delegate=self;
+//	bas.fillMode = kCAFillModeForwards;
+//	bas.fromValue = [NSNumber numberWithInteger:0];
+//	bas.toValue = [NSNumber numberWithInteger:1];
+//	bas.removedOnCompletion = NO;
+////		bas.additive = YES;
+//	[_arcBgLayer addAnimation:bas forKey:@"fadeIn"];
+//}
+//
+//- (void) animateFadeOut {
+//	CABasicAnimation *bas=[CABasicAnimation animationWithKeyPath:@"opacity"];
+//	bas.duration = 0.5;
+//	bas.delegate=self;
+//	bas.fillMode = kCAFillModeForwards;
+//	bas.fromValue=[NSNumber numberWithInteger:1];
+//	bas.toValue=[NSNumber numberWithInteger:0];
+//	bas.removedOnCompletion = NO;
+////		bas.additive = YES;
+//	[_arcBgLayer addAnimation:bas forKey:@"fadeOut"];
+//}
 
 - (void) refresh {
 	if (self.type == CheckDetailTypeOpen) {
-		//Configure background for layer
-		if (_arcBgLayer != nil && [_arcBgLayer isKindOfClass: [CircleGradientLayer class]] == NO) {
-			[_arcBgLayer removeFromSuperlayer];
-			_arcBgLayer = nil;
+		_emptyTimelineLayer.strokeColor = [UIColor colorWithWhite: 1.0 alpha: 38.0/255.0].CGColor;
+		
+		if (_arcLayer == nil) {
+			CGFloat startOffset = 0.06;
+			
+			UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter: _drawingView.center
+																radius: _drawingView.frame.size.width / 2 - self.progressLineWidth / 2
+															startAngle: -M_PI_2 + startOffset endAngle:3 * M_PI_2 + startOffset clockwise: YES];
+			_arcLayer=[CAShapeLayer layer];
+			_arcLayer.path=path.CGPath;
+			_arcLayer.fillColor = [UIColor clearColor].CGColor;
+			_arcLayer.strokeColor = [UIColor whiteColor].CGColor;
+			_arcLayer.strokeEnd = 0;
+			_arcLayer.lineWidth = self.progressLineWidth;
+			_arcLayer.lineCap = kCALineCapRound;
+			_arcLayer.frame = _drawingView.bounds;
 		}
 		
+		//Configure background for layer
 		if (_arcBgLayer == nil) {
 			_arcBgLayer = [[CircleGradientLayer alloc] init];
 			_arcBgLayer.frame = _drawingView.bounds;
@@ -201,46 +212,27 @@
 			[_drawingView.layer addSublayer: _arcBgLayer];
 			[_arcBgLayer setNeedsDisplay];
 		}
+		
+		_arcBgLayer.hidden = NO;
+		_arcFillLayer.hidden = YES;
 	} else if (self.type == CheckDetailTypeVote) {
 		//Configure background for layer
-		if (_arcBgLayer != nil && [_arcBgLayer isKindOfClass: [CircleGradientLayer class]] == YES) {
-			[_arcBgLayer removeFromSuperlayer];
-			_arcBgLayer = nil;
-		}
+		_emptyTimelineLayer.strokeColor = [UIColor colorWithRed: 255.0/255.0
+														 green: 94.0/255.0
+														  blue: 124.0/255.0 alpha: 1.0].CGColor;
 		
-		_arcLayer.strokeEnd = 1.0;
-		
-		if (_arcBgLayer == nil) {
-			_arcBgLayer = [[CALayer alloc] init];
-			
-			_arcBgLayer.frame = _drawingView.bounds;
-			_arcBgLayer.backgroundColor = [UIColor colorWithRed: 255.0/255.0
-														  green: 94.0/255.0
-														   blue: 124.0/255.0 alpha: 1.0].CGColor;
-			
-	//		_arcBgLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor yellowColor].CGColor ];
-	//		_arcBgLayer.startPoint = CGPointMake(0,0.5);
-	//		_arcBgLayer.endPoint = CGPointMake(1,0.5);
-			_arcBgLayer.mask = _arcLayer;
-			
-			[_drawingView.layer addSublayer: _arcBgLayer];
-			[_arcBgLayer setNeedsDisplay];
-			
+		if (_arcFillLayer == nil) {
 			CGRect drawingFrame = _imageView.bounds;
 			drawingFrame.origin.x = (_drawingView.frame.size.width - drawingFrame.size.width) / 2;
 			drawingFrame.origin.y = (_drawingView.frame.size.height - drawingFrame.size.height) / 2;
 			
 			UIBezierPath *path = [UIBezierPath bezierPath];
 			
-//			[path addArcWithCenter: CGPointMake(CGRectGetMidX(_drawingView.frame), CGRectGetMidY(_drawingView.frame))
-//							radius: _drawingView.frame.size.width / 2 - self.imageCaps
-//						startAngle: -M_PI_2 endAngle:3 * M_PI_2 clockwise: YES];
 			[path moveToPoint: CGPointMake(drawingFrame.size.width / 2, drawingFrame.size.height)];
 			[path addLineToPoint: CGPointMake(drawingFrame.size.width / 2, 0)];
-//			[path closePath];
 			
 			_arcFillLayer=[CAShapeLayer layer];
-			_arcFillLayer.backgroundColor = [UIColor colorWithWhite: 0 alpha: 128.0/255.0].CGColor;
+//			_arcFillLayer.backgroundColor = [UIColor colorWithWhite: 0 alpha: 128.0/255.0].CGColor;
 			_arcFillLayer.cornerRadius = drawingFrame.size.width / 2;
 			_arcFillLayer.masksToBounds = YES;
 			_arcFillLayer.path = path.CGPath;
@@ -250,30 +242,16 @@
 			_arcFillLayer.strokeEnd = 0;
 			_arcFillLayer.frame = drawingFrame;
 			[_drawingView.layer addSublayer: _arcFillLayer];
-			[_arcFillLayer setNeedsDisplay];
-		}
-	} else if (self.type == CheckDetailTypeClosed) {
-		//Configure background for layer
-		if (_arcBgLayer != nil && [_arcBgLayer isKindOfClass: [CircleGradientLayer class]] == YES) {
-			[_arcBgLayer removeFromSuperlayer];
-			_arcBgLayer = nil;
+//			[_arcFillLayer setNeedsDisplay];
 		}
 		
-		if (_arcBgLayer == nil) {
-			_arcBgLayer = [[CALayer alloc] init];
-			
-			_arcBgLayer.frame = _drawingView.bounds;
-			_arcBgLayer.backgroundColor = [UIColor lightGrayColor].CGColor;
-			
-	//		_arcBgLayer.colors = @[(__bridge id)[UIColor redColor].CGColor,(__bridge id)[UIColor yellowColor].CGColor ];
-	//		_arcBgLayer.startPoint = CGPointMake(0,0.5);
-	//		_arcBgLayer.endPoint = CGPointMake(1,0.5);
-			_arcBgLayer.mask = _arcLayer;
-			
-			
-			[_drawingView.layer addSublayer: _arcBgLayer];
-			[_arcBgLayer setNeedsDisplay];
-		}
+		_arcBgLayer.hidden = YES;
+		_arcFillLayer.hidden = NO;
+	} else if (self.type == CheckDetailTypeClosed) {
+		_emptyTimelineLayer.strokeColor = [UIColor colorWithWhite: 1.0 alpha: 38.0/255.0].CGColor;
+		
+		_arcBgLayer.hidden = YES;
+		_arcFillLayer.hidden = YES;
 	}
 }
 
@@ -298,71 +276,6 @@
 	//Using arc as a mask instead of adding it as a sublayer.
 	//[self.view.layer addSublayer:arc];
 	gradientLayer.mask = layer;
-}
-
-- (UIImage *) squareImageFromImage: (UIImage *) image {
-    UIImage *squareImage = nil;
-    CGSize imageSize = [image size];
-    
-    if (imageSize.width == imageSize.height) {
-        squareImage = image;
-    } else {
-        // Compute square crop rect
-        CGFloat smallerDimension = MIN(imageSize.width, imageSize.height);
-        CGRect cropRect = CGRectMake(0, 0, smallerDimension, smallerDimension);
-        
-        // Center the crop rect either vertically or horizontally, depending on which dimension is smaller
-        if (imageSize.width <= imageSize.height) {
-            cropRect.origin = CGPointMake(0, rintf((imageSize.height - smallerDimension) / 2.0));
-        } else {
-            cropRect.origin = CGPointMake(rintf((imageSize.width - smallerDimension) / 2.0), 0);
-        }
-        
-        CGImageRef croppedImageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
-        squareImage = [UIImage imageWithCGImage:croppedImageRef scale: image.scale orientation: UIImageOrientationUp];
-        CGImageRelease(croppedImageRef);
-//	// Create path.
-//	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//	NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Image.png"];
-//
-//	// Save image.
-//	[UIImagePNGRepresentation(squareImage) writeToFile:filePath atomically:YES];
-//
-//	UIImage *storedImage = [UIImage imageWithContentsOfFile: filePath];
-    }
-    
-    return squareImage;
-}
-
-- (UIImage *) generateThumbnailForImage: (UIImage *) image {
-	CGFloat imageDiameter = MIN(self.frame.size.width, self.frame.size.height) - self.imageCaps * 2;
-	CGRect contextBounds = CGRectZero;
-	contextBounds.size = CGSizeMake(imageDiameter, imageDiameter);
-	
-	UIImage *sourceImage = image;
-	UIImage *squareImage = [self squareImageFromImage: sourceImage];
-	
-	UIGraphicsBeginImageContextWithOptions(contextBounds.size, YES, 0.0);
-	
-	[squareImage drawInRect:contextBounds];
-	UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
-//	//Should be stored with scale == 1 for correct image dpi settings
-//	UIImage *imageToStore = [UIImage imageWithCGImage: scaledImage.CGImage
-//												scale: 1
-//										  orientation: UIImageOrientationUp];
-	
-	UIGraphicsEndImageContext();
-	
-//	// Create path.
-//	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//	NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Image@2x.png"];
-//	
-//	// Save image.
-//	[UIImagePNGRepresentation(imageToStore) writeToFile:filePath atomically:YES];
-//	
-//	UIImage *storedImage = [UIImage imageWithContentsOfFile: filePath];
-	
-	return scaledImage;
 }
 
 @end
