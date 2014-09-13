@@ -23,7 +23,7 @@
     NSDateFormatter *dateFormatter = [[self sharedCache] objectForKey:format];
     if(dateFormatter==nil) {
         dateFormatter = [[NSDateFormatter alloc] init];
-		dateFormatter.locale = [NSLocale localeWithLocaleIdentifier: @"en_GB"];
+		dateFormatter.locale = [NSLocale localeWithLocaleIdentifier: @"en_US_POSIX"];
 		[dateFormatter setDateFormat: format];
         [[self sharedCache] setObject: dateFormatter forKey:format];
     }
@@ -31,7 +31,7 @@
 }
 
 + (NSDateFormatter *) dateFormatterWithFullDateFormat {
-	return [self customDateFormatterWithFormat: @"dd.MM.yyyy HH:mm:ss zzz"];
+	return [self customDateFormatterWithFormat: @"dd.MM.yyyy HH:mm:ss Z"];
 }
 
 + (NSDateFormatter *) dateFormatterWithDateOnlyFormat {

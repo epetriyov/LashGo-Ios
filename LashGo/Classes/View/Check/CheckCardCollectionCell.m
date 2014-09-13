@@ -9,6 +9,8 @@
 #import "CheckCardCollectionCell.h"
 #import "FontFactory.h"
 
+#import "Common.h"
+
 NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellReusableId";
 
 @interface CheckCardCollectionCell () {
@@ -63,7 +65,13 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 {
     self = [super initWithFrame:frame];
     if (self) {
-		CGFloat offsetY = 21;
+		BOOL is568hMode = [Common is568hMode];
+		CGFloat offsetY;
+		if (is568hMode == NO) {
+			offsetY = 10;
+		} else {
+			offsetY = 21;
+		}
 		
 		_textLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.contentView.frame.size.width, 20)];
 		_textLabel.font = [FontFactory fontWithType: FontTypeCheckCardTitle];
@@ -72,7 +80,12 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		_textLabel.backgroundColor = [UIColor clearColor];
 		[self.contentView addSubview: _textLabel];
 		
-		offsetY += _textLabel.frame.size.height + 24;
+		offsetY += _textLabel.frame.size.height;
+		if (is568hMode == NO) {
+			offsetY += 16;
+		} else {
+			offsetY += 24;
+		}
 		
 		float cvOffsetX = 58;
 		
@@ -98,13 +111,27 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		_userPhotoView.displayPreview = YES;
 		[scrollView addSubview: _userPhotoView];
 		
-		offsetY += scrollView.frame.size.height + 23;
+		[Common logScaleAndParamsForTwoSizes: 16 and: 23];
 		
-		CGFloat descrHeight = 69;
+		offsetY += scrollView.frame.size.height;
 		
-		_detailTextLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.contentView.frame.size.width, descrHeight)];
+		if (is568hMode == NO) {
+			offsetY += 16;
+		} else {
+			offsetY += 23;
+		}
+		
+		int numberOfLines = 3;
+		CGFloat lineHeight;
+		if (is568hMode == NO) {
+			lineHeight = 16;
+		} else {
+			lineHeight = 23;
+		}
+		
+		_detailTextLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.contentView.frame.size.width, lineHeight * numberOfLines)];
 		_detailTextLabel.font = [FontFactory fontWithType: FontTypeCheckCardDescription];
-		_detailTextLabel.numberOfLines = 3;
+		_detailTextLabel.numberOfLines = numberOfLines;
 		_detailTextLabel.textAlignment = NSTextAlignmentCenter;
 		_detailTextLabel.textColor = [FontFactory fontColorForType: FontTypeCheckCardDescription];
 		_detailTextLabel.backgroundColor = [UIColor clearColor];

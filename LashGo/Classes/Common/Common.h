@@ -28,8 +28,11 @@
 + (NSString *) generateUUID;
 + (NSString *) generateUniqueString;
 
++ (BOOL) is568hMode;
 + (BOOL) isEmptyString: (NSString *) string;
 
 - (UIImage *) generateThumbnailForImage: (UIImage *) image withSize: (CGSize) size;
+
++ (void) logScaleAndParamsForTwoSizes: (float) in1 and: (float) in2;
 
 @end

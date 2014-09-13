@@ -30,11 +30,11 @@
 
 + (UIColor *) fontColorForType: (FontType) fontType {
 	switch (fontType) {
+		case FontTypeCheckCardDescription:	return [UIColor colorWithWhite: 1.0 alpha: 128.0/255.0];
+		case FontTypeCheckCardTitle:		return [UIColor colorWithWhite: 1.0 alpha: 204.0/255.0];
 		case FontTypeTaskbarButtons:		return [UIColor colorWithRed:141.0/255.0
 															 green:144.0/255.0
 															  blue:144.0/255.0 alpha:1.0];
-		case FontTypeCheckCardDescription:
-		case FontTypeCheckCardTitle:
 		case FontTypeStartScreenButtons:
 		case FontTypeTitleBarButtons:		return [UIColor whiteColor];
 		default: return [UIColor blackColor];

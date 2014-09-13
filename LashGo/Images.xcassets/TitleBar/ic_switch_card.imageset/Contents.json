@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "title_bar_check_cards.png"
+      "filename" : "ic_switch_card.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "title_bar_check_cards@2x.png"
+      "filename" : "ic_switch_card@2x.png"
     }
   ],
   "info" : {

@@ -135,7 +135,7 @@ static ViewFactory *viewFactory = nil;
 }
 
 - (UIButton *) titleBarCheckCardsButtonWithTarget: (id) target action: (SEL) selector {
-	UIButton *button = [self buttonWithBGImageName: @"title_bar_check_cards" target: target action: selector];
+	UIButton *button = [self buttonWithBGImageName: @"ic_switch_card" target: target action: selector];
 	return button;
 }
 

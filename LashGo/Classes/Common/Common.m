@@ -91,6 +91,10 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 
 #pragma mark -
 
++ (BOOL) is568hMode {
+	return [UIScreen mainScreen].bounds.size.height > 480;
+}
+
 + (BOOL) isEmptyString: (NSString *) string {
 	if (string != nil &&
 		[[string stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]]
@@ -167,6 +171,17 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 	//	UIImage *storedImage = [UIImage imageWithContentsOfFile: filePath];
 	
 	return scaledImage;
+}
+
+#pragma mark -
+
++ (void) logScaleAndParamsForTwoSizes: (float) in1 and: (float) in2 {
+	float min = MIN(in1, in2);
+	float max = MAX(in1, in2);
+	float increasingScale = max / min;
+	float a = (increasingScale - 1) / 88;
+	float b = 1 - 480 * a;
+	NSLog(@"(%.3f * screenHeight + %.2f) resultScale: %f", a, b, increasingScale);
 }
 
 @end
