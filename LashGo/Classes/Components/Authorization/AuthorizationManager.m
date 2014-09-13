@@ -10,27 +10,14 @@
 #import "Common.h"
 
 #import "FacebookAppAccount.h"
+#import "LashGoAppAccount.h"
 #import "TwitterAppAccount.h"
 #import "VkontakteAppAccount.h"
 
 NSString *const kAuthorizationNotification = @"SocialLoginNotification";
 NSString *const kLastUsedAccountKey = @"lg_last_used_account_type";
-NSString *const kLastUsedSessionId = @"lg_last_used_session_id";
 
 @implementation AuthorizationManager
-
-#pragma mark - Properties
-
-- (void) setSessionID:(NSString *)sessionID {
-	_sessionID = sessionID;
-	
-	if (sessionID == nil) {
-		[[NSUserDefaults standardUserDefaults] removeObjectForKey: kLastUsedSessionId];
-	} else {
-		[[NSUserDefaults standardUserDefaults] setObject: sessionID forKey: kLastUsedSessionId];
-	}
-	[[NSUserDefaults standardUserDefaults] synchronize];
-}
 
 #pragma mark - Overrides
 
@@ -61,42 +48,45 @@ NSString *const kLastUsedSessionId = @"lg_last_used_session_id";
 
 #pragma mark - Methods
 
-- (void) loginUsingFacebook {
-	if (_account != nil && [_account isKindOfClass: [FacebookAppAccount class]] == NO) {
+- (void) prepareAccountOfClass: (Class) class {
+	if (_account != nil && [_account isKindOfClass: class] == NO) {
 		[_account logout];
 		_account = nil;
 	}
 	if (_account == nil) {
-		_account = [[FacebookAppAccount alloc] init];
+		_account = [[class alloc] init];
 		_account.delegate = self;
 	}
+}
+
+- (void) loginUsingFacebook {
+	[self prepareAccountOfClass: [FacebookAppAccount class]];
+	[_account login];
+}
+
+- (void) loginUsingLashGo: (LGLoginInfo *) loginInfo {
+	[self prepareAccountOfClass: [LashGoAppAccount class]];
+	((LashGoAppAccount *)_account).loginInfo = loginInfo;
 	[_account login];
 }
 
 - (void) loginUsingTwitterFromView: (UIView *) loginView {
-	if (_account != nil && [_account isKindOfClass: [TwitterAppAccount class]] == NO) {
-		[_account logout];
-		_account = nil;
-	}
-	if (_account == nil) {
-		TwitterAppAccount *account = [[TwitterAppAccount alloc] init];
-		account.delegate = self;
-		account.selectAccountParentView = loginView;
-		_account = account;
-	}
+	[self prepareAccountOfClass: [TwitterAppAccount class]];
+	((TwitterAppAccount *)_account).selectAccountParentView = loginView;
 	[_account login];
 }
 
 - (void) loginUsingVkontakte {
-	if (_account != nil && [_account isKindOfClass: [VkontakteAppAccount class]] == NO) {
-		[_account logout];
-		_account = nil;
-	}
-	if (_account == nil) {
-		_account = [[VkontakteAppAccount alloc] init];
-		_account.delegate = self;
-	}
+	[self prepareAccountOfClass: [VkontakteAppAccount class]];
 	[_account login];
+}
+
+- (void) registerUsingLashGo: (LGLoginInfo *) loginInfo {
+	[self prepareAccountOfClass: [LashGoAppAccount class]];
+	LashGoAppAccount *account = (LashGoAppAccount *)_account;
+	
+	account.loginInfo = loginInfo;
+	[account registerAccount];
 }
 
 #pragma mark - AppAccountDelegate implementation
@@ -105,7 +95,6 @@ NSString *const kLastUsedSessionId = @"lg_last_used_session_id";
 	if (account == _account) {
 		NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 		if (success == NO) {
-			self.sessionID = nil;
 			_account = nil;
 			[defs removeObjectForKey: kLastUsedAccountKey];
 		} else {

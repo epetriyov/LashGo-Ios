@@ -33,6 +33,10 @@
 
 #pragma mark - Properties
 
+- (NSString *) accountSocialName {
+	return @"twitter";
+}
+
 - (AppAccountType) accountType {
 	return AppAccountTypeTwitter;
 }

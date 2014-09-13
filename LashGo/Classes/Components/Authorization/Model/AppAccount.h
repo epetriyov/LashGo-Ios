@@ -6,11 +6,12 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "LGUser.h"
 
 typedef NS_ENUM(short, AppAccountType) {
 	AppAccountTypeUnknown = 0,
 	AppAccountTypeFacebook,
+	AppAccountTypeLashGo,
 	AppAccountTypeTwitter,
 	AppAccountTypeVkontakte
 };
@@ -20,8 +21,12 @@ typedef NS_ENUM(short, AppAccountType) {
 @interface AppAccount : NSObject
 
 @property (nonatomic, weak) id<AppAccountDelegate> delegate;
+@property (nonatomic, readonly) NSString *accountSocialName;
 @property (nonatomic, readonly) AppAccountType accountType;
 @property (nonatomic, readonly) NSString *accessToken;
+
+@property (nonatomic, strong) NSString *sessionID;
+@property (nonatomic, strong) LGUser *userInfo;
 
 - (void) login;
 - (void) logout;

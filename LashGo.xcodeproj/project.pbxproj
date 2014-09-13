@@ -30,6 +30,8 @@
 		840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406256F1930CE850067C1CA /* LGRegisterInfo.m */; };
 		840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625721930D10E0067C1CA /* LGSessionInfo.m */; };
 		840625761930D1AA0067C1CA /* LGSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625751930D1AA0067C1CA /* LGSubscription.m */; };
+		8409D07F19C4631400DFFEC6 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8409D07E19C4631400DFFEC6 /* UserManager.m */; };
+		8409D08519C486FC00DFFEC6 /* LashGoAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 8409D08419C486FC00DFFEC6 /* LashGoAppAccount.m */; };
 		840B4EB519A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B4EB419A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m */; };
 		840E19ED194B43210023C0F6 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840E19EC194B43210023C0F6 /* Accounts.framework */; };
 		841C624119A397ED00BAEDBB /* TaskbarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C623A19A397ED00BAEDBB /* TaskbarManager.m */; };
@@ -164,6 +166,10 @@
 		840625721930D10E0067C1CA /* LGSessionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSessionInfo.m; sourceTree = "<group>"; };
 		840625741930D1AA0067C1CA /* LGSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSubscription.h; sourceTree = "<group>"; };
 		840625751930D1AA0067C1CA /* LGSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSubscription.m; sourceTree = "<group>"; };
+		8409D07D19C4631400DFFEC6 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		8409D07E19C4631400DFFEC6 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		8409D08319C486FC00DFFEC6 /* LashGoAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LashGoAppAccount.h; sourceTree = "<group>"; };
+		8409D08419C486FC00DFFEC6 /* LashGoAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LashGoAppAccount.m; sourceTree = "<group>"; };
 		840B4EB319A387E700AA6DE1 /* NSDateFormatter+CustomFormats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+CustomFormats.h"; sourceTree = "<group>"; };
 		840B4EB419A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+CustomFormats.m"; sourceTree = "<group>"; };
 		840E19EC194B43210023C0F6 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -322,6 +328,7 @@
 		84001FF11949ADF3004D9D7A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8409D08219C486C000DFFEC6 /* LashGo */,
 				84FD8965194C84EB001139DF /* Facebook */,
 				84FD894B194C44E7001139DF /* Twitter */,
 				84E99B9A194F1C54000C55E4 /* Vkontakte */,
@@ -385,6 +392,15 @@
 				8406255A1930B83B0067C1CA /* LGUser.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8409D08219C486C000DFFEC6 /* LashGo */ = {
+			isa = PBXGroup;
+			children = (
+				8409D08319C486FC00DFFEC6 /* LashGoAppAccount.h */,
+				8409D08419C486FC00DFFEC6 /* LashGoAppAccount.m */,
+			);
+			path = LashGo;
 			sourceTree = "<group>";
 		};
 		841C623819A397ED00BAEDBB /* TaskBar */ = {
@@ -622,6 +638,8 @@
 			children = (
 				84E6240F1998FBAD003BC2F1 /* ChecksManager.h */,
 				84E624101998FBAD003BC2F1 /* ChecksManager.m */,
+				8409D07D19C4631400DFFEC6 /* UserManager.h */,
+				8409D07E19C4631400DFFEC6 /* UserManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -893,6 +911,7 @@
 				841C624219A397ED00BAEDBB /* Taskbar.m in Sources */,
 				84FD8962194C4684001139DF /* TWSignedRequest.m in Sources */,
 				84F8AE75198FB4E7009EC5A6 /* LGSocialInfo.m in Sources */,
+				8409D08519C486FC00DFFEC6 /* LashGoAppAccount.m in Sources */,
 				8406251519308BB20067C1CA /* CryptoUtils.m in Sources */,
 				840625511930AAD20067C1CA /* DataProvider.m in Sources */,
 				845D85B01902A543004E10AB /* Kernel.m in Sources */,
@@ -930,6 +949,7 @@
 				84062512193088F30067C1CA /* DownloadableItem.m in Sources */,
 				845D858B19029EB0004E10AB /* main.m in Sources */,
 				84F8E89D199A2DB00054C9F8 /* AlertViewManager.m in Sources */,
+				8409D07F19C4631400DFFEC6 /* UserManager.m in Sources */,
 				8406256A1930CB0A0067C1CA /* LGPhoto.m in Sources */,
 				84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */,
 				841C624119A397ED00BAEDBB /* TaskbarManager.m in Sources */,

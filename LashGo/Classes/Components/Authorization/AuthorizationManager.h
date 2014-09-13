@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AppAccount.h"
+#import "LGLoginInfo.h"
 
 extern NSString *const kAuthorizationNotification;
 
@@ -16,12 +17,14 @@ extern NSString *const kAuthorizationNotification;
 }
 
 @property (nonatomic, readonly) AppAccount *account;
-@property (nonatomic, strong) NSString *sessionID;
 
 + (instancetype) sharedManager;
 
 - (void) loginUsingFacebook;
+- (void) loginUsingLashGo: (LGLoginInfo *) loginInfo;
 - (void) loginUsingTwitterFromView: (UIView *) loginView;
 - (void) loginUsingVkontakte;
+
+- (void) registerUsingLashGo: (LGLoginInfo *) loginInfo;
 
 @end

@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 
 #import "AuthorizationManager.h"
+#import "CryptoUtils.h"
 
 @interface LoginViewController ()
 
@@ -22,12 +23,28 @@
 	float offsetY = self.contentFrame.origin.y;
 	
 	UITextField *emailField = [[UITextField alloc] initWithFrame: CGRectMake(0, offsetY, 320, 40)];
+	emailField.backgroundColor = [UIColor grayColor];
 	[self.view addSubview: emailField];
 	_emailField = emailField;
 	
 	offsetY += _emailField.frame.size.height + 10;
 	
+	UITextField *passwordField = [[UITextField alloc] initWithFrame: CGRectMake(0, offsetY, 320, 40)];
+	passwordField.backgroundColor = [UIColor grayColor];
+	[self.view addSubview: passwordField];
+	_passwordField = passwordField;
+	
+	offsetY += _passwordField.frame.size.height + 10;
+	
 	UIButton *loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+	[loginButton setTitle: @"Login" forState: UIControlStateNormal];
+	loginButton.frame = CGRectMake(0, offsetY, 320, 40);
+	[loginButton addTarget: self action: @selector(login:) forControlEvents: UIControlEventTouchUpInside];
+	[self.view addSubview: loginButton];
+	
+	offsetY += loginButton.frame.size.height + 10;
+	
+	loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
 	[loginButton setTitle: @"Login with Facebook" forState: UIControlStateNormal];
 	loginButton.frame = CGRectMake(0, offsetY, 320, 40);
 	[loginButton addTarget: self action: @selector(loginWithFacebook:) forControlEvents: UIControlEventTouchUpInside];
@@ -56,6 +73,14 @@
 	tokenLabel.text = [AuthorizationManager sharedManager].account.accessToken;
 	[self.view addSubview: tokenLabel];
 	_tokenLabel = tokenLabel;
+}
+
+- (void) login: (id) sender {
+	LGLoginInfo *loginInfo = [[LGLoginInfo alloc] init];
+	loginInfo.login = _emailField.text;
+	loginInfo.passwordHash = _passwordField.text.md5;
+	
+	[[AuthorizationManager sharedManager] loginUsingLashGo: loginInfo];
 }
 
 - (void) loginWithFacebook: (id) sender {

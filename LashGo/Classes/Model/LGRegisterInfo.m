@@ -10,7 +10,5 @@
 
 @implementation LGRegisterInfo
 
-@synthesize name, surname, about, city, birthDate, avatar, email, login, passwordHash;
-
 
 @end

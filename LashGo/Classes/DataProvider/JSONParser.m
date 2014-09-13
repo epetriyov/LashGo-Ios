@@ -115,4 +115,30 @@
 	return checks;
 }
 
+- (LGRegisterInfo *) parseRegiserInfo: (NSData *) jsonData {
+	NSDictionary *rawData = [self parseJSONData: jsonData][@"result"];
+	
+	LGRegisterInfo *registerInfo = [[LGRegisterInfo alloc] init];
+	
+	NSDictionary *rawUser = rawData[@"userDto"];
+	LGUser *user = [[LGUser alloc] init];
+	
+	user.name =		rawUser[@"name"];
+	user.surname =	rawUser[@"surname"];
+//	user.about;
+//	user.city;
+//	user.birthDate;
+//	user.avatar
+	user.email =	rawUser[@"email"];
+	
+	LGSessionInfo *sessionInfo = [[LGSessionInfo alloc] init];
+	
+	sessionInfo.uid =	rawData[@"sessionId"];
+	
+	registerInfo.user =			user;
+	registerInfo.sessionInfo =	sessionInfo;
+	
+	return registerInfo;
+}
+
 @end

@@ -14,6 +14,10 @@
 
 #pragma mark - Properties
 
+- (NSString *) accountSocialName {
+	return @"facebook";
+}
+
 - (AppAccountType) accountType {
 	return AppAccountTypeFacebook;
 }

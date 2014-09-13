@@ -8,7 +8,10 @@
 
 #import "ViewControllersManager.h"
 #import "AuthorizationManager.h"
+
 #import "ChecksManager.h"
+#import "UserManager.h"
+
 #import "DataProvider.h"
 #import "Storage.h"
 #import "TaskbarManager.h"
@@ -20,6 +23,8 @@
 @property (nonatomic, readonly) UIViewController *rootViewController;
 
 @property (nonatomic, readonly) ChecksManager *checksManager;
+@property (nonatomic, readonly) UserManager *userManager;
+
 @property (nonatomic, readonly) Storage *storage;
 @property (nonatomic, readonly) ViewControllersManager *viewControllersManager;
 

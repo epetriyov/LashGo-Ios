@@ -8,6 +8,7 @@
 
 #import "LGLoginInfo.h"
 #import "LGRecoverInfo.h"
+#import "LGRegisterInfo.h"
 #import "LGSocialInfo.h"
 
 @protocol DataProviderDelegate;
@@ -48,5 +49,8 @@
 
 @optional
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks;
+
+- (void) dataProvider: (DataProvider *) dataProvider didRegisterUser: (LGRegisterInfo *) registerInfo;
+- (void) dataProvider: (DataProvider *) dataProvider didFailRegisterUserWith: (NSError *) error;
 
 @end

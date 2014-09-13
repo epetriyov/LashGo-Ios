@@ -7,12 +7,15 @@
 //
 
 #import "LGCheck.h"
+#import "LGRegisterInfo.h"
 #import "URLConnection.h"
 
 @interface JSONParser : NSObject
 
+- (id) parseJSONData: (NSData *) jsonData;
 - (NSError *) parseError: (URLConnection *) connection;
 
 - (NSArray *) parseChecks: (NSData *) jsonData;
+- (LGRegisterInfo *) parseRegiserInfo: (NSData *) jsonData;
 
 @end

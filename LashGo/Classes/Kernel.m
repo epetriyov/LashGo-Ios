@@ -40,14 +40,26 @@
 		_checksManager = [[ChecksManager alloc] initWithKernel: self
 												  dataProvider: _dataProvider
 													 vcManager: viewControllersManager];
+		_userManager = [[UserManager alloc] initWithKernel: self
+											  dataProvider: _dataProvider
+												 vcManager: viewControllersManager];
 		
 		[TaskbarManager sharedManager].delegate = self;
+		
+		[[NSNotificationCenter defaultCenter] addObserver: self
+												 selector: @selector(socialAuthorizationSuccess)
+													 name: kAuthorizationNotification
+												   object: nil];
 	}
 	return self;
 }
 
 
 #pragma mark - Methods
+
+- (void) socialAuthorizationSuccess {
+	[self.userManager socialSignIn];
+}
 
 - (void) performOnColdWakeActions {
 	

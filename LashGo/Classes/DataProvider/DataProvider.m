@@ -73,7 +73,7 @@ static NSString *const kRequestUUID =		@"uuid";
 									   @"IOS",				kRequestClientType,
 									   [Common deviceUUID],	kRequestUUID, nil];
 	
-	NSString *sessionID = [AuthorizationManager sharedManager].sessionID;
+	NSString *sessionID = [AuthorizationManager sharedManager].account.sessionID;
 	if ([Common isEmptyString: sessionID] == NO) {
 		dictionary[kRequestSessionID] = sessionID;
 	}
@@ -127,10 +127,12 @@ static NSString *const kRequestUUID =		@"uuid";
 	}
 }
 
-- (void) didFailGetImportantData: (URLConnection *) connection {
+- (NSError *) didFailGetImportantData: (URLConnection *) connection {
 	NSError *error = [_parser parseError: connection];
 	
 	[[AlertViewManager sharedManager] showAlertViewWithError: error];
+	
+	return error;
 }
 
 #pragma mark - Checks
@@ -273,7 +275,19 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark - User
 
 - (void) didLogin: (URLConnection *) connection {
+	LGRegisterInfo *registerInfo = [_parser parseRegiserInfo: connection.downloadedData];
 	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didRegisterUser:)] == YES) {
+		[self.delegate dataProvider: self didRegisterUser: registerInfo];
+	}
+}
+
+- (void) didFailLogin: (URLConnection *) connection {
+	NSError *error = [self didFailGetImportantData: connection];
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didFailRegisterUserWith:)] == YES) {
+		[self.delegate dataProvider: self didFailRegisterUserWith: error];
+	}
 }
 
 - (void) userLogin: (LGLoginInfo *) inputData {
@@ -345,7 +359,19 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark -
 
 - (void) didRegisterUser: (URLConnection *) connection {
+	LGRegisterInfo *registerInfo = [_parser parseRegiserInfo: connection.downloadedData];
 	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didRegisterUser:)] == YES) {
+		[self.delegate dataProvider: self didRegisterUser: registerInfo];
+	}
+}
+
+- (void) didFailRegisterUser: (URLConnection *) connection {
+	NSError *error = [self didFailGetImportantData: connection];
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didFailRegisterUserWith:)] == YES) {
+		[self.delegate dataProvider: self didFailRegisterUserWith: error];
+	}
 }
 
 - (void) userRegister: (LGLoginInfo *) inputData {

@@ -8,13 +8,29 @@
 
 #import "AppAccount.h"
 
+NSString *const kLastUsedSessionId = @"lg_last_used_session_id";
+
 @implementation AppAccount
 
+@dynamic accountSocialName;
 @dynamic accountType;
 @dynamic accessToken;
 
 - (NSString *) accessToken {
 	return nil;
+}
+
+#pragma mark - Properties
+
+- (void) setSessionID:(NSString *)sessionID {
+	_sessionID = sessionID;
+	
+	if (sessionID == nil) {
+		[[NSUserDefaults standardUserDefaults] removeObjectForKey: kLastUsedSessionId];
+	} else {
+		[[NSUserDefaults standardUserDefaults] setObject: sessionID forKey: kLastUsedSessionId];
+	}
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void) login {

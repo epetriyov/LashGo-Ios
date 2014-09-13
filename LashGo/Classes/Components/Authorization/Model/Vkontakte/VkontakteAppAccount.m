@@ -14,6 +14,10 @@ static NSString *const TOKEN_KEY = @"my_application_access_token";
 
 #pragma mark - Properties
 
+- (NSString *) accountSocialName {
+	return @"vk";
+}
+
 - (AppAccountType) accountType {
 	return AppAccountTypeVkontakte;
 }
