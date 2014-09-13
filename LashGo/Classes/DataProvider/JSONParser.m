@@ -94,11 +94,16 @@
 		NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatterWithFullDateFormat];
 		
 		NSString *str =		rawCheck[@"startDate"];
-		check.startDate =	[dateFormatter dateFromString: str];
+		check.startDate =	[[dateFormatter dateFromString: str] timeIntervalSinceReferenceDate];
 		
+		short durationSectionSeconds = 3600;
 		
-		check.duration =	[rawCheck[@"duration"] intValue];
-		check.voteDuration = [rawCheck[@"voteDuration"] intValue];
+		check.duration =	[rawCheck[@"duration"] intValue] * durationSectionSeconds;
+		check.voteDuration = [rawCheck[@"voteDuration"] intValue] * durationSectionSeconds;
+		
+		check.voteDate =	check.startDate + check.duration;
+		check.closeDate =	check.voteDate + check.voteDuration;
+		
 		check.taskPhotoUrl =	rawCheck[@"taskPhotoUrl"];
 		
 		[checks addObject: check];

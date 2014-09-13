@@ -13,9 +13,12 @@
 @property (nonatomic, assign) int64_t uid;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *descr;
-@property (nonatomic, strong) NSDate *startDate;
-@property (nonatomic, assign) int32_t duration;
-@property (nonatomic, assign) int32_t voteDuration;
+@property (nonatomic, assign) NSTimeInterval startDate;
+@property (nonatomic, assign) NSTimeInterval voteDate;
+@property (nonatomic, assign) NSTimeInterval closeDate;
+
+@property (nonatomic, assign) NSTimeInterval duration;
+@property (nonatomic, assign) NSTimeInterval voteDuration;
 @property (nonatomic, strong) NSString *taskPhotoUrl;
 
 @end

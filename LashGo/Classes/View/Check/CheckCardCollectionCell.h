@@ -7,6 +7,7 @@
 //
 
 #import "CheckDetailView.h"
+#import "LGCheck.h"
 
 extern NSString *const kCheckCardCollectionCellReusableId;
 
@@ -17,5 +18,7 @@ extern NSString *const kCheckCardCollectionCellReusableId;
 @property (nonatomic, readonly) UILabel *textLabel;
 @property (nonatomic, readonly) UILabel *detailTextLabel;
 @property (nonatomic, assign) CheckDetailType type;
+
+@property (nonatomic, strong) LGCheck *check;
 
 @end

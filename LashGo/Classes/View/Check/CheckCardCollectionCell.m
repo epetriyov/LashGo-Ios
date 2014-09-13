@@ -14,6 +14,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 @interface CheckCardCollectionCell () {
 	CheckDetailView *_checkView;
 	CheckDetailView *_userPhotoView;
+	NSTimer *_progressTimer;
 }
 
 @end
@@ -47,7 +48,13 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 
 - (void) setType:(CheckDetailType) type {
 	_checkView.type = type;
-	[_checkView refresh];
+}
+
+- (void) setCheck:(LGCheck *)check {
+	_check = check;
+	_textLabel.text = check.name;
+	_detailTextLabel.text = check.descr;
+	[self refresh];
 }
 
 #pragma mark -
@@ -102,23 +109,42 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		_detailTextLabel.textColor = [FontFactory fontColorForType: FontTypeCheckCardDescription];
 		_detailTextLabel.backgroundColor = [UIColor clearColor];
 		[self.contentView addSubview: _detailTextLabel];
-		
-		[NSTimer scheduledTimerWithTimeInterval:1 target: self selector:@selector(updateProgress) userInfo:nil repeats:YES];
     }
     return self;
 }
 
-- (NSString *) reuseIdentifier {
-	return kCheckCardCollectionCellReusableId;
+- (void) refresh {
+	NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+	
+	if (now > _check.closeDate) {
+		self.type = CheckDetailTypeClosed;
+		[_progressTimer invalidate];
+		_progressTimer = nil;
+	} else {
+		if (now > _check.voteDate) {
+			self.type = CheckDetailTypeVote;
+		} else {
+			self.type = CheckDetailTypeOpen;
+		}
+		if ([_progressTimer isValid] == NO) {
+			_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 5 target: self selector:@selector(refresh)
+															userInfo:nil repeats:YES];
+		}
+	}
+	
+	CGFloat progress = 0;
+	
+	if (self.type == CheckDetailTypeOpen) {
+		progress = fdim(now, _check.startDate) / _check.duration;
+	} else if (self.type == CheckDetailTypeVote) {
+		progress = fdim(now, _check.voteDate) / _check.voteDuration;
+	}
+	_checkView.progressValue = progress;
+	_userPhotoView.progressValue = progress;
 }
 
-- (void) updateProgress {
-	static CGFloat a = 0;
-	a += 0.1;
-	if (a < 2.0) {
-		_checkView.progressValue = a;
-		_userPhotoView.progressValue = a;
-	}
+- (NSString *) reuseIdentifier {
+	return kCheckCardCollectionCellReusableId;
 }
 
 #pragma mark - UIScrollViewDelegate implementation

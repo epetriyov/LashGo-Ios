@@ -27,7 +27,6 @@
 @implementation CheckDetailView
 
 @dynamic image;
-@dynamic progressValue;
 
 #pragma mark - Properties
 
@@ -59,24 +58,19 @@
 	}
 }
 
-- (CGFloat) progressValue {
-	CGFloat progress = 0;
+- (void) setProgressValue:(CGFloat)progressValue {
+	_progressValue = progressValue > 1.0 ? 1.0 : progressValue;
+	_progressValue = _progressValue < 0.0 ? 0.0 : _progressValue;
 	if (self.type == CheckDetailTypeOpen) {
-		progress = _arcLayer.strokeEnd;
+		_arcLayer.strokeEnd = _progressValue;
 	} else if (self.type == CheckDetailTypeVote) {
-		progress = _arcFillLayer.strokeEnd;
+		_arcFillLayer.strokeEnd = _progressValue;
 	}
-	return progress;
 }
 
-- (void) setProgressValue:(CGFloat)progressValue {
-	if (self.type == CheckDetailTypeOpen) {
-		_arcLayer.strokeEnd = progressValue;
-//		[_arcLayer setNeedsDisplay];
-	} else if (self.type == CheckDetailTypeVote) {
-		_arcFillLayer.strokeEnd = progressValue;
-//		[_arcFillLayer setNeedsDisplay];
-	}
+- (void) setType:(CheckDetailType)type {
+	_type = type;
+	[self refresh];
 }
 
 #pragma mark - Standard
@@ -192,12 +186,13 @@
 			
 			UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter: _drawingView.center
 																radius: _drawingView.frame.size.width / 2 - self.progressLineWidth / 2
-															startAngle: -M_PI_2 + startOffset endAngle:3 * M_PI_2 + startOffset clockwise: YES];
+															startAngle: 3 * M_PI_2 - startOffset
+															  endAngle: -M_PI_2 - startOffset clockwise: NO];
 			_arcLayer=[CAShapeLayer layer];
 			_arcLayer.path=path.CGPath;
 			_arcLayer.fillColor = [UIColor clearColor].CGColor;
 			_arcLayer.strokeColor = [UIColor whiteColor].CGColor;
-			_arcLayer.strokeEnd = 0;
+			_arcLayer.strokeEnd = self.progressValue;
 			_arcLayer.lineWidth = self.progressLineWidth;
 			_arcLayer.lineCap = kCALineCapRound;
 			_arcLayer.frame = _drawingView.bounds;
@@ -239,7 +234,7 @@
 			_arcFillLayer.lineWidth = drawingFrame.size.width;
 			_arcFillLayer.strokeColor = [UIColor colorWithRed: 247.0/255.0 green: 43.0/255.0 blue: 146.0/255.0
 														alpha: 204.0/255.0].CGColor;
-			_arcFillLayer.strokeEnd = 0;
+			_arcFillLayer.strokeEnd = self.progressValue;
 			_arcFillLayer.frame = drawingFrame;
 			[_drawingView.layer addSublayer: _arcFillLayer];
 //			[_arcFillLayer setNeedsDisplay];
