@@ -43,6 +43,8 @@
 		8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F356191A6F6400B4E336 /* TitleBarView.m */; };
 		8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F359191A6FF900B4E336 /* ViewFactory.m */; };
 		8426F35D191A754200B4E336 /* FontFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F35C191A754200B4E336 /* FontFactory.m */; };
+		8427E62019C5DB7400558649 /* libSDWebImage+WebP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8427E61D19C5DB3300558649 /* libSDWebImage+WebP.a */; };
+		8427E62219C5DBC500558649 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8427E62119C5DBC500558649 /* ImageIO.framework */; };
 		845D857F19029EB0004E10AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D857E19029EB0004E10AB /* Foundation.framework */; };
 		845D858119029EB0004E10AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858019029EB0004E10AB /* CoreGraphics.framework */; };
 		845D858319029EB0004E10AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858219029EB0004E10AB /* UIKit.framework */; };
@@ -94,6 +96,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8427E61A19C5DB3300558649 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 53761325155AD0D5005750A4;
+			remoteInfo = SDWebImage;
+		};
+		8427E61C19C5DB3300558649 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 537D95C117ECC1FE0097C263;
+			remoteInfo = "SDWebImage+WebP";
+		};
+		8427E61E19C5DB3300558649 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 531041E0157EAFA400BBABC3;
+			remoteInfo = "SDWebImage+MKAnnotation";
+		};
 		845D859B19029EB0004E10AB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 845D857319029EB0004E10AB /* Project object */;
@@ -190,6 +213,8 @@
 		8426F359191A6FF900B4E336 /* ViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewFactory.m; sourceTree = "<group>"; };
 		8426F35B191A754200B4E336 /* FontFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontFactory.h; sourceTree = "<group>"; };
 		8426F35C191A754200B4E336 /* FontFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontFactory.m; sourceTree = "<group>"; };
+		8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = LashGo/SDWebImageLib/SDWebImage.xcodeproj; sourceTree = "<group>"; };
+		8427E62119C5DBC500558649 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		845D857B19029EB0004E10AB /* LashGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LashGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845D857E19029EB0004E10AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		845D858019029EB0004E10AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -282,6 +307,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8427E62219C5DBC500558649 /* ImageIO.framework in Frameworks */,
+				8427E62019C5DB7400558649 /* libSDWebImage+WebP.a in Frameworks */,
 				84FF0294195ED69600B90CF9 /* libVKSdk.a in Frameworks */,
 				84FF0239195EB47200B90CF9 /* FacebookSDK.framework in Frameworks */,
 				840E19ED194B43210023C0F6 /* Accounts.framework in Frameworks */,
@@ -461,9 +488,20 @@
 			path = TitleBar;
 			sourceTree = "<group>";
 		};
+		8427E61219C5DB3300558649 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8427E61B19C5DB3300558649 /* libSDWebImage.a */,
+				8427E61D19C5DB3300558649 /* libSDWebImage+WebP.a */,
+				8427E61F19C5DB3300558649 /* libSDWebImage+MKAnnotation.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		845D857219029EB0004E10AB = {
 			isa = PBXGroup;
 			children = (
+				8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */,
 				84E99C01194F26F3000C55E4 /* sdk.xcodeproj */,
 				84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */,
 				845D858419029EB0004E10AB /* LashGo */,
@@ -486,6 +524,7 @@
 		845D857D19029EB0004E10AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8427E62119C5DBC500558649 /* ImageIO.framework */,
 				84FF0238195EB47200B90CF9 /* FacebookSDK.framework */,
 				840E19EC194B43210023C0F6 /* Accounts.framework */,
 				84001FEA1949AA53004D9D7A /* Social.framework */,
@@ -841,6 +880,10 @@
 					ProductGroup = 84FF0230195EB21800B90CF9 /* Products */;
 					ProjectRef = 84E99C01194F26F3000C55E4 /* sdk.xcodeproj */;
 				},
+				{
+					ProductGroup = 8427E61219C5DB3300558649 /* Products */;
+					ProjectRef = 8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -851,6 +894,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		8427E61B19C5DB3300558649 /* libSDWebImage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSDWebImage.a;
+			remoteRef = 8427E61A19C5DB3300558649 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8427E61D19C5DB3300558649 /* libSDWebImage+WebP.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libSDWebImage+WebP.a";
+			remoteRef = 8427E61C19C5DB3300558649 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8427E61F19C5DB3300558649 /* libSDWebImage+MKAnnotation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libSDWebImage+MKAnnotation.a";
+			remoteRef = 8427E61E19C5DB3300558649 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		84FF0235195EB21800B90CF9 /* libVKSdk.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
