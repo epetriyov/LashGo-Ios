@@ -111,8 +111,6 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		_userPhotoView.displayPreview = YES;
 		[scrollView addSubview: _userPhotoView];
 		
-		[Common logScaleAndParamsForTwoSizes: 16 and: 23];
-		
 		offsetY += scrollView.frame.size.height;
 		
 		if (is568hMode == NO) {
