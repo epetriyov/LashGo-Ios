@@ -1,4 +1,6 @@
+#import <CommonCrypto/CommonCryptor.h>
 #import <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonKeyDerivation.h>
 
 @interface NSString (CryptoExtension)
 
@@ -9,5 +11,8 @@
 @interface NSData (CryptoExtension)
 
 - (NSString *) md5;
+- (NSData *) doCipherOperation: (CCOperation) cryptOperation
+						string: (NSString *) string
+						  salt: (NSData *) salt;
 
 @end

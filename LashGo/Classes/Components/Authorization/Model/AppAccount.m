@@ -33,6 +33,15 @@ NSString *const kLastUsedSessionId = @"lg_last_used_session_id";
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+#pragma mark - Overrides {
+
+- (id) init {
+	if (self = [super init]) {
+		_sessionID = [[NSUserDefaults standardUserDefaults] stringForKey: kLastUsedSessionId];
+	}
+	return self;
+}
+
 - (void) login {
 	
 }

@@ -35,6 +35,10 @@ NSString *const kLastUsedAccountKey = @"lg_last_used_account_type";
 				_account = [[FacebookAppAccount alloc] init];
 				_account.delegate = self;
 				break;
+			case AppAccountTypeLashGo:
+				_account = [[LashGoAppAccount alloc] init];
+				_account.delegate = self;
+				break;
 			case AppAccountTypeVkontakte:
 				_account = [[VkontakteAppAccount alloc] init];
 				_account.delegate = self;

@@ -8,7 +8,7 @@
 
 #import "JSONSerializableProtocol.h"
 
-@interface LGLoginInfo : NSObject <JSONSerializableProtocol> {
+@interface LGLoginInfo : NSObject <JSONSerializableProtocol, NSCoding> {
 	NSString *login;
 	NSString *passwordHash;
 }
