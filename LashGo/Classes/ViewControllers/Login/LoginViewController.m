@@ -39,6 +39,7 @@
 	}
 	
 	UILabel *welcomeLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.view.frame.size.width, 25)];
+	welcomeLabel.backgroundColor = [UIColor clearColor];
 	welcomeLabel.font = [FontFactory fontWithType: FontTypeLoginWelcomeText];
 	welcomeLabel.text = @"LoginViewControllerWelcomeText".commonLocalizedString;
 	welcomeLabel.textAlignment = NSTextAlignmentCenter;
@@ -48,7 +49,6 @@
 	offsetY += welcomeLabel.frame.size.height + 25;
 	
 	//Configure bg for fields
-	
 	UIView *formView = [[UIView alloc] initWithFrame: CGRectMake(0, offsetY, self.view.frame.size.width, 87)];
 	formView.backgroundColor = [UIColor colorWithWhite: 1.0 alpha: 229.0/255.0];
 	[self.view addSubview: formView];
@@ -62,7 +62,6 @@
 	[formView addSubview: separator];
 	
 	//Configure icons for fields
-	
 	float formOffsetX = 18;
 	float formOffsetY = 12;
 	
@@ -77,13 +76,13 @@
 	[formView addSubview: passwordImageView];
 	
 	//Configure fields
-	
 	formOffsetX += emailImageView.frame.size.width + 17;
 	
 	UITextField *emailField = [[UITextField alloc] initWithFrame: CGRectMake(formOffsetX, 0,
 																			 formView.frame.size.width - formOffsetX, 40)];
 	emailField.delegate = self;
 	emailField.centerY = emailImageView.center.y;
+	emailField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 	emailField.backgroundColor = [UIColor clearColor];
 	emailField.font = [FontFactory fontWithType: FontTypeLoginInputField];
 	emailField.textColor = [FontFactory fontColorForType: FontTypeLoginInputField];
@@ -95,6 +94,7 @@
 																				formView.frame.size.width - formOffsetX, 40)];
 	passwordField.delegate = self;
 	passwordField.centerY = passwordImageView.center.y;
+	passwordField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 	passwordField.backgroundColor = [UIColor clearColor];
 	passwordField.font = [FontFactory fontWithType: FontTypeLoginInputField];
 	passwordField.textColor = [FontFactory fontColorForType: FontTypeLoginInputField];
@@ -150,6 +150,7 @@
 	offsetY -= 15;
 	
 	UILabel *socialLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.view.frame.size.width, 15)];
+	socialLabel.backgroundColor = [UIColor clearColor];
 	socialLabel.font = [FontFactory fontWithType: FontTypeLoginSocialLabel];
 	socialLabel.text = @"LoginViewControllerSocialLabelTitle".commonLocalizedString;
 	socialLabel.textAlignment = NSTextAlignmentCenter;
