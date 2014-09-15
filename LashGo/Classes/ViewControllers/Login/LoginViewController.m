@@ -9,9 +9,13 @@
 #import "LoginViewController.h"
 
 #import "AuthorizationManager.h"
+#import "Common.h"
 #import "CryptoUtils.h"
+#import "FontFactory.h"
+#import "UIView+CGExtension.h"
+#import "ViewFactory.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 
 @end
 
@@ -20,59 +24,143 @@
 - (void) loadView {
 	[super loadView];
 	
-	float offsetY = self.contentFrame.origin.y;
+	_titleBarView.titleLabel.text = @"LoginViewControllerTitle".commonLocalizedString;
+	_titleBarView.backgroundColor = [UIColor clearColor];
 	
-	UITextField *emailField = [[UITextField alloc] initWithFrame: CGRectMake(0, offsetY, 320, 40)];
-	emailField.backgroundColor = [UIColor grayColor];
-	[self.view addSubview: emailField];
+	UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].loginViewControllerBgImage];
+	[self.view insertSubview:backgroundImageView atIndex: 0];
+	
+	//Configure welcome text
+	float offsetY = self.contentFrame.origin.y;
+	if ([Common is568hMode] == NO) {
+		offsetY += 50;
+	} else {
+		offsetY += 92;
+	}
+	
+	UILabel *welcomeLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.view.frame.size.width, 25)];
+	welcomeLabel.font = [FontFactory fontWithType: FontTypeLoginWelcomeText];
+	welcomeLabel.text = @"LoginViewControllerWelcomeText".commonLocalizedString;
+	welcomeLabel.textAlignment = NSTextAlignmentCenter;
+	welcomeLabel.textColor = [FontFactory fontColorForType: FontTypeLoginWelcomeText];
+	[self.view addSubview: welcomeLabel];
+	
+	offsetY += welcomeLabel.frame.size.height + 25;
+	
+	//Configure bg for fields
+	
+	UIView *formView = [[UIView alloc] initWithFrame: CGRectMake(0, offsetY, self.view.frame.size.width, 87)];
+	formView.backgroundColor = [UIColor colorWithWhite: 1.0 alpha: 229.0/255.0];
+	[self.view addSubview: formView];
+	
+	float separatorOffsetX = 59;
+	float separatorHeight = 1.0 / [UIScreen mainScreen].scale;
+	
+	UIView *separator = [[UIView alloc] initWithFrame:CGRectMake(separatorOffsetX, formView.frame.size.height / 2,
+																formView.frame.size.width - separatorOffsetX, separatorHeight)];
+	separator.backgroundColor = [UIColor colorWithWhite: 0.0 alpha: 161.0/255.0];
+	[formView addSubview: separator];
+	
+	//Configure icons for fields
+	
+	float formOffsetX = 18;
+	float formOffsetY = 12;
+	
+	UIImageView *emailImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].iconEmail];
+	emailImageView.frameOrigin = CGPointMake(formOffsetX, formOffsetY);
+	[formView addSubview: emailImageView];
+	
+	formOffsetY += emailImageView.frame.size.height + 15;
+	
+	UIImageView *passwordImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].iconPassword];
+	passwordImageView.frameOrigin = CGPointMake(formOffsetX, formOffsetY);
+	[formView addSubview: passwordImageView];
+	
+	//Configure fields
+	
+	formOffsetX += emailImageView.frame.size.width + 17;
+	
+	UITextField *emailField = [[UITextField alloc] initWithFrame: CGRectMake(formOffsetX, 0,
+																			 formView.frame.size.width - formOffsetX, 40)];
+	emailField.delegate = self;
+	emailField.centerY = emailImageView.center.y;
+	emailField.backgroundColor = [UIColor clearColor];
+	emailField.font = [FontFactory fontWithType: FontTypeLoginInputField];
+	emailField.textColor = [FontFactory fontColorForType: FontTypeLoginInputField];
+	emailField.placeholder = @"LoginViewControllerLoginPlaceholder".commonLocalizedString;
+	[formView addSubview: emailField];
 	_emailField = emailField;
 	
-	offsetY += _emailField.frame.size.height + 10;
-	
-	UITextField *passwordField = [[UITextField alloc] initWithFrame: CGRectMake(0, offsetY, 320, 40)];
-	passwordField.backgroundColor = [UIColor grayColor];
-	[self.view addSubview: passwordField];
+	UITextField *passwordField = [[UITextField alloc] initWithFrame: CGRectMake(formOffsetX, 0,
+																				formView.frame.size.width - formOffsetX, 40)];
+	passwordField.delegate = self;
+	passwordField.centerY = passwordImageView.center.y;
+	passwordField.backgroundColor = [UIColor clearColor];
+	passwordField.font = [FontFactory fontWithType: FontTypeLoginInputField];
+	passwordField.textColor = [FontFactory fontColorForType: FontTypeLoginInputField];
+	passwordField.placeholder = @"LoginViewControllerPassPlaceholder".commonLocalizedString;
+	passwordField.secureTextEntry = YES;
+	[formView addSubview: passwordField];
 	_passwordField = passwordField;
 	
-	offsetY += _passwordField.frame.size.height + 10;
+	//Configure restore pass button
+	offsetY += formView.frame.size.height;
 	
-	UIButton *loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-	[loginButton setTitle: @"Login" forState: UIControlStateNormal];
-	loginButton.frame = CGRectMake(0, offsetY, 320, 40);
+	float restoreButtonWidth = 117;
+	float restoreButtonHeight = 47;
+	
+	UIButton *restorePassButton = [[UIButton alloc] initWithFrame: CGRectMake(self.view.frame.size.width - restoreButtonWidth, offsetY, restoreButtonWidth, restoreButtonHeight)];
+	restorePassButton.titleLabel.font = [FontFactory fontWithType: FontTypeLoginRestorePass];
+	[restorePassButton setTitle: @"LoginViewControllerRestorePassBtnTitle".commonLocalizedString
+					   forState: UIControlStateNormal];
+	[restorePassButton setTitleColor: [FontFactory fontColorForType: FontTypeLoginRestorePass]
+							forState: UIControlStateNormal];
+	[restorePassButton addTarget: self action: @selector(restorePass:) forControlEvents: UIControlEventTouchUpInside];
+	[self.view addSubview: restorePassButton];
+	
+	//Configure actions
+	offsetY += 54;
+	
+	UIButton *loginButton = [[ViewFactory sharedFactory] loginButtonWithTarget: self action: @selector(login:)];
+	loginButton.frameY = offsetY;
 	[loginButton addTarget: self action: @selector(login:) forControlEvents: UIControlEventTouchUpInside];
 	[self.view addSubview: loginButton];
 	
-	offsetY += loginButton.frame.size.height + 10;
+	//Configure social bottom to top
+	UIButton *fbButton = [[ViewFactory sharedFactory] loginFacebookButtonWithTarget: self action: @selector(loginWithFacebook:)];
 	
-	loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-	[loginButton setTitle: @"Login with Facebook" forState: UIControlStateNormal];
-	loginButton.frame = CGRectMake(0, offsetY, 320, 40);
-	[loginButton addTarget: self action: @selector(loginWithFacebook:) forControlEvents: UIControlEventTouchUpInside];
-	[self.view addSubview: loginButton];
+	float offsetX = (self.view.frame.size.width - fbButton.frame.size.width * 3) / 2;
+	offsetY = self.view.frame.size.height - fbButton.frame.size.height;
 	
-	offsetY += loginButton.frame.size.height + 10;
+	fbButton.frameOrigin = CGPointMake(offsetX, offsetY);
+	[self.view addSubview: fbButton];
 	
-	loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-	[loginButton setTitle: @"Login with Twitter" forState: UIControlStateNormal];
-	loginButton.frame = CGRectMake(0, offsetY, 320, 40);
-	[loginButton addTarget: self action: @selector(loginWithTwitter:) forControlEvents: UIControlEventTouchUpInside];
-	[self.view addSubview: loginButton];
+	offsetX += fbButton.frame.size.width;
 	
-	offsetY += loginButton.frame.size.height + 10;
+	UIButton *twButton = [[ViewFactory sharedFactory] loginTwitterButtonWithTarget: self action: @selector(loginWithTwitter:)];
+	twButton.frameOrigin = CGPointMake(offsetX, offsetY);
+	[self.view addSubview: twButton];
 	
-	loginButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-	[loginButton setTitle: @"Login with Vkontakte" forState: UIControlStateNormal];
-	loginButton.frame = CGRectMake(0, offsetY, 320, 40);
-	[loginButton addTarget: self action: @selector(loginWithVkontakte:) forControlEvents: UIControlEventTouchUpInside];
-	[self.view addSubview: loginButton];
+	offsetX += twButton.frame.size.width;
 	
-	offsetY += loginButton.frame.size.height + 10;
+	UIButton *vkButton = [[ViewFactory sharedFactory] loginVkontakteButtonWithTarget: self action: @selector(loginWithVkontakte:)];
+	vkButton.frameOrigin = CGPointMake(offsetX, offsetY);
+	[self.view addSubview: vkButton];
 	
-	UILabel *tokenLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, 320, 120)];
-	tokenLabel.numberOfLines = 4;
-	tokenLabel.text = [AuthorizationManager sharedManager].account.accessToken;
-	[self.view addSubview: tokenLabel];
-	_tokenLabel = tokenLabel;
+	offsetY -= 15;
+	
+	UILabel *socialLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.view.frame.size.width, 15)];
+	socialLabel.font = [FontFactory fontWithType: FontTypeLoginSocialLabel];
+	socialLabel.text = @"LoginViewControllerSocialLabelTitle".commonLocalizedString;
+	socialLabel.textAlignment = NSTextAlignmentCenter;
+	socialLabel.textColor = [FontFactory fontColorForType: FontTypeLoginSocialLabel];
+	[self.view addSubview: socialLabel];
+}
+
+#pragma mark - Actions
+
+- (void) restorePass: (id) sender {
+	
 }
 
 - (void) login: (id) sender {
@@ -109,7 +197,13 @@
 
 - (void) authorizationSuccess {
 	[[NSNotificationCenter defaultCenter] removeObserver: self name: kAuthorizationNotification object: nil];
-	_tokenLabel.text = [AuthorizationManager sharedManager].account.accessToken;
+}
+
+#pragma mark - TextField delegate implementation
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	[textField resignFirstResponder];
+	return YES;
 }
 
 @end

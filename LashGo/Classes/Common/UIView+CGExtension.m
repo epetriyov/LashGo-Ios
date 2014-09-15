@@ -32,6 +32,18 @@
     self.center = center;
 }
 
+@dynamic frameOrigin;
+
+- (CGPoint) frameOrigin {
+	return self.frame.origin;
+}
+
+- (void) setFrameOrigin:(CGPoint)frameOrigin {
+	CGRect frame = self.frame;
+    frame.origin = frameOrigin;
+    self.frame = frame;
+}
+
 @dynamic frameX, frameY, frameWidth, frameHeight;
 
 - (CGFloat) frameX {

@@ -31,12 +31,6 @@
 - (void) loadView {
 	[super loadView];
 	
-	UIImageView *background = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width,
-																			 self.view.frame.size.height)];
-	background.contentMode = UIViewContentModeBottomLeft;
-	[self.view addSubview: background];
-	_background = background;
-	
 	TitleBarView *tbView = [TitleBarView titleBarView];
 	[tbView.backButton addTarget: self action: @selector(backAction:) forControlEvents: UIControlEventTouchUpInside];
 	[self.view addSubview: tbView];

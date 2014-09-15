@@ -15,7 +15,9 @@ static ViewFactory *viewFactory = nil;
 #define kResourceSuffixSelected @"_sel"
 #define kResourceSuffixBackground @"_bg"
 
+@dynamic iconEmail, iconPassword;
 @dynamic lgLogoImage;
+@dynamic loginViewControllerBgImage;
 @dynamic startViewControllerBgImage, startViewControllerFrameImage, startViewControllerGradientImage, statusBarPreferredColor;
 @dynamic taskbarBackgroundView, titleBarBackgroundImage, titleBarLogoImage;
 
@@ -34,8 +36,20 @@ static ViewFactory *viewFactory = nil;
 
 #pragma mark -
 
+- (UIImage *) iconEmail {
+	return [self getImageWithName: @"e-mail"];
+}
+
+- (UIImage *) iconPassword {
+	return [self getImageWithName: @"lock"];
+}
+
 - (UIImage *) lgLogoImage {
 	return [self getImageWithName: @"logo_lg"];
+}
+
+- (UIImage *) loginViewControllerBgImage {
+	return [self getImageWithName: @"bg_login"];
 }
 
 - (UIImage *) startViewControllerBgImage {
@@ -128,8 +142,36 @@ static ViewFactory *viewFactory = nil;
 	return button;
 }
 
+#pragma mark - Login
+
+- (UIButton *) loginButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"button_go" target: target action: selector];
+	button.titleLabel.font = [FontFactory fontWithType: FontTypeLoginActionBtnTitle];
+	[button setTitle: @"LoginViewControllerLoginBtnTitle".commonLocalizedString forState: UIControlStateNormal];
+	[button setTitleColor: [FontFactory fontColorForType: FontTypeLoginActionBtnTitle] forState: UIControlStateNormal];
+	
+	return button;
+}
+
+- (UIButton *) loginFacebookButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"btn_facebook" target: target action: selector];
+	return button;
+}
+
+- (UIButton *) loginTwitterButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"btn_twitter" target: target action: selector];
+	return button;
+}
+
+- (UIButton *) loginVkontakteButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"btn_vk" target: target action: selector];
+	return button;
+}
+
+#pragma mark - Title bar
+
 - (UIButton *) titleBarBackButtonWithTarget: (id) target action: (SEL) selector {
-	UIButton *button = [self buttonWithBGImageName: @"title_bar_back_btn" target: target action: selector];
+	UIButton *button = [self buttonWithBGImageName: @"ic_back" target: target action: selector];
 	button.titleLabel.font = [FontFactory fontWithType: FontTypeTitleBarButtons];
 	return button;
 }

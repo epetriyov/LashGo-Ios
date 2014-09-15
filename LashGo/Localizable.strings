@@ -20,6 +20,15 @@
 "AlertLogoutTitle" = "Выход";
 "AlertLogoutMessage" = "Вы действительно хотите выйти?";
 
+//LoginViewController
+"LoginViewControllerTitle" = "Вход";
+"LoginViewControllerWelcomeText" = "С возвращением!";
+"LoginViewControllerLoginPlaceholder" = "Электронная почта";
+"LoginViewControllerPassPlaceholder" = "Пароль";
+"LoginViewControllerRestorePassBtnTitle" = "Забыли пароль?";
+"LoginViewControllerLoginBtnTitle" = "Поехали!";
+"LoginViewControllerSocialLabelTitle" = "или войти через соцсети";
+
 //StartViewController
 "StartViewControllerSlogan" = "Удивляй!";
 "StartViewControllerStartButtonTitle" = "ПРОДОЛЖИТЬ";

@@ -13,6 +13,7 @@
 @property (nonatomic, assign) CGFloat centerX;
 @property (nonatomic, assign) CGFloat centerY;
 
+@property (nonatomic, assign) CGPoint frameOrigin;
 @property (nonatomic, assign) CGFloat frameX;
 @property (nonatomic, assign) CGFloat frameY;
 @property (nonatomic, assign) CGFloat frameWidth;

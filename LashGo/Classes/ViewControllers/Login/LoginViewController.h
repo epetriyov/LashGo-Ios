@@ -11,7 +11,6 @@
 @interface LoginViewController : TitleBarViewController {
 	UITextField __weak *_emailField;
 	UITextField __weak *_passwordField;
-	UILabel __weak *_tokenLabel;
 }
 
 @end

@@ -25,7 +25,7 @@
 	[super loadView];
 	
 	UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].startViewControllerBgImage];
-	[self.view addSubview: backgroundImageView];
+	[self.view insertSubview: backgroundImageView atIndex: 0];
 	
 	UIImageView *gradientImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].startViewControllerGradientImage];
 	gradientImageView.frameWidth = backgroundImageView.frame.size.width;
