@@ -9,6 +9,7 @@
 #import "CheckCardCollectionCell.h"
 #import "FontFactory.h"
 
+#import "CheckCardCountersPanelView.h"
 #import "Common.h"
 
 NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellReusableId";
@@ -16,6 +17,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 @interface CheckCardCollectionCell () {
 	CheckDetailView *_checkView;
 	CheckDetailView *_userPhotoView;
+	CheckCardCountersPanelView *_panelView;
 	NSTimer *_progressTimer;
 }
 
@@ -87,31 +89,16 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 			offsetY += 24;
 		}
 		
-		float cvOffsetX = 58;
-		
-		UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(cvOffsetX, offsetY,
-																				   self.contentView.frame.size.width - cvOffsetX * 2, 204)];
-		scrollView.clipsToBounds = NO;
-		scrollView.contentSize = CGSizeMake(scrollView.frame.size.width * 2, scrollView.frame.size.height);
-		scrollView.delegate = self;
-		scrollView.pagingEnabled = YES;
-		scrollView.showsHorizontalScrollIndicator = NO;
-		[self.contentView addSubview: scrollView];
-		
-		CGRect checkViewFrame = CGRectMake(0, 0, 204, 204);
+		CGRect checkViewFrame = CGRectMake(0, offsetY,
+										   self.contentView.frame.size.width, 204);
 		
 		_checkView = [[CheckDetailView alloc] initWithFrame: checkViewFrame
 												  imageCaps: 18 progressLineWidth: 10];
-		[scrollView addSubview: _checkView];
+		[self.contentView addSubview: _checkView];
 		
 		checkViewFrame.origin.x += checkViewFrame.size.width;
 		
-		_userPhotoView = [[CheckDetailView alloc] initWithFrame: checkViewFrame
-													  imageCaps: 18 progressLineWidth: 10];
-		_userPhotoView.displayPreview = YES;
-		[scrollView addSubview: _userPhotoView];
-		
-		offsetY += scrollView.frame.size.height;
+		offsetY += _checkView.frame.size.height;
 		
 		if (is568hMode == NO) {
 			offsetY += 16;
@@ -134,6 +121,12 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		_detailTextLabel.textColor = [FontFactory fontColorForType: FontTypeCheckCardDescription];
 		_detailTextLabel.backgroundColor = [UIColor clearColor];
 		[self.contentView addSubview: _detailTextLabel];
+		
+		float panelHeight = 31;
+		
+		_panelView = [[CheckCardCountersPanelView alloc] initWithFrame: CGRectMake(0, self.contentView.frame.size.height - panelHeight, self.contentView.frame.size.width, panelHeight)];
+		_panelView.backgroundColor = [UIColor redColor];
+		[self.contentView addSubview: _panelView];
     }
     return self;
 }
@@ -152,7 +145,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 			self.type = CheckDetailTypeOpen;
 		}
 		if ([_progressTimer isValid] == NO) {
-			_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 5 target: self selector:@selector(refresh)
+			_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector:@selector(refresh)
 															userInfo:nil repeats:YES];
 		}
 	}
@@ -161,11 +154,13 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	
 	if (self.type == CheckDetailTypeOpen) {
 		progress = fdim(now, _check.startDate) / _check.duration;
+		_panelView.timeLeft = fdim(_check.voteDate, now);
 	} else if (self.type == CheckDetailTypeVote) {
 		progress = fdim(now, _check.voteDate) / _check.voteDuration;
 	}
 	_checkView.progressValue = progress;
 	_userPhotoView.progressValue = progress;
+	
 }
 
 - (NSString *) reuseIdentifier {

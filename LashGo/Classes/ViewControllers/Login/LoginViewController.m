@@ -170,6 +170,7 @@
 	loginInfo.passwordHash = _passwordField.text.md5;
 	
 	[[AuthorizationManager sharedManager] loginUsingLashGo: loginInfo];
+//	[[AuthorizationManager sharedManager] registerUsingLashGo: loginInfo];
 }
 
 - (void) loginWithFacebook: (id) sender {

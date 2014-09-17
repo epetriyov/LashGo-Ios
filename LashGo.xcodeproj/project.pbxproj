@@ -73,6 +73,10 @@
 		84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */; };
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
 		84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC84F1197D4666001FA1F6 /* SearchViewController.m */; };
+		84EEE4A819C9B019009F83C6 /* LGCheckCounters.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE4A719C9B019009F83C6 /* LGCheckCounters.m */; };
+		84EEE4B219C9B21F009F83C6 /* CheckCardCountersPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE4B119C9B21F009F83C6 /* CheckCardCountersPanelView.m */; };
+		84EEE4B619C9C42C009F83C6 /* CheckDrawingsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE4B519C9C42C009F83C6 /* CheckDrawingsDetailView.m */; };
+		84EEE4B919C9D1CB009F83C6 /* VoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE4B819C9D1CB009F83C6 /* VoteViewController.m */; };
 		84F5003B19AB6C1400DC21C7 /* TaskBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5003A19AB6C1400DC21C7 /* TaskBarViewController.m */; };
 		84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F65A8E19827CFE003BF42A /* URLSecurity.m */; };
 		84F8AE75198FB4E7009EC5A6 /* LGSocialInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AE74198FB4E7009EC5A6 /* LGSocialInfo.m */; };
@@ -265,6 +269,14 @@
 		84EB473C1943044C001DEF81 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		84EC84F0197D4666001FA1F6 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		84EC84F1197D4666001FA1F6 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		84EEE4A619C9B019009F83C6 /* LGCheckCounters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCheckCounters.h; sourceTree = "<group>"; };
+		84EEE4A719C9B019009F83C6 /* LGCheckCounters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCheckCounters.m; sourceTree = "<group>"; };
+		84EEE4B019C9B21F009F83C6 /* CheckCardCountersPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCardCountersPanelView.h; sourceTree = "<group>"; };
+		84EEE4B119C9B21F009F83C6 /* CheckCardCountersPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCardCountersPanelView.m; sourceTree = "<group>"; };
+		84EEE4B419C9C42C009F83C6 /* CheckDrawingsDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDrawingsDetailView.h; sourceTree = "<group>"; };
+		84EEE4B519C9C42C009F83C6 /* CheckDrawingsDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDrawingsDetailView.m; sourceTree = "<group>"; };
+		84EEE4B719C9D1CB009F83C6 /* VoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoteViewController.h; sourceTree = "<group>"; };
+		84EEE4B819C9D1CB009F83C6 /* VoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteViewController.m; sourceTree = "<group>"; };
 		84F5003919AB6C1400DC21C7 /* TaskBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskBarViewController.h; sourceTree = "<group>"; };
 		84F5003A19AB6C1400DC21C7 /* TaskBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskBarViewController.m; sourceTree = "<group>"; };
 		84F65A8D19827CFE003BF42A /* URLSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLSecurity.h; sourceTree = "<group>"; };
@@ -395,6 +407,8 @@
 				84E98F311984ED7D00B422F4 /* RequestInput */,
 				840625561930AD760067C1CA /* LGCheck.h */,
 				840625571930AD760067C1CA /* LGCheck.m */,
+				84EEE4A619C9B019009F83C6 /* LGCheckCounters.h */,
+				84EEE4A719C9B019009F83C6 /* LGCheckCounters.m */,
 				8406255C1930BB850067C1CA /* LGComment.h */,
 				8406255D1930BB850067C1CA /* LGComment.m */,
 				8406255F1930BDF80067C1CA /* LGContent.h */,
@@ -690,6 +704,8 @@
 				84E6D9B2196C226A0021D417 /* CheckCardViewController.m */,
 				84F8E8AA199BA7620054C9F8 /* CheckListViewController.h */,
 				84F8E8AB199BA7620054C9F8 /* CheckListViewController.m */,
+				84EEE4B719C9D1CB009F83C6 /* VoteViewController.h */,
+				84EEE4B819C9D1CB009F83C6 /* VoteViewController.m */,
 			);
 			path = Check;
 			sourceTree = "<group>";
@@ -711,6 +727,24 @@
 			path = Vkontakte;
 			sourceTree = "<group>";
 		};
+		84EEE4AF19C9B1E0009F83C6 /* Panel */ = {
+			isa = PBXGroup;
+			children = (
+				84EEE4B019C9B21F009F83C6 /* CheckCardCountersPanelView.h */,
+				84EEE4B119C9B21F009F83C6 /* CheckCardCountersPanelView.m */,
+			);
+			path = Panel;
+			sourceTree = "<group>";
+		};
+		84EEE4B319C9C3B8009F83C6 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				84EEE4B419C9C42C009F83C6 /* CheckDrawingsDetailView.h */,
+				84EEE4B519C9C42C009F83C6 /* CheckDrawingsDetailView.m */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
 		84F8E89A199A2DB00054C9F8 /* AlertViewManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,6 +757,8 @@
 		84F8E8A0199B5C580054C9F8 /* Check */ = {
 			isa = PBXGroup;
 			children = (
+				84EEE4B319C9C3B8009F83C6 /* DetailView */,
+				84EEE4AF19C9B1E0009F83C6 /* Panel */,
 				84F8E8A1199B5C580054C9F8 /* CheckCardCollectionCell.h */,
 				84F8E8A2199B5C580054C9F8 /* CheckCardCollectionCell.m */,
 				849DD0C1199C9D5800DC86F6 /* CheckListTableViewCell.h */,
@@ -1003,10 +1039,12 @@
 				84F8E8AC199BA7620054C9F8 /* CheckListViewController.m in Sources */,
 				84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */,
 				841C624319A397ED00BAEDBB /* TaskbarButton.m in Sources */,
+				84EEE4A819C9B019009F83C6 /* LGCheckCounters.m in Sources */,
 				8406255E1930BB850067C1CA /* LGComment.m in Sources */,
 				849DD0C3199C9D5800DC86F6 /* CheckListTableViewCell.m in Sources */,
 				84F8E8A9199B5C580054C9F8 /* CircleGradientLayer.m in Sources */,
 				8491557A1907FC78008D9120 /* Common.m in Sources */,
+				84EEE4B619C9C42C009F83C6 /* CheckDrawingsDetailView.m in Sources */,
 				840625761930D1AA0067C1CA /* LGSubscription.m in Sources */,
 				84F8E8A8199B5C580054C9F8 /* CheckDetailView.m in Sources */,
 				84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */,
@@ -1014,6 +1052,7 @@
 				845D858B19029EB0004E10AB /* main.m in Sources */,
 				84F8E89D199A2DB00054C9F8 /* AlertViewManager.m in Sources */,
 				8409D07F19C4631400DFFEC6 /* UserManager.m in Sources */,
+				84EEE4B919C9D1CB009F83C6 /* VoteViewController.m in Sources */,
 				8406256A1930CB0A0067C1CA /* LGPhoto.m in Sources */,
 				84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */,
 				841C624119A397ED00BAEDBB /* TaskbarManager.m in Sources */,
@@ -1024,6 +1063,7 @@
 				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
 				84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */,
 				84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */,
+				84EEE4B219C9B21F009F83C6 /* CheckCardCountersPanelView.m in Sources */,
 				84FD8961194C4684001139DF /* TWAPIManager.m in Sources */,
 				84FD8956194C44E7001139DF /* TwitterAppAccount.m in Sources */,
 			);

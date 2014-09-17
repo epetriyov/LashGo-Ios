@@ -114,7 +114,7 @@
 //	NSString *pathForResource = [[NSBundle mainBundle] pathForResource: @"DemoImage" ofType: @"jpg"];
 //
 //	UIImage *image = [[UIImage alloc] initWithContentsOfFile: pathForResource];
-//	
+//
 //	newCell.mainImage = image;
 //	newCell.secondImage = image;
 	return newCell;
