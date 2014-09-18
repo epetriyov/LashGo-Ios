@@ -40,6 +40,8 @@
 		_checksManager = [[ChecksManager alloc] initWithKernel: self
 												  dataProvider: _dataProvider
 													 vcManager: viewControllersManager];
+		_imagePickManager = [[ImagePickManager alloc] initWithKernel: self
+														   vcManager: viewControllersManager];
 		_userManager = [[UserManager alloc] initWithKernel: self
 											  dataProvider: _dataProvider
 												 vcManager: viewControllersManager];

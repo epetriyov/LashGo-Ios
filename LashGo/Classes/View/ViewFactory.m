@@ -142,6 +142,23 @@ static ViewFactory *viewFactory = nil;
 	return button;
 }
 
+#pragma mark - Check
+
+- (UIButton *) checkMakeFoto: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"btn_camera" target: target action: selector];
+	return button;
+}
+
+- (UIButton *) checkSendFoto: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"btn_send_photo" target: target action: selector];
+	return button;
+}
+
+- (UIButton *) checkVote: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"btn_white_like" target: target action: selector];
+	return button;
+}
+
 #pragma mark - Login
 
 - (UIButton *) loginButtonWithTarget: (id) target action: (SEL) selector {

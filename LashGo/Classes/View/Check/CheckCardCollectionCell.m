@@ -14,11 +14,11 @@
 
 NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellReusableId";
 
-@interface CheckCardCollectionCell () {
+@interface CheckCardCollectionCell () <CheckDetailViewDelegate> {
 	CheckDetailView *_checkView;
 	CheckDetailView *_userPhotoView;
 	CheckCardCountersPanelView *_panelView;
-	NSTimer *_progressTimer;
+//	NSTimer *_progressTimer;
 }
 
 @end
@@ -94,6 +94,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		
 		_checkView = [[CheckDetailView alloc] initWithFrame: checkViewFrame
 												  imageCaps: 18 progressLineWidth: 10];
+		_checkView.delegate = self;
 		[self.contentView addSubview: _checkView];
 		
 		checkViewFrame.origin.x += checkViewFrame.size.width;
@@ -136,18 +137,18 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	
 	if (now > _check.closeDate) {
 		self.type = CheckDetailTypeClosed;
-		[_progressTimer invalidate];
-		_progressTimer = nil;
+//		[_progressTimer invalidate];
+//		_progressTimer = nil;
 	} else {
 		if (now > _check.voteDate) {
 			self.type = CheckDetailTypeVote;
 		} else {
 			self.type = CheckDetailTypeOpen;
 		}
-		if ([_progressTimer isValid] == NO) {
-			_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector:@selector(refresh)
-															userInfo:nil repeats:YES];
-		}
+//		if ([_progressTimer isValid] == NO) {
+//			_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector:@selector(refresh)
+//															userInfo:nil repeats:YES];
+//		}
 	}
 	
 	CGFloat progress = 0;
@@ -155,8 +156,12 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	if (self.type == CheckDetailTypeOpen) {
 		progress = fdim(now, _check.startDate) / _check.duration;
 		_panelView.timeLeft = fdim(_check.voteDate, now);
+		_checkView.userImage = _check.currentPickedUserPhoto;
 	} else if (self.type == CheckDetailTypeVote) {
 		progress = fdim(now, _check.voteDate) / _check.voteDuration;
+		_checkView.userImage = nil;
+	} else {
+		_checkView.userImage = nil;
 	}
 	_checkView.progressValue = progress;
 	_userPhotoView.progressValue = progress;
@@ -165,6 +170,16 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 
 - (NSString *) reuseIdentifier {
 	return kCheckCardCollectionCellReusableId;
+}
+
+#pragma mark - CheckDetailViewDelegate implementation
+
+- (void) makePhotoAction {
+	[self.delegate pickPhotoFor: self.check];
+}
+
+- (void) voteAction {
+	
 }
 
 #pragma mark - UIScrollViewDelegate implementation

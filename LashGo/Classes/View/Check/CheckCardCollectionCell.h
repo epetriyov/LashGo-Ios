@@ -11,7 +11,11 @@
 
 extern NSString *const kCheckCardCollectionCellReusableId;
 
+@protocol CheckCardCollectionCellDelegate;
+
 @interface CheckCardCollectionCell : UICollectionViewCell <UIScrollViewDelegate>
+
+@property (nonatomic, weak) id<CheckCardCollectionCellDelegate> delegate;
 
 @property (nonatomic, assign) UIImage *mainImage;
 @property (nonatomic, assign) UIImage *secondImage;
@@ -20,5 +24,14 @@ extern NSString *const kCheckCardCollectionCellReusableId;
 @property (nonatomic, assign) CheckDetailType type;
 
 @property (nonatomic, strong) LGCheck *check;
+
+- (void) refresh;
+
+@end
+
+@protocol CheckCardCollectionCellDelegate <NSObject>
+
+@required
+- (void) pickPhotoFor: (LGCheck *) check;
 
 @end

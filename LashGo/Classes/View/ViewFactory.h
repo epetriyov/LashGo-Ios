@@ -21,6 +21,11 @@
 - (UIImage *) getImageWithName: (NSString *) imageName;
 - (UIButton *) buttonWithBGImageName:(NSString *) imageName target: (id) target action: (SEL) selector;
 
+//Check
+- (UIButton *) checkMakeFoto: (id) target action: (SEL) selector;
+- (UIButton *) checkSendFoto: (id) target action: (SEL) selector;
+- (UIButton *) checkVote: (id) target action: (SEL) selector;
+
 //Login
 - (UIButton *) loginButtonWithTarget: (id) target action: (SEL) selector;
 - (UIButton *) loginFacebookButtonWithTarget: (id) target action: (SEL) selector;

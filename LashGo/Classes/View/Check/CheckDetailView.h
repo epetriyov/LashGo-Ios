@@ -9,13 +9,17 @@
 #import "CircleGradientLayer.h"
 #import "CheckDrawingsDetailView.h"
 
+@protocol CheckDetailViewDelegate;
 
 @interface CheckDetailView : UIView
+
+@property (nonatomic, weak) id<CheckDetailViewDelegate> delegate;
 
 @property (nonatomic, assign) BOOL displayPreview;
 ///By default, CheckDetailTypeClosed
 @property (nonatomic, assign) CheckDetailType type;
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIImage *userImage;
 @property (nonatomic, readonly) CGFloat imageCaps;
 @property (nonatomic, readonly) CGFloat progressLineWidth;
 @property (nonatomic, assign) CGFloat progressValue;
@@ -25,5 +29,13 @@
 			 progressLineWidth: (CGFloat) progressLineWidth;
 
 - (void) refresh;
+
+@end
+
+@protocol CheckDetailViewDelegate <NSObject>
+
+@required
+- (void) makePhotoAction;
+- (void) voteAction;
 
 @end

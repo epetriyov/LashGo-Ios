@@ -10,6 +10,9 @@
 		84001FEB1949AA53004D9D7A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84001FEA1949AA53004D9D7A /* Social.framework */; };
 		84001FF01949ADDD004D9D7A /* AuthorizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84001FEF1949ADDD004D9D7A /* AuthorizationManager.m */; };
 		84001FF41949AF68004D9D7A /* AppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84001FF31949AF68004D9D7A /* AppAccount.m */; };
+		840425D119CB167900C5EDBF /* UIImageView+LGImagesExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 840425D019CB167900C5EDBF /* UIImageView+LGImagesExtension.m */; };
+		840425DA19CB16EB00C5EDBF /* CheckCardTimerPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840425D919CB16EB00C5EDBF /* CheckCardTimerPanelView.m */; };
+		840425DD19CB1B5A00C5EDBF /* ImagePickManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840425DC19CB1B5A00C5EDBF /* ImagePickManager.m */; };
 		84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84045AA819224A04006F2F24 /* UIView+CGExtension.m */; };
 		8406250A193082020067C1CA /* NetworkDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062505193082020067C1CA /* NetworkDownloader.m */; };
 		8406250B193082020067C1CA /* NetworkDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062507193082020067C1CA /* NetworkDownloadManager.m */; };
@@ -151,6 +154,12 @@
 		84001FF21949AF68004D9D7A /* AppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppAccount.h; sourceTree = "<group>"; };
 		84001FF31949AF68004D9D7A /* AppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppAccount.m; sourceTree = "<group>"; };
 		84001FF61949B4FF004D9D7A /* Singleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		840425CF19CB167900C5EDBF /* UIImageView+LGImagesExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LGImagesExtension.h"; sourceTree = "<group>"; };
+		840425D019CB167900C5EDBF /* UIImageView+LGImagesExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LGImagesExtension.m"; sourceTree = "<group>"; };
+		840425D819CB16EB00C5EDBF /* CheckCardTimerPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCardTimerPanelView.h; sourceTree = "<group>"; };
+		840425D919CB16EB00C5EDBF /* CheckCardTimerPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCardTimerPanelView.m; sourceTree = "<group>"; };
+		840425DB19CB1B5A00C5EDBF /* ImagePickManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickManager.h; sourceTree = "<group>"; };
+		840425DC19CB1B5A00C5EDBF /* ImagePickManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickManager.m; sourceTree = "<group>"; };
 		84045AA719224A04006F2F24 /* UIView+CGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CGExtension.h"; sourceTree = "<group>"; };
 		84045AA819224A04006F2F24 /* UIView+CGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CGExtension.m"; sourceTree = "<group>"; };
 		84045AAA19225879006F2F24 /* RootNavigationControllerItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootNavigationControllerItemProtocol.h; sourceTree = "<group>"; };
@@ -654,6 +663,8 @@
 				840B4EB319A387E700AA6DE1 /* NSDateFormatter+CustomFormats.h */,
 				840B4EB419A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m */,
 				84001FF61949B4FF004D9D7A /* Singleton.h */,
+				840425CF19CB167900C5EDBF /* UIImageView+LGImagesExtension.h */,
+				840425D019CB167900C5EDBF /* UIImageView+LGImagesExtension.m */,
 				84045AA719224A04006F2F24 /* UIView+CGExtension.h */,
 				84045AA819224A04006F2F24 /* UIView+CGExtension.m */,
 			);
@@ -691,6 +702,8 @@
 			children = (
 				84E6240F1998FBAD003BC2F1 /* ChecksManager.h */,
 				84E624101998FBAD003BC2F1 /* ChecksManager.m */,
+				840425DB19CB1B5A00C5EDBF /* ImagePickManager.h */,
+				840425DC19CB1B5A00C5EDBF /* ImagePickManager.m */,
 				8409D07D19C4631400DFFEC6 /* UserManager.h */,
 				8409D07E19C4631400DFFEC6 /* UserManager.m */,
 			);
@@ -732,6 +745,8 @@
 			children = (
 				84EEE4B019C9B21F009F83C6 /* CheckCardCountersPanelView.h */,
 				84EEE4B119C9B21F009F83C6 /* CheckCardCountersPanelView.m */,
+				840425D819CB16EB00C5EDBF /* CheckCardTimerPanelView.h */,
+				840425D919CB16EB00C5EDBF /* CheckCardTimerPanelView.m */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -1034,6 +1049,7 @@
 				8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */,
 				84FD8968194C84EB001139DF /* FacebookAppAccount.m in Sources */,
 				8491557E19080301008D9120 /* RootNavigationController.m in Sources */,
+				840425D119CB167900C5EDBF /* UIImageView+LGImagesExtension.m in Sources */,
 				8406250A193082020067C1CA /* NetworkDownloader.m in Sources */,
 				8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */,
 				84F8E8AC199BA7620054C9F8 /* CheckListViewController.m in Sources */,
@@ -1045,6 +1061,7 @@
 				84F8E8A9199B5C580054C9F8 /* CircleGradientLayer.m in Sources */,
 				8491557A1907FC78008D9120 /* Common.m in Sources */,
 				84EEE4B619C9C42C009F83C6 /* CheckDrawingsDetailView.m in Sources */,
+				840425DD19CB1B5A00C5EDBF /* ImagePickManager.m in Sources */,
 				840625761930D1AA0067C1CA /* LGSubscription.m in Sources */,
 				84F8E8A8199B5C580054C9F8 /* CheckDetailView.m in Sources */,
 				84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */,
@@ -1059,6 +1076,7 @@
 				845D85BC1902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m in Sources */,
 				845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */,
 				840625641930C8EF0067C1CA /* LGgcmRegistrationId.m in Sources */,
+				840425DA19CB16EB00C5EDBF /* CheckCardTimerPanelView.m in Sources */,
 				84FD8958194C44E7001139DF /* OAuth+Additions.m in Sources */,
 				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
 				84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */,

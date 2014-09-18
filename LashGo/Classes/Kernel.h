@@ -10,6 +10,7 @@
 #import "AuthorizationManager.h"
 
 #import "ChecksManager.h"
+#import "ImagePickManager.h"
 #import "UserManager.h"
 
 #import "DataProvider.h"
@@ -23,6 +24,7 @@
 @property (nonatomic, readonly) UIViewController *rootViewController;
 
 @property (nonatomic, readonly) ChecksManager *checksManager;
+@property (nonatomic, readonly)	ImagePickManager *imagePickManager;
 @property (nonatomic, readonly) UserManager *userManager;
 
 @property (nonatomic, readonly) Storage *storage;

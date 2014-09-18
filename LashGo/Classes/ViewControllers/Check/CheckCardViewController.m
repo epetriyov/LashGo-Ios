@@ -17,8 +17,10 @@
 #import "LGCheck.h"
 #import "ViewFactory.h"
 
-@interface CheckCardViewController () {
+@interface CheckCardViewController () <CheckCardCollectionCellDelegate> {
 	UICollectionView __weak *_collectionView;
+	
+	NSTimer *_progressTimer;
 }
 
 @end
@@ -73,7 +75,28 @@
 	_collectionView = collectionView;
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear: animated];
+	
+	if ([_progressTimer isValid] == NO) {
+		_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector:@selector(refreshVisiblePage)
+														userInfo:nil repeats:YES];
+	}
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear: animated];
+	[_progressTimer invalidate];
+}
+
 #pragma mark - Methods
+
+- (void) refreshVisiblePage {
+	for (CheckCardCollectionCell *cell in _collectionView.visibleCells) {
+		[cell refresh];
+		DLog(@"cell refreshed");
+	}
+}
 
 - (void) refresh {
 	[_collectionView reloadData];
@@ -103,9 +126,11 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
 				  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-	DLog(@"New cell degueue for index: %ld", (long)indexPath.row);
+//	DLog(@"New cell degueue for index: %ld", (long)indexPath.row);
 	CheckCardCollectionCell* newCell = [collectionView dequeueReusableCellWithReuseIdentifier: kCheckCardCollectionCellReusableId
 																		   forIndexPath:indexPath];
+	newCell.delegate = self;
+	
 	LGCheck *check = kernel.storage.checks[indexPath.row];
 	newCell.check = check;
 //	newCell.textLabel.text = check.name;
@@ -123,7 +148,13 @@
 #pragma mark - UICollectionViewDelegate implementation
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-	DLog(@"Cell removed for index: %ld", (long)indexPath.row);
+//	DLog(@"Cell removed for index: %ld", (long)indexPath.row);
+}
+
+#pragma mark - CheckCardCollectionCellDelegate implementation
+
+- (void) pickPhotoFor: (LGCheck *) check {
+	[kernel.imagePickManager takePictureFor: check];
 }
 
 /*

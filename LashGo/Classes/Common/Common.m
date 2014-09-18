@@ -107,7 +107,7 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 
 #pragma mark - 
 
-- (UIImage *) squareImageFromImage: (UIImage *) image {
++ (UIImage *) squareImageFromImage: (UIImage *) image {
     UIImage *squareImage = nil;
     CGSize imageSize = [image size];
     
@@ -141,7 +141,7 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
     return squareImage;
 }
 
-- (UIImage *) generateThumbnailForImage: (UIImage *) image withSize: (CGSize) size {
++ (UIImage *) generateThumbnailForImage: (UIImage *) image withSize: (CGSize) size {
 //	CGFloat imageDiameter = MIN(self.frame.size.width, self.frame.size.height) - self.imageCaps * 2;
 	CGRect contextBounds = CGRectZero;
 //	contextBounds.size = CGSizeMake(imageDiameter, imageDiameter);

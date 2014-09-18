@@ -54,10 +54,13 @@
 	}
 }
 
-- (void) setType:(CheckDetailType)type {
-	_type = type;
-	[self refresh];
-}
+//Turned off cell should refresh view manually
+//- (void) setType:(CheckDetailType)type {
+//	if (_type != type) {
+//		_type = type;
+//		[self refresh];
+//	}
+//}
 
 #pragma mark - Standard
 

@@ -21,4 +21,6 @@
 @property (nonatomic, assign) NSTimeInterval voteDuration;
 @property (nonatomic, strong) NSString *taskPhotoUrl;
 
+@property (nonatomic, strong) UIImage *currentPickedUserPhoto;
+
 @end
