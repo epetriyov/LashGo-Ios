@@ -7,7 +7,13 @@
 //
 
 #import "UIImageView+LGImagesExtension.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "Common.h"
+
+//#import "objc/runtime.h"
+#import <SDWebImage/UIView+WebCacheOperation.h>
+
+#define kWebServiceURLPhotoPath @"http://78.47.39.245:8080/lashgo-api/photos/"
 
 @implementation UIImageView (LGImagesExtension)
 
@@ -24,6 +30,36 @@
 			[wself setNeedsDisplay];
 		});
 	});
+}
+
+- (void) loadWebImageWithName: (NSString *) imageName {
+	NSURL *url = [NSURL URLWithString: [kWebServiceURLPhotoPath stringByAppendingString: imageName]];
+	[self sd_setImageWithURL: url];
+}
+
+- (void) loadWebImageWithSizeThatFitsName: (NSString *) imageName placeholder: (UIImage *) placeholder {
+	NSURL *url = [NSURL URLWithString: [kWebServiceURLPhotoPath stringByAppendingString: imageName]];
+	
+	[self sd_cancelCurrentImageLoad];
+//    objc_setAssociatedObject(self, &imageURLKey, url, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+	
+    self.image = placeholder;
+    
+    if (url) {
+        __weak UIImageView *wself = self;
+        id <SDWebImageOperation> operation = [SDWebImageManager.sharedManager downloadImageWithURL:url options: 0 progress: nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+            if (!wself) return;
+			UIImage __weak *resizedImage = [Common generateThumbnailForImage: image withSize: self.frame.size];
+            dispatch_main_sync_safe(^{
+                if (!wself) return;
+                if (image) {
+                    wself.image = resizedImage;
+                    [wself setNeedsLayout];
+                }
+            });
+        }];
+        [self sd_setImageLoadOperation:operation forKey:@"UIImageViewImageLoad"];
+    }
 }
 
 @end

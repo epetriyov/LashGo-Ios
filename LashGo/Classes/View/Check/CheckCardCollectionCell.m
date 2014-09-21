@@ -11,6 +11,7 @@
 
 #import "CheckCardCountersPanelView.h"
 #import "Common.h"
+#import "UIImageView+LGImagesExtension.h"
 
 NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellReusableId";
 
@@ -31,19 +32,20 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 #pragma mark - Properties
 
 - (UIImage *) mainImage {
-	return _checkView.image;
+	return _checkView.imageView.image;
 }
 
 - (void) setMainImage:(UIImage *)mainImage {
-	_checkView.image = mainImage;
+	_checkView.imageView.image = mainImage;
 }
 
 - (UIImage *) secondImage {
-	return _userPhotoView.image;
+//	return _userPhotoView.imageView;
+	return nil;
 }
 
 - (void) setSecondImage:(UIImage *)secondImage {
-	_userPhotoView.image = secondImage;
+//	_userPhotoView.imageView = secondImage;
 }
 
 - (CheckDetailType) type {
@@ -59,6 +61,8 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	_textLabel.text = check.name;
 	_detailTextLabel.text = check.descr;
 	[self refresh];
+	
+	[_checkView.imageView loadWebImageWithSizeThatFitsName:check.taskPhotoUrl placeholder:nil];
 }
 
 #pragma mark -

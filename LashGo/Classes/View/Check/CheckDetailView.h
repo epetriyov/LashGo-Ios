@@ -18,7 +18,7 @@
 @property (nonatomic, assign) BOOL displayPreview;
 ///By default, CheckDetailTypeClosed
 @property (nonatomic, assign) CheckDetailType type;
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, readonly) UIImageView *imageView;
 @property (nonatomic, strong) UIImage *userImage;
 @property (nonatomic, readonly) CGFloat imageCaps;
 @property (nonatomic, readonly) CGFloat progressLineWidth;

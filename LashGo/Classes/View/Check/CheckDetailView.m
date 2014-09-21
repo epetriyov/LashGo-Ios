@@ -28,23 +28,13 @@
 
 @implementation CheckDetailView
 
-@dynamic image, userImage, progressValue;
+@dynamic userImage, progressValue;
 @dynamic type;
 
 #pragma mark - Properties
 
 - (void) setDisplayPreview:(BOOL)displayPreview {
 	_displayPreview = displayPreview;
-}
-
-- (UIImage *) image {
-	return _imageView.image;
-}
-
-- (void) setImage:(UIImage *)image {
-	if (self.image != image) {
-		_imageView.image = image;
-	}
 }
 
 - (UIImage *) userImage {
@@ -116,7 +106,7 @@
 		[_scrollView addSubview: _imageView];
 		
 		_userImageView = [[UIImageView alloc] initWithFrame: CGRectOffset(_imageView.frame, _scrollView.frame.size.width, 0)];
-		_userImageView.contentMode = UIViewContentModeScaleAspectFill;
+		_userImageView.contentMode = UIViewContentModeCenter;
 		CALayer *_userImageLayer = _userImageView.layer;
         [_userImageLayer setCornerRadius: _userImageView.frame.size.width / 2];
         [_userImageLayer setMasksToBounds:YES];

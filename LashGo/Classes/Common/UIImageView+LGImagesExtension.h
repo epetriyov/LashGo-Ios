@@ -12,4 +12,7 @@
 
 - (void) loadLocalImageWithName: (NSString *) ImageName;
 
+- (void) loadWebImageWithName: (NSString *) imageName;
+- (void) loadWebImageWithSizeThatFitsName: (NSString *) imageName placeholder: (UIImage *) placeholder;
+
 @end
