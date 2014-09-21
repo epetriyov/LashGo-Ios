@@ -23,6 +23,7 @@
 - (void) checkCommentsFor: (int64_t) checkID;
 //- (void) checkAddPhoto
 - (void) checkPhotosFor: (int64_t) checkID;
+- (void) checkVotePhotosFor: (int64_t) checkID;
 
 - (void) commentRemove: (int64_t) commentID;
 
