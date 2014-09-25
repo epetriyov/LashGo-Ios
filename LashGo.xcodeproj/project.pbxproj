@@ -70,6 +70,7 @@
 		849DD0C3199C9D5800DC86F6 /* CheckListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DD0C2199C9D5800DC86F6 /* CheckListTableViewCell.m */; };
 		849DD0C9199CBF9300DC86F6 /* SegmentedTextControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DD0C8199CBF9300DC86F6 /* SegmentedTextControl.m */; };
 		84A0DB1519D4457F009AD6DB /* RecoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0DB1419D4457F009AD6DB /* RecoverViewController.m */; };
+		84A0DB1F19D45A87009AD6DB /* VotePanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0DB1E19D45A87009AD6DB /* VotePanelView.m */; };
 		84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6240A1998F4CD003BC2F1 /* Storage.m */; };
 		84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E624101998FBAD003BC2F1 /* ChecksManager.m */; };
 		84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B2196C226A0021D417 /* CheckCardViewController.m */; };
@@ -265,6 +266,8 @@
 		849DD0C8199CBF9300DC86F6 /* SegmentedTextControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentedTextControl.m; sourceTree = "<group>"; };
 		84A0DB1319D4457F009AD6DB /* RecoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecoverViewController.h; sourceTree = "<group>"; };
 		84A0DB1419D4457F009AD6DB /* RecoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecoverViewController.m; sourceTree = "<group>"; };
+		84A0DB1D19D45A87009AD6DB /* VotePanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VotePanelView.h; sourceTree = "<group>"; };
+		84A0DB1E19D45A87009AD6DB /* VotePanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotePanelView.m; sourceTree = "<group>"; };
 		84E624091998F4CD003BC2F1 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
 		84E6240A1998F4CD003BC2F1 /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
 		84E6240F1998FBAD003BC2F1 /* ChecksManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChecksManager.h; sourceTree = "<group>"; };
@@ -494,9 +497,10 @@
 		8426F353191A6E8100B4E336 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				841C623819A397ED00BAEDBB /* TaskBar */,
 				84F8E8A0199B5C580054C9F8 /* Check */,
+				841C623819A397ED00BAEDBB /* TaskBar */,
 				8426F354191A6F6400B4E336 /* TitleBar */,
+				84A0DB1C19D45A59009AD6DB /* Vote */,
 				8426F35B191A754200B4E336 /* FontFactory.h */,
 				8426F35C191A754200B4E336 /* FontFactory.m */,
 				8426F358191A6FF900B4E336 /* ViewFactory.h */,
@@ -698,6 +702,15 @@
 				849DD0C8199CBF9300DC86F6 /* SegmentedTextControl.m */,
 			);
 			path = SegmentedControl;
+			sourceTree = "<group>";
+		};
+		84A0DB1C19D45A59009AD6DB /* Vote */ = {
+			isa = PBXGroup;
+			children = (
+				84A0DB1D19D45A87009AD6DB /* VotePanelView.h */,
+				84A0DB1E19D45A87009AD6DB /* VotePanelView.m */,
+			);
+			path = Vote;
 			sourceTree = "<group>";
 		};
 		84E6240E1998FB28003BC2F1 /* Managers */ = {
@@ -1023,6 +1036,7 @@
 				84F8E8A7199B5C580054C9F8 /* CheckCardCollectionCell.m in Sources */,
 				849DD0C9199CBF9300DC86F6 /* SegmentedTextControl.m in Sources */,
 				84001FF41949AF68004D9D7A /* AppAccount.m in Sources */,
+				84A0DB1F19D45A87009AD6DB /* VotePanelView.m in Sources */,
 				8406250B193082020067C1CA /* NetworkDownloadManager.m in Sources */,
 				8406256D1930CDEA0067C1CA /* LGRecoverInfo.m in Sources */,
 				845D858F19029EB0004E10AB /* AppDelegate.m in Sources */,
