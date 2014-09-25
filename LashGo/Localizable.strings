@@ -29,6 +29,11 @@
 "LoginViewControllerLoginBtnTitle" = "Поехали!";
 "LoginViewControllerSocialLabelTitle" = "или войти через соцсети";
 
+//RecoverViewController
+"RecoverViewControllerTitle" = "Восстановление пароля";
+"RecoverViewControllerMessage" = "Адрес для восстановления пароля";
+"RecoverViewControllerRecoverBtnTitle" = "Готово";
+
 //StartViewController
 "StartViewControllerSlogan" = "Удивляй!";
 "StartViewControllerStartButtonTitle" = "ПРОДОЛЖИТЬ";

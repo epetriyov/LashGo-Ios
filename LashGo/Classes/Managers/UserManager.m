@@ -35,12 +35,27 @@
 
 #pragma mark - Methods
 
+- (void) recoverPasswordWithEmail: (NSString *) email {
+	LGRecoverInfo *recoverInfo = [[LGRecoverInfo alloc] init];
+	recoverInfo.email = email;
+	
+	[_dataProvider userRecover: recoverInfo];
+}
+
 - (void) socialSignIn {
 	LGSocialInfo *socialInfo = [[LGSocialInfo alloc] init];
 	socialInfo.accessToken = [AuthorizationManager sharedManager].account.accessToken;
 	socialInfo.socialName = [AuthorizationManager sharedManager].account.accountSocialName;
 	
 //	[_dataProvider userSocialSignIn: ]
+}
+
+- (void) openLoginViewController {
+	[_viewControllersManager openLoginViewController];
+}
+
+- (void) openRecoverViewController {
+	[_viewControllersManager openViewController:_viewControllersManager.recoverViewController animated: YES];
 }
 
 @end

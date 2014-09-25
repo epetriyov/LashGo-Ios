@@ -16,6 +16,10 @@
 				   dataProvider: (DataProvider *) dataProvider
 					  vcManager: (ViewControllersManager *) vcManager;
 
+- (void) recoverPasswordWithEmail: (NSString *) email;
 - (void) socialSignIn;
+
+- (void) openLoginViewController;
+- (void) openRecoverViewController;
 
 @end

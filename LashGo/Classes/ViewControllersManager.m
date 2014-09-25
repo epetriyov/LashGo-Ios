@@ -18,11 +18,16 @@
 
 @synthesize rootNavigationController;
 @dynamic isReturnToPreviousAvaliable;
+@dynamic recoverViewController;
 
 #pragma mark - Properties
 
 - (BOOL) isReturnToPreviousAvaliable {
 	return [rootNavigationController.viewControllers count] > 1;
+}
+
+- (RecoverViewController *) recoverViewController {
+	return [self createViewControllerOfClass: [RecoverViewController class]];
 }
 
 #pragma mark - Overrides

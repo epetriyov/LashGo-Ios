@@ -12,6 +12,7 @@
 #import "Common.h"
 #import "CryptoUtils.h"
 #import "FontFactory.h"
+#import "Kernel.h"
 #import "UIView+CGExtension.h"
 #import "ViewFactory.h"
 
@@ -161,7 +162,7 @@
 #pragma mark - Actions
 
 - (void) restorePass: (id) sender {
-	
+	[kernel.userManager openRecoverViewController];
 }
 
 - (void) login: (id) sender {

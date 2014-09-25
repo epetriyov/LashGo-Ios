@@ -12,6 +12,7 @@
 #import "CheckListViewController.h"
 
 #import "LoginViewController.h"
+#import "RecoverViewController.h"
 
 #import "SearchViewController.h"
 #import "StartViewController.h"
@@ -36,8 +37,11 @@
 @property (nonatomic, readonly) CheckCardViewController *checkCardViewController;
 @property (nonatomic, readonly) CheckListViewController *checkListViewController;
 
+@property (nonatomic, readonly) RecoverViewController *recoverViewController;
+
 - (id) initWithKernel: (Kernel *) theKernel;
 
+- (void) openViewController: (UIViewController *) viewController animated: (BOOL) animated;
 - (void) returnToPreviousViewController;
 
 - (void) openCheckCardViewController;

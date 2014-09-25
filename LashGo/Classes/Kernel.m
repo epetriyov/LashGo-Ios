@@ -69,6 +69,10 @@
 
 #pragma mark - DataProviderDelegate implementation
 
+- (void) dataProviderDidRecoverPass: (DataProvider *) dataProvider {
+	[self.userManager openLoginViewController];
+}
+
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks {
 	[self.storage updateChecksWith: checks];
 	[self.viewControllersManager.checkCardViewController refresh];

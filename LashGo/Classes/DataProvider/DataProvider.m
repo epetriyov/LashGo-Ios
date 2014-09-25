@@ -360,12 +360,14 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark -
 
 - (void) didRecover: (URLConnection *) connection {
-	
+	if ([self.delegate respondsToSelector: @selector(dataProviderDidRecoverPass:)] == YES) {
+		[self.delegate dataProviderDidRecoverPass: self];
+	}
 }
 
 - (void) userRecover: (LGRecoverInfo *) inputData {
 	[self startConnectionWithPath: kUsersRecoverPath type: URLConnectionTypePUT
-							 body: nil
+							 body: inputData.JSONObject
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didRecover:) failSelector: @selector(didFailGetImportantData:)];
