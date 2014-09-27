@@ -183,7 +183,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 }
 
 - (void) voteAction {
-	
+	[self.delegate voteFor: self.check];
 }
 
 #pragma mark - UIScrollViewDelegate implementation

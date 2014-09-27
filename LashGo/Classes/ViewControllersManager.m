@@ -10,6 +10,8 @@
 
 @interface ViewControllersManager () {
 	SearchViewController *_searchViewController;
+	
+	VoteViewController __weak *_voteViewController;
 }
 
 @end
@@ -18,12 +20,19 @@
 
 @synthesize rootNavigationController;
 @dynamic isReturnToPreviousAvaliable;
-@dynamic recoverViewController;
+@dynamic recoverViewController, voteViewController;
 
 #pragma mark - Properties
 
 - (BOOL) isReturnToPreviousAvaliable {
 	return [rootNavigationController.viewControllers count] > 1;
+}
+
+- (VoteViewController *) voteViewController {
+	if (_voteViewController == nil) {
+		_voteViewController = [self createViewControllerOfClass: [VoteViewController class]];
+	}
+	return _voteViewController;
 }
 
 - (RecoverViewController *) recoverViewController {

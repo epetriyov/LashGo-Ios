@@ -47,4 +47,10 @@
 	}
 }
 
+- (void) openVoteViewControllerForCheck: (LGCheck *) check {
+	VoteViewController *voteViewController = _viewControllersManager.voteViewController;
+	voteViewController.check = check;
+	[_viewControllersManager openViewController: voteViewController animated: YES];
+}
+
 @end

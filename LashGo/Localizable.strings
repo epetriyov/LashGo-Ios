@@ -43,6 +43,9 @@
 "SearchPeople" = "Людей";
 "SearchChecks" = "Чеков";
 
+//VoteViewController
+"VoteViewControllerTitle" = "Голосование";
+
 //Checks
 "ChecksTitle" = "Задания";
 "ChecksActiveHeaderTitle" = "Активные";

@@ -11,6 +11,7 @@
 @interface Storage : NSObject
 
 @property (nonatomic, readonly) NSArray *checks;
+@property (nonatomic, strong) NSArray *checkVotePhotos;
 
 - (void) updateChecksWith: (NSArray *) newValues;
 

@@ -17,6 +17,12 @@
 	return self;
 }
 
+- (void) loadView {
+	[super loadView];
+	
+	self.view.backgroundColor = [UIColor blackColor];
+}
+
 - (UIStatusBarStyle) preferredStatusBarStyle {
 	return UIStatusBarStyleDefault;
 }

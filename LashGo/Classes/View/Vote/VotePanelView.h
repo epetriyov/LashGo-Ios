@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(ushort, VotePanelType) {
+	VotePanelTypeLike = 0,
+	VotePanelTypeNext
+};
+
 @interface VotePanelView : UIView
 
+@property (nonatomic, assign) VotePanelType type;
 @property (nonatomic, readonly) UIImageView *photo0ImageView;
 @property (nonatomic, readonly) UIImageView *photo1ImageView;
 @property (nonatomic, readonly) UIImageView *photo2ImageView;

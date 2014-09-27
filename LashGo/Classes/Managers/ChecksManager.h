@@ -10,6 +10,8 @@
 @class DataProvider;
 @class ViewControllersManager;
 
+@class LGCheck;
+
 @interface ChecksManager : NSObject
 
 - (instancetype) initWithKernel: (Kernel *) kernel
@@ -19,5 +21,7 @@
 
 - (void) openCheckCardViewController;
 - (void) openCheckListViewController;
+
+- (void) openVoteViewControllerForCheck: (LGCheck *) check;
 
 @end

@@ -225,4 +225,49 @@ static ViewFactory *viewFactory = nil;
 	return button;
 }
 
+#pragma mark - Vote
+
+- (UIButton *) votePhotoSelectButtonWithIndex: (ushort) index target: (id) target action: (SEL) selector {
+	UIButton *button = [ [UIButton alloc] init];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	
+	[button setImage: [UIImage imageNamed:  @"ic_check_empty"]
+			forState: UIControlStateNormal];
+	[button setImage: [UIImage imageNamed: @"ic_check_pink"]
+			forState: UIControlStateSelected];
+	[button setImage: [UIImage imageNamed: @"ic_check_green"]
+			forState: UIControlStateDisabled];
+	
+	switch (index) {
+		case 1:
+			button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+			button.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+			break;
+		case 2:
+			button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+			button.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+			break;
+		case 3:
+			button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+			button.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
+			break;
+		default:
+			button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+			button.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+			break;
+	}
+	
+	return button;
+}
+
+- (UIButton *) votePhotoLikeButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"ic_vote_like" target: target action: selector];
+	return button;
+}
+
+- (UIButton *) votePhotoNextButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithBGImageName: @"ic_next" target: target action: selector];
+	return button;
+}
+
 @end

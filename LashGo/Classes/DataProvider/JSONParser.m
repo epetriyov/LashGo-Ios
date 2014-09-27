@@ -115,21 +115,34 @@
 	return checks;
 }
 
+- (NSArray *) parseCheckVotePhotos: (NSData *) jsonData {
+	NSArray *rawData = [self parseJSONData: jsonData][@"result"][@"votePhotoList"];
+	
+	NSMutableArray *votePhotos = [NSMutableArray array];
+	
+	for (NSDictionary *rawPhoto in rawData) {
+		LGPhoto *photo = [[LGPhoto alloc] init];
+		
+		photo.uid =	[rawPhoto[@"id"] longLongValue];
+		photo.url =	rawPhoto[@"url"];
+		photo.user = [self parseUser: rawPhoto[@"user"]];
+		
+		[votePhotos addObject: photo];
+	}
+	
+	if ([votePhotos count] <= 0) {
+		votePhotos = nil;
+	}
+	return votePhotos;
+}
+
 - (LGRegisterInfo *) parseRegiserInfo: (NSData *) jsonData {
 	NSDictionary *rawData = [self parseJSONData: jsonData][@"result"];
 	
 	LGRegisterInfo *registerInfo = [[LGRegisterInfo alloc] init];
 	
 	NSDictionary *rawUser = rawData[@"userDto"];
-	LGUser *user = [[LGUser alloc] init];
-	
-	user.name =		rawUser[@"name"];
-	user.surname =	rawUser[@"surname"];
-//	user.about;
-//	user.city;
-//	user.birthDate;
-//	user.avatar
-	user.email =	rawUser[@"email"];
+	LGUser *user = [self parseUser: rawUser];
 	
 	LGSessionInfo *sessionInfo = [[LGSessionInfo alloc] init];
 	
@@ -139,6 +152,25 @@
 	registerInfo.sessionInfo =	sessionInfo;
 	
 	return registerInfo;
+}
+
+- (LGUser *) parseUser: (NSDictionary *) jsonDataObj {
+	LGUser *user = nil;
+	
+	if ([jsonDataObj count] > 0) {
+		NSDictionary *rawUser = jsonDataObj;
+		
+		user = [[LGUser alloc] init];
+		
+		user.name =		rawUser[@"name"];
+		user.surname =	rawUser[@"surname"];
+	//	user.about;
+	//	user.city;
+	//	user.birthDate;
+		user.avatar =	rawUser[@"avatar"];
+		user.email =	rawUser[@"email"];
+	}
+	return user;
 }
 
 @end

@@ -33,5 +33,6 @@ extern NSString *const kCheckCardCollectionCellReusableId;
 
 @required
 - (void) pickPhotoFor: (LGCheck *) check;
+- (void) voteFor: (LGCheck *) check;
 
 @end

@@ -50,6 +50,7 @@
 
 @optional
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks;
+- (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (NSArray *) votePhotos;
 
 - (void) dataProviderDidRecoverPass: (DataProvider *) dataProvider;
 - (void) dataProvider: (DataProvider *) dataProvider didRegisterUser: (LGRegisterInfo *) registerInfo;

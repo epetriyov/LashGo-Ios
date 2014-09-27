@@ -7,6 +7,7 @@
 //
 
 #import "LGCheck.h"
+#import "LGPhoto.h"
 #import "LGRegisterInfo.h"
 #import "URLConnection.h"
 
@@ -16,6 +17,7 @@
 - (NSError *) parseError: (URLConnection *) connection;
 
 - (NSArray *) parseChecks: (NSData *) jsonData;
+- (NSArray *) parseCheckVotePhotos: (NSData *) jsonData;
 - (LGRegisterInfo *) parseRegiserInfo: (NSData *) jsonData;
 
 @end

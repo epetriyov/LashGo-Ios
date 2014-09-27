@@ -40,4 +40,9 @@
 - (UIButton *) titleBarRightIncomeButtonWithTarget: (id) target action: (SEL) selector;
 - (UIButton *) titleBarRightSearchButtonWithTarget: (id) target action: (SEL) selector;
 
+//Vote
+- (UIButton *) votePhotoSelectButtonWithIndex: (ushort) index target: (id) target action: (SEL) selector;
+- (UIButton *) votePhotoLikeButtonWithTarget: (id) target action: (SEL) selector;
+- (UIButton *) votePhotoNextButtonWithTarget: (id) target action: (SEL) selector;
+
 @end

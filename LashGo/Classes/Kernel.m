@@ -78,6 +78,10 @@
 	[self.viewControllersManager.checkCardViewController refresh];
 }
 
+- (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (NSArray *) votePhotos {
+	self.storage.checkVotePhotos = votePhotos;
+}
+
 #pragma mark - TaskbarManagerDelegate implementation
 
 - (void) taskbarManager: (TaskbarManager *) manager didPressTaskbarButtonWithType: (TaskbarButtonType) type {

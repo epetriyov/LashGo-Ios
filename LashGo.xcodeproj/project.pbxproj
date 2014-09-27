@@ -48,6 +48,7 @@
 		8426F35D191A754200B4E336 /* FontFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F35C191A754200B4E336 /* FontFactory.m */; };
 		8427E62019C5DB7400558649 /* libSDWebImage+WebP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8427E61D19C5DB3300558649 /* libSDWebImage+WebP.a */; };
 		8427E62219C5DBC500558649 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8427E62119C5DBC500558649 /* ImageIO.framework */; };
+		8434E44319D708D700DD4CA8 /* CheckSimpleDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434E44219D708D700DD4CA8 /* CheckSimpleDetailView.m */; };
 		845D857F19029EB0004E10AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D857E19029EB0004E10AB /* Foundation.framework */; };
 		845D858119029EB0004E10AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858019029EB0004E10AB /* CoreGraphics.framework */; };
 		845D858319029EB0004E10AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858219029EB0004E10AB /* UIKit.framework */; };
@@ -230,6 +231,8 @@
 		8426F35C191A754200B4E336 /* FontFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontFactory.m; sourceTree = "<group>"; };
 		8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = LashGo/SDWebImageLib/SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		8427E62119C5DBC500558649 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		8434E44119D708D700DD4CA8 /* CheckSimpleDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckSimpleDetailView.h; sourceTree = "<group>"; };
+		8434E44219D708D700DD4CA8 /* CheckSimpleDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckSimpleDetailView.m; sourceTree = "<group>"; };
 		845D857B19029EB0004E10AB /* LashGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LashGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845D857E19029EB0004E10AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		845D858019029EB0004E10AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -772,6 +775,8 @@
 			children = (
 				84EEE4B419C9C42C009F83C6 /* CheckDrawingsDetailView.h */,
 				84EEE4B519C9C42C009F83C6 /* CheckDrawingsDetailView.m */,
+				8434E44119D708D700DD4CA8 /* CheckSimpleDetailView.h */,
+				8434E44219D708D700DD4CA8 /* CheckSimpleDetailView.m */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -1085,6 +1090,7 @@
 				840625761930D1AA0067C1CA /* LGSubscription.m in Sources */,
 				84F8E8A8199B5C580054C9F8 /* CheckDetailView.m in Sources */,
 				84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */,
+				8434E44319D708D700DD4CA8 /* CheckSimpleDetailView.m in Sources */,
 				84062512193088F30067C1CA /* DownloadableItem.m in Sources */,
 				845D858B19029EB0004E10AB /* main.m in Sources */,
 				84F8E89D199A2DB00054C9F8 /* AlertViewManager.m in Sources */,

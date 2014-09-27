@@ -157,6 +157,10 @@
 	[kernel.imagePickManager takePictureFor: check];
 }
 
+- (void) voteFor:(LGCheck *)check {
+	[kernel.checksManager openVoteViewControllerForCheck: check];
+}
+
 /*
 #pragma mark - Navigation
 

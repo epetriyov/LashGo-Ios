@@ -14,7 +14,8 @@
 		case FontTypeCheckCardTitle:			return [UIFont fontWithName: kDefaultFont size: 20];
 		case FontTypeLoginActionBtnTitle:		return [UIFont fontWithName: kDefaultFontMedium size: 18];
 		case FontTypeLoginInputField:			return [UIFont fontWithName: kDefaultFontLight size: 17];
-		case FontTypeLoginRestorePass:			return [UIFont fontWithName: kDefaultFont size: 13];
+		case FontTypeLoginRestorePass:
+		case FontTypeVoteCheckDescription:		return [UIFont fontWithName: kDefaultFont size: 13];
 		case FontTypeLoginSocialLabel:			return [UIFont fontWithName: kDefaultFont size: 15];
 		case FontTypeLoginWelcomeText:			return [UIFont fontWithName: kDefaultFontLight size: 24];
 		case FontTypeTaskbarButtons:			return [UIFont fontWithName: kDefaultFont size: 10];
@@ -28,6 +29,8 @@
 		case FontTypeSlogan:					return [UIFont fontWithName: kDefaultFont size: 24];
 		case FontTypeStartScreenButtons:		return [UIFont fontWithName: kDefaultFontMedium size: 12];
 		case FontTypeTitleBarTitle:				return [UIFont fontWithName: kDefaultFontMedium size: 17];
+		case FontTypeVoteCheckTitle:			return [UIFont fontWithName: kDefaultFontMedium size: 15];
+		case FontTypeVoteTimer:					return [UIFont fontWithName: kDefaultFontMedium size: 14];
 		default:
 			break;
 	}
@@ -41,13 +44,17 @@
 		case FontTypeTaskbarButtons:		return [UIColor colorWithRed:141.0/255.0
 															 green:144.0/255.0
 															  blue:144.0/255.0 alpha:1.0];
-		case FontTypeLoginInputField:		return [UIColor colorWithWhite: 0.0 alpha: 229.0/255.0];
+		case FontTypeLoginInputField:
+		case FontTypeVoteCheckTitle:		return [UIColor colorWithWhite: 0.0 alpha: 229.0/255.0];
 		case FontTypeLoginRestorePass:
 		case FontTypeLoginSocialLabel:		return [UIColor colorWithWhite: 1.0 alpha: 229.0/255.0];
 		case FontTypeLoginActionBtnTitle:
 		case FontTypeLoginWelcomeText:
 		case FontTypeStartScreenButtons:
 		case FontTypeTitleBarButtons:		return [UIColor whiteColor];
+		case FontTypeVoteCheckDescription:	return [UIColor colorWithWhite: 0.0 alpha: 128.0/255.0];
+		case FontTypeVoteTimer:				return [UIColor colorWithRed: 1.0 green: 94.0/255.0 blue: 124.0/255.0
+														  alpha: 1.0];
 		default: return [UIColor blackColor];
 	}
 	return nil;

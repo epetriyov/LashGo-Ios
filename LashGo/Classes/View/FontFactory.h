@@ -17,7 +17,10 @@ typedef NS_ENUM(NSInteger, FontType) {
 	FontTypeTaskbarButtons,
 	FontTypeTitleBarButtons,
 	FontTypeTitleBarLogoDescription,
-	FontTypeTitleBarTitle
+	FontTypeTitleBarTitle,
+	FontTypeVoteCheckTitle,
+	FontTypeVoteCheckDescription,
+	FontTypeVoteTimer
 };
 
 @interface FontFactory : NSObject

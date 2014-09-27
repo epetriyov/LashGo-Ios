@@ -7,7 +7,10 @@
 //
 
 #import "TitleBarViewController.h"
+#import "LGCheck.h"
 
 @interface VoteViewController : TitleBarViewController
+
+@property (nonatomic, strong) LGCheck *check;
 
 @end
