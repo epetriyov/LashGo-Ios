@@ -2,7 +2,13 @@
 #import "Kernel.h"
 #import "ViewFactory.h"
 
-@interface TitleBarViewController ()
+#define kAnimationDuration 0.3
+
+@interface TitleBarViewController () {
+	UIView *_waitView;
+}
+
+@property (nonatomic, readonly) CGRect waitViewFrame;
 
 @end
 
@@ -10,6 +16,10 @@
 
 @dynamic contentFrame;
 @dynamic canGoBack;
+@dynamic waitViewFrame;
+@dynamic waitViewHidden;
+
+#pragma mark - Properties
 
 - (CGRect) contentFrame {
 	float offsetY = _titleBarView.frame.origin.y + _titleBarView.frame.size.height;
@@ -27,6 +37,44 @@
 		_titleBarView.backButton.alpha = 0;
 	}
 }
+
+- (CGRect) waitViewFrame {
+	return self.contentFrame;
+}
+
+- (BOOL) isWaitViewHidden {
+	return _waitView != nil;
+}
+
+- (void) setWaitViewHidden:(BOOL)waitViewHidden {
+	if (waitViewHidden == YES && _waitView != nil) {
+		[UIView animateWithDuration: kAnimationDuration animations:^{
+			_waitView.alpha = 0;
+		} completion:^(BOOL finished) {
+			[_waitView removeFromSuperview];
+			_waitView = nil;
+		}];
+	} else if (waitViewHidden == NO && _waitView == nil) {
+		_waitView = [[UIView alloc] initWithFrame: self.waitViewFrame];
+		_waitView.alpha = 0;
+		
+		UIView *waitBgView = [[UIView alloc] initWithFrame: _waitView.bounds];
+		waitBgView.backgroundColor = [UIColor colorWithWhite: 0 alpha: 0.7];
+		[_waitView addSubview: waitBgView];
+		
+		UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleWhiteLarge];
+		activityIndicatorView.center = waitBgView.center;
+		[activityIndicatorView startAnimating];
+		[_waitView addSubview: activityIndicatorView];
+		
+		[self.view addSubview: _waitView];
+		[UIView animateWithDuration: kAnimationDuration animations:^{
+			_waitView.alpha = 1;
+		}];
+	}
+}
+
+#pragma mark - Overrides
 
 - (void) loadView {
 	[super loadView];
@@ -56,6 +104,8 @@
 		_titleBarView.backButton.hidden = YES;
 	}
 }
+
+#pragma mark - Methods
 
 - (void) backAction: (id) sender {
     [kernel.viewControllersManager returnToPreviousViewController];

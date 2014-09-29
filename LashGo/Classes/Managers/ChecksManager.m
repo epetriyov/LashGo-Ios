@@ -33,6 +33,10 @@
 	return self;
 }
 
+- (void) getVotePhotos {
+	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [VoteViewController class]];
+}
+
 - (void) openCheckCardViewController {
 	[_viewControllersManager openCheckCardViewController];
 	if ([_kernel.storage.checks count] <= 0) {

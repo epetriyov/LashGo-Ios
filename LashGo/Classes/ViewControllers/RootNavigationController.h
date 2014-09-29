@@ -8,4 +8,7 @@
 
 @interface RootNavigationController : UINavigationController <UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 
+- (void) addWaitViewControllerOfClass: (Class) vcClass;
+- (void) removeWaitViewControllerOfClass: (Class) vcClass;
+
 @end

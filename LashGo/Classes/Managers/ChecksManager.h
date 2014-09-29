@@ -18,6 +18,7 @@
 				   dataProvider: (DataProvider *) dataProvider
 					  vcManager: (ViewControllersManager *) vcManager;
 
+- (void) getVotePhotos;
 
 - (void) openCheckCardViewController;
 - (void) openCheckListViewController;

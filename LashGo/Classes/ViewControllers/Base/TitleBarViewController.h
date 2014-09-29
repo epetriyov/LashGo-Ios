@@ -9,5 +9,6 @@
 
 @property (nonatomic, readonly) CGRect contentFrame;
 @property (nonatomic, assign) BOOL canGoBack;
+@property (nonatomic, assign, getter = isWaitViewHidden) BOOL waitViewHidden;
 
 @end

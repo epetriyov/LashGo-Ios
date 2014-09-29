@@ -9,7 +9,9 @@
 #import "RootNavigationController.h"
 #import "RootNavigationControllerItemProtocol.h"
 
-@interface RootNavigationController ()
+@interface RootNavigationController () {
+	NSMutableSet *_waitingViewControllers;
+}
 
 @end
 
@@ -24,13 +26,20 @@
 //	}
 //}
 
+- (id) initWithRootViewController:(UIViewController *)rootViewController {
+	if (self = [super initWithRootViewController: rootViewController]) {
+		_waitingViewControllers = [[NSMutableSet alloc] initWithCapacity: 1];
+	}
+	return self;
+}
+
 - (void) loadView {
 	[super loadView];
 	
 	if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)] == YES) {
 		self.interactivePopGestureRecognizer.delegate = self;
-		self.delegate = self;
 	}
+	self.delegate = self;
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
@@ -42,18 +51,44 @@
 	[super pushViewController:viewController animated:animated];
 }
 
+- (void) addWaitViewControllerOfClass: (Class) vcClass {
+	NSParameterAssert([vcClass conformsToProtocol: @protocol(RootNavigationControllerItemProtocol)]);
+	//this way no matter about destruction on disappearing
+	for (UIViewController *viewController in self.viewControllers) {
+		if ([viewController isMemberOfClass: vcClass] == YES) {
+			((id<RootNavigationControllerItemProtocol>) viewController).waitViewHidden = NO;
+		}
+	}
+	[_waitingViewControllers addObject: NSStringFromClass(vcClass)];
+}
+
+- (void) removeWaitViewControllerOfClass: (Class) vcClass {
+	NSParameterAssert([vcClass conformsToProtocol: @protocol(RootNavigationControllerItemProtocol)]);
+	[_waitingViewControllers removeObject: NSStringFromClass(vcClass)];
+	for (UIViewController *viewController in self.viewControllers) {
+		if ([viewController isMemberOfClass: vcClass] == YES) {
+			((id<RootNavigationControllerItemProtocol>) viewController).waitViewHidden = YES;
+		}
+	}
+}
+
 #pragma mark UINavigationControllerDelegate
 
 - (void)navigationController:(UINavigationController *)navigationController
        didShowViewController:(UIViewController *)viewController
                     animated:(BOOL)animate {
-	// Enable the gesture again once the new controller is shown
-	if ([navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)] == YES) {
-		if ([viewController conformsToProtocol: @protocol(RootNavigationControllerItemProtocol)] == YES &&
+	if ([viewController conformsToProtocol: @protocol(RootNavigationControllerItemProtocol)] == YES) {
+		// Enable the gesture again once the new controller is shown
+		if ([navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)] == YES &&
 			((id<RootNavigationControllerItemProtocol>) viewController).canGoBack == YES) {
 			self.interactivePopGestureRecognizer.enabled = YES;
 		} else {
 			self.interactivePopGestureRecognizer.enabled = NO;
+		}
+		if ([_waitingViewControllers containsObject: NSStringFromClass([viewController class])] == YES) {
+			((id<RootNavigationControllerItemProtocol>) viewController).waitViewHidden = NO;
+		} else {
+			((id<RootNavigationControllerItemProtocol>) viewController).waitViewHidden = YES;
 		}
 	}
 }

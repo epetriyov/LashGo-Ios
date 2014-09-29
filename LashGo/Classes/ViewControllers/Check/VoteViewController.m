@@ -11,8 +11,11 @@
 #import "CheckSimpleDetailView.h"
 #import "Common.h"
 #import "FontFactory.h"
+#import "Kernel.h"
 #import "UIImageView+LGImagesExtension.h"
 #import "VotePanelView.h"
+
+#define kCheckBarHeight 76
 
 @interface VoteViewController () {
 	CheckSimpleDetailView __weak *_checkView;
@@ -22,6 +25,8 @@
 	
 	NSTimer *_progressTimer;
 }
+
+@property (nonatomic, readonly) CGRect waitViewFrame;
 
 @end
 
@@ -43,6 +48,13 @@
 
 #pragma mark - Overrides
 
+- (CGRect) waitViewFrame {
+	CGRect frame = self.contentFrame;
+	frame.origin.y += kCheckBarHeight;
+	frame.size.height -= kCheckBarHeight;
+	return frame;
+}
+
 - (void) loadView {
 	[super loadView];
 	
@@ -54,7 +66,7 @@
 	float offsetY = self.contentFrame.origin.y;
 	
 	UIView *checkDetailsView = [[UIView alloc] initWithFrame: CGRectMake(0, offsetY, self.view.frame.size.width,
-																		 76)];
+																		 kCheckBarHeight)];
 	checkDetailsView.backgroundColor = [UIColor whiteColor];
 	[self.view addSubview: checkDetailsView];
 	
@@ -110,6 +122,8 @@
 
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear: animated];
+	
+	[kernel.checksManager getVotePhotos];
 	
 	if ([_progressTimer isValid] == NO) {
 		_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector:@selector(refresh)
