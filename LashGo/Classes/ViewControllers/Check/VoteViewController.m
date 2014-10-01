@@ -15,15 +15,20 @@
 #import "UIImageView+LGImagesExtension.h"
 #import "VotePanelView.h"
 
-#define kCheckBarHeight 76
+#import "LGPhoto.h"
 
-@interface VoteViewController () {
+#define kCheckBarHeight 76
+static NSString *const kObservationKeyPath = @"checkVotePhotos";
+
+@interface VoteViewController () <VotePanelViewDelegate> {
 	CheckSimpleDetailView __weak *_checkView;
 	UILabel __weak *_checkTitleLabel;
 	UILabel __weak *_checkDescriptionLabel;
 	UILabel *_timeLeftLabel;
 	
 	NSTimer *_progressTimer;
+	
+	VotePanelView __weak *_votePanelView;
 }
 
 @property (nonatomic, readonly) CGRect waitViewFrame;
@@ -117,13 +122,29 @@
 	VotePanelView *panelView = [[VotePanelView alloc] initWithFrame: CGRectMake(0, offsetY,
 																				self.view.frame.size.width,
 																				self.view.frame.size.height - offsetY)];
+	panelView.delegate = self;
 	[self.view addSubview: panelView];
+	_votePanelView = panelView;
+	
+	[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
+}
+
+- (void) dealloc {
+	[kernel.storage removeObserver: self forKeyPath: kObservationKeyPath];
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+						 change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqualToString: kObservationKeyPath] == YES && [object isKindOfClass: [Storage class]] == YES) {
+		[kernel.checksManager stopWaitingVotePhotos];
+		[self refreshPhotos];
+	}
 }
 
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear: animated];
 	
-	[kernel.checksManager getVotePhotos];
+	[kernel.checksManager getVotePhotosForCheck: self.check];
 	
 	if ([_progressTimer isValid] == NO) {
 		_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector:@selector(refresh)
@@ -155,6 +176,31 @@
 	if (_checkView.type == CheckDetailTypeVote) {
 		[self setTimeLeft: fdim(_check.closeDate, now)];
 	}
+}
+
+- (void) refreshPhotos {
+	for (uint i = 0; i < [kernel.storage.checkVotePhotos count]; ++i) {
+		LGPhoto *photo = [kernel.storage.checkVotePhotos objectAtIndex: i];
+		_votePanelView.type = VotePanelTypeLike;
+		if (i == 0) {
+			[_votePanelView.photo0ImageView loadWebImageWithSizeThatFitsName: photo.url placeholder: nil];
+		} else if (i == 1) {
+			[_votePanelView.photo1ImageView loadWebImageWithSizeThatFitsName: photo.url placeholder: nil];
+		} else if (i == 2) {
+			[_votePanelView.photo2ImageView loadWebImageWithSizeThatFitsName: photo.url placeholder: nil];
+		} else if (i == 3) {
+			[_votePanelView.photo3ImageView loadWebImageWithSizeThatFitsName: photo.url placeholder: nil];
+		}
+	}
+}
+
+#pragma mark - VotePanelViewDelegate implementation
+
+- (void) voteWithIndex: (ushort) index {
+	[kernel.checksManager voteForPhoto: [kernel.storage.checkVotePhotos objectAtIndex: index]];
+}
+
+- (void) openNext {
 }
 
 @end

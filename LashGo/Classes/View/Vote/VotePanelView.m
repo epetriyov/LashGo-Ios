@@ -36,7 +36,7 @@
 		_likeButton.hidden = NO;
 		_nextButton.hidden = YES;
 		for (UIButton *button in photoButtons) {
-			button.selected = !button.enabled;
+			button.selected = NO;
 			button.enabled = YES;
 			button.userInteractionEnabled = YES;
 		}
@@ -119,11 +119,17 @@
 }
 
 - (void) likeAction: (id) sender {
-	self.type = VotePanelTypeNext;
+	for (ushort i = 0; i < [photoButtons count]; ++i) {
+		UIButton *button = [photoButtons objectAtIndex: i];
+		if (button.selected == YES) {
+			[self.delegate voteWithIndex: i];
+			return;
+		}
+	}
 }
 
 - (void) nextAction: (id) sender {
-	self.type = VotePanelTypeLike;
+	[self.delegate openNext];
 }
 
 - (void) photoSelectAction: (id) sender {

@@ -11,6 +11,7 @@
 @class ViewControllersManager;
 
 @class LGCheck;
+@class LGPhoto;
 
 @interface ChecksManager : NSObject
 
@@ -18,7 +19,10 @@
 				   dataProvider: (DataProvider *) dataProvider
 					  vcManager: (ViewControllersManager *) vcManager;
 
-- (void) getVotePhotos;
+- (void) getVotePhotosForCheck: (LGCheck *) check;
+- (void) stopWaitingVotePhotos;
+
+- (void) voteForPhoto: (LGPhoto *) photo;
 
 - (void) openCheckCardViewController;
 - (void) openCheckListViewController;

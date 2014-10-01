@@ -12,6 +12,8 @@
 #import "DataProvider.h"
 #import "ViewControllersManager.h"
 
+#import "LGPhoto.h"
+
 @interface ChecksManager () {
 	Kernel __weak *_kernel;
 	DataProvider __weak *_dataProvider;
@@ -33,8 +35,18 @@
 	return self;
 }
 
-- (void) getVotePhotos {
+- (void) getVotePhotosForCheck: (LGCheck *) check {
 	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [VoteViewController class]];
+	[_dataProvider checkVotePhotosFor: check.uid];
+}
+
+- (void) stopWaitingVotePhotos {
+	[_viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [VoteViewController class]];
+}
+
+- (void) voteForPhoto: (LGPhoto *) photo {
+	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [VoteViewController class]];
+	[_dataProvider photoVoteFor: photo.uid];
 }
 
 - (void) openCheckCardViewController {

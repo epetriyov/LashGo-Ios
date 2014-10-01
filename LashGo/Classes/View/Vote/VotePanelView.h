@@ -13,12 +13,23 @@ typedef NS_ENUM(ushort, VotePanelType) {
 	VotePanelTypeNext
 };
 
+@protocol VotePanelViewDelegate;
+
 @interface VotePanelView : UIView
 
+@property (nonatomic, weak) id<VotePanelViewDelegate> delegate;
 @property (nonatomic, assign) VotePanelType type;
 @property (nonatomic, readonly) UIImageView *photo0ImageView;
 @property (nonatomic, readonly) UIImageView *photo1ImageView;
 @property (nonatomic, readonly) UIImageView *photo2ImageView;
 @property (nonatomic, readonly) UIImageView *photo3ImageView;
+
+@end
+
+@protocol VotePanelViewDelegate <NSObject>
+
+@required
+- (void) voteWithIndex: (ushort) index;
+- (void) openNext;
 
 @end
