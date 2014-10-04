@@ -16,7 +16,8 @@
 		case FontTypeLoginInputField:			return [UIFont fontWithName: kDefaultFontLight size: 17];
 		case FontTypeLoginRestorePass:
 		case FontTypeVoteCheckDescription:		return [UIFont fontWithName: kDefaultFont size: 13];
-		case FontTypeLoginSocialLabel:			return [UIFont fontWithName: kDefaultFont size: 15];
+		case FontTypeLoginSocialLabel:
+		case FontTypeUserChangeAvatarTitle:		return [UIFont fontWithName: kDefaultFont size: 15];
 		case FontTypeLoginWelcomeText:			return [UIFont fontWithName: kDefaultFontLight size: 24];
 		case FontTypeTaskbarButtons:			return [UIFont fontWithName: kDefaultFont size: 10];
 		case FontTypeCheckListCellTitle:
@@ -51,7 +52,8 @@
 		case FontTypeLoginActionBtnTitle:
 		case FontTypeLoginWelcomeText:
 		case FontTypeStartScreenButtons:
-		case FontTypeTitleBarButtons:		return [UIColor whiteColor];
+		case FontTypeTitleBarButtons:
+		case FontTypeUserChangeAvatarTitle:	return [UIColor whiteColor];
 		case FontTypeVoteCheckDescription:	return [UIColor colorWithWhite: 0.0 alpha: 128.0/255.0];
 		case FontTypeVoteTimer:				return [UIColor colorWithRed: 1.0 green: 94.0/255.0 blue: 124.0/255.0
 														  alpha: 1.0];

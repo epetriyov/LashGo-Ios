@@ -58,4 +58,16 @@
 	[_viewControllersManager openViewController:_viewControllersManager.recoverViewController animated: YES];
 }
 
+- (void) openProfileEditViewControllerWith: (LGUser *) user {
+	ProfileEditViewController *vc = _viewControllersManager.profileEditViewController;
+	vc.user = user;
+	[_viewControllersManager openViewController: vc animated: YES];
+}
+
+- (void) openProfileWelcomeViewControllerWith: (LGUser *) user {
+	ProfileWelcomeViewController *vc = _viewControllersManager.profileWelcomeViewController;
+	vc.user = user;
+	[_viewControllersManager openViewController: vc animated: YES];
+}
+
 @end

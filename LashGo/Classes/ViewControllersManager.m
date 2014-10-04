@@ -12,6 +12,9 @@
 	SearchViewController *_searchViewController;
 	
 	VoteViewController __weak *_voteViewController;
+	
+	ProfileEditViewController __weak *_profileEditViewController;
+	ProfileWelcomeViewController __weak *_profileWelcomeViewController;
 }
 
 @end
@@ -21,6 +24,7 @@
 @synthesize rootNavigationController;
 @dynamic isReturnToPreviousAvaliable;
 @dynamic recoverViewController, voteViewController;
+@dynamic profileEditViewController, profileWelcomeViewController;
 
 #pragma mark - Properties
 
@@ -37,6 +41,20 @@
 
 - (RecoverViewController *) recoverViewController {
 	return [self createViewControllerOfClass: [RecoverViewController class]];
+}
+
+- (ProfileEditViewController *) profileEditViewController {
+	if (_profileEditViewController == nil) {
+		_profileEditViewController = [self createViewControllerOfClass: [ProfileEditViewController class]];
+	}
+	return _profileEditViewController;
+}
+
+- (ProfileWelcomeViewController *) profileWelcomeViewController {
+	if (_profileWelcomeViewController == nil) {
+		_profileWelcomeViewController = [self createViewControllerOfClass: [ProfileWelcomeViewController class]];
+	}
+	return _profileWelcomeViewController;
 }
 
 #pragma mark - Overrides

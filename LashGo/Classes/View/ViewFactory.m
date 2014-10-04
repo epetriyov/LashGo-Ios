@@ -20,6 +20,7 @@ static ViewFactory *viewFactory = nil;
 @dynamic loginViewControllerBgImage;
 @dynamic startViewControllerBgImage, startViewControllerFrameImage, startViewControllerGradientImage, statusBarPreferredColor;
 @dynamic taskbarBackgroundView, titleBarBackgroundImage, titleBarLogoImage;
+@dynamic userProfileAvatarPlaceholder;
 
 + (ViewFactory *) sharedFactory {
 	if (viewFactory == nil) {
@@ -86,6 +87,10 @@ static ViewFactory *viewFactory = nil;
 		titleBarLogoImage = [self getImageWithName: @"title_bar_logo"];
 	}
 	return titleBarLogoImage;
+}
+
+- (UIImage *) userProfileAvatarPlaceholder {
+	return [self getImageWithName: @"big_ava"];
 }
 
 #pragma mark -
@@ -222,6 +227,20 @@ static ViewFactory *viewFactory = nil;
 
 - (UIButton *) titleBarRightSearchButtonWithTarget: (id) target action: (SEL) selector {
 	UIButton *button = [self buttonWithBGImageName: @"ic_search" target: target action: selector];
+	return button;
+}
+
+#pragma mark - User
+
+- (UIButton *) userChangeAvatarButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithImageName: @"ic_camera_w" target: target action: selector];
+	button.backgroundColor = [UIColor colorWithWhite: 0 alpha: 77.0/255.0];
+	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	button.titleLabel.font = [FontFactory fontWithType: FontTypeUserChangeAvatarTitle];
+	[button setTitle: @"ProfileEditViewControllerChangeAvatarBtnTitle".commonLocalizedString
+			forState: UIControlStateNormal];
+	[button setTitleColor: [FontFactory fontColorForType: FontTypeUserChangeAvatarTitle]
+				 forState: UIControlStateNormal];
 	return button;
 }
 

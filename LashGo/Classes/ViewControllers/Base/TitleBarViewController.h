@@ -11,4 +11,6 @@
 @property (nonatomic, assign) BOOL canGoBack;
 @property (nonatomic, assign, getter = isWaitViewHidden) BOOL waitViewHidden;
 
+- (void) backAction: (id) sender;
+
 @end

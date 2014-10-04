@@ -10,6 +10,8 @@
 @class DataProvider;
 @class ViewControllersManager;
 
+@class LGUser;
+
 @interface UserManager : NSObject
 
 - (instancetype) initWithKernel: (Kernel *) kernel
@@ -21,5 +23,8 @@
 
 - (void) openLoginViewController;
 - (void) openRecoverViewController;
+
+- (void) openProfileEditViewControllerWith: (LGUser *) user;
+- (void) openProfileWelcomeViewControllerWith: (LGUser *) user;
 
 @end

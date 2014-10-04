@@ -79,11 +79,12 @@
                     animated:(BOOL)animate {
 	if ([viewController conformsToProtocol: @protocol(RootNavigationControllerItemProtocol)] == YES) {
 		// Enable the gesture again once the new controller is shown
-		if ([navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)] == YES &&
-			((id<RootNavigationControllerItemProtocol>) viewController).canGoBack == YES) {
-			self.interactivePopGestureRecognizer.enabled = YES;
-		} else {
-			self.interactivePopGestureRecognizer.enabled = NO;
+		if ([navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)] == YES) {
+			if (((id<RootNavigationControllerItemProtocol>) viewController).canGoBack == YES) {
+				self.interactivePopGestureRecognizer.enabled = YES;
+			} else {
+				self.interactivePopGestureRecognizer.enabled = NO;
+			}
 		}
 		if ([_waitingViewControllers containsObject: NSStringFromClass([viewController class])] == YES) {
 			((id<RootNavigationControllerItemProtocol>) viewController).waitViewHidden = NO;

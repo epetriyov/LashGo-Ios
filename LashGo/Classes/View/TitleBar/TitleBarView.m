@@ -133,32 +133,21 @@
 + (TitleBarView *) titleBarViewWithRightButtonWithText: (NSString *) text {
 	TitleBarView *titleBar = [TitleBarView titleBarView];
 	
-	UIButton *rightButton = [[ViewFactory sharedFactory] titleBarRightButtonWithText: text target: nil action: nil];
+	float buttonWidth = 65;
 	
-	if ([rightButton backgroundImageForState: UIControlStateNormal] != nil) {
-		rightButton.center = CGPointMake(titleBar.frame.size.width - rightButton.frame.size.width / 2 - 10,
-										 titleBar -> backgroundImageView.center.y);
-		[titleBar addSubview: rightButton];
-		
-		titleBar -> rightButton = rightButton;
-	} else {
-		float capX = 3;
-		float buttonWidth = 60;
-		float buttonHeight = 32;
-		
-		CGRect rightButtonFrame = CGRectMake(capX, (titleBar.frame.size.height - buttonHeight) / 2,
-											 buttonWidth, buttonHeight);
-		rightButtonFrame.origin.x = titleBar.frame.size.width - capX - rightButtonFrame.size.width;
-		
-		UIButton *rightButton = [[UIButton alloc] initWithFrame: rightButtonFrame];
-		rightButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-		[rightButton.titleLabel setFont: [FontFactory fontWithType: FontTypeTitleBarButtons]];
-		rightButton.titleLabel.textColor = [UIColor whiteColor];
-		[rightButton setTitle: text forState: UIControlStateNormal];
-		[titleBar addSubview: rightButton];
-		
-		titleBar -> rightButton = rightButton;
-	}
+	CGRect rightButtonFrame = titleBar.contentFrame;
+	rightButtonFrame.origin.x = rightButtonFrame.size.width - buttonWidth;
+	rightButtonFrame.size.width = buttonWidth;
+	
+	UIButton *rightButton = [[UIButton alloc] initWithFrame: rightButtonFrame];
+	rightButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+	[rightButton.titleLabel setFont: [FontFactory fontWithType: FontTypeTitleBarButtons]];
+	[rightButton setTitle: text forState: UIControlStateNormal];
+	[rightButton setTitleColor: [FontFactory fontColorForType: FontTypeTitleBarButtons]
+					  forState: UIControlStateNormal];
+	[titleBar addSubview: rightButton];
+	
+	titleBar -> rightButton = rightButton;
 	
 	return titleBar;
 }

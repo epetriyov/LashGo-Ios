@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) UIView *taskbarBackgroundView;
 @property (nonatomic, readonly) UIImage *titleBarBackgroundImage;
 @property (nonatomic, readonly) UIImage *titleBarLogoImage;
+@property (nonatomic, readonly) UIImage *userProfileAvatarPlaceholder;
 
 + (ViewFactory *) sharedFactory;
 
@@ -39,6 +40,9 @@
 - (UIButton *) titleBarRightButtonWithText: (NSString *) text target: (id) target action: (SEL) selector;
 - (UIButton *) titleBarRightIncomeButtonWithTarget: (id) target action: (SEL) selector;
 - (UIButton *) titleBarRightSearchButtonWithTarget: (id) target action: (SEL) selector;
+
+//User
+- (UIButton *) userChangeAvatarButtonWithTarget: (id) target action: (SEL) selector;
 
 //Vote
 - (UIButton *) votePhotoSelectButtonWithIndex: (ushort) index target: (id) target action: (SEL) selector;

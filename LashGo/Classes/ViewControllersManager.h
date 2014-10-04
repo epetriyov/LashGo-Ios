@@ -19,6 +19,9 @@
 #import "SearchViewController.h"
 #import "StartViewController.h"
 
+#import "ProfileEditViewController.h"
+#import "ProfileWelcomeViewController.h"
+
 @class Kernel;
 
 @interface ViewControllersManager : NSObject {
@@ -42,6 +45,9 @@
 @property (nonatomic, readonly) VoteViewController *voteViewController;
 
 @property (nonatomic, readonly) RecoverViewController *recoverViewController;
+
+@property (nonatomic, readonly) ProfileEditViewController *profileEditViewController;
+@property (nonatomic, readonly) ProfileWelcomeViewController *profileWelcomeViewController;
 
 - (id) initWithKernel: (Kernel *) theKernel;
 

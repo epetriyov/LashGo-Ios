@@ -111,7 +111,8 @@
 }
 
 - (void) openIncomeAction: (id) sender {
-	
+//	[kernel.userManager openProfileEditViewControllerWith: nil];
+//	[kernel.userManager openProfileWelcomeViewControllerWith: nil];
 }
 
 #pragma mark - UICollectionViewDataSource implementation

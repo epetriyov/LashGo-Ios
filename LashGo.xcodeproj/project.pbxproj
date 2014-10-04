@@ -100,6 +100,9 @@
 		84FD8961194C4684001139DF /* TWAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD895C194C4684001139DF /* TWAPIManager.m */; };
 		84FD8962194C4684001139DF /* TWSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD895E194C4684001139DF /* TWSignedRequest.m */; };
 		84FD8968194C84EB001139DF /* FacebookAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FD8967194C84EB001139DF /* FacebookAppAccount.m */; };
+		84FEE17C19DFD9D00067C264 /* ProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEE17B19DFD9D00067C264 /* ProfileEditViewController.m */; };
+		84FEE18019E028180067C264 /* ProfileEditTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEE17F19E028180067C264 /* ProfileEditTableViewCell.m */; };
+		84FEE18319E02E320067C264 /* ProfileWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEE18219E02E320067C264 /* ProfileWelcomeViewController.m */; };
 		84FF0239195EB47200B90CF9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0238195EB47200B90CF9 /* FacebookSDK.framework */; };
 		84FF0294195ED69600B90CF9 /* libVKSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0235195EB21800B90CF9 /* libVKSdk.a */; };
 		FE8F9618196D2CE400769722 /* DemoImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE8F9617196D2CE400769722 /* DemoImage.jpg */; };
@@ -328,6 +331,12 @@
 		84FD895E194C4684001139DF /* TWSignedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSignedRequest.m; sourceTree = "<group>"; };
 		84FD8966194C84EB001139DF /* FacebookAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookAppAccount.h; sourceTree = "<group>"; };
 		84FD8967194C84EB001139DF /* FacebookAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookAppAccount.m; sourceTree = "<group>"; };
+		84FEE17A19DFD9D00067C264 /* ProfileEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileEditViewController.h; sourceTree = "<group>"; };
+		84FEE17B19DFD9D00067C264 /* ProfileEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileEditViewController.m; sourceTree = "<group>"; };
+		84FEE17E19E028180067C264 /* ProfileEditTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileEditTableViewCell.h; sourceTree = "<group>"; };
+		84FEE17F19E028180067C264 /* ProfileEditTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileEditTableViewCell.m; sourceTree = "<group>"; };
+		84FEE18119E02E320067C264 /* ProfileWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileWelcomeViewController.h; sourceTree = "<group>"; };
+		84FEE18219E02E320067C264 /* ProfileWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileWelcomeViewController.m; sourceTree = "<group>"; };
 		84FF0238195EB47200B90CF9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = LashGo/FBlib/FacebookSDK.framework; sourceTree = "<group>"; };
 		FE8F9617196D2CE400769722 /* DemoImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DemoImage.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -500,6 +509,7 @@
 		8426F353191A6E8100B4E336 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84FEE17D19E024450067C264 /* Cells */,
 				84F8E8A0199B5C580054C9F8 /* Check */,
 				841C623819A397ED00BAEDBB /* TaskBar */,
 				8426F354191A6F6400B4E336 /* TitleBar */,
@@ -687,6 +697,7 @@
 				8426F34C191A661D00B4E336 /* Base */,
 				84E6D9AE196C20F00021D417 /* Check */,
 				84FA068219619F2B006A72AE /* Login */,
+				84FEE17319DFD9730067C264 /* User */,
 				84045AAA19225879006F2F24 /* RootNavigationControllerItemProtocol.h */,
 				8491557C19080301008D9120 /* RootNavigationController.h */,
 				8491557D19080301008D9120 /* RootNavigationController.m */,
@@ -870,6 +881,26 @@
 			path = Facebook;
 			sourceTree = "<group>";
 		};
+		84FEE17319DFD9730067C264 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				84FEE17A19DFD9D00067C264 /* ProfileEditViewController.h */,
+				84FEE17B19DFD9D00067C264 /* ProfileEditViewController.m */,
+				84FEE18119E02E320067C264 /* ProfileWelcomeViewController.h */,
+				84FEE18219E02E320067C264 /* ProfileWelcomeViewController.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		84FEE17D19E024450067C264 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				84FEE17E19E028180067C264 /* ProfileEditTableViewCell.h */,
+				84FEE17F19E028180067C264 /* ProfileEditTableViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		84FF0230195EB21800B90CF9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1039,6 +1070,7 @@
 				84062511193088F30067C1CA /* DownloadableImageItem.m in Sources */,
 				840625541930AB230067C1CA /* JSONParser.m in Sources */,
 				84F8E8A7199B5C580054C9F8 /* CheckCardCollectionCell.m in Sources */,
+				84FEE18019E028180067C264 /* ProfileEditTableViewCell.m in Sources */,
 				849DD0C9199CBF9300DC86F6 /* SegmentedTextControl.m in Sources */,
 				84001FF41949AF68004D9D7A /* AppAccount.m in Sources */,
 				84A0DB1F19D45A87009AD6DB /* VotePanelView.m in Sources */,
@@ -1081,6 +1113,7 @@
 				841C624319A397ED00BAEDBB /* TaskbarButton.m in Sources */,
 				84EEE4A819C9B019009F83C6 /* LGCheckCounters.m in Sources */,
 				8406255E1930BB850067C1CA /* LGComment.m in Sources */,
+				84FEE18319E02E320067C264 /* ProfileWelcomeViewController.m in Sources */,
 				849DD0C3199C9D5800DC86F6 /* CheckListTableViewCell.m in Sources */,
 				84F8E8A9199B5C580054C9F8 /* CircleGradientLayer.m in Sources */,
 				8491557A1907FC78008D9120 /* Common.m in Sources */,
@@ -1103,6 +1136,7 @@
 				845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */,
 				840625641930C8EF0067C1CA /* LGgcmRegistrationId.m in Sources */,
 				840425DA19CB16EB00C5EDBF /* CheckCardTimerPanelView.m in Sources */,
+				84FEE17C19DFD9D00067C264 /* ProfileEditViewController.m in Sources */,
 				84FD8958194C44E7001139DF /* OAuth+Additions.m in Sources */,
 				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
 				84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */,

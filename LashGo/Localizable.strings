@@ -29,6 +29,13 @@
 "LoginViewControllerLoginBtnTitle" = "Поехали!";
 "LoginViewControllerSocialLabelTitle" = "или войти через соцсети";
 
+//ProfileEditViewController
+"ProfileEditViewControllerChangeAvatarBtnTitle" = "Сменить аватар";
+
+//ProfileWelcomeViewController
+"ProfileWelcomeViewControllerCompleteBtnTitle" = "ЗАПОЛНИТЬ ПРОФИЛЬ";
+"ProfileWelcomeViewControllerContinueBtnTitle" = "ПРОДОЛЖИТЬ";
+
 //RecoverViewController
 "RecoverViewControllerTitle" = "Восстановление пароля";
 "RecoverViewControllerMessage" = "Адрес для восстановления пароля";
@@ -42,6 +49,9 @@
 //SearchViewController
 "SearchPeople" = "Людей";
 "SearchChecks" = "Чеков";
+
+//TitleBar
+"TitleBarRightSaveBtnText" = "Cохр.";
 
 //VoteViewController
 "VoteViewControllerTitle" = "Голосование";
