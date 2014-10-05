@@ -6,13 +6,15 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface UIImageView (LGImagesExtension)
 
 - (void) loadLocalImageWithName: (NSString *) ImageName;
 
 - (void) loadWebImageWithName: (NSString *) imageName;
+- (void) loadWebImageWithName: (NSString *) imageName
+			 placeholderImage: (UIImage *)placeholder completed:(SDWebImageCompletionBlock)completedBlock;
 - (void) loadWebImageWithSizeThatFitsName: (NSString *) imageName placeholder: (UIImage *) placeholder;
 
 @end

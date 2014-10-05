@@ -11,6 +11,7 @@
 @interface ViewControllersManager () {
 	SearchViewController *_searchViewController;
 	
+	PhotoViewController __weak *_photoViewController;
 	VoteViewController __weak *_voteViewController;
 	
 	ProfileEditViewController __weak *_profileEditViewController;
@@ -23,13 +24,20 @@
 
 @synthesize rootNavigationController;
 @dynamic isReturnToPreviousAvaliable;
-@dynamic recoverViewController, voteViewController;
+@dynamic recoverViewController, photoViewController, voteViewController;
 @dynamic profileEditViewController, profileWelcomeViewController;
 
 #pragma mark - Properties
 
 - (BOOL) isReturnToPreviousAvaliable {
 	return [rootNavigationController.viewControllers count] > 1;
+}
+
+- (PhotoViewController *) photoViewController {
+	if (_photoViewController == nil) {
+		_photoViewController = [self createViewControllerOfClass: [PhotoViewController class]];
+	}
+	return _photoViewController;
 }
 
 - (VoteViewController *) voteViewController {

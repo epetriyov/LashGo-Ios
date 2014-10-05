@@ -150,7 +150,16 @@ static ViewFactory *viewFactory = nil;
 #pragma mark - Check
 
 - (UIButton *) checkMakeFoto: (id) target action: (SEL) selector {
-	UIButton *button = [self buttonWithBGImageName: @"btn_camera" target: target action: selector];
+	UIImage *buttonImage = [UIImage imageNamed: @"btn_camera_white"];
+	UIImage *buttonSelectedImage = [UIImage imageNamed: @"btn_camera_red"];
+	UIButton *button = [ [UIButton alloc] initWithFrame: CGRectMake(0, 0, buttonImage.size.width,
+																	buttonImage.size.height)];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	
+	[button setBackgroundImage: buttonImage
+			forState: UIControlStateNormal];
+	[button setBackgroundImage: buttonSelectedImage
+			forState: UIControlStateSelected];
 	return button;
 }
 
@@ -198,6 +207,11 @@ static ViewFactory *viewFactory = nil;
 	return button;
 }
 
+- (UIButton *) titleBarCameraButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithImageName: @"ic_camera_w" target: target action: selector];
+	return button;
+}
+
 - (UIButton *) titleBarCheckCardsButtonWithTarget: (id) target action: (SEL) selector {
 	UIButton *button = [self buttonWithBGImageName: @"ic_switch_card" target: target action: selector];
 	return button;
@@ -205,6 +219,12 @@ static ViewFactory *viewFactory = nil;
 
 - (UIButton *) titleBarCheckListButtonWithTarget: (id) target action: (SEL) selector {
 	UIButton *button = [self buttonWithBGImageName: @"ic_switch_feed" target: target action: selector];
+	return button;
+}
+
+- (UIButton *) titleBarIconButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 36, 36)];
+	button.layer.cornerRadius = button.frame.size.height / 2;
 	return button;
 }
 
@@ -227,6 +247,11 @@ static ViewFactory *viewFactory = nil;
 
 - (UIButton *) titleBarRightSearchButtonWithTarget: (id) target action: (SEL) selector {
 	UIButton *button = [self buttonWithBGImageName: @"ic_search" target: target action: selector];
+	return button;
+}
+
+- (UIButton *) titleBarSendPhotoButtonWithTarget: (id) target action: (SEL) selector {
+	UIButton *button = [self buttonWithImageName: @"ic_send_photo" target: target action: selector];
 	return button;
 }
 

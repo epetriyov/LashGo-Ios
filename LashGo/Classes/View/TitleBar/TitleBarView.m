@@ -181,6 +181,32 @@
 	return titleBar;
 }
 
++ (TitleBarView *) titleBarViewWithLeftSecondaryButton: (UIButton *) leftButton
+										   rightButton: (UIButton *) rightButton
+								  rightSecondaryButton: (UIButton *) secondaryButton {
+	TitleBarView *titleBar = [TitleBarView titleBarView];
+	
+	CGFloat centerY = CGRectGetMidY(titleBar.contentFrame);
+	
+	leftButton.centerY = centerY;
+	leftButton.frameX = titleBar.backButton.frame.origin.x + titleBar.backButton.frame.size.width;
+	[titleBar addSubview: leftButton];
+	
+	rightButton.frameX = titleBar.frame.size.width - (rightButton.frame.size.width);
+	rightButton.centerY = centerY;
+	[titleBar addSubview: rightButton];
+	
+	titleBar -> rightButton = rightButton;
+	
+	if (secondaryButton != nil) {
+		secondaryButton.frameX = rightButton.frame.origin.x - (secondaryButton.frame.size.width);
+		secondaryButton.centerY = centerY;
+		[titleBar addSubview: secondaryButton];
+	}
+	
+	return titleBar;
+}
+
 + (TitleBarView *) titleBarViewWithLeftButton: (UIButton *) leftButton
 								  rightButton: (UIButton *) rightButton
 								 searchButton: (UIButton *) searchButton {

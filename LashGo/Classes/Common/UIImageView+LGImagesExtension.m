@@ -7,7 +7,6 @@
 //
 
 #import "UIImageView+LGImagesExtension.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "Common.h"
 
 //#import "objc/runtime.h"
@@ -35,6 +34,12 @@
 - (void) loadWebImageWithName: (NSString *) imageName {
 	NSURL *url = [NSURL URLWithString: [kWebServiceURLPhotoPath stringByAppendingString: imageName]];
 	[self sd_setImageWithURL: url];
+}
+
+- (void) loadWebImageWithName: (NSString *) imageName
+			 placeholderImage: (UIImage *)placeholder completed:(SDWebImageCompletionBlock)completedBlock {
+	NSURL *url = [NSURL URLWithString: [kWebServiceURLPhotoPath stringByAppendingString: imageName]];
+	[self sd_setImageWithURL: url placeholderImage: placeholder completed: completedBlock];
 }
 
 - (void) loadWebImageWithSizeThatFitsName: (NSString *) imageName placeholder: (UIImage *) placeholder {

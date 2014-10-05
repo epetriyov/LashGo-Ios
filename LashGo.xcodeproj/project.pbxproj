@@ -49,6 +49,7 @@
 		8427E62019C5DB7400558649 /* libSDWebImage+WebP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8427E61D19C5DB3300558649 /* libSDWebImage+WebP.a */; };
 		8427E62219C5DBC500558649 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8427E62119C5DBC500558649 /* ImageIO.framework */; };
 		8434E44319D708D700DD4CA8 /* CheckSimpleDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434E44219D708D700DD4CA8 /* CheckSimpleDetailView.m */; };
+		84426D4619E158060068734B /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84426D4519E158060068734B /* PhotoViewController.m */; };
 		845D857F19029EB0004E10AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D857E19029EB0004E10AB /* Foundation.framework */; };
 		845D858119029EB0004E10AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858019029EB0004E10AB /* CoreGraphics.framework */; };
 		845D858319029EB0004E10AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858219029EB0004E10AB /* UIKit.framework */; };
@@ -236,6 +237,8 @@
 		8427E62119C5DBC500558649 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		8434E44119D708D700DD4CA8 /* CheckSimpleDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckSimpleDetailView.h; sourceTree = "<group>"; };
 		8434E44219D708D700DD4CA8 /* CheckSimpleDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckSimpleDetailView.m; sourceTree = "<group>"; };
+		84426D4419E158060068734B /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		84426D4519E158060068734B /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		845D857B19029EB0004E10AB /* LashGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LashGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845D857E19029EB0004E10AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		845D858019029EB0004E10AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -749,6 +752,8 @@
 				84F8E8AB199BA7620054C9F8 /* CheckListViewController.m */,
 				84EEE4B719C9D1CB009F83C6 /* VoteViewController.h */,
 				84EEE4B819C9D1CB009F83C6 /* VoteViewController.m */,
+				84426D4419E158060068734B /* PhotoViewController.h */,
+				84426D4519E158060068734B /* PhotoViewController.m */,
 			);
 			path = Check;
 			sourceTree = "<group>";
@@ -1074,6 +1079,7 @@
 				849DD0C9199CBF9300DC86F6 /* SegmentedTextControl.m in Sources */,
 				84001FF41949AF68004D9D7A /* AppAccount.m in Sources */,
 				84A0DB1F19D45A87009AD6DB /* VotePanelView.m in Sources */,
+				84426D4619E158060068734B /* PhotoViewController.m in Sources */,
 				8406250B193082020067C1CA /* NetworkDownloadManager.m in Sources */,
 				8406256D1930CDEA0067C1CA /* LGRecoverInfo.m in Sources */,
 				845D858F19029EB0004E10AB /* AppDelegate.m in Sources */,

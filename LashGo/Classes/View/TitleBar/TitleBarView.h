@@ -19,6 +19,9 @@
 + (TitleBarView *) titleBarViewWithRightButtonWithText: (NSString *) text
 										searchDelegate: (id<UISearchBarDelegate>) delegate;
 
++ (TitleBarView *) titleBarViewWithLeftSecondaryButton: (UIButton *) leftButton
+										   rightButton: (UIButton *) rightButton
+								  rightSecondaryButton: (UIButton *) secondaryButton;
 + (TitleBarView *) titleBarViewWithLeftButton: (UIButton *) leftButton
 								  rightButton: (UIButton *) rightButton
 								 searchButton: (UIButton *) searchButton;

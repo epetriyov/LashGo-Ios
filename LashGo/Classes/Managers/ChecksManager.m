@@ -63,6 +63,13 @@
 	}
 }
 
+- (void) openPhotoViewControllerForCheck: (LGCheck *) check {
+	PhotoViewController *vc = _viewControllersManager.photoViewController;
+	vc.check = check;
+	vc.photoURL = check.taskPhotoUrl;
+	[_viewControllersManager openViewController: vc animated: YES];
+}
+
 - (void) openVoteViewControllerForCheck: (LGCheck *) check {
 	VoteViewController *voteViewController = _viewControllersManager.voteViewController;
 	voteViewController.check = check;
