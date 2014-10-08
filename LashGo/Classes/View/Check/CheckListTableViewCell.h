@@ -6,8 +6,12 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CheckSimpleDetailView.h"
 
 @interface CheckListTableViewCell : UITableViewCell
+
+@property (nonatomic, readonly) CheckSimpleDetailView *checkView;
+
++ (CGFloat) height;
 
 @end

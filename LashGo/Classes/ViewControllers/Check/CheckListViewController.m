@@ -13,6 +13,7 @@
 #import "FontFactory.h"
 #import "Kernel.h"
 #import "LGCheck.h"
+#import "UIImageView+LGImagesExtension.h"
 #import "ViewFactory.h"
 
 typedef NS_ENUM(NSInteger, CheckListSection) {
@@ -49,15 +50,16 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	
 	CGRect contentFrame = self.contentFrame;
 	
-	CGRect tableFrame = self.view.frame;
-	tableFrame.origin.y += contentFrame.origin.y;
-	tableFrame.size.height -= contentFrame.origin.y;
+//	CGRect tableFrame = self.view.frame;
+//	tableFrame.origin.y = contentFrame.origin.y;
+//	tableFrame.size.height -= contentFrame.origin.y;
 	
-	UITableView *tableView = [[UITableView alloc] initWithFrame: tableFrame style: UITableViewStylePlain];
+	UITableView *tableView = [[UITableView alloc] initWithFrame: contentFrame style: UITableViewStylePlain];
 	tableView.backgroundColor = [UIColor colorWithRed: 0.92 green: 0.925 blue: 0.93 alpha: 1.0];
-	tableView.contentInset = UIEdgeInsetsMake(0, 0, tableFrame.size.height - contentFrame.size.height, 0);
+//	tableView.contentInset = UIEdgeInsetsMake(0, 0, tableFrame.size.height - contentFrame.size.height, 0);
 	tableView.dataSource = self;
 	tableView.delegate = self;
+	tableView.rowHeight = [CheckListTableViewCell height];
 	tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	[self.view addSubview: tableView];
 	
@@ -176,6 +178,7 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	
 	cell.textLabel.text = item.name;
 	cell.detailTextLabel.text = item.descr;
+	[cell.checkView.imageView loadWebImageWithSizeThatFitsName: item.taskPhotoUrl placeholder: nil];
 	
 	return cell;
 }
