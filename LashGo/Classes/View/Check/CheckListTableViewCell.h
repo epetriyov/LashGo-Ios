@@ -12,6 +12,8 @@
 
 @property (nonatomic, readonly) CheckSimpleDetailView *checkView;
 
+- (void) setTimeLeft:(NSTimeInterval)timeLeft;
+
 + (CGFloat) height;
 
 @end
