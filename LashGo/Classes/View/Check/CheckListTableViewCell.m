@@ -50,7 +50,7 @@
 																									checkViewCaps,
 																									checkViewWidth,
 																									checkViewWidth)
-																			  imageCaps: 7 progressLineWidth: 3];
+																			  imageCaps: 7 progressLineWidth: 4];
 		checkView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
 		[bgView addSubview: checkView];
 		_checkView = checkView;
@@ -95,14 +95,45 @@
 }
 
 - (void) setTimeLeft:(NSTimeInterval)timeLeft {
-	int minutesLeft = timeLeft / 60;
-	int secondsLeft = ((int)timeLeft) % 60;
-	_timeLeftLabel.text = [NSString stringWithFormat: @"%02d:%02d", minutesLeft, secondsLeft];
-	
+	if (timeLeft > 0) {
+		int minutesLeft = timeLeft / 60;
+		int secondsLeft = ((int)timeLeft) % 60;
+		_timeLeftLabel.text = [NSString stringWithFormat: @"%02d:%02d", minutesLeft, secondsLeft];
+		_timeLeftLabel.hidden = NO;
+	} else {
+		_timeLeftLabel.hidden = YES;
+	}
 }
 
 + (CGFloat) height {
 	return 134 + kCaps * 2;
+}
+
+- (void) refresh {
+	NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
+	
+	if (now > _check.closeDate) {
+		self.checkView.type = CheckDetailTypeClosed;
+	} else {
+		if (now > _check.voteDate) {
+			self.checkView.type = CheckDetailTypeVote;
+		} else {
+			self.checkView.type = CheckDetailTypeOpen;
+		}
+	}
+	
+	CGFloat progress = 0;
+	CGFloat timeLeft = 0;
+	
+	if (self.checkView.type == CheckDetailTypeOpen) {
+		progress = fdim(now, _check.startDate) / _check.duration;
+		timeLeft = fdim(_check.voteDate, now);
+	} else if (self.checkView.type == CheckDetailTypeVote) {
+		progress = fdim(now, _check.voteDate) / _check.voteDuration;
+		timeLeft = fdim(_check.closeDate, now);
+	}
+	_checkView.progressValue = progress;
+	[self setTimeLeft: timeLeft];
 }
 
 @end

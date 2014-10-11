@@ -24,6 +24,8 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 
 @interface CheckListViewController () {
 	UITableView __weak *_tableView;
+	
+	NSTimer *_progressTimer;
 }
 
 @end
@@ -72,7 +74,31 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
     // Dispose of any resources that can be recreated.
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear: animated];
+	
+	if ([_progressTimer isValid] == NO) {
+		_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector:@selector(refreshVisiblePage)
+														userInfo:nil repeats:YES];
+	}
+}
+
+- (void) viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear: animated];
+	[_progressTimer invalidate];
+}
+
 #pragma mark - Methods
+
+- (void) refreshVisiblePage {
+	if (_tableView.decelerating == YES) {
+		return;
+	}
+	for (CheckListTableViewCell *cell in _tableView.visibleCells) {
+		[cell refresh];
+		DLog(@"cell refreshed");
+	}
+}
 
 - (void) refresh {
 	[_tableView reloadData];
@@ -179,6 +205,8 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	cell.textLabel.text = item.name;
 	cell.detailTextLabel.text = item.descr;
 	[cell.checkView.imageView loadWebImageWithSizeThatFitsName: item.taskPhotoUrl placeholder: nil];
+	cell.check = item;
+	[cell refresh];
 	
 	return cell;
 }

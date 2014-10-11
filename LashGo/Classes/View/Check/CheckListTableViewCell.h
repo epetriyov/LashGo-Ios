@@ -7,13 +7,17 @@
 //
 
 #import "CheckSimpleDetailView.h"
+#import "LGCheck.h"
 
 @interface CheckListTableViewCell : UITableViewCell
 
 @property (nonatomic, readonly) CheckSimpleDetailView *checkView;
+@property (nonatomic, strong) LGCheck *check;
 
 - (void) setTimeLeft:(NSTimeInterval)timeLeft;
 
 + (CGFloat) height;
+
+- (void) refresh;
 
 @end
