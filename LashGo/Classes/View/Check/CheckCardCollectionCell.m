@@ -186,6 +186,14 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	[self.delegate voteFor: self.check];
 }
 
+- (void) imageAction {
+	[self.delegate openImageFor: self.check];
+}
+
+- (void) userImageAction {
+	[self.delegate openUserImageFor: self.check];
+}
+
 #pragma mark - UIScrollViewDelegate implementation
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

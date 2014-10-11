@@ -112,6 +112,14 @@
         [_userImageLayer setMasksToBounds:YES];
 		[_scrollView addSubview: _userImageView];
 		
+		UIButton *imageButton = [[UIButton alloc] initWithFrame: _imageView.frame];
+		[imageButton addTarget: self action: @selector(imageAction:) forControlEvents: UIControlEventTouchUpInside];
+		[_scrollView addSubview: imageButton];
+		
+		UIButton *userImageButton = [[UIButton alloc] initWithFrame: _userImageView.frame];
+		[userImageButton addTarget: self action: @selector(userImageAction:) forControlEvents: UIControlEventTouchUpInside];
+		[_scrollView addSubview: userImageButton];
+		
 		_scrollView.scrollEnabled = NO;
 		
 		CGFloat _drawingsWidth = MIN(self.frame.size.width, self.frame.size.height);
@@ -160,6 +168,14 @@
 
 - (void) voteAction: (id) sender {
 	[self.delegate voteAction];
+}
+
+- (void) imageAction: (id) sender {
+	[self.delegate imageAction];
+}
+
+- (void) userImageAction: (id) sender {
+	[self.delegate userImageAction];
 }
 
 #pragma mark - UIScrollViewDelegate implementation

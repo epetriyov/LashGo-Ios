@@ -162,6 +162,14 @@
 	[kernel.checksManager openVoteViewControllerForCheck: check];
 }
 
+- (void) openImageFor: (LGCheck *) check {
+	[kernel.checksManager openPhotoViewControllerForCheck: check];
+}
+
+- (void) openUserImageFor: (LGCheck *) check {
+	[kernel.checksManager openPhotoViewControllerForCheck: check];
+}
+
 /*
 #pragma mark - Navigation
 

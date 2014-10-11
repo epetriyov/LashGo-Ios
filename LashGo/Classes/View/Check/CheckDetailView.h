@@ -37,5 +37,7 @@
 @required
 - (void) makePhotoAction;
 - (void) voteAction;
+- (void) imageAction;
+- (void) userImageAction;
 
 @end
