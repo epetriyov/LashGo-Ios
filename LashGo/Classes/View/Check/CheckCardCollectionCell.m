@@ -9,7 +9,7 @@
 #import "CheckCardCollectionCell.h"
 #import "FontFactory.h"
 
-#import "CheckCardCountersPanelView.h"
+#import "CheckCardTimerPanelView.h"
 #import "Common.h"
 #import "UIImageView+LGImagesExtension.h"
 
@@ -18,7 +18,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 @interface CheckCardCollectionCell () <CheckDetailViewDelegate> {
 	CheckDetailView *_checkView;
 	CheckDetailView *_userPhotoView;
-	CheckCardCountersPanelView *_panelView;
+	CheckCardTimerPanelView *_panelView;
 //	NSTimer *_progressTimer;
 }
 
@@ -129,8 +129,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		
 		float panelHeight = 31;
 		
-		_panelView = [[CheckCardCountersPanelView alloc] initWithFrame: CGRectMake(0, self.contentView.frame.size.height - panelHeight, self.contentView.frame.size.width, panelHeight)];
-		_panelView.backgroundColor = [UIColor redColor];
+		_panelView = [[CheckCardTimerPanelView alloc] initWithFrame: CGRectMake(0, self.contentView.frame.size.height - panelHeight, self.contentView.frame.size.width, panelHeight)];
 		[self.contentView addSubview: _panelView];
     }
     return self;

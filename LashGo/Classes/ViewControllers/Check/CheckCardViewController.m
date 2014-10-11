@@ -163,11 +163,11 @@
 }
 
 - (void) openImageFor: (LGCheck *) check {
-	[kernel.checksManager openPhotoViewControllerForCheck: check];
+	[kernel.checksManager openCheckDetailViewControllerAdminFor: check];
 }
 
 - (void) openUserImageFor: (LGCheck *) check {
-	[kernel.checksManager openPhotoViewControllerForCheck: check];
+	[kernel.checksManager openCheckDetailViewControllerUserFor: check];
 }
 
 /*

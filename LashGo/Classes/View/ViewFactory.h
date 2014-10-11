@@ -13,6 +13,7 @@
 @property (nonatomic, readonly) UIImage *startViewControllerGradientImage;
 @property (nonatomic, readonly) UIColor *statusBarPreferredColor;
 @property (nonatomic, readonly) UIView *taskbarBackgroundView;
+@property (nonatomic, readonly) UIImage *timerCheckOpenImage;
 @property (nonatomic, readonly) UIImage *titleBarBackgroundImage;
 @property (nonatomic, readonly) UIImage *titleBarLogoImage;
 @property (nonatomic, readonly) UIImage *userProfileAvatarPlaceholder;
@@ -26,6 +27,16 @@
 - (UIButton *) checkMakeFoto: (id) target action: (SEL) selector;
 - (UIButton *) checkSendFoto: (id) target action: (SEL) selector;
 - (UIButton *) checkVote: (id) target action: (SEL) selector;
+
+//Counters
+- (UIButton *) counterComment: (id) target action: (SEL) selector;
+- (UIButton *) counterCommentDark: (id) target action: (SEL) selector;
+- (UIButton *) counterLike: (id) target action: (SEL) selector;
+- (UIButton *) counterLikeDark: (id) target action: (SEL) selector;
+- (UIButton *) counterMob: (id) target action: (SEL) selector;
+- (UIButton *) counterMobDark: (id) target action: (SEL) selector;
+- (UIButton *) counterShare: (id) target action: (SEL) selector;
+- (UIButton *) counterShareDark: (id) target action: (SEL) selector;
 
 //Login
 - (UIButton *) loginButtonWithTarget: (id) target action: (SEL) selector;

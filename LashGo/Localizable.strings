@@ -20,6 +20,11 @@
 "AlertLogoutTitle" = "Выход";
 "AlertLogoutMessage" = "Вы действительно хотите выйти?";
 
+//ImagePicker
+"ImagePickerActionSheetCameraTitle" = "Сделать фото";
+"ImagePickerActionSheetLibraryTitle" = "Выбрать из галереи";
+"ImagePickerActionSheetCancelTitle" = "Отмена";
+
 //LoginViewController
 "LoginViewControllerTitle" = "Вход";
 "LoginViewControllerWelcomeText" = "С возвращением!";

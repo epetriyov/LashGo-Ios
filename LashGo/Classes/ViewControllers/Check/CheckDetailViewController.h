@@ -10,9 +10,14 @@
 
 #import "LGCheck.h"
 
-@interface PhotoViewController : TitleBarViewController
+typedef NS_ENUM(ushort, CheckDetailViewMode) {
+	CheckDetailViewModeAdminPhoto = 0,
+	CheckDetailViewModeUserPhoto
+};
+
+@interface CheckDetailViewController : TitleBarViewController
 
 @property (nonatomic, strong) LGCheck *check;
-@property (nonatomic, strong) NSString *photoURL;
+@property (nonatomic, assign) CheckDetailViewMode mode;
 
 @end

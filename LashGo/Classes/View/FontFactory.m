@@ -15,6 +15,8 @@
 		case FontTypeCheckCardTitle:			return [UIFont fontWithName: kDefaultFont size: 20];
 		case FontTypeCheckListCellTitle:		return [UIFont fontWithName: kDefaultFontBold size: 14];
 		case FontTypeCheckListCellDescription:	return [UIFont fontWithName: kDefaultFont size: 12];
+		case FontTypeCountersTitle:
+		case FontTypeCountersDarkTitle:			return [UIFont fontWithName: kDefaultFontMedium size: 10];
 		case FontTypeLoginActionBtnTitle:		return [UIFont fontWithName: kDefaultFontMedium size: 18];
 		case FontTypeLoginInputField:			return [UIFont fontWithName: kDefaultFontLight size: 17];
 		case FontTypeLoginRestorePass:
@@ -43,6 +45,7 @@
 	switch (fontType) {
 		case FontTypeCheckCardDescription:	return [UIColor colorWithWhite: 1.0 alpha: 128.0/255.0];
 		case FontTypeCheckCardTitle:		return [UIColor colorWithWhite: 1.0 alpha: 204.0/255.0];
+		case FontTypeCountersDarkTitle:		return [UIColor colorWithWhite: 114.0/255.0 alpha: 1.0];
 		case FontTypeTaskbarButtons:		return [UIColor colorWithRed:141.0/255.0
 															 green:144.0/255.0
 															  blue:144.0/255.0 alpha:1.0];
@@ -51,6 +54,7 @@
 		case FontTypeVoteCheckTitle:		return [UIColor colorWithWhite: 51.0/255.0 alpha: 1];//same as E5 0(229) alpha
 		case FontTypeLoginRestorePass:
 		case FontTypeLoginSocialLabel:		return [UIColor colorWithWhite: 1.0 alpha: 229.0/255.0];
+		case FontTypeCountersTitle:
 		case FontTypeLoginActionBtnTitle:
 		case FontTypeLoginWelcomeText:
 		case FontTypeStartScreenButtons:

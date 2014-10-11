@@ -8,6 +8,10 @@
 
 #import "CheckCardTimerPanelView.h"
 
+#import "FontFactory.h"
+#import "ViewFactory.h"
+#import "UIView+CGExtension.h"
+
 @interface CheckCardTimerPanelView () {
 	UIImageView *_icon;
 	UILabel *_timeLeftLabel;
@@ -30,10 +34,39 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-		_timeLeftLabel = [[UILabel alloc] initWithFrame: self.bounds];
+		float offsetX = frame.size.width / 2 - 30;
+		_icon = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].timerCheckOpenImage];
+		_icon.frameX = offsetX;
+		[self addSubview: _icon];
+		
+		offsetX += _icon.frame.size.width;
+		
+		_timeLeftLabel = [[UILabel alloc] initWithFrame: CGRectMake(offsetX, 0, 50, _icon.frame.size.height)];
 		_timeLeftLabel.backgroundColor = [UIColor clearColor];
-		_timeLeftLabel.textColor = [UIColor whiteColor];
+		_timeLeftLabel.font = [FontFactory fontWithType: FontTypeVoteTimer];
+		_timeLeftLabel.textAlignment = NSTextAlignmentCenter;
+		_timeLeftLabel.textColor = [FontFactory fontColorForType: FontTypeVoteTimer];
 		[self addSubview: _timeLeftLabel];
+		
+		UIButton *shareButton = [[ViewFactory sharedFactory] counterShare: nil action: nil];
+		shareButton.frameX = 8;
+		[shareButton setTitle: @"7" forState: UIControlStateNormal];
+		[self addSubview: shareButton];
+		
+		UIButton *mobButton = [[ViewFactory sharedFactory] counterMob: nil action: nil];
+		mobButton.frameX = frame.size.width - mobButton.frame.size.width;
+		[mobButton setTitle: @"5" forState: UIControlStateNormal];
+		[self addSubview: mobButton];
+		
+//		UIButton *btn = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 80, 30)];
+//		btn.backgroundColor = [UIColor blueColor];
+//		btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+//		btn.contentVerticalAlignment = UIControlContentHorizontalAlignmentLeft;
+//		[btn setImage: [ViewFactory sharedFactory].timerCheckOpenImage forState: UIControlStateNormal];
+//		[btn setTitle: @"7" forState: UIControlStateNormal];
+//		btn.titleLabel.font = [UIFont systemFontOfSize: 5];
+//		[self addSubview:btn];
+		
     }
     return self;
 }

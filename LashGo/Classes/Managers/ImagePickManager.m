@@ -8,12 +8,13 @@
 
 #import "ImagePickManager.h"
 
+#import "Common.h"
 #import "Kernel.h"
 #import "ViewControllersManager.h"
 
 #import "LGCheck.h"
 
-@interface ImagePickManager () <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@interface ImagePickManager () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
 	Kernel __weak *_kernel;
 	ViewControllersManager __weak *_viewControllersManager;
 	
@@ -35,16 +36,24 @@
 
 #pragma mark - Methods 
 
-- (BOOL) takePictureFor: (LGCheck *) check {
-	if ([self startImagPickerControllerWith: UIImagePickerControllerSourceTypePhotoLibrary] == YES) {
-		_currentCheck = check;
-		return YES;
+- (void) takePictureFor: (LGCheck *) check {
+	_currentCheck = check;
+	
+	if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] == YES) {
+		UIActionSheet *activeSheet = [[UIActionSheet alloc] initWithTitle: nil
+																 delegate: self
+														cancelButtonTitle: @"ImagePickerActionSheetCancelTitle".commonLocalizedString
+												   destructiveButtonTitle: nil
+														otherButtonTitles:
+									  @"ImagePickerActionSheetCameraTitle".commonLocalizedString,
+									  @"ImagePickerActionSheetLibraryTitle".commonLocalizedString, nil];
+		[activeSheet showInView: _viewControllersManager.rootNavigationController.topViewController.view];
 	} else {
-		return NO;
+		[self startImagePickerControllerWith: UIImagePickerControllerSourceTypePhotoLibrary];
 	}
 }
 
-- (BOOL) startImagPickerControllerWith: (UIImagePickerControllerSourceType) sourceType {
+- (BOOL) startImagePickerControllerWith: (UIImagePickerControllerSourceType) sourceType {
 	
     if ([UIImagePickerController isSourceTypeAvailable: sourceType] == NO) {
         return NO;
@@ -70,6 +79,19 @@
     return YES;
 }
 
+#pragma mark - UIActionSheetDelegate implementation
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	switch (buttonIndex) {
+		case 0:
+			[self startImagePickerControllerWith: UIImagePickerControllerSourceTypeCamera];
+			break;
+		default:
+			[self startImagePickerControllerWith: UIImagePickerControllerSourceTypePhotoLibrary];
+			break;
+	}
+}
+
 #pragma mark - UIImagePickerControllerDelegate implementation
 
 // For responding to the user tapping Cancel.
@@ -81,9 +103,17 @@
 // For responding to the user accepting a newly-captured picture or movie
 - (void) imagePickerController: (UIImagePickerController *) picker
  didFinishPickingMediaWithInfo: (NSDictionary *) info {
+    UIImage *imageToSave = [info objectForKey: UIImagePickerControllerOriginalImage];
+
+    // Handle a still image capture
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+		// Save the new image to the Camera Roll
+        UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil , nil);
+    }
 	
-	_currentCheck.currentPickedUserPhoto = (UIImage *) [info objectForKey: UIImagePickerControllerOriginalImage];
+	_currentCheck.currentPickedUserPhoto = imageToSave;
 	
+	//Sample
 //    NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
 //    UIImage *originalImage, *editedImage, *imageToSave;
 //	

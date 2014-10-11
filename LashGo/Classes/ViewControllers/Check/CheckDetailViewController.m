@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "PhotoViewController.h"
+#import "CheckDetailViewController.h"
 
 #import "Kernel.h"
 #import "UIImageView+LGImagesExtension.h"
 #import "ViewFactory.h"
 
-@interface PhotoViewController () <UIScrollViewDelegate> {
-	
+@interface CheckDetailViewController () <UIScrollViewDelegate> {
+	UIButton __weak *_sendPhotoButton;
 }
 
 @property (nonatomic, weak) UIScrollView *imageZoomView;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation PhotoViewController
+@implementation CheckDetailViewController
 
 - (void) loadView {
 	[super loadView];
@@ -33,6 +33,7 @@
 																				  action: @selector(cameraAction:)];
 	UIButton *sendPhotoButton = [[ViewFactory sharedFactory] titleBarSendPhotoButtonWithTarget: self
 																						action: @selector(sendPhotoAction:)];
+	_sendPhotoButton = sendPhotoButton;
 	TitleBarView *tbView = [TitleBarView titleBarViewWithLeftSecondaryButton: iconButton
 																 rightButton: cameraButton
 														rightSecondaryButton: sendPhotoButton];
@@ -52,17 +53,28 @@
 	[_imageZoomView addSubview:imageView];
 	_imageView = imageView;
 	
-	PhotoViewController __weak *wself = self;
-	[self.imageView loadWebImageWithName: self.photoURL placeholderImage: nil
-							   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-								   [wself.imageView sizeToFit];
-								   wself.imageZoomView.contentSize = image.size;
-								   
-								   float scale = MAX(wself.imageZoomView.frame.size.width / image.size.width,
-													 wself.imageZoomView.frame.size.height / image.size.height);
-								   wself.imageZoomView.minimumZoomScale = scale;
-								   wself.imageZoomView.zoomScale = scale;
-							   }];
+	if (self.mode == CheckDetailViewModeAdminPhoto) {
+		CheckDetailViewController __weak *wself = self;
+		[self.imageView loadWebImageWithName: self.check.taskPhotoUrl placeholderImage: nil
+								   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+									   [wself restoreZoomViewFor: image];
+								   }];
+	} else if (self.mode == CheckDetailViewModeUserPhoto) {
+		self.imageView.image = self.check.currentPickedUserPhoto;
+		[self restoreZoomViewFor: self.check.currentPickedUserPhoto];
+	}
+}
+
+#pragma mark - Methods
+
+- (void) restoreZoomViewFor: (UIImage *) image {
+	[self.imageView sizeToFit];
+	self.imageZoomView.contentSize = image.size;
+	
+	float scale = MAX(self.imageZoomView.frame.size.width / image.size.width,
+					  self.imageZoomView.frame.size.height / image.size.height);
+	self.imageZoomView.minimumZoomScale = scale;
+	self.imageZoomView.zoomScale = scale;
 }
 
 #pragma mark - Actions

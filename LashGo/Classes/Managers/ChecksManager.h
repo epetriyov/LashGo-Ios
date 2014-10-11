@@ -27,7 +27,8 @@
 - (void) openCheckCardViewController;
 - (void) openCheckListViewController;
 
-- (void) openPhotoViewControllerForCheck: (LGCheck *) check;
+- (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check;
+- (void) openCheckDetailViewControllerUserFor: (LGCheck *) check;
 - (void) openVoteViewControllerForCheck: (LGCheck *) check;
 
 @end

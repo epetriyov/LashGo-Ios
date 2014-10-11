@@ -16,6 +16,6 @@
 - (instancetype) initWithKernel: (Kernel *) kernel
 					  vcManager: (ViewControllersManager *) vcManager;
 
-- (BOOL) takePictureFor: (LGCheck *) check;
+- (void) takePictureFor: (LGCheck *) check;
 
 @end

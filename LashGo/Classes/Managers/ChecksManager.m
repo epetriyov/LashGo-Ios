@@ -63,10 +63,17 @@
 	}
 }
 
-- (void) openPhotoViewControllerForCheck: (LGCheck *) check {
-	PhotoViewController *vc = _viewControllersManager.photoViewController;
+- (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check {
+	CheckDetailViewController *vc = _viewControllersManager.checkDetailViewController;
 	vc.check = check;
-	vc.photoURL = check.taskPhotoUrl;
+	vc.mode = CheckDetailViewModeAdminPhoto;
+	[_viewControllersManager openViewController: vc animated: YES];
+}
+
+- (void) openCheckDetailViewControllerUserFor: (LGCheck *) check {
+	CheckDetailViewController *vc = _viewControllersManager.checkDetailViewController;
+	vc.check = check;
+	vc.mode = CheckDetailViewModeUserPhoto;
 	[_viewControllersManager openViewController: vc animated: YES];
 }
 

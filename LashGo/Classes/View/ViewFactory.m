@@ -19,6 +19,7 @@ static ViewFactory *viewFactory = nil;
 @dynamic lgLogoImage;
 @dynamic loginViewControllerBgImage;
 @dynamic startViewControllerBgImage, startViewControllerFrameImage, startViewControllerGradientImage, statusBarPreferredColor;
+@dynamic timerCheckOpenImage;
 @dynamic taskbarBackgroundView, titleBarBackgroundImage, titleBarLogoImage;
 @dynamic userProfileAvatarPlaceholder;
 
@@ -73,6 +74,10 @@ static ViewFactory *viewFactory = nil;
 	UIView *view = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 1, 49)];
 	view.backgroundColor = [UIColor colorWithWhite: 226.0/255.0 alpha: 1.0];
 	return view;
+}
+
+- (UIImage *) timerCheckOpenImage {
+	return [UIImage imageNamed: @"time_open"];
 }
 
 - (UIImage *) titleBarBackgroundImage {
@@ -170,6 +175,96 @@ static ViewFactory *viewFactory = nil;
 
 - (UIButton *) checkVote: (id) target action: (SEL) selector {
 	UIButton *button = [self buttonWithBGImageName: @"btn_white_like" target: target action: selector];
+	return button;
+}
+
+#pragma mark - Counters
+
+- (UIButton *) counterComment: (id) target action: (SEL) selector {
+	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, 32)];
+	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	button.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+	button.titleLabel.font = [FontFactory fontWithType: FontTypeCountersTitle];
+	[button setTitleColor: [FontFactory fontColorForType: FontTypeCountersTitle] forState: UIControlStateNormal];
+	[button setImage: [UIImage imageNamed: @"ic_comment"] forState: UIControlStateNormal];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	return button;
+}
+
+- (UIButton *) counterCommentDark: (id) target action: (SEL) selector {
+	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, 32)];
+	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	button.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+	button.titleLabel.font = [FontFactory fontWithType: FontTypeCountersDarkTitle];
+	[button setTitleColor: [FontFactory fontColorForType: FontTypeCountersDarkTitle] forState: UIControlStateNormal];
+	[button setImage: [UIImage imageNamed: @"ic_comment_gr"] forState: UIControlStateNormal];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	return button;
+}
+
+- (UIButton *) counterLike: (id) target action: (SEL) selector {
+	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, 32)];
+	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	button.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+	button.titleLabel.font = [FontFactory fontWithType: FontTypeCountersTitle];
+	[button setTitleColor: [FontFactory fontColorForType: FontTypeCountersTitle] forState: UIControlStateNormal];
+	[button setImage: [UIImage imageNamed: @"ic_like"] forState: UIControlStateNormal];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	return button;
+}
+
+- (UIButton *) counterLikeDark: (id) target action: (SEL) selector {
+	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, 32)];
+	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	button.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+	button.titleLabel.font = [FontFactory fontWithType: FontTypeCountersDarkTitle];
+	[button setTitleColor: [FontFactory fontColorForType: FontTypeCountersDarkTitle] forState: UIControlStateNormal];
+	[button setImage: [UIImage imageNamed: @"ic_like_gr"] forState: UIControlStateNormal];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	return button;
+}
+
+- (UIButton *) counterMob: (id) target action: (SEL) selector {
+	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, 32)];
+	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	button.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+	button.titleLabel.font = [FontFactory fontWithType: FontTypeCountersTitle];
+	[button setTitleColor: [FontFactory fontColorForType: FontTypeCountersTitle] forState: UIControlStateNormal];
+	[button setImage: [UIImage imageNamed: @"ic_mob"] forState: UIControlStateNormal];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	return button;
+}
+
+- (UIButton *) counterMobDark: (id) target action: (SEL) selector {
+	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, 32)];
+	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	button.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+	button.titleLabel.font = [FontFactory fontWithType: FontTypeCountersDarkTitle];
+	[button setTitleColor: [FontFactory fontColorForType: FontTypeCountersDarkTitle] forState: UIControlStateNormal];
+	[button setImage: [UIImage imageNamed: @"ic_mob_gr"] forState: UIControlStateNormal];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	return button;
+}
+
+- (UIButton *) counterShare: (id) target action: (SEL) selector {
+	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, 32)];
+	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	button.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+	button.titleLabel.font = [FontFactory fontWithType: FontTypeCountersTitle];
+	[button setTitleColor: [FontFactory fontColorForType: FontTypeCountersTitle] forState: UIControlStateNormal];
+	[button setImage: [UIImage imageNamed: @"ic_share"] forState: UIControlStateNormal];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	return button;
+}
+
+- (UIButton *) counterShareDark: (id) target action: (SEL) selector {
+	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 60, 32)];
+	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	button.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
+	button.titleLabel.font = [FontFactory fontWithType: FontTypeCountersDarkTitle];
+	[button setTitleColor: [FontFactory fontColorForType: FontTypeCountersDarkTitle] forState: UIControlStateNormal];
+	[button setImage: [UIImage imageNamed: @"ic_share_gr"] forState: UIControlStateNormal];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
 	return button;
 }
 

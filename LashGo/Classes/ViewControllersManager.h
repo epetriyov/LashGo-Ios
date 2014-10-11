@@ -11,7 +11,7 @@
 #import "CheckCardViewController.h"
 #import "CheckListViewController.h"
 
-#import "PhotoViewController.h"
+#import "CheckDetailViewController.h"
 #import "VoteViewController.h"
 
 #import "LoginViewController.h"
@@ -43,7 +43,7 @@
 @property (nonatomic, readonly) CheckCardViewController *checkCardViewController;
 @property (nonatomic, readonly) CheckListViewController *checkListViewController;
 
-@property (nonatomic, readonly) PhotoViewController *photoViewController;
+@property (nonatomic, readonly) CheckDetailViewController *checkDetailViewController;
 @property (nonatomic, readonly) VoteViewController *voteViewController;
 
 @property (nonatomic, readonly) RecoverViewController *recoverViewController;
