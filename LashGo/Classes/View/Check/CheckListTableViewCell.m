@@ -25,9 +25,13 @@
     self = [super initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (self) {
 		self.backgroundColor = [UIColor clearColor];
+		
 		[self.textLabel setFont: [FontFactory fontWithType: FontTypeCheckListCellTitle]];
+		self.textLabel.backgroundColor = [UIColor clearColor];
 		self.textLabel.textColor = [FontFactory fontColorForType: FontTypeCheckListCellTitle];
+		
 		[self.detailTextLabel setFont: [FontFactory fontWithType: FontTypeCheckListCellDescription]];
+		self.detailTextLabel.backgroundColor = [UIColor clearColor];
 		self.detailTextLabel.textColor = [FontFactory fontColorForType: FontTypeCheckListCellDescription];
 		self.detailTextLabel.numberOfLines = 5;
 
@@ -86,11 +90,13 @@
 	CGRect textLabelFrame = CGRectMake(offsetX, 13 + kCaps, width, 20);
 	
 	self.textLabel.frame = textLabelFrame;
+	self.textLabel.backgroundColor = [UIColor colorWithWhite: 250.0/255.0 alpha: 1];
 	
 	textLabelFrame.origin.y += textLabelFrame.size.height + 10;
 	textLabelFrame.size.height = self.contentView.frame.size.height - (textLabelFrame.origin.y + 21 + kCaps);
 	
 	self.detailTextLabel.frame = textLabelFrame;
+	self.detailTextLabel.backgroundColor = [UIColor colorWithWhite: 250.0/255.0 alpha: 1];
 	[self.detailTextLabel sizeToFit];
 }
 
