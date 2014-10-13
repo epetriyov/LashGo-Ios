@@ -8,6 +8,7 @@
 
 #import "CheckDetailViewController.h"
 
+#import "CheckCardTimerPanelView.h"
 #import "Kernel.h"
 #import "UIImageView+LGImagesExtension.h"
 #import "ViewFactory.h"
@@ -43,7 +44,22 @@
 	[self.view addSubview: tbView];
 	_titleBarView = tbView;
 	
-	UIScrollView *imageZoomView = [[UIScrollView alloc] initWithFrame: self.contentFrame];
+	//Bottom to top
+	float panelHeight = 44;
+	UIView *panelBgView = [[UIView alloc] initWithFrame: CGRectMake(0, self.view.frame.size.height - panelHeight,
+																	self.view.frame.size.width, panelHeight)];
+	panelBgView.backgroundColor = [UIColor colorWithWhite: 249.0/255.0 alpha: 1.0];
+	[self.view addSubview: panelBgView];
+	
+	float countersHeight = 32;
+	CheckCardTimerPanelView *panelView = [[CheckCardTimerPanelView alloc] initWithFrame: CGRectMake(0, panelHeight - countersHeight, panelBgView.frame.size.width, countersHeight)
+																				   mode: CheckCardTimerPanelModeDark];
+	[panelBgView addSubview: panelView];
+	
+	CGRect imageFrame = self.contentFrame;
+	imageFrame.size.height = panelBgView.frame.origin.y - imageFrame.origin.y;
+	
+	UIScrollView *imageZoomView = [[UIScrollView alloc] initWithFrame: imageFrame];
 	imageZoomView.delegate = self;
 	[self.view addSubview: imageZoomView];
 	self.imageZoomView = imageZoomView;

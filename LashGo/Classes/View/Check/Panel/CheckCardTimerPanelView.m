@@ -30,10 +30,11 @@
 	
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (instancetype) initWithFrame:(CGRect)frame mode:(CheckCardTimerPanelMode) mode {
     self = [super initWithFrame:frame];
     if (self) {
+		self.mode = mode;
+		
 		float offsetX = frame.size.width / 2 - 30;
 		_icon = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].timerCheckOpenImage];
 		_icon.frameX = offsetX;
@@ -48,12 +49,24 @@
 		_timeLeftLabel.textColor = [FontFactory fontColorForType: FontTypeVoteTimer];
 		[self addSubview: _timeLeftLabel];
 		
-		UIButton *shareButton = [[ViewFactory sharedFactory] counterShare: nil action: nil];
+		UIButton *shareButton;
+		UIButton *mobButton;
+		
+		switch (self.mode) {
+			case CheckCardTimerPanelModeDark:
+				shareButton = [[ViewFactory sharedFactory] counterShareDark: nil action: nil];
+				mobButton = [[ViewFactory sharedFactory] counterMobDark: nil action: nil];
+				break;
+			default:
+				shareButton = [[ViewFactory sharedFactory] counterShare: nil action: nil];
+				mobButton = [[ViewFactory sharedFactory] counterMob: nil action: nil];
+				break;
+		}
+		
 		shareButton.frameX = 8;
 		[shareButton setTitle: @"7" forState: UIControlStateNormal];
 		[self addSubview: shareButton];
 		
-		UIButton *mobButton = [[ViewFactory sharedFactory] counterMob: nil action: nil];
 		mobButton.frameX = frame.size.width - mobButton.frame.size.width;
 		[mobButton setTitle: @"5" forState: UIControlStateNormal];
 		[self addSubview: mobButton];
@@ -66,9 +79,15 @@
 //		[btn setTitle: @"7" forState: UIControlStateNormal];
 //		btn.titleLabel.font = [UIFont systemFontOfSize: 5];
 //		[self addSubview:btn];
-		
     }
     return self;
+}
+
+- (id) initWithFrame:(CGRect)frame {
+	if (self = [self initWithFrame: frame mode: CheckCardTimerPanelModeLight]) {
+		
+	}
+	return self;
 }
 
 /*
