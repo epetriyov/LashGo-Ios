@@ -41,6 +41,13 @@
 "ProfileWelcomeViewControllerCompleteBtnTitle" = "ЗАПОЛНИТЬ ПРОФИЛЬ";
 "ProfileWelcomeViewControllerContinueBtnTitle" = "ПРОДОЛЖИТЬ";
 
+//ProfileViewController
+"ProfileViewControllerSubscribesLabel" = "подписок";
+"ProfileViewControllerSubscribersLabel" = "подписчиков";
+"ProfileViewControllerChecksCountLabel" = "чеков";
+"ProfileViewControllerCommentsCountLabel" = "коментариев";
+"ProfileViewControllerLikesCountLabel" = "лайков";
+
 //RecoverViewController
 "RecoverViewControllerTitle" = "Восстановление пароля";
 "RecoverViewControllerMessage" = "Адрес для восстановления пароля";

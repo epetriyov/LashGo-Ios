@@ -12,15 +12,16 @@
 @interface LGPhoto : NSObject {
 	int64_t uid;
 	NSString *url;
-	int32_t rating;
 	LGCheck *check;
 	LGUser *user;
 }
 
 @property (nonatomic, assign) int64_t uid;
 @property (nonatomic, strong) NSString *url;
-@property (nonatomic, assign) int32_t rating;
 @property (nonatomic, strong) LGCheck *check;
 @property (nonatomic, strong) LGUser *user;
+
+@property (nonatomic, assign) BOOL isBanned;
+@property (nonatomic, assign) BOOL isWinner;
 
 @end

@@ -19,6 +19,10 @@
 		case FontTypeCountersDarkTitle:			return [UIFont fontWithName: kDefaultFontMedium size: 10];
 		case FontTypeLoginActionBtnTitle:		return [UIFont fontWithName: kDefaultFontMedium size: 18];
 		case FontTypeLoginInputField:			return [UIFont fontWithName: kDefaultFontLight size: 17];
+		case FontTypeProfileFIO:				return [UIFont fontWithName: kDefaultFontMedium size: 21];
+		case FontTypeProfileLabels:				return [UIFont fontWithName: kDefaultFont size: 12];
+		case FontTypeProfileLabelsCount:		return [UIFont fontWithName: kDefaultFont size: 16];
+		case FontTypeProfileLabelsFollowCount:	return [UIFont fontWithName: kDefaultFont size: 19];
 		case FontTypeLoginRestorePass:
 		case FontTypeVoteCheckDescription:		return [UIFont fontWithName: kDefaultFont size: 13];
 		case FontTypeLoginSocialLabel:
@@ -57,6 +61,10 @@
 		case FontTypeCountersTitle:
 		case FontTypeLoginActionBtnTitle:
 		case FontTypeLoginWelcomeText:
+		case FontTypeProfileFIO:
+		case FontTypeProfileLabels:
+		case FontTypeProfileLabelsCount:
+		case FontTypeProfileLabelsFollowCount:
 		case FontTypeStartScreenButtons:
 		case FontTypeTitleBarButtons:
 		case FontTypeUserChangeAvatarTitle:	return [UIColor whiteColor];

@@ -10,7 +10,6 @@
 
 @implementation LGUser
 
-@synthesize uid, login, name, surname, about, city, birthDate, avatar, email;
-
+@synthesize uid, login, fio, about, city, birthDate, avatar, email;
 
 @end

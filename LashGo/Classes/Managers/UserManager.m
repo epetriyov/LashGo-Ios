@@ -35,6 +35,15 @@
 
 #pragma mark - Methods
 
+- (void) getUserPhotosForUser: (LGUser *) user {
+	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [ProfileViewController class]];
+	[_dataProvider userPhotosFor: user.uid];
+}
+
+- (void) stopWaitingUserPhotos {
+	[_viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [ProfileViewController class]];
+}
+
 - (void) recoverPasswordWithEmail: (NSString *) email {
 	LGRecoverInfo *recoverInfo = [[LGRecoverInfo alloc] init];
 	recoverInfo.email = email;
@@ -66,6 +75,15 @@
 
 - (void) openProfileWelcomeViewControllerWith: (LGUser *) user {
 	ProfileWelcomeViewController *vc = _viewControllersManager.profileWelcomeViewController;
+	vc.user = user;
+	[_viewControllersManager openViewController: vc animated: YES];
+}
+
+- (void) openProfileViewControllerWith: (LGUser *) user {
+	ProfileViewController *vc = _viewControllersManager.profileViewController;
+	if (vc.user != user) {
+		vc.photos = nil;
+	}
 	vc.user = user;
 	[_viewControllersManager openViewController: vc animated: YES];
 }

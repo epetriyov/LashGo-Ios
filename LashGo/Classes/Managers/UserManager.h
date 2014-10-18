@@ -18,6 +18,9 @@
 				   dataProvider: (DataProvider *) dataProvider
 					  vcManager: (ViewControllersManager *) vcManager;
 
+- (void) getUserPhotosForUser: (LGUser *) user;
+- (void) stopWaitingUserPhotos;
+
 - (void) recoverPasswordWithEmail: (NSString *) email;
 - (void) socialSignIn;
 
@@ -26,5 +29,6 @@
 
 - (void) openProfileEditViewControllerWith: (LGUser *) user;
 - (void) openProfileWelcomeViewControllerWith: (LGUser *) user;
+- (void) openProfileViewControllerWith: (LGUser *) user;
 
 @end

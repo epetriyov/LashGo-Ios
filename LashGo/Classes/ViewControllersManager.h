@@ -22,6 +22,7 @@
 
 #import "ProfileEditViewController.h"
 #import "ProfileWelcomeViewController.h"
+#import "ProfileViewController.h"
 
 @class Kernel;
 
@@ -50,6 +51,7 @@
 
 @property (nonatomic, readonly) ProfileEditViewController *profileEditViewController;
 @property (nonatomic, readonly) ProfileWelcomeViewController *profileWelcomeViewController;
+@property (nonatomic, readonly) ProfileViewController *profileViewController;
 
 - (id) initWithKernel: (Kernel *) theKernel;
 

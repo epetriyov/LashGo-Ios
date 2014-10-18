@@ -20,4 +20,6 @@
 - (NSArray *) parseCheckVotePhotos: (NSData *) jsonData;
 - (LGRegisterInfo *) parseRegiserInfo: (NSData *) jsonData;
 
+- (NSArray *) parseUserPhotos: (NSData *) jsonData;
+
 @end

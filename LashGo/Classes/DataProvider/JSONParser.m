@@ -121,19 +121,34 @@
 	NSMutableArray *votePhotos = [NSMutableArray array];
 	
 	for (NSDictionary *rawPhoto in rawData) {
-		LGPhoto *photo = [[LGPhoto alloc] init];
-		
-		photo.uid =	[rawPhoto[@"id"] longLongValue];
-		photo.url =	rawPhoto[@"url"];
-		photo.user = [self parseUser: rawPhoto[@"user"]];
-		
-		[votePhotos addObject: photo];
+		LGPhoto *photo = [self parsePhoto: rawPhoto];
+		if (photo != nil) {
+			[votePhotos addObject: photo];
+		}
 	}
 	
 	if ([votePhotos count] <= 0) {
 		votePhotos = nil;
 	}
 	return votePhotos;
+}
+
+- (LGPhoto *) parsePhoto: (NSDictionary *) jsonDataObj {
+	LGPhoto *photo = nil;
+	
+	if ([jsonDataObj count] > 0) {
+		NSDictionary *rawPhoto = jsonDataObj;
+		
+		photo = [[LGPhoto alloc] init];
+		
+		photo.uid =	[rawPhoto[@"id"] longLongValue];
+		photo.url =	rawPhoto[@"url"];
+		photo.user = [self parseUser: rawPhoto[@"user"]];
+		
+		photo.isBanned = [rawPhoto[@"isBanned"] boolValue];
+		photo.isWinner = [rawPhoto[@"isWinner"] boolValue];
+	}
+	return photo;
 }
 
 - (LGRegisterInfo *) parseRegiserInfo: (NSData *) jsonData {
@@ -162,15 +177,40 @@
 		
 		user = [[LGUser alloc] init];
 		
-		user.name =		rawUser[@"name"];
-		user.surname =	rawUser[@"surname"];
-	//	user.about;
-	//	user.city;
-	//	user.birthDate;
+		user.uid =		[rawUser[@"id"] intValue];
+		user.fio =		rawUser[@"fio"];
+//		user.about =	rawUser[@"about"];
+//		user.city =		rawUser[@"city"];
+//		user.birthDate;
 		user.avatar =	rawUser[@"avatar"];
 		user.email =	rawUser[@"email"];
+		
+		user.userSubscribes =	[rawUser[@"userSubscribes"] intValue];
+		user.userSubscribers =	[rawUser[@"userSubscribers"] intValue];
+		user.checksCount =		[rawUser[@"checksCount"] intValue];
+		user.commentsCount =	[rawUser[@"commentsCount"] intValue];
+		user.likesCount =		[rawUser[@"likesCount"] intValue];
+
 	}
 	return user;
+}
+
+- (NSArray *) parseUserPhotos: (NSData *) jsonData {
+	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
+	
+	NSMutableArray *userPhotos = [NSMutableArray array];
+	
+	for (NSDictionary *rawPhoto in rawData) {
+		LGPhoto *photo = [self parsePhoto: rawPhoto];
+		if (photo != nil) {
+			[userPhotos addObject: photo];
+		}
+	}
+	
+	if ([userPhotos count] <= 0) {
+		userPhotos = nil;
+	}
+	return userPhotos;
 }
 
 @end

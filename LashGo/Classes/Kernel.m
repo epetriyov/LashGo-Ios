@@ -82,6 +82,10 @@
 	self.storage.checkVotePhotos = votePhotos;
 }
 
+- (void) dataProvider: (DataProvider *) dataProvider didGetUserPhotos: (NSArray *) photos {
+	self.viewControllersManager.profileViewController.photos = photos;
+}
+
 #pragma mark - TaskbarManagerDelegate implementation
 
 - (void) taskbarManager: (TaskbarManager *) manager didPressTaskbarButtonWithType: (TaskbarButtonType) type {

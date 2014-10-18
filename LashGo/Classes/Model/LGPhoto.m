@@ -10,7 +10,7 @@
 
 @implementation LGPhoto
 
-@synthesize uid, url, rating, check, user;
+@synthesize uid, url, check, user;
 
 
 @end
