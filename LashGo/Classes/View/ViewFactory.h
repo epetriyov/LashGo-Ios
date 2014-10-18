@@ -4,6 +4,7 @@
 	UIImage *titleBarLogoImage;
 }
 
+@property (nonatomic, readonly) UIImage *checkDetailWinnerLed;
 @property (nonatomic, readonly) UIImage *iconEmail;
 @property (nonatomic, readonly) UIImage *iconPassword;
 @property (nonatomic, readonly) UIImage *lgLogoImage;

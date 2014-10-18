@@ -18,7 +18,6 @@ extern NSString *const kCheckCardCollectionCellReusableId;
 @property (nonatomic, weak) id<CheckCardCollectionCellDelegate> delegate;
 
 @property (nonatomic, assign) UIImage *mainImage;
-@property (nonatomic, assign) UIImage *secondImage;
 @property (nonatomic, readonly) UILabel *textLabel;
 @property (nonatomic, readonly) UILabel *detailTextLabel;
 @property (nonatomic, assign) CheckDetailType type;

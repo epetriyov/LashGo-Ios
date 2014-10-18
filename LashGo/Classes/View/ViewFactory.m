@@ -15,6 +15,7 @@ static ViewFactory *viewFactory = nil;
 #define kResourceSuffixSelected @"_sel"
 #define kResourceSuffixBackground @"_bg"
 
+@dynamic checkDetailWinnerLed;
 @dynamic iconEmail, iconPassword;
 @dynamic lgLogoImage;
 @dynamic loginViewControllerBgImage;
@@ -37,6 +38,10 @@ static ViewFactory *viewFactory = nil;
 }
 
 #pragma mark -
+
+- (UIImage *) checkDetailWinnerLed {
+	return [self getImageWithName: @"led_win"];
+}
 
 - (UIImage *) iconEmail {
 	return [self getImageWithName: @"e-mail"];

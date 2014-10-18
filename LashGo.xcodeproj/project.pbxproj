@@ -55,6 +55,10 @@
 		845A20FD19F265BB00AF9D24 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A20FC19F265BB00AF9D24 /* ProfileViewController.m */; };
 		845A210719F2694400AF9D24 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A210619F2694400AF9D24 /* ProfileView.m */; };
 		845A210A19F290BC00AF9D24 /* PhotoCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A210919F290BC00AF9D24 /* PhotoCollectionCell.m */; };
+		845A210E19F2D49800AF9D24 /* CheckDetailUserOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A210D19F2D49800AF9D24 /* CheckDetailUserOverlay.m */; };
+		845A211119F2D4DB00AF9D24 /* CheckDetailWinnerOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A211019F2D4DB00AF9D24 /* CheckDetailWinnerOverlay.m */; };
+		845A211419F2D52D00AF9D24 /* CheckDetailCheckOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A211319F2D52D00AF9D24 /* CheckDetailCheckOverlay.m */; };
+		845A211719F2D5A500AF9D24 /* CheckDetailOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A211619F2D5A500AF9D24 /* CheckDetailOverlay.m */; };
 		845D857F19029EB0004E10AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D857E19029EB0004E10AB /* Foundation.framework */; };
 		845D858119029EB0004E10AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858019029EB0004E10AB /* CoreGraphics.framework */; };
 		845D858319029EB0004E10AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845D858219029EB0004E10AB /* UIKit.framework */; };
@@ -252,6 +256,14 @@
 		845A210619F2694400AF9D24 /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
 		845A210819F290BC00AF9D24 /* PhotoCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionCell.h; sourceTree = "<group>"; };
 		845A210919F290BC00AF9D24 /* PhotoCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionCell.m; sourceTree = "<group>"; };
+		845A210C19F2D49800AF9D24 /* CheckDetailUserOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailUserOverlay.h; sourceTree = "<group>"; };
+		845A210D19F2D49800AF9D24 /* CheckDetailUserOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailUserOverlay.m; sourceTree = "<group>"; };
+		845A210F19F2D4DB00AF9D24 /* CheckDetailWinnerOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailWinnerOverlay.h; sourceTree = "<group>"; };
+		845A211019F2D4DB00AF9D24 /* CheckDetailWinnerOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailWinnerOverlay.m; sourceTree = "<group>"; };
+		845A211219F2D52D00AF9D24 /* CheckDetailCheckOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailCheckOverlay.h; sourceTree = "<group>"; };
+		845A211319F2D52D00AF9D24 /* CheckDetailCheckOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailCheckOverlay.m; sourceTree = "<group>"; };
+		845A211519F2D5A500AF9D24 /* CheckDetailOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailOverlay.h; sourceTree = "<group>"; };
+		845A211619F2D5A500AF9D24 /* CheckDetailOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailOverlay.m; sourceTree = "<group>"; };
 		845D857B19029EB0004E10AB /* LashGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LashGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		845D857E19029EB0004E10AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		845D858019029EB0004E10AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -565,6 +577,21 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		845A210B19F2D3E600AF9D24 /* Overlay */ = {
+			isa = PBXGroup;
+			children = (
+				845A211519F2D5A500AF9D24 /* CheckDetailOverlay.h */,
+				845A211619F2D5A500AF9D24 /* CheckDetailOverlay.m */,
+				845A211219F2D52D00AF9D24 /* CheckDetailCheckOverlay.h */,
+				845A211319F2D52D00AF9D24 /* CheckDetailCheckOverlay.m */,
+				845A210C19F2D49800AF9D24 /* CheckDetailUserOverlay.h */,
+				845A210D19F2D49800AF9D24 /* CheckDetailUserOverlay.m */,
+				845A210F19F2D4DB00AF9D24 /* CheckDetailWinnerOverlay.h */,
+				845A211019F2D4DB00AF9D24 /* CheckDetailWinnerOverlay.m */,
+			);
+			path = Overlay;
+			sourceTree = "<group>";
+		};
 		845D857219029EB0004E10AB = {
 			isa = PBXGroup;
 			children = (
@@ -810,6 +837,7 @@
 		84EEE4B319C9C3B8009F83C6 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
+				845A210B19F2D3E600AF9D24 /* Overlay */,
 				841BFAA219E9975C003BB92B /* CheckDetailView.h */,
 				841BFAA319E9975C003BB92B /* CheckDetailView.m */,
 				84EEE4B419C9C42C009F83C6 /* CheckDrawingsDetailView.h */,
@@ -1094,9 +1122,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				845A210719F2694400AF9D24 /* ProfileView.m in Sources */,
+				845A211419F2D52D00AF9D24 /* CheckDetailCheckOverlay.m in Sources */,
 				845D85B31902A7FD004E10AB /* ViewControllersManager.m in Sources */,
 				8426F351191A661D00B4E336 /* BaseViewController.m in Sources */,
 				84062511193088F30067C1CA /* DownloadableImageItem.m in Sources */,
+				845A211119F2D4DB00AF9D24 /* CheckDetailWinnerOverlay.m in Sources */,
 				840625541930AB230067C1CA /* JSONParser.m in Sources */,
 				84F8E8A7199B5C580054C9F8 /* CheckCardCollectionCell.m in Sources */,
 				84FEE18019E028180067C264 /* ProfileEditTableViewCell.m in Sources */,
@@ -1130,8 +1160,10 @@
 				84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */,
 				840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */,
 				84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */,
+				845A210E19F2D49800AF9D24 /* CheckDetailUserOverlay.m in Sources */,
 				84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */,
 				84FA068719619F86006A72AE /* LoginViewController.m in Sources */,
+				845A211719F2D5A500AF9D24 /* CheckDetailOverlay.m in Sources */,
 				840625581930AD760067C1CA /* LGCheck.m in Sources */,
 				8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */,
 				845A210A19F290BC00AF9D24 /* PhotoCollectionCell.m in Sources */,

@@ -106,6 +106,10 @@
 		
 		check.taskPhotoUrl =	rawCheck[@"taskPhotoUrl"];
 		
+		check.userPhoto =	[self parsePhoto: rawCheck[@"userPhotoDto"]];
+		check.winnerInfo =	[self parseUser: rawCheck[@"winnerInfo"]];
+		check.winnerPhoto =	[self parsePhoto: rawCheck[@"winnerPhotoDto"]];
+		
 		[checks addObject: check];
 	}
 	

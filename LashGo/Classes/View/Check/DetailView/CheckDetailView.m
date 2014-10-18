@@ -11,9 +11,13 @@
 #import "UIView+CGExtension.h"
 #import "ViewFactory.h"
 
+#import "CheckDetailCheckOverlay.h"
+#import "CheckDetailUserOverlay.h"
+#import "CheckDetailWinnerOverlay.h"
+
 #define kAnimationDuration 0.4
 
-@interface CheckDetailView () {
+@interface CheckDetailView () <CheckDetailOverlayDelegate> {
 	CheckDrawingsDetailView *_drawingsView;
 	
 	UIImageView *_imageView;
@@ -112,13 +116,13 @@
         [_userImageLayer setMasksToBounds:YES];
 		[_scrollView addSubview: _userImageView];
 		
-		UIButton *imageButton = [[UIButton alloc] initWithFrame: _imageView.frame];
-		[imageButton addTarget: self action: @selector(imageAction:) forControlEvents: UIControlEventTouchUpInside];
-		[_scrollView addSubview: imageButton];
+		CheckDetailCheckOverlay *checkOverlay = [[CheckDetailCheckOverlay alloc] initWithFrame: _imageView.frame];
+		checkOverlay.delegate = self;
+		[_scrollView addSubview: checkOverlay];
 		
-		UIButton *userImageButton = [[UIButton alloc] initWithFrame: _userImageView.frame];
-		[userImageButton addTarget: self action: @selector(userImageAction:) forControlEvents: UIControlEventTouchUpInside];
-		[_scrollView addSubview: userImageButton];
+		CheckDetailWinnerOverlay *winnerOverlay = [[CheckDetailWinnerOverlay alloc] initWithFrame: _userImageView.frame];
+		winnerOverlay.delegate = self;
+		[_scrollView addSubview: winnerOverlay];
 		
 		_scrollView.scrollEnabled = NO;
 		
@@ -170,12 +174,19 @@
 	[self.delegate voteAction];
 }
 
-- (void) imageAction: (id) sender {
-	[self.delegate imageAction];
-}
+#pragma mark - CheckDetailOverlayDelegate implementation
 
-- (void) userImageAction: (id) sender {
-	[self.delegate userImageAction];
+- (void) overlay: (CheckDetailOverlay *) overlay action: (CheckDetailOverlayAction) action {
+	switch (action) {
+		case CheckDetailOverlayActionCheckTapped:
+			[self.delegate imageAction];
+			break;
+		case CheckDetailOverlayActionUserImageTapped:
+			[self.delegate userImageAction];
+			break;
+		default:
+			break;
+	}
 }
 
 #pragma mark - UIScrollViewDelegate implementation

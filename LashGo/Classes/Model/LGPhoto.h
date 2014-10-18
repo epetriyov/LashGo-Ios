@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "LGCheck.h"
 #import "LGUser.h"
+
+@class LGCheck;
 
 @interface LGPhoto : NSObject {
 	int64_t uid;

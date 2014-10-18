@@ -17,7 +17,6 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 
 @interface CheckCardCollectionCell () <CheckDetailViewDelegate> {
 	CheckDetailView *_checkView;
-	CheckDetailView *_userPhotoView;
 	CheckCardTimerPanelView *_panelView;
 //	NSTimer *_progressTimer;
 }
@@ -26,7 +25,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 
 @implementation CheckCardCollectionCell
 
-@dynamic mainImage, secondImage;
+@dynamic mainImage;
 @dynamic type;
 
 #pragma mark - Properties
@@ -39,21 +38,14 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	_checkView.imageView.image = mainImage;
 }
 
-- (UIImage *) secondImage {
-//	return _userPhotoView.imageView;
-	return nil;
-}
-
-- (void) setSecondImage:(UIImage *)secondImage {
-//	_userPhotoView.imageView = secondImage;
-}
-
 - (CheckDetailType) type {
 	return _checkView.type;
 }
 
 - (void) setType:(CheckDetailType) type {
-	_checkView.type = type;
+	if (_checkView.type != type) {
+		_checkView.type = type;
+	}
 }
 
 - (void) setCheck:(LGCheck *)check {
@@ -139,6 +131,9 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
 	
 	if (now > _check.closeDate) {
+		if (self.type != CheckDetailTypeClosed) {
+			[_checkView.userImageView loadWebImageWithSizeThatFitsName: _check.winnerPhoto.url placeholder: nil];
+		}
 		self.type = CheckDetailTypeClosed;
 //		[_progressTimer invalidate];
 //		_progressTimer = nil;
@@ -167,8 +162,6 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		_checkView.userImage = nil;
 	}
 	_checkView.progressValue = progress;
-	_userPhotoView.progressValue = progress;
-	
 }
 
 - (NSString *) reuseIdentifier {
@@ -192,24 +185,5 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 - (void) userImageAction {
 	[self.delegate openUserImageFor: self.check];
 }
-
-#pragma mark - UIScrollViewDelegate implementation
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-	_checkView.displayPreview = scrollView.contentOffset.x > 0;
-//	if (scrollView.contentOffset.x < scrollView.frame.size.width) {
-		_userPhotoView.displayPreview = scrollView.contentOffset.x < scrollView.frame.size.width;
-//	}
-	
-}
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

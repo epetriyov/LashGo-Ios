@@ -19,6 +19,7 @@
 ///By default, CheckDetailTypeClosed
 @property (nonatomic, assign) CheckDetailType type;
 @property (nonatomic, readonly) UIImageView *imageView;
+@property (nonatomic, readonly) UIImageView *userImageView;
 @property (nonatomic, strong) UIImage *userImage;
 @property (nonatomic, readonly) CGFloat imageCaps;
 @property (nonatomic, readonly) CGFloat progressLineWidth;

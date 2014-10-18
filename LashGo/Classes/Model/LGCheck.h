@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "LGPhoto.h"
+#import "LGUser.h"
 
 @interface LGCheck : NSObject
 
@@ -22,5 +23,9 @@
 @property (nonatomic, strong) NSString *taskPhotoUrl;
 
 @property (nonatomic, strong) UIImage *currentPickedUserPhoto;
+
+@property (nonatomic, strong) LGPhoto *userPhoto;
+@property (nonatomic, strong) LGUser *winnerInfo;
+@property (nonatomic, strong) LGPhoto *winnerPhoto;
 
 @end

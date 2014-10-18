@@ -35,6 +35,7 @@
 		case FontTypeSegmentedTextControl:
 		case FontTypeSegmentedTextControlSelected:	return [UIFont fontWithName: kDefaultFont size: 14];
 		case FontTypeSlogan:					return [UIFont fontWithName: kDefaultFont size: 24];
+		case FontTypeCheckDetailWinnerFIO:
 		case FontTypeStartScreenButtons:		return [UIFont fontWithName: kDefaultFontMedium size: 12];
 		case FontTypeTitleBarTitle:				return [UIFont fontWithName: kDefaultFontMedium size: 17];
 		case FontTypeVoteCheckTitle:			return [UIFont fontWithName: kDefaultFontMedium size: 15];
@@ -58,6 +59,7 @@
 		case FontTypeVoteCheckTitle:		return [UIColor colorWithWhite: 51.0/255.0 alpha: 1];//same as E5 0(229) alpha
 		case FontTypeLoginRestorePass:
 		case FontTypeLoginSocialLabel:		return [UIColor colorWithWhite: 1.0 alpha: 229.0/255.0];
+		case FontTypeCheckDetailWinnerFIO:
 		case FontTypeCountersTitle:
 		case FontTypeLoginActionBtnTitle:
 		case FontTypeLoginWelcomeText:

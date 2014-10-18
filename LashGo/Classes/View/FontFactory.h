@@ -2,6 +2,7 @@
 typedef NS_ENUM(NSInteger, FontType) {
 	FontTypeCheckCardDescription,
 	FontTypeCheckCardTitle,
+	FontTypeCheckDetailWinnerFIO,
 	FontTypeCheckListCellTitle,
 	FontTypeCheckListCellDescription,
 	FontTypeCheckListHeaderTitle,
