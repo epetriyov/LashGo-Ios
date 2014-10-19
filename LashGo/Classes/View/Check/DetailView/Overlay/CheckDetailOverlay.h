@@ -9,7 +9,8 @@
 typedef NS_ENUM(ushort, CheckDetailOverlayAction) {
 	CheckDetailOverlayActionCheckTapped,
 	CheckDetailOverlayActionUserImageTapped,
-	CheckDetailOverlayActionSendUserImageTapped
+	CheckDetailOverlayActionSendUserImageTapped,
+	CheckDetailOverlayActionWinnerImageTapped
 };
 
 @protocol CheckDetailOverlayDelegate;

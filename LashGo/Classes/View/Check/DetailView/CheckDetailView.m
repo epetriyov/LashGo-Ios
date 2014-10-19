@@ -225,6 +225,10 @@
 			[self.delegate userImageAction];
 			break;
 		case CheckDetailOverlayActionSendUserImageTapped:
+			[self.delegate sendUserImageAction];
+			break;
+		case CheckDetailOverlayActionWinnerImageTapped:
+			[self.delegate winnerImageAction];
 			break;
 		default:
 			break;

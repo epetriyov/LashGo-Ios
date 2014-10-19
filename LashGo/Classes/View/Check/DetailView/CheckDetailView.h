@@ -44,5 +44,7 @@
 - (void) voteAction;
 - (void) imageAction;
 - (void) userImageAction;
+- (void) sendUserImageAction;
+- (void) winnerImageAction;
 
 @end

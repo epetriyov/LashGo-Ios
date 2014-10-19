@@ -44,7 +44,7 @@
 }
 
 - (void) mainButtonAction: (id) sender {
-	[self.delegate overlay: self action: CheckDetailOverlayActionUserImageTapped];
+	[self.delegate overlay: self action: CheckDetailOverlayActionWinnerImageTapped];
 }
 
 @end

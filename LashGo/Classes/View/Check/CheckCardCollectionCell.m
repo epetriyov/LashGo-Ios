@@ -181,4 +181,12 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	[self.delegate openUserImageFor: self.check];
 }
 
+- (void) sendUserImageAction {
+	
+}
+
+- (void) winnerImageAction {
+	
+}
+
 @end
