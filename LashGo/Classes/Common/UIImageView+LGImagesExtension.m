@@ -70,4 +70,8 @@
     }
 }
 
+- (void) cancelWebImageLoad {
+	[self sd_cancelCurrentImageLoad];
+}
+
 @end

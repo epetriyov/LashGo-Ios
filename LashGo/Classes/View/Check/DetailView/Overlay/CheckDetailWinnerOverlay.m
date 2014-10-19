@@ -29,7 +29,7 @@
 		ledImageView.center = CGPointMake(darkPanel.frame.size.width / 2, darkPanel.frame.origin.y);
 		[self addSubview: ledImageView];
 		
-		_fio = [[UILabel alloc] initWithFrame: CGRectMake(0, 0, self.frame.size.width * 0.2, panelHeight / 3)];
+		_fio = [[UILabel alloc] initWithFrame: CGRectMake(0, 0, self.frame.size.width * 0.65, panelHeight / 3)];
 		_fio.adjustsFontSizeToFitWidth = YES;
 		_fio.backgroundColor = [UIColor clearColor];
 		_fio.center = darkPanel.center;

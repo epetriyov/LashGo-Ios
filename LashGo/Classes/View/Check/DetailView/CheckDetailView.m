@@ -8,6 +8,7 @@
 
 #import "CheckDetailView.h"
 
+#import "UIImageView+LGImagesExtension.h"
 #import "UIView+CGExtension.h"
 #import "ViewFactory.h"
 
@@ -25,6 +26,9 @@
 	UIButton *_makePhotoButton;
 	UIButton *_voteButton;
 	
+	CheckDetailUserOverlay *_userOverlay;
+	CheckDetailWinnerOverlay *_winnerOverlay;
+	
 	UIScrollView *_scrollView;
 }
 
@@ -32,30 +36,13 @@
 
 @implementation CheckDetailView
 
-@dynamic userImage, progressValue;
+@dynamic progressValue;
 @dynamic type;
 
 #pragma mark - Properties
 
 - (void) setDisplayPreview:(BOOL)displayPreview {
 	_displayPreview = displayPreview;
-}
-
-- (UIImage *) userImage {
-	return _userImageView.image;
-}
-
-- (void) setUserImage:(UIImage *)userImage {
-	if (self.userImage != userImage) {
-		_userImageView.image = userImage;
-		if (userImage == nil) {
-			_scrollView.contentOffset = CGPointZero;
-			_scrollView.scrollEnabled = NO;
-		} else {
-			_scrollView.scrollEnabled = YES;
-		}
-		_makePhotoButton.selected = (userImage != nil);
-	}
 }
 
 - (CGFloat) progressValue {
@@ -120,9 +107,17 @@
 		checkOverlay.delegate = self;
 		[_scrollView addSubview: checkOverlay];
 		
+		CheckDetailUserOverlay *userOverlay = [[CheckDetailUserOverlay alloc] initWithFrame: _userImageView.frame];
+		userOverlay.delegate = self;
+		userOverlay.hidden = YES;
+		[_scrollView addSubview: userOverlay];
+		_userOverlay = userOverlay;
+		
 		CheckDetailWinnerOverlay *winnerOverlay = [[CheckDetailWinnerOverlay alloc] initWithFrame: _userImageView.frame];
 		winnerOverlay.delegate = self;
+		winnerOverlay.hidden = YES;
 		[_scrollView addSubview: winnerOverlay];
+		_winnerOverlay = winnerOverlay;
 		
 		_scrollView.scrollEnabled = NO;
 		
@@ -137,6 +132,51 @@
 }
 
 #pragma mark - Methods
+
+- (void) setImageWithURLString: (NSString *) url {
+	[_imageView loadWebImageWithSizeThatFitsName: url placeholder: nil];
+}
+
+- (void) setUserImagesWithCheck: (LGCheck *) check {
+	_winnerOverlay.fio.text = check.winnerInfo.fio;
+	if (self.type == CheckDetailTypeClosed) {
+		[self setUserImageWithURLString: check.winnerPhoto.url];
+	} else {
+		[self setUserImageWithImage: check.currentPickedUserPhoto];
+	}
+}
+
+- (void) setUserImageWithImage: (UIImage *) image {
+	[_userImageView cancelWebImageLoad];
+//	if (_userImageView.image != image) {
+		_userImageView.image = image;
+		if (image == nil) {
+			_scrollView.contentOffset = CGPointZero;
+			_scrollView.scrollEnabled = NO;
+			_userOverlay.hidden = YES;
+			_winnerOverlay.hidden = YES;
+		} else {
+			_scrollView.scrollEnabled = YES;
+			_userOverlay.hidden = NO;
+			_winnerOverlay.hidden = YES;
+		}
+		_makePhotoButton.selected = (image != nil);
+//	}
+}
+
+- (void) setUserImageWithURLString: (NSString *) url {
+	[_userImageView loadWebImageWithSizeThatFitsName: url placeholder: nil];
+	if (url == nil) {
+		_scrollView.contentOffset = CGPointZero;
+		_scrollView.scrollEnabled = NO;
+		_userOverlay.hidden = YES;
+		_winnerOverlay.hidden = YES;
+	} else {
+		_scrollView.scrollEnabled = YES;
+		_userOverlay.hidden = YES;
+		_winnerOverlay.hidden = NO;
+	}
+}
 
 - (void) refresh {
 	if (self.type == CheckDetailTypeOpen) {
@@ -183,6 +223,8 @@
 			break;
 		case CheckDetailOverlayActionUserImageTapped:
 			[self.delegate userImageAction];
+			break;
+		case CheckDetailOverlayActionSendUserImageTapped:
 			break;
 		default:
 			break;

@@ -25,18 +25,9 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 
 @implementation CheckCardCollectionCell
 
-@dynamic mainImage;
 @dynamic type;
 
 #pragma mark - Properties
-
-- (UIImage *) mainImage {
-	return _checkView.imageView.image;
-}
-
-- (void) setMainImage:(UIImage *)mainImage {
-	_checkView.imageView.image = mainImage;
-}
 
 - (CheckDetailType) type {
 	return _checkView.type;
@@ -52,9 +43,10 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	_check = check;
 	_textLabel.text = check.name;
 	_detailTextLabel.text = check.descr;
-	[self refresh];
 	
-	[_checkView.imageView loadWebImageWithSizeThatFitsName:check.taskPhotoUrl placeholder:nil];
+	[_checkView setImageWithURLString: check.taskPhotoUrl];
+	[_checkView setUserImagesWithCheck: check];
+	[self refresh];
 }
 
 #pragma mark -
@@ -130,23 +122,25 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 - (void) refresh {
 	NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
 	
+	CheckDetailType currentType;
 	if (now > _check.closeDate) {
-		if (self.type != CheckDetailTypeClosed) {
-			[_checkView.userImageView loadWebImageWithSizeThatFitsName: _check.winnerPhoto.url placeholder: nil];
-		}
-		self.type = CheckDetailTypeClosed;
+		currentType = CheckDetailTypeClosed;
 //		[_progressTimer invalidate];
 //		_progressTimer = nil;
 	} else {
 		if (now > _check.voteDate) {
-			self.type = CheckDetailTypeVote;
+			currentType = CheckDetailTypeVote;
 		} else {
-			self.type = CheckDetailTypeOpen;
+			currentType = CheckDetailTypeOpen;
 		}
 //		if ([_progressTimer isValid] == NO) {
 //			_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector:@selector(refresh)
 //															userInfo:nil repeats:YES];
 //		}
+	}
+	if (self.type != currentType) {
+		self.type = currentType;
+		[_checkView setUserImagesWithCheck: self.check];
 	}
 	
 	CGFloat progress = 0;
@@ -154,12 +148,13 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	if (self.type == CheckDetailTypeOpen) {
 		progress = fdim(now, _check.startDate) / _check.duration;
 		_panelView.timeLeft = fdim(_check.voteDate, now);
-		_checkView.userImage = _check.currentPickedUserPhoto;
+		[_checkView setUserImageWithImage: _check.currentPickedUserPhoto];
+//		_checkView.userImage = _check.currentPickedUserPhoto;
 	} else if (self.type == CheckDetailTypeVote) {
 		progress = fdim(now, _check.voteDate) / _check.voteDuration;
-		_checkView.userImage = nil;
+//		[_checkView setUserImageWithImage: nil];
 	} else {
-		_checkView.userImage = nil;
+//		[_checkView setUserImageWithImage: nil];
 	}
 	_checkView.progressValue = progress;
 }

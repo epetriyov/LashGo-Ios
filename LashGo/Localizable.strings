@@ -73,6 +73,7 @@
 "ChecksActiveHeaderTitle" = "Активные";
 "ChecksVoteHeaderTitle" = "Идет голосование";
 "ChecksClosedHeaderTitle" = "Завершенные";
+"ChecksSendUserImageTitle" = "отправить";
 
 "Отмена" = "Отмена";
 "Поиск" = "Поиск";
