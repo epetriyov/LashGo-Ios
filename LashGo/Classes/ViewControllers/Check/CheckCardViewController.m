@@ -77,6 +77,12 @@
 
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear: animated];
+	if (self.indexToShowOnAppear != nil) {
+		[_collectionView scrollToItemAtIndexPath: self.indexToShowOnAppear
+								atScrollPosition: UICollectionViewScrollPositionCenteredVertically animated: NO];
+		self.indexToShowOnAppear = nil;
+	}
+	
 	
 	if ([_progressTimer isValid] == NO) {
 		_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector:@selector(refreshVisiblePage)

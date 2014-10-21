@@ -25,6 +25,7 @@
 - (void) voteForPhoto: (LGPhoto *) photo;
 
 - (void) openCheckCardViewController;
+- (void) openCheckCardViewControllerFor: (LGCheck *) check;
 - (void) openCheckListViewController;
 
 - (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check;

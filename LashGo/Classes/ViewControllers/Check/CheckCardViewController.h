@@ -13,6 +13,8 @@
 	UILabel *_descriptionLabel;
 }
 
+@property (nonatomic, strong) NSIndexPath *indexToShowOnAppear;
+
 - (void) refresh;
 
 @end

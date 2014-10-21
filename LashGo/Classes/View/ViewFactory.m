@@ -324,7 +324,9 @@ static ViewFactory *viewFactory = nil;
 
 - (UIButton *) titleBarIconButtonWithTarget: (id) target action: (SEL) selector {
 	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 36, 36)];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
 	button.layer.cornerRadius = button.frame.size.height / 2;
+	button.clipsToBounds = YES;
 	return button;
 }
 

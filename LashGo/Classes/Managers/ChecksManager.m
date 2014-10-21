@@ -56,6 +56,18 @@
 	}
 }
 
+- (void) openCheckCardViewControllerFor: (LGCheck *) check {
+	NSUInteger index = [_kernel.storage.checks indexOfObject: check];
+	if (index != NSNotFound) {
+		NSIndexPath *indexPath = [NSIndexPath indexPathForRow: index inSection: 0];
+		_viewControllersManager.checkCardViewController.indexToShowOnAppear = indexPath;
+	}
+	[_viewControllersManager openCheckCardViewController];
+	if ([_kernel.storage.checks count] <= 0) {
+		[_dataProvider checks];
+	}
+}
+
 - (void) openCheckListViewController {
 	[_viewControllersManager openCheckListViewController];
 	if ([_kernel.storage.checks count] <= 0) {

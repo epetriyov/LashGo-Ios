@@ -10,6 +10,7 @@
 
 #import "CheckCardTimerPanelView.h"
 #import "Kernel.h"
+#import "UIButton+LGImages.h"
 #import "UIImageView+LGImagesExtension.h"
 #import "ViewFactory.h"
 
@@ -30,6 +31,7 @@
 	[_titleBarView removeFromSuperview];
 	UIButton *iconButton = [[ViewFactory sharedFactory] titleBarIconButtonWithTarget: self
 																			  action: @selector(iconAction:)];
+	[iconButton loadWebImageWithSizeThatFitsName: self.check.taskPhotoUrl placeholder: nil];
 	UIButton *cameraButton = [[ViewFactory sharedFactory] titleBarCameraButtonWithTarget: self
 																				  action: @selector(cameraAction:)];
 	UIButton *sendPhotoButton = [[ViewFactory sharedFactory] titleBarSendPhotoButtonWithTarget: self
@@ -96,7 +98,7 @@
 #pragma mark - Actions
 
 - (void) iconAction: (id) sender {
-	
+	[kernel.checksManager openCheckCardViewControllerFor: self.check];
 }
 
 - (void) cameraAction: (id) sender {

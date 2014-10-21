@@ -85,6 +85,8 @@
 		84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6240A1998F4CD003BC2F1 /* Storage.m */; };
 		84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E624101998FBAD003BC2F1 /* ChecksManager.m */; };
 		84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B2196C226A0021D417 /* CheckCardViewController.m */; };
+		84E8066519F5483D001BD593 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8066419F5483D001BD593 /* PhotoViewController.m */; };
+		84E8066E19F54E2A001BD593 /* UIButton+LGImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8066D19F54E2A001BD593 /* UIButton+LGImages.m */; };
 		84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */; };
 		84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */; };
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
@@ -308,6 +310,10 @@
 		84E624101998FBAD003BC2F1 /* ChecksManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChecksManager.m; sourceTree = "<group>"; };
 		84E6D9B1196C226A0021D417 /* CheckCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCardViewController.h; sourceTree = "<group>"; };
 		84E6D9B2196C226A0021D417 /* CheckCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCardViewController.m; sourceTree = "<group>"; };
+		84E8066319F5483D001BD593 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		84E8066419F5483D001BD593 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		84E8066C19F54E2A001BD593 /* UIButton+LGImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+LGImages.h"; sourceTree = "<group>"; };
+		84E8066D19F54E2A001BD593 /* UIButton+LGImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+LGImages.m"; sourceTree = "<group>"; };
 		84E98F321984ED7D00B422F4 /* JSONSerializableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSerializableProtocol.h; sourceTree = "<group>"; };
 		84E99B9B194F1CA3000C55E4 /* VkontakteAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VkontakteAppAccount.h; sourceTree = "<group>"; };
 		84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkontakteAppAccount.m; sourceTree = "<group>"; };
@@ -734,6 +740,8 @@
 				840B4EB319A387E700AA6DE1 /* NSDateFormatter+CustomFormats.h */,
 				840B4EB419A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m */,
 				84001FF61949B4FF004D9D7A /* Singleton.h */,
+				84E8066C19F54E2A001BD593 /* UIButton+LGImages.h */,
+				84E8066D19F54E2A001BD593 /* UIButton+LGImages.m */,
 				840425CF19CB167900C5EDBF /* UIImageView+LGImagesExtension.h */,
 				840425D019CB167900C5EDBF /* UIImageView+LGImagesExtension.m */,
 				84045AA719224A04006F2F24 /* UIView+CGExtension.h */,
@@ -944,6 +952,8 @@
 				84FEE18219E02E320067C264 /* ProfileWelcomeViewController.m */,
 				845A20FB19F265BB00AF9D24 /* ProfileViewController.h */,
 				845A20FC19F265BB00AF9D24 /* ProfileViewController.m */,
+				84E8066319F5483D001BD593 /* PhotoViewController.h */,
+				84E8066419F5483D001BD593 /* PhotoViewController.m */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1130,6 +1140,7 @@
 				840625541930AB230067C1CA /* JSONParser.m in Sources */,
 				84F8E8A7199B5C580054C9F8 /* CheckCardCollectionCell.m in Sources */,
 				84FEE18019E028180067C264 /* ProfileEditTableViewCell.m in Sources */,
+				84E8066519F5483D001BD593 /* PhotoViewController.m in Sources */,
 				849DD0C9199CBF9300DC86F6 /* SegmentedTextControl.m in Sources */,
 				84001FF41949AF68004D9D7A /* AppAccount.m in Sources */,
 				84A0DB1F19D45A87009AD6DB /* VotePanelView.m in Sources */,
@@ -1149,6 +1160,7 @@
 				8426F35D191A754200B4E336 /* FontFactory.m in Sources */,
 				84001FF01949ADDD004D9D7A /* AuthorizationManager.m in Sources */,
 				841BFAA419E9975C003BB92B /* CheckDetailView.m in Sources */,
+				84E8066E19F54E2A001BD593 /* UIButton+LGImages.m in Sources */,
 				840625671930C9E70067C1CA /* LGLoginInfo.m in Sources */,
 				840625611930BDF80067C1CA /* LGContent.m in Sources */,
 				840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */,
