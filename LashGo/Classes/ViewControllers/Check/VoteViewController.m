@@ -159,6 +159,10 @@ static NSString *const kObservationKeyPath = @"checkVotePhotos";
 
 #pragma mark - Methods
 
+- (void) voteFinished {
+	_votePanelView.type = VotePanelTypeNext;
+}
+
 - (void) setTimeLeft:(NSTimeInterval)timeLeft {
 	int minutesLeft = timeLeft / 60;
 	int secondsLeft = ((int)timeLeft) % 60;
@@ -201,6 +205,7 @@ static NSString *const kObservationKeyPath = @"checkVotePhotos";
 }
 
 - (void) openNext {
+	[kernel.checksManager getVotePhotosForCheck: self.check];
 }
 
 @end

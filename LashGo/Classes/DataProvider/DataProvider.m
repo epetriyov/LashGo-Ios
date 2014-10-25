@@ -28,7 +28,7 @@
 
 #define kPhotosPath			@"/photos/%@" //GET
 #define kPhotosCommentsPath	@"/photos/%lld/comments" //GET, POST
-#define kPhotosVotePath		@"/photos/%lld/vote" //PUT
+#define kPhotosVotePath		@"/photos/vote" //POST
 
 #define kUsersLoginPath				@"/users/login" //POST
 #define kUsersMainScreenInfoPath	@"/users/main-screen-info" //GET
@@ -348,13 +348,16 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark -
 
 - (void) didPhotoVote: (URLConnection *) connection {
-	
+	if ([self.delegate respondsToSelector: @selector(dataProviderDidPhotoVote:)] == YES) {
+		[self.delegate dataProviderDidPhotoVote: self];
+	}
 }
 
 - (void) photoVoteFor: (int64_t) photoID {
-	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosVotePath, photoID]
-							 type: URLConnectionTypePUT
-							 body: nil
+	NSDictionary *photo = @{@"id": @(photoID)};
+	[self startConnectionWithPath: kPhotosVotePath
+							 type: URLConnectionTypePOST
+							 body: photo
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didPhotoVote:) failSelector: @selector(didFailGetImportantData:)];

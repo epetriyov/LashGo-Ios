@@ -82,6 +82,10 @@
 	self.storage.checkVotePhotos = votePhotos;
 }
 
+- (void) dataProviderDidPhotoVote: (DataProvider *) dataProvider {
+	[self.viewControllersManager.voteViewController voteFinished];
+}
+
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserPhotos: (NSArray *) photos {
 	self.viewControllersManager.profileViewController.photos = photos;
 }
