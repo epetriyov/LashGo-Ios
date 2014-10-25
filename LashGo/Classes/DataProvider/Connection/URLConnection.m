@@ -52,6 +52,21 @@
 	return urlConnection;
 }
 
++ (URLConnection *) connectionWithHost: (NSString *) host
+								  path: (NSString *) path
+								  type: (URLConnectionType) theType
+							   request: (NSMutableURLRequest *) request
+							  delegate: (id<URLConnectionDelegate>) theDelegate {
+	URLConnection *urlConnection = [[URLConnection alloc] init];
+	urlConnection -> urlPath = [path copy];
+	urlConnection -> type = theType;
+	urlConnection -> request = request;
+	
+	urlConnection.delegate = theDelegate;
+	
+	return urlConnection;
+}
+
 - (void) addValue: (NSString *) value forQueryParameter: (NSString *) name {
 	[request addValue: value forQueryParameter: name];
 }

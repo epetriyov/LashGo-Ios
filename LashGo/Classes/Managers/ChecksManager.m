@@ -35,6 +35,14 @@
 	return self;
 }
 
+#pragma mark -
+
+- (void) addPhotoForCheck: (LGCheck *) check {
+	[_dataProvider checkAddPhoto: check];
+}
+
+#pragma mark -
+
 - (void) getVotePhotosForCheck: (LGCheck *) check {
 	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [VoteViewController class]];
 	[_dataProvider checkVotePhotosFor: check.uid];
@@ -86,6 +94,13 @@
 	CheckDetailViewController *vc = _viewControllersManager.checkDetailViewController;
 	vc.check = check;
 	vc.mode = CheckDetailViewModeUserPhoto;
+	[_viewControllersManager openViewController: vc animated: YES];
+}
+
+- (void) openCheckDetailViewControllerWinnerFor: (LGCheck *) check {
+	CheckDetailViewController *vc = _viewControllersManager.checkDetailViewController;
+	vc.check = check;
+	vc.mode = CheckDetailViewModeWinnerPhoto;
 	[_viewControllersManager openViewController: vc animated: YES];
 }
 

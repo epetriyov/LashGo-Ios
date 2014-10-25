@@ -12,7 +12,8 @@
 
 typedef NS_ENUM(ushort, CheckDetailViewMode) {
 	CheckDetailViewModeAdminPhoto = 0,
-	CheckDetailViewModeUserPhoto
+	CheckDetailViewModeUserPhoto = 1,
+	CheckDetailViewModeWinnerPhoto
 };
 
 @interface CheckDetailViewController : TitleBarViewController

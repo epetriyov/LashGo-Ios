@@ -88,6 +88,7 @@
 	for (NSDictionary *rawCheck in rawData) {
 		LGCheck *check = [[LGCheck alloc] init];
 		
+		check.uid =			[rawCheck[@"id"] longLongValue];
 		check.name =		rawCheck[@"name"];
 		check.descr	=		rawCheck[@"description"];
 		

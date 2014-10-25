@@ -129,6 +129,44 @@ static NSString *const kRequestUUID =		@"uuid";
 	}
 }
 
+- (void) startConnectionWithPath: (NSString *) path
+							type: (URLConnectionType) theType
+							data: (NSData *) data
+						 context: (id) context
+				   allowMultiple: (BOOL) allowMultiple
+				  finishSelector: (SEL) finishSelector failSelector: (SEL) failSelector {
+	@synchronized (self) {
+		NSString *connectionKey = [[kWebServiceURL stringByAppendingString: path] stringByAppendingFormat: @"%d", theType];
+		
+		if (allowMultiple == NO) {
+			URLConnection *liveConnection = _liveConnections[connectionKey];
+			if (liveConnection.status == URLConnectionStatusStarted) {
+				return;
+			}
+		}
+		NSMutableDictionary *headerParamsDictionary = [self dictionaryWithHeaderParams];
+		NSMutableURLRequest *request = [NSMutableURLRequest requestMultipartWithURL: [kWebServiceURL stringByAppendingString: path]
+																	   headerParams: headerParamsDictionary
+																		  paramData: data
+																		   fileName: @"photo"];
+		URLConnection *connection = [_connectionManager connectionWithHost: kWebServiceURL
+																	  path: path
+																	  type: theType
+																   request: request
+																	target: self
+															finishSelector: finishSelector
+															  failSelector: failSelector];
+		connection.context = context;
+		
+		if (allowMultiple == NO) {
+			_liveConnections[connectionKey] = connection;
+		}
+		
+		[((AppDelegate *)[UIApplication sharedApplication].delegate) setNetworkActivityIndicatorVisible: YES];
+		[connection startAsync];
+	}
+}
+
 - (NSError *) didFailGetImportantData: (URLConnection *) connection {
 	NSError *error = [_parser parseError: connection];
 	
@@ -212,6 +250,23 @@ static NSString *const kRequestUUID =		@"uuid";
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didGetCheckComments:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didCheckAddPhoto: (URLConnection *) connection {
+	DLog(@"Added Photo");
+}
+
+- (void) checkAddPhoto: (LGCheck *) inputData {
+	NSData *imageData = UIImageJPEGRepresentation(inputData.currentPickedUserPhoto, 0.9);
+	[self startConnectionWithPath: [NSString stringWithFormat: kChecksPhotosPath, inputData.uid]
+							 type: URLConnectionTypeMULTIPART
+							 data: imageData
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didCheckAddPhoto:)
+					 failSelector: @selector(didFailGetImportantData:)];
 }
 
 #pragma mark -

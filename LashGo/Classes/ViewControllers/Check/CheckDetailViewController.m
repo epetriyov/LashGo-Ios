@@ -80,6 +80,12 @@
 	} else if (self.mode == CheckDetailViewModeUserPhoto) {
 		self.imageView.image = self.check.currentPickedUserPhoto;
 		[self restoreZoomViewFor: self.check.currentPickedUserPhoto];
+	} else if (self.mode == CheckDetailViewModeWinnerPhoto) {
+		CheckDetailViewController __weak *wself = self;
+		[self.imageView loadWebImageWithName: self.check.winnerPhoto.url placeholderImage: nil
+								   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+									   [wself restoreZoomViewFor: image];
+								   }];
 	}
 }
 

@@ -176,6 +176,14 @@
 	[kernel.checksManager openCheckDetailViewControllerUserFor: check];
 }
 
+- (void) openWinnerImageFor: (LGCheck *) check {
+	[kernel.checksManager openCheckDetailViewControllerWinnerFor: check];
+}
+
+- (void) sendUserImageFor: (LGCheck *) check {
+	[kernel.checksManager addPhotoForCheck: check];
+}
+
 /*
 #pragma mark - Navigation
 

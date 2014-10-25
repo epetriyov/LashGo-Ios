@@ -37,6 +37,24 @@
 	return connection;
 }
 
+- (URLConnection *) connectionWithHost: (NSString *) host
+								  path: (NSString *) path
+								  type: (URLConnectionType) theType
+							   request: (NSMutableURLRequest *) request
+								target: (id) target finishSelector: (SEL) finishSelector failSelector: (SEL) failSelector {
+	URLConnection *connection = [URLConnection connectionWithHost: host
+															 path: path
+															 type: theType
+														  request: request
+														 delegate: self];
+	if (connection != nil && target != nil) {
+		targetsForURLConnections[connection.uid] = target;
+		didFinishSelectorsForURLConnections[connection.uid] = NSStringFromSelector(finishSelector);
+		didFailSelectorsForURLConnections[connection.uid] = NSStringFromSelector(failSelector);
+	}
+	return connection;
+}
+
 - (void) removeConnection: (URLConnection *) connection {
 	[targetsForURLConnections removeObjectForKey: connection.uid];
 	[didFinishSelectorsForURLConnections removeObjectForKey: connection.uid];

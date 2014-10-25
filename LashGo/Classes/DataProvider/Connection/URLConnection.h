@@ -47,6 +47,11 @@ typedef enum {
 						  headerParams: (NSDictionary *) headerParams
 								  body: (NSDictionary *) bodyJSON
 							  delegate: (id<URLConnectionDelegate>) theDelegate;
++ (URLConnection *) connectionWithHost: (NSString *) host
+								  path: (NSString *) path
+								  type: (URLConnectionType) theType
+							   request: (NSMutableURLRequest *) request
+							  delegate: (id<URLConnectionDelegate>) theDelegate;
 - (void) addValue: (NSString *) value forQueryParameter: (NSString *) name;
 - (void) startAsync;
 - (void) startSync;

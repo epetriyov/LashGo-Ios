@@ -10,7 +10,8 @@ typedef enum {
 	URLConnectionTypeGET = 0,
 	URLConnectionTypePOST = 1,
 	URLConnectionTypePUT = 2,
-	URLConnectionTypeDELETE
+	URLConnectionTypeDELETE = 3,
+	URLConnectionTypeMULTIPART
 } URLConnectionType;
 
 @interface NSMutableURLRequest (ParamsManipulation)
@@ -20,6 +21,9 @@ typedef enum {
 							   getParams: (NSDictionary *) getParams
 							  postParams: (NSDictionary *) postParams
 							headerParams: (NSDictionary *) headerParams;
++ (NSMutableURLRequest *) requestMultipartWithURL: (NSString *) url
+									 headerParams: (NSDictionary *) headerParams
+										paramData:(NSData *)paramData fileName:(NSString *)name;
 
 - (void) addValue: (NSString *) value forQueryParameter: (NSString *) name;
 

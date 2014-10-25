@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
+#import "LGCheck.h"
 #import "LGLoginInfo.h"
 #import "LGRecoverInfo.h"
 #import "LGRegisterInfo.h"
@@ -21,7 +22,7 @@
 - (void) checkCurrent;
 - (void) checkAddCommentFor: (int64_t) checkID;//Not finished
 - (void) checkCommentsFor: (int64_t) checkID;
-//- (void) checkAddPhoto
+- (void) checkAddPhoto: (LGCheck *) inputData;
 - (void) checkPhotosFor: (int64_t) checkID;
 - (void) checkVotePhotosFor: (int64_t) checkID;
 

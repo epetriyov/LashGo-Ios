@@ -19,6 +19,8 @@
 				   dataProvider: (DataProvider *) dataProvider
 					  vcManager: (ViewControllersManager *) vcManager;
 
+- (void) addPhotoForCheck: (LGCheck *) check;
+
 - (void) getVotePhotosForCheck: (LGCheck *) check;
 - (void) stopWaitingVotePhotos;
 
@@ -30,6 +32,7 @@
 
 - (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check;
 - (void) openCheckDetailViewControllerUserFor: (LGCheck *) check;
+- (void) openCheckDetailViewControllerWinnerFor: (LGCheck *) check;
 - (void) openVoteViewControllerForCheck: (LGCheck *) check;
 
 @end

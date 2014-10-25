@@ -16,5 +16,10 @@
 								  body: (NSDictionary *) bodyJSON
 								  type: (URLConnectionType) theType
 								target: (id) target finishSelector: (SEL) finishSelector failSelector: (SEL) failSelector;
+- (URLConnection *) connectionWithHost: (NSString *) host
+								  path: (NSString *) path
+								  type: (URLConnectionType) theType
+							   request: (NSMutableURLRequest *) request
+								target: (id) target finishSelector: (SEL) finishSelector failSelector: (SEL) failSelector;
 
 @end
