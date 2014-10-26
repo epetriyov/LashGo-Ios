@@ -21,8 +21,11 @@
 
 - (void) addPhotoForCheck: (LGCheck *) check;
 
+- (void) getPhotosForCheck: (LGCheck *) check;
 - (void) getVotePhotosForCheck: (LGCheck *) check;
 - (void) stopWaitingVotePhotos;
+
+- (void) stopWaiting: (UIViewController *) viewController;
 
 - (void) voteForPhoto: (LGPhoto *) photo;
 
@@ -33,6 +36,7 @@
 - (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check;
 - (void) openCheckDetailViewControllerUserFor: (LGCheck *) check;
 - (void) openCheckDetailViewControllerWinnerFor: (LGCheck *) check;
+- (void) openCheckPhotosViewControllerForCheck: (LGCheck *) check;
 - (void) openVoteViewControllerForCheck: (LGCheck *) check;
 
 @end

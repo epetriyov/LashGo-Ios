@@ -83,6 +83,8 @@
 		_checkListViewController =	[self createViewControllerOfClass: [CheckListViewController class]];
 		_loginViewController =		[self createViewControllerOfClass: [LoginViewController class]];
 		
+		_checkPhotosViewController = [self createViewControllerOfClass: [CheckPhotosViewController class]];
+		
 		_searchViewController =		[self createViewControllerOfClass: [SearchViewController class]];
 		
 		startViewController = [self createViewControllerOfClass: [StartViewController class]];

@@ -43,6 +43,11 @@
 
 #pragma mark -
 
+- (void) getPhotosForCheck: (LGCheck *) check {
+	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [CheckPhotosViewController class]];
+	[_dataProvider checkPhotosFor: check.uid];
+}
+
 - (void) getVotePhotosForCheck: (LGCheck *) check {
 	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [VoteViewController class]];
 	[_dataProvider checkVotePhotosFor: check.uid];
@@ -50,6 +55,10 @@
 
 - (void) stopWaitingVotePhotos {
 	[_viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [VoteViewController class]];
+}
+
+- (void) stopWaiting: (UIViewController *) viewController {
+	[_viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [viewController class]];
 }
 
 - (void) voteForPhoto: (LGPhoto *) photo {
@@ -101,6 +110,12 @@
 	CheckDetailViewController *vc = _viewControllersManager.checkDetailViewController;
 	vc.check = check;
 	vc.mode = CheckDetailViewModeWinnerPhoto;
+	[_viewControllersManager openViewController: vc animated: YES];
+}
+
+- (void) openCheckPhotosViewControllerForCheck: (LGCheck *) check {
+	CheckPhotosViewController *vc = _viewControllersManager.checkPhotosViewController;
+	vc.check = check;
 	[_viewControllersManager openViewController: vc animated: YES];
 }
 

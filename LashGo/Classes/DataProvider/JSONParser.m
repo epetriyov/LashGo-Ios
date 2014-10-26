@@ -120,21 +120,31 @@
 	return checks;
 }
 
-- (NSArray *) parseCheckVotePhotos: (NSData *) jsonData {
-	NSArray *rawData = [self parseJSONData: jsonData][@"result"][@"votePhotoList"];
+- (NSArray *) parsePhotos: (NSArray *) jsonDataObj {
+	NSMutableArray *photos = [NSMutableArray array];
 	
-	NSMutableArray *votePhotos = [NSMutableArray array];
-	
-	for (NSDictionary *rawPhoto in rawData) {
+	for (NSDictionary *rawPhoto in jsonDataObj) {
 		LGPhoto *photo = [self parsePhoto: rawPhoto];
 		if (photo != nil) {
-			[votePhotos addObject: photo];
+			[photos addObject: photo];
 		}
 	}
 	
-	if ([votePhotos count] <= 0) {
-		votePhotos = nil;
+	if ([photos count] <= 0) {
+		photos = nil;
 	}
+	return photos;
+}
+
+- (NSArray *) parseCheckPhotos: (NSData *) jsonData {
+	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
+	NSArray *checkPhotos = [self parsePhotos: rawData];
+	return  checkPhotos;
+}
+
+- (NSArray *) parseCheckVotePhotos: (NSData *) jsonData {
+	NSArray *rawData = [self parseJSONData: jsonData][@"result"][@"votePhotoList"];
+	NSArray *votePhotos = [self parsePhotos: rawData];
 	return votePhotos;
 }
 

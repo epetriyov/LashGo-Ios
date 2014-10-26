@@ -52,6 +52,7 @@
 
 @optional
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks;
+- (void) dataProvider: (DataProvider *) dataProvider didGetCheckPhotos: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (NSArray *) votePhotos;
 
 - (void) dataProviderDidPhotoVote: (DataProvider *) dataProvider;

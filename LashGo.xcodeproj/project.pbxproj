@@ -87,6 +87,7 @@
 		84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B2196C226A0021D417 /* CheckCardViewController.m */; };
 		84E8066519F5483D001BD593 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8066419F5483D001BD593 /* PhotoViewController.m */; };
 		84E8066E19F54E2A001BD593 /* UIButton+LGImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8066D19F54E2A001BD593 /* UIButton+LGImages.m */; };
+		84E91BE419FBD4E100DD1873 /* CheckPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E91BE319FBD4E100DD1873 /* CheckPhotosViewController.m */; };
 		84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */; };
 		84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */; };
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
@@ -314,6 +315,8 @@
 		84E8066419F5483D001BD593 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		84E8066C19F54E2A001BD593 /* UIButton+LGImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+LGImages.h"; sourceTree = "<group>"; };
 		84E8066D19F54E2A001BD593 /* UIButton+LGImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+LGImages.m"; sourceTree = "<group>"; };
+		84E91BE219FBD4E100DD1873 /* CheckPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckPhotosViewController.h; sourceTree = "<group>"; };
+		84E91BE319FBD4E100DD1873 /* CheckPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckPhotosViewController.m; sourceTree = "<group>"; };
 		84E98F321984ED7D00B422F4 /* JSONSerializableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSerializableProtocol.h; sourceTree = "<group>"; };
 		84E99B9B194F1CA3000C55E4 /* VkontakteAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VkontakteAppAccount.h; sourceTree = "<group>"; };
 		84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkontakteAppAccount.m; sourceTree = "<group>"; };
@@ -810,6 +813,8 @@
 				84EEE4B819C9D1CB009F83C6 /* VoteViewController.m */,
 				84426D4419E158060068734B /* CheckDetailViewController.h */,
 				84426D4519E158060068734B /* CheckDetailViewController.m */,
+				84E91BE219FBD4E100DD1873 /* CheckPhotosViewController.h */,
+				84E91BE319FBD4E100DD1873 /* CheckPhotosViewController.m */,
 			);
 			path = Check;
 			sourceTree = "<group>";
@@ -1161,6 +1166,7 @@
 				84001FF01949ADDD004D9D7A /* AuthorizationManager.m in Sources */,
 				841BFAA419E9975C003BB92B /* CheckDetailView.m in Sources */,
 				84E8066E19F54E2A001BD593 /* UIButton+LGImages.m in Sources */,
+				84E91BE419FBD4E100DD1873 /* CheckPhotosViewController.m in Sources */,
 				840625671930C9E70067C1CA /* LGLoginInfo.m in Sources */,
 				840625611930BDF80067C1CA /* LGContent.m in Sources */,
 				840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */,

@@ -272,7 +272,11 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark -
 
 - (void) didGetCheckPhotos: (URLConnection *) connection {
+	NSArray *checkPhotos = [_parser parseCheckPhotos: connection.downloadedData];
 	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetCheckPhotos:)] == YES) {
+		[self.delegate dataProvider: self didGetCheckPhotos: checkPhotos];
+	}
 }
 
 - (void) checkPhotosFor: (int64_t) checkID {

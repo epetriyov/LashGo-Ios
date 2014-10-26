@@ -177,7 +177,7 @@
 }
 
 - (void) openWinnerImageFor: (LGCheck *) check {
-	[kernel.checksManager openCheckDetailViewControllerWinnerFor: check];
+	[kernel.checksManager openCheckPhotosViewControllerForCheck: check];
 }
 
 - (void) sendUserImageFor: (LGCheck *) check {

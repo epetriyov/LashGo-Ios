@@ -74,6 +74,7 @@
 "ChecksVoteHeaderTitle" = "Идет голосование";
 "ChecksClosedHeaderTitle" = "Завершенные";
 "ChecksSendUserImageTitle" = "отправить";
+"CheckPhotosViewControllerTitle" = "Результаты голосования";
 
 "Отмена" = "Отмена";
 "Поиск" = "Поиск";
