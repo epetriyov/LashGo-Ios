@@ -79,6 +79,10 @@
 	[_viewControllersManager openViewController: vc animated: YES];
 }
 
+- (void) openProfileViewController {
+	[self openProfileViewControllerWith: [AuthorizationManager sharedManager].account.userInfo];
+}
+
 - (void) openProfileViewControllerWith: (LGUser *) user {
 	ProfileViewController *vc = _viewControllersManager.profileViewController;
 	if (vc.user != user) {

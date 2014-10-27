@@ -113,6 +113,13 @@
 	[_viewControllersManager openViewController: vc animated: YES];
 }
 
+- (void) openViewControllerFor: (LGPhoto *) photo {
+	CheckDetailViewController *vc = _viewControllersManager.checkDetailViewController;
+	vc.check = nil;
+	vc.photo = photo;
+	[_viewControllersManager openViewController: vc animated: YES];
+}
+
 - (void) openCheckPhotosViewControllerForCheck: (LGCheck *) check {
 	CheckPhotosViewController *vc = _viewControllersManager.checkPhotosViewController;
 	vc.check = check;

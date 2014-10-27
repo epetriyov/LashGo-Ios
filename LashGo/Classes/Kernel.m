@@ -105,6 +105,7 @@
 		case TaskbarButtonTypeNews:
 			break;
 		case TaskbarButtonTypeProfile:
+			[self.userManager openProfileViewController];
 			break;
 		case TaskbarButtonTypeTask:
 			break;

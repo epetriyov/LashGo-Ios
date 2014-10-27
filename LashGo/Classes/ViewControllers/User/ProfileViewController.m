@@ -110,7 +110,8 @@
 #pragma mark - UICollectionViewDelegate implementation
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-	DLog(@"selected");
+	LGPhoto *photo = self.photos[indexPath.row];
+	[kernel.checksManager openViewControllerFor: photo];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {

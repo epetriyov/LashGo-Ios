@@ -19,6 +19,7 @@ typedef NS_ENUM(ushort, CheckDetailViewMode) {
 @interface CheckDetailViewController : TitleBarViewController
 
 @property (nonatomic, strong) LGCheck *check;
+@property (nonatomic, strong) LGPhoto *photo;
 @property (nonatomic, assign) CheckDetailViewMode mode;
 
 @end

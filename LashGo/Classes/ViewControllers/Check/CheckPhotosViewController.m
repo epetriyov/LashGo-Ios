@@ -194,7 +194,8 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 #pragma mark - UICollectionViewDelegate implementation
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-	DLog(@"selected");
+	LGPhoto *photo = kernel.storage.checkPhotos[indexPath.row];
+	[kernel.checksManager openViewControllerFor: photo];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {

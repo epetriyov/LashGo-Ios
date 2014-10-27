@@ -36,6 +36,8 @@
 - (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check;
 - (void) openCheckDetailViewControllerUserFor: (LGCheck *) check;
 - (void) openCheckDetailViewControllerWinnerFor: (LGCheck *) check;
+- (void) openViewControllerFor: (LGPhoto *) photo;
+
 - (void) openCheckPhotosViewControllerForCheck: (LGCheck *) check;
 - (void) openVoteViewControllerForCheck: (LGCheck *) check;
 

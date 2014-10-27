@@ -29,6 +29,7 @@
 
 - (void) openProfileEditViewControllerWith: (LGUser *) user;
 - (void) openProfileWelcomeViewControllerWith: (LGUser *) user;
+- (void) openProfileViewController;
 - (void) openProfileViewControllerWith: (LGUser *) user;
 
 @end
