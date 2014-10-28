@@ -12,6 +12,8 @@
 #import "NSDateFormatter+CustomFormats.h"
 #import "URLConnection.h"
 
+#import "LGVotePhoto.h"
+
 @implementation JSONParser
 
 #define SHOW_RECEIVED_JSON
@@ -142,10 +144,31 @@
 	return  checkPhotos;
 }
 
-- (NSArray *) parseCheckVotePhotos: (NSData *) jsonData {
-	NSArray *rawData = [self parseJSONData: jsonData][@"result"][@"votePhotoList"];
-	NSArray *votePhotos = [self parsePhotos: rawData];
-	return votePhotos;
+- (LGVotePhotosResult *) parseCheckVotePhotos: (NSData *) jsonData {
+	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
+	
+	LGVotePhotosResult *result = nil;
+	result.votePhotos = [self parsePhotos: rawData];
+//	result.photosCount = [rawData[@"photosCount"] intValue];
+	NSMutableArray *votePhotos = [[NSMutableArray alloc] init];
+	
+	for (NSDictionary *rawVotePhoto in rawData) {
+		LGPhoto *photo = [self parsePhoto: rawVotePhoto[@"photoDto"]];
+		if (photo != nil) {
+			LGVotePhoto *votePhoto = [[LGVotePhoto alloc] init];
+			votePhoto.photo =	photo;
+			votePhoto.isShown =	[rawVotePhoto[@"shown"] boolValue];
+			votePhoto.isVoted =	[rawVotePhoto[@"voted"] boolValue];
+			[votePhotos addObject: photo];
+		}
+	}
+	
+	if ([votePhotos count] > 0) {
+		LGVotePhotosResult *result = [[LGVotePhotosResult alloc] init];
+		result.votePhotos = votePhotos;
+	}
+	
+	return result;
 }
 
 - (LGPhoto *) parsePhoto: (NSDictionary *) jsonDataObj {

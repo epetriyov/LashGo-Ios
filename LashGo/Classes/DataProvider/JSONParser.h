@@ -9,6 +9,7 @@
 #import "LGCheck.h"
 #import "LGPhoto.h"
 #import "LGRegisterInfo.h"
+#import "LGVotePhotosResult.h"
 #import "URLConnection.h"
 
 @interface JSONParser : NSObject
@@ -18,7 +19,7 @@
 
 - (NSArray *) parseChecks: (NSData *) jsonData;
 - (NSArray *) parseCheckPhotos: (NSData *) jsonData;
-- (NSArray *) parseCheckVotePhotos: (NSData *) jsonData;
+- (LGVotePhotosResult *) parseCheckVotePhotos: (NSData *) jsonData;
 - (LGRegisterInfo *) parseRegiserInfo: (NSData *) jsonData;
 
 - (NSArray *) parseUserPhotos: (NSData *) jsonData;

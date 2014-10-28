@@ -37,6 +37,9 @@
 		8409D08519C486FC00DFFEC6 /* LashGoAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 8409D08419C486FC00DFFEC6 /* LashGoAppAccount.m */; };
 		840B4EB519A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B4EB419A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m */; };
 		840E19ED194B43210023C0F6 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 840E19EC194B43210023C0F6 /* Accounts.framework */; };
+		841BBF2A19FFDA38003A1FDC /* LGVoteAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BBF2919FFDA38003A1FDC /* LGVoteAction.m */; };
+		841BBF2D19FFDC4B003A1FDC /* LGVotePhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BBF2C19FFDC4B003A1FDC /* LGVotePhoto.m */; };
+		841BBF3019FFDDBB003A1FDC /* LGVotePhotosResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BBF2F19FFDDBB003A1FDC /* LGVotePhotosResult.m */; };
 		841BFAA419E9975C003BB92B /* CheckDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BFAA319E9975C003BB92B /* CheckDetailView.m */; };
 		841BFAA719E997A7003BB92B /* CircleGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 841BFAA619E997A7003BB92B /* CircleGradientLayer.m */; };
 		841C624119A397ED00BAEDBB /* TaskbarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C623A19A397ED00BAEDBB /* TaskbarManager.m */; };
@@ -226,6 +229,12 @@
 		840B4EB319A387E700AA6DE1 /* NSDateFormatter+CustomFormats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+CustomFormats.h"; sourceTree = "<group>"; };
 		840B4EB419A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+CustomFormats.m"; sourceTree = "<group>"; };
 		840E19EC194B43210023C0F6 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		841BBF2819FFDA38003A1FDC /* LGVoteAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGVoteAction.h; sourceTree = "<group>"; };
+		841BBF2919FFDA38003A1FDC /* LGVoteAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGVoteAction.m; sourceTree = "<group>"; };
+		841BBF2B19FFDC4B003A1FDC /* LGVotePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGVotePhoto.h; sourceTree = "<group>"; };
+		841BBF2C19FFDC4B003A1FDC /* LGVotePhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGVotePhoto.m; sourceTree = "<group>"; };
+		841BBF2E19FFDDBB003A1FDC /* LGVotePhotosResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGVotePhotosResult.h; sourceTree = "<group>"; };
+		841BBF2F19FFDDBB003A1FDC /* LGVotePhotosResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGVotePhotosResult.m; sourceTree = "<group>"; };
 		841BFAA219E9975C003BB92B /* CheckDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailView.h; sourceTree = "<group>"; };
 		841BFAA319E9975C003BB92B /* CheckDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailView.m; sourceTree = "<group>"; };
 		841BFAA519E997A7003BB92B /* CircleGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleGradientLayer.h; sourceTree = "<group>"; };
@@ -465,6 +474,7 @@
 			isa = PBXGroup;
 			children = (
 				84E98F311984ED7D00B422F4 /* RequestInput */,
+				841BBF2119FFD9F8003A1FDC /* Vote */,
 				840625561930AD760067C1CA /* LGCheck.h */,
 				840625571930AD760067C1CA /* LGCheck.m */,
 				84EEE4A619C9B019009F83C6 /* LGCheckCounters.h */,
@@ -502,6 +512,19 @@
 				8409D08419C486FC00DFFEC6 /* LashGoAppAccount.m */,
 			);
 			path = LashGo;
+			sourceTree = "<group>";
+		};
+		841BBF2119FFD9F8003A1FDC /* Vote */ = {
+			isa = PBXGroup;
+			children = (
+				841BBF2819FFDA38003A1FDC /* LGVoteAction.h */,
+				841BBF2919FFDA38003A1FDC /* LGVoteAction.m */,
+				841BBF2B19FFDC4B003A1FDC /* LGVotePhoto.h */,
+				841BBF2C19FFDC4B003A1FDC /* LGVotePhoto.m */,
+				841BBF2E19FFDDBB003A1FDC /* LGVotePhotosResult.h */,
+				841BBF2F19FFDDBB003A1FDC /* LGVotePhotosResult.m */,
+			);
+			path = Vote;
 			sourceTree = "<group>";
 		};
 		841C623819A397ED00BAEDBB /* TaskBar */ = {
@@ -1171,6 +1194,7 @@
 				840625611930BDF80067C1CA /* LGContent.m in Sources */,
 				840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */,
 				84FD8959194C44E7001139DF /* OAuthCore.m in Sources */,
+				841BBF2D19FFDC4B003A1FDC /* LGVotePhoto.m in Sources */,
 				840B4EB519A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m in Sources */,
 				84F5003B19AB6C1400DC21C7 /* TaskBarViewController.m in Sources */,
 				845D85BD1902AA00004E10AB /* URLConnection.m in Sources */,
@@ -1188,6 +1212,7 @@
 				84FD8968194C84EB001139DF /* FacebookAppAccount.m in Sources */,
 				8491557E19080301008D9120 /* RootNavigationController.m in Sources */,
 				840425D119CB167900C5EDBF /* UIImageView+LGImagesExtension.m in Sources */,
+				841BBF2A19FFDA38003A1FDC /* LGVoteAction.m in Sources */,
 				8406250A193082020067C1CA /* NetworkDownloader.m in Sources */,
 				8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */,
 				84F8E8AC199BA7620054C9F8 /* CheckListViewController.m in Sources */,
@@ -1223,6 +1248,7 @@
 				84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */,
 				84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */,
 				84EEE4B219C9B21F009F83C6 /* CheckCardCountersPanelView.m in Sources */,
+				841BBF3019FFDDBB003A1FDC /* LGVotePhotosResult.m in Sources */,
 				841BFAA719E997A7003BB92B /* CircleGradientLayer.m in Sources */,
 				84FD8961194C4684001139DF /* TWAPIManager.m in Sources */,
 				84FD8956194C44E7001139DF /* TwitterAppAccount.m in Sources */,
