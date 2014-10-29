@@ -7,7 +7,7 @@
 //
 
 #import "TitleBarViewController.h"
-#import "LGCheck.h"
+@class LGCheck;
 
 @interface VoteViewController : TitleBarViewController
 

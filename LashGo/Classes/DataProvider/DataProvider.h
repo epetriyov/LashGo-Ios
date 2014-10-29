@@ -6,10 +6,12 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "LGCheck.h"
+#import "JSONParser.h"
+
+//#import "LGCheck.h"
 #import "LGLoginInfo.h"
 #import "LGRecoverInfo.h"
-#import "LGRegisterInfo.h"
+//#import "LGRegisterInfo.h"
 #import "LGSocialInfo.h"
 
 @protocol DataProviderDelegate;
@@ -53,7 +55,7 @@
 @optional
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckPhotos: (NSArray *) photos;
-- (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (NSArray *) votePhotos;
+- (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (LGVotePhotosResult *) votePhotos;
 
 - (void) dataProviderDidPhotoVote: (DataProvider *) dataProvider;
 

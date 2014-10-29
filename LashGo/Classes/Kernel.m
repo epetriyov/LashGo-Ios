@@ -82,7 +82,7 @@
 	self.storage.checkPhotos = photos;
 }
 
-- (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (NSArray *) votePhotos {
+- (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (LGVotePhotosResult *) votePhotos {
 	self.storage.checkVotePhotos = votePhotos;
 }
 

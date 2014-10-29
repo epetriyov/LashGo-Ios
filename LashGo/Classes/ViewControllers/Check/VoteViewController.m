@@ -15,8 +15,6 @@
 #import "UIImageView+LGImagesExtension.h"
 #import "VotePanelView.h"
 
-#import "LGPhoto.h"
-
 #define kCheckBarHeight 76
 static NSString *const kObservationKeyPath = @"checkVotePhotos";
 
@@ -183,8 +181,8 @@ static NSString *const kObservationKeyPath = @"checkVotePhotos";
 }
 
 - (void) refreshPhotos {
-	for (uint i = 0; i < [kernel.storage.checkVotePhotos count]; ++i) {
-		LGPhoto *photo = [kernel.storage.checkVotePhotos objectAtIndex: i];
+	for (uint i = 0; i < [kernel.storage.checkVotePhotos.votePhotos count]; ++i) {
+		LGPhoto *photo = [kernel.storage.checkVotePhotos.votePhotos objectAtIndex: i];
 		_votePanelView.type = VotePanelTypeLike;
 		if (i == 0) {
 			[_votePanelView.photo0ImageView loadWebImageWithSizeThatFitsName: photo.url placeholder: nil];
@@ -201,7 +199,7 @@ static NSString *const kObservationKeyPath = @"checkVotePhotos";
 #pragma mark - VotePanelViewDelegate implementation
 
 - (void) voteWithIndex: (ushort) index {
-	[kernel.checksManager voteForPhoto: [kernel.storage.checkVotePhotos objectAtIndex: index]];
+	[kernel.checksManager voteForPhoto: [kernel.storage.checkVotePhotos.votePhotos objectAtIndex: index]];
 }
 
 - (void) openNext {

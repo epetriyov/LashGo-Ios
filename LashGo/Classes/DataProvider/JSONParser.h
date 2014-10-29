@@ -9,6 +9,7 @@
 #import "LGCheck.h"
 #import "LGPhoto.h"
 #import "LGRegisterInfo.h"
+#import "LGVotePhoto.h"
 #import "LGVotePhotosResult.h"
 #import "URLConnection.h"
 

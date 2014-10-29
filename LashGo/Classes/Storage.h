@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "LGVotePhotosResult.h"
 
 @interface Storage : NSObject
 
 @property (nonatomic, readonly) NSArray *checks;
 @property (nonatomic, strong) NSArray *checkPhotos;
-@property (nonatomic, strong) NSArray *checkVotePhotos;
+@property (nonatomic, strong) LGVotePhotosResult *checkVotePhotos;
 
 - (void) updateChecksWith: (NSArray *) newValues;
 

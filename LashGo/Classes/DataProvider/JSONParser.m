@@ -12,8 +12,6 @@
 #import "NSDateFormatter+CustomFormats.h"
 #import "URLConnection.h"
 
-#import "LGVotePhoto.h"
-
 @implementation JSONParser
 
 #define SHOW_RECEIVED_JSON
