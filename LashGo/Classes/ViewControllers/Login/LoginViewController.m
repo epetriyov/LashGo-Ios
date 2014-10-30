@@ -88,6 +88,9 @@
 	emailField.font = [FontFactory fontWithType: FontTypeLoginInputField];
 	emailField.textColor = [FontFactory fontColorForType: FontTypeLoginInputField];
 	emailField.placeholder = @"LoginViewControllerLoginPlaceholder".commonLocalizedString;
+	emailField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+	emailField.autocorrectionType = UITextAutocorrectionTypeNo;
+	emailField.keyboardType = UIKeyboardTypeEmailAddress;
 	[formView addSubview: emailField];
 	_emailField = emailField;
 	

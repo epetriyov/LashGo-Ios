@@ -146,7 +146,6 @@
 	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
 	
 	LGVotePhotosResult *result = nil;
-	result.votePhotos = [self parsePhotos: rawData];
 //	result.photosCount = [rawData[@"photosCount"] intValue];
 	NSMutableArray *votePhotos = [[NSMutableArray alloc] init];
 	
@@ -162,7 +161,7 @@
 	}
 	
 	if ([votePhotos count] > 0) {
-		LGVotePhotosResult *result = [[LGVotePhotosResult alloc] init];
+		result = [[LGVotePhotosResult alloc] init];
 		result.votePhotos = votePhotos;
 	}
 	
