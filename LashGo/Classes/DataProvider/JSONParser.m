@@ -156,7 +156,7 @@
 			votePhoto.photo =	photo;
 			votePhoto.isShown =	[rawVotePhoto[@"shown"] boolValue];
 			votePhoto.isVoted =	[rawVotePhoto[@"voted"] boolValue];
-			[votePhotos addObject: photo];
+			[votePhotos addObject: votePhoto];
 		}
 	}
 	

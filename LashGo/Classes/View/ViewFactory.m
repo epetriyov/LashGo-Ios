@@ -374,7 +374,7 @@ static ViewFactory *viewFactory = nil;
 #pragma mark - Vote
 
 - (UIButton *) votePhotoSelectButtonWithIndex: (ushort) index target: (id) target action: (SEL) selector {
-	UIButton *button = [ [UIButton alloc] init];
+	UIButton *button = [ [UIButton alloc] initWithFrame: CGRectMake(0, 0, 50, 50)];
 	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
 	
 	[button setImage: [UIImage imageNamed:  @"ic_check_empty"]

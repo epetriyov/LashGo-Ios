@@ -13,12 +13,15 @@
 #import "FontFactory.h"
 #import "Kernel.h"
 #import "UIImageView+LGImagesExtension.h"
-#import "VotePanelView.h"
+#import "VoteCollectionCell.h"
 
 #define kCheckBarHeight 76
-static NSString *const kObservationKeyPath = @"checkVotePhotos";
+#define kVotePhotoItemsPerPage 4
 
-@interface VoteViewController () <VotePanelViewDelegate> {
+static NSString *const kObservationKeyPath = @"checkVotePhotos";
+static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusableId";
+
+@interface VoteViewController () <UICollectionViewDataSource, UICollectionViewDelegate, VotePanelViewDelegate> {
 	CheckSimpleDetailView __weak *_checkView;
 	UILabel __weak *_checkTitleLabel;
 	UILabel __weak *_checkDescriptionLabel;
@@ -26,7 +29,7 @@ static NSString *const kObservationKeyPath = @"checkVotePhotos";
 	
 	NSTimer *_progressTimer;
 	
-	VotePanelView __weak *_votePanelView;
+	UICollectionView __weak *_photosCollection;
 }
 
 @property (nonatomic, readonly) CGRect waitViewFrame;
@@ -117,12 +120,26 @@ static NSString *const kObservationKeyPath = @"checkVotePhotos";
 	
 	offsetY += checkDetailsView.frame.size.height;
 	
-	VotePanelView *panelView = [[VotePanelView alloc] initWithFrame: CGRectMake(0, offsetY,
-																				self.view.frame.size.width,
-																				self.view.frame.size.height - offsetY)];
-	panelView.delegate = self;
-	[self.view addSubview: panelView];
-	_votePanelView = panelView;
+	CGRect photosCollectionFrame = CGRectMake(0, offsetY,
+											  self.view.frame.size.width, self.view.frame.size.height - offsetY);
+	
+	UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+	flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+	flowLayout.itemSize = photosCollectionFrame.size;
+	flowLayout.minimumInteritemSpacing = 0;
+	flowLayout.minimumLineSpacing = 0;
+	
+	UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame: photosCollectionFrame
+														  collectionViewLayout: flowLayout];
+	collectionView.backgroundColor = [UIColor clearColor];
+	collectionView.dataSource = self;
+	collectionView.delegate = self;
+	collectionView.pagingEnabled = YES;
+	[collectionView registerClass: [VoteCollectionCell class]
+	   forCellWithReuseIdentifier: kVoteCollectionCellReusableId];
+	[self.view addSubview: collectionView];
+	
+	_photosCollection = collectionView;
 	
 	[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
 }
@@ -158,7 +175,7 @@ static NSString *const kObservationKeyPath = @"checkVotePhotos";
 #pragma mark - Methods
 
 - (void) voteFinished {
-	_votePanelView.type = VotePanelTypeNext;
+//	_votePanelView.type = VotePanelTypeNext;
 }
 
 - (void) setTimeLeft:(NSTimeInterval)timeLeft {
@@ -181,25 +198,53 @@ static NSString *const kObservationKeyPath = @"checkVotePhotos";
 }
 
 - (void) refreshPhotos {
-	for (uint i = 0; i < [kernel.storage.checkVotePhotos.votePhotos count]; ++i) {
-		LGPhoto *photo = [kernel.storage.checkVotePhotos.votePhotos objectAtIndex: i];
-		_votePanelView.type = VotePanelTypeLike;
-		if (i == 0) {
-			[_votePanelView.photo0ImageView loadWebImageWithSizeThatFitsName: photo.url placeholder: nil];
-		} else if (i == 1) {
-			[_votePanelView.photo1ImageView loadWebImageWithSizeThatFitsName: photo.url placeholder: nil];
-		} else if (i == 2) {
-			[_votePanelView.photo2ImageView loadWebImageWithSizeThatFitsName: photo.url placeholder: nil];
-		} else if (i == 3) {
-			[_votePanelView.photo3ImageView loadWebImageWithSizeThatFitsName: photo.url placeholder: nil];
-		}
+	[_photosCollection reloadData];
+}
+
+#pragma mark - UICollectionViewDataSource implementation
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+	return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+	return ceil(((double)[kernel.storage.checkVotePhotos.votePhotos count]) / kVotePhotoItemsPerPage);
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+				  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+	//	DLog(@"New cell degueue for index: %ld", (long)indexPath.row);
+	VoteCollectionCell* newCell = [collectionView dequeueReusableCellWithReuseIdentifier: kVoteCollectionCellReusableId
+																				 forIndexPath:indexPath];
+	newCell.delegate = self;
+	
+	NSMutableArray *items = [[NSMutableArray alloc] initWithCapacity: 1];
+	
+	NSUInteger beginIndex = indexPath.row * kVotePhotoItemsPerPage;
+	NSUInteger nextBeginIndex = MIN(beginIndex + kVotePhotoItemsPerPage,
+							  [kernel.storage.checkVotePhotos.votePhotos count]);
+	for (NSUInteger i = beginIndex; i < nextBeginIndex; ++i) {
+		[items addObject: kernel.storage.checkVotePhotos.votePhotos[i]];
 	}
+	
+	[newCell refreshWithVotePhotos: items];
+	return newCell;
+}
+
+#pragma mark - UICollectionViewDelegate implementation
+
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+	//	DLog(@"Cell removed for index: %ld", (long)indexPath.row);
 }
 
 #pragma mark - VotePanelViewDelegate implementation
 
 - (void) voteWithIndex: (ushort) index {
 	[kernel.checksManager voteForPhoto: [kernel.storage.checkVotePhotos.votePhotos objectAtIndex: index]];
+}
+
+- (void) openPhotoWithIndex:(ushort)index {
+	
 }
 
 - (void) openNext {

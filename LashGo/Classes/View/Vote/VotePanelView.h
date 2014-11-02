@@ -19,10 +19,8 @@ typedef NS_ENUM(ushort, VotePanelType) {
 
 @property (nonatomic, weak) id<VotePanelViewDelegate> delegate;
 @property (nonatomic, assign) VotePanelType type;
-@property (nonatomic, readonly) UIImageView *photo0ImageView;
-@property (nonatomic, readonly) UIImageView *photo1ImageView;
-@property (nonatomic, readonly) UIImageView *photo2ImageView;
-@property (nonatomic, readonly) UIImageView *photo3ImageView;
+
+- (void) refreshWithVotePhotos: (NSArray *) votePhotos;
 
 @end
 
@@ -30,6 +28,7 @@ typedef NS_ENUM(ushort, VotePanelType) {
 
 @required
 - (void) voteWithIndex: (ushort) index;
+- (void) openPhotoWithIndex: (ushort) index;
 - (void) openNext;
 
 @end

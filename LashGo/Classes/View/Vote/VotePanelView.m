@@ -7,10 +7,14 @@
 //
 
 #import "VotePanelView.h"
+
+#import "UIButton+LGImages.h"
 #import "ViewFactory.h"
+#import "LGVotePhoto.h"
 
 @interface VotePanelView () {
-	NSMutableArray *photoButtons;
+	NSArray *_photoButtons;
+	NSArray *_selectionButtons;
 	UIButton *_likeButton;
 	UIButton *_nextButton;
 }
@@ -27,19 +31,9 @@
 	if (type == VotePanelTypeNext) {
 		_likeButton.hidden = YES;
 		_nextButton.hidden = NO;
-		for (UIButton *button in photoButtons) {
-			button.enabled = !button.selected;
-			button.selected = NO;
-			button.userInteractionEnabled = NO;
-		}
 	} else {
 		_likeButton.hidden = NO;
 		_nextButton.hidden = YES;
-		for (UIButton *button in photoButtons) {
-			button.selected = NO;
-			button.enabled = YES;
-			button.userInteractionEnabled = YES;
-		}
 	}
 }
 
@@ -49,7 +43,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-		photoButtons = [[NSMutableArray alloc] initWithCapacity: 4];
+		_selectionButtons = [[NSMutableArray alloc] initWithCapacity: 4];
 		
 		float caps = 8;
 		float space = 4;
@@ -59,48 +53,63 @@
 		float offsetX = caps;
 		float offsetY = caps;
 		
+		CGRect btnFrame;
 		CGRect imageFrame = CGRectMake(offsetX, offsetY, imageWidth, imageHeight);
-		_photo0ImageView = [[UIImageView alloc] initWithFrame: imageFrame];
-		[self addSubview: _photo0ImageView];
-		UIButton *btn = [[ViewFactory sharedFactory] votePhotoSelectButtonWithIndex: 0 target:self
+		UIButton *_photo0ImageButton = [[UIButton alloc] initWithFrame: imageFrame];
+		[_photo0ImageButton addTarget: self action: @selector(photoAction:)
+					 forControlEvents: UIControlEventTouchUpInside];
+		[self addSubview: _photo0ImageButton];
+		UIButton *btn0 = [[ViewFactory sharedFactory] votePhotoSelectButtonWithIndex: 0 target:self
 																			 action: @selector(photoSelectAction:)];
-		btn.frame = imageFrame;
-		[photoButtons addObject: btn];
-		[self addSubview: btn];
+		btnFrame = btn0.frame;
+		btnFrame.origin.x = offsetX;
+		btnFrame.origin.y = offsetY;
+		btn0.frame = btnFrame;
+		[self addSubview: btn0];
 		
-		offsetX += _photo0ImageView.frame.size.width + space;
-		
-		imageFrame = CGRectMake(offsetX, offsetY, imageWidth, imageHeight);
-		_photo1ImageView = [[UIImageView alloc] initWithFrame: imageFrame];
-		[self addSubview: _photo1ImageView];
-		btn = [[ViewFactory sharedFactory] votePhotoSelectButtonWithIndex: 1 target:self
-																   action: @selector(photoSelectAction:)];
-		btn.frame = imageFrame;
-		[photoButtons addObject: btn];
-		[self addSubview: btn];
-		
-		offsetX = _photo0ImageView.frame.origin.x;
-		offsetY += _photo0ImageView.frame.size.height + space;
+		offsetX += _photo0ImageButton.frame.size.width + space;
 		
 		imageFrame = CGRectMake(offsetX, offsetY, imageWidth, imageHeight);
-		_photo2ImageView = [[UIImageView alloc] initWithFrame: imageFrame];
-		[self addSubview: _photo2ImageView];
-		btn = [[ViewFactory sharedFactory] votePhotoSelectButtonWithIndex: 2 target:self
+		UIButton *_photo1ImageButton = [[UIButton alloc] initWithFrame: imageFrame];
+		[_photo1ImageButton addTarget: self action: @selector(photoAction:)
+					 forControlEvents: UIControlEventTouchUpInside];
+		[self addSubview: _photo1ImageButton];
+		UIButton *btn1 = [[ViewFactory sharedFactory] votePhotoSelectButtonWithIndex: 1 target:self
 																   action: @selector(photoSelectAction:)];
-		btn.frame = imageFrame;
-		[photoButtons addObject: btn];
-		[self addSubview: btn];
+		btnFrame.origin.x = self.frame.size.width - btnFrame.size.width - caps;
+		btn1.frame = btnFrame;
+		[self addSubview: btn1];
 		
-		offsetX += _photo2ImageView.frame.size.width + space;
+		offsetX = _photo0ImageButton.frame.origin.x;
+		offsetY += _photo0ImageButton.frame.size.height + space;
 		
 		imageFrame = CGRectMake(offsetX, offsetY, imageWidth, imageHeight);
-		_photo3ImageView = [[UIImageView alloc] initWithFrame: imageFrame];
-		[self addSubview: _photo3ImageView];
-		btn = [[ViewFactory sharedFactory] votePhotoSelectButtonWithIndex: 3 target:self
+		UIButton *_photo2ImageButton = [[UIButton alloc] initWithFrame: imageFrame];
+		[_photo2ImageButton addTarget: self action: @selector(photoAction:)
+					 forControlEvents: UIControlEventTouchUpInside];
+		[self addSubview: _photo2ImageButton];
+		UIButton *btn2 = [[ViewFactory sharedFactory] votePhotoSelectButtonWithIndex: 2 target:self
 																   action: @selector(photoSelectAction:)];
-		btn.frame = imageFrame;
-		[photoButtons addObject: btn];
-		[self addSubview: btn];
+		btnFrame.origin.x = offsetX;
+		btnFrame.origin.y = self.frame.size.height - btnFrame.size.height - caps;
+		btn2.frame = btnFrame;
+		[self addSubview: btn2];
+		
+		offsetX += _photo2ImageButton.frame.size.width + space;
+		
+		imageFrame = CGRectMake(offsetX, offsetY, imageWidth, imageHeight);
+		UIButton *_photo3ImageButton = [[UIButton alloc] initWithFrame: imageFrame];
+		[_photo3ImageButton addTarget: self action: @selector(photoAction:)
+					 forControlEvents: UIControlEventTouchUpInside];
+		[self addSubview: _photo3ImageButton];
+		UIButton *btn3 = [[ViewFactory sharedFactory] votePhotoSelectButtonWithIndex: 3 target:self
+																   action: @selector(photoSelectAction:)];
+		btnFrame.origin.x = btn1.frame.origin.x;
+		btn3.frame = btnFrame;
+		[self addSubview: btn3];
+		
+		_photoButtons = [[NSArray alloc] initWithObjects: _photo0ImageButton, _photo1ImageButton, _photo2ImageButton, _photo3ImageButton, nil];
+		_selectionButtons = [[NSArray alloc] initWithObjects: btn0, btn1, btn2, btn3, nil];
 		
 		CGPoint center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
 		_likeButton = [[ViewFactory sharedFactory] votePhotoLikeButtonWithTarget: self
@@ -119,8 +128,8 @@
 }
 
 - (void) likeAction: (id) sender {
-	for (ushort i = 0; i < [photoButtons count]; ++i) {
-		UIButton *button = [photoButtons objectAtIndex: i];
+	for (ushort i = 0; i < [_selectionButtons count]; ++i) {
+		UIButton *button = [_selectionButtons objectAtIndex: i];
 		if (button.selected == YES) {
 			[self.delegate voteWithIndex: i];
 			return;
@@ -132,20 +141,47 @@
 	[self.delegate openNext];
 }
 
+- (void) photoAction: (id) sender {
+	NSUInteger index = [_photoButtons indexOfObject: sender];
+	[self.delegate openPhotoWithIndex: index];
+}
+
 - (void) photoSelectAction: (id) sender {
 	_likeButton.userInteractionEnabled = YES;
-	for (UIButton *button in photoButtons) {
+	for (UIButton *button in _selectionButtons) {
 		button.selected = (button == sender);
 	}
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+#pragma mark - Methods
+
+- (void) refreshWithVotePhotos: (NSArray *) votePhotos {
+	VotePanelType displayType = VotePanelTypeLike;
+	for (ushort i = 0; i < [_photoButtons count]; ++i) {
+		UIButton *photoButton = _photoButtons[i];
+		UIButton *selectionButton = _selectionButtons[i];
+		if (i < [votePhotos count]) {
+			photoButton.hidden = NO;
+			selectionButton.hidden = NO;
+			
+			LGVotePhoto *votePhoto = votePhotos[i];
+			[photoButton loadWebImageWithSizeThatFitsName: votePhoto.photo.url placeholder: nil];
+			
+			selectionButton.enabled = !votePhoto.isVoted;
+			selectionButton.selected = NO;
+			selectionButton.userInteractionEnabled = !votePhoto.isShown;
+			
+			_likeButton.userInteractionEnabled = votePhoto.isShown;
+			
+			if (votePhoto.isShown == YES) {
+				displayType = VotePanelTypeNext;
+			}
+		} else {
+			photoButton.hidden = YES;
+			selectionButton.hidden = YES;
+		}
+	}
+	self.type = displayType;
 }
-*/
 
 @end

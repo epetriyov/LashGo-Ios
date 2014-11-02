@@ -55,6 +55,7 @@
 		8427E62219C5DBC500558649 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8427E62119C5DBC500558649 /* ImageIO.framework */; };
 		8434E44319D708D700DD4CA8 /* CheckSimpleDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434E44219D708D700DD4CA8 /* CheckSimpleDetailView.m */; };
 		84426D4619E158060068734B /* CheckDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84426D4519E158060068734B /* CheckDetailViewController.m */; };
+		845938721A067D6C00226007 /* VoteCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 845938711A067D6C00226007 /* VoteCollectionCell.m */; };
 		845A20FD19F265BB00AF9D24 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A20FC19F265BB00AF9D24 /* ProfileViewController.m */; };
 		845A210719F2694400AF9D24 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A210619F2694400AF9D24 /* ProfileView.m */; };
 		845A210A19F290BC00AF9D24 /* PhotoCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A210919F290BC00AF9D24 /* PhotoCollectionCell.m */; };
@@ -262,6 +263,8 @@
 		8434E44219D708D700DD4CA8 /* CheckSimpleDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckSimpleDetailView.m; sourceTree = "<group>"; };
 		84426D4419E158060068734B /* CheckDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailViewController.h; sourceTree = "<group>"; };
 		84426D4519E158060068734B /* CheckDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailViewController.m; sourceTree = "<group>"; };
+		845938701A067D6C00226007 /* VoteCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoteCollectionCell.h; sourceTree = "<group>"; };
+		845938711A067D6C00226007 /* VoteCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteCollectionCell.m; sourceTree = "<group>"; };
 		845A20FB19F265BB00AF9D24 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		845A20FC19F265BB00AF9D24 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		845A210519F2694400AF9D24 /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
@@ -806,6 +809,8 @@
 		84A0DB1C19D45A59009AD6DB /* Vote */ = {
 			isa = PBXGroup;
 			children = (
+				845938701A067D6C00226007 /* VoteCollectionCell.h */,
+				845938711A067D6C00226007 /* VoteCollectionCell.m */,
 				84A0DB1D19D45A87009AD6DB /* VotePanelView.h */,
 				84A0DB1E19D45A87009AD6DB /* VotePanelView.m */,
 			);
@@ -1176,6 +1181,7 @@
 				8406250B193082020067C1CA /* NetworkDownloadManager.m in Sources */,
 				8406256D1930CDEA0067C1CA /* LGRecoverInfo.m in Sources */,
 				845D858F19029EB0004E10AB /* AppDelegate.m in Sources */,
+				845938721A067D6C00226007 /* VoteCollectionCell.m in Sources */,
 				8406251819308D110067C1CA /* FileManager.m in Sources */,
 				8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */,
 				841C624219A397ED00BAEDBB /* Taskbar.m in Sources */,
