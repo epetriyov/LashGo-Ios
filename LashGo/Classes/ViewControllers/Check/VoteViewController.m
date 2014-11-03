@@ -248,7 +248,7 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 	//So one cell per page we can get index by visible
 	NSIndexPath *pageIndex = [[_photosCollection indexPathsForVisibleItems] firstObject];
 	if (pageIndex != nil) {
-		LGVotePhoto *votePhoto = kernel.storage.checkVotePhotos.votePhotos[index * pageIndex.row];
+		LGVotePhoto *votePhoto = kernel.storage.checkVotePhotos.votePhotos[pageIndex.row * kVotePhotoItemsPerPage + index];
 		[kernel.checksManager openViewControllerFor: votePhoto.photo];
 	}
 }

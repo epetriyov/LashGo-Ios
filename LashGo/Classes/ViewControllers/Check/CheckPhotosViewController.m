@@ -12,6 +12,7 @@
 #import "Common.h"
 #import "FontFactory.h"
 #import "Kernel.h"
+#import "UIButton+LGImages.h"
 #import "UIImageView+LGImagesExtension.h"
 #import "VotePanelView.h"
 #import "PhotoCollectionCell.h"
@@ -27,7 +28,7 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 	UILabel __weak *_checkTitleLabel;
 	UILabel __weak *_checkDescriptionLabel;
 	
-	UIImageView __weak *_winnerImageView;
+	UIButton __weak *_winnerButton;
 	UICollectionView __weak *_photosCollection;
 }
 
@@ -47,7 +48,7 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 			_checkTitleLabel.text = check.name;
 			_checkDescriptionLabel.text = check.descr;
 			[_checkView.imageView loadWebImageWithSizeThatFitsName: check.taskPhotoUrl placeholder: nil];
-			[_winnerImageView loadWebImageWithSizeThatFitsName: check.winnerPhoto.url placeholder: nil];
+			[_winnerButton loadWebImageWithSizeThatFitsName: check.winnerPhoto.url placeholder: nil];
 		}
 	}
 }
@@ -120,11 +121,11 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 	contentScrollView.pagingEnabled = YES;
 	[self.view addSubview: contentScrollView];
 	
-	UIImageView *imageView = [[UIImageView alloc] initWithFrame: contentScrollView.bounds];
-	imageView.contentMode = UIViewContentModeCenter;
-	[imageView loadWebImageWithSizeThatFitsName: self.check.winnerPhoto.url placeholder: nil];
-	[contentScrollView addSubview:imageView];
-	_winnerImageView = imageView;
+	UIButton *winnerButton = [[UIButton alloc] initWithFrame: contentScrollView.bounds];
+	[winnerButton loadWebImageWithSizeThatFitsName: self.check.winnerPhoto.url placeholder: nil];
+	[winnerButton addTarget: self action: @selector(winnerAction:) forControlEvents: UIControlEventTouchUpInside];
+	[contentScrollView addSubview:winnerButton];
+	_winnerButton = winnerButton;
 	
 	float capX = 8;
 	CGRect photosCollectionFrame = contentScrollView.bounds;
@@ -170,6 +171,10 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 }
 
 #pragma mark - Methods
+
+- (void) winnerAction: (id) sender {
+	[kernel.checksManager openViewControllerFor: self.check.winnerPhoto];
+}
 
 #pragma mark - UICollectionViewDataSource implementation
 

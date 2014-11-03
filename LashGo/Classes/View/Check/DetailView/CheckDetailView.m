@@ -138,7 +138,7 @@
 }
 
 - (void) setUserImagesWithCheck: (LGCheck *) check {
-	_winnerOverlay.fio.text = check.winnerInfo.fio;
+	_winnerOverlay.fio.text = check.winnerPhoto.user.fio;
 	if (self.type == CheckDetailTypeClosed) {
 		[self setUserImageWithURLString: check.winnerPhoto.url];
 	} else {

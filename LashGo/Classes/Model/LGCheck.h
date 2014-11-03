@@ -28,7 +28,8 @@
 @property (nonatomic, strong) LGCheckCounters *counters;
 
 @property (nonatomic, strong) LGPhoto *userPhoto;
-@property (nonatomic, strong) LGUser *winnerInfo;
+//parsed to winnerPhoto.user
+//@property (nonatomic, strong) LGUser *winnerInfo;
 @property (nonatomic, strong) LGPhoto *winnerPhoto;
 
 @end

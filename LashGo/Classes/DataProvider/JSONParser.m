@@ -113,8 +113,8 @@
 		check.counters = counters;
 		
 		check.userPhoto =	[self parsePhoto: rawCheck[@"userPhotoDto"]];
-		check.winnerInfo =	[self parseUser: rawCheck[@"winnerInfo"]];
 		check.winnerPhoto =	[self parsePhoto: rawCheck[@"winnerPhotoDto"]];
+		check.winnerPhoto.user = [self parseUser: rawCheck[@"winnerInfo"]];
 		
 		[checks addObject: check];
 	}
