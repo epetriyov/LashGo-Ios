@@ -12,6 +12,8 @@
 
 - (void) loadLocalImageWithName: (NSString *) ImageName;
 
+- (void) loadSizeThatFits: (UIImage *) image;
+
 - (void) loadWebImageWithName: (NSString *) imageName;
 - (void) loadWebImageWithName: (NSString *) imageName
 			 placeholderImage: (UIImage *)placeholder completed:(SDWebImageCompletionBlock)completedBlock;

@@ -47,6 +47,8 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	[_checkView setImageWithURLString: check.taskPhotoUrl];
 	[_checkView setUserImagesWithCheck: check];
 	[self refresh];
+	
+	_panelView.playersCount = check.counters.playersCount;
 }
 
 #pragma mark -
@@ -114,6 +116,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		float panelHeight = 31;
 		
 		_panelView = [[CheckCardTimerPanelView alloc] initWithFrame: CGRectMake(0, self.contentView.frame.size.height - panelHeight, self.contentView.frame.size.width, panelHeight)];
+		_panelView.hidden = YES;
 		[self.contentView addSubview: _panelView];
     }
     return self;
@@ -141,6 +144,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	if (self.type != currentType) {
 		self.type = currentType;
 		[_checkView setUserImagesWithCheck: self.check];
+		_panelView.hidden = currentType != CheckDetailTypeOpen;
 	}
 	
 	CGFloat progress = 0;

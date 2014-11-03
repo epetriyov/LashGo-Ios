@@ -154,10 +154,19 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[theTableView deselectRowAtIndexPath: indexPath animated: YES];
 	
-	if ([self tableView: theTableView cellForRowAtIndexPath: indexPath].accessoryType == UITableViewCellAccessoryNone) {
-		return;
+	LGCheck *item;
+	
+	if (indexPath.section == CheckListSectionActive) {
+		item = kernel.storage.checks[indexPath.row];
+	} else if (indexPath.section == CheckListSectionVote) {
+		item = nil;
+	} else if (indexPath.section == CheckListSectionClosed) {
+		item = nil;
 	}
 	
+	if (item != nil) {
+		[kernel.checksManager openCheckCardViewControllerFor: item];
+	}
 }
 
 #pragma mark -

@@ -135,6 +135,7 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 	collectionView.dataSource = self;
 	collectionView.delegate = self;
 	collectionView.pagingEnabled = YES;
+	collectionView.scrollEnabled = NO;
 	[collectionView registerClass: [VoteCollectionCell class]
 	   forCellWithReuseIdentifier: kVoteCollectionCellReusableId];
 	[self.view addSubview: collectionView];
@@ -244,7 +245,12 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 }
 
 - (void) openPhotoWithIndex:(ushort)index {
-	
+	//So one cell per page we can get index by visible
+	NSIndexPath *pageIndex = [[_photosCollection indexPathsForVisibleItems] firstObject];
+	if (pageIndex != nil) {
+		LGVotePhoto *votePhoto = kernel.storage.checkVotePhotos.votePhotos[index * pageIndex.row];
+		[kernel.checksManager openViewControllerFor: votePhoto.photo];
+	}
 }
 
 - (void) openNext {

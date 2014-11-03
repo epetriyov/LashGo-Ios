@@ -15,11 +15,23 @@
 @interface CheckCardTimerPanelView () {
 	UIImageView *_icon;
 	UILabel *_timeLeftLabel;
+	
+	UIButton *_playersButton;
 }
 
 @end
 
 @implementation CheckCardTimerPanelView
+
+@dynamic playersCount;
+
+- (int32_t) playersCount {
+	return [_playersButton.titleLabel.text intValue];
+}
+
+- (void) setPlayersCount:(int32_t)playersCount {
+	[_playersButton setTitle: [NSString stringWithFormat: @"%d", playersCount] forState: UIControlStateNormal];
+}
 
 - (void) setTimeLeft:(NSTimeInterval)timeLeft {
 	_timeLeft = timeLeft;
@@ -29,6 +41,8 @@
 	_timeLeftLabel.text = [NSString stringWithFormat: @"%02d:%02d", minutesLeft, secondsLeft];
 	
 }
+
+#pragma mark - Overrides
 
 - (instancetype) initWithFrame:(CGRect)frame mode:(CheckCardTimerPanelMode) mode {
     self = [super initWithFrame:frame];
@@ -65,11 +79,13 @@
 		
 		shareButton.frameX = 8;
 		[shareButton setTitle: @"7" forState: UIControlStateNormal];
+		shareButton.hidden = YES;
 		[self addSubview: shareButton];
 		
 		mobButton.frameX = frame.size.width - mobButton.frame.size.width;
-		[mobButton setTitle: @"5" forState: UIControlStateNormal];
+		[mobButton setTitle: @"0" forState: UIControlStateNormal];
 		[self addSubview: mobButton];
+		_playersButton = mobButton;
 		
 //		UIButton *btn = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 80, 30)];
 //		btn.backgroundColor = [UIColor blueColor];

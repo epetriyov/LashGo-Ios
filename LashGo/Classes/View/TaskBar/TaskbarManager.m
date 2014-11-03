@@ -5,13 +5,11 @@
 #define kAnimationDuration 0.5
 #define kTaskbarHeight 49
 
-@interface TaskbarManager (private)
-
-- (Taskbar *) newTaskbar;
+@interface TaskbarManager () {
+	UIView *taskbarDarkBackgroundView;
+}
 
 @end
-
-
 
 @implementation TaskbarManager
 
@@ -31,7 +29,7 @@
 	if (self = [super init]) {
 		taskbars = [ [NSMutableArray alloc] init];
 		
-		taskbarBackgroundView = [ViewFactory sharedFactory].taskbarBackgroundView;
+		taskbarDarkBackgroundView = [ViewFactory sharedFactory].taskbarBackgroundView;
 		
 		usedButtonTypesStack = [ [NSMutableArray alloc] init];
 		
@@ -41,28 +39,30 @@
 }
 
 - (CGFloat) taskbarHeight {
-	return taskbarBackgroundView.frame.size.height;
+	return taskbarDarkBackgroundView.frame.size.height;
 }
 
 - (Taskbar *) taskbarWithButtonTypes: (NSArray *) buttonTypes {
     Taskbar *taskbar;
-    taskbar = [[Taskbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, taskbarBackgroundView.frame.size.height)];
+    taskbar = [[Taskbar alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, taskbarDarkBackgroundView.frame.size.height)];
 	taskbar.delegate = self;
 	
-	taskbarBackgroundView.frameWidth = taskbar.frame.size.width;
-	[taskbar setBackgroundView: taskbarBackgroundView];
+//	taskbarDarkBackgroundView.frameWidth = taskbar.frame.size.width;
+//	[taskbar setBackgroundView: taskbarDarkBackgroundView];
 	
-	[taskbar setButtonsTypes: buttonTypes];
+//	[taskbar setButtonsTypes: buttonTypes];
 	
 	return taskbar;
 }
 
-- (Taskbar *) unusedTaskbarWithButtonTypes: (NSArray *) buttonTypes forParentSize: (CGSize) parentSize {
+- (Taskbar *) unusedTaskbarWithButtonTypes: (NSArray *) buttonTypes forParentSize: (CGSize) parentSize
+							   contentType: (TaskbarContentType) contentType {
 	Taskbar *unusedTaskbar = nil;
 	for (Taskbar *taskbar in taskbars) {
 		if (taskbar != self.visibleTaskbar) {
 			unusedTaskbar = taskbar;
-			[taskbar setButtonsTypes: buttonTypes];
+//			[taskbar setBackgroundView: taskbarDarkBackgroundView];
+//			[taskbar setButtonsTypes: buttonTypes];
 			
 			break;
 		}
@@ -72,6 +72,14 @@
 		unusedTaskbar = [self taskbarWithButtonTypes: buttonTypes];
 		[taskbars addObject: unusedTaskbar];
 	}
+	UIView *bgView;
+	if (contentType == TaskbarContentTypeLight) {
+		bgView = [ViewFactory sharedFactory].taskbarLightBackgroundView;
+	} else {
+		bgView = [ViewFactory sharedFactory].taskbarBackgroundView;
+	}
+	[unusedTaskbar setBackgroundView: bgView];
+	[unusedTaskbar setButtonsTypes: buttonTypes];
 	unusedTaskbar.frame = CGRectMake(0, parentSize.height - unusedTaskbar.frame.size.height,
 									 parentSize.width, unusedTaskbar.frame.size.height);
 	return unusedTaskbar;
@@ -80,13 +88,31 @@
 - (void) showTaskbarInView: (UIView *) view withButtonTypes: (NSArray *) buttonTypes {
 	for (Taskbar *taskbar in taskbars) {
 		if (taskbar.superview == view) {
+//			[taskbar setBackgroundView: taskbarDarkBackgroundView];
+//			[taskbar setButtonsTypes: buttonTypes];
+			self.visibleTaskbar = taskbar;
+			
+			return;
+		}
+	}
+	Taskbar *taskbar = [self unusedTaskbarWithButtonTypes: buttonTypes forParentSize: view.frame.size
+											  contentType: TaskbarContentTypeDark];
+	self.visibleTaskbar = taskbar;
+	[view addSubview: taskbar];
+}
+
+- (void) showTaskbarInView: (UIView *) view withButtonTypes: (NSArray *) buttonTypes
+			   contentType: (TaskbarContentType) contentType {
+	for (Taskbar *taskbar in taskbars) {
+		if (taskbar.superview == view) {
 			[taskbar setButtonsTypes: buttonTypes];
 			self.visibleTaskbar = taskbar;
 			
 			return;
 		}
 	}
-	Taskbar *taskbar = [self unusedTaskbarWithButtonTypes:buttonTypes forParentSize: view.frame.size];
+	Taskbar *taskbar = [self unusedTaskbarWithButtonTypes: buttonTypes forParentSize: view.frame.size
+											  contentType: contentType];
 	self.visibleTaskbar = taskbar;
 	[view addSubview: taskbar];
 }

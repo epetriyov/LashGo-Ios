@@ -1,10 +1,13 @@
 #import "Taskbar.h"
 
+typedef NS_ENUM(ushort, TaskbarContentType) {
+	TaskbarContentTypeDark,
+	TaskbarContentTypeLight
+};
+
 @protocol TaskbarManagerDelegate;
 
 @interface TaskbarManager : NSObject <TaskbarDelegate> {
-	UIView *taskbarBackgroundView;
-	
 	NSMutableArray *taskbars;
 	
 	NSMutableArray *usedButtonTypesStack;
@@ -18,6 +21,8 @@
 + (TaskbarManager *) sharedManager;
 - (CGFloat) taskbarHeight;
 - (void) showTaskbarInView: (UIView *) view withButtonTypes: (NSArray *) buttonTypes;
+- (void) showTaskbarInView: (UIView *) view withButtonTypes: (NSArray *) buttonTypes
+			   contentType: (TaskbarContentType) contentType;
 - (void) pushTaskbarButtonType: (TaskbarButtonType) type;
 - (TaskbarButtonType) popTaskbarButtonType;
 - (TaskbarButtonType) lastUsedTaskbarButtonType;

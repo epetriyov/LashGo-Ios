@@ -14,6 +14,7 @@
 @property (nonatomic, readonly) UIImage *startViewControllerGradientImage;
 @property (nonatomic, readonly) UIColor *statusBarPreferredColor;
 @property (nonatomic, readonly) UIView *taskbarBackgroundView;
+@property (nonatomic, readonly) UIView *taskbarLightBackgroundView;
 @property (nonatomic, readonly) UIImage *timerCheckOpenImage;
 @property (nonatomic, readonly) UIImage *titleBarBackgroundImage;
 @property (nonatomic, readonly) UIImage *titleBarLogoImage;

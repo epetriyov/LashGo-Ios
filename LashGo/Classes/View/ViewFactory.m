@@ -21,7 +21,7 @@ static ViewFactory *viewFactory = nil;
 @dynamic loginViewControllerBgImage;
 @dynamic startViewControllerBgImage, startViewControllerFrameImage, startViewControllerGradientImage, statusBarPreferredColor;
 @dynamic timerCheckOpenImage;
-@dynamic taskbarBackgroundView, titleBarBackgroundImage, titleBarLogoImage;
+@dynamic taskbarBackgroundView, taskbarLightBackgroundView, titleBarBackgroundImage, titleBarLogoImage;
 @dynamic userProfileAvatarPlaceholder;
 
 + (ViewFactory *) sharedFactory {
@@ -77,7 +77,13 @@ static ViewFactory *viewFactory = nil;
 
 - (UIView *) taskbarBackgroundView {
 	UIView *view = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 1, 49)];
-	view.backgroundColor = [UIColor colorWithWhite: 226.0/255.0 alpha: 1.0];
+	view.backgroundColor = [UIColor colorWithRed: 38.0/255.0 green: 42.0/255.0 blue: 48.0/255.0 alpha: 1.0];
+	return view;
+}
+
+- (UIView *) taskbarLightBackgroundView {
+	UIView *view = [[UIView alloc] initWithFrame: CGRectMake(0, 0, 1, 49)];
+	view.backgroundColor = [UIColor colorWithWhite: 244.0/255.0 alpha: 1.0];
 	return view;
 }
 

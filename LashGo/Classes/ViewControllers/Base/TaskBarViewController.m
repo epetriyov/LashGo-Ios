@@ -8,13 +8,17 @@
 
 #import "TaskBarViewController.h"
 
-#import "TaskbarManager.h"
-
 @interface TaskBarViewController ()
 
 @end
 
 @implementation TaskBarViewController
+
+@dynamic taskbarContentType;
+
+- (TaskbarContentType) taskbarContentType {
+	return TaskbarContentTypeLight;
+}
 
 - (CGRect) contentFrame {
 	CGRect titleBarViewControllerRect = [super contentFrame];
@@ -30,6 +34,7 @@
 														  @(TaskbarButtonTypeFollow),
 														  @(TaskbarButtonTypeNews),
 														  @(TaskbarButtonTypeProfile),
-														  @(TaskbarButtonTypeMore)]];
+														  @(TaskbarButtonTypeMore)]
+										   contentType: self.taskbarContentType];
 }
 @end

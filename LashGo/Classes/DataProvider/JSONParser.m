@@ -107,6 +107,11 @@
 		
 		check.taskPhotoUrl =	rawCheck[@"taskPhotoUrl"];
 		
+		LGCheckCounters *counters = [[LGCheckCounters alloc] init];
+		counters.playersCount =	[rawCheck[@"playersCount"] intValue];
+		
+		check.counters = counters;
+		
 		check.userPhoto =	[self parsePhoto: rawCheck[@"userPhotoDto"]];
 		check.winnerInfo =	[self parseUser: rawCheck[@"winnerInfo"]];
 		check.winnerPhoto =	[self parsePhoto: rawCheck[@"winnerPhotoDto"]];

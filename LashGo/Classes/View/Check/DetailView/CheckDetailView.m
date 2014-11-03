@@ -149,13 +149,17 @@
 - (void) setUserImageWithImage: (UIImage *) image {
 	[_userImageView cancelWebImageLoad];
 //	if (_userImageView.image != image) {
-		_userImageView.image = image;
+	
 		if (image == nil) {
+			_userImageView.image = nil;
+			
 			_scrollView.contentOffset = CGPointZero;
 			_scrollView.scrollEnabled = NO;
 			_userOverlay.hidden = YES;
 			_winnerOverlay.hidden = YES;
 		} else {
+			[_userImageView loadSizeThatFits: image];
+			
 			_scrollView.scrollEnabled = YES;
 			_userOverlay.hidden = NO;
 			_winnerOverlay.hidden = YES;

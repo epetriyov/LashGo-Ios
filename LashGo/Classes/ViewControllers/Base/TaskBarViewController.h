@@ -7,7 +7,10 @@
 //
 
 #import "TitleBarViewController.h"
+#import "TaskbarManager.h"
 
 @interface TaskBarViewController : TitleBarViewController
+
+@property (nonatomic, readonly) TaskbarContentType taskbarContentType;
 
 @end

@@ -31,6 +31,19 @@
 	});
 }
 
+- (void) loadSizeThatFits: (UIImage *) image {
+	UIImageView __weak *wself = self;
+	UIImage __weak *wimage = image;
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+		UIImage __weak *result = [Common generateThumbnailForImage: wimage withSize: self.frame.size];
+		
+		dispatch_sync(dispatch_get_main_queue(), ^{
+			wself.image = result;
+//			[wself setNeedsDisplay];
+		});
+	});
+}
+
 - (void) loadWebImageWithName: (NSString *) imageName {
 	NSURL *url = [NSURL URLWithString: [kWebServiceURLPhotoPath stringByAppendingString: imageName]];
 	[self sd_setImageWithURL: url];
