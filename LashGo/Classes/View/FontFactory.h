@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, FontType) {
 	FontTypeUserChangeAvatarTitle,
 	FontTypeVoteCheckTitle,
 	FontTypeVoteCheckDescription,
+	FontTypeVotePager,
 	FontTypeVoteTimer
 };
 

@@ -67,6 +67,7 @@
 
 //VoteViewController
 "VoteViewControllerTitle" = "Голосование";
+"PagerLabelFormat" = "%d-%d из %d";
 
 //Checks
 "ChecksTitle" = "Задания";

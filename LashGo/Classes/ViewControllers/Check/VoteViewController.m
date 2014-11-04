@@ -30,6 +30,8 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 	NSTimer *_progressTimer;
 	
 	UICollectionView __weak *_photosCollection;
+	
+	UILabel __weak *_pagerLabel;
 }
 
 @property (nonatomic, readonly) CGRect waitViewFrame;
@@ -120,8 +122,22 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 	
 	offsetY += checkDetailsView.frame.size.height;
 	
+	//Configure pager label
+	float pagerLabelHeight = 30;
+	UILabel *pagerLabel = [[UILabel alloc] initWithFrame: CGRectMake(0,
+																	 self.view.frame.size.height - pagerLabelHeight - 8,
+																	 self.view.frame.size.width,
+																	 pagerLabelHeight)];
+	pagerLabel.font = [FontFactory fontWithType: FontTypeVotePager];
+	pagerLabel.textAlignment = NSTextAlignmentCenter;
+	pagerLabel.textColor = [FontFactory fontColorForType: FontTypeVotePager];
+	pagerLabel.backgroundColor = [UIColor clearColor];
+	[self.view addSubview: pagerLabel];
+	_pagerLabel = pagerLabel;
+	
 	CGRect photosCollectionFrame = CGRectMake(0, offsetY,
-											  self.view.frame.size.width, self.view.frame.size.height - offsetY);
+											  self.view.frame.size.width,
+											  _pagerLabel.frame.origin.y - offsetY);
 	
 	UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
 	flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
@@ -135,7 +151,7 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 	collectionView.dataSource = self;
 	collectionView.delegate = self;
 	collectionView.pagingEnabled = YES;
-	collectionView.scrollEnabled = NO;
+//	collectionView.scrollEnabled = NO;
 	[collectionView registerClass: [VoteCollectionCell class]
 	   forCellWithReuseIdentifier: kVoteCollectionCellReusableId];
 	[self.view addSubview: collectionView];
@@ -198,8 +214,18 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 	}
 }
 
+- (void) refreshPagerWith: (NSUInteger) pageIndex {
+	//So one cell per page we can get index by visible
+	NSUInteger count = [kernel.storage.checkVotePhotos.votePhotos count];
+	NSUInteger beginNumber = pageIndex * kVotePhotoItemsPerPage + 1;
+	NSUInteger endNumber = MIN(beginNumber + (kVotePhotoItemsPerPage - 1), count);
+	_pagerLabel.text = [NSString stringWithFormat: @"PagerLabelFormat".commonLocalizedString,
+						beginNumber, endNumber, count];
+}
+
 - (void) refreshPhotos {
 	[_photosCollection reloadData];
+	[self refreshPagerWith: 0];
 }
 
 #pragma mark - UICollectionViewDataSource implementation
@@ -235,7 +261,11 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 #pragma mark - UICollectionViewDelegate implementation
 
 - (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-	//	DLog(@"Cell removed for index: %ld", (long)indexPath.row);
+	//So one cell per page we can get index by visible
+	NSIndexPath *pageIndex = [[_photosCollection indexPathsForVisibleItems] firstObject];
+	if (pageIndex != nil) {
+		[self refreshPagerWith: pageIndex.row];
+	}
 }
 
 #pragma mark - VotePanelViewDelegate implementation
