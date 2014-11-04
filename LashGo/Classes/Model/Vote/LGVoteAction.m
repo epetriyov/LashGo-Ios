@@ -8,10 +8,16 @@
 
 #import "LGVoteAction.h"
 
+#import "LGVotePhoto.h"
+
 @implementation LGVoteAction
 
 - (NSDictionary *) JSONObject {
-	return @{@"photoIds" :		self.photoUIDs,
+	NSMutableArray *photoUIDs = [[NSMutableArray alloc] initWithCapacity: [self.votePhotos count]];
+	for (LGVotePhoto *votePhoto in self.votePhotos) {
+		[photoUIDs addObject: @(votePhoto.photo.uid)];
+	}
+	return @{@"photoIds" :		photoUIDs,
 			 @"votedPhotoId" :	@(self.votedPhotoUID),
 			 @"checkId" :		@(self.checkUID)};
 }

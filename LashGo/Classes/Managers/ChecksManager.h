@@ -12,6 +12,7 @@
 
 @class LGCheck;
 @class LGPhoto;
+@class LGVoteAction;
 
 @interface ChecksManager : NSObject
 
@@ -27,7 +28,7 @@
 
 - (void) stopWaiting: (UIViewController *) viewController;
 
-- (void) voteForPhoto: (LGPhoto *) photo;
+- (void) voteWith: (LGVoteAction *) voteAction;
 
 - (void) openCheckCardViewController;
 - (void) openCheckCardViewControllerFor: (LGCheck *) check;

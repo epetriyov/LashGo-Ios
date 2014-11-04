@@ -61,9 +61,9 @@
 	[_viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [viewController class]];
 }
 
-- (void) voteForPhoto: (LGPhoto *) photo {
+- (void) voteWith: (LGVoteAction *) voteAction  {
 	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [VoteViewController class]];
-	[_dataProvider photoVoteFor: photo.uid];
+	[_dataProvider photoVote: voteAction];
 }
 
 - (void) openCheckCardViewController {

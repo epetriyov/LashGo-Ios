@@ -13,6 +13,7 @@
 #import "LGRecoverInfo.h"
 //#import "LGRegisterInfo.h"
 #import "LGSocialInfo.h"
+#import "LGVoteAction.h"
 
 @protocol DataProviderDelegate;
 
@@ -33,7 +34,7 @@
 //- (void) photo: (NSString *) name;
 - (void) photoCommentsFor: (int64_t) photoID;
 //- (void) photoAddCommentFor: (int64_t) photoID;
-- (void) photoVoteFor: (int64_t) photoID;
+- (void) photoVote: (LGVoteAction *) inputData;
 
 - (void) userLogin: (LGLoginInfo *) inputData;
 - (void) userMainScreenInfo;
@@ -57,7 +58,7 @@
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckPhotos: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (LGVotePhotosResult *) votePhotos;
 
-- (void) dataProviderDidPhotoVote: (DataProvider *) dataProvider;
+- (void) dataProvider: (DataProvider *) dataProvider didPhotoVote: (LGVoteAction *) voteAction;
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserPhotos: (NSArray *) photos;
 

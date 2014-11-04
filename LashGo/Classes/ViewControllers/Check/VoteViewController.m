@@ -192,6 +192,8 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 #pragma mark - Methods
 
 - (void) voteFinished {
+	[_photosCollection reloadData];
+	[kernel.checksManager stopWaitingVotePhotos];
 //	_votePanelView.type = VotePanelTypeNext;
 }
 
@@ -225,12 +227,14 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 
 - (void) refreshPhotos {
 	[_photosCollection reloadData];
+    _photosCollection.scrollEnabled = YES;
     
     NSUInteger pageIndexToScroll = 0;
     for (NSUInteger i = 0; i < [kernel.storage.checkVotePhotos.votePhotos count]; i += kVotePhotoItemsPerPage) {
         LGVotePhoto *votePhoto = kernel.storage.checkVotePhotos.votePhotos[i];
         if (votePhoto.isShown == NO) {
             pageIndexToScroll = i / kVotePhotoItemsPerPage;
+            _photosCollection.scrollEnabled = NO;
             break;
         }
     }
@@ -282,7 +286,29 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 #pragma mark - VotePanelViewDelegate implementation
 
 - (void) voteWithIndex: (ushort) index {
-	[kernel.checksManager voteForPhoto: [kernel.storage.checkVotePhotos.votePhotos objectAtIndex: index]];
+	//So one cell per page we can get index by visible
+	NSIndexPath *pageIndex = [[_photosCollection indexPathsForVisibleItems] firstObject];
+	if (pageIndex != nil) {
+		LGVoteAction *voteAction = [[LGVoteAction alloc] init];
+		
+		NSUInteger beginIndex = pageIndex.row * kVotePhotoItemsPerPage;
+		NSUInteger nextBeginIndex = MIN(beginIndex + kVotePhotoItemsPerPage,
+										[kernel.storage.checkVotePhotos.votePhotos count]);
+		
+		NSMutableArray *votePhotos = [[NSMutableArray alloc] initWithCapacity: 1];
+		for (ushort i = 0; i < nextBeginIndex - beginIndex; ++i) {
+			LGVotePhoto *votePhoto = kernel.storage.checkVotePhotos.votePhotos[pageIndex.row * kVotePhotoItemsPerPage + i];
+			[votePhotos addObject: votePhoto];
+			if (i == index) {
+				voteAction.votedPhotoUID = votePhoto.photo.uid;
+			}
+		}
+		
+		voteAction.votePhotos = votePhotos;
+		voteAction.checkUID = self.check.uid;
+		
+		[kernel.checksManager voteWith: voteAction];
+	}
 }
 
 - (void) openPhotoWithIndex:(ushort)index {
@@ -295,7 +321,16 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 }
 
 - (void) openNext {
-	[kernel.checksManager getVotePhotosForCheck: self.check];
+	//So one cell per page we can get index by visible
+	NSIndexPath *pageIndex = [[_photosCollection indexPathsForVisibleItems] firstObject];
+	if (pageIndex != nil && pageIndex.row + 1 < [_photosCollection numberOfItemsInSection: 0]) {
+		NSIndexPath *nextPageIndex = [NSIndexPath indexPathForRow: pageIndex.row + 1 inSection: 0];
+		[_photosCollection scrollToItemAtIndexPath: nextPageIndex
+								  atScrollPosition: UICollectionViewScrollPositionCenteredHorizontally
+										  animated: YES];
+	} else {
+		_photosCollection.scrollEnabled = YES;
+	}
 }
 
 @end

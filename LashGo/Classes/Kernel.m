@@ -86,7 +86,11 @@
 	self.storage.checkVotePhotos = votePhotos;
 }
 
-- (void) dataProviderDidPhotoVote: (DataProvider *) dataProvider {
+- (void) dataProvider: (DataProvider *) dataProvider didPhotoVote: (LGVoteAction *) voteAction {
+	for (LGVotePhoto *votePhoto in voteAction.votePhotos) {
+		votePhoto.isShown = YES;
+		votePhoto.isVoted = votePhoto.photo.uid == voteAction.votedPhotoUID;
+	}
 	[self.viewControllersManager.voteViewController voteFinished];
 }
 

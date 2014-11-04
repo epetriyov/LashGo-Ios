@@ -10,8 +10,9 @@
 
 @interface LGVoteAction : NSObject <JSONSerializableProtocol>
 
-@property (nonatomic, strong) NSArray *photoUIDs;
+@property (nonatomic, strong) NSArray *votePhotos;
+//@property (nonatomic, strong) NSArray *photoUIDs;
 @property (nonatomic, assign) int64_t votedPhotoUID;
-@property (nonatomic, assign) int32_t checkUID;
+@property (nonatomic, assign) int64_t checkUID;
 
 @end
