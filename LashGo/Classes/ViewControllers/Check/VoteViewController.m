@@ -225,7 +225,18 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 
 - (void) refreshPhotos {
 	[_photosCollection reloadData];
-	[self refreshPagerWith: 0];
+    
+    NSUInteger pageIndexToScroll = 0;
+    for (NSUInteger i = 0; i < [kernel.storage.checkVotePhotos.votePhotos count]; i += kVotePhotoItemsPerPage) {
+        LGVotePhoto *votePhoto = kernel.storage.checkVotePhotos.votePhotos[i];
+        if (votePhoto.isShown == NO) {
+            pageIndexToScroll = i / kVotePhotoItemsPerPage;
+            break;
+        }
+    }
+    [_photosCollection scrollToItemAtIndexPath: [NSIndexPath indexPathForRow: pageIndexToScroll inSection: 0]
+                              atScrollPosition: UICollectionViewScrollPositionCenteredHorizontally animated: NO];
+	[self refreshPagerWith: pageIndexToScroll];
 }
 
 #pragma mark - UICollectionViewDataSource implementation
