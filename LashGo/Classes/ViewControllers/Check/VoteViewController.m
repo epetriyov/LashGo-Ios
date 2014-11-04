@@ -159,6 +159,8 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 	_photosCollection = collectionView;
 	
 	[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
+	
+	[kernel.checksManager getVotePhotosForCheck: self.check];
 }
 
 - (void) dealloc {
@@ -175,8 +177,6 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 
 - (void) viewWillAppear:(BOOL)animated {
 	[super viewWillAppear: animated];
-	
-	[kernel.checksManager getVotePhotosForCheck: self.check];
 	
 	if ([_progressTimer isValid] == NO) {
 		_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector:@selector(refresh)
