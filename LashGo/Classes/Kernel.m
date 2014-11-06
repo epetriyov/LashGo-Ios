@@ -98,6 +98,10 @@
 	self.viewControllersManager.profileViewController.photos = photos;
 }
 
+- (void) dataProvider: (DataProvider *) dataProvider didGetUserProfile: (LGUser *) user {
+	self.storage.lastViewProfileDetail = user;
+}
+
 #pragma mark - TaskbarManagerDelegate implementation
 
 - (void) taskbarManager: (TaskbarManager *) manager didPressTaskbarButtonWithType: (TaskbarButtonType) type {

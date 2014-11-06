@@ -253,4 +253,10 @@
 	return userPhotos;
 }
 
+- (LGUser *) parseUserProfile: (NSData *) jsonData {
+	NSDictionary *rawData = [self parseJSONData: jsonData][@"result"];
+	LGUser *user = [self parseUser: rawData];
+	return user;
+}
+
 @end

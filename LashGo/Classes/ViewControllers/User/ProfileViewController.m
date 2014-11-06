@@ -14,6 +14,8 @@
 
 #define kPhotoCollectionCellReusableId @"PhotoCollectionCellId"
 
+static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
+
 @interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
 	ProfileView __weak *_profileView;
 	UICollectionView __weak *_photosCollection;
@@ -71,10 +73,25 @@
 	[self.view addSubview: collectionView];
 	
 	_photosCollection = collectionView;
+	
+	[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
 	[kernel.userManager getUserPhotosForUser: self.user];
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+						 change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqualToString: kObservationKeyPath] == YES && [object isKindOfClass: [Storage class]] == YES) {
+		if (self.user.uid == ((Storage *)object).lastViewProfileDetail.uid) {
+			[_profileView setUserData:((Storage *)object).lastViewProfileDetail];
+		}
+	}
+}
+
+- (void) dealloc {
+	[kernel.storage removeObserver: self forKeyPath: kObservationKeyPath];
 }
 
 #pragma mark - UICollectionViewDataSource implementation

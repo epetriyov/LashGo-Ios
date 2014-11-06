@@ -24,5 +24,6 @@
 - (LGRegisterInfo *) parseRegiserInfo: (NSData *) jsonData;
 
 - (NSArray *) parseUserPhotos: (NSData *) jsonData;
+- (LGUser *) parseUserProfile: (NSData *) jsonData;
 
 @end

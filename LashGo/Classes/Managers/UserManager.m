@@ -90,6 +90,7 @@
 	}
 	vc.user = user;
 	[_viewControllersManager openViewController: vc animated: YES];
+	[_dataProvider userProfileFor: user.uid];
 }
 
 @end

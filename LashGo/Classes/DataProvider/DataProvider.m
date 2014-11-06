@@ -35,6 +35,7 @@
 #define kUsersPhotosPath			@"/users/photos" //GET
 #define kUsersPhotosByUIDPath		@"/users/%d/photos" //GET
 #define kUsersProfilePath			@"/users/profile" //GET
+#define kUsersProfileByUIDPath		@"/users/%d/profile" //GET
 #define kUsersRecoverPath			@"/users/recover" //PUT
 #define kUsersRegisterPath			@"/users/register" //POST
 #define kUsersSocialSignInPath		@"/users/social-sign-in" //POST
@@ -449,7 +450,11 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark -
 
 - (void) didGetProfile: (URLConnection *) connection {
+	LGUser *user = [_parser parseUserProfile: connection.downloadedData];
 	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetUserProfile:)] == YES) {
+		[self.delegate dataProvider: self didGetUserProfile: user];
+	}
 }
 
 - (void) userProfile {
@@ -458,6 +463,16 @@ static NSString *const kRequestUUID =		@"uuid";
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didGetProfile:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+- (void) userProfileFor: (int32_t) userID {
+	[self startConnectionWithPath: [NSString stringWithFormat: kUsersProfileByUIDPath, userID]
+							 type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetProfile:)
+					 failSelector: @selector(didFailGetImportantData:)];
 }
 
 #pragma mark -

@@ -41,6 +41,7 @@
 - (void) userPhotos;
 - (void) userPhotosFor: (int32_t) userID;
 - (void) userProfile;
+- (void) userProfileFor: (int32_t) userID;
 - (void) userRecover: (LGRecoverInfo *) inputData;
 - (void) userRegister: (LGLoginInfo *) inputData;
 - (void) userSocialSignIn: (LGSocialInfo *) inputData;
@@ -61,6 +62,7 @@
 - (void) dataProvider: (DataProvider *) dataProvider didPhotoVote: (LGVoteAction *) voteAction;
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserPhotos: (NSArray *) photos;
+- (void) dataProvider: (DataProvider *) dataProvider didGetUserProfile: (LGUser *) user;
 
 - (void) dataProviderDidRecoverPass: (DataProvider *) dataProvider;
 - (void) dataProvider: (DataProvider *) dataProvider didRegisterUser: (LGRegisterInfo *) registerInfo;
