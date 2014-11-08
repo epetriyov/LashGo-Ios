@@ -144,7 +144,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	if (self.type != currentType) {
 		self.type = currentType;
 		[_checkView setUserImagesWithCheck: self.check];
-		_panelView.hidden = currentType != CheckDetailTypeOpen;
+		_panelView.hidden = currentType == CheckDetailTypeClosed;
 	}
 	
 	CGFloat progress = 0;
@@ -155,6 +155,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		[_checkView setUserImageWithImage: _check.currentPickedUserPhoto];
 //		_checkView.userImage = _check.currentPickedUserPhoto;
 	} else if (self.type == CheckDetailTypeVote) {
+		_panelView.timeLeft = fdim(_check.closeDate, now);
 		progress = fdim(now, _check.voteDate) / _check.voteDuration;
 //		[_checkView setUserImageWithImage: nil];
 	} else {

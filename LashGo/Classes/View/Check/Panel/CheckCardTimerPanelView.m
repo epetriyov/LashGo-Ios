@@ -68,6 +68,7 @@
 		
 		switch (self.mode) {
 			case CheckCardTimerPanelModeDark:
+				self.hidden = YES;
 				shareButton = [[ViewFactory sharedFactory] counterShareDark: nil action: nil];
 				mobButton = [[ViewFactory sharedFactory] counterMobDark: nil action: nil];
 				break;
