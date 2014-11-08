@@ -9,17 +9,21 @@
 #import "TwitterAppAccount.h"
 #import "TWAPIManager.h"
 #import "Common.h"
+#import "DataProvider.h"
 
 //key JjHQisFOu784Ag7HBAcJg
 //sec pIkZnc7NJ8CW0WG5sCFLgPD5BOrak2Gtca3hmpy5dg
 
-#define ERROR_TITLE_MSG @"Whoa, there cowboy"
+#define ERROR_TITLE_MSG @"Oops"
 #define ERROR_NO_ACCOUNTS @"You must add a Twitter account in Settings.app to use this demo."
 #define ERROR_PERM_ACCESS @"We weren't granted access to the user's accounts"
 #define ERROR_NO_KEYS @"You need to add your Twitter app keys to Info.plist to use this demo.\nPlease see README.md for more info."
 #define ERROR_OK @"OK"
 
-@interface TwitterAppAccount ()
+@interface TwitterAppAccount () <DataProviderDelegate> {
+	DataProvider *_dataProvider;
+	NSString *_accessTokenSecret;
+}
 
 @property (nonatomic, strong) ACAccountStore *accountStore;
 @property (nonatomic, strong) TWAPIManager *apiManager;
@@ -45,6 +49,9 @@
 
 - (id) init {
 	if (self = [super init]) {
+		_dataProvider = [[DataProvider alloc] init];
+		_dataProvider.delegate = self;
+		
 		_accountStore = [[ACAccountStore alloc] init];
         _apiManager = [[TWAPIManager alloc] init];
 	}
@@ -52,6 +59,18 @@
 }
 
 #pragma mark -
+
+- (void) loginLashGo {
+	if ([Common isEmptyString: self.sessionID] == YES) {
+		LGSocialInfo *socialInfo = [[LGSocialInfo alloc] init];
+		socialInfo.accessToken = self.accessToken;
+		socialInfo.accessTokenSecret = _accessTokenSecret;
+		socialInfo.socialName = self.accountSocialName;
+		[_dataProvider userSocialSignIn: socialInfo];
+	} else {
+		[self.delegate authDidFinish: YES forAccount: self];
+	}
+}
 
 - (void) login {
 	[self _refreshTwitterAccounts];
@@ -72,9 +91,11 @@
                 
                 TWDLog(@"Reverse Auth process returned: %@", responseStr);
 				_accessToken = [responseStr stringBetweenString: @"oauth_token=" andString: @"&"];
+				_accessTokenSecret = [responseStr stringBetweenString: @"oauth_token_secret=" andString: @"&"];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-					[self.delegate authDidFinish: YES forAccount: self];
+					[self loginLashGo];
+//					[self.delegate authDidFinish: YES forAccount: self];
                 });
             }
             else {
@@ -87,7 +108,11 @@
 #pragma mark - Private
 - (void)_displayAlertWithMessage:(NSString *)message
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:ERROR_TITLE_MSG message:message delegate:nil cancelButtonTitle:ERROR_OK otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"AlertErrorTitle".commonLocalizedString
+													message:message
+												   delegate:nil
+										  cancelButtonTitle: @"OK".commonLocalizedString
+										  otherButtonTitles:nil];
     [alert show];
 }
 
@@ -110,7 +135,7 @@
         [self _displayAlertWithMessage:ERROR_NO_KEYS];
     }
     else if (![TWAPIManager isLocalTwitterAccountAvailable]) {
-        [self _displayAlertWithMessage:ERROR_NO_ACCOUNTS];
+        [self _displayAlertWithMessage: @"ERROR_NO_ACCOUNTS".commonLocalizedString];
     }
     else {
         [self _obtainAccessToAccountsWithBlock:^(BOOL granted) {
@@ -120,7 +145,7 @@
 //                    _reverseAuthBtn.enabled = YES;
                 }
                 else {
-                    [self _displayAlertWithMessage:ERROR_PERM_ACCESS];
+                    [self _displayAlertWithMessage: @"ERROR_PERM_ACCESS".commonLocalizedString];
                     TWALog(@"You were not granted access to the Twitter accounts.");
                 }
             });
@@ -147,13 +172,26 @@
  *  We check the current configuration inside -[UIViewController viewDidAppear].
  */
 - (void)performReverseAuth {
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Choose an Account" delegate:self
+    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Choose an Account".commonLocalizedString
+													   delegate:self
 											  cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     for (ACAccount *acct in _accounts) {
         [sheet addButtonWithTitle:acct.username];
     }
-    sheet.cancelButtonIndex = [sheet addButtonWithTitle:@"Cancel"];
+    sheet.cancelButtonIndex = [sheet addButtonWithTitle:@"Cancel".commonLocalizedString];
     [sheet showInView: self.selectAccountParentView];
+}
+
+#pragma mark - DataProviderDelegate implementation
+
+- (void) dataProvider: (DataProvider *) dataProvider didRegisterUser: (LGRegisterInfo *) registerInfo {
+	self.sessionID = registerInfo.sessionInfo.uid;
+	self.userInfo = registerInfo.user;
+	[self.delegate authDidFinish: YES forAccount: self];
+}
+
+- (void) dataProvider: (DataProvider *) dataProvider didFailRegisterUserWith: (NSError *) error {
+	[self.delegate authDidFinish: NO forAccount: self];
 }
 
 @end

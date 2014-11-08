@@ -10,6 +10,9 @@
 
 #import "DataProvider.h"
 
+#import "AlertViewManager.h"
+#import "Common.h"
+
 @interface Kernel () {
 	DataProvider *_dataProvider;
 }
@@ -60,8 +63,13 @@
 #pragma mark - Methods
 
 - (void) authorizationSuccess {
+	if ([Common isEmptyString: [AuthorizationManager sharedManager].account.accessToken] == NO) {
+		[self.checksManager openCheckCardViewController];
+	} else {
+		[[AlertViewManager sharedManager] showAlertAuthorizationFails];
+	}
 //	[self.userManager openProfileWelcomeViewController];
-	[self.checksManager openCheckCardViewController];
+	
 }
 
 - (void) performOnColdWakeActions {

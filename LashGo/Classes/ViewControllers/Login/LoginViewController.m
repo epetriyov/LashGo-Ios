@@ -34,7 +34,7 @@
 	//Configure welcome text
 	float offsetY = self.contentFrame.origin.y;
 	if ([Common is568hMode] == NO) {
-		offsetY += 50;
+		offsetY += 10;
 	} else {
 		offsetY += 92;
 	}
@@ -123,12 +123,20 @@
 	[self.view addSubview: restorePassButton];
 	
 	//Configure actions
-	offsetY += 54;
+	offsetY += 34;
 	
 	UIButton *loginButton = [[ViewFactory sharedFactory] loginButtonWithTarget: self action: @selector(login:)];
 	loginButton.frameY = offsetY;
-	[loginButton addTarget: self action: @selector(login:) forControlEvents: UIControlEventTouchUpInside];
 	[self.view addSubview: loginButton];
+	
+	offsetY += loginButton.frame.size.height + 2;
+	
+	UIButton *registerButton = [[ViewFactory sharedFactory] loginButtonWithTarget: self
+																		   action: @selector(registration:)];
+	registerButton.frameY = offsetY;
+	[registerButton setTitle: @"LoginViewControllerRegisterBtnTitle".commonLocalizedString
+					forState: UIControlStateNormal];
+	[self.view addSubview: registerButton];
 	
 	//Configure social bottom to top
 	UIButton *fbButton = [[ViewFactory sharedFactory] loginFacebookButtonWithTarget: self action: @selector(loginWithFacebook:)];
@@ -174,36 +182,43 @@
 	loginInfo.passwordHash = _passwordField.text.md5;
 	
 	[[AuthorizationManager sharedManager] loginUsingLashGo: loginInfo];
-//	[[AuthorizationManager sharedManager] registerUsingLashGo: loginInfo];
+}
+
+- (void) registration: (id) sender {
+	LGLoginInfo *loginInfo = [[LGLoginInfo alloc] init];
+	loginInfo.login = _emailField.text;
+	loginInfo.passwordHash = _passwordField.text.md5;
+	
+	[[AuthorizationManager sharedManager] registerUsingLashGo: loginInfo];
 }
 
 - (void) loginWithFacebook: (id) sender {
-	[[NSNotificationCenter defaultCenter] addObserver: self
-											 selector: @selector(authorizationSuccess)
-												 name: kAuthorizationNotification
-											   object: nil];
+//	[[NSNotificationCenter defaultCenter] addObserver: self
+//											 selector: @selector(authorizationSuccess)
+//												 name: kAuthorizationNotification
+//											   object: nil];
 	[[AuthorizationManager sharedManager] loginUsingFacebook];
 }
 
 - (void) loginWithTwitter: (id) sender {
-	[[NSNotificationCenter defaultCenter] addObserver: self
-											 selector: @selector(authorizationSuccess)
-												 name: kAuthorizationNotification
-											   object: nil];
+//	[[NSNotificationCenter defaultCenter] addObserver: self
+//											 selector: @selector(authorizationSuccess)
+//												 name: kAuthorizationNotification
+//											   object: nil];
 	[[AuthorizationManager sharedManager] loginUsingTwitterFromView: self.view];
 }
 
 - (void) loginWithVkontakte: (id) sender {
-	[[NSNotificationCenter defaultCenter] addObserver: self
-											 selector: @selector(authorizationSuccess)
-												 name: kAuthorizationNotification
-											   object: nil];
+//	[[NSNotificationCenter defaultCenter] addObserver: self
+//											 selector: @selector(authorizationSuccess)
+//												 name: kAuthorizationNotification
+//											   object: nil];
 	[[AuthorizationManager sharedManager] loginUsingVkontakte];
 }
 
-- (void) authorizationSuccess {
-	[[NSNotificationCenter defaultCenter] removeObserver: self name: kAuthorizationNotification object: nil];
-}
+//- (void) authorizationSuccess {
+//	[[NSNotificationCenter defaultCenter] removeObserver: self name: kAuthorizationNotification object: nil];
+//}
 
 #pragma mark - TextField delegate implementation
 

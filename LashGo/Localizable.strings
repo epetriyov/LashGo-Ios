@@ -32,6 +32,7 @@
 "LoginViewControllerPassPlaceholder" = "Пароль";
 "LoginViewControllerRestorePassBtnTitle" = "Забыли пароль?";
 "LoginViewControllerLoginBtnTitle" = "Поехали!";
+"LoginViewControllerRegisterBtnTitle" = "Хочу с вами!";
 "LoginViewControllerSocialLabelTitle" = "или войти через соцсети";
 
 //ProfileEditViewController
@@ -77,5 +78,13 @@
 "ChecksSendUserImageTitle" = "отправить";
 "CheckPhotosViewControllerTitle" = "Результаты голосования";
 
+//Twitter errors
+"ERROR_TITLE_MSG" = "Упс"; //"Oops"
+"ERROR_NO_ACCOUNTS" = "Добавьте Twitter аккаунт в настройках телефона"; //"You must add a Twitter account in Settings.app to use this demo."
+"ERROR_PERM_ACCESS" = "Запрещен доступ к аккаунтам телефона"; //"We weren't granted access to the user's accounts"
+
 "Отмена" = "Отмена";
 "Поиск" = "Поиск";
+
+"Choose an Account" = "Выберите аккаунт";
+"Cancel" = "Отмена";
