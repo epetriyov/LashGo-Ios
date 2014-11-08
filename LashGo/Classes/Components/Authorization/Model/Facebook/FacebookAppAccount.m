@@ -10,6 +10,15 @@
 
 #import "FacebookAppAccount.h"
 
+#import "Common.h"
+#import "DataProvider.h"
+
+@interface FacebookAppAccount () <DataProviderDelegate> {
+	DataProvider *_dataProvider;
+}
+
+@end
+
 @implementation FacebookAppAccount
 
 #pragma mark - Properties
@@ -30,6 +39,9 @@
 
 - (id) init {
 	if (self = [super init]) {
+		_dataProvider = [[DataProvider alloc] init];
+		_dataProvider.delegate = self;
+		
 		// create a fresh session object
         _session = [[FBSession alloc] init];
 		
@@ -108,6 +120,17 @@
 
 #pragma mark - Methods
 
+- (void) loginLashGo {
+	if ([Common isEmptyString: self.sessionID] == YES) {
+		LGSocialInfo *socialInfo = [[LGSocialInfo alloc] init];
+		socialInfo.accessToken = self.accessToken;
+		socialInfo.socialName = self.accountSocialName;
+		[_dataProvider userSocialSignIn: socialInfo];
+	} else {
+		[self.delegate authDidFinish: YES forAccount: self];
+	}
+}
+
 - (void)sessionStateChanged:(FBSession *)session
                       state:(FBSessionState) state
                       error:(NSError *)error {
@@ -118,7 +141,8 @@
 //			// completion handler for the permission request handles the post.
 //			// this happens when the permissions just get extended
 //		}else{
-		[self.delegate authDidFinish: YES forAccount: self];
+			[self loginLashGo];
+//			[self.delegate authDidFinish: YES forAccount: self];
 //		}
 	}else if (FB_ISSESSIONSTATETERMINAL(state)){
 //		if (authingSHKFacebook == self) {	// the state can change for a lot of reasons that are out of the login loop
@@ -164,6 +188,18 @@
 	// users will simply close the app or switch away, without logging out; this will
 	// cause the implicit cached-token login to occur on next launch of the application
 	[_session closeAndClearTokenInformation];
+}
+
+#pragma mark - DataProviderDelegate implementation
+
+- (void) dataProvider: (DataProvider *) dataProvider didRegisterUser: (LGRegisterInfo *) registerInfo {
+	self.sessionID = registerInfo.sessionInfo.uid;
+	self.userInfo = registerInfo.user;
+	[self.delegate authDidFinish: YES forAccount: self];
+}
+
+- (void) dataProvider: (DataProvider *) dataProvider didFailRegisterUserWith: (NSError *) error {
+	[self.delegate authDidFinish: NO forAccount: self];
 }
 
 @end

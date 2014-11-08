@@ -35,17 +35,21 @@
 }
 
 - (CheckDetailViewController *) checkDetailViewController {
-	if (_checkDetailViewController == nil) {
-		_checkDetailViewController = [self createViewControllerOfClass: [CheckDetailViewController class]];
+	CheckDetailViewController *vc = _checkDetailViewController;
+	if (vc == nil) {
+		vc = [self createViewControllerOfClass: [CheckDetailViewController class]];
+		_checkDetailViewController = vc;
 	}
-	return _checkDetailViewController;
+	return vc;
 }
 
 - (VoteViewController *) voteViewController {
-	if (_voteViewController == nil) {
-		_voteViewController = [self createViewControllerOfClass: [VoteViewController class]];
+	VoteViewController *vc = _voteViewController;
+	if (vc == nil) {
+		vc = [self createViewControllerOfClass: [VoteViewController class]];
+		_voteViewController = vc;
 	}
-	return _voteViewController;
+	return vc;
 }
 
 - (RecoverViewController *) recoverViewController {
@@ -53,24 +57,30 @@
 }
 
 - (ProfileEditViewController *) profileEditViewController {
-	if (_profileEditViewController == nil) {
-		_profileEditViewController = [self createViewControllerOfClass: [ProfileEditViewController class]];
+	ProfileEditViewController *vc = _profileEditViewController;
+	if (vc == nil) {
+		vc = [self createViewControllerOfClass: [ProfileEditViewController class]];
+		_profileEditViewController = vc;
 	}
-	return _profileEditViewController;
+	return vc;
 }
 
 - (ProfileWelcomeViewController *) profileWelcomeViewController {
-	if (_profileWelcomeViewController == nil) {
-		_profileWelcomeViewController = [self createViewControllerOfClass: [ProfileWelcomeViewController class]];
+	ProfileWelcomeViewController *vc = _profileWelcomeViewController;
+	if (vc == nil) {
+		vc = [self createViewControllerOfClass: [ProfileWelcomeViewController class]];
+		_profileWelcomeViewController = vc;
 	}
-	return _profileWelcomeViewController;
+	return vc;
 }
 
 - (ProfileViewController *) profileViewController {
-	if (_profileViewController == nil) {
-		_profileViewController = [self createViewControllerOfClass: [ProfileViewController class]];
+	ProfileViewController *vc = _profileViewController;
+	if (vc == nil) {
+		vc = [self createViewControllerOfClass: [ProfileViewController class]];
+		_profileViewController = vc;
 	}
-	return _profileViewController;
+	return vc;
 }
 
 #pragma mark - Overrides
@@ -122,6 +132,10 @@
 
 - (void) openViewControllerAndMakeItFirst: (UIViewController *) viewController animated: (BOOL) animated {
 	[rootNavigationController setViewControllers: @[viewController] animated: animated];
+}
+
+- (void) openViewControllerAboveFirst: (UIViewController *) viewController animated: (BOOL) animated {
+	[rootNavigationController setViewControllers: @[_checkCardViewController, viewController] animated: YES];
 }
 
 #pragma mark - Methods

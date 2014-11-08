@@ -43,6 +43,9 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 																					   action: @selector(openSearchAction:)];
 	UIButton *incomeButton = [[ViewFactory sharedFactory] titleBarRightIncomeButtonWithTarget: self
 																					   action: @selector(openIncomeAction:)];
+	///!!!:Hidden for coming soon
+	searchButton.hidden = YES;
+	incomeButton.hidden = YES;
 	TitleBarView *tbView = [TitleBarView titleBarViewWithLeftButton: cardsButton
 												 rightButton: incomeButton
 												searchButton: searchButton];
@@ -117,39 +120,39 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 }
 
 #pragma mark - Table delegate implementation
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-	CGFloat height = 40;
-	return height;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-	UIView *resultView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, tableView.frame.size.width, 40)];
-	resultView.backgroundColor = tableView.backgroundColor;
-	//Generate section header
-	
-	float offsetX = 15;
-	
-	UILabel *headerTextLabel = [[UILabel alloc] initWithFrame:
-								CGRectMake(offsetX, resultView.frame.size.height / 2,
-										   resultView.frame.size.width - offsetX * 2,
-										   resultView.frame.size.height / 2)];
-	headerTextLabel.font = [FontFactory fontWithType: FontTypeCheckListHeaderTitle];
-	[headerTextLabel setTextColor: [FontFactory fontColorForType: FontTypeCheckListHeaderTitle]];
-	headerTextLabel.backgroundColor = [UIColor clearColor];
-	
-	[resultView addSubview: headerTextLabel];
-	
-	if (section == CheckListSectionActive) {
-		headerTextLabel.text = @"ChecksActiveHeaderTitle".commonLocalizedString;
-	} else if (section == CheckListSectionVote) {
-		headerTextLabel.text = @"ChecksVoteHeaderTitle".commonLocalizedString;
-	} else if (section == CheckListSectionClosed) {
-		headerTextLabel.text = @"ChecksClosedHeaderTitle".commonLocalizedString;
-	}
-	
-	return resultView;
-}
+//!!!:Hidden for coming soon
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//	CGFloat height = 40;
+//	return height;
+//}
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//	UIView *resultView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, tableView.frame.size.width, 40)];
+//	resultView.backgroundColor = tableView.backgroundColor;
+//	//Generate section header
+//	
+//	float offsetX = 15;
+//	
+//	UILabel *headerTextLabel = [[UILabel alloc] initWithFrame:
+//								CGRectMake(offsetX, resultView.frame.size.height / 2,
+//										   resultView.frame.size.width - offsetX * 2,
+//										   resultView.frame.size.height / 2)];
+//	headerTextLabel.font = [FontFactory fontWithType: FontTypeCheckListHeaderTitle];
+//	[headerTextLabel setTextColor: [FontFactory fontColorForType: FontTypeCheckListHeaderTitle]];
+//	headerTextLabel.backgroundColor = [UIColor clearColor];
+//	
+//	[resultView addSubview: headerTextLabel];
+//	
+//	if (section == CheckListSectionActive) {
+//		headerTextLabel.text = @"ChecksActiveHeaderTitle".commonLocalizedString;
+//	} else if (section == CheckListSectionVote) {
+//		headerTextLabel.text = @"ChecksVoteHeaderTitle".commonLocalizedString;
+//	} else if (section == CheckListSectionClosed) {
+//		headerTextLabel.text = @"ChecksClosedHeaderTitle".commonLocalizedString;
+//	}
+//	
+//	return resultView;
+//}
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[theTableView deselectRowAtIndexPath: indexPath animated: YES];
@@ -173,7 +176,7 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 #pragma mark Table view data source methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	short count = 3;
+	short count = 1;
     return count;
 }
 

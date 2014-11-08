@@ -45,7 +45,6 @@
 - (void) userRecover: (LGRecoverInfo *) inputData;
 - (void) userRegister: (LGLoginInfo *) inputData;
 - (void) userSocialSignIn: (LGSocialInfo *) inputData;
-- (void) userSocialSignUp: (LGSocialInfo *) inputData;
 - (void) userSubscribeTo: (int32_t) userID;
 - (void) userSubscriptions;
 - (void) userUnsubscribeFrom: (int32_t) userID;

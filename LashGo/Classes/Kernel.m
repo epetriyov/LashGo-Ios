@@ -49,7 +49,7 @@
 		[TaskbarManager sharedManager].delegate = self;
 		
 		[[NSNotificationCenter defaultCenter] addObserver: self
-												 selector: @selector(socialAuthorizationSuccess)
+												 selector: @selector(authorizationSuccess)
 													 name: kAuthorizationNotification
 												   object: nil];
 	}
@@ -59,8 +59,9 @@
 
 #pragma mark - Methods
 
-- (void) socialAuthorizationSuccess {
-	[self.userManager socialSignIn];
+- (void) authorizationSuccess {
+//	[self.userManager openProfileWelcomeViewController];
+	[self.checksManager openCheckCardViewController];
 }
 
 - (void) performOnColdWakeActions {

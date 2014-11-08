@@ -73,10 +73,10 @@
 	[_viewControllersManager openViewController: vc animated: YES];
 }
 
-- (void) openProfileWelcomeViewControllerWith: (LGUser *) user {
+- (void) openProfileWelcomeViewController {
 	ProfileWelcomeViewController *vc = _viewControllersManager.profileWelcomeViewController;
-	vc.user = user;
-	[_viewControllersManager openViewController: vc animated: YES];
+	vc.user = [AuthorizationManager sharedManager].account.userInfo;
+	[_viewControllersManager openViewControllerAboveFirst: vc animated: YES];
 }
 
 - (void) openProfileViewController {

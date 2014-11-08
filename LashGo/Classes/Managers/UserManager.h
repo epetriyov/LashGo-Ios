@@ -28,7 +28,7 @@
 - (void) openRecoverViewController;
 
 - (void) openProfileEditViewControllerWith: (LGUser *) user;
-- (void) openProfileWelcomeViewControllerWith: (LGUser *) user;
+- (void) openProfileWelcomeViewController;
 - (void) openProfileViewController;
 - (void) openProfileViewControllerWith: (LGUser *) user;
 

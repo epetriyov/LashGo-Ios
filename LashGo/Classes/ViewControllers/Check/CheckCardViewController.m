@@ -41,6 +41,9 @@
 																					   action: @selector(openSearchAction:)];
 	UIButton *incomeButton = [[ViewFactory sharedFactory] titleBarRightIncomeButtonWithTarget: self
 																					   action: @selector(openIncomeAction:)];
+	///!!!:Hidden for coming soon
+	searchButton.hidden = YES;
+	incomeButton.hidden = YES;
 	TitleBarView *tbView = [TitleBarView titleBarViewWithLeftButton: listButton
 												 rightButton: incomeButton
 												searchButton: searchButton];

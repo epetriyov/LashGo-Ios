@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.developeraccount.lashgo</string>
+	<string>com.lashgo.lashgo</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -27,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb380615018626574</string>
+				<string>fb417722991695914</string>
 			</array>
 		</dict>
 		<dict>
@@ -44,7 +44,7 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>380615018626574</string>
+	<string>417722991695914</string>
 	<key>FacebookDisplayName</key>
 	<string>LashGo</string>
 	<key>LSRequiresIPhoneOS</key>

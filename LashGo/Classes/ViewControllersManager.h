@@ -58,6 +58,7 @@
 - (id) initWithKernel: (Kernel *) theKernel;
 
 - (void) openViewController: (UIViewController *) viewController animated: (BOOL) animated;
+- (void) openViewControllerAboveFirst: (UIViewController *) viewController animated: (BOOL) animated;
 - (void) returnToPreviousViewController;
 
 - (void) openCheckCardViewController;

@@ -39,7 +39,6 @@
 #define kUsersRecoverPath			@"/users/recover" //PUT
 #define kUsersRegisterPath			@"/users/register" //POST
 #define kUsersSocialSignInPath		@"/users/social-sign-in" //POST
-#define kUsersSocialSignUpPath		@"/users/social-sign-up" //POST
 #define kUsersSubscriptionsPath			@"/users/subscriptions" //GET
 #define kUsersSubscriptionsManagePath	@"/users/subscriptions/%d" //DELETE, POST
 
@@ -493,7 +492,7 @@ static NSString *const kRequestUUID =		@"uuid";
 
 #pragma mark -
 
-- (void) didRegisterUser: (URLConnection *) connection {
+- (void) didUserAuth: (URLConnection *) connection {
 	LGRegisterInfo *registerInfo = [_parser parseRegiserInfo: connection.downloadedData];
 	
 	if ([self.delegate respondsToSelector: @selector(dataProvider:didRegisterUser:)] == YES) {
@@ -501,7 +500,7 @@ static NSString *const kRequestUUID =		@"uuid";
 	}
 }
 
-- (void) didFailRegisterUser: (URLConnection *) connection {
+- (void) didFailUserAuth: (URLConnection *) connection {
 	NSError *error = [self didFailGetImportantData: connection];
 	
 	if ([self.delegate respondsToSelector: @selector(dataProvider:didFailRegisterUserWith:)] == YES) {
@@ -514,35 +513,17 @@ static NSString *const kRequestUUID =		@"uuid";
 							 body: inputData.JSONObject
 						  context: nil
 					allowMultiple: NO
-				   finishSelector: @selector(didRegisterUser:) failSelector: @selector(didFailGetImportantData:)];
+				   finishSelector: @selector(didUserAuth:) failSelector: @selector(didFailGetImportantData:)];
 }
 
 #pragma mark -
-
-- (void) didSocialSignIn: (URLConnection *) connection {
-	
-}
 
 - (void) userSocialSignIn: (LGSocialInfo *) inputData {
 	[self startConnectionWithPath: kUsersSocialSignInPath type: URLConnectionTypePOST
 							 body: inputData.JSONObject
 						  context: nil
 					allowMultiple: NO
-				   finishSelector: @selector(didSocialSignIn:) failSelector: @selector(didFailGetImportantData:)];
-}
-
-#pragma mark -
-
-- (void) didSocialSignUp: (URLConnection *) connection {
-	
-}
-
-- (void) userSocialSignUp: (LGSocialInfo *) inputData {
-	[self startConnectionWithPath: kUsersRegisterPath type: URLConnectionTypePOST
-							 body: inputData.JSONObject
-						  context: nil
-					allowMultiple: NO
-				   finishSelector: @selector(didSocialSignUp:) failSelector: @selector(didFailGetImportantData:)];
+				   finishSelector: @selector(didUserAuth:) failSelector: @selector(didFailGetImportantData:)];
 }
 
 #pragma mark -
