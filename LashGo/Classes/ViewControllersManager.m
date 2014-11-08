@@ -35,12 +35,13 @@
 }
 
 - (CheckDetailViewController *) checkDetailViewController {
-	CheckDetailViewController *vc = _checkDetailViewController;
-	if (vc == nil) {
-		vc = [self createViewControllerOfClass: [CheckDetailViewController class]];
-		_checkDetailViewController = vc;
-	}
-	return vc;
+//	CheckDetailViewController *vc = _checkDetailViewController;
+//	if (vc == nil) {
+//		vc = [self createViewControllerOfClass: [CheckDetailViewController class]];
+//		_checkDetailViewController = vc;
+//	}
+//	return vc;
+	return [self createViewControllerOfClass: [CheckDetailViewController class]];
 }
 
 - (VoteViewController *) voteViewController {

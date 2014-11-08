@@ -255,7 +255,7 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark -
 
 - (void) didCheckAddPhoto: (URLConnection *) connection {
-	DLog(@"Added Photo");
+	[[AlertViewManager sharedManager] showAlertViewWithTitle: @"Отлично" andMessage: @"Ваше фото успешно загружено"];
 }
 
 - (void) checkAddPhoto: (LGCheck *) inputData {
