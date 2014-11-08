@@ -107,6 +107,45 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 
 #pragma mark - 
 
++ (UIImage *) imageFromImage: (UIImage *) image withAspectedSize: (CGSize) size {
+	UIImage *aspectImage = nil;
+    CGSize imageSize = [image size];
+	
+	CGFloat aspect = size.width / size.height;
+    
+    if (imageSize.width / imageSize.height == aspect) {
+        aspectImage = image;
+    } else {
+		CGFloat scale;
+		CGRect cropRect;
+        // Compute square crop rect
+        // Center the crop rect either vertically or horizontally, depending on which dimension is smaller
+		if (imageSize.width <= imageSize.height) {
+			scale = imageSize.width / size.width;
+			CGFloat cropHeight = rintf(size.height * scale);
+			cropRect = CGRectMake(0, rintf((imageSize.height - cropHeight) / 2.0), imageSize.width, cropHeight);
+		} else {
+			scale = imageSize.height / size.height;
+			CGFloat cropWidth = rintf(size.width * scale);
+			cropRect = CGRectMake(rintf((imageSize.width - cropWidth) / 2.0), 0, cropWidth, imageSize.height);
+		}
+		
+        CGImageRef croppedImageRef = CGImageCreateWithImageInRect([image CGImage], cropRect);
+        aspectImage = [UIImage imageWithCGImage:croppedImageRef scale: image.scale orientation: UIImageOrientationUp];
+        CGImageRelease(croppedImageRef);
+		//	// Create path.
+		//	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		//	NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Image.png"];
+		//
+		//	// Save image.
+		//	[UIImagePNGRepresentation(aspectImage) writeToFile:filePath atomically:YES];
+		//
+		//	UIImage *storedImage = [UIImage imageWithContentsOfFile: filePath];
+    }
+    
+    return aspectImage;
+}
+
 + (UIImage *) squareImageFromImage: (UIImage *) image {
     UIImage *squareImage = nil;
     CGSize imageSize = [image size];
@@ -148,7 +187,7 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 	contextBounds.size = size;
 	
 	UIImage *sourceImage = image;
-	UIImage *squareImage = [self squareImageFromImage: sourceImage];
+	UIImage *squareImage = [self imageFromImage: sourceImage withAspectedSize: size];
 	
 	UIGraphicsBeginImageContextWithOptions(contextBounds.size, YES, 0.0);
 	
