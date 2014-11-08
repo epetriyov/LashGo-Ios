@@ -12,4 +12,11 @@
 
 @synthesize uid, login, fio, about, city, birthDate, avatar, email;
 
+- (NSString *) fio {
+	if (fio == nil) {
+		return login;
+	}
+	return fio;
+}
+
 @end

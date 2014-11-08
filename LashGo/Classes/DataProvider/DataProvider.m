@@ -259,7 +259,7 @@ static NSString *const kRequestUUID =		@"uuid";
 }
 
 - (void) checkAddPhoto: (LGCheck *) inputData {
-	NSData *imageData = UIImageJPEGRepresentation(inputData.currentPickedUserPhoto, 0.9);
+	NSData *imageData = UIImageJPEGRepresentation(inputData.currentPickedUserPhoto, 0.7);
 	[self startConnectionWithPath: [NSString stringWithFormat: kChecksPhotosPath, inputData.uid]
 							 type: URLConnectionTypeMULTIPART
 							 data: imageData
@@ -306,7 +306,7 @@ static NSString *const kRequestUUID =		@"uuid";
 }
 
 - (void) checkVotePhotosFor: (int64_t) checkID {
-#ifndef DEBUG
+#ifdef DEBUG
 	NSString *str = @"{\"resultCollection\":[{\"photoDto\":{\"id\":140,\"url\":\"check_42_user_9.jpg\",\"user\":{\"id\":9,\"login\":\"efiopskayaprincessa@gmail.com\",\"fio\":\"Маруся\",\"avatar\":\"avatar__user_9.jpg\"}},\"shown\":false,\"voted\":false},{\"photoDto\":{\"id\":141,\"url\":\"check_42_user_34.jpg\",\"user\":{\"id\":34,\"login\":\"facebook_100004439703624\",\"fio\":\"Alexandr  Golantsev Golantsev\"}},\"shown\":false,\"voted\":false}]}";
 	[self didGetCheckVotePhotosDEBUG: [str dataUsingEncoding: NSUTF8StringEncoding]];
 #else
