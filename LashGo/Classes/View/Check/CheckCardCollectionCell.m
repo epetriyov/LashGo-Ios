@@ -152,7 +152,9 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	if (self.type == CheckDetailTypeOpen) {
 		progress = fdim(now, _check.startDate) / _check.duration;
 		_panelView.timeLeft = fdim(_check.voteDate, now);
-		if (self.check.userPhoto == nil) {
+		if (self.check.userPhoto != nil) {
+			[_checkView setUserImageWithURLString: _check.userPhoto.url];
+		} else {
 			[_checkView setUserImageWithImage: _check.currentPickedUserPhoto];
 		}
 	} else if (self.type == CheckDetailTypeVote) {

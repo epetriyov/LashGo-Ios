@@ -18,6 +18,7 @@
 - (id) parseJSONData: (NSData *) jsonData;
 - (NSError *) parseError: (URLConnection *) connection;
 
+- (LGCheck *) parseCheckData: (NSData *) jsonData;
 - (NSArray *) parseChecks: (NSData *) jsonData;
 - (NSArray *) parseCheckPhotos: (NSData *) jsonData;
 - (LGVotePhotosResult *) parseCheckVotePhotos: (NSData *) jsonData;

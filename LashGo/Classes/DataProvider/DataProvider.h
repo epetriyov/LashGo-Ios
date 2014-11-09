@@ -22,6 +22,7 @@
 @property (nonatomic, weak) id<DataProviderDelegate> delegate;
 
 - (void) checks;
+- (void) checkFor: (LGCheck *) inputData;
 - (void) checkCurrent;
 - (void) checkAddCommentFor: (int64_t) checkID;//Not finished
 - (void) checkCommentsFor: (int64_t) checkID;

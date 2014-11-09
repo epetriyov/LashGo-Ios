@@ -165,6 +165,7 @@
 			_scrollView.scrollEnabled = YES;
 			_userOverlay.hidden = NO;
 			_userOverlay.isSendHidden = NO;
+			_makePhotoButton.hidden = NO;
 			_winnerOverlay.hidden = YES;
 		}
 		_makePhotoButton.selected = (image != nil);
@@ -182,6 +183,7 @@
 		_scrollView.scrollEnabled = YES;
 		_userOverlay.hidden = NO;
 		_userOverlay.isSendHidden = YES;
+		_makePhotoButton.hidden = YES;
 		_winnerOverlay.hidden = YES;
 	}
 }

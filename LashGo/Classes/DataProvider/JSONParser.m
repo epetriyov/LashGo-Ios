@@ -80,6 +80,51 @@
 
 #pragma mark -
 
+- (LGCheck *) parseCheck: (NSDictionary *) jsonDataObj {
+	LGCheck *check = nil;
+	
+	if ([jsonDataObj count] > 0) {
+		NSDictionary *rawCheck = jsonDataObj;
+		
+		check = [[LGCheck alloc] init];
+		
+		check.uid =			[rawCheck[@"id"] longLongValue];
+		check.name =		rawCheck[@"name"];
+		check.descr	=		rawCheck[@"description"];
+		
+		NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatterWithFullDateFormat];
+		
+		NSString *str =		rawCheck[@"startDate"];
+		check.startDate =	[[dateFormatter dateFromString: str] timeIntervalSinceReferenceDate];
+		
+		short durationSectionSeconds = 3600;
+		
+		check.duration =	[rawCheck[@"duration"] intValue] * durationSectionSeconds;
+		check.voteDuration = [rawCheck[@"voteDuration"] intValue] * durationSectionSeconds;
+		
+		check.voteDate =	check.startDate + check.duration;
+		check.closeDate =	check.voteDate + check.voteDuration;
+		
+		check.taskPhotoUrl =	rawCheck[@"taskPhotoUrl"];
+		
+		LGCheckCounters *counters = [[LGCheckCounters alloc] init];
+		counters.playersCount =	[rawCheck[@"playersCount"] intValue];
+		
+		check.counters = counters;
+		
+		check.userPhoto =	[self parsePhoto: rawCheck[@"userPhotoDto"]];
+		check.winnerPhoto =	[self parsePhoto: rawCheck[@"winnerPhotoDto"]];
+		check.winnerPhoto.user = [self parseUser: rawCheck[@"winnerInfo"]];
+	}
+	return check;
+}
+
+- (LGCheck *) parseCheckData: (NSData *) jsonData {
+	NSDictionary *rawData = [self parseJSONData: jsonData][@"result"];
+	LGCheck *check = [self parseCheck: rawData];
+	return check;
+}
+
 - (NSArray *) parseChecks: (NSData *) jsonData {
 	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
 	
