@@ -11,13 +11,6 @@
 #import "FacebookAppAccount.h"
 
 #import "Common.h"
-#import "DataProvider.h"
-
-@interface FacebookAppAccount () <DataProviderDelegate> {
-	DataProvider *_dataProvider;
-}
-
-@end
 
 @implementation FacebookAppAccount
 
@@ -39,9 +32,6 @@
 
 - (id) init {
 	if (self = [super init]) {
-		_dataProvider = [[DataProvider alloc] init];
-		_dataProvider.delegate = self;
-		
 		// create a fresh session object
         _session = [[FBSession alloc] init];
 		
@@ -188,18 +178,6 @@
 	// users will simply close the app or switch away, without logging out; this will
 	// cause the implicit cached-token login to occur on next launch of the application
 	[_session closeAndClearTokenInformation];
-}
-
-#pragma mark - DataProviderDelegate implementation
-
-- (void) dataProvider: (DataProvider *) dataProvider didRegisterUser: (LGRegisterInfo *) registerInfo {
-	self.sessionID = registerInfo.sessionInfo.uid;
-	self.userInfo = registerInfo.user;
-	[self.delegate authDidFinish: YES forAccount: self];
-}
-
-- (void) dataProvider: (DataProvider *) dataProvider didFailRegisterUserWith: (NSError *) error {
-	[self.delegate authDidFinish: NO forAccount: self];
 }
 
 @end

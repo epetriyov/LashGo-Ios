@@ -8,16 +8,9 @@
 
 #import "VkontakteAppAccount.h"
 
-#import "DataProvider.h"
 #import "Common.h"
 
 static NSString *const TOKEN_KEY = @"my_application_access_token";
-
-@interface VkontakteAppAccount () <DataProviderDelegate> {
-	DataProvider *_dataProvider;
-}
-
-@end
 
 @implementation VkontakteAppAccount
 
@@ -39,9 +32,6 @@ static NSString *const TOKEN_KEY = @"my_application_access_token";
 
 - (id) init {
 	if (self = [super init]) {
-		_dataProvider = [[DataProvider alloc] init];
-		_dataProvider.delegate = self;
-		
 		[VKSdk initializeWithDelegate:self andAppId: @"4201819"];
 		if ([VKSdk wakeUpSession]) {
 			[self.delegate authDidFinish: YES forAccount: self];
@@ -105,18 +95,6 @@ static NSString *const TOKEN_KEY = @"my_application_access_token";
 - (void)vkSdkUserDeniedAccess:(VKError *)authorizationError {
 	[self.delegate authDidFinish: NO forAccount: self];
 	[[[UIAlertView alloc] initWithTitle:nil message:@"Access denied" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
-}
-
-#pragma mark - DataProviderDelegate implementation
-
-- (void) dataProvider: (DataProvider *) dataProvider didRegisterUser: (LGRegisterInfo *) registerInfo {
-	self.sessionID = registerInfo.sessionInfo.uid;
-	self.userInfo = registerInfo.user;
-	[self.delegate authDidFinish: YES forAccount: self];
-}
-
-- (void) dataProvider: (DataProvider *) dataProvider didFailRegisterUserWith: (NSError *) error {
-	[self.delegate authDidFinish: NO forAccount: self];
 }
 
 @end

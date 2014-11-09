@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LGUser : NSObject {
+@interface LGUser : NSObject <NSCoding> {
 	int32_t uid;
 	NSString *login;
 	NSString *fio;

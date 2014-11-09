@@ -7,6 +7,7 @@
 //
 
 #import "LGUser.h"
+#import "DataProvider.h"
 
 typedef NS_ENUM(short, AppAccountType) {
 	AppAccountTypeUnknown = 0,
@@ -18,7 +19,9 @@ typedef NS_ENUM(short, AppAccountType) {
 
 @protocol AppAccountDelegate;
 
-@interface AppAccount : NSObject
+@interface AppAccount : NSObject {
+	DataProvider *_dataProvider;
+}
 
 @property (nonatomic, weak) id<AppAccountDelegate> delegate;
 @property (nonatomic, readonly) NSString *accountSocialName;
@@ -35,6 +38,9 @@ typedef NS_ENUM(short, AppAccountType) {
 - (void) handleApplicationWillTerminate;
 - (BOOL) handleOpenURL:(NSURL *)url
 	 sourceApplication:(NSString *)sourceApplication;
+
+- (void) cleanDataAsync;
+- (void) storeDataAsync;
 
 @end
 

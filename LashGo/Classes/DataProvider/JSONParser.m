@@ -243,6 +243,13 @@
 	
 	NSDictionary *rawUser = rawData[@"userDto"];
 	LGUser *user = [self parseUser: rawUser];
+	if (user == nil) {
+		NSNumber *userId = rawData[@"userId"];
+		if (userId != nil) {
+			user = [[LGUser alloc] init];
+			user.uid = [userId intValue];
+		}
+	}
 	
 	LGSessionInfo *sessionInfo = [[LGSessionInfo alloc] init];
 	

@@ -9,7 +9,6 @@
 #import "TwitterAppAccount.h"
 #import "TWAPIManager.h"
 #import "Common.h"
-#import "DataProvider.h"
 
 //key JjHQisFOu784Ag7HBAcJg
 //sec pIkZnc7NJ8CW0WG5sCFLgPD5BOrak2Gtca3hmpy5dg
@@ -20,8 +19,7 @@
 #define ERROR_NO_KEYS @"You need to add your Twitter app keys to Info.plist to use this demo.\nPlease see README.md for more info."
 #define ERROR_OK @"OK"
 
-@interface TwitterAppAccount () <DataProviderDelegate> {
-	DataProvider *_dataProvider;
+@interface TwitterAppAccount () {
 	NSString *_accessTokenSecret;
 }
 
@@ -49,9 +47,6 @@
 
 - (id) init {
 	if (self = [super init]) {
-		_dataProvider = [[DataProvider alloc] init];
-		_dataProvider.delegate = self;
-		
 		_accountStore = [[ACAccountStore alloc] init];
         _apiManager = [[TWAPIManager alloc] init];
 	}
@@ -180,18 +175,6 @@
     }
     sheet.cancelButtonIndex = [sheet addButtonWithTitle:@"Cancel".commonLocalizedString];
     [sheet showInView: self.selectAccountParentView];
-}
-
-#pragma mark - DataProviderDelegate implementation
-
-- (void) dataProvider: (DataProvider *) dataProvider didRegisterUser: (LGRegisterInfo *) registerInfo {
-	self.sessionID = registerInfo.sessionInfo.uid;
-	self.userInfo = registerInfo.user;
-	[self.delegate authDidFinish: YES forAccount: self];
-}
-
-- (void) dataProvider: (DataProvider *) dataProvider didFailRegisterUserWith: (NSError *) error {
-	[self.delegate authDidFinish: NO forAccount: self];
 }
 
 @end
