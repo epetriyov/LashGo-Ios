@@ -63,7 +63,7 @@
 #pragma mark - Methods
 
 - (void) authorizationSuccess {
-	if ([Common isEmptyString: [AuthorizationManager sharedManager].account.accessToken] == NO) {
+	if ([Common isEmptyString: [AuthorizationManager sharedManager].account.sessionID] == NO) {
 		[self.checksManager openCheckCardViewController];
 	} else {
 		[[AlertViewManager sharedManager] showAlertAuthorizationFails];
