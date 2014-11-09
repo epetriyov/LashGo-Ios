@@ -141,10 +141,14 @@
 	_winnerOverlay.fio.text = check.winnerPhoto.user.fio;
 	if (self.type == CheckDetailTypeClosed) {
 		[self setUserImageWinnerWithURLString: check.winnerPhoto.url];
-	} else if (check.userPhoto != nil) {
-		[self setUserImageWithURLString: check.userPhoto.url];
+	} else if (self.type == CheckDetailTypeOpen) {
+		if (check.userPhoto != nil) {
+			[self setUserImageWithURLString: check.userPhoto.url];
+		} else {
+			[self setUserImageWithImage: check.currentPickedUserPhoto];
+		}
 	} else {
-		[self setUserImageWithImage: check.currentPickedUserPhoto];
+		[self setUserImageWithImage: nil];
 	}
 }
 
