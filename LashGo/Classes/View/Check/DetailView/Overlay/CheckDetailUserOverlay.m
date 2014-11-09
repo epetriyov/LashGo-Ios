@@ -13,7 +13,23 @@
 #import "ViewFactory.h"
 #import "UIView+CGExtension.h"
 
+@interface CheckDetailUserOverlay () {
+	UIView *_darkPanel;
+	UIButton *_sendButton;
+	UILabel *_textLabel;
+}
+
+@end
+
 @implementation CheckDetailUserOverlay
+
+- (void) setIsSendHidden:(BOOL)isSendHidden {
+	_isSendHidden = isSendHidden;
+	
+	_darkPanel.hidden = isSendHidden;
+	_sendButton.hidden = isSendHidden;
+	_textLabel.hidden = isSendHidden;
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -22,6 +38,7 @@
 		UIView *darkPanel = [[UIView alloc] initWithFrame: self.bounds];
 		darkPanel.backgroundColor = [UIColor colorWithWhite: 0 alpha: 128.0/255.0];
 		[self addSubview:darkPanel];
+		_darkPanel = darkPanel;
 		
 		[self bringSubviewToFront: _mainButton];
 		
@@ -32,6 +49,7 @@
 		sendButton.frameY = offsetY;
 		sendButton.centerX = self.frame.size.width / 2;
 		[self addSubview: sendButton];
+		_sendButton = sendButton;
 		
 		UILabel *textLabel = [[UILabel alloc] init];
 		textLabel.backgroundColor = [UIColor clearColor];
@@ -44,7 +62,7 @@
 		textLabel.frameY = offsetY;
 		textLabel.centerX = sendButton.center.x;
 		[self addSubview: textLabel];
-		
+		_textLabel = textLabel;
     }
     return self;
 }

@@ -10,4 +10,6 @@
 
 @interface CheckDetailUserOverlay : CheckDetailOverlay
 
+@property (nonatomic, assign) BOOL isSendHidden;
+
 @end

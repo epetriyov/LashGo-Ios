@@ -32,6 +32,7 @@
 - (void) setUserImagesWithCheck: (LGCheck *) check;
 - (void) setUserImageWithImage: (UIImage *) image;
 - (void) setUserImageWithURLString: (NSString *) url;
+- (void) setUserImageWinnerWithURLString: (NSString *) url;
 ///Refresh buttons and drawings, images and overlays should be refreshed manually
 - (void) refresh;
 

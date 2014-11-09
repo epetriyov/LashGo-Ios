@@ -140,7 +140,9 @@
 - (void) setUserImagesWithCheck: (LGCheck *) check {
 	_winnerOverlay.fio.text = check.winnerPhoto.user.fio;
 	if (self.type == CheckDetailTypeClosed) {
-		[self setUserImageWithURLString: check.winnerPhoto.url];
+		[self setUserImageWinnerWithURLString: check.winnerPhoto.url];
+	} else if (check.userPhoto != nil) {
+		[self setUserImageWithURLString: check.userPhoto.url];
 	} else {
 		[self setUserImageWithImage: check.currentPickedUserPhoto];
 	}
@@ -162,6 +164,7 @@
 			
 			_scrollView.scrollEnabled = YES;
 			_userOverlay.hidden = NO;
+			_userOverlay.isSendHidden = NO;
 			_winnerOverlay.hidden = YES;
 		}
 		_makePhotoButton.selected = (image != nil);
@@ -169,6 +172,21 @@
 }
 
 - (void) setUserImageWithURLString: (NSString *) url {
+	[_userImageView loadWebImageWithSizeThatFitsName: url placeholder: nil];
+	if (url == nil) {
+		_scrollView.contentOffset = CGPointZero;
+		_scrollView.scrollEnabled = NO;
+		_userOverlay.hidden = YES;
+		_winnerOverlay.hidden = YES;
+	} else {
+		_scrollView.scrollEnabled = YES;
+		_userOverlay.hidden = NO;
+		_userOverlay.isSendHidden = YES;
+		_winnerOverlay.hidden = YES;
+	}
+}
+
+- (void) setUserImageWinnerWithURLString: (NSString *) url {
 	[_userImageView loadWebImageWithSizeThatFitsName: url placeholder: nil];
 	if (url == nil) {
 		_scrollView.contentOffset = CGPointZero;
@@ -191,7 +209,7 @@
 			
 			[self addSubview: _makePhotoButton];
 		}
-		_makePhotoButton.hidden = NO;
+		_makePhotoButton.hidden = _userOverlay.isSendHidden;
 		_voteButton.hidden = YES;
 	} else if (self.type == CheckDetailTypeVote) {
 		if (_voteButton == nil) {
