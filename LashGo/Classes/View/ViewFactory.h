@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) UIView *taskbarBackgroundView;
 @property (nonatomic, readonly) UIView *taskbarLightBackgroundView;
 @property (nonatomic, readonly) UIImage *timerCheckOpenImage;
+@property (nonatomic, readonly) UIImage *titleBarAvatarPlaceholder;
 @property (nonatomic, readonly) UIImage *titleBarBackgroundImage;
 @property (nonatomic, readonly) UIImage *titleBarLogoImage;
 @property (nonatomic, readonly) UIImage *userProfileAvatarPlaceholder;

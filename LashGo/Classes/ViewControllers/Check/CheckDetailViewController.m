@@ -39,10 +39,11 @@
 			sendPhotoButton = [[ViewFactory sharedFactory] titleBarSendPhotoButtonWithTarget: self
 																					  action: @selector(sendPhotoAction:)];
 		}
-		cameraButton = [[ViewFactory sharedFactory] titleBarCameraButtonWithTarget: self
-																			action: @selector(cameraAction:)];
+//		cameraButton = [[ViewFactory sharedFactory] titleBarCameraButtonWithTarget: self
+//																			action: @selector(cameraAction:)];
 	} else if (self.photo != nil) {
-		[iconButton loadWebImageWithSizeThatFitsName: self.photo.user.avatar placeholder: nil];
+		[iconButton loadWebImageWithSizeThatFitsName: self.photo.user.avatar
+										 placeholder: [ViewFactory sharedFactory].titleBarAvatarPlaceholder];
 	}
 	
 	_sendPhotoButton = sendPhotoButton;

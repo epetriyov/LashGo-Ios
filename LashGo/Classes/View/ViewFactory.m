@@ -21,7 +21,8 @@ static ViewFactory *viewFactory = nil;
 @dynamic loginViewControllerBgImage;
 @dynamic startViewControllerBgImage, startViewControllerFrameImage, startViewControllerGradientImage, statusBarPreferredColor;
 @dynamic timerCheckOpenImage;
-@dynamic taskbarBackgroundView, taskbarLightBackgroundView, titleBarBackgroundImage, titleBarLogoImage;
+@dynamic taskbarBackgroundView, taskbarLightBackgroundView;
+@dynamic titleBarAvatarPlaceholder, titleBarBackgroundImage, titleBarLogoImage;
 @dynamic userProfileAvatarPlaceholder;
 
 + (ViewFactory *) sharedFactory {
@@ -89,6 +90,10 @@ static ViewFactory *viewFactory = nil;
 
 - (UIImage *) timerCheckOpenImage {
 	return [UIImage imageNamed: @"time_open"];
+}
+
+- (UIImage *) titleBarAvatarPlaceholder {
+	return [UIImage imageNamed: @"ava_placeholder"];
 }
 
 - (UIImage *) titleBarBackgroundImage {

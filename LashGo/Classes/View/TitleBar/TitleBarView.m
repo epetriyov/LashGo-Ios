@@ -51,6 +51,7 @@
 		titleLabel.adjustsFontSizeToFitWidth = YES;
 		titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 		titleLabel.backgroundColor = [UIColor clearColor];
+		titleLabel.numberOfLines = 1;
 		titleLabel.textAlignment = NSTextAlignmentCenter;
 		titleLabel.textColor = [UIColor whiteColor];
 		titleLabel.font = [FontFactory fontWithType: FontTypeTitleBarTitle];
@@ -203,6 +204,12 @@
 		secondaryButton.centerY = centerY;
 		[titleBar addSubview: secondaryButton];
 	}
+	
+	CGFloat titleOffsetX = leftButton.frame.origin.x + leftButton.frame.size.width + 5;
+	CGFloat titleWidth = titleBar.frame.size.width - titleOffsetX * 2;
+	titleBar.titleLabel.frameX = titleOffsetX;
+	titleBar.titleLabel.frameWidth = titleWidth;
+	titleBar.titleLabel.adjustsFontSizeToFitWidth = YES;
 	
 	return titleBar;
 }
