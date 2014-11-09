@@ -200,6 +200,8 @@
 		_userOverlay.hidden = YES;
 		_winnerOverlay.hidden = YES;
 	} else {
+		[_scrollView scrollRectToVisible: CGRectOffset(_scrollView.bounds, _scrollView.frame.size.width, 0)
+								animated: NO];
 		_scrollView.scrollEnabled = YES;
 		_userOverlay.hidden = YES;
 		_winnerOverlay.hidden = NO;

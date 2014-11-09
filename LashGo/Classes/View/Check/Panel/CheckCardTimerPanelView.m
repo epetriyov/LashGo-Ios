@@ -36,10 +36,16 @@
 - (void) setTimeLeft:(NSTimeInterval)timeLeft {
 	_timeLeft = timeLeft;
 	
-	int minutesLeft = timeLeft / 60;
-	int secondsLeft = ((int)timeLeft) % 60;
-	_timeLeftLabel.text = [NSString stringWithFormat: @"%02d:%02d", minutesLeft, secondsLeft];
-	
+	int hoursLeft = timeLeft / 3600;
+	if (hoursLeft > 0) {
+		int minutesLeft = (int)timeLeft % 3600 / 60;
+		int secondsLeft = ((int)timeLeft) % 60;
+		_timeLeftLabel.text = [NSString stringWithFormat: @"%02d:%02d:%02d", hoursLeft, minutesLeft, secondsLeft];
+	} else {
+		int minutesLeft = timeLeft / 60;
+		int secondsLeft = ((int)timeLeft) % 60;
+		_timeLeftLabel.text = [NSString stringWithFormat: @"%02d:%02d", minutesLeft, secondsLeft];
+	}
 }
 
 #pragma mark - Overrides
@@ -56,7 +62,7 @@
 		
 		offsetX += _icon.frame.size.width;
 		
-		_timeLeftLabel = [[UILabel alloc] initWithFrame: CGRectMake(offsetX, 0, 50, _icon.frame.size.height)];
+		_timeLeftLabel = [[UILabel alloc] initWithFrame: CGRectMake(offsetX, 0, 60, _icon.frame.size.height)];
 		_timeLeftLabel.backgroundColor = [UIColor clearColor];
 		_timeLeftLabel.font = [FontFactory fontWithType: FontTypeVoteTimer];
 		_timeLeftLabel.textAlignment = NSTextAlignmentCenter;
