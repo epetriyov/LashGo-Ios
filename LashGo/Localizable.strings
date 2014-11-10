@@ -25,6 +25,8 @@
 "ImagePickerActionSheetLibraryTitle" = "Выбрать из галереи";
 "ImagePickerActionSheetCancelTitle" = "Отмена";
 
+"MenuActionSheetLogoutTitle" = "Выйти";
+
 //LoginViewController
 "LoginViewControllerTitle" = "Вход";
 "LoginViewControllerWelcomeText" = "С возвращением!";

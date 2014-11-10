@@ -7,6 +7,7 @@
 //
 
 #import "TaskBarViewController.h"
+#import "AuthorizationManager.h"
 
 @interface TaskBarViewController ()
 
@@ -29,12 +30,22 @@
 - (void) viewWillAppear: (BOOL) animated {
 	[super viewWillAppear: animated];
 	
+	NSArray *buttonsArray;
+	
+	if ([AuthorizationManager sharedManager].account != nil) {
+		buttonsArray = @[@(TaskbarButtonTypeTask),
+//						 @(TaskbarButtonTypeFollow),
+//						 @(TaskbarButtonTypeNews),
+						 @(TaskbarButtonTypeProfile),
+						 @(TaskbarButtonTypeMore)];
+	} else {
+		buttonsArray = @[@(TaskbarButtonTypeTask),
+ //						 @(TaskbarButtonTypeNews),
+						 @(TaskbarButtonTypeMore)];
+	}
+	
 	[ [TaskbarManager sharedManager] showTaskbarInView: self.view
-									   withButtonTypes: @[@(TaskbarButtonTypeTask),
-														  @(TaskbarButtonTypeFollow),
-														  @(TaskbarButtonTypeNews),
-														  @(TaskbarButtonTypeProfile),
-														  @(TaskbarButtonTypeMore)]
+									   withButtonTypes: buttonsArray
 										   contentType: self.taskbarContentType];
 }
 @end

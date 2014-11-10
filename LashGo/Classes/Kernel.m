@@ -13,7 +13,7 @@
 #import "AlertViewManager.h"
 #import "Common.h"
 
-@interface Kernel () {
+@interface Kernel () <UIActionSheetDelegate> {
 	DataProvider *_dataProvider;
 }
 
@@ -111,6 +111,27 @@
 	self.storage.lastViewProfileDetail = user;
 }
 
+#pragma mark - UIActionSheetDelegate implementation
+
+- (void) showMenu {
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle: nil delegate: self
+													cancelButtonTitle: @"ImagePickerActionSheetCancelTitle".commonLocalizedString
+											   destructiveButtonTitle: nil
+													otherButtonTitles: @"MenuActionSheetLogoutTitle".commonLocalizedString, nil];
+	[actionSheet showInView: viewControllersManager.rootNavigationController.topViewController.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	switch (buttonIndex) {
+		case 0:
+			[[AuthorizationManager sharedManager].account logout];
+			[viewControllersManager openStartViewController];
+			break;
+		default:
+			break;
+	}
+}
+
 #pragma mark - TaskbarManagerDelegate implementation
 
 - (void) taskbarManager: (TaskbarManager *) manager didPressTaskbarButtonWithType: (TaskbarButtonType) type {
@@ -118,6 +139,7 @@
 		case TaskbarButtonTypeFollow:
 			break;
 		case TaskbarButtonTypeMore:
+			[self showMenu];
 			break;
 		case TaskbarButtonTypeNews:
 			break;

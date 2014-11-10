@@ -18,24 +18,16 @@
 }
 
 - (void) loadContents {
-	int space = kTaskbarSpaceWidth;
-	float buttonPosition = 0;
+	float buttonWidth = self.frame.size.width / [buttonsTypes count];
 	
 	[self removeButtons];
-	for (NSNumber *buttonType in buttonsTypes) {
-		TaskbarButton *button = [[TaskbarButton alloc] initWithType: [buttonType intValue]];
+	for (ushort i = 0; i < [buttonsTypes count]; ++i) {
+		TaskbarButton *button = [[TaskbarButton alloc] initWithType: [buttonsTypes[i] intValue]];
+		button.frame = CGRectMake(buttonWidth * i, 0, buttonWidth, self.frame.size.height);
 		[button addTarget: self action: @selector(taskbarButtonPressed:) forControlEvents: UIControlEventTouchUpInside];
 		
-		CGRect frame = button.frame;
-		frame.origin.x = buttonPosition;
-		frame.origin.y = (self.frame.size.height - frame.size.height) / 2;
-		
-		button.frame = frame;
-
 		[buttons addObject: button];
 		[self performSelectorOnMainThread: @selector(insertButton:) withObject: button waitUntilDone: YES];
-		
-		buttonPosition += frame.size.width + space;
 	}
 }
 

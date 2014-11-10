@@ -147,6 +147,10 @@
 
 #pragma mark -
 
+- (void) openStartViewController {
+	[self openViewControllerAndMakeItFirst: startViewController animated: YES];
+}
+
 - (void) openCheckCardViewController {
 	[self openViewControllerAndMakeItFirst: _checkCardViewController animated: YES];
 }

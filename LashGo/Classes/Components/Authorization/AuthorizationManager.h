@@ -12,9 +12,7 @@
 
 extern NSString *const kAuthorizationNotification;
 
-@interface AuthorizationManager : NSObject <AppAccountDelegate> {
-	AppAccount *_account;
-}
+@interface AuthorizationManager : NSObject <AppAccountDelegate>
 
 @property (nonatomic, readonly) AppAccount *account;
 

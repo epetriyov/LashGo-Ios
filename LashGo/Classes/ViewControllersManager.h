@@ -61,6 +61,8 @@
 - (void) openViewControllerAboveFirst: (UIViewController *) viewController animated: (BOOL) animated;
 - (void) returnToPreviousViewController;
 
+- (void) openStartViewController;
+
 - (void) openCheckCardViewController;
 - (void) openCheckListViewController;
 - (void) openLoginViewController;

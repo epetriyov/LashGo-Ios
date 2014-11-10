@@ -110,4 +110,14 @@ NSString *const kLastUsedAccountKey = @"lg_last_used_account_type";
 	
 }
 
+- (void) logoutFinishedForAccount: (AppAccount *) account {
+	if (account == _account) {
+		NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
+		
+		_account = nil;
+		[defs removeObjectForKey: kLastUsedAccountKey];
+		[defs synchronize];
+	}
+}
+
 @end

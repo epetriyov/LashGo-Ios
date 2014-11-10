@@ -34,6 +34,7 @@
 
 - (void) logout {
 	[self cleanDataAsync];
+	[self.delegate logoutFinishedForAccount: self];
 }
 
 - (void) registerAccount {

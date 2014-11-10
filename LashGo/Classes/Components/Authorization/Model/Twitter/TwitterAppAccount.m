@@ -72,7 +72,7 @@
 }
 
 - (void) logout {
-	[self.delegate authDidFinish: NO forAccount: self];
+	[self.delegate logoutFinishedForAccount: self];
 }
 
 #pragma mark - UIActionSheetDelegate

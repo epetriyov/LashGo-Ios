@@ -120,7 +120,6 @@
 		84FEE18319E02E320067C264 /* ProfileWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEE18219E02E320067C264 /* ProfileWelcomeViewController.m */; };
 		84FF0239195EB47200B90CF9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0238195EB47200B90CF9 /* FacebookSDK.framework */; };
 		84FF0294195ED69600B90CF9 /* libVKSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0235195EB21800B90CF9 /* libVKSdk.a */; };
-		FE8F9618196D2CE400769722 /* DemoImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE8F9617196D2CE400769722 /* DemoImage.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1144,7 +1143,6 @@
 				845D858919029EB0004E10AB /* InfoPlist.strings in Resources */,
 				84FA06891961A15A006A72AE /* Localizable.strings in Resources */,
 				845D859119029EB0004E10AB /* Images.xcassets in Resources */,
-				FE8F9618196D2CE400769722 /* DemoImage.jpg in Resources */,
 				84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
