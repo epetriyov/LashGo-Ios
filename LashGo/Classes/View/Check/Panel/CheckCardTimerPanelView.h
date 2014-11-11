@@ -21,4 +21,6 @@ typedef NS_ENUM(ushort, CheckCardTimerPanelMode) {
 
 - (instancetype) initWithFrame:(CGRect)frame mode:(CheckCardTimerPanelMode) mode;
 
+- (void) setTimerHidden: (BOOL) hidden;
+
 @end

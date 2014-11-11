@@ -28,6 +28,9 @@
 - (void) loadView {
 	[super loadView];
 	
+	self.view.backgroundColor = [UIColor colorWithRed: 235.0/255.0 green: 236.0/255.0 blue: 238.0/255.0
+												alpha: 1.0];
+	
 	[_titleBarView removeFromSuperview];
 	UIButton *iconButton = [[ViewFactory sharedFactory] titleBarIconButtonWithTarget: self
 																			  action: @selector(iconAction:)];
@@ -131,7 +134,7 @@
 	float minScale = MIN(self.imageZoomView.frame.size.width / image.size.width,
 						 self.imageZoomView.frame.size.height / image.size.height);
 	self.imageZoomView.minimumZoomScale = minScale;
-	self.imageZoomView.zoomScale = scale;
+	self.imageZoomView.zoomScale = minScale;
 }
 
 #pragma mark - Actions

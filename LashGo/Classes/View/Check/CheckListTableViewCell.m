@@ -102,9 +102,16 @@
 
 - (void) setTimeLeft:(NSTimeInterval)timeLeft {
 	if (timeLeft > 0) {
-		int minutesLeft = timeLeft / 60;
-		int secondsLeft = ((int)timeLeft) % 60;
-		_timeLeftLabel.text = [NSString stringWithFormat: @"%02d:%02d", minutesLeft, secondsLeft];
+		int hoursLeft = timeLeft / 3600;
+		if (hoursLeft > 0) {
+			int minutesLeft = (int)timeLeft % 3600 / 60;
+			int secondsLeft = ((int)timeLeft) % 60;
+			_timeLeftLabel.text = [NSString stringWithFormat: @"%02d:%02d:%02d", hoursLeft, minutesLeft, secondsLeft];
+		} else {
+			int minutesLeft = timeLeft / 60;
+			int secondsLeft = ((int)timeLeft) % 60;
+			_timeLeftLabel.text = [NSString stringWithFormat: @"%02d:%02d", minutesLeft, secondsLeft];
+		}
 		_timeLeftLabel.hidden = NO;
 	} else {
 		_timeLeftLabel.hidden = YES;

@@ -8,6 +8,7 @@
 
 #import "RecoverViewController.h"
 
+#import "AlertViewManager.h"
 #import "Common.h"
 #import "FontFactory.h"
 #import "Kernel.h"
@@ -103,6 +104,10 @@
 #pragma mark - Actions
 
 - (void) recoverAction: (id) sender {
+	if ([Common isEmptyString: _emailField.text] == YES) {
+		[[AlertViewManager sharedManager] showAlertEmptyFields];
+		return;
+	}
 	[kernel.userManager recoverPasswordWithEmail: _emailField.text];
 }
 

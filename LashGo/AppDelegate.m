@@ -38,6 +38,9 @@
     self.window.backgroundColor = [UIColor whiteColor];
 	self.window.rootViewController = kernel.viewControllersManager.rootNavigationController;
     [self.window makeKeyAndVisible];
+	
+	[kernel performOnColdWakeActions];
+	
     return YES;
 }
 

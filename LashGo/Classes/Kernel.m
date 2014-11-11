@@ -73,7 +73,9 @@
 }
 
 - (void) performOnColdWakeActions {
-	
+	if ([AuthorizationManager sharedManager].account != nil) {
+		[self.checksManager openCheckCardViewController];
+	}
 }
 
 #pragma mark - DataProviderDelegate implementation

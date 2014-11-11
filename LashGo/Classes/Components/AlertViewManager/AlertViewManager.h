@@ -19,6 +19,7 @@
 - (void) showAlertViewWithError: (NSError *) error;
 - (void) showAlertViewWithTitle: (NSString *) title andMessage: (NSString *) message;
 - (void) showAlertAuthorizationFails;
+- (void) showAlertEmptyFields;
 - (void) showAlertLogoutConfirm;
 
 @end

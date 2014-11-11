@@ -7,7 +7,7 @@
 */
 
 "ErrorServerErrorParsingTitle" = "Ошибка обработки";
-"ErrorServerErrorParsingMessage" = "Ошибка сервера";
+"ErrorServerErrorParsingMessage" = "Ошибка получения данных сервера, попробуйте позже";
 
 "OK" = "OK";
 "Да" = "Да";
@@ -17,6 +17,7 @@
 "AlertAuthErrorTitle" = "Ошибка авторизации";
 "AlertAuthErrorMessage" = "Неудалось авторизоваться на сервере, повторите попытку позже";
 "AlertErrorTitle" = "Ошибка";
+"AlertEmptyFieldsMessage" = "Все поля должны быть заполнены";
 "AlertLogoutTitle" = "Выход";
 "AlertLogoutMessage" = "Вы действительно хотите выйти?";
 
@@ -90,3 +91,29 @@
 
 "Choose an Account" = "Выберите аккаунт";
 "Cancel" = "Отмена";
+
+//Web errors
+
+"user.not.exists" = "Пользователь не найден";
+"user.already_exists" = "Пользователь уже существует";
+"uuid.is_empty" = "Передан пустой идентификатор";
+"client_type.invalid" = "Неизвестный тип клиента";
+"session.expired" = "Сессия истекла";
+"registration_id.empty" = "Регистрационный идентификатор пуст";
+"session.empty" = "Сессия не найдена, авторизуйтесь";
+"session.not_exists" = "Сессия не найдена, авторизуйтесь";
+"photo.already_exists" = "Фото уже загружено";
+"photo.read_error" = "Ошибка получения фото";
+"photo.write_error" = "Ошибка сохранения фото";
+"social.unsupported" = "Социальный аккаунт не поддерживается";
+"server.internal_error" = "Внутренняя ошибка сервера";
+"check.empty_id" = "Неизвестный идентификатор чека";
+"users.not_matches" = "Ошибка идентификации пользователя";
+"email.is_empty" = "Почта не задана";
+"social.wrong_data" = "Ошибка обработки данных социального аккаунта";
+"login.already_exists" = "Пользователь уже существует";
+"email.already_exists" = "Заданная почта уже существует";
+"photo.empty_id" = "Ошибка обработки идентификатора фото";
+"subscription.already_exists" = "Подписка уже оформлена";
+"subscription_not_exists" = "Подписка не существует";
+"check.is_not_active" = "Чек не активен";

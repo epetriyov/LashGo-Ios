@@ -40,14 +40,17 @@
 		
 		@try {
 			NSDictionary *jsonDataObj = [self parseJSONData: connection.downloadedData];
-			NSDictionary *parsedError = jsonDataObj[@"result"];
+			NSDictionary *parsedError = jsonDataObj[@"error"];
 			
 			if (parsedError != nil) {
 				NSString *msg;
 				
-				msgCode = parsedError[@"msgCode"];
-				code = [parsedError[@"code"] intValue];
-				msg = parsedError[@"msg"];
+				msgCode = parsedError[@"errorCode"];
+				code = (int)connection.response.statusCode;
+				msg = msgCode.commonLocalizedString;
+				if ([msgCode isEqualToString: msg] == YES) {
+					msg = @"ErrorServerErrorParsingMessage".commonLocalizedString;
+				}
 #ifdef DEBUG
 				NSArray *parsedData = jsonDataObj[@"data"][@"fields"];
 				NSMutableString *debugString = [NSMutableString string];

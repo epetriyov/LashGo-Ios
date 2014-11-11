@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 
+#import "AlertViewManager.h"
 #import "AuthorizationManager.h"
 #import "Common.h"
 #import "CryptoUtils.h"
@@ -177,6 +178,11 @@
 }
 
 - (void) login: (id) sender {
+	if ([Common isEmptyString: _emailField.text] == YES ||
+		[Common isEmptyString: _passwordField.text] == YES) {
+		[[AlertViewManager sharedManager] showAlertEmptyFields];
+		return;
+	}
 	LGLoginInfo *loginInfo = [[LGLoginInfo alloc] init];
 	loginInfo.login = _emailField.text;
 	loginInfo.passwordHash = _passwordField.text.md5;
@@ -185,6 +191,11 @@
 }
 
 - (void) registration: (id) sender {
+	if ([Common isEmptyString: _emailField.text] == YES ||
+		[Common isEmptyString: _passwordField.text] == YES) {
+		[[AlertViewManager sharedManager] showAlertEmptyFields];
+		return;
+	}
 	LGLoginInfo *loginInfo = [[LGLoginInfo alloc] init];
 	loginInfo.login = _emailField.text;
 	loginInfo.passwordHash = _passwordField.text.md5;

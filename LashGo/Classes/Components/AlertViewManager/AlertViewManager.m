@@ -83,6 +83,15 @@
 	[alertView show];
 }
 
+- (void) showAlertEmptyFields {
+	UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle: @"AlertAuthErrorTitle".commonLocalizedString
+														 message: @"AlertEmptyFieldsMessage".commonLocalizedString
+														delegate: nil
+											   cancelButtonTitle: kAlertDefaultSingleButtonText.commonLocalizedString
+											   otherButtonTitles: nil];
+	[alertView show];
+}
+
 - (void) showAlertLogoutConfirm {
 	UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle: @"AlertLogoutTitle".commonLocalizedString
 														 message: @"AlertLogoutMessage".commonLocalizedString
