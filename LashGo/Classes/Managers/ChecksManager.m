@@ -85,6 +85,15 @@
 	}
 }
 
+- (void) openCheckCardViewControllerForCheckUID: (int64_t) checkUID {
+	for (LGCheck *item in _kernel.storage.checks) {
+		if (item.uid == checkUID) {
+			[self openCheckCardViewControllerFor: item];
+			return;
+		}
+	}
+}
+
 - (void) openCheckListViewController {
 	[_viewControllersManager openCheckListViewController];
 	if ([_kernel.storage.checks count] <= 0) {

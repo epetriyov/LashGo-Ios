@@ -232,6 +232,7 @@
 		photo.uid =	[rawPhoto[@"id"] longLongValue];
 		photo.url =	rawPhoto[@"url"];
 		photo.user = [self parseUser: rawPhoto[@"user"]];
+		photo.check = [self parseCheck: rawPhoto[@"check"]];
 		
 		photo.isBanned = [rawPhoto[@"isBanned"] boolValue];
 		photo.isWinner = [rawPhoto[@"isWinner"] boolValue];
@@ -274,6 +275,7 @@
 		
 		user.uid =		[rawUser[@"id"] intValue];
 		user.fio =		rawUser[@"fio"];
+		user.login =	rawUser[@"login"];
 //		user.about =	rawUser[@"about"];
 //		user.city =		rawUser[@"city"];
 //		user.birthDate;

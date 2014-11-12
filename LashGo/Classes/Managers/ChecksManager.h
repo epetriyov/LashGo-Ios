@@ -32,6 +32,7 @@
 
 - (void) openCheckCardViewController;
 - (void) openCheckCardViewControllerFor: (LGCheck *) check;
+- (void) openCheckCardViewControllerForCheckUID: (int64_t) checkUID;
 - (void) openCheckListViewController;
 
 - (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check;

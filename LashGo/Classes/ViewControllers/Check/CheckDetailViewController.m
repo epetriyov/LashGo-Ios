@@ -45,8 +45,14 @@
 //		cameraButton = [[ViewFactory sharedFactory] titleBarCameraButtonWithTarget: self
 //																			action: @selector(cameraAction:)];
 	} else if (self.photo != nil) {
-		[iconButton loadWebImageWithSizeThatFitsName: self.photo.user.avatar
-										 placeholder: [ViewFactory sharedFactory].titleBarAvatarPlaceholder];
+		if (self.photo.user != nil) {
+			[iconButton loadWebImageWithSizeThatFitsName: self.photo.user.avatar
+											 placeholder: [ViewFactory sharedFactory].titleBarAvatarPlaceholder];
+		} else {
+			[iconButton loadWebImageWithSizeThatFitsName: self.photo.check.taskPhotoUrl
+											 placeholder: nil];
+		}
+		
 	}
 	
 	_sendPhotoButton = sendPhotoButton;
@@ -56,7 +62,11 @@
 	if (self.check != nil) {
 		tbView.titleLabel.text = self.check.name;
 	} else if (self.photo != nil) {
-		tbView.titleLabel.text = self.photo.user.fio;
+		if (self.photo.user != nil) {
+			tbView.titleLabel.text = self.photo.user.fio;
+		} else {
+			tbView.titleLabel.text = self.photo.check.name;
+		}
 	}
 	
 	[tbView.backButton addTarget: self action: @selector(backAction:)
@@ -143,7 +153,11 @@
 	if (self.check != nil) {
 		[kernel.checksManager openCheckCardViewControllerFor: self.check];
 	} else if (self.photo != nil) {
-		[kernel.userManager openProfileViewControllerWith: self.photo.user];
+		if (self.photo.user != nil) {
+			[kernel.userManager openProfileViewControllerWith: self.photo.user];
+		} else if (self.photo.check != nil) {
+			[kernel.checksManager openCheckCardViewControllerForCheckUID: self.photo.check.uid];
+		}
 	}
 }
 

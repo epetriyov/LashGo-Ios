@@ -96,6 +96,11 @@
 		//Bottom to top
 		float offsetY = self.frame.size.height - 62;
 //		62
+		UIView *bgView = [[UIView alloc] initWithFrame: CGRectMake(0, offsetY,
+																   self.frame.size.width, 62)];
+		bgView.backgroundColor = [UIColor colorWithWhite: 0 alpha: 0.3];
+		[self addSubview: bgView];
+		
 		_fioLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.frame.size.width, 22)];
 		_fioLabel.backgroundColor = [UIColor clearColor];
 		_fioLabel.font = [FontFactory fontWithType: FontTypeProfileFIO];
