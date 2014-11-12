@@ -78,6 +78,7 @@ NSString *const kLastUsedSessionId = @"lg_last_used_session_id";
 #pragma mark -
 
 - (void) cleanDataAsync {
+	self.sessionID = nil;
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		NSString *path = [[FileManager cachesDirectory] stringByAppendingPathComponent: kUserInfoFileName];
 		[FileManager deleteFileAtPath: path];

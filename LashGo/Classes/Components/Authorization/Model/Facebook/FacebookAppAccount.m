@@ -12,6 +12,12 @@
 
 #import "Common.h"
 
+@interface FacebookAppAccount ()
+
+@property (nonatomic, assign) BOOL logoutProcess;
+
+@end
+
 @implementation FacebookAppAccount
 
 #pragma mark - Properties
@@ -136,7 +142,14 @@
 //		}
 	}else if (FB_ISSESSIONSTATETERMINAL(state)){
 //		if (authingSHKFacebook == self) {	// the state can change for a lot of reasons that are out of the login loop
-		[self.delegate authDidFinish: NO forAccount: self];
+		if (self.logoutProcess == YES) {
+			self.logoutProcess = NO;
+
+			[self.delegate logoutFinishedForAccount: self];
+		} else {
+			[self.delegate authDidFinish: NO forAccount: self];
+		}
+		
 //		}else{
 //			// seems that if you expire the tolken that it thinks is valid it will close the session without reporting
 //			// errors super awesome. So look for the errors in the FBRequestHandlerCallback
@@ -173,6 +186,7 @@
 }
 
 - (void) logout {
+	self.logoutProcess = YES;
 	// if a user logs out explicitly, we delete any cached token information, and next
 	// time they run the applicaiton they will be presented with log in UX again; most
 	// users will simply close the app or switch away, without logging out; this will
