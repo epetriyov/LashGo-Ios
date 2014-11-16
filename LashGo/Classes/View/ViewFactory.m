@@ -46,11 +46,11 @@ static ViewFactory *viewFactory = nil;
 }
 
 - (UIImage *) gradientPhotoTopImage {
-	return [self getImageWithName: @"gradient_photo_top"];
+	return [UIImage imageNamed: @"gradient_photo_top"];
 }
 
 - (UIImage *) gradientPhotoBottomImage {
-	return [self getImageWithName: @"gradient_photo_bottom"];
+	return [UIImage imageNamed: @"gradient_photo_bottom"];
 }
 
 - (UIImage *) iconEmail {
