@@ -18,6 +18,7 @@
 - (void) loadWebImageWithName: (NSString *) imageName
 			 placeholderImage: (UIImage *)placeholder completed:(SDWebImageCompletionBlock)completedBlock;
 - (void) loadWebImageWithSizeThatFitsName: (NSString *) imageName placeholder: (UIImage *) placeholder;
+- (void) loadWebImageShadedWithSizeThatFitsName: (NSString *) imageName placeholder: (UIImage *) placeholder;
 
 - (void) cancelWebImageLoad;
 

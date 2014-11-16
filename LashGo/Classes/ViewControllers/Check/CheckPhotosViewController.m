@@ -46,7 +46,8 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 			_checkHeaderView.titleLabel.text = check.name;
 			[_checkHeaderView setDescriptionText: check.descr];
 			[_checkHeaderView.simpleDetailView.imageView loadWebImageWithSizeThatFitsName: check.taskPhotoUrl placeholder: nil];
-			[_winnerButton loadWebImageWithSizeThatFitsName: check.winnerPhoto.url placeholder: nil];
+			[_winnerButton loadWebImageShadedWithSizeThatFitsName: check.winnerPhoto.url placeholder: nil];
+			[_winnerButton setTitle: check.winnerPhoto.user.fio forState: UIControlStateNormal];
 		}
 	}
 }
@@ -91,8 +92,11 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 	[self.view addSubview: contentScrollView];
 	
 	UIButton *winnerButton = [[UIButton alloc] initWithFrame: contentScrollView.bounds];
-	[winnerButton loadWebImageWithSizeThatFitsName: self.check.winnerPhoto.url placeholder: nil];
+	[winnerButton loadWebImageShadedWithSizeThatFitsName: self.check.winnerPhoto.url placeholder: nil];
 	[winnerButton addTarget: self action: @selector(winnerAction:) forControlEvents: UIControlEventTouchUpInside];
+	winnerButton.titleEdgeInsets = UIEdgeInsetsMake(winnerButton.frame.size.height - 30, 0, 0, 0);
+	winnerButton.titleLabel.font = [FontFactory fontWithType: FontTypeCheckPhotosWinnerTitle];
+	[winnerButton setTitle: self.check.winnerPhoto.user.fio forState: UIControlStateNormal];
 	[contentScrollView addSubview:winnerButton];
 	_winnerButton = winnerButton;
 	

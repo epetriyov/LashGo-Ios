@@ -8,6 +8,8 @@
 
 #import "Common.h"
 
+#import "ViewFactory.h"
+
 static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 
 @implementation NSString (CommonExtension)
@@ -180,7 +182,7 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
     return squareImage;
 }
 
-+ (UIImage *) generateThumbnailForImage: (UIImage *) image withSize: (CGSize) size {
++ (UIImage *) generateThumbnailForImage: (UIImage *) image withSize: (CGSize) size gradient: (BOOL) gradient {
 //	CGFloat imageDiameter = MIN(self.frame.size.width, self.frame.size.height) - self.imageCaps * 2;
 	CGRect contextBounds = CGRectZero;
 //	contextBounds.size = CGSizeMake(imageDiameter, imageDiameter);
@@ -192,6 +194,19 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 	UIGraphicsBeginImageContextWithOptions(contextBounds.size, YES, 0.0);
 	
 	[squareImage drawInRect:contextBounds];
+	if (gradient == YES) {
+		UIImage *gradientTop = [ViewFactory sharedFactory].gradientPhotoTopImage;
+		UIImage *gradientBottom = [ViewFactory sharedFactory].gradientPhotoBottomImage;
+		CGRect topRect = contextBounds;
+		topRect.size.height = gradientTop.size.height;
+		CGRect bottomRect = contextBounds;
+		bottomRect.size.height = gradientBottom.size.height;
+		bottomRect.origin.y = contextBounds.size.height - gradientBottom.size.height;
+		
+		[gradientTop drawInRect: topRect];
+		[gradientBottom drawInRect: bottomRect];
+	}
+	
 	UIImage *scaledImage = UIGraphicsGetImageFromCurrentImageContext();
 	//	//Should be stored with scale == 1 for correct image dpi settings
 	//	UIImage *imageToStore = [UIImage imageWithCGImage: scaledImage.CGImage
@@ -210,6 +225,10 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 	//	UIImage *storedImage = [UIImage imageWithContentsOfFile: filePath];
 	
 	return scaledImage;
+}
+
++ (UIImage *) generateThumbnailForImage: (UIImage *) image withSize: (CGSize) size {
+	return [self generateThumbnailForImage: image withSize: size gradient: NO];
 }
 
 #pragma mark -

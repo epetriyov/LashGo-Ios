@@ -16,6 +16,7 @@ static ViewFactory *viewFactory = nil;
 #define kResourceSuffixBackground @"_bg"
 
 @dynamic checkDetailWinnerLed;
+@dynamic gradientPhotoTopImage, gradientPhotoBottomImage;
 @dynamic iconEmail, iconPassword;
 @dynamic lgLogoImage;
 @dynamic loginViewControllerBgImage;
@@ -42,6 +43,14 @@ static ViewFactory *viewFactory = nil;
 
 - (UIImage *) checkDetailWinnerLed {
 	return [self getImageWithName: @"led_win"];
+}
+
+- (UIImage *) gradientPhotoTopImage {
+	return [self getImageWithName: @"gradient_photo_top"];
+}
+
+- (UIImage *) gradientPhotoBottomImage {
+	return [self getImageWithName: @"gradient_photo_bottom"];
 }
 
 - (UIImage *) iconEmail {

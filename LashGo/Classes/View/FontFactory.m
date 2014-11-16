@@ -11,7 +11,8 @@
 
 + (UIFont *) fontWithType: (FontType) fontType {
 	switch (fontType) {
-		case FontTypeCheckCardDescription:		return [UIFont fontWithName: kDefaultFontMedium size: 16];
+		case FontTypeCheckCardDescription:
+		case FontTypeCheckPhotosWinnerTitle:	return [UIFont fontWithName: kDefaultFontMedium size: 16];
 		case FontTypeCheckCardTitle:			return [UIFont fontWithName: kDefaultFont size: 20];
 		case FontTypeCheckListCellTitle:		return [UIFont fontWithName: kDefaultFontBold size: 14];
 		case FontTypeCheckListCellDescription:	return [UIFont fontWithName: kDefaultFont size: 12];
@@ -61,6 +62,7 @@
 		case FontTypeLoginRestorePass:
 		case FontTypeLoginSocialLabel:		return [UIColor colorWithWhite: 1.0 alpha: 229.0/255.0];
 		case FontTypeCheckDetailWinnerFIO:
+		case FontTypeCheckPhotosWinnerTitle:
 		case FontTypeCountersTitle:
 		case FontTypeLoginActionBtnTitle:
 		case FontTypeLoginWelcomeText:

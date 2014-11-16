@@ -133,7 +133,7 @@
 }
 
 - (void) setUserData: (LGUser *) user {
-	[_avatarImageView loadWebImageWithSizeThatFitsName: user.avatar
+	[_avatarImageView loadWebImageShadedWithSizeThatFitsName: user.avatar
 										   placeholder: [ViewFactory sharedFactory].userProfileAvatarPlaceholder];
 	NSString *format = @"%0d ";
 	_subscribesCountLabel.text =	[[NSString alloc] initWithFormat: format, user.userSubscribes];

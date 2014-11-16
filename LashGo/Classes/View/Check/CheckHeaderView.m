@@ -10,6 +10,7 @@
 
 #import "CheckSimpleDetailView.h"
 #import "FontFactory.h"
+#import "UIView+CGExtension.h"
 
 @interface CheckHeaderView () {
 	UILabel *_timeLeftLabel;
@@ -62,6 +63,7 @@
 
 - (void) setDescriptionText: (NSString *) text {
 	_descriptionLabel.text = text;
+	_descriptionLabel.frameWidth = self.titleLabel.frame.size.width;
 	[_descriptionLabel sizeToFit];
 }
 
