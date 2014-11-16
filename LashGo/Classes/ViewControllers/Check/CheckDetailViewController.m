@@ -139,12 +139,11 @@
 	[self.imageView sizeToFit];
 	self.imageZoomView.contentSize = image.size;
 	
-	float scale = MAX(self.imageZoomView.frame.size.width / image.size.width,
-					  self.imageZoomView.frame.size.height / image.size.height);
-	float minScale = MIN(self.imageZoomView.frame.size.width / image.size.width,
+	float scale = self.imageZoomView.frame.size.width / image.size.width;
+	float minScale = MIN(scale,
 						 self.imageZoomView.frame.size.height / image.size.height);
 	self.imageZoomView.minimumZoomScale = minScale;
-	self.imageZoomView.zoomScale = minScale;
+	self.imageZoomView.zoomScale = scale;
 }
 
 #pragma mark - Actions

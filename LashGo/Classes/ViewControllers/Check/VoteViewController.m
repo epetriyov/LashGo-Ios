@@ -8,7 +8,7 @@
 
 #import "VoteViewController.h"
 
-#import "CheckSimpleDetailView.h"
+#import "CheckHeaderView.h"
 #import "Common.h"
 #import "FontFactory.h"
 #import "Kernel.h"
@@ -22,10 +22,7 @@ static NSString *const kObservationKeyPath = @"checkVotePhotos";
 static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusableId";
 
 @interface VoteViewController () <UICollectionViewDataSource, UICollectionViewDelegate, VotePanelViewDelegate> {
-	CheckSimpleDetailView __weak *_checkView;
-	UILabel __weak *_checkTitleLabel;
-	UILabel __weak *_checkDescriptionLabel;
-	UILabel *_timeLeftLabel;
+	CheckHeaderView __weak *_checkHeaderView;
 	
 	NSTimer *_progressTimer;
 	
@@ -47,9 +44,10 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 		_check = check;
 		
 		if (check != nil) {
-			_checkTitleLabel.text = check.name;
-			_checkDescriptionLabel.text = check.descr;
-			[_checkView.imageView loadWebImageWithSizeThatFitsName: check.taskPhotoUrl placeholder: nil];
+			_checkHeaderView.titleLabel.text = check.name;
+			[_checkHeaderView setDescriptionText: check.descr];
+			[_checkHeaderView.simpleDetailView.imageView loadWebImageWithSizeThatFitsName: check.taskPhotoUrl
+																			  placeholder: nil];
 		}
 	}
 }
@@ -73,54 +71,18 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 	
 	float offsetY = self.contentFrame.origin.y;
 	
-	UIView *checkDetailsView = [[UIView alloc] initWithFrame: CGRectMake(0, offsetY, self.view.frame.size.width,
-																		 kCheckBarHeight)];
-	checkDetailsView.backgroundColor = [UIColor whiteColor];
-	[self.view addSubview: checkDetailsView];
+	CheckHeaderView *checkView = [[CheckHeaderView alloc] initWithFrame: CGRectMake(0, offsetY,
+																					self.view.frame.size.width,
+																					kCheckBarHeight)];
+	checkView.titleLabel.text = _check.name;
+	[checkView setDescriptionText: _check.descr];
+	checkView.simpleDetailView.type = CheckDetailTypeVote;
+	[checkView.simpleDetailView.imageView loadWebImageWithSizeThatFitsName: _check.taskPhotoUrl
+															   placeholder: nil];
+	[self.view addSubview: checkView];
+	_checkHeaderView = checkView;
 	
-	float checkViewOffsetX = 10;
-	float checkViewOffsetY = 7;
-	
-	CheckSimpleDetailView *checkView = [[CheckSimpleDetailView alloc] initWithFrame: CGRectMake(checkViewOffsetX,
-																					checkViewOffsetY,
-																					44, 44)
-											  imageCaps: 4 progressLineWidth: 2];
-	checkView.type = CheckDetailTypeVote;
-	[checkView.imageView loadWebImageWithSizeThatFitsName: _check.taskPhotoUrl placeholder: nil];
-	[checkDetailsView addSubview: checkView];
-	_checkView = checkView;
-	
-	checkViewOffsetX += checkView.frame.size.width + 11;
-	
-	UILabel *checkTitleLabel = [[UILabel alloc] initWithFrame: CGRectMake(checkViewOffsetX, checkViewOffsetY,
-																		  checkDetailsView.frame.size.width - checkViewOffsetX, 15)];
-	checkTitleLabel.font = [FontFactory fontWithType: FontTypeVoteCheckTitle];
-	checkTitleLabel.textColor = [FontFactory fontColorForType: FontTypeVoteCheckTitle];
-	checkTitleLabel.text = _check.name;
-	[checkDetailsView addSubview: checkTitleLabel];
-	_checkTitleLabel = checkTitleLabel;
-	
-	checkViewOffsetY += checkTitleLabel.frame.size.height + 3;
-	
-	UILabel *checkDescriptionLabel = [[UILabel alloc] initWithFrame: CGRectMake(checkViewOffsetX, checkViewOffsetY,
-																				checkTitleLabel.frame.size.width,
-																				checkDetailsView.frame.size.height - checkViewOffsetY)];
-	checkDescriptionLabel.font = [FontFactory fontWithType: FontTypeVoteCheckDescription];
-	checkDescriptionLabel.textColor = [FontFactory fontColorForType: FontTypeVoteCheckDescription];
-	checkDescriptionLabel.numberOfLines = 3;
-	checkDescriptionLabel.text = _check.descr;
-	[checkDescriptionLabel sizeToFit];
-	[checkDetailsView addSubview: checkDescriptionLabel];
-	_checkDescriptionLabel = checkDescriptionLabel;
-	
-	_timeLeftLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, _checkView.frame.origin.y + _checkView.frame.size.height, checkViewOffsetX, 26)];
-	_timeLeftLabel.backgroundColor = [UIColor clearColor];
-	_timeLeftLabel.font = [FontFactory fontWithType: FontTypeVoteTimer];
-	_timeLeftLabel.textAlignment = NSTextAlignmentCenter;
-	_timeLeftLabel.textColor = [FontFactory fontColorForType: FontTypeVoteTimer];
-	[checkDetailsView addSubview: _timeLeftLabel];
-	
-	offsetY += checkDetailsView.frame.size.height;
+	offsetY += checkView.frame.size.height;
 	
 	//Configure pager label
 	float pagerLabelHeight = 30;
@@ -197,28 +159,15 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 //	_votePanelView.type = VotePanelTypeNext;
 }
 
-- (void) setTimeLeft:(NSTimeInterval)timeLeft {
-	int hoursLeft = timeLeft / 3600;
-	if (hoursLeft > 0) {
-		int minutesLeft = (int)timeLeft % 3600 / 60;
-		int secondsLeft = ((int)timeLeft) % 60;
-		_timeLeftLabel.text = [NSString stringWithFormat: @"%02d:%02d:%02d", hoursLeft, minutesLeft, secondsLeft];
-	} else {
-		int minutesLeft = timeLeft / 60;
-		int secondsLeft = ((int)timeLeft) % 60;
-		_timeLeftLabel.text = [NSString stringWithFormat: @"%02d:%02d", minutesLeft, secondsLeft];
-	}
-}
-
 - (void) refresh {
 	NSTimeInterval now = [NSDate timeIntervalSinceReferenceDate];
 	
 	if (now > _check.closeDate) {
-		_checkView.type = CheckDetailTypeClosed;
+		_checkHeaderView.simpleDetailView.type = CheckDetailTypeClosed;
 	}
 	
-	if (_checkView.type == CheckDetailTypeVote) {
-		[self setTimeLeft: fdim(_check.closeDate, now)];
+	if (_checkHeaderView.simpleDetailView.type == CheckDetailTypeVote) {
+		[_checkHeaderView setTimeLeft: fdim(_check.closeDate, now)];
 	}
 }
 

@@ -95,6 +95,7 @@
 		84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */; };
 		84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */; };
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
+		84EC27A21A18AC25006317C2 /* CheckHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC27A11A18AC25006317C2 /* CheckHeaderView.m */; };
 		84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC84F1197D4666001FA1F6 /* SearchViewController.m */; };
 		84EEE4A819C9B019009F83C6 /* LGCheckCounters.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE4A719C9B019009F83C6 /* LGCheckCounters.m */; };
 		84EEE4B219C9B21F009F83C6 /* CheckCardCountersPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE4B119C9B21F009F83C6 /* CheckCardCountersPanelView.m */; };
@@ -336,6 +337,8 @@
 		84EB47391943025F001DEF81 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		84EB473B1943044C001DEF81 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		84EB473C1943044C001DEF81 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		84EC27A01A18AC25006317C2 /* CheckHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckHeaderView.h; sourceTree = "<group>"; };
+		84EC27A11A18AC25006317C2 /* CheckHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckHeaderView.m; sourceTree = "<group>"; };
 		84EC84F0197D4666001FA1F6 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		84EC84F1197D4666001FA1F6 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		84EEE4A619C9B019009F83C6 /* LGCheckCounters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCheckCounters.h; sourceTree = "<group>"; };
@@ -906,6 +909,8 @@
 				84EEE4AF19C9B1E0009F83C6 /* Panel */,
 				84F8E8A1199B5C580054C9F8 /* CheckCardCollectionCell.h */,
 				84F8E8A2199B5C580054C9F8 /* CheckCardCollectionCell.m */,
+				84EC27A01A18AC25006317C2 /* CheckHeaderView.h */,
+				84EC27A11A18AC25006317C2 /* CheckHeaderView.m */,
 				849DD0C1199C9D5800DC86F6 /* CheckListTableViewCell.h */,
 				849DD0C2199C9D5800DC86F6 /* CheckListTableViewCell.m */,
 			);
@@ -1217,6 +1222,7 @@
 				8491557E19080301008D9120 /* RootNavigationController.m in Sources */,
 				840425D119CB167900C5EDBF /* UIImageView+LGImagesExtension.m in Sources */,
 				841BBF2A19FFDA38003A1FDC /* LGVoteAction.m in Sources */,
+				84EC27A21A18AC25006317C2 /* CheckHeaderView.m in Sources */,
 				8406250A193082020067C1CA /* NetworkDownloader.m in Sources */,
 				8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */,
 				84F8E8AC199BA7620054C9F8 /* CheckListViewController.m in Sources */,
