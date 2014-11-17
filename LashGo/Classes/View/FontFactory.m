@@ -22,7 +22,7 @@
 		case FontTypeLoginInputField:			return [UIFont fontWithName: kDefaultFontLight size: 17];
 		case FontTypeProfileFIO:				return [UIFont fontWithName: kDefaultFontMedium size: 21];
 		case FontTypeProfileLabels:				return [UIFont fontWithName: kDefaultFont size: 12];
-		case FontTypeProfileLabelsCount:		return [UIFont fontWithName: kDefaultFont size: 16];
+		case FontTypeProfileLabelsCount:		return [UIFont fontWithName: kDefaultFont size: 14];
 		case FontTypeProfileLabelsFollowCount:	return [UIFont fontWithName: kDefaultFont size: 19];
 		case FontTypeLoginRestorePass:
 		case FontTypeVoteCheckDescription:		return [UIFont fontWithName: kDefaultFont size: 13];

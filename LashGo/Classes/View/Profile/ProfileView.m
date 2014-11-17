@@ -21,12 +21,7 @@
 	UILabel *_subscribesCountLabel;
 	UILabel *_subscribersLabel;
 	UILabel *_subscribersCountLabel;
-	UILabel *_checksLabel;
-	UILabel *_checksCountLabel;
-	UILabel *_commentsLabel;
-	UILabel *_commentsCountLabel;
-	UILabel *_likesLabel;
-	UILabel *_likesCountLabel;
+	UILabel *_countersLabel;
 	
 	UILabel *_fioLabel;
 }
@@ -108,26 +103,20 @@
 		_fioLabel.textColor = [FontFactory fontColorForType: FontTypeProfileFIO];
 		[self addSubview: _fioLabel];
 		
-//		_checksLabel = [[UILabel alloc] init];
-//		_checksLabel.backgroundColor = [UIColor clearColor];
-//		_checksLabel.font = [FontFactory fontWithType: FontTypeProfileLabels];
-//		_checksLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabels];
-//		_checksLabel.text = @"ProfileViewControllerChecksCountLabel".commonLocalizedString;
-//		[_checksLabel sizeToFit];
-//		
-//		_commentsLabel = [[UILabel alloc] init];
-//		_commentsLabel.backgroundColor = [UIColor clearColor];
-//		_commentsLabel.font = [FontFactory fontWithType: FontTypeProfileLabels];
-//		_commentsLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabels];
-//		_commentsLabel.text = @"ProfileViewControllerCommentsCountLabel".commonLocalizedString;
-//		[_commentsLabel sizeToFit];
-//		
-//		_likesLabel = [[UILabel alloc] init];
-//		_likesLabel.backgroundColor = [UIColor clearColor];
-//		_likesLabel.font = [FontFactory fontWithType: FontTypeProfileLabels];
-//		_likesLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabels];
-//		_likesLabel.text = @"ProfileViewControllerLikesCountLabel".commonLocalizedString;
-//		[_likesLabel sizeToFit];
+		offsetY += _fioLabel.frame.size.height;
+		
+		UIView *line = [[UIView alloc] initWithFrame: CGRectMake(0, offsetY, self.frame.size.width, 1)];
+		line.backgroundColor = [UIColor colorWithWhite: 1 alpha: 77.0/255.0];
+		[self addSubview: line];
+		
+		_countersLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.frame.size.width,
+																	self.frame.size.height - offsetY)];
+		_countersLabel.backgroundColor = [UIColor clearColor];
+		_countersLabel.font = [FontFactory fontWithType: FontTypeProfileLabelsCount];
+		_countersLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabelsCount];
+		_countersLabel.text = [NSString stringWithFormat: @"ProfileViewControllerCountersLabelFormat".commonLocalizedString, 0, 0, 0];
+		_countersLabel.textAlignment = NSTextAlignmentCenter;
+		[self addSubview: _countersLabel];
     }
     return self;
 }
@@ -138,20 +127,9 @@
 	NSString *format = @"%0d ";
 	_subscribesCountLabel.text =	[[NSString alloc] initWithFormat: format, user.userSubscribes];
 	_subscribersCountLabel.text =	[[NSString alloc] initWithFormat: format, user.userSubscribers];
-	_checksCountLabel.text =		[[NSString alloc] initWithFormat: format, user.checksCount];
-	_commentsCountLabel.text =		[[NSString alloc] initWithFormat: format, user.commentsCount];
-	_likesCountLabel.text =			[[NSString alloc] initWithFormat: format, user.likesCount];
+	_countersLabel.text =			[[NSString alloc] initWithFormat: @"ProfileViewControllerCountersLabelFormat".commonLocalizedString, user.checksCount, user.commentsCount, user.likesCount];
 	
 	_fioLabel.text = user.fio;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end
