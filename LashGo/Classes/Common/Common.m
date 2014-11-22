@@ -107,6 +107,32 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 	}
 }
 
+PluralFormType pluralForm(int32_t number) {
+	if (number % 10 == 1 && number % 100 != 11) {
+		return PluralFormTypeOne;
+	} else if (number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 12 || number % 100 > 14)) {
+		return PluralFormTypeFew;
+	} else {
+		return PluralFormTypeMany;
+	}
+}
+
++ (NSString *) pluralSuffix: (int32_t) number {
+	NSString *pluralSuffix;
+	switch (pluralForm(number)) {
+		case PluralFormTypeOne:
+			pluralSuffix = @"One";
+			break;
+		case PluralFormTypeFew:
+			pluralSuffix = @"Few";
+			break;
+		default:
+			pluralSuffix = @"Many";
+			break;
+	}
+	return pluralSuffix;
+}
+
 #pragma mark - 
 
 + (UIImage *) imageFromImage: (UIImage *) image withAspectedSize: (CGSize) size {

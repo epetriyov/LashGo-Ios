@@ -19,6 +19,12 @@
 
 @end
 
+typedef NS_ENUM(ushort, PluralFormType) {
+	PluralFormTypeOne,
+	PluralFormTypeFew,
+	PluralFormTypeMany
+};
+
 @interface Common : NSObject
 
 + (NSString *) appBuild;
@@ -30,6 +36,9 @@
 
 + (BOOL) is568hMode;
 + (BOOL) isEmptyString: (NSString *) string;
+
+PluralFormType pluralForm(int32_t number);
++ (NSString *) pluralSuffix: (int32_t) number;
 
 + (UIImage *) generateThumbnailForImage: (UIImage *) image withSize: (CGSize) size;
 + (UIImage *) generateThumbnailForImage: (UIImage *) image withSize: (CGSize) size gradient: (BOOL) gradient;

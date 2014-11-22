@@ -46,9 +46,27 @@
 "ProfileWelcomeViewControllerContinueBtnTitle" = "ПРОДОЛЖИТЬ";
 
 //ProfileViewController
-"ProfileViewControllerSubscribesLabel" = "подписок";
-"ProfileViewControllerSubscribersLabel" = "подписчиков";
-"ProfileViewControllerCountersLabelFormat" = "%0d чеков • %0d коментариев • %0d лайков";
+"ProfileViewControllerSubscribesOne" = "подписка";
+"ProfileViewControllerSubscribesFew" = "подписки";
+"ProfileViewControllerSubscribesMany" = "подписок";
+
+"ProfileViewControllerSubscribersOne" = "подписчик";
+"ProfileViewControllerSubscribersFew" = "подписчика";
+"ProfileViewControllerSubscribersMany" = "подписчиков";
+
+"ProfileViewControllerCountersCheckOne" = "чек";
+"ProfileViewControllerCountersCheckFew" = "чека";
+"ProfileViewControllerCountersCheckMany" = "чеков";
+
+"ProfileViewControllerCountersCommentOne" = "коментарий";
+"ProfileViewControllerCountersCommentFew" = "коментария";
+"ProfileViewControllerCountersCommentMany" = "коментариев";
+
+"ProfileViewControllerCountersLikeOne" = "лайк";
+"ProfileViewControllerCountersLikeFew" = "лайка";
+"ProfileViewControllerCountersLikeMany" = "лайков";
+
+"ProfileViewControllerCountersLabelFormat" = "%0d %@ • %0d %@ • %0d %@";
 
 //RecoverViewController
 "RecoverViewControllerTitle" = "Восстановление пароля";

@@ -52,7 +52,8 @@
 		_subscribesLabel.backgroundColor = [UIColor clearColor];
 		_subscribesLabel.font = [FontFactory fontWithType: FontTypeProfileLabels];
 		_subscribesLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabels];
-		_subscribesLabel.text = @"ProfileViewControllerSubscribesLabel".commonLocalizedString;
+		_subscribesLabel.text = [@"ProfileViewControllerSubscribes" stringByAppendingString:
+								 [Common pluralSuffix: 0]].commonLocalizedString;
 		[_subscribesLabel sizeToFit];
 		_subscribesLabel.frameY = bottomOffsetY - _subscribesLabel.frame.size.height;
 		_subscribesLabel.frameX = frame.size.width - _subscribesLabel.frame.size.width - followCaps;
@@ -73,7 +74,8 @@
 		_subscribersLabel.backgroundColor = [UIColor clearColor];
 		_subscribersLabel.font = [FontFactory fontWithType: FontTypeProfileLabels];
 		_subscribersLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabels];
-		_subscribersLabel.text = @"ProfileViewControllerSubscribersLabel".commonLocalizedString;
+		_subscribersLabel.text = [@"ProfileViewControllerSubscribers" stringByAppendingString:
+								  [Common pluralSuffix: 0]].commonLocalizedString;
 		[_subscribersLabel sizeToFit];
 		_subscribersLabel.frameY = bottomOffsetY - _subscribersLabel.frame.size.height;
 		_subscribersLabel.frameX = frame.size.width - _subscribersLabel.frame.size.width - followCaps;
@@ -114,11 +116,26 @@
 		_countersLabel.backgroundColor = [UIColor clearColor];
 		_countersLabel.font = [FontFactory fontWithType: FontTypeProfileLabelsCount];
 		_countersLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabelsCount];
-		_countersLabel.text = [NSString stringWithFormat: @"ProfileViewControllerCountersLabelFormat".commonLocalizedString, 0, 0, 0];
+		_countersLabel.text = [self pluralizedStringWithChecks: 0 comments: 0 likes: 0];
 		_countersLabel.textAlignment = NSTextAlignmentCenter;
 		[self addSubview: _countersLabel];
     }
     return self;
+}
+
+
+- (NSString *) pluralizedStringWithChecks: (int32_t) checksCount
+								 comments: (int32_t) commentsCount
+									likes: (int32_t) likesCount {
+	NSString *checksCountLabel = [@"ProfileViewControllerCountersCheck" stringByAppendingString:
+								  [Common pluralSuffix: checksCount]].commonLocalizedString;
+	NSString *commentsCountLabel = [@"ProfileViewControllerCountersComment" stringByAppendingString:
+									[Common pluralSuffix: commentsCount]].commonLocalizedString;
+	NSString *likesCountLabel = [@"ProfileViewControllerCountersLike" stringByAppendingString:
+								 [Common pluralSuffix: likesCount]].commonLocalizedString;
+	
+	return [NSString stringWithFormat: @"ProfileViewControllerCountersLabelFormat".commonLocalizedString,
+			checksCount, checksCountLabel, commentsCount, commentsCountLabel, likesCount, likesCountLabel];
 }
 
 - (void) setUserData: (LGUser *) user {
@@ -126,8 +143,14 @@
 										   placeholder: [ViewFactory sharedFactory].userProfileAvatarPlaceholder];
 	NSString *format = @"%0d ";
 	_subscribesCountLabel.text =	[[NSString alloc] initWithFormat: format, user.userSubscribes];
+	_subscribesLabel.text = [@"ProfileViewControllerSubscribes" stringByAppendingString:
+							 [Common pluralSuffix: user.userSubscribes]].commonLocalizedString;
 	_subscribersCountLabel.text =	[[NSString alloc] initWithFormat: format, user.userSubscribers];
-	_countersLabel.text =			[[NSString alloc] initWithFormat: @"ProfileViewControllerCountersLabelFormat".commonLocalizedString, user.checksCount, user.commentsCount, user.likesCount];
+	_subscribersLabel.text = [@"ProfileViewControllerSubscribers" stringByAppendingString:
+							  [Common pluralSuffix: user.userSubscribers]].commonLocalizedString;
+	_countersLabel.text =			[self pluralizedStringWithChecks: user.checksCount
+													comments:user.commentsCount
+													   likes:user.likesCount];
 	
 	_fioLabel.text = user.fio;
 }
