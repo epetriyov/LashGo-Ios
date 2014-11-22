@@ -216,7 +216,11 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	
 	cell.textLabel.text = item.name;
 	cell.detailTextLabel.text = item.descr;
-	[cell.checkView.imageView loadWebImageWithSizeThatFitsName: item.taskPhotoUrl placeholder: nil];
+	if (item.winnerPhoto != nil) {
+		[cell.checkView.imageView loadWebImageWithSizeThatFitsName: item.winnerPhoto.url placeholder: nil];
+	} else {
+		[cell.checkView.imageView loadWebImageWithSizeThatFitsName: item.taskPhotoUrl placeholder: nil];
+	}
 	cell.check = item;
 	[cell refresh];
 	

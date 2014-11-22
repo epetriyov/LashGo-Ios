@@ -5,6 +5,7 @@
 }
 
 @property (nonatomic, readonly) UIImage *checkDetailWinnerLed;
+@property (nonatomic, readonly) UIImage *checkDetailWinnerMedal;
 @property (nonatomic, readonly) UIImage *gradientPhotoTopImage;
 @property (nonatomic, readonly) UIImage *gradientPhotoBottomImage;
 @property (nonatomic, readonly) UIImage *iconEmail;

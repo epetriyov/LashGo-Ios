@@ -14,6 +14,7 @@
 #import "Kernel.h"
 #import "UIButton+LGImages.h"
 #import "UIImageView+LGImagesExtension.h"
+#import "ViewFactory.h"
 #import "VotePanelView.h"
 #import "PhotoCollectionCell.h"
 
@@ -99,6 +100,11 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 	[winnerButton setTitle: self.check.winnerPhoto.user.fio forState: UIControlStateNormal];
 	[contentScrollView addSubview:winnerButton];
 	_winnerButton = winnerButton;
+	
+	UIImageView *winnerMedal = [[UIImageView alloc] initWithImage:
+								[ViewFactory sharedFactory].checkDetailWinnerMedal];
+	winnerMedal.center = CGPointMake(winnerButton.frame.size.width / 2, winnerButton.frame.size.height - 45);
+	[winnerButton addSubview: winnerMedal];
 	
 	float capX = 8;
 	CGRect photosCollectionFrame = contentScrollView.bounds;
