@@ -29,6 +29,7 @@
 - (void) checkAddPhoto: (LGCheck *) inputData;
 - (void) checkPhotosFor: (int64_t) checkID;
 - (void) checkVotePhotosFor: (int64_t) checkID;
+- (void) checkUsersFor: (int64_t) checkID;
 
 - (void) commentRemove: (int64_t) commentID;
 

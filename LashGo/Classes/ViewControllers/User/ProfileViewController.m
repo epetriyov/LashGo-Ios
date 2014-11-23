@@ -11,6 +11,7 @@
 #import "Kernel.h"
 #import "PhotoCollectionCell.h"
 #import "ProfileView.h"
+#import "ViewFactory.h"
 
 #define kPhotoCollectionCellReusableId @"PhotoCollectionCellId"
 
@@ -42,7 +43,31 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 	
 	self.view.backgroundColor = [UIColor whiteColor];
 	
-	_titleBarView.backgroundColor = [UIColor clearColor];
+	[_titleBarView removeFromSuperview];
+	
+	NSMutableArray *buttons = [[NSMutableArray alloc] initWithCapacity: 1];
+	if (self.user.uid == [AuthorizationManager sharedManager].account.userInfo.uid) {
+		UIButton *editButton = [[ViewFactory sharedFactory] userEditButtonWithTarget: self
+																			  action: @selector(editAction:)];
+#ifndef DEBUG
+		///!!!:Hidden for coming soon
+		editButton.hidden = YES;
+#endif
+		[buttons addObject: editButton];
+	} else {
+		UIButton *followButton = [[ViewFactory sharedFactory] userFollowWhiteButtonWithTarget: self
+																				action: @selector(followAction:)];
+		///!!!:Hidden for coming soon
+		followButton.hidden = YES;
+		[buttons addObject: followButton];
+	}
+	
+	TitleBarView *tbView = [TitleBarView titleBarViewWithRightButtons: buttons];
+	tbView.backgroundColor = [UIColor clearColor];
+	[tbView.backButton addTarget: self action: @selector(backAction:)
+				forControlEvents: UIControlEventTouchUpInside];
+	[self.view addSubview: tbView];
+	_titleBarView = tbView;
 	
 	ProfileView *profileView = [[ProfileView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 100)];
 	[profileView setUserData: self.user];
@@ -92,6 +117,16 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 
 - (void) dealloc {
 	[kernel.storage removeObserver: self forKeyPath: kObservationKeyPath];
+}
+
+#pragma mark -
+
+- (void) editAction: (id) sender {
+	[kernel.userManager openProfileEditViewControllerWith: self.user];
+}
+
+- (void) followAction: (id) sender {
+	
 }
 
 #pragma mark - UICollectionViewDataSource implementation

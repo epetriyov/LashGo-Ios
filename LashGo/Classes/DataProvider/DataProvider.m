@@ -24,6 +24,7 @@
 #define kChecksCommentsPath	@"/checks/%lld/comments" //GET, POST
 #define kChecksPhotosPath	@"/checks/%lld/photos" //GET, POST
 #define kChecksVotePhotosPath	@"/checks/%lld/vote/photos" //GET
+#define kChecksUsersPath	@"/checks/%lld/users" //GET
 
 #define kCommentsPath @"/comments/%lld" //DELETE
 
@@ -342,6 +343,21 @@ static NSString *const kRequestUUID =		@"uuid";
 					allowMultiple: NO
 				   finishSelector: @selector(didGetCheckVotePhotos:) failSelector: @selector(didFailGetImportantData:)];
 #endif
+}
+
+#pragma mark -
+
+- (void) didGetCheckUsers: (URLConnection *) connection {
+	[_parser parseJSONData: connection.downloadedData];
+}
+
+- (void) checkUsersFor: (int64_t) checkID {
+	[self startConnectionWithPath: [NSString stringWithFormat: kChecksUsersPath, checkID]
+							 type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetCheckUsers:) failSelector: @selector(didFailGetImportantData:)];
 }
 
 #pragma mark - Comment

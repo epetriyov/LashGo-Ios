@@ -395,6 +395,16 @@ static ViewFactory *viewFactory = nil;
 	return button;
 }
 
+- (UIButton *) userEditButtonWithTarget:(id)target action:(SEL)selector {
+	UIButton *button = [self buttonWithImageName: @"ic_edit" target: target action: selector];
+	return button;
+}
+
+- (UIButton *) userFollowWhiteButtonWithTarget:(id)target action:(SEL)selector {
+	UIButton *button = [self buttonWithImageName: @"ic_follow_w" target: target action: selector];
+	return button;
+}
+
 #pragma mark - Vote
 
 - (UIButton *) votePhotoSelectButtonWithIndex: (ushort) index target: (id) target action: (SEL) selector {

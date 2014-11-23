@@ -18,7 +18,8 @@
 + (TitleBarView *) titleBarViewWithRightButtonWithText: (NSString *) text;
 + (TitleBarView *) titleBarViewWithRightButtonWithText: (NSString *) text
 										searchDelegate: (id<UISearchBarDelegate>) delegate;
-
+///First button - most left
++ (TitleBarView *) titleBarViewWithRightButtons: (NSArray *) buttons;
 + (TitleBarView *) titleBarViewWithLeftSecondaryButton: (UIButton *) leftButton
 										   rightButton: (UIButton *) rightButton
 								  rightSecondaryButton: (UIButton *) secondaryButton;

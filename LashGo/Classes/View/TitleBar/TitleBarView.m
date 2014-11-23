@@ -182,6 +182,38 @@
 	return titleBar;
 }
 
++ (TitleBarView *) titleBarViewWithRightButtons: (NSArray *) buttons {
+	TitleBarView *titleBar = [TitleBarView titleBarView];
+	
+	CGFloat centerY = CGRectGetMidY(titleBar.contentFrame);
+	CGFloat offsetX = titleBar.frame.size.width;
+	
+	for (ushort i = 0; i < [buttons count]; ++i) {
+		UIButton *button = buttons[i];
+		
+		offsetX -= button.frame.size.width;
+		button.frameX = offsetX;
+		button.centerY = centerY;
+		
+		[titleBar addSubview: button];
+		
+		if (i == 0) {
+			titleBar -> rightButton = button;
+		}
+	}
+	
+	CGFloat titleOffsetX = MAX(titleBar.backButton.frame.origin.x + titleBar.backButton.frame.size.width,
+							   titleBar.frame.size.width - offsetX);
+	titleOffsetX += 5;
+	
+	CGFloat titleWidth = titleBar.frame.size.width - titleOffsetX * 2;
+	titleBar.titleLabel.frameX = titleOffsetX;
+	titleBar.titleLabel.frameWidth = titleWidth;
+	titleBar.titleLabel.adjustsFontSizeToFitWidth = YES;
+	
+	return titleBar;
+}
+
 + (TitleBarView *) titleBarViewWithLeftSecondaryButton: (UIButton *) leftButton
 										   rightButton: (UIButton *) rightButton
 								  rightSecondaryButton: (UIButton *) secondaryButton {

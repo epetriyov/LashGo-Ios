@@ -41,6 +41,7 @@
 - (void) openViewControllerFor: (LGPhoto *) photo;
 
 - (void) openCheckPhotosViewControllerForCheck: (LGCheck *) check;
+- (void) openCheckUsersViewControllerForCheck: (LGCheck *) check;
 - (void) openVoteViewControllerForCheck: (LGCheck *) check;
 
 @end

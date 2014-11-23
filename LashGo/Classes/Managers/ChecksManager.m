@@ -135,6 +135,10 @@
 	[_viewControllersManager openViewController: vc animated: YES];
 }
 
+- (void) openCheckUsersViewControllerForCheck: (LGCheck *) check {
+	[_dataProvider checkUsersFor: check.uid];
+}
+
 - (void) openVoteViewControllerForCheck: (LGCheck *) check {
 	VoteViewController *voteViewController = _viewControllersManager.voteViewController;
 	voteViewController.check = check;

@@ -63,6 +63,8 @@
 
 //User
 - (UIButton *) userChangeAvatarButtonWithTarget: (id) target action: (SEL) selector;
+- (UIButton *) userEditButtonWithTarget:(id)target action:(SEL)selector;
+- (UIButton *) userFollowWhiteButtonWithTarget:(id)target action:(SEL)selector;
 
 //Vote
 - (UIButton *) votePhotoSelectButtonWithIndex: (ushort) index target: (id) target action: (SEL) selector;
