@@ -117,6 +117,8 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		
 		_panelView = [[CheckCardTimerPanelView alloc] initWithFrame: CGRectMake(0, self.contentView.frame.size.height - panelHeight, self.contentView.frame.size.width, panelHeight)];
 		[_panelView setTimerHidden: YES];
+		[_panelView.playersButton addTarget: self action: @selector(usersAction:)
+						   forControlEvents: UIControlEventTouchUpInside];
 		[self.contentView addSubview: _panelView];
     }
     return self;
@@ -168,30 +170,34 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	return kCheckCardCollectionCellReusableId;
 }
 
+- (void) usersAction: (id) sender {
+	[self.delegate actionWithCheck: self.check forEvent: CheckCardCollectionCellEventOpenUsers];
+}
+
 #pragma mark - CheckDetailViewDelegate implementation
 
 - (void) makePhotoAction {
-	[self.delegate pickPhotoFor: self.check];
+	[self.delegate actionWithCheck: self.check forEvent: CheckCardCollectionCellEventPickPhoto];
 }
 
 - (void) voteAction {
-	[self.delegate voteFor: self.check];
+	[self.delegate actionWithCheck: self.check forEvent: CheckCardCollectionCellEventVote];
 }
 
 - (void) imageAction {
-	[self.delegate openImageFor: self.check];
+	[self.delegate actionWithCheck: self.check forEvent: CheckCardCollectionCellEventOpenImage];
 }
 
 - (void) userImageAction {
-	[self.delegate openUserImageFor: self.check];
+	[self.delegate actionWithCheck: self.check forEvent: CheckCardCollectionCellEventOpenUserImage];
 }
 
 - (void) sendUserImageAction {
-	[self.delegate sendUserImageFor: self.check];
+	[self.delegate actionWithCheck: self.check forEvent: CheckCardCollectionCellEventSendUserImage];
 }
 
 - (void) winnerImageAction {
-	[self.delegate openWinnerImageFor: self.check];
+	[self.delegate actionWithCheck: self.check forEvent: CheckCardCollectionCellEventOpenWinnerImage];
 }
 
 @end

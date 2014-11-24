@@ -11,6 +11,16 @@
 
 extern NSString *const kCheckCardCollectionCellReusableId;
 
+typedef NS_ENUM(ushort, CheckCardCollectionCellEvents) {
+	CheckCardCollectionCellEventOpenImage,
+	CheckCardCollectionCellEventOpenUserImage,
+	CheckCardCollectionCellEventOpenUsers,
+	CheckCardCollectionCellEventOpenWinnerImage,
+	CheckCardCollectionCellEventPickPhoto,
+	CheckCardCollectionCellEventSendUserImage,
+	CheckCardCollectionCellEventVote
+};
+
 @protocol CheckCardCollectionCellDelegate;
 
 @interface CheckCardCollectionCell : UICollectionViewCell <UIScrollViewDelegate>
@@ -30,11 +40,6 @@ extern NSString *const kCheckCardCollectionCellReusableId;
 @protocol CheckCardCollectionCellDelegate <NSObject>
 
 @required
-- (void) pickPhotoFor: (LGCheck *) check;
-- (void) voteFor: (LGCheck *) check;
-- (void) openImageFor: (LGCheck *) check;
-- (void) openUserImageFor: (LGCheck *) check;
-- (void) openWinnerImageFor: (LGCheck *) check;
-- (void) sendUserImageFor: (LGCheck *) check;
+- (void) actionWithCheck: (LGCheck *) check forEvent: (CheckCardCollectionCellEvents) event;
 
 @end

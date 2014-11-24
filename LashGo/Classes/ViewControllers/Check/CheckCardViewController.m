@@ -167,28 +167,32 @@
 
 #pragma mark - CheckCardCollectionCellDelegate implementation
 
-- (void) pickPhotoFor: (LGCheck *) check {
-	[kernel.imagePickManager takePictureFor: check];
-}
-
-- (void) voteFor:(LGCheck *)check {
-	[kernel.checksManager openVoteViewControllerForCheck: check];
-}
-
-- (void) openImageFor: (LGCheck *) check {
-	[kernel.checksManager openCheckDetailViewControllerAdminFor: check];
-}
-
-- (void) openUserImageFor: (LGCheck *) check {
-	[kernel.checksManager openCheckDetailViewControllerUserFor: check];
-}
-
-- (void) openWinnerImageFor: (LGCheck *) check {
-	[kernel.checksManager openCheckPhotosViewControllerForCheck: check];
-}
-
-- (void) sendUserImageFor: (LGCheck *) check {
-	[kernel.checksManager addPhotoForCheck: check];
+- (void) actionWithCheck:(LGCheck *)check forEvent:(CheckCardCollectionCellEvents)event {
+	switch (event) {
+		case CheckCardCollectionCellEventOpenImage:
+			[kernel.checksManager openCheckDetailViewControllerAdminFor: check];
+			break;
+		case CheckCardCollectionCellEventOpenUserImage:
+			[kernel.checksManager openCheckDetailViewControllerUserFor: check];
+			break;
+		case CheckCardCollectionCellEventOpenUsers:
+			[kernel.checksManager openCheckUsersViewControllerForCheck: check];
+			break;
+		case CheckCardCollectionCellEventOpenWinnerImage:
+			[kernel.checksManager openCheckPhotosViewControllerForCheck: check];
+			break;
+		case CheckCardCollectionCellEventPickPhoto:
+			[kernel.imagePickManager takePictureFor: check];
+			break;
+		case CheckCardCollectionCellEventSendUserImage:
+			[kernel.checksManager addPhotoForCheck: check];
+			break;
+		case CheckCardCollectionCellEventVote:
+			[kernel.checksManager openVoteViewControllerForCheck: check];
+			break;
+		default:
+			break;
+	}
 }
 
 /*
