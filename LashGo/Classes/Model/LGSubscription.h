@@ -6,18 +6,12 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "LGUser.h"
 
-@interface LGSubscription : NSObject {
-	int32_t uid;
-	int32_t userUID;
-	NSString *userAvatarURL;
-	NSString *userLogin;
-}
+@interface LGSubscription : NSObject
 
 @property (nonatomic, assign) int32_t uid;
-@property (nonatomic, assign) int32_t userUID;
-@property (nonatomic, strong) NSString *userAvatarURL;
-@property (nonatomic, strong) NSString *userLogin;
+@property (nonatomic, strong) LGUser *user;
+@property (nonatomic, assign) BOOL isSubscribed;
 
 @end

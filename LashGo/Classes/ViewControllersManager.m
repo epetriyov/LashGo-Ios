@@ -17,6 +17,8 @@
 	ProfileEditViewController __weak *_profileEditViewController;
 	ProfileWelcomeViewController __weak *_profileWelcomeViewController;
 	ProfileViewController __weak *_profileViewController;
+	
+	SubscriptionViewController __weak *_subscriptionViewController;
 }
 
 @end
@@ -27,6 +29,7 @@
 @dynamic isReturnToPreviousAvaliable;
 @dynamic recoverViewController, checkDetailViewController, voteViewController;
 @dynamic profileEditViewController, profileWelcomeViewController, profileViewController;
+@dynamic subscriptionViewController;
 
 #pragma mark - Properties
 
@@ -80,6 +83,15 @@
 	if (vc == nil) {
 		vc = [self createViewControllerOfClass: [ProfileViewController class]];
 		_profileViewController = vc;
+	}
+	return vc;
+}
+
+- (SubscriptionViewController *) subscriptionViewController {
+	SubscriptionViewController *vc = _subscriptionViewController;
+	if (vc == nil) {
+		vc = [self createViewControllerOfClass: [SubscriptionViewController class]];
+		_subscriptionViewController = vc;
 	}
 	return vc;
 }

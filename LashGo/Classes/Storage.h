@@ -16,6 +16,8 @@
 @property (nonatomic, strong) LGVotePhotosResult *checkVotePhotos;
 @property (nonatomic, strong) LGUser *lastViewProfileDetail;
 
+@property (nonatomic, strong) NSArray *subscriptions;
+
 - (void) updateChecksWith: (NSArray *) newValues;
 
 @end

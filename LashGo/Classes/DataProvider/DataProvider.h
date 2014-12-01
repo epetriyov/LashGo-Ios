@@ -13,6 +13,7 @@
 #import "LGRecoverInfo.h"
 //#import "LGRegisterInfo.h"
 #import "LGSocialInfo.h"
+#import "LGSubscribe.h"
 #import "LGVoteAction.h"
 
 @protocol DataProviderDelegate;
@@ -47,7 +48,7 @@
 - (void) userRecover: (LGRecoverInfo *) inputData;
 - (void) userRegister: (LGLoginInfo *) inputData;
 - (void) userSocialSignIn: (LGSocialInfo *) inputData;
-- (void) userSubscribeTo: (int32_t) userID;
+- (void) userSubscribeTo: (LGSubscribe *) inputData;
 - (void) userSubscriptions;
 - (void) userUnsubscribeFrom: (int32_t) userID;
 
@@ -58,12 +59,14 @@
 @optional
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckPhotos: (NSArray *) photos;
+- (void) dataProvider: (DataProvider *) dataProvider didGetCheckUsers: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (LGVotePhotosResult *) votePhotos;
 
 - (void) dataProvider: (DataProvider *) dataProvider didPhotoVote: (LGVoteAction *) voteAction;
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserPhotos: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserProfile: (LGUser *) user;
+- (void) dataProvider: (DataProvider *) dataProvider didUserSubscribeTo: (LGSubscribe *) subscribe;
 
 - (void) dataProviderDidRecoverPass: (DataProvider *) dataProvider;
 - (void) dataProvider: (DataProvider *) dataProvider didRegisterUser: (LGRegisterInfo *) registerInfo;

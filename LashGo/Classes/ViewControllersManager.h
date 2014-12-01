@@ -25,6 +25,8 @@
 #import "ProfileWelcomeViewController.h"
 #import "ProfileViewController.h"
 
+#import "SubscriptionViewController.h"
+
 @class Kernel;
 
 @interface ViewControllersManager : NSObject {
@@ -54,6 +56,8 @@
 @property (nonatomic, readonly) ProfileEditViewController *profileEditViewController;
 @property (nonatomic, readonly) ProfileWelcomeViewController *profileWelcomeViewController;
 @property (nonatomic, readonly) ProfileViewController *profileViewController;
+
+@property (nonatomic, readonly) SubscriptionViewController *subscriptionViewController;
 
 - (id) initWithKernel: (Kernel *) theKernel;
 

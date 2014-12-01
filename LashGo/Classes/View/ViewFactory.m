@@ -21,6 +21,7 @@ static ViewFactory *viewFactory = nil;
 @dynamic lgLogoImage;
 @dynamic loginViewControllerBgImage;
 @dynamic startViewControllerBgImage, startViewControllerFrameImage, startViewControllerGradientImage, statusBarPreferredColor;
+@dynamic subscribeCellButton;
 @dynamic timerCheckOpenImage;
 @dynamic taskbarBackgroundView, taskbarLightBackgroundView;
 @dynamic titleBarAvatarPlaceholder, titleBarBackgroundImage, titleBarLogoImage;
@@ -87,6 +88,16 @@ static ViewFactory *viewFactory = nil;
 
 - (UIColor *) statusBarPreferredColor {
 	return [UIColor blackColor];
+}
+
+- (UIButton *) subscribeCellButton {
+	UIImage *normalImage = [UIImage imageNamed: @"ic_follow_2"];
+	UIImage *selectedImage = [UIImage imageNamed: @"ic_unfollow"];
+	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, normalImage.size.width,
+																   normalImage.size.height)];
+	[button setImage: normalImage forState: UIControlStateNormal];
+	[button setImage: selectedImage forState: UIControlStateSelected];
+	return button;
 }
 
 - (UIView *) taskbarBackgroundView {

@@ -195,6 +195,23 @@
 	return  checkPhotos;
 }
 
+- (NSArray *) parseCheckUsers: (NSData *) jsonData {
+	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
+	NSMutableArray *users = [NSMutableArray array];
+	
+	for (NSDictionary *rawSubscription in rawData) {
+		LGSubscription *subscription = [self parseSubscription: rawSubscription];
+		if (subscription != nil) {
+			[users addObject: subscription];
+		}
+	}
+	
+	if ([users count] <= 0) {
+		users = nil;
+	}
+	return users;
+}
+
 - (LGVotePhotosResult *) parseCheckVotePhotos: (NSData *) jsonData {
 	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
 	
@@ -263,6 +280,28 @@
 	registerInfo.sessionInfo =	sessionInfo;
 	
 	return registerInfo;
+}
+
+- (LGSubscription *) parseSubscription: (NSDictionary *) jsonDataObj {
+	LGSubscription *subscription = nil;
+	
+	if ([jsonDataObj count] > 0) {
+		NSDictionary *rawSubscription = jsonDataObj;
+		
+		LGUser *user = [[LGUser alloc] init];
+		
+		user.uid =		[rawSubscription[@"userId"] intValue];
+		user.avatar =	rawSubscription[@"userAvatar"];
+		user.login =	rawSubscription[@"userLogin"];
+		user.fio =		rawSubscription[@"fio"];
+		
+		subscription = [[LGSubscription alloc] init];
+		
+		subscription.uid =			[rawSubscription[@"id"] intValue];
+		subscription.user =			user;
+		subscription.isSubscribed =	[rawSubscription[@"amISubscribed"] boolValue];
+	}
+	return subscription;
 }
 
 - (LGUser *) parseUser: (NSDictionary *) jsonDataObj {

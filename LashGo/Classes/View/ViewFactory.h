@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) UIImage *startViewControllerFrameImage;
 @property (nonatomic, readonly) UIImage *startViewControllerGradientImage;
 @property (nonatomic, readonly) UIColor *statusBarPreferredColor;
+@property (nonatomic, readonly) UIButton *subscribeCellButton;
 @property (nonatomic, readonly) UIView *taskbarBackgroundView;
 @property (nonatomic, readonly) UIView *taskbarLightBackgroundView;
 @property (nonatomic, readonly) UIImage *timerCheckOpenImage;

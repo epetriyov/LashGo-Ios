@@ -39,6 +39,7 @@
 		case FontTypeSlogan:					return [UIFont fontWithName: kDefaultFont size: 24];
 		case FontTypeCheckDetailWinnerFIO:
 		case FontTypeStartScreenButtons:		return [UIFont fontWithName: kDefaultFontMedium size: 12];
+		case FontTypeSubscriptionTitle:			return [UIFont fontWithName: kDefaultFont size: 16];
 		case FontTypeTitleBarTitle:				return [UIFont fontWithName: kDefaultFontMedium size: 17];
 		case FontTypeVoteCheckTitle:			return [UIFont fontWithName: kDefaultFontMedium size: 15];
 		case FontTypeVoteTimer:					return [UIFont fontWithName: kDefaultFontMedium size: 14];
@@ -78,6 +79,7 @@
 		case FontTypeVotePager:				return [UIColor colorWithWhite: 151.0/255.0 alpha: 1];//same as 80 0(128)
 		case FontTypeVoteTimer:				return [UIColor colorWithRed: 1.0 green: 94.0/255.0 blue: 124.0/255.0
 														  alpha: 1.0];
+		case FontTypeSubscriptionTitle:		return [UIColor colorWithWhite: 98.0/255.0 alpha: 1];//same as E5 0
 		default: return [UIColor blackColor];
 	}
 	return nil;

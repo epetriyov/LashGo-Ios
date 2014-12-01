@@ -14,6 +14,8 @@
 		840425DA19CB16EB00C5EDBF /* CheckCardTimerPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 840425D919CB16EB00C5EDBF /* CheckCardTimerPanelView.m */; };
 		840425DD19CB1B5A00C5EDBF /* ImagePickManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 840425DC19CB1B5A00C5EDBF /* ImagePickManager.m */; };
 		84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 84045AA819224A04006F2F24 /* UIView+CGExtension.m */; };
+		8405D03D1A2A050300A1C512 /* SubscriptionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D03C1A2A050300A1C512 /* SubscriptionTableViewCell.m */; };
+		8405D0461A2A0CEB00A1C512 /* SubscriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8405D0451A2A0CEB00A1C512 /* SubscriptionViewController.m */; };
 		8406250A193082020067C1CA /* NetworkDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062505193082020067C1CA /* NetworkDownloader.m */; };
 		8406250B193082020067C1CA /* NetworkDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84062507193082020067C1CA /* NetworkDownloadManager.m */; };
 		84062511193088F30067C1CA /* DownloadableImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406250E193088F30067C1CA /* DownloadableImageItem.m */; };
@@ -86,6 +88,7 @@
 		849DD0C9199CBF9300DC86F6 /* SegmentedTextControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DD0C8199CBF9300DC86F6 /* SegmentedTextControl.m */; };
 		84A0DB1519D4457F009AD6DB /* RecoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0DB1419D4457F009AD6DB /* RecoverViewController.m */; };
 		84A0DB1F19D45A87009AD6DB /* VotePanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0DB1E19D45A87009AD6DB /* VotePanelView.m */; };
+		84BC6FB31A2B25FC00313E76 /* LGSubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BC6FB21A2B25FC00313E76 /* LGSubscribe.m */; };
 		84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6240A1998F4CD003BC2F1 /* Storage.m */; };
 		84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E624101998FBAD003BC2F1 /* ChecksManager.m */; };
 		84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B2196C226A0021D417 /* CheckCardViewController.m */; };
@@ -184,6 +187,10 @@
 		84045AA719224A04006F2F24 /* UIView+CGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CGExtension.h"; sourceTree = "<group>"; };
 		84045AA819224A04006F2F24 /* UIView+CGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CGExtension.m"; sourceTree = "<group>"; };
 		84045AAA19225879006F2F24 /* RootNavigationControllerItemProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootNavigationControllerItemProtocol.h; sourceTree = "<group>"; };
+		8405D03B1A2A050300A1C512 /* SubscriptionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionTableViewCell.h; sourceTree = "<group>"; };
+		8405D03C1A2A050300A1C512 /* SubscriptionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionTableViewCell.m; sourceTree = "<group>"; };
+		8405D0441A2A0CEB00A1C512 /* SubscriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubscriptionViewController.h; sourceTree = "<group>"; };
+		8405D0451A2A0CEB00A1C512 /* SubscriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionViewController.m; sourceTree = "<group>"; };
 		840624FF193082020067C1CA /* DownloadableContentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadableContentProtocol.h; sourceTree = "<group>"; };
 		84062504193082020067C1CA /* NetworkDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkDownloader.h; sourceTree = "<group>"; };
 		84062505193082020067C1CA /* NetworkDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkDownloader.m; sourceTree = "<group>"; };
@@ -317,6 +324,8 @@
 		84A0DB1419D4457F009AD6DB /* RecoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecoverViewController.m; sourceTree = "<group>"; };
 		84A0DB1D19D45A87009AD6DB /* VotePanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VotePanelView.h; sourceTree = "<group>"; };
 		84A0DB1E19D45A87009AD6DB /* VotePanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotePanelView.m; sourceTree = "<group>"; };
+		84BC6FB11A2B25FC00313E76 /* LGSubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSubscribe.h; sourceTree = "<group>"; };
+		84BC6FB21A2B25FC00313E76 /* LGSubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSubscribe.m; sourceTree = "<group>"; };
 		84E624091998F4CD003BC2F1 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
 		84E6240A1998F4CD003BC2F1 /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
 		84E6240F1998FBAD003BC2F1 /* ChecksManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChecksManager.h; sourceTree = "<group>"; };
@@ -502,6 +511,8 @@
 				840625721930D10E0067C1CA /* LGSessionInfo.m */,
 				84F8AE73198FB4E7009EC5A6 /* LGSocialInfo.h */,
 				84F8AE74198FB4E7009EC5A6 /* LGSocialInfo.m */,
+				84BC6FB11A2B25FC00313E76 /* LGSubscribe.h */,
+				84BC6FB21A2B25FC00313E76 /* LGSubscribe.m */,
 				840625741930D1AA0067C1CA /* LGSubscription.h */,
 				840625751930D1AA0067C1CA /* LGSubscription.m */,
 				840625591930B83B0067C1CA /* LGUser.h */,
@@ -795,6 +806,8 @@
 				84EB473C1943044C001DEF81 /* StartViewController.m */,
 				84EC84F0197D4666001FA1F6 /* SearchViewController.h */,
 				84EC84F1197D4666001FA1F6 /* SearchViewController.m */,
+				8405D0441A2A0CEB00A1C512 /* SubscriptionViewController.h */,
+				8405D0451A2A0CEB00A1C512 /* SubscriptionViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1000,6 +1013,8 @@
 			children = (
 				84FEE17E19E028180067C264 /* ProfileEditTableViewCell.h */,
 				84FEE17F19E028180067C264 /* ProfileEditTableViewCell.m */,
+				8405D03B1A2A050300A1C512 /* SubscriptionTableViewCell.h */,
+				8405D03C1A2A050300A1C512 /* SubscriptionTableViewCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1188,6 +1203,7 @@
 				8406251819308D110067C1CA /* FileManager.m in Sources */,
 				8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */,
 				841C624219A397ED00BAEDBB /* Taskbar.m in Sources */,
+				84BC6FB31A2B25FC00313E76 /* LGSubscribe.m in Sources */,
 				84FD8962194C4684001139DF /* TWSignedRequest.m in Sources */,
 				84F8AE75198FB4E7009EC5A6 /* LGSocialInfo.m in Sources */,
 				8409D08519C486FC00DFFEC6 /* LashGoAppAccount.m in Sources */,
@@ -1229,6 +1245,7 @@
 				84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */,
 				841C624319A397ED00BAEDBB /* TaskbarButton.m in Sources */,
 				84EEE4A819C9B019009F83C6 /* LGCheckCounters.m in Sources */,
+				8405D03D1A2A050300A1C512 /* SubscriptionTableViewCell.m in Sources */,
 				8406255E1930BB850067C1CA /* LGComment.m in Sources */,
 				84FEE18319E02E320067C264 /* ProfileWelcomeViewController.m in Sources */,
 				849DD0C3199C9D5800DC86F6 /* CheckListTableViewCell.m in Sources */,
@@ -1238,6 +1255,7 @@
 				840425DD19CB1B5A00C5EDBF /* ImagePickManager.m in Sources */,
 				840625761930D1AA0067C1CA /* LGSubscription.m in Sources */,
 				84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */,
+				8405D0461A2A0CEB00A1C512 /* SubscriptionViewController.m in Sources */,
 				8434E44319D708D700DD4CA8 /* CheckSimpleDetailView.m in Sources */,
 				84062512193088F30067C1CA /* DownloadableItem.m in Sources */,
 				845D858B19029EB0004E10AB /* main.m in Sources */,

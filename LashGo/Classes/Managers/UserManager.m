@@ -59,6 +59,20 @@
 //	[_dataProvider userSocialSignIn: ]
 }
 
+#pragma mark -
+
+- (void) subscribeTo: (LGSubscription *) subscription {
+	LGSubscribe *subscribe = [[LGSubscribe alloc] init];
+	subscribe.subscription = subscription;
+	[_dataProvider userSubscribeTo: subscribe];
+}
+
+- (void) unsubscribeFrom: (LGSubscription *) subscription {
+	
+}
+
+#pragma mark -
+
 - (void) openLoginViewController {
 	[_viewControllersManager openLoginViewController];
 }

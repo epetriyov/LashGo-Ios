@@ -10,6 +10,7 @@
 @class DataProvider;
 @class ViewControllersManager;
 
+@class LGSubscription;
 @class LGUser;
 
 @interface UserManager : NSObject
@@ -23,6 +24,9 @@
 
 - (void) recoverPasswordWithEmail: (NSString *) email;
 - (void) socialSignIn;
+
+- (void) subscribeTo: (LGSubscription *) subscription;
+- (void) unsubscribeFrom: (LGSubscription *) subscription;
 
 - (void) openLoginViewController;
 - (void) openRecoverViewController;

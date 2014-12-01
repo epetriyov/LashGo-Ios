@@ -10,7 +10,4 @@
 
 @implementation LGSubscription
 
-@synthesize uid, userUID, userAvatarURL, userLogin;
-
-
 @end
