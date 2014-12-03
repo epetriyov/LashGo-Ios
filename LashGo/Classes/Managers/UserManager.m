@@ -68,7 +68,9 @@
 }
 
 - (void) unsubscribeFrom: (LGSubscription *) subscription {
-	
+	LGSubscribe *subscribe = [[LGSubscribe alloc] init];
+	subscribe.subscription = subscription;
+	[_dataProvider userUnsubscribeFrom: subscribe];
 }
 
 #pragma mark -
@@ -105,6 +107,20 @@
 	vc.user = user;
 	[_viewControllersManager openViewController: vc animated: YES];
 	[_dataProvider userProfileFor: user.uid];
+}
+
+- (void) openSubscribersWith: (LGUser *) user {
+	SubscriptionViewController *vc = _viewControllersManager.subscriptionViewController;
+	vc.check = check;
+	[_viewControllersManager openViewController: vc animated: YES];
+	[_dataProvider userSubscribersFor: user.uid];
+}
+
+- (void) openSubscribtionsWith: (LGUser *) user {
+	SubscriptionViewController *vc = _viewControllersManager.subscriptionViewController;
+	vc.check = check;
+	[_viewControllersManager openViewController: vc animated: YES];
+	[_dataProvider userSubscribtionsFor: user.uid];
 }
 
 @end

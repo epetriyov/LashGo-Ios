@@ -48,9 +48,10 @@
 - (void) userRecover: (LGRecoverInfo *) inputData;
 - (void) userRegister: (LGLoginInfo *) inputData;
 - (void) userSocialSignIn: (LGSocialInfo *) inputData;
+- (void) userSubscribersFor: (int32_t) userID;
+- (void) userSubscribtionsFor: (int32_t) userID;
 - (void) userSubscribeTo: (LGSubscribe *) inputData;
-- (void) userSubscriptions;
-- (void) userUnsubscribeFrom: (int32_t) userID;
+- (void) userUnsubscribeFrom: (LGSubscribe *) inputData;
 
 @end
 
@@ -66,6 +67,7 @@
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserPhotos: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserProfile: (LGUser *) user;
+- (void) dataProvider: (DataProvider *) dataProvider didGetUserSubscribers: (NSArray *) subscribers;
 - (void) dataProvider: (DataProvider *) dataProvider didUserSubscribeTo: (LGSubscribe *) subscribe;
 
 - (void) dataProviderDidRecoverPass: (DataProvider *) dataProvider;

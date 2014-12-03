@@ -41,8 +41,10 @@
 #define kUsersRecoverPath			@"/users/recover" //PUT
 #define kUsersRegisterPath			@"/users/register" //POST
 #define kUsersSocialSignInPath		@"/users/social-sign-in" //POST
-#define kUsersSubscriptionsPath			@"/users/subscriptions" //GET, POST
-#define kUsersSubscriptionsManagePath	@"/users/subscriptions/%d" //DELETE
+#define kUsersSubscribersPath			@"/users/%d/subscribers" //GET
+#define kUsersSubscriptionsPath			@"/users/%d/subscriptions" //GET
+#define kUsersSubscriptionsAddPath		@"/users/subscriptions" //POST
+#define kUsersSubscriptionsDeletePath	@"/users/subscriptions/%d" //DELETE
 
 static NSString *const kRequestClientType =	@"client_type";
 static NSString *const kRequestSessionID =	@"session_id";
@@ -574,6 +576,42 @@ static NSString *const kRequestUUID =		@"uuid";
 
 #pragma mark -
 
+- (void) didGetUserSubscribers: (URLConnection *) connection {
+	NSArray *subscribers = [_parser parseCheckUsers: connection.downloadedData];
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetUserSubscribers:)] == YES) {
+		[self.delegate dataProvider: self didGetUserSubscribers: subscribers];
+	}
+}
+
+- (void) userSubscribersFor: (int32_t) userID {
+	[self startConnectionWithPath: [NSString stringWithFormat: kUsersSubscribersPath, userID]
+							 type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetUserSubscribers:)
+					 failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
+- (void) didGetUserSubscriptions: (URLConnection *) connection {
+	NSArray *subscribtions = [_parser parseCheckUsers: connection.downloadedData];
+}
+
+- (void) userSubscribtionsFor: (int32_t) userID {
+	[self startConnectionWithPath: [NSString stringWithFormat: kUsersSubscriptionsPath, userID]
+							 type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetUserSubscriptions:)
+					 failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
 - (void) didSubscribe: (URLConnection *) connection {
 	if ([self.delegate respondsToSelector: @selector(dataProvider:didUserSubscribeTo:)] == YES) {
 		[self.delegate dataProvider: self didUserSubscribeTo: connection.context];
@@ -581,7 +619,7 @@ static NSString *const kRequestUUID =		@"uuid";
 }
 
 - (void) userSubscribeTo: (LGSubscribe *) inputData {
-	[self startConnectionWithPath: kUsersSubscriptionsPath
+	[self startConnectionWithPath: kUsersSubscriptionsAddPath
 							 type: URLConnectionTypePOST
 							 body: inputData.JSONObject
 						  context: inputData
@@ -591,31 +629,18 @@ static NSString *const kRequestUUID =		@"uuid";
 
 #pragma mark -
 
-- (void) didGetSubscriptions: (URLConnection *) connection {
-	
-}
-
-- (void) userSubscriptions {
-	[self startConnectionWithPath: kUsersSubscriptionsPath type: URLConnectionTypeGET
-							 body: nil
-						  context: nil
-					allowMultiple: NO
-				   finishSelector: @selector(didGetSubscriptions:) failSelector: @selector(didFailGetImportantData:)];
-}
-
-#pragma mark -
-
 - (void) didUnsubscribe: (URLConnection *) connection {
 	
 }
 
-- (void) userUnsubscribeFrom: (int32_t) userID {
-	[self startConnectionWithPath: [NSString stringWithFormat: kUsersSubscriptionsManagePath, userID]
+- (void) userUnsubscribeFrom: (LGSubscribe *) inputData {
+	[self startConnectionWithPath: [NSString stringWithFormat: kUsersSubscriptionsDeletePath,
+									inputData.subscription.user.uid]
 							 type: URLConnectionTypeDELETE
 							 body: nil
-						  context: nil
+						  context: inputData
 					allowMultiple: NO
-				   finishSelector: @selector(didGetSubscriptions:) failSelector: @selector(didFailGetImportantData:)];
+				   finishSelector: @selector(didUnsubscribe:) failSelector: @selector(didFailGetImportantData:)];
 }
 
 @end

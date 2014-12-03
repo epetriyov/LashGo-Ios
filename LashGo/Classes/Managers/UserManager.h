@@ -36,4 +36,7 @@
 - (void) openProfileViewController;
 - (void) openProfileViewControllerWith: (LGUser *) user;
 
+- (void) openSubscribersWith: (LGUser *) user;
+- (void) openSubscribtionsWith: (LGUser *) user;
+
 @end
