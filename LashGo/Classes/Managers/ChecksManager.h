@@ -27,8 +27,6 @@
 - (void) getVotePhotosForCheck: (LGCheck *) check;
 - (void) stopWaitingVotePhotos;
 
-- (void) stopWaiting: (UIViewController *) viewController;
-
 - (void) voteWith: (LGVoteAction *) voteAction;
 
 - (void) openCheckCardViewController;

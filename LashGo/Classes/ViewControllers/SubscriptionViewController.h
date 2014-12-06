@@ -10,8 +10,16 @@
 
 #import "LGCheck.h"
 
+typedef NS_ENUM(ushort, SubscriptionViewControllerMode) {
+	SubscriptionViewControllerModeCheckUsers = 0,
+	SubscriptionViewControllerModeUserSubscribers,
+	SubscriptionViewControllerModeUserSubscribtions
+};
+
 @interface SubscriptionViewController : TitleBarViewController
 
 @property (nonatomic, strong) LGCheck *check;
+@property (nonatomic, strong) LGUser *user;
+@property (nonatomic, assign) SubscriptionViewControllerMode mode;
 
 @end

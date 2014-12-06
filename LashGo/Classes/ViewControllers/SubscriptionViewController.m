@@ -51,7 +51,20 @@ static NSString *const kObservationKeyPath = @"subscriptions";
 	_tableView = tableView;
 	
 	[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
-	[kernel.checksManager getUsersForCheck: self.check];
+	switch (self.mode) {
+		case SubscriptionViewControllerModeCheckUsers:
+			[kernel.checksManager getUsersForCheck: self.check];
+			break;
+		case SubscriptionViewControllerModeUserSubscribers:
+			[kernel.userManager getSubscribersForUser: self.user];
+			break;
+		case SubscriptionViewControllerModeUserSubscribtions:
+			[kernel.userManager getSubscribtionsForUser: self.user];
+			break;
+		default:
+			break;
+	}
+	
 }
 
 - (void) dealloc {
@@ -61,7 +74,7 @@ static NSString *const kObservationKeyPath = @"subscriptions";
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
 						 change:(NSDictionary *)change context:(void *)context {
 	if ([keyPath isEqualToString: kObservationKeyPath] == YES && [object isKindOfClass: [Storage class]] == YES) {
-		[kernel.checksManager stopWaiting: self];
+		[kernel stopWaiting: self];
 		[_tableView reloadData];
 	}
 }

@@ -32,4 +32,6 @@
 
 - (void) performOnColdWakeActions;
 
+- (void) stopWaiting: (UIViewController *) viewController;
+
 @end

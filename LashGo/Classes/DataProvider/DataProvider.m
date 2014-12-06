@@ -598,6 +598,9 @@ static NSString *const kRequestUUID =		@"uuid";
 
 - (void) didGetUserSubscriptions: (URLConnection *) connection {
 	NSArray *subscribtions = [_parser parseCheckUsers: connection.downloadedData];
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetUserSubscribers:)] == YES) {
+		[self.delegate dataProvider: self didGetUserSubscribers: subscribtions];
+	}
 }
 
 - (void) userSubscribtionsFor: (int32_t) userID {

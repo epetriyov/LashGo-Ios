@@ -44,6 +44,16 @@
 	[_viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [ProfileViewController class]];
 }
 
+- (void) getSubscribersForUser: (LGUser *) user {
+	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [SubscriptionViewController class]];
+	[_dataProvider userSubscribersFor: user.uid];
+}
+
+- (void) getSubscribtionsForUser: (LGUser *) user {
+	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [SubscriptionViewController class]];
+	[_dataProvider userSubscribtionsFor: user.uid];
+}
+
 - (void) recoverPasswordWithEmail: (NSString *) email {
 	LGRecoverInfo *recoverInfo = [[LGRecoverInfo alloc] init];
 	recoverInfo.email = email;
@@ -111,16 +121,16 @@
 
 - (void) openSubscribersWith: (LGUser *) user {
 	SubscriptionViewController *vc = _viewControllersManager.subscriptionViewController;
-	vc.check = check;
+	vc.user = user;
+    vc.mode = SubscriptionViewControllerModeUserSubscribers;
 	[_viewControllersManager openViewController: vc animated: YES];
-	[_dataProvider userSubscribersFor: user.uid];
 }
 
 - (void) openSubscribtionsWith: (LGUser *) user {
 	SubscriptionViewController *vc = _viewControllersManager.subscriptionViewController;
-	vc.check = check;
+	vc.user = user;
+    vc.mode = SubscriptionViewControllerModeUserSubscribtions;
 	[_viewControllersManager openViewController: vc animated: YES];
-	[_dataProvider userSubscribtionsFor: user.uid];
 }
 
 @end

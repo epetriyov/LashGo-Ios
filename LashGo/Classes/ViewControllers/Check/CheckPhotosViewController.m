@@ -138,7 +138,7 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
 						 change:(NSDictionary *)change context:(void *)context {
 	if ([keyPath isEqualToString: kObservationKeyPath] == YES && [object isKindOfClass: [Storage class]] == YES) {
-		[kernel.checksManager stopWaiting: self];
+		[kernel stopWaiting: self];
 		[_photosCollection reloadData];
 	}
 }

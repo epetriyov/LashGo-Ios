@@ -78,6 +78,10 @@
 	}
 }
 
+- (void) stopWaiting: (UIViewController *) viewController {
+	[viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [viewController class]];
+}
+
 #pragma mark - DataProviderDelegate implementation
 
 - (void) dataProviderDidRecoverPass: (DataProvider *) dataProvider {

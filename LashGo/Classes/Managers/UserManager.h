@@ -21,6 +21,8 @@
 
 - (void) getUserPhotosForUser: (LGUser *) user;
 - (void) stopWaitingUserPhotos;
+- (void) getSubscribersForUser: (LGUser *) user;
+- (void) getSubscribtionsForUser: (LGUser *) user;
 
 - (void) recoverPasswordWithEmail: (NSString *) email;
 - (void) socialSignIn;

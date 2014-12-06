@@ -62,10 +62,6 @@
 	[_viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [VoteViewController class]];
 }
 
-- (void) stopWaiting: (UIViewController *) viewController {
-	[_viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [viewController class]];
-}
-
 - (void) voteWith: (LGVoteAction *) voteAction  {
 	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [VoteViewController class]];
 	[_dataProvider photoVote: voteAction];
@@ -143,6 +139,7 @@
 - (void) openCheckUsersViewControllerForCheck: (LGCheck *) check {
 	SubscriptionViewController *vc = _viewControllersManager.subscriptionViewController;
 	vc.check = check;
+    vc.mode = SubscriptionViewControllerModeCheckUsers;
 	[_viewControllersManager openViewController: vc animated: YES];
 }
 
