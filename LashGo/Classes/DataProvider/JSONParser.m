@@ -195,7 +195,7 @@
 	return  checkPhotos;
 }
 
-- (NSArray *) parseCheckUsers: (NSData *) jsonData {
+- (NSArray *) parseSubscriptions: (NSData *) jsonData {
 	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
 	NSMutableArray *users = [NSMutableArray array];
 	
@@ -299,7 +299,13 @@
 		
 		subscription.uid =			[rawSubscription[@"id"] intValue];
 		subscription.user =			user;
-		subscription.isSubscribed =	[rawSubscription[@"amISubscribed"] boolValue];
+		
+		id subscriptionFlag = rawSubscription[@"amISubscribed"];
+		if (subscriptionFlag == nil) {
+			subscription.isSubscribed = YES;
+		} else {
+			subscription.isSubscribed =	[subscriptionFlag boolValue];
+		}
 	}
 	return subscription;
 }

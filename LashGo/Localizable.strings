@@ -83,7 +83,9 @@
 "SearchChecks" = "Чеков";
 
 //SubscriptionViewController
-"SubscriptionViewControllerTitle" = "Подписки";
+"SubscriptionViewControllerCheckUsersTitle" = "Пользователи";
+"SubscriptionViewControllerUserSubscribersTitle" = "Подписчики";
+"SubscriptionViewControllerUserSubscribtionsTitle" = "Подписки";
 
 //TitleBar
 "TitleBarRightSaveBtnText" = "Cохр.";

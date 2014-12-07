@@ -49,8 +49,7 @@
 }
 
 - (void) getUsersForCheck: (LGCheck *) check {
-	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [SubscriptionViewController class]];
-	[_dataProvider checkUsersFor: check.uid];
+	[_dataProvider checkUsersFor: check];
 }
 
 - (void) getVotePhotosForCheck: (LGCheck *) check {
@@ -138,7 +137,7 @@
 
 - (void) openCheckUsersViewControllerForCheck: (LGCheck *) check {
 	SubscriptionViewController *vc = _viewControllersManager.subscriptionViewController;
-	vc.check = check;
+	vc.context = check;
     vc.mode = SubscriptionViewControllerModeCheckUsers;
 	[_viewControllersManager openViewController: vc animated: YES];
 }

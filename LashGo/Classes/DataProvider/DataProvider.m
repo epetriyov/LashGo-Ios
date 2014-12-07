@@ -349,22 +349,26 @@ static NSString *const kRequestUUID =		@"uuid";
 
 #pragma mark -
 
-- (void) didGetCheckUsers: (URLConnection *) connection {
+- (void) didGetSubscriptions: (URLConnection *) connection {
 //	@"{"resultCollection":[{"userId":5,"userAvatar":"avatar_user_5_1416473789293.jpg","userLogin":"Betobet","fio":"Виктор Игуменов"},{"userId":6,"userAvatar":"avatar_user_6_1414642220865.jpg","userLogin":"agolantsev","fio":"Александр Голанцев","amISubscribed":false},{"userId":34,"userLogin":"facebook_100004439703624","fio":"Alexandr  Golantsev Golantsev","amISubscribed":false},{"userId":73,"userAvatar":"http://cs617222.vk.me/v617222915/1e8d3/u631-h4vAIo.jpg","userLogin":"vk_17015915","fio":"Александр Адаменко","amISubscribed":false},{"userId":24,"userAvatar":"avatar_user_24_1416515576367.jpg","userLogin":"vk_18494863","fio":"Onix","amISubscribed":false},{"userId":27,"userAvatar":"avatar_user_27_1412421770923.jpg","userLogin":"daniilgrechanyi@gmail.com","amISubscribed":false},{"userId":37,"userAvatar":"avatar_user_37_1415652595653.jpg","userLogin":"Miller","amISubscribed":false}]}"
-	NSArray *checkUsers = [_parser parseCheckUsers: connection.downloadedData];
+	NSArray *subscriptions = [_parser parseSubscriptions: connection.downloadedData];
 	
-	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetCheckUsers:)] == YES) {
-		[self.delegate dataProvider: self didGetCheckUsers: checkUsers];
+	LGSubscriptionsResult *result = [[LGSubscriptionsResult alloc] init];
+	result.items = subscriptions;
+	result.context = connection.context;
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetSubscriptions:)] == YES) {
+		[self.delegate dataProvider: self didGetSubscriptions: result];
 	}
 }
 
-- (void) checkUsersFor: (int64_t) checkID {
-	[self startConnectionWithPath: [NSString stringWithFormat: kChecksUsersPath, checkID]
+- (void) checkUsersFor: (LGCheck *) inputData {
+	[self startConnectionWithPath: [NSString stringWithFormat: kChecksUsersPath, inputData.uid]
 							 type: URLConnectionTypeGET
 							 body: nil
-						  context: nil
+						  context: inputData
 					allowMultiple: NO
-				   finishSelector: @selector(didGetCheckUsers:) failSelector: @selector(didFailGetImportantData:)];
+				   finishSelector: @selector(didGetSubscriptions:) failSelector: @selector(didFailGetImportantData:)];
 }
 
 #pragma mark - Comment
@@ -576,47 +580,33 @@ static NSString *const kRequestUUID =		@"uuid";
 
 #pragma mark -
 
-- (void) didGetUserSubscribers: (URLConnection *) connection {
-	NSArray *subscribers = [_parser parseCheckUsers: connection.downloadedData];
-	
-	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetUserSubscribers:)] == YES) {
-		[self.delegate dataProvider: self didGetUserSubscribers: subscribers];
-	}
-}
-
-- (void) userSubscribersFor: (int32_t) userID {
-	[self startConnectionWithPath: [NSString stringWithFormat: kUsersSubscribersPath, userID]
+- (void) userSubscribersFor: (LGUser *) inputData {
+	[self startConnectionWithPath: [NSString stringWithFormat: kUsersSubscribersPath, inputData.uid]
 							 type: URLConnectionTypeGET
 							 body: nil
-						  context: nil
+						  context: inputData
 					allowMultiple: NO
-				   finishSelector: @selector(didGetUserSubscribers:)
+				   finishSelector: @selector(didGetSubscriptions:)
 					 failSelector: @selector(didFailGetImportantData:)];
 }
 
 #pragma mark -
 
-- (void) didGetUserSubscriptions: (URLConnection *) connection {
-	NSArray *subscribtions = [_parser parseCheckUsers: connection.downloadedData];
-	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetUserSubscribers:)] == YES) {
-		[self.delegate dataProvider: self didGetUserSubscribers: subscribtions];
-	}
-}
-
-- (void) userSubscribtionsFor: (int32_t) userID {
-	[self startConnectionWithPath: [NSString stringWithFormat: kUsersSubscriptionsPath, userID]
+- (void) userSubscribtionsFor: (LGUser *) inputData {
+	[self startConnectionWithPath: [NSString stringWithFormat: kUsersSubscriptionsPath, inputData.uid]
 							 type: URLConnectionTypeGET
 							 body: nil
-						  context: nil
+						  context: inputData
 					allowMultiple: NO
-				   finishSelector: @selector(didGetUserSubscriptions:)
+				   finishSelector: @selector(didGetSubscriptions:)
 					 failSelector: @selector(didFailGetImportantData:)];
 }
 
 #pragma mark -
 
 - (void) didSubscribe: (URLConnection *) connection {
-	if ([self.delegate respondsToSelector: @selector(dataProvider:didUserSubscribeTo:)] == YES) {
+	if ([connection.context isKindOfClass: [LGSubscribe class]] == YES &&
+		[self.delegate respondsToSelector: @selector(dataProvider:didUserSubscribeTo:)] == YES) {
 		[self.delegate dataProvider: self didUserSubscribeTo: connection.context];
 	}
 }
@@ -633,7 +623,10 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark -
 
 - (void) didUnsubscribe: (URLConnection *) connection {
-	
+	if ([connection.context isKindOfClass: [LGSubscribe class]] == YES &&
+		[self.delegate respondsToSelector: @selector(dataProvider:didUserUnsubscribeFrom:)] == YES) {
+		[self.delegate dataProvider: self didUserUnsubscribeFrom: connection.context];
+	}
 }
 
 - (void) userUnsubscribeFrom: (LGSubscribe *) inputData {

@@ -14,6 +14,7 @@
 //#import "LGRegisterInfo.h"
 #import "LGSocialInfo.h"
 #import "LGSubscribe.h"
+#import "LGSubscriptionsResult.h"
 #import "LGVoteAction.h"
 
 @protocol DataProviderDelegate;
@@ -30,7 +31,7 @@
 - (void) checkAddPhoto: (LGCheck *) inputData;
 - (void) checkPhotosFor: (int64_t) checkID;
 - (void) checkVotePhotosFor: (int64_t) checkID;
-- (void) checkUsersFor: (int64_t) checkID;
+- (void) checkUsersFor: (LGCheck *) inputData;
 
 - (void) commentRemove: (int64_t) commentID;
 
@@ -48,8 +49,8 @@
 - (void) userRecover: (LGRecoverInfo *) inputData;
 - (void) userRegister: (LGLoginInfo *) inputData;
 - (void) userSocialSignIn: (LGSocialInfo *) inputData;
-- (void) userSubscribersFor: (int32_t) userID;
-- (void) userSubscribtionsFor: (int32_t) userID;
+- (void) userSubscribersFor: (LGUser *) inputData;
+- (void) userSubscribtionsFor: (LGUser *) inputData;
 - (void) userSubscribeTo: (LGSubscribe *) inputData;
 - (void) userUnsubscribeFrom: (LGSubscribe *) inputData;
 
@@ -60,15 +61,16 @@
 @optional
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckPhotos: (NSArray *) photos;
-- (void) dataProvider: (DataProvider *) dataProvider didGetCheckUsers: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (LGVotePhotosResult *) votePhotos;
+
+- (void) dataProvider: (DataProvider *) dataProvider didGetSubscriptions: (LGSubscriptionsResult *) subscriptions;
 
 - (void) dataProvider: (DataProvider *) dataProvider didPhotoVote: (LGVoteAction *) voteAction;
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserPhotos: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserProfile: (LGUser *) user;
-- (void) dataProvider: (DataProvider *) dataProvider didGetUserSubscribers: (NSArray *) subscribers;
 - (void) dataProvider: (DataProvider *) dataProvider didUserSubscribeTo: (LGSubscribe *) subscribe;
+- (void) dataProvider: (DataProvider *) dataProvider didUserUnsubscribeFrom: (LGSubscribe *) subscribe;
 
 - (void) dataProviderDidRecoverPass: (DataProvider *) dataProvider;
 - (void) dataProvider: (DataProvider *) dataProvider didRegisterUser: (LGRegisterInfo *) registerInfo;

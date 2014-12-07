@@ -65,6 +65,8 @@
 - (void) openViewControllerAboveFirst: (UIViewController *) viewController animated: (BOOL) animated;
 - (void) returnToPreviousViewController;
 
+- (SubscriptionViewController *) getSubscriptionViewControllerWithContext: (id) context;
+
 - (void) openStartViewController;
 
 - (void) openCheckCardViewController;

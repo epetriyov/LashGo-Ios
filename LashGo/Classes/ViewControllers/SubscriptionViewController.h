@@ -18,8 +18,8 @@ typedef NS_ENUM(ushort, SubscriptionViewControllerMode) {
 
 @interface SubscriptionViewController : TitleBarViewController
 
-@property (nonatomic, strong) LGCheck *check;
-@property (nonatomic, strong) LGUser *user;
+@property (nonatomic, strong) id context;
 @property (nonatomic, assign) SubscriptionViewControllerMode mode;
+@property (nonatomic, strong) NSArray *subscriptions;
 
 @end

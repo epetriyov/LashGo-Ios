@@ -97,12 +97,14 @@
 	self.storage.checkPhotos = photos;
 }
 
-- (void) dataProvider: (DataProvider *) dataProvider didGetCheckUsers: (NSArray *) users {
-	self.storage.subscriptions = users;
-}
-
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (LGVotePhotosResult *) votePhotos {
 	self.storage.checkVotePhotos = votePhotos;
+}
+
+- (void) dataProvider: (DataProvider *) dataProvider didGetSubscriptions: (LGSubscriptionsResult *) subscriptions {
+	SubscriptionViewController *vc = [viewControllersManager getSubscriptionViewControllerWithContext:
+									  subscriptions.context];
+	vc.subscriptions = subscriptions.items;
 }
 
 - (void) dataProvider: (DataProvider *) dataProvider didPhotoVote: (LGVoteAction *) voteAction {
@@ -123,6 +125,10 @@
 
 - (void) dataProvider: (DataProvider *) dataProvider didUserSubscribeTo: (LGSubscribe *) subscribe {
 	subscribe.subscription.isSubscribed = YES;
+}
+
+- (void) dataProvider: (DataProvider *) dataProvider didUserUnsubscribeFrom: (LGSubscribe *) subscribe {
+	subscribe.subscription.isSubscribed = NO;
 }
 
 #pragma mark - UIActionSheetDelegate implementation

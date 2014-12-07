@@ -17,8 +17,6 @@
 	ProfileEditViewController __weak *_profileEditViewController;
 	ProfileWelcomeViewController __weak *_profileWelcomeViewController;
 	ProfileViewController __weak *_profileViewController;
-	
-	SubscriptionViewController __weak *_subscriptionViewController;
 }
 
 @end
@@ -88,12 +86,7 @@
 }
 
 - (SubscriptionViewController *) subscriptionViewController {
-	SubscriptionViewController *vc = _subscriptionViewController;
-	if (vc == nil) {
-		vc = [self createViewControllerOfClass: [SubscriptionViewController class]];
-		_subscriptionViewController = vc;
-	}
-	return vc;
+	return [self createViewControllerOfClass: [SubscriptionViewController class]];
 }
 
 #pragma mark - Overrides
@@ -155,6 +148,20 @@
 
 - (void) returnToPreviousViewController {
 	[rootNavigationController popViewControllerAnimated: YES];
+}
+
+#pragma mark -
+
+- (SubscriptionViewController *) getSubscriptionViewControllerWithContext: (id) context {
+	SubscriptionViewController *result = nil;
+	for (UIViewController *item in self.rootNavigationController.viewControllers) {
+		if ([item isKindOfClass: [SubscriptionViewController class]] == YES &&
+			((SubscriptionViewController *)item).context == context) {
+			result = (SubscriptionViewController *)item;
+			break;
+		}
+	}
+	return result;
 }
 
 #pragma mark -

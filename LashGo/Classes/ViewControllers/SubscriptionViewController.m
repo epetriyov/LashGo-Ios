@@ -16,21 +16,34 @@
 #import "LGSubscription.h"
 #import "UIImageView+LGImagesExtension.h"
 
-static NSString *const kObservationKeyPath = @"subscriptions";
+static NSString *const kObservationKeyPath = @"isSubscribed";
 
 @interface SubscriptionViewController () <UITableViewDataSource, UITableViewDelegate, SubscriptionTableViewCellDelegate> {
 	UITableView __weak *_tableView;
+	NSMutableSet *_currentObservationSet;
 }
 
 @end
 
 @implementation SubscriptionViewController
 
+- (void) setSubscriptions:(NSArray *)subscriptions {
+	_subscriptions = subscriptions;
+	
+	[kernel stopWaiting: self];
+	[_tableView reloadData];
+	self.waitViewHidden = YES;
+}
+
+- (instancetype) initWithKernel:(Kernel *)theKernel {
+	if (self = [super initWithKernel: theKernel]) {
+		_currentObservationSet = [[NSMutableSet alloc] initWithCapacity: 1];
+	}
+	return self;
+}
+
 - (void) loadView {
 	[super loadView];
-	
-	//Reconfigure titleBar
-	_titleBarView.titleLabel.text = @"SubscriptionViewControllerTitle".commonLocalizedString;
 	
 	CGRect contentFrame = self.contentFrame;
 	
@@ -50,32 +63,42 @@ static NSString *const kObservationKeyPath = @"subscriptions";
 	
 	_tableView = tableView;
 	
-	[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
 	switch (self.mode) {
 		case SubscriptionViewControllerModeCheckUsers:
-			[kernel.checksManager getUsersForCheck: self.check];
+			_titleBarView.titleLabel.text = @"SubscriptionViewControllerCheckUsersTitle".commonLocalizedString;
+			[kernel.checksManager getUsersForCheck: self.context];
 			break;
 		case SubscriptionViewControllerModeUserSubscribers:
-			[kernel.userManager getSubscribersForUser: self.user];
+			_titleBarView.titleLabel.text = @"SubscriptionViewControllerUserSubscribersTitle".commonLocalizedString;
+			[kernel.userManager getSubscribersForUser: self.context];
 			break;
 		case SubscriptionViewControllerModeUserSubscribtions:
-			[kernel.userManager getSubscribtionsForUser: self.user];
+			_titleBarView.titleLabel.text = @"SubscriptionViewControllerUserSubscribtionsTitle".commonLocalizedString;
+			[kernel.userManager getSubscribtionsForUser: self.context];
 			break;
 		default:
 			break;
 	}
-	
-}
-
-- (void) dealloc {
-	[kernel.storage removeObserver: self forKeyPath: kObservationKeyPath];
+	self.waitViewHidden = NO;
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
 						 change:(NSDictionary *)change context:(void *)context {
-	if ([keyPath isEqualToString: kObservationKeyPath] == YES && [object isKindOfClass: [Storage class]] == YES) {
-		[kernel stopWaiting: self];
-		[_tableView reloadData];
+	if ([keyPath isEqualToString: kObservationKeyPath] == YES && [object isKindOfClass: [LGSubscription class]] == YES) {
+		NSUInteger index = [self.subscriptions indexOfObject: object];
+		
+		if (index != NSNotFound) {
+			[_tableView beginUpdates];
+			[_tableView reloadRowsAtIndexPaths: @[[NSIndexPath indexPathForRow: index inSection: 0]]
+							  withRowAnimation: UITableViewRowAnimationNone];
+			[_tableView endUpdates];
+		}
+	}
+}
+
+- (void) dealloc {
+	for (id item in _currentObservationSet) {
+		[item removeObserver: self forKeyPath: kObservationKeyPath context: nil];
 	}
 }
 
@@ -85,6 +108,14 @@ static NSString *const kObservationKeyPath = @"subscriptions";
 //	LGSubscription *item = kernel.storage.subscriptions[indexPath.row];
 //	[kernel.userManager subscribeTo: item];
 //}
+
+- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[theTableView deselectRowAtIndexPath: indexPath animated: YES];
+	
+	LGSubscription *item = self.subscriptions[indexPath.row];
+	
+	[kernel.userManager openProfileViewControllerWith: item.user];
+}
 
 #pragma mark -
 #pragma mark Table view data source methods
@@ -96,7 +127,7 @@ static NSString *const kObservationKeyPath = @"subscriptions";
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	short numberOfRows = [kernel.storage.subscriptions count];
+	short numberOfRows = [self.subscriptions count];
     return numberOfRows;
 }
 
@@ -104,7 +135,7 @@ static NSString *const kObservationKeyPath = @"subscriptions";
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
 	
-	LGSubscription *item = kernel.storage.subscriptions[indexPath.row];
+	LGSubscription *item = self.subscriptions[indexPath.row];
 	
 	SubscriptionTableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
@@ -125,8 +156,18 @@ static NSString *const kObservationKeyPath = @"subscriptions";
 
 - (void) subscriptionActionFor: (SubscriptionTableViewCell *) cell {
 	NSIndexPath *indexPath = [_tableView indexPathForCell: cell];
-	LGSubscription *item = kernel.storage.subscriptions[indexPath.row];
-	[kernel.userManager subscribeTo: item];
+	LGSubscription *item = self.subscriptions[indexPath.row];
+	
+	if ([_currentObservationSet containsObject: item] == NO) {
+		[item addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
+		[_currentObservationSet addObject: item];
+	}
+	
+	if (item.isSubscribed == YES) {
+		[kernel.userManager unsubscribeFrom: item];
+	} else {
+		[kernel.userManager subscribeTo: item];
+	}
 }
 
 @end

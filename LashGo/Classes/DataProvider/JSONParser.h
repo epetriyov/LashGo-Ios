@@ -22,7 +22,7 @@
 - (LGCheck *) parseCheckData: (NSData *) jsonData;
 - (NSArray *) parseChecks: (NSData *) jsonData;
 - (NSArray *) parseCheckPhotos: (NSData *) jsonData;
-- (NSArray *) parseCheckUsers: (NSData *) jsonData;
+- (NSArray *) parseSubscriptions: (NSData *) jsonData;
 - (LGVotePhotosResult *) parseCheckVotePhotos: (NSData *) jsonData;
 - (LGRegisterInfo *) parseRegiserInfo: (NSData *) jsonData;
 

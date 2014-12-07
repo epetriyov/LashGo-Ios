@@ -33,6 +33,7 @@
 }
 
 @dynamic frameOrigin;
+@dynamic frameSize;
 
 - (CGPoint) frameOrigin {
 	return self.frame.origin;
@@ -41,6 +42,16 @@
 - (void) setFrameOrigin:(CGPoint)frameOrigin {
 	CGRect frame = self.frame;
     frame.origin = frameOrigin;
+    self.frame = frame;
+}
+
+- (CGSize) frameSize {
+	return self.frame.size;
+}
+
+- (void) setFrameSize:(CGSize)frameSize {
+	CGRect frame = self.frame;
+    frame.size = frameSize;
     self.frame = frame;
 }
 
