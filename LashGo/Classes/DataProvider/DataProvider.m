@@ -28,6 +28,8 @@
 
 #define kCommentsPath @"/comments/%lld" //DELETE
 
+#define kEventsPath	@"/events" //GET
+
 #define kPhotosPath			@"/photos/%@" //GET
 #define kPhotosCommentsPath	@"/photos/%lld/comments" //GET, POST
 #define kPhotosVotePath		@"/photos/vote" //POST
@@ -384,6 +386,21 @@ static NSString *const kRequestUUID =		@"uuid";
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didCommentRemove:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark - Events
+
+- (void) didGetEvents: (URLConnection *) connection {
+	
+}
+
+- (void) events {
+	[self startConnectionWithPath: kEventsPath
+							 type: URLConnectionTypeGET
+							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetEvents:) failSelector: @selector(didFailGetImportantData:)];
 }
 
 #pragma mark - Photo

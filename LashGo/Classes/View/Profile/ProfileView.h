@@ -10,6 +10,9 @@
 
 @interface ProfileView : UIView
 
+@property (nonatomic, readonly) UIButton *subscribersButton;
+@property (nonatomic, readonly) UIButton *subscriptionsButton;
+
 - (void) setUserData: (LGUser *) user;
 
 @end

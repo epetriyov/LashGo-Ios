@@ -68,6 +68,12 @@
 		_subscribesCountLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabelsFollowCount];
 		[self addSubview: _subscribesCountLabel];
 		
+		_subscriptionsButton = [[UIButton alloc] initWithFrame: CGRectMake(_subscribesLabel.frame.origin.x - 30,
+																		   _subscribesCountLabel.frame.origin.y,
+																		   self.bounds.size.width - _subscribesLabel.frame.origin.x + 30,
+																		   _subscribesCountLabel.frame.size.height)];
+		[self addSubview: _subscriptionsButton];
+		
 		bottomOffsetY += 42;
 		
 		_subscribersLabel = [[UILabel alloc] init];
@@ -89,6 +95,12 @@
 		_subscribersCountLabel.textAlignment = NSTextAlignmentRight;
 		_subscribersCountLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabelsFollowCount];
 		[self addSubview: _subscribersCountLabel];
+		
+		_subscribersButton = [[UIButton alloc] initWithFrame: CGRectMake(_subscribersLabel.frame.origin.x - 30,
+																		 _subscribersCountLabel.frame.origin.y,
+																		 self.bounds.size.width - _subscribersLabel.frame.origin.x + 30,
+																		 _subscribersCountLabel.frame.size.height)];
+		[self addSubview: _subscribersButton];
 		
 		//Bottom to top
 		float offsetY = self.frame.size.height - 62;

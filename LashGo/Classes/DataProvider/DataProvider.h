@@ -35,6 +35,8 @@
 
 - (void) commentRemove: (int64_t) commentID;
 
+- (void) events;
+
 //- (void) photo: (NSString *) name;
 - (void) photoCommentsFor: (int64_t) photoID;
 //- (void) photoAddCommentFor: (int64_t) photoID;

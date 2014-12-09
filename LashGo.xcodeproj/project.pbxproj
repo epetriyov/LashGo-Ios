@@ -101,6 +101,8 @@
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
 		84EC27A21A18AC25006317C2 /* CheckHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC27A11A18AC25006317C2 /* CheckHeaderView.m */; };
 		84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC84F1197D4666001FA1F6 /* SearchViewController.m */; };
+		84EE64481A37472600192284 /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EE64471A37472600192284 /* EventsViewController.m */; };
+		84EE64511A37481D00192284 /* LGEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EE64501A37481D00192284 /* LGEvent.m */; };
 		84EEE4A819C9B019009F83C6 /* LGCheckCounters.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE4A719C9B019009F83C6 /* LGCheckCounters.m */; };
 		84EEE4B219C9B21F009F83C6 /* CheckCardCountersPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE4B119C9B21F009F83C6 /* CheckCardCountersPanelView.m */; };
 		84EEE4B619C9C42C009F83C6 /* CheckDrawingsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE4B519C9C42C009F83C6 /* CheckDrawingsDetailView.m */; };
@@ -353,6 +355,10 @@
 		84EC27A11A18AC25006317C2 /* CheckHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckHeaderView.m; sourceTree = "<group>"; };
 		84EC84F0197D4666001FA1F6 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
 		84EC84F1197D4666001FA1F6 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		84EE64461A37472600192284 /* EventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsViewController.h; sourceTree = "<group>"; };
+		84EE64471A37472600192284 /* EventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsViewController.m; sourceTree = "<group>"; };
+		84EE644F1A37481D00192284 /* LGEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGEvent.h; sourceTree = "<group>"; };
+		84EE64501A37481D00192284 /* LGEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGEvent.m; sourceTree = "<group>"; };
 		84EEE4A619C9B019009F83C6 /* LGCheckCounters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCheckCounters.h; sourceTree = "<group>"; };
 		84EEE4A719C9B019009F83C6 /* LGCheckCounters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCheckCounters.m; sourceTree = "<group>"; };
 		84EEE4B019C9B21F009F83C6 /* CheckCardCountersPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCardCountersPanelView.h; sourceTree = "<group>"; };
@@ -501,6 +507,8 @@
 				8406255D1930BB850067C1CA /* LGComment.m */,
 				8406255F1930BDF80067C1CA /* LGContent.h */,
 				840625601930BDF80067C1CA /* LGContent.m */,
+				84EE644F1A37481D00192284 /* LGEvent.h */,
+				84EE64501A37481D00192284 /* LGEvent.m */,
 				840625621930C8EF0067C1CA /* LGgcmRegistrationId.h */,
 				840625631930C8EF0067C1CA /* LGgcmRegistrationId.m */,
 				840625651930C9E70067C1CA /* LGLoginInfo.h */,
@@ -808,6 +816,8 @@
 				84EC84F1197D4666001FA1F6 /* SearchViewController.m */,
 				8405D0441A2A0CEB00A1C512 /* SubscriptionViewController.h */,
 				8405D0451A2A0CEB00A1C512 /* SubscriptionViewController.m */,
+				84EE64461A37472600192284 /* EventsViewController.h */,
+				84EE64471A37472600192284 /* EventsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1239,6 +1249,7 @@
 				84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */,
 				840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */,
 				84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */,
+				84EE64511A37481D00192284 /* LGEvent.m in Sources */,
 				845A210E19F2D49800AF9D24 /* CheckDetailUserOverlay.m in Sources */,
 				84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */,
 				84FA068719619F86006A72AE /* LoginViewController.m in Sources */,
@@ -1256,6 +1267,7 @@
 				84F8E8AC199BA7620054C9F8 /* CheckListViewController.m in Sources */,
 				84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */,
 				84EABEC61A345F8F0031BF07 /* LGSubscribe.m in Sources */,
+				84EE64481A37472600192284 /* EventsViewController.m in Sources */,
 				841C624319A397ED00BAEDBB /* TaskbarButton.m in Sources */,
 				84EEE4A819C9B019009F83C6 /* LGCheckCounters.m in Sources */,
 				8405D03D1A2A050300A1C512 /* SubscriptionTableViewCell.m in Sources */,

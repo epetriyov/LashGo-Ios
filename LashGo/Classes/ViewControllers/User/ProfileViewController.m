@@ -71,6 +71,10 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 	
 	ProfileView *profileView = [[ProfileView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 100)];
 	[profileView setUserData: self.user];
+	[profileView.subscribersButton addTarget: self action: @selector(subscribersAction:)
+							forControlEvents: UIControlEventTouchUpInside];
+	[profileView.subscriptionsButton addTarget: self action: @selector(subscriptionsAction:)
+							  forControlEvents: UIControlEventTouchUpInside];
 	[self.view insertSubview:profileView belowSubview: _titleBarView];
 	_profileView = profileView;
 	
@@ -127,6 +131,14 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 
 - (void) followAction: (id) sender {
 	
+}
+
+- (void) subscribersAction: (id) sender {
+	[kernel.userManager openSubscribersWith: self.user];
+}
+
+- (void) subscriptionsAction: (id) sender {
+	[kernel.userManager openSubscribtionsWith: self.user];
 }
 
 #pragma mark - UICollectionViewDataSource implementation
