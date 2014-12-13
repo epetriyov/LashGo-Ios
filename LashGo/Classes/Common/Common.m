@@ -10,6 +10,8 @@
 
 #import "ViewFactory.h"
 
+#define kWebServiceURLPhotoPath @"http://78.47.39.245:8080/lashgo-api/photos/"
+
 static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 
 @implementation NSString (CommonExtension)
@@ -89,6 +91,16 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 	[result replaceOccurrencesOfString: @"-" withString: @"" options: NSLiteralSearch
 								 range: NSMakeRange(0, [result length]) ];
 	return result;
+}
+
++ (NSURL *) imageLoadingURLForName: (NSString *) name {
+	NSString *urlString;
+	if ([name hasPrefix: @"http"] == YES) {
+		urlString = name;
+	} else {
+		urlString = [kWebServiceURLPhotoPath stringByAppendingString: name];
+	}
+	return [NSURL URLWithString: urlString];
 }
 
 #pragma mark -

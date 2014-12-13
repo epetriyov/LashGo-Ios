@@ -34,6 +34,8 @@ typedef NS_ENUM(ushort, PluralFormType) {
 + (NSString *) generateUUID;
 + (NSString *) generateUniqueString;
 
++ (NSURL *) imageLoadingURLForName: (NSString *) name;
+
 + (BOOL) is568hMode;
 + (BOOL) isEmptyString: (NSString *) string;
 

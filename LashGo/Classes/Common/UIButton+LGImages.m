@@ -11,8 +11,6 @@
 
 #import <SDWebImage/UIView+WebCacheOperation.h>
 
-#define kWebServiceURLPhotoPath @"http://78.47.39.245:8080/lashgo-api/photos/"
-
 @implementation UIButton (LGImages)
 
 - (void) loadWebImageWithSizeThatFitsName: (NSString *) imageName placeholder: (UIImage *) placeholder {
@@ -23,7 +21,7 @@
     [self setBackgroundImage:placeholder forState: UIControlStateNormal];
 	
 	if (imageName != nil) {
-		url = [NSURL URLWithString: [kWebServiceURLPhotoPath stringByAppendingString: imageName]];
+		url = [Common imageLoadingURLForName: imageName];
 	}
     if (url) {
         __weak UIButton *wself = self;
@@ -33,7 +31,7 @@
             dispatch_main_sync_safe(^{
                 __strong UIButton *sself = wself;
                 if (!sself) return;
-                if (image) {
+                if (resizedImage) {
                     [sself setBackgroundImage:resizedImage forState: UIControlStateNormal];
                 }
             });
@@ -50,7 +48,7 @@
     [self setBackgroundImage:placeholder forState: UIControlStateNormal];
 	
 	if (imageName != nil) {
-		url = [NSURL URLWithString: [kWebServiceURLPhotoPath stringByAppendingString: imageName]];
+		url = [Common imageLoadingURLForName: imageName];
 	}
     if (url) {
         __weak UIButton *wself = self;
@@ -61,7 +59,7 @@
             dispatch_main_sync_safe(^{
                 __strong UIButton *sself = wself;
                 if (!sself) return;
-                if (image) {
+                if (resizedImage) {
                     [sself setBackgroundImage:resizedImage forState: UIControlStateNormal];
                 }
             });

@@ -12,8 +12,6 @@
 //#import "objc/runtime.h"
 #import <SDWebImage/UIView+WebCacheOperation.h>
 
-#define kWebServiceURLPhotoPath @"http://78.47.39.245:8080/lashgo-api/photos/"
-
 @implementation UIImageView (LGImagesExtension)
 
 - (void) loadLocalImageWithName: (NSString *) ImageName {
@@ -45,13 +43,13 @@
 }
 
 - (void) loadWebImageWithName: (NSString *) imageName {
-	NSURL *url = [NSURL URLWithString: [kWebServiceURLPhotoPath stringByAppendingString: imageName]];
+	NSURL *url = [Common imageLoadingURLForName: imageName];
 	[self sd_setImageWithURL: url];
 }
 
 - (void) loadWebImageWithName: (NSString *) imageName
 			 placeholderImage: (UIImage *)placeholder completed:(SDWebImageCompletionBlock)completedBlock {
-	NSURL *url = [NSURL URLWithString: [kWebServiceURLPhotoPath stringByAppendingString: imageName]];
+	NSURL *url = [Common imageLoadingURLForName: imageName];
 	[self sd_setImageWithURL: url placeholderImage: placeholder completed: completedBlock];
 }
 
@@ -64,7 +62,7 @@
     self.image = placeholder;
     
 	if (imageName != nil) {
-		url = [NSURL URLWithString: [kWebServiceURLPhotoPath stringByAppendingString: imageName]];
+		url = [Common imageLoadingURLForName: imageName];
 	}
     if (url) {
         __weak UIImageView *wself = self;
@@ -73,7 +71,7 @@
 			UIImage __weak *resizedImage = [Common generateThumbnailForImage: image withSize: self.frame.size];
             dispatch_main_sync_safe(^{
                 if (!wself) return;
-                if (image) {
+                if (resizedImage) {
                     wself.image = resizedImage;
                     [wself setNeedsLayout];
                 }
@@ -92,7 +90,7 @@
     self.image = placeholder;
     
 	if (imageName != nil) {
-		url = [NSURL URLWithString: [kWebServiceURLPhotoPath stringByAppendingString: imageName]];
+		url = [Common imageLoadingURLForName: imageName];
 	}
     if (url) {
         __weak UIImageView *wself = self;
@@ -102,7 +100,7 @@
 																	withSize: self.frame.size gradient: YES];
             dispatch_main_sync_safe(^{
                 if (!wself) return;
-                if (image) {
+                if (resizedImage) {
                     wself.image = resizedImage;
                     [wself setNeedsLayout];
                 }
