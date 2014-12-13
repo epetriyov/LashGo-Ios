@@ -20,6 +20,8 @@
 				   dataProvider: (DataProvider *) dataProvider
 					  vcManager: (ViewControllersManager *) vcManager;
 
+- (void) getChecks;
+
 - (void) addPhotoForCheck: (LGCheck *) check;
 
 - (void) getPhotosForCheck: (LGCheck *) check;

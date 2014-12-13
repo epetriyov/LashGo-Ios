@@ -13,6 +13,11 @@
 "Да" = "Да";
 "Нет" = "Нет";
 
+//PullToRefresh
+"PullToRefreshPullToRefreshText" = "потяните для обновления...";
+"PullToRefreshPullToFetchMoreText" = "потяните для подгрузки...";
+"PullToRefreshReleaseText" = "отпустите...";
+
 //AlertViewManager
 "AlertAuthErrorTitle" = "Ошибка авторизации";
 "AlertAuthErrorMessage" = "Неудалось авторизоваться на сервере, повторите попытку позже";

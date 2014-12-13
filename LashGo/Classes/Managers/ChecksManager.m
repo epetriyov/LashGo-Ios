@@ -35,6 +35,10 @@
 	return self;
 }
 
+- (void) getChecks {
+	[_dataProvider checks];
+}
+
 #pragma mark -
 
 - (void) addPhotoForCheck: (LGCheck *) check {

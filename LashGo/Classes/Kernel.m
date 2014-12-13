@@ -91,6 +91,7 @@
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks {
 	[self.storage updateChecksWith: checks];
 	[self.viewControllersManager.checkCardViewController refresh];
+	[self.viewControllersManager.checkListViewController refresh];
 }
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckPhotos: (NSArray *) photos {

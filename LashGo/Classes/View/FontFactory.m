@@ -15,7 +15,8 @@
 		case FontTypeCheckPhotosWinnerTitle:	return [UIFont fontWithName: kDefaultFontMedium size: 16];
 		case FontTypeCheckCardTitle:			return [UIFont fontWithName: kDefaultFont size: 20];
 		case FontTypeCheckListCellTitle:		return [UIFont fontWithName: kDefaultFontBold size: 14];
-		case FontTypeCheckListCellDescription:	return [UIFont fontWithName: kDefaultFont size: 12];
+		case FontTypeCheckListCellDescription:
+		case FontTypePullToRefreshTitle:		return [UIFont fontWithName: kDefaultFont size: 12];
 		case FontTypeCountersTitle:
 		case FontTypeCountersDarkTitle:			return [UIFont fontWithName: kDefaultFontMedium size: 10];
 		case FontTypeLoginActionBtnTitle:		return [UIFont fontWithName: kDefaultFontMedium size: 18];

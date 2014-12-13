@@ -90,6 +90,7 @@
 		84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6240A1998F4CD003BC2F1 /* Storage.m */; };
 		84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E624101998FBAD003BC2F1 /* ChecksManager.m */; };
 		84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B2196C226A0021D417 /* CheckCardViewController.m */; };
+		84E6FCC31A3C56300005DAD6 /* PullToRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6FCC21A3C56300005DAD6 /* PullToRefreshControl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84E8066519F5483D001BD593 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8066419F5483D001BD593 /* PhotoViewController.m */; };
 		84E8066E19F54E2A001BD593 /* UIButton+LGImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8066D19F54E2A001BD593 /* UIButton+LGImages.m */; };
 		84E91BE419FBD4E100DD1873 /* CheckPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E91BE319FBD4E100DD1873 /* CheckPhotosViewController.m */; };
@@ -331,6 +332,8 @@
 		84E624101998FBAD003BC2F1 /* ChecksManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChecksManager.m; sourceTree = "<group>"; };
 		84E6D9B1196C226A0021D417 /* CheckCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckCardViewController.h; sourceTree = "<group>"; };
 		84E6D9B2196C226A0021D417 /* CheckCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCardViewController.m; sourceTree = "<group>"; };
+		84E6FCC11A3C56300005DAD6 /* PullToRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshControl.h; sourceTree = "<group>"; };
+		84E6FCC21A3C56300005DAD6 /* PullToRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshControl.m; sourceTree = "<group>"; };
 		84E8066319F5483D001BD593 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		84E8066419F5483D001BD593 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		84E8066C19F54E2A001BD593 /* UIButton+LGImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+LGImages.h"; sourceTree = "<group>"; };
@@ -441,6 +444,7 @@
 			children = (
 				84F8E89A199A2DB00054C9F8 /* AlertViewManager */,
 				84001FED1949AD8B004D9D7A /* Authorization */,
+				84E6FCC01A3C56300005DAD6 /* PullToRefresh */,
 				849DD0C6199CBF9300DC86F6 /* SegmentedControl */,
 			);
 			path = Components;
@@ -872,6 +876,15 @@
 			path = Check;
 			sourceTree = "<group>";
 		};
+		84E6FCC01A3C56300005DAD6 /* PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				84E6FCC11A3C56300005DAD6 /* PullToRefreshControl.h */,
+				84E6FCC21A3C56300005DAD6 /* PullToRefreshControl.m */,
+			);
+			path = PullToRefresh;
+			sourceTree = "<group>";
+		};
 		84E98F311984ED7D00B422F4 /* RequestInput */ = {
 			isa = PBXGroup;
 			children = (
@@ -1216,6 +1229,7 @@
 				84FEE18019E028180067C264 /* ProfileEditTableViewCell.m in Sources */,
 				84E8066519F5483D001BD593 /* PhotoViewController.m in Sources */,
 				849DD0C9199CBF9300DC86F6 /* SegmentedTextControl.m in Sources */,
+				84E6FCC31A3C56300005DAD6 /* PullToRefreshControl.m in Sources */,
 				84001FF41949AF68004D9D7A /* AppAccount.m in Sources */,
 				84A0DB1F19D45A87009AD6DB /* VotePanelView.m in Sources */,
 				84426D4619E158060068734B /* CheckDetailViewController.m in Sources */,

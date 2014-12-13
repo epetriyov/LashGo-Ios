@@ -13,8 +13,11 @@
 #import "FontFactory.h"
 #import "Kernel.h"
 #import "LGCheck.h"
+#import "PullToRefreshControl.h"
 #import "UIImageView+LGImagesExtension.h"
 #import "ViewFactory.h"
+
+#define kOffsetToActivateDataFetch 50
 
 typedef NS_ENUM(NSInteger, CheckListSection) {
 	CheckListSectionActive = 0,
@@ -26,6 +29,8 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	UITableView __weak *_tableView;
 	
 	NSTimer *_progressTimer;
+	
+	PullToRefreshControl *fullRefreshControl;
 }
 
 @end
@@ -69,6 +74,12 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	[self.view addSubview: tableView];
 	
 	_tableView = tableView;
+	
+	fullRefreshControl = [[PullToRefreshControl alloc] initWithFrame: CGRectMake(0, -kOffsetToActivateDataFetch,
+																				 tableView.frame.size.width,
+																				 kOffsetToActivateDataFetch)];
+	[fullRefreshControl addTarget: self action: @selector(fetchFullData:) forControlEvents: UIControlEventValueChanged];
+	[tableView addSubview: fullRefreshControl];
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,6 +116,13 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 
 - (void) refresh {
 	[_tableView reloadData];
+	[fullRefreshControl setActive: NO forScrollView: _tableView];
+}
+
+- (void) fetchFullData: (PullToRefreshControl *) sender {
+	if (sender.isActive == YES) {
+		[kernel.checksManager getChecks];
+	}
 }
 
 - (void) switchToCardsAction: (id) sender {
@@ -225,6 +243,16 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	[cell refresh];
 	
 	return cell;
+}
+
+#pragma mark
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	[fullRefreshControl containingScrollViewDidScroll: scrollView];
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+	[fullRefreshControl containingScrollViewWillBeginDecelerating: scrollView];
 }
 
 @end

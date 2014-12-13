@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, FontType) {
 	FontTypeProfileLabels,
 	FontTypeProfileLabelsCount,
 	FontTypeProfileLabelsFollowCount,
+	FontTypePullToRefreshTitle,
 	FontTypeSegmentedTextControl,
 	FontTypeSegmentedTextControlSelected,
 	FontTypeSlogan,
