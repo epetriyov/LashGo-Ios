@@ -143,7 +143,11 @@
 	float minScale = MIN(scale,
 						 self.imageZoomView.frame.size.height / image.size.height);
 	self.imageZoomView.minimumZoomScale = minScale;
-	self.imageZoomView.zoomScale = minScale;
+	if (self.mode == CheckDetailViewModeAdminPhoto) {
+		self.imageZoomView.zoomScale = scale;
+	} else {
+		self.imageZoomView.zoomScale = minScale;
+	}
 }
 
 #pragma mark - Actions
