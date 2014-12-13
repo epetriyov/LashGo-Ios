@@ -8,10 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LGSessionInfo : NSObject {
-	NSString *uid;
-}
+@interface LGSessionInfo : NSObject
 
 @property (nonatomic, strong) NSString *uid;
+@property (nonatomic, assign) int32_t userUID;
 
 @end

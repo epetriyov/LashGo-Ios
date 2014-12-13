@@ -10,7 +10,4 @@
 
 @implementation LGSessionInfo
 
-@synthesize uid;
-
-
 @end

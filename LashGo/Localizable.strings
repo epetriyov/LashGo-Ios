@@ -35,7 +35,7 @@
 "LoginViewControllerPassPlaceholder" = "Пароль";
 "LoginViewControllerRestorePassBtnTitle" = "Забыли пароль?";
 "LoginViewControllerLoginBtnTitle" = "Поехали!";
-"LoginViewControllerRegisterBtnTitle" = "Хочу с вами!";
+"LoginViewControllerRegisterBtnTitle" = "Регистрация";
 "LoginViewControllerSocialLabelTitle" = "или войти через соцсети";
 
 //ProfileEditViewController

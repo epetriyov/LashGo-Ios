@@ -448,7 +448,7 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark - User
 
 - (void) didLogin: (URLConnection *) connection {
-	LGRegisterInfo *registerInfo = [_parser parseRegiserInfo: connection.downloadedData];
+	LGRegisterInfo *registerInfo = [_parser parseLoginInfo: connection.downloadedData];
 	
 	if ([self.delegate respondsToSelector: @selector(dataProvider:didRegisterUser:)] == YES) {
 		[self.delegate dataProvider: self didRegisterUser: registerInfo];
@@ -562,7 +562,7 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark -
 
 - (void) didUserAuth: (URLConnection *) connection {
-	LGRegisterInfo *registerInfo = [_parser parseRegiserInfo: connection.downloadedData];
+	LGRegisterInfo *registerInfo = [_parser parseRegisterInfo: connection.downloadedData];
 	
 	if ([self.delegate respondsToSelector: @selector(dataProvider:didRegisterUser:)] == YES) {
 		[self.delegate dataProvider: self didRegisterUser: registerInfo];

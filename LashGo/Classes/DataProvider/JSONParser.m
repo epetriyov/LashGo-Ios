@@ -257,24 +257,45 @@
 	return photo;
 }
 
-- (LGRegisterInfo *) parseRegiserInfo: (NSData *) jsonData {
+- (LGSessionInfo *) parseSessionInfo: (NSDictionary *) jsonDataObj {
+	LGSessionInfo *sessionInfo = nil;
+	
+	if ([jsonDataObj.allKeys count] > 0) {
+		sessionInfo = [[LGSessionInfo alloc] init];
+		
+		sessionInfo.uid =		jsonDataObj[@"sessionId"];
+		sessionInfo.userUID =	[jsonDataObj[@"userId"] intValue];
+	}
+	return sessionInfo;
+}
+
+- (LGRegisterInfo *) parseLoginInfo: (NSData *) jsonData {
+	NSDictionary *rawData = [self parseJSONData: jsonData][@"result"];
+	
+	LGSessionInfo *sessionInfo = [self parseSessionInfo: rawData];
+	
+	LGUser *user = [[LGUser alloc] init];
+	user.uid = sessionInfo.userUID;
+	
+	LGRegisterInfo *registerInfo = [[LGRegisterInfo alloc] init];
+	registerInfo.user =			user;
+	registerInfo.sessionInfo =	sessionInfo;
+	
+	return registerInfo;
+}
+
+- (LGRegisterInfo *) parseRegisterInfo: (NSData *) jsonData {
 	NSDictionary *rawData = [self parseJSONData: jsonData][@"result"];
 	
 	LGRegisterInfo *registerInfo = [[LGRegisterInfo alloc] init];
 	
-	NSDictionary *rawUser = rawData[@"userDto"];
-	LGUser *user = [self parseUser: rawUser];
+	LGUser *user =					[self parseUser: rawData[@"userDto"]];
+	LGSessionInfo *sessionInfo =	[self parseSessionInfo: rawData[@"sessionInfo"]];
+	
 	if (user == nil) {
-		NSNumber *userId = rawData[@"userId"];
-		if (userId != nil) {
-			user = [[LGUser alloc] init];
-			user.uid = [userId intValue];
-		}
+		user = [[LGUser alloc] init];
+		user.uid = sessionInfo.userUID;
 	}
-	
-	LGSessionInfo *sessionInfo = [[LGSessionInfo alloc] init];
-	
-	sessionInfo.uid =	rawData[@"sessionId"];
 	
 	registerInfo.user =			user;
 	registerInfo.sessionInfo =	sessionInfo;

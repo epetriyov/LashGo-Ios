@@ -24,7 +24,9 @@
 - (NSArray *) parseCheckPhotos: (NSData *) jsonData;
 - (NSArray *) parseSubscriptions: (NSData *) jsonData;
 - (LGVotePhotosResult *) parseCheckVotePhotos: (NSData *) jsonData;
-- (LGRegisterInfo *) parseRegiserInfo: (NSData *) jsonData;
+
+- (LGRegisterInfo *) parseLoginInfo: (NSData *) jsonData;
+- (LGRegisterInfo *) parseRegisterInfo: (NSData *) jsonData;
 
 - (NSArray *) parseUserPhotos: (NSData *) jsonData;
 - (LGUser *) parseUserProfile: (NSData *) jsonData;
