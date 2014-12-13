@@ -41,6 +41,12 @@
 
 #pragma mark -
 
+- (void) getCommentsForPhoto: (LGPhoto *) photo {
+	[_dataProvider photoCommentsFor: photo];
+}
+
+#pragma mark -
+
 - (void) addPhotoForCheck: (LGCheck *) check {
 	[_dataProvider checkAddPhoto: check];
 }

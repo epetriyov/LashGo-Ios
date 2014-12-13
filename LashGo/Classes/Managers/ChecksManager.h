@@ -22,6 +22,8 @@
 
 - (void) getChecks;
 
+- (void) getCommentsForPhoto: (LGPhoto *) photo;
+
 - (void) addPhotoForCheck: (LGCheck *) check;
 
 - (void) getPhotosForCheck: (LGCheck *) check;

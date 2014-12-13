@@ -25,6 +25,7 @@
 #import "ProfileWelcomeViewController.h"
 #import "ProfileViewController.h"
 
+#import "CommentsViewController.h"
 #import "SubscriptionViewController.h"
 
 @class Kernel;
@@ -57,6 +58,7 @@
 @property (nonatomic, readonly) ProfileWelcomeViewController *profileWelcomeViewController;
 @property (nonatomic, readonly) ProfileViewController *profileViewController;
 
+@property (nonatomic, readonly) CommentsViewController *commentsViewController;
 @property (nonatomic, readonly) SubscriptionViewController *subscriptionViewController;
 
 - (id) initWithKernel: (Kernel *) theKernel;
@@ -65,6 +67,7 @@
 - (void) openViewControllerAboveFirst: (UIViewController *) viewController animated: (BOOL) animated;
 - (void) returnToPreviousViewController;
 
+- (CommentsViewController *) getCommentsViewControllerWithContext: (id) context;
 - (SubscriptionViewController *) getSubscriptionViewControllerWithContext: (id) context;
 
 - (void) openStartViewController;

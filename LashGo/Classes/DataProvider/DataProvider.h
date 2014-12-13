@@ -8,6 +8,7 @@
 
 #import "JSONParser.h"
 
+#import "ContextualArrayResult.h"
 //#import "LGCheck.h"
 #import "LGLoginInfo.h"
 #import "LGRecoverInfo.h"
@@ -38,7 +39,7 @@
 - (void) events;
 
 //- (void) photo: (NSString *) name;
-- (void) photoCommentsFor: (int64_t) photoID;
+- (void) photoCommentsFor: (LGPhoto *) inputData;
 //- (void) photoAddCommentFor: (int64_t) photoID;
 - (void) photoVote: (LGVoteAction *) inputData;
 
@@ -64,6 +65,8 @@
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckPhotos: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (LGVotePhotosResult *) votePhotos;
+
+- (void) dataProvider: (DataProvider *) dataProvider didGetComments: (ContextualArrayResult *) comments;
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetSubscriptions: (LGSubscriptionsResult *) subscriptions;
 

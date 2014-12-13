@@ -410,16 +410,26 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark - Photo
 
 - (void) didGetPhotoComments: (URLConnection *) connection {
+	NSArray *comments = nil;
+	if (connection.error == nil) {
+		comments = [_parser parseComments: connection.downloadedData];
+	}
+	ContextualArrayResult *result = [[ContextualArrayResult alloc] init];
+	result.items = comments;
+	result.context = connection.context;
 	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetComments:)] == YES) {
+		[self.delegate dataProvider: self didGetComments: result];
+	}
 }
 
-- (void) photoCommentsFor: (int64_t) photoID {
-	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosCommentsPath, photoID]
+- (void) photoCommentsFor: (LGPhoto *) inputData {
+	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosCommentsPath, inputData.uid]
 							 type: URLConnectionTypeGET
 							 body: nil
-						  context: nil
+						  context: inputData
 					allowMultiple: NO
-				   finishSelector: @selector(didGetPhotoComments:) failSelector: @selector(didFailGetImportantData:)];
+				   finishSelector: @selector(didGetPhotoComments:) failSelector: @selector(didGetPhotoComments:)];
 }
 
 #pragma mark -

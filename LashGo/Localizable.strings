@@ -33,6 +33,9 @@
 
 "MenuActionSheetLogoutTitle" = "Выйти";
 
+//CommentsViewController
+"CommentsViewControllerTitle" = "Комментарии";
+
 //LoginViewController
 "LoginViewControllerTitle" = "Вход";
 "LoginViewControllerWelcomeText" = "С возвращением!";

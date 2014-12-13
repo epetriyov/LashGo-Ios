@@ -85,6 +85,10 @@
 	return vc;
 }
 
+- (CommentsViewController *) commentsViewController {
+	return [self createViewControllerOfClass: [CommentsViewController class]];
+}
+
 - (SubscriptionViewController *) subscriptionViewController {
 	return [self createViewControllerOfClass: [SubscriptionViewController class]];
 }
@@ -152,12 +156,24 @@
 
 #pragma mark -
 
+- (CommentsViewController *) getCommentsViewControllerWithContext: (id) context {
+	CommentsViewController *result = nil;
+	for (id item in self.rootNavigationController.viewControllers) {
+		if ([item isKindOfClass: [CommentsViewController class]] == YES &&
+			((CommentsViewController *)item).photo == context) {
+			result = item;
+			break;
+		}
+	}
+	return result;
+}
+
 - (SubscriptionViewController *) getSubscriptionViewControllerWithContext: (id) context {
 	SubscriptionViewController *result = nil;
-	for (UIViewController *item in self.rootNavigationController.viewControllers) {
+	for (id item in self.rootNavigationController.viewControllers) {
 		if ([item isKindOfClass: [SubscriptionViewController class]] == YES &&
 			((SubscriptionViewController *)item).context == context) {
-			result = (SubscriptionViewController *)item;
+			result = item;
 			break;
 		}
 	}

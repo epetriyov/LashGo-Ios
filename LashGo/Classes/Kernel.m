@@ -102,6 +102,11 @@
 	self.storage.checkVotePhotos = votePhotos;
 }
 
+- (void) dataProvider: (DataProvider *) dataProvider didGetComments: (ContextualArrayResult *) comments {
+	CommentsViewController *vc = [viewControllersManager getCommentsViewControllerWithContext: comments.context];
+	vc.comments = comments.items;
+}
+
 - (void) dataProvider: (DataProvider *) dataProvider didGetSubscriptions: (LGSubscriptionsResult *) subscriptions {
 	SubscriptionViewController *vc = [viewControllersManager getSubscriptionViewControllerWithContext:
 									  subscriptions.context];

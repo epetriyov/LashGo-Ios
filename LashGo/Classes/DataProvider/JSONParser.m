@@ -195,6 +195,13 @@
 	return  checkPhotos;
 }
 
+- (NSArray *) parseComments: (NSData *) jsonData {
+	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
+	NSArray *comments = nil;
+	NSAssert(NO, @"Comments parser not implemented");
+	return  comments;
+}
+
 - (NSArray *) parseSubscriptions: (NSData *) jsonData {
 	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
 	NSMutableArray *users = [NSMutableArray array];

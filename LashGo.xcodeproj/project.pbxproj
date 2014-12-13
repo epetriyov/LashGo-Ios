@@ -26,7 +26,6 @@
 		840625541930AB230067C1CA /* JSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625531930AB230067C1CA /* JSONParser.m */; };
 		840625581930AD760067C1CA /* LGCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625571930AD760067C1CA /* LGCheck.m */; };
 		8406255B1930B83B0067C1CA /* LGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406255A1930B83B0067C1CA /* LGUser.m */; };
-		8406255E1930BB850067C1CA /* LGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406255D1930BB850067C1CA /* LGComment.m */; };
 		840625611930BDF80067C1CA /* LGContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625601930BDF80067C1CA /* LGContent.m */; };
 		840625641930C8EF0067C1CA /* LGgcmRegistrationId.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625631930C8EF0067C1CA /* LGgcmRegistrationId.m */; };
 		840625671930C9E70067C1CA /* LGLoginInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625661930C9E70067C1CA /* LGLoginInfo.m */; };
@@ -91,6 +90,9 @@
 		84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E624101998FBAD003BC2F1 /* ChecksManager.m */; };
 		84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B2196C226A0021D417 /* CheckCardViewController.m */; };
 		84E6FCC31A3C56300005DAD6 /* PullToRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6FCC21A3C56300005DAD6 /* PullToRefreshControl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		84E6FCCC1A3C78430005DAD6 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6FCCB1A3C78430005DAD6 /* CommentsViewController.m */; };
+		84E6FCD41A3C85EE0005DAD6 /* LGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6FCD31A3C85EE0005DAD6 /* LGComment.m */; };
+		84E6FCD71A3C86870005DAD6 /* ContextualArrayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6FCD61A3C86870005DAD6 /* ContextualArrayResult.m */; };
 		84E8066519F5483D001BD593 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8066419F5483D001BD593 /* PhotoViewController.m */; };
 		84E8066E19F54E2A001BD593 /* UIButton+LGImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8066D19F54E2A001BD593 /* UIButton+LGImages.m */; };
 		84E91BE419FBD4E100DD1873 /* CheckPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E91BE319FBD4E100DD1873 /* CheckPhotosViewController.m */; };
@@ -216,8 +218,6 @@
 		840625571930AD760067C1CA /* LGCheck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCheck.m; sourceTree = "<group>"; };
 		840625591930B83B0067C1CA /* LGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGUser.h; sourceTree = "<group>"; };
 		8406255A1930B83B0067C1CA /* LGUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGUser.m; sourceTree = "<group>"; };
-		8406255C1930BB850067C1CA /* LGComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGComment.h; sourceTree = "<group>"; };
-		8406255D1930BB850067C1CA /* LGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGComment.m; sourceTree = "<group>"; };
 		8406255F1930BDF80067C1CA /* LGContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGContent.h; sourceTree = "<group>"; };
 		840625601930BDF80067C1CA /* LGContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGContent.m; sourceTree = "<group>"; };
 		840625621930C8EF0067C1CA /* LGgcmRegistrationId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGgcmRegistrationId.h; sourceTree = "<group>"; };
@@ -334,6 +334,12 @@
 		84E6D9B2196C226A0021D417 /* CheckCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckCardViewController.m; sourceTree = "<group>"; };
 		84E6FCC11A3C56300005DAD6 /* PullToRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullToRefreshControl.h; sourceTree = "<group>"; };
 		84E6FCC21A3C56300005DAD6 /* PullToRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullToRefreshControl.m; sourceTree = "<group>"; };
+		84E6FCCA1A3C78430005DAD6 /* CommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsViewController.h; sourceTree = "<group>"; };
+		84E6FCCB1A3C78430005DAD6 /* CommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsViewController.m; sourceTree = "<group>"; };
+		84E6FCD21A3C85EE0005DAD6 /* LGComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGComment.h; sourceTree = "<group>"; };
+		84E6FCD31A3C85EE0005DAD6 /* LGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGComment.m; sourceTree = "<group>"; };
+		84E6FCD51A3C86870005DAD6 /* ContextualArrayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextualArrayResult.h; sourceTree = "<group>"; };
+		84E6FCD61A3C86870005DAD6 /* ContextualArrayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextualArrayResult.m; sourceTree = "<group>"; };
 		84E8066319F5483D001BD593 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		84E8066419F5483D001BD593 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		84E8066C19F54E2A001BD593 /* UIButton+LGImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+LGImages.h"; sourceTree = "<group>"; };
@@ -501,14 +507,15 @@
 			isa = PBXGroup;
 			children = (
 				84E98F311984ED7D00B422F4 /* RequestInput */,
+				84E6FCCD1A3C85BE0005DAD6 /* Comments */,
 				84EABEBB1A345F410031BF07 /* Subscriptions */,
 				841BBF2119FFD9F8003A1FDC /* Vote */,
+				84E6FCD51A3C86870005DAD6 /* ContextualArrayResult.h */,
+				84E6FCD61A3C86870005DAD6 /* ContextualArrayResult.m */,
 				840625561930AD760067C1CA /* LGCheck.h */,
 				840625571930AD760067C1CA /* LGCheck.m */,
 				84EEE4A619C9B019009F83C6 /* LGCheckCounters.h */,
 				84EEE4A719C9B019009F83C6 /* LGCheckCounters.m */,
-				8406255C1930BB850067C1CA /* LGComment.h */,
-				8406255D1930BB850067C1CA /* LGComment.m */,
 				8406255F1930BDF80067C1CA /* LGContent.h */,
 				840625601930BDF80067C1CA /* LGContent.m */,
 				84EE644F1A37481D00192284 /* LGEvent.h */,
@@ -822,6 +829,8 @@
 				8405D0451A2A0CEB00A1C512 /* SubscriptionViewController.m */,
 				84EE64461A37472600192284 /* EventsViewController.h */,
 				84EE64471A37472600192284 /* EventsViewController.m */,
+				84E6FCCA1A3C78430005DAD6 /* CommentsViewController.h */,
+				84E6FCCB1A3C78430005DAD6 /* CommentsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -883,6 +892,15 @@
 				84E6FCC21A3C56300005DAD6 /* PullToRefreshControl.m */,
 			);
 			path = PullToRefresh;
+			sourceTree = "<group>";
+		};
+		84E6FCCD1A3C85BE0005DAD6 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				84E6FCD21A3C85EE0005DAD6 /* LGComment.h */,
+				84E6FCD31A3C85EE0005DAD6 /* LGComment.m */,
+			);
+			path = Comments;
 			sourceTree = "<group>";
 		};
 		84E98F311984ED7D00B422F4 /* RequestInput */ = {
@@ -1220,6 +1238,7 @@
 			files = (
 				845A210719F2694400AF9D24 /* ProfileView.m in Sources */,
 				845A211419F2D52D00AF9D24 /* CheckDetailCheckOverlay.m in Sources */,
+				84E6FCCC1A3C78430005DAD6 /* CommentsViewController.m in Sources */,
 				845D85B31902A7FD004E10AB /* ViewControllersManager.m in Sources */,
 				8426F351191A661D00B4E336 /* BaseViewController.m in Sources */,
 				84062511193088F30067C1CA /* DownloadableImageItem.m in Sources */,
@@ -1256,11 +1275,13 @@
 				840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */,
 				84FD8959194C44E7001139DF /* OAuthCore.m in Sources */,
 				841BBF2D19FFDC4B003A1FDC /* LGVotePhoto.m in Sources */,
+				84E6FCD71A3C86870005DAD6 /* ContextualArrayResult.m in Sources */,
 				840B4EB519A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m in Sources */,
 				84F5003B19AB6C1400DC21C7 /* TaskBarViewController.m in Sources */,
 				845D85BD1902AA00004E10AB /* URLConnection.m in Sources */,
 				84EB473D1943044C001DEF81 /* StartViewController.m in Sources */,
 				84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */,
+				84E6FCD41A3C85EE0005DAD6 /* LGComment.m in Sources */,
 				840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */,
 				84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */,
 				84EE64511A37481D00192284 /* LGEvent.m in Sources */,
@@ -1285,7 +1306,6 @@
 				841C624319A397ED00BAEDBB /* TaskbarButton.m in Sources */,
 				84EEE4A819C9B019009F83C6 /* LGCheckCounters.m in Sources */,
 				8405D03D1A2A050300A1C512 /* SubscriptionTableViewCell.m in Sources */,
-				8406255E1930BB850067C1CA /* LGComment.m in Sources */,
 				84FEE18319E02E320067C264 /* ProfileWelcomeViewController.m in Sources */,
 				849DD0C3199C9D5800DC86F6 /* CheckListTableViewCell.m in Sources */,
 				8491557A1907FC78008D9120 /* Common.m in Sources */,
