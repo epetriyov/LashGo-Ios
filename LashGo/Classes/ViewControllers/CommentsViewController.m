@@ -8,6 +8,7 @@
 
 #import "CommentsViewController.h"
 
+#import "CommentTableViewCell.h"
 #import "Common.h"
 #import "Kernel.h"
 #import "UIImageView+LGImagesExtension.h"
@@ -81,10 +82,10 @@
 	
 	LGComment *item = self.comments[indexPath.row];
 	
-	UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	CommentTableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-												reuseIdentifier:CellIdentifier];
+		cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+										   reuseIdentifier:CellIdentifier];
 	}
 	
 	cell.textLabel.text = item.user.fio;

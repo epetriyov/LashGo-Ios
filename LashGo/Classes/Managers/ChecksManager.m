@@ -158,4 +158,10 @@
 	[_viewControllersManager openViewController: voteViewController animated: YES];
 }
 
+- (void) openPhotoCommentsViewControllerFor: (LGPhoto *) photo {
+	CommentsViewController *vc = _viewControllersManager.commentsViewController;
+	vc.photo = photo;
+	[_viewControllersManager openViewController: vc animated: YES];
+}
+
 @end

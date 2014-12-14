@@ -93,6 +93,8 @@
 		84E6FCCC1A3C78430005DAD6 /* CommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6FCCB1A3C78430005DAD6 /* CommentsViewController.m */; };
 		84E6FCD41A3C85EE0005DAD6 /* LGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6FCD31A3C85EE0005DAD6 /* LGComment.m */; };
 		84E6FCD71A3C86870005DAD6 /* ContextualArrayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6FCD61A3C86870005DAD6 /* ContextualArrayResult.m */; };
+		84E6FCDA1A3D92B20005DAD6 /* PhotoCountersPanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6FCD91A3D92B20005DAD6 /* PhotoCountersPanelView.m */; };
+		84E6FCDD1A3DCF420005DAD6 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6FCDC1A3DCF420005DAD6 /* CommentTableViewCell.m */; };
 		84E8066519F5483D001BD593 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8066419F5483D001BD593 /* PhotoViewController.m */; };
 		84E8066E19F54E2A001BD593 /* UIButton+LGImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8066D19F54E2A001BD593 /* UIButton+LGImages.m */; };
 		84E91BE419FBD4E100DD1873 /* CheckPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E91BE319FBD4E100DD1873 /* CheckPhotosViewController.m */; };
@@ -340,6 +342,10 @@
 		84E6FCD31A3C85EE0005DAD6 /* LGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGComment.m; sourceTree = "<group>"; };
 		84E6FCD51A3C86870005DAD6 /* ContextualArrayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextualArrayResult.h; sourceTree = "<group>"; };
 		84E6FCD61A3C86870005DAD6 /* ContextualArrayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextualArrayResult.m; sourceTree = "<group>"; };
+		84E6FCD81A3D92B20005DAD6 /* PhotoCountersPanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCountersPanelView.h; sourceTree = "<group>"; };
+		84E6FCD91A3D92B20005DAD6 /* PhotoCountersPanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCountersPanelView.m; sourceTree = "<group>"; };
+		84E6FCDB1A3DCF420005DAD6 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
+		84E6FCDC1A3DCF420005DAD6 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		84E8066319F5483D001BD593 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
 		84E8066419F5483D001BD593 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		84E8066C19F54E2A001BD593 /* UIButton+LGImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+LGImages.h"; sourceTree = "<group>"; };
@@ -940,6 +946,8 @@
 				84EEE4B119C9B21F009F83C6 /* CheckCardCountersPanelView.m */,
 				840425D819CB16EB00C5EDBF /* CheckCardTimerPanelView.h */,
 				840425D919CB16EB00C5EDBF /* CheckCardTimerPanelView.m */,
+				84E6FCD81A3D92B20005DAD6 /* PhotoCountersPanelView.h */,
+				84E6FCD91A3D92B20005DAD6 /* PhotoCountersPanelView.m */,
 			);
 			path = Panel;
 			sourceTree = "<group>";
@@ -1065,6 +1073,8 @@
 		84FEE17D19E024450067C264 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				84E6FCDB1A3DCF420005DAD6 /* CommentTableViewCell.h */,
+				84E6FCDC1A3DCF420005DAD6 /* CommentTableViewCell.m */,
 				84FEE17E19E028180067C264 /* ProfileEditTableViewCell.h */,
 				84FEE17F19E028180067C264 /* ProfileEditTableViewCell.m */,
 				8405D03B1A2A050300A1C512 /* SubscriptionTableViewCell.h */,
@@ -1282,6 +1292,7 @@
 				84EB473D1943044C001DEF81 /* StartViewController.m in Sources */,
 				84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */,
 				84E6FCD41A3C85EE0005DAD6 /* LGComment.m in Sources */,
+				84E6FCDA1A3D92B20005DAD6 /* PhotoCountersPanelView.m in Sources */,
 				840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */,
 				84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */,
 				84EE64511A37481D00192284 /* LGEvent.m in Sources */,
@@ -1338,6 +1349,7 @@
 				84EEE4B219C9B21F009F83C6 /* CheckCardCountersPanelView.m in Sources */,
 				841BBF3019FFDDBB003A1FDC /* LGVotePhotosResult.m in Sources */,
 				841BFAA719E997A7003BB92B /* CircleGradientLayer.m in Sources */,
+				84E6FCDD1A3DCF420005DAD6 /* CommentTableViewCell.m in Sources */,
 				84FD8961194C4684001139DF /* TWAPIManager.m in Sources */,
 				84FD8956194C44E7001139DF /* TwitterAppAccount.m in Sources */,
 			);

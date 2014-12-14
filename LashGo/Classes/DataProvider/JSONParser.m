@@ -197,8 +197,27 @@
 
 - (NSArray *) parseComments: (NSData *) jsonData {
 	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
-	NSArray *comments = nil;
-	NSAssert(NO, @"Comments parser not implemented");
+	
+	NSMutableArray *comments = [NSMutableArray array];
+	
+	for (NSDictionary *rawComment in rawData) {
+		LGComment *comment = [[LGComment alloc] init];
+		
+		comment.uid =			[rawComment[@"id"] longLongValue];
+		comment.content =		rawComment[@"content"];
+		
+		NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatterWithFullDateFormat];
+		
+		NSString *str =			rawComment[@"createDate"];
+		comment.createDate =	[dateFormatter dateFromString: str];
+		comment.user =			[self parseUser: rawComment[@"user"]];
+		
+		[comments addObject: comment];
+	}
+	
+	if ([comments count] <= 0) {
+		comments = nil;
+	}
 	return  comments;
 }
 

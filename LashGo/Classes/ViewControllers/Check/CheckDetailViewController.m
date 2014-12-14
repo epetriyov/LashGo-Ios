@@ -9,6 +9,7 @@
 #import "CheckDetailViewController.h"
 
 #import "CheckCardTimerPanelView.h"
+#import "PhotoCountersPanelView.h"
 #import "Kernel.h"
 #import "UIButton+LGImages.h"
 #import "UIImageView+LGImagesExtension.h"
@@ -86,6 +87,11 @@
 																				   mode: CheckCardTimerPanelModeDark];
 	[panelBgView addSubview: panelView];
 	
+	PhotoCountersPanelView *photoCountersView = [[PhotoCountersPanelView alloc] initWithFrame: CGRectMake(0, panelHeight - countersHeight, panelBgView.frame.size.width, countersHeight)];
+	[photoCountersView.commentsButton addTarget: self action: @selector(commentsAction:)
+					   forControlEvents: UIControlEventTouchUpInside];
+	[panelBgView addSubview: photoCountersView];
+	
 	CGRect imageFrame = self.contentFrame;
 	imageFrame.size.height = panelBgView.frame.origin.y - imageFrame.origin.y;
 	
@@ -107,6 +113,7 @@
 								   }];
 	} else {
 		if (self.mode == CheckDetailViewModeAdminPhoto) {
+			photoCountersView.hidden = YES;
 			CheckDetailViewController __weak *wself = self;
 			[self.imageView loadWebImageWithName: self.check.taskPhotoUrl placeholderImage: nil
 									   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -120,6 +127,7 @@
 											   [wself restoreZoomViewFor: image];
 										   }];
 			} else {
+				photoCountersView.hidden = YES;
 				self.imageView.image = self.check.currentPickedUserPhoto;
 				[self restoreZoomViewFor: self.check.currentPickedUserPhoto];
 			}
@@ -170,6 +178,18 @@
 
 - (void) sendPhotoAction: (id) sender {
 	
+}
+
+- (void) commentsAction: (id) sender {
+	if (self.photo != nil) {
+		[kernel.checksManager openPhotoCommentsViewControllerFor: self.photo];
+	} else {
+		if (self.mode == CheckDetailViewModeUserPhoto) {
+			[kernel.checksManager openPhotoCommentsViewControllerFor: self.check.userPhoto];
+		} else if (self.mode == CheckDetailViewModeWinnerPhoto) {
+			[kernel.checksManager openPhotoCommentsViewControllerFor: self.check.winnerPhoto];
+		}
+	}
 }
 
 #pragma mark - UIScrollViewDelegate implementation
