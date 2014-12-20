@@ -113,6 +113,7 @@
 /* Begin PBXFileReference section */
 		18680EA81834F23500E532C8 /* VKCaptchaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKCaptchaView.h; sourceTree = "<group>"; };
 		18680EA91834F23500E532C8 /* VKCaptchaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKCaptchaView.m; sourceTree = "<group>"; };
+		84E86E4F1A45F7690086F0FF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F311207418588D4E004A9A40 /* VKHTTPOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKHTTPOperation.h; sourceTree = "<group>"; };
 		F311207518588D4E004A9A40 /* VKHTTPOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKHTTPOperation.m; sourceTree = "<group>"; };
 		F311207818588D67004A9A40 /* VKHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKHTTPClient.h; sourceTree = "<group>"; };
@@ -528,6 +529,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = F3C75424182133CB00964716;
 			productRefGroup = F3C7542E182133CC00964716 /* Products */;
@@ -616,6 +618,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F3BACC471865905B003158DA /* en */,
+				84E86E4F1A45F7690086F0FF /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

@@ -356,6 +356,8 @@
 		84E86E441A45D7400086F0FF /* LGCounters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCounters.m; sourceTree = "<group>"; };
 		84E86E4C1A45EF170086F0FF /* EventTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTableViewCell.h; sourceTree = "<group>"; };
 		84E86E4D1A45EF170086F0FF /* EventTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTableViewCell.m; sourceTree = "<group>"; };
+		84E86E501A45F76A0086F0FF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		84E86E511A45F76A0086F0FF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		84E91BE219FBD4E100DD1873 /* CheckPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckPhotosViewController.h; sourceTree = "<group>"; };
 		84E91BE319FBD4E100DD1873 /* CheckPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckPhotosViewController.m; sourceTree = "<group>"; };
 		84E98F321984ED7D00B422F4 /* JSONSerializableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSerializableProtocol.h; sourceTree = "<group>"; };
@@ -1168,6 +1170,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				ru,
 			);
 			mainGroup = 845D857219029EB0004E10AB;
 			productRefGroup = 845D857C19029EB0004E10AB /* Products */;
@@ -1390,6 +1393,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				845D858819029EB0004E10AB /* en */,
+				84E86E501A45F76A0086F0FF /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1398,6 +1402,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				845D85A119029EB0004E10AB /* en */,
+				84E86E511A45F76A0086F0FF /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
