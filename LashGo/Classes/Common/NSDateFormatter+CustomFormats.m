@@ -38,4 +38,17 @@
 	return [self customDateFormatterWithFormat: @"dd.MM.yyyy"];
 }
 
++ (NSDateFormatter *) dateFormatterShortDate {
+	NSString *format = @"shortFormat";
+	NSDateFormatter *dateFormatter = [[self sharedCache] objectForKey:format];
+    if(dateFormatter==nil) {
+        dateFormatter = [[NSDateFormatter alloc] init];
+		dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+		dateFormatter.timeStyle = NSDateFormatterNoStyle;
+		dateFormatter.locale = [NSLocale autoupdatingCurrentLocale];
+        [[self sharedCache] setObject: dateFormatter forKey:format];
+    }
+    return dateFormatter;
+}
+
 @end

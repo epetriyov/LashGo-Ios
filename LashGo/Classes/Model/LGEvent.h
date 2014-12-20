@@ -16,7 +16,7 @@
 @property (nonatomic, strong) LGCheck *check;
 @property (nonatomic, strong) LGUser *user;
 @property (nonatomic, strong) NSString *action;
-@property (nonatomic, assign) NSTimeInterval eventDate;
+@property (nonatomic, strong) NSDate *eventDate;
 
 //action	action's code of event
 //Type: string

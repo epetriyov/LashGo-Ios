@@ -72,6 +72,8 @@
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetComments: (ContextualArrayResult *) comments;
 
+- (void) dataProvider: (DataProvider *) dataProvider didGetEvents: (NSArray *) events;
+
 - (void) dataProvider: (DataProvider *) dataProvider didGetSubscriptions: (LGSubscriptionsResult *) subscriptions;
 
 - (void) dataProvider: (DataProvider *) dataProvider didPhotoVote: (LGVoteAction *) voteAction;

@@ -1,16 +1,16 @@
 //
-//  CommentTableViewCell.m
+//  EventTableViewCell.m
 //  LashGo
 //
-//  Created by Vitaliy Pykhtin on 14.12.14.
+//  Created by Vitaliy Pykhtin on 20.12.14.
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "CommentTableViewCell.h"
+#import "EventTableViewCell.h"
 
 #import "FontFactory.h"
 
-@implementation CommentTableViewCell
+@implementation EventTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -20,10 +20,10 @@
 		
 		self.textLabel.font = [FontFactory fontWithType: FontTypeCommentsCellTitle];
 		self.textLabel.textColor = [FontFactory fontColorForType: FontTypeCommentsCellTitle];
+		self.textLabel.numberOfLines = 3;
 		
 		self.detailTextLabel.font = [FontFactory fontWithType: FontTypeCommentsCellDescription];
 		self.detailTextLabel.textColor = [FontFactory fontColorForType: FontTypeCommentsCellDescription];
-		self.detailTextLabel.numberOfLines = 3;
     }
     return self;
 }

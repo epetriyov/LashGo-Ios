@@ -36,6 +36,9 @@
 //CommentsViewController
 "CommentsViewControllerTitle" = "Комментарии";
 
+//EventsViewController
+"EventsViewControllerTitle" = "Уведомления";
+
 //LoginViewController
 "LoginViewControllerTitle" = "Вход";
 "LoginViewControllerWelcomeText" = "С возвращением!";
@@ -120,6 +123,10 @@
 
 "Choose an Account" = "Выберите аккаунт";
 "Cancel" = "Отмена";
+
+//Actions
+"WIN" = "Победил в чеке";
+"CHECK" = "Участвовал в чеке";
 
 //Web errors
 

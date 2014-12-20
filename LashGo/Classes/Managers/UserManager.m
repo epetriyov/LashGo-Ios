@@ -93,6 +93,7 @@
 
 - (void) openEventsViewVontroller {
 	[_viewControllersManager openViewController: _viewControllersManager.eventsViewController animated: YES];
+	[_dataProvider events];
 }
 
 - (void) openLoginViewController {

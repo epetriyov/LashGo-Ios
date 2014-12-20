@@ -12,5 +12,6 @@
 
 + (NSDateFormatter *) dateFormatterWithFullDateFormat;
 + (NSDateFormatter *) dateFormatterWithDateOnlyFormat;
++ (NSDateFormatter *) dateFormatterShortDate;
 
 @end

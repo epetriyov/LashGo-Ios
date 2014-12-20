@@ -83,6 +83,33 @@
 
 #pragma mark -
 
+- (NSArray *) parseEvents: (NSData *) jsonData {
+	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
+	
+	NSMutableArray *events = [NSMutableArray array];
+	
+	for (NSDictionary *rawEvent in rawData) {
+		LGEvent *event = [[LGEvent alloc] init];
+		
+		event.uid =		[rawEvent[@"id"] longLongValue];
+		event.action =	rawEvent[@"action"];
+		
+		NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatterWithFullDateFormat];
+		
+		NSString *str =		rawEvent[@"eventDate"];
+		event.eventDate =	[dateFormatter dateFromString: str];
+		event.check =		[self parseCheck: rawEvent[@"check"]];
+		event.user =		[self parseUser: rawEvent[@"user"]];
+		
+		[events addObject: event];
+	}
+	
+	if ([events count] <= 0) {
+		events = nil;
+	}
+	return  events;
+}
+
 - (LGCheck *) parseCheck: (NSDictionary *) jsonDataObj {
 	LGCheck *check = nil;
 	

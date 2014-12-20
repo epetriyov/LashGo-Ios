@@ -452,7 +452,11 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark - Events
 
 - (void) didGetEvents: (URLConnection *) connection {
+	NSArray *events = [_parser parseEvents: connection.downloadedData];
 	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetEvents:)] == YES) {
+		[self.delegate dataProvider: self didGetEvents: events];
+	}
 }
 
 - (void) events {

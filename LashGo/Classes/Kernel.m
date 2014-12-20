@@ -119,6 +119,10 @@
 	vc.comments = comments.items;
 }
 
+- (void) dataProvider: (DataProvider *) dataProvider didGetEvents: (NSArray *) events {
+	self.storage.events = events;
+}
+
 - (void) dataProvider: (DataProvider *) dataProvider didGetSubscriptions: (LGSubscriptionsResult *) subscriptions {
 	SubscriptionViewController *vc = [viewControllersManager getSubscriptionViewControllerWithContext:
 									  subscriptions.context];
@@ -183,6 +187,7 @@
 - (void) taskbarManager: (TaskbarManager *) manager didPressTaskbarButtonWithType: (TaskbarButtonType) type {
 	switch (type) {
 		case TaskbarButtonTypeFollow:
+			[self.userManager openEventsViewVontroller];
 			break;
 		case TaskbarButtonTypeMore:
 			[self showMenu];

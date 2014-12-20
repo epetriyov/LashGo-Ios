@@ -9,6 +9,7 @@
 #import "LGCheck.h"
 #import "LGComment.h"
 #import "LGCounters.h"
+#import "LGEvent.h"
 #import "LGPhoto.h"
 #import "LGRegisterInfo.h"
 #import "LGSubscription.h"
@@ -20,6 +21,8 @@
 
 - (id) parseJSONData: (NSData *) jsonData;
 - (NSError *) parseError: (URLConnection *) connection;
+
+- (NSArray *) parseEvents: (NSData *) jsonData;
 
 - (LGCheck *) parseCheckData: (NSData *) jsonData;
 - (NSArray *) parseChecks: (NSData *) jsonData;
