@@ -19,6 +19,8 @@
 				   dataProvider: (DataProvider *) dataProvider
 					  vcManager: (ViewControllersManager *) vcManager;
 
+- (void) getEvents;
+
 - (void) getUsersSearch: (NSString *) searchText;
 - (void) getUserPhotosForUser: (LGUser *) user;
 - (void) stopWaitingUserPhotos;
@@ -30,6 +32,8 @@
 
 - (void) subscribeTo: (LGSubscription *) subscription;
 - (void) unsubscribeFrom: (LGSubscription *) subscription;
+
+- (void) openEventsViewVontroller;
 
 - (void) openLoginViewController;
 - (void) openRecoverViewController;

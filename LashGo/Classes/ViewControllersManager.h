@@ -15,6 +15,8 @@
 #import "CheckPhotosViewController.h"
 #import "VoteViewController.h"
 
+#import "EventsViewController.h"
+
 #import "LoginViewController.h"
 #import "RecoverViewController.h"
 
@@ -51,6 +53,8 @@
 @property (nonatomic, readonly) CheckDetailViewController *checkDetailViewController;
 @property (nonatomic, readonly) CheckPhotosViewController *checkPhotosViewController;
 @property (nonatomic, readonly) VoteViewController *voteViewController;
+
+@property (nonatomic, readonly) EventsViewController *eventsViewController;
 
 @property (nonatomic, readonly) RecoverViewController *recoverViewController;
 

@@ -221,6 +221,21 @@
 	return  comments;
 }
 
+- (LGCounters *) parseCounters: (NSData *) jsonData {
+	NSDictionary *rawData = [self parseJSONData: jsonData][@"result"];
+	
+	LGCounters *counters = nil;
+	
+	if ([rawData.allKeys count] > 0) {
+		counters = [[LGCounters alloc] init];
+		
+		counters.commentsCount =	[rawData[@"commentsCount"] intValue];
+		counters.likesCount =		[rawData[@"likesCount"] intValue];
+	}
+	
+	return counters;
+}
+
 - (NSArray *) parseSubscriptions: (NSData *) jsonData {
 	NSArray *rawData = [self parseJSONData: jsonData][@"resultCollection"];
 	NSMutableArray *users = [NSMutableArray array];

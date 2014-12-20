@@ -105,6 +105,8 @@
 		
 		_checkPhotosViewController = [self createViewControllerOfClass: [CheckPhotosViewController class]];
 		
+		_eventsViewController =		[self createViewControllerOfClass: [EventsViewController class]];
+		
 		_searchViewController =		[self createViewControllerOfClass: [SearchViewController class]];
 		
 		startViewController = [self createViewControllerOfClass: [StartViewController class]];

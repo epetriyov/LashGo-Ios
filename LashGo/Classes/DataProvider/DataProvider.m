@@ -36,6 +36,7 @@
 
 #define kPhotosPath			@"/photos/%@" //GET
 #define kPhotosCommentsPath	@"/photos/%lld/comments" //GET, POST
+#define kPhotosCountersPath	@"/photos/%lld/counters" //GET
 #define kPhotosVotePath		@"/photos/vote" //POST
 
 #define kUsersPath					@"/users"//GET
@@ -486,6 +487,30 @@ static NSString *const kRequestUUID =		@"uuid";
 						  context: inputData
 					allowMultiple: NO
 				   finishSelector: @selector(didGetPhotoComments:) failSelector: @selector(didGetPhotoComments:)];
+}
+
+#pragma mark -
+
+- (void) didGetPhotoCounters: (URLConnection *) connection {
+	if (connection.error != nil) {
+		return;
+	}
+	LGCounters *counters = [_parser parseCounters: connection.downloadedData];
+	LGPhoto *photo = connection.context;
+	photo.counters = counters;
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetPhotoWithCounters:)] == YES) {
+		[self.delegate dataProvider: self didGetPhotoWithCounters: photo];
+	}
+}
+
+- (void) photoCountersFor: (LGPhoto *) inputData {
+	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosCountersPath, inputData.uid]
+							 type: URLConnectionTypeGET
+							 body: nil
+						  context: inputData
+					allowMultiple: NO
+				   finishSelector: @selector(didGetPhotoCounters:) failSelector: @selector(didGetPhotoCounters:)];
 }
 
 #pragma mark -

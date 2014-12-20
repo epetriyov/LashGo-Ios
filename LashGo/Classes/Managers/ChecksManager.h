@@ -28,6 +28,7 @@
 - (void) addPhotoForCheck: (LGCheck *) check;
 
 - (void) getPhotosForCheck: (LGCheck *) check;
+- (void) getPhotoCountersForPhoto: (LGPhoto *) photo;
 - (void) getUsersForCheck: (LGCheck *) check;
 - (void) getVotePhotosForCheck: (LGCheck *) check;
 - (void) stopWaitingVotePhotos;

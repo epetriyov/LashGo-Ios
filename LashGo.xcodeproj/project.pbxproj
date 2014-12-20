@@ -97,6 +97,7 @@
 		84E6FCDD1A3DCF420005DAD6 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6FCDC1A3DCF420005DAD6 /* CommentTableViewCell.m */; };
 		84E8066519F5483D001BD593 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8066419F5483D001BD593 /* PhotoViewController.m */; };
 		84E8066E19F54E2A001BD593 /* UIButton+LGImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E8066D19F54E2A001BD593 /* UIButton+LGImages.m */; };
+		84E86E451A45D7400086F0FF /* LGCounters.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E86E441A45D7400086F0FF /* LGCounters.m */; };
 		84E91BE419FBD4E100DD1873 /* CheckPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E91BE319FBD4E100DD1873 /* CheckPhotosViewController.m */; };
 		84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */; };
 		84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */; };
@@ -350,6 +351,8 @@
 		84E8066419F5483D001BD593 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
 		84E8066C19F54E2A001BD593 /* UIButton+LGImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+LGImages.h"; sourceTree = "<group>"; };
 		84E8066D19F54E2A001BD593 /* UIButton+LGImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+LGImages.m"; sourceTree = "<group>"; };
+		84E86E431A45D7400086F0FF /* LGCounters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCounters.h; sourceTree = "<group>"; };
+		84E86E441A45D7400086F0FF /* LGCounters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCounters.m; sourceTree = "<group>"; };
 		84E91BE219FBD4E100DD1873 /* CheckPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckPhotosViewController.h; sourceTree = "<group>"; };
 		84E91BE319FBD4E100DD1873 /* CheckPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckPhotosViewController.m; sourceTree = "<group>"; };
 		84E98F321984ED7D00B422F4 /* JSONSerializableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSerializableProtocol.h; sourceTree = "<group>"; };
@@ -524,6 +527,8 @@
 				84EEE4A719C9B019009F83C6 /* LGCheckCounters.m */,
 				8406255F1930BDF80067C1CA /* LGContent.h */,
 				840625601930BDF80067C1CA /* LGContent.m */,
+				84E86E431A45D7400086F0FF /* LGCounters.h */,
+				84E86E441A45D7400086F0FF /* LGCounters.m */,
 				84EE644F1A37481D00192284 /* LGEvent.h */,
 				84EE64501A37481D00192284 /* LGEvent.m */,
 				840625621930C8EF0067C1CA /* LGgcmRegistrationId.h */,
@@ -1307,6 +1312,7 @@
 				8491557E19080301008D9120 /* RootNavigationController.m in Sources */,
 				840425D119CB167900C5EDBF /* UIImageView+LGImagesExtension.m in Sources */,
 				841BBF2A19FFDA38003A1FDC /* LGVoteAction.m in Sources */,
+				84E86E451A45D7400086F0FF /* LGCounters.m in Sources */,
 				84EC27A21A18AC25006317C2 /* CheckHeaderView.m in Sources */,
 				8406250A193082020067C1CA /* NetworkDownloader.m in Sources */,
 				8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */,

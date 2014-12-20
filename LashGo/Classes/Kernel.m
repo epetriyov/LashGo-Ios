@@ -133,6 +133,14 @@
 	[self.viewControllersManager.voteViewController voteFinished];
 }
 
+- (void) dataProvider: (DataProvider *) dataProvider didGetPhotoWithCounters: (LGPhoto *) photo {
+    ///!!!:Future optimization required
+	if ([self.viewControllersManager.rootNavigationController.topViewController isKindOfClass: [CheckDetailViewController class]] == YES) {
+		CheckDetailViewController *vc = (CheckDetailViewController *)self.viewControllersManager.rootNavigationController.topViewController;
+		[vc refreshCounters];
+	}
+}
+
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserPhotos: (NSArray *) photos {
 	self.viewControllersManager.profileViewController.photos = photos;
 }

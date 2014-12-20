@@ -17,6 +17,7 @@
 
 @interface CheckDetailViewController () <UIScrollViewDelegate> {
 	UIButton __weak *_sendPhotoButton;
+	PhotoCountersPanelView __weak *_photoCountersPanelView;
 }
 
 @property (nonatomic, weak) UIScrollView *imageZoomView;
@@ -91,6 +92,7 @@
 	[photoCountersView.commentsButton addTarget: self action: @selector(commentsAction:)
 					   forControlEvents: UIControlEventTouchUpInside];
 	[panelBgView addSubview: photoCountersView];
+	_photoCountersPanelView = photoCountersView;
 	
 	CGRect imageFrame = self.contentFrame;
 	imageFrame.size.height = panelBgView.frame.origin.y - imageFrame.origin.y;
@@ -141,7 +143,38 @@
 	}
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear: animated];
+	
+	LGPhoto *currentPhoto = [self currentNotAdminPhoto];
+	if (currentPhoto != nil) {
+		[kernel.checksManager getPhotoCountersForPhoto: currentPhoto];
+	}
+}
+
+- (LGPhoto *) currentNotAdminPhoto {
+	LGPhoto *currentPhoto = nil;
+	if (self.mode == CheckDetailViewModeUserPhoto) {
+		if (self.check.userPhoto != nil) {
+			currentPhoto = self.check.userPhoto;
+		} else {
+			currentPhoto = self.photo;
+		}
+	} else if (self.mode == CheckDetailViewModeWinnerPhoto) {
+		currentPhoto = self.check.winnerPhoto;
+	}
+	return currentPhoto;
+}
+
 #pragma mark - Methods
+
+- (void) refreshCounters {
+	LGPhoto *photo = [self currentNotAdminPhoto];
+	if (photo != nil) {
+		_photoCountersPanelView.commentsCount = photo.counters.commentsCount;
+		_photoCountersPanelView.likesCount = photo.counters.likesCount;
+	}
+}
 
 - (void) restoreZoomViewFor: (UIImage *) image {
 	[self.imageView sizeToFit];

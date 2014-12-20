@@ -22,4 +22,6 @@ typedef NS_ENUM(ushort, CheckDetailViewMode) {
 @property (nonatomic, strong) LGPhoto *photo;
 @property (nonatomic, assign) CheckDetailViewMode mode;
 
+- (void) refreshCounters;
+
 @end

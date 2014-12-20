@@ -62,6 +62,10 @@
 	[_dataProvider checkPhotosFor: check.uid];
 }
 
+- (void) getPhotoCountersForPhoto: (LGPhoto *) photo {
+	[_dataProvider photoCountersFor: photo];
+}
+
 - (void) getUsersForCheck: (LGCheck *) check {
 	[_dataProvider checkUsersFor: check];
 }

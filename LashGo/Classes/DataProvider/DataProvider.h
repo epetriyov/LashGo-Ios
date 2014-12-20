@@ -41,6 +41,7 @@
 
 //- (void) photo: (NSString *) name;
 - (void) photoCommentsFor: (LGPhoto *) inputData;
+- (void) photoCountersFor: (LGPhoto *) inputData;
 //- (void) photoAddCommentFor: (int64_t) photoID;
 - (void) photoVote: (LGVoteAction *) inputData;
 
@@ -74,6 +75,7 @@
 - (void) dataProvider: (DataProvider *) dataProvider didGetSubscriptions: (LGSubscriptionsResult *) subscriptions;
 
 - (void) dataProvider: (DataProvider *) dataProvider didPhotoVote: (LGVoteAction *) voteAction;
+- (void) dataProvider: (DataProvider *) dataProvider didGetPhotoWithCounters: (LGPhoto *) photo;
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetUsersSearch: (NSArray *) users;
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserPhotos: (NSArray *) photos;

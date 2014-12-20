@@ -10,6 +10,9 @@
 
 @interface PhotoCountersPanelView : UIView
 
+@property (nonatomic, readonly) UIButton *likesButton;
+@property (nonatomic, assign) int32_t likesCount;
+
 @property (nonatomic, readonly) UIButton *commentsButton;
 @property (nonatomic, assign) int32_t commentsCount;
 

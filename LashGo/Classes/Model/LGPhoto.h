@@ -7,6 +7,7 @@
 //
 
 #import "LGUser.h"
+#import "LGCounters.h"
 
 @class LGCheck;
 
@@ -24,5 +25,7 @@
 
 @property (nonatomic, assign) BOOL isBanned;
 @property (nonatomic, assign) BOOL isWinner;
+
+@property (nonatomic, strong) LGCounters *counters;
 
 @end

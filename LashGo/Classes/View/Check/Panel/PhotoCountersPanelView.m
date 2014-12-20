@@ -18,7 +18,16 @@
 
 @implementation PhotoCountersPanelView
 
+@dynamic likesCount;
 @dynamic commentsCount;
+
+- (int32_t) likesCount {
+	return [_likesButton.titleLabel.text intValue];
+}
+
+- (void) setLikesCount:(int32_t)likesCount {
+	[_likesButton setTitle: [NSString stringWithFormat: @"%d", likesCount] forState: UIControlStateNormal];
+}
 
 - (int32_t) commentsCount {
 	return [_commentsButton.titleLabel.text intValue];
@@ -33,6 +42,13 @@
 - (id) initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
     if (self) {
+		UIButton *likesButton = [[ViewFactory sharedFactory] counterLikeDark: nil action: nil];
+		
+		likesButton.frameX = 8;
+		[likesButton setTitle: @"0" forState: UIControlStateNormal];
+		[self addSubview: likesButton];
+		_likesButton = likesButton;
+		
 		UIButton *commentsButton = [[ViewFactory sharedFactory] counterCommentDark: nil action: nil];
 		
 		commentsButton.frameX = frame.size.width - commentsButton.frame.size.width;

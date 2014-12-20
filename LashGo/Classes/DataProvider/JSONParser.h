@@ -8,6 +8,7 @@
 
 #import "LGCheck.h"
 #import "LGComment.h"
+#import "LGCounters.h"
 #import "LGPhoto.h"
 #import "LGRegisterInfo.h"
 #import "LGSubscription.h"
@@ -24,6 +25,7 @@
 - (NSArray *) parseChecks: (NSData *) jsonData;
 - (NSArray *) parseCheckPhotos: (NSData *) jsonData;
 - (NSArray *) parseComments: (NSData *) jsonData;
+- (LGCounters *) parseCounters: (NSData *) jsonData;
 - (NSArray *) parseSubscriptions: (NSData *) jsonData;
 - (LGVotePhotosResult *) parseCheckVotePhotos: (NSData *) jsonData;
 
