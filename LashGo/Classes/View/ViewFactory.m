@@ -334,6 +334,22 @@ static ViewFactory *viewFactory = nil;
 	return button;
 }
 
+#pragma mark - Swipe
+
+- (UIImageView *) swipeInfoArrow {
+	UIImage *sourceImage = [UIImage imageNamed: @"ic_back"];
+	UIImage *image = [UIImage imageWithCGImage: sourceImage.CGImage scale: sourceImage.scale
+								   orientation: UIImageOrientationUpMirrored];
+	CGFloat viewSize = MAX(image.size.width, image.size.height) + 5;
+	UIImageView *imageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, viewSize, viewSize)];
+	imageView.backgroundColor = [UIColor colorWithWhite: 0 alpha: 0.3];
+	imageView.layer.cornerRadius = viewSize / 2;
+	imageView.clipsToBounds = YES;
+	imageView.image = image;
+	
+	return imageView;
+}
+
 #pragma mark - Title bar
 
 - (UIButton *) titleBarBackButtonWithTarget: (id) target action: (SEL) selector {

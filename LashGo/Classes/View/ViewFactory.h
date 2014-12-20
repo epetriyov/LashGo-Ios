@@ -51,6 +51,9 @@
 - (UIButton *) loginTwitterButtonWithTarget: (id) target action: (SEL) selector;
 - (UIButton *) loginVkontakteButtonWithTarget: (id) target action: (SEL) selector;
 
+//Swipe
+- (UIImageView *) swipeInfoArrow;
+
 //Title bar
 - (UIButton *) titleBarBackButtonWithTarget: (id) target action: (SEL) selector;
 - (UIButton *) titleBarCameraButtonWithTarget: (id) target action: (SEL) selector;
