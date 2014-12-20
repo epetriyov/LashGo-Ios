@@ -38,6 +38,7 @@
 #define kPhotosCommentsPath	@"/photos/%lld/comments" //GET, POST
 #define kPhotosVotePath		@"/photos/vote" //POST
 
+#define kUsersPath					@"/users"//GET
 #define kUsersLoginPath				@"/users/login" //POST
 #define kUsersMainScreenInfoPath	@"/users/main-screen-info" //GET
 #define kUsersPhotosPath			@"/users/photos" //GET
@@ -101,6 +102,40 @@ static NSString *const kRequestUUID =		@"uuid";
 - (void) prepareToRemoveConnection: (URLConnection *) connection {
 	[((AppDelegate *)[UIApplication sharedApplication].delegate) setNetworkActivityIndicatorVisible: NO];
 	[self removeConnectionFromLiveConnections: connection];
+}
+
+- (void) startConnectionWithPath: (NSString *) path
+					 queryParams: (NSDictionary *) params
+						 context: (id) context
+				   allowMultiple: (BOOL) allowMultiple
+				  finishSelector: (SEL) finishSelector failSelector: (SEL) failSelector {
+	NSString *connectionKey = [[kWebServiceURL stringByAppendingString: path]
+							   stringByAppendingFormat: @"%d", URLConnectionTypeGET];
+	
+	if (allowMultiple == NO) {
+		URLConnection *liveConnection = _liveConnections[connectionKey];
+		if (liveConnection.status == URLConnectionStatusStarted) {
+			return;
+		}
+	}
+	NSMutableDictionary *headerParamsDictionary = [self dictionaryWithHeaderParams];
+	URLConnection *connection = [_connectionManager connectionWithHost: kWebServiceURL
+																  path: path
+														   queryParams: params
+														  headerParams: headerParamsDictionary
+																  body: nil
+																  type: URLConnectionTypeGET
+																target: self
+														finishSelector: finishSelector
+														  failSelector: failSelector];
+	connection.context = context;
+	
+	if (allowMultiple == NO) {
+		_liveConnections[connectionKey] = connection;
+	}
+	
+	[((AppDelegate *)[UIApplication sharedApplication].delegate) setNetworkActivityIndicatorVisible: YES];
+	[connection startAsync];
 }
 
 - (void) startConnectionWithPath: (NSString *) path
@@ -215,6 +250,27 @@ static NSString *const kRequestUUID =		@"uuid";
 				   finishSelector: @selector(didGetChecks:)
 					 failSelector: @selector(didFailGetImportantData:)];
 #endif
+}
+
+#pragma mark -
+
+- (void) didGetChecksSearch: (URLConnection *) connection {
+	NSArray *checks = nil;
+	if (connection.error == nil) {
+		checks = [_parser parseChecks: connection.downloadedData];
+	}
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetChecksSearch:)] == YES) {
+		[self.delegate dataProvider: self didGetChecksSearch: checks];
+	}
+}
+
+- (void) checksSearch: (NSString *) inputData {
+	[self startConnectionWithPath: kChecksPath
+					  queryParams: @{@"search_text": inputData}
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetChecksSearch:) failSelector: @selector(didGetChecksSearch:)];
 }
 
 #pragma mark -
@@ -460,6 +516,27 @@ static NSString *const kRequestUUID =		@"uuid";
 }
 
 #pragma mark - User
+
+- (void) didGetUsersSearch: (URLConnection *) connection {
+	NSArray *users = nil;
+	if (connection.error == nil) {
+		users = [_parser parseSubscriptions: connection.downloadedData];
+	}
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetUsersSearch:)] == YES) {
+		[self.delegate dataProvider: self didGetUsersSearch: users];
+	}
+}
+
+- (void) usersSearch: (NSString *) inputData {
+	[self startConnectionWithPath: kUsersPath
+					  queryParams: @{@"search_text": inputData}
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetUsersSearch:) failSelector: @selector(didGetUsersSearch:)];
+}
+
+#pragma mark -
 
 - (void) didLogin: (URLConnection *) connection {
 	LGRegisterInfo *registerInfo = [_parser parseLoginInfo: connection.downloadedData];

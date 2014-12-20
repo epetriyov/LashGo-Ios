@@ -110,7 +110,7 @@
 	} else {
 		url = [url stringByAppendingFormat: @"&%@", paramsString];
 	}
-	[self setURL: [NSURL URLWithString: url]];
+	[self setURL: [NSURL URLWithString: [url stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]]];
 }
 
 - (void) addValue: (NSString *) value forQueryParameter: (NSString *) name {
@@ -123,7 +123,7 @@
 	} else {
 		url = [url stringByAppendingFormat: @"&%@=%@", name, value];
 	}
-	[self setURL: [NSURL URLWithString: url]];
+	[self setURL: [NSURL URLWithString: [url stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]]];
 }
 
 @end

@@ -25,6 +25,7 @@
 @property (nonatomic, weak) id<DataProviderDelegate> delegate;
 
 - (void) checks;
+- (void) checksSearch: (NSString *) inputData;
 - (void) checkFor: (LGCheck *) inputData;
 - (void) checkCurrent;
 - (void) checkAddCommentFor: (int64_t) checkID;//Not finished
@@ -43,6 +44,7 @@
 //- (void) photoAddCommentFor: (int64_t) photoID;
 - (void) photoVote: (LGVoteAction *) inputData;
 
+- (void) usersSearch: (NSString *) inputData;
 - (void) userLogin: (LGLoginInfo *) inputData;
 - (void) userMainScreenInfo;
 - (void) userPhotos;
@@ -63,6 +65,7 @@
 
 @optional
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks;
+- (void) dataProvider: (DataProvider *) dataProvider didGetChecksSearch: (NSArray *) checks;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckPhotos: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (LGVotePhotosResult *) votePhotos;
 
@@ -72,6 +75,7 @@
 
 - (void) dataProvider: (DataProvider *) dataProvider didPhotoVote: (LGVoteAction *) voteAction;
 
+- (void) dataProvider: (DataProvider *) dataProvider didGetUsersSearch: (NSArray *) users;
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserPhotos: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserProfile: (LGUser *) user;
 - (void) dataProvider: (DataProvider *) dataProvider didUserSubscribeTo: (LGSubscribe *) subscribe;

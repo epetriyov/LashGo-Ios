@@ -78,6 +78,10 @@
 	}
 }
 
+- (void) startWaiting: (UIViewController *) viewController {
+	[viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [viewController class]];
+}
+
 - (void) stopWaiting: (UIViewController *) viewController {
 	[viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [viewController class]];
 }
@@ -92,6 +96,14 @@
 	[self.storage updateChecksWith: checks];
 	[self.viewControllersManager.checkCardViewController refresh];
 	[self.viewControllersManager.checkListViewController refresh];
+}
+
+- (void) dataProvider: (DataProvider *) dataProvider didGetChecksSearch: (NSArray *) checks {
+	_storage.searchChecks = checks;
+}
+
+- (void) dataProvider: (DataProvider *) dataProvider didGetUsersSearch: (NSArray *) users {
+	_storage.searchUsers = users;
 }
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckPhotos: (NSArray *) photos {

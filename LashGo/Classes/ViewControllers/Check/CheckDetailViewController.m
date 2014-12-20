@@ -147,15 +147,22 @@
 	[self.imageView sizeToFit];
 	self.imageZoomView.contentSize = image.size;
 	
-	float scale = self.imageZoomView.frame.size.width / image.size.width;
-	float minScale = MIN(scale,
-						 self.imageZoomView.frame.size.height / image.size.height);
-	self.imageZoomView.minimumZoomScale = minScale;
-	if (self.mode == CheckDetailViewModeAdminPhoto) {
-		self.imageZoomView.zoomScale = scale;
+	float minScale;
+	float minWidthScale = self.imageZoomView.frame.size.width / image.size.width;
+	float minHeightScale = self.imageZoomView.frame.size.height / image.size.height;
+	
+	if (minWidthScale < minHeightScale) {
+		minScale = minWidthScale;
+		float heightDifference = CGRectGetHeight(self.imageZoomView.bounds) -  minWidthScale * image.size.height;
+		self.imageZoomView.contentInset = UIEdgeInsetsMake(heightDifference / 2, 0, 0, 0);
 	} else {
-		self.imageZoomView.zoomScale = minScale;
+		minScale = minHeightScale;
+		float widthDifference = CGRectGetWidth(self.imageZoomView.bounds) -  minHeightScale * image.size.width;
+		self.imageZoomView.contentInset = UIEdgeInsetsMake(0, widthDifference / 2, 0, 0);
 	}
+	
+	self.imageZoomView.minimumZoomScale = minScale;
+	self.imageZoomView.zoomScale = minScale;
 }
 
 #pragma mark - Actions

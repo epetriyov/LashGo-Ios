@@ -49,11 +49,10 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	UIButton *incomeButton = [[ViewFactory sharedFactory] titleBarRightIncomeButtonWithTarget: self
 																					   action: @selector(openIncomeAction:)];
 	///!!!:Hidden for coming soon
-	searchButton.hidden = YES;
 	incomeButton.hidden = YES;
 	TitleBarView *tbView = [TitleBarView titleBarViewWithLeftButton: cardsButton
-												 rightButton: incomeButton
-												searchButton: searchButton];
+														rightButton: searchButton
+													   searchButton: incomeButton];
 	tbView.titleLabel.text = @"ChecksTitle".commonLocalizedString;
 	[self.view addSubview: tbView];
 	_titleBarView = tbView;

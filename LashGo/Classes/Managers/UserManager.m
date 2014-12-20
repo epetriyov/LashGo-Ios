@@ -35,6 +35,10 @@
 
 #pragma mark - Methods
 
+- (void) getUsersSearch: (NSString *) searchText {
+	[_dataProvider usersSearch: searchText];
+}
+
 - (void) getUserPhotosForUser: (LGUser *) user {
 	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [ProfileViewController class]];
 	[_dataProvider userPhotosFor: user.uid];

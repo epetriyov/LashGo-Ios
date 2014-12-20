@@ -21,6 +21,7 @@
 					  vcManager: (ViewControllersManager *) vcManager;
 
 - (void) getChecks;
+- (void) getChecksSearch: (NSString *) searchText;
 
 - (void) getCommentsForPhoto: (LGPhoto *) photo;
 

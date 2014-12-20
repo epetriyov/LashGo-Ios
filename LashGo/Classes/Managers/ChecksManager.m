@@ -39,6 +39,10 @@
 	[_dataProvider checks];
 }
 
+- (void) getChecksSearch: (NSString *) searchText {
+	[_dataProvider checksSearch: searchText];
+}
+
 #pragma mark -
 
 - (void) getCommentsForPhoto: (LGPhoto *) photo {
@@ -114,6 +118,7 @@
 - (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check {
 	CheckDetailViewController *vc = _viewControllersManager.checkDetailViewController;
 	vc.check = check;
+	vc.photo = nil;
 	vc.mode = CheckDetailViewModeAdminPhoto;
 	[_viewControllersManager openViewController: vc animated: YES];
 }
@@ -121,6 +126,7 @@
 - (void) openCheckDetailViewControllerUserFor: (LGCheck *) check {
 	CheckDetailViewController *vc = _viewControllersManager.checkDetailViewController;
 	vc.check = check;
+	vc.photo = nil;
 	vc.mode = CheckDetailViewModeUserPhoto;
 	[_viewControllersManager openViewController: vc animated: YES];
 }
@@ -128,6 +134,7 @@
 - (void) openCheckDetailViewControllerWinnerFor: (LGCheck *) check {
 	CheckDetailViewController *vc = _viewControllersManager.checkDetailViewController;
 	vc.check = check;
+	vc.photo = nil;
 	vc.mode = CheckDetailViewModeWinnerPhoto;
 	[_viewControllersManager openViewController: vc animated: YES];
 }
@@ -136,6 +143,7 @@
 	CheckDetailViewController *vc = _viewControllersManager.checkDetailViewController;
 	vc.check = nil;
 	vc.photo = photo;
+	vc.mode = CheckDetailViewModeUserPhoto;
 	[_viewControllersManager openViewController: vc animated: YES];
 }
 
