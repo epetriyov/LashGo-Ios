@@ -9,6 +9,7 @@
 #import "EventTableViewCell.h"
 
 #import "FontFactory.h"
+#import "UIButton+LGImages.h"
 
 @implementation EventTableViewCell
 
@@ -20,7 +21,7 @@
 		
 		self.textLabel.font = [FontFactory fontWithType: FontTypeCommentsCellTitle];
 		self.textLabel.textColor = [FontFactory fontColorForType: FontTypeCommentsCellTitle];
-		self.textLabel.numberOfLines = 3;
+		self.textLabel.numberOfLines = 2;
 		
 		self.detailTextLabel.font = [FontFactory fontWithType: FontTypeCommentsCellDescription];
 		self.detailTextLabel.textColor = [FontFactory fontColorForType: FontTypeCommentsCellDescription];
@@ -32,6 +33,25 @@
 	[super layoutSubviews];
 	
 	self.imageView.layer.cornerRadius = self.imageView.layer.bounds.size.width / 2;
+}
+
+- (void) setCheckPhotoUrl: (NSString *) checkPhotoURL {
+	if (checkPhotoURL != nil) {
+		if (self.accessoryView == nil) {
+			UIButton *accessoryButton = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 43, 43)];
+			[accessoryButton addTarget: self action: @selector(checkPhotoAction:)
+					  forControlEvents: UIControlEventTouchUpInside];
+			self.accessoryView = accessoryButton;
+		}
+		[((UIButton *)self.accessoryView) loadWebImageWithSizeThatFitsName: checkPhotoURL
+															   placeholder: nil];
+	} else {
+		self.accessoryView = nil;
+	}
+}
+
+- (void) checkPhotoAction: (UIButton *) sender {
+	[self.delegate eventCheckActionFor: self];
 }
 
 @end

@@ -128,6 +128,10 @@
 	self.storage.events = events;
 }
 
+- (void) dataProvider: (DataProvider *) dataProvider didGetNews: (NSArray *) news {
+	self.storage.news = news;
+}
+
 - (void) dataProvider: (DataProvider *) dataProvider didGetSubscriptions: (LGSubscriptionsResult *) subscriptions {
 	SubscriptionViewController *vc = [viewControllersManager getSubscriptionViewControllerWithContext:
 									  subscriptions.context];
@@ -198,6 +202,7 @@
 			[self showMenu];
 			break;
 		case TaskbarButtonTypeNews:
+			[self.userManager openNewsViewController];
 			break;
 		case TaskbarButtonTypeProfile:
 			[self.userManager openProfileViewController];

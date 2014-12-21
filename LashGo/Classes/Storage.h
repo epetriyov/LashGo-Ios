@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSArray *checkPhotos;
 @property (nonatomic, strong) LGVotePhotosResult *checkVotePhotos;
 @property (nonatomic, strong) NSArray *events;
+@property (nonatomic, strong) NSArray *news;
 @property (nonatomic, strong) LGUser *lastViewProfileDetail;
 @property (nonatomic, strong) NSArray *searchChecks;
 @property (nonatomic, strong) NSArray *searchUsers;

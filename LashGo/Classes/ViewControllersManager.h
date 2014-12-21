@@ -16,6 +16,7 @@
 #import "VoteViewController.h"
 
 #import "EventsViewController.h"
+#import "NewsViewController.h"
 
 #import "LoginViewController.h"
 #import "RecoverViewController.h"
@@ -55,6 +56,7 @@
 @property (nonatomic, readonly) VoteViewController *voteViewController;
 
 @property (nonatomic, readonly) EventsViewController *eventsViewController;
+@property (nonatomic, readonly) NewsViewController *newsViewController;
 
 @property (nonatomic, readonly) RecoverViewController *recoverViewController;
 

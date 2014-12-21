@@ -8,6 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol EventTableViewCellDelegate;
+
 @interface EventTableViewCell : UITableViewCell
+
+@property (nonatomic, weak) id<EventTableViewCellDelegate> delegate;
+
+- (void) setCheckPhotoUrl: (NSString *) checkPhotoURL;
+
+@end
+
+@protocol EventTableViewCellDelegate <NSObject>
+
+@required
+- (void) eventCheckActionFor: (EventTableViewCell *) cell;
 
 @end

@@ -39,6 +39,9 @@
 //EventsViewController
 "EventsViewControllerTitle" = "Уведомления";
 
+//NewsViewController
+"NewsViewControllerTitle" = "Новости";
+
 //LoginViewController
 "LoginViewControllerTitle" = "Вход";
 "LoginViewControllerWelcomeText" = "С возвращением!";
@@ -126,8 +129,12 @@
 "Cancel" = "Отмена";
 
 //Actions
-"WIN" = "Победил в чеке";
-"CHECK" = "Участвовал в чеке";
+"WIN" = "победил в чеке";
+"CHECK" = "участвовал в чеке";
+
+"SUBSCRIBE" = "подписан на вас";
+"COMMENT" = "прокомментировал фото";
+"VOTE" = "проголосовал за фото";
 
 //Web errors
 

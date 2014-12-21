@@ -38,6 +38,7 @@
 - (void) commentRemove: (int64_t) commentID;
 
 - (void) events;
+- (void) news;
 
 //- (void) photo: (NSString *) name;
 - (void) photoCommentsFor: (LGPhoto *) inputData;
@@ -75,6 +76,7 @@
 - (void) dataProvider: (DataProvider *) dataProvider didGetVotes: (ContextualArrayResult *) votes;
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetEvents: (NSArray *) events;
+- (void) dataProvider: (DataProvider *) dataProvider didGetNews: (NSArray *) news;
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetSubscriptions: (LGSubscriptionsResult *) subscriptions;
 

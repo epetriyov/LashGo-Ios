@@ -106,6 +106,7 @@
 		_checkPhotosViewController = [self createViewControllerOfClass: [CheckPhotosViewController class]];
 		
 		_eventsViewController =		[self createViewControllerOfClass: [EventsViewController class]];
+		_newsViewController =		[self createViewControllerOfClass: [NewsViewController class]];
 		
 		_searchViewController =		[self createViewControllerOfClass: [SearchViewController class]];
 		

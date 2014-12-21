@@ -35,10 +35,6 @@
 
 #pragma mark - Methods
 
-- (void) getEvents {
-	[_dataProvider events];
-}
-
 - (void) getUsersSearch: (NSString *) searchText {
 	[_dataProvider usersSearch: searchText];
 }
@@ -94,6 +90,11 @@
 - (void) openEventsViewVontroller {
 	[_viewControllersManager openViewController: _viewControllersManager.eventsViewController animated: YES];
 	[_dataProvider events];
+}
+
+- (void) openNewsViewController {
+	[_viewControllersManager openViewController: _viewControllersManager.newsViewController animated: YES];
+	[_dataProvider news];
 }
 
 - (void) openLoginViewController {

@@ -1,12 +1,12 @@
 //
-//  EventsViewController.m
+//  NewsViewController.m
 //  LashGo
 //
-//  Created by Vitaliy Pykhtin on 09.12.14.
+//  Created by Vitaliy Pykhtin on 21.12.14.
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "EventsViewController.h"
+#import "NewsViewController.h"
 
 #import "Common.h"
 #import "EventTableViewCell.h"
@@ -17,20 +17,20 @@
 #import "UIImageView+LGImagesExtension.h"
 #import "ViewFactory.h"
 
-#define kObservationKeyPath @"events"
+#define kObservationKeyPath @"news"
 
-@interface EventsViewController () <UITableViewDataSource, UITableViewDelegate, EventTableViewCellDelegate> {
+@interface NewsViewController () <UITableViewDataSource, UITableViewDelegate, EventTableViewCellDelegate> {
 	UITableView __weak *_tableView;
 }
 
 @end
 
-@implementation EventsViewController
+@implementation NewsViewController
 
 - (void) loadView {
 	[super loadView];
 	
-	_titleBarView.titleLabel.text = @"EventsViewControllerTitle".commonLocalizedString;
+	_titleBarView.titleLabel.text = @"NewsViewControllerTitle".commonLocalizedString;
 	
 	CGRect contentFrame = self.contentFrame;
 	
@@ -81,7 +81,7 @@
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[theTableView deselectRowAtIndexPath: indexPath animated: YES];
 	
-	LGEvent *item = kernel.storage.events[indexPath.row];
+	LGEvent *item = kernel.storage.news[indexPath.row];
 	
 	if (item.user != nil) {
 		[kernel.userManager openProfileViewControllerWith: item.user];
@@ -98,7 +98,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	short numberOfRows = [kernel.storage.events count];
+	short numberOfRows = [kernel.storage.news count];
     return numberOfRows;
 }
 
@@ -106,7 +106,7 @@
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
 	
-	LGEvent *item = kernel.storage.events[indexPath.row];
+	LGEvent *item = kernel.storage.news[indexPath.row];
 	
 	EventTableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
@@ -127,7 +127,7 @@
 
 - (void) eventCheckActionFor: (EventTableViewCell *) cell {
 	NSIndexPath *indexPath = [_tableView indexPathForCell: cell];
-	LGEvent *item = kernel.storage.events[indexPath.row];
+	LGEvent *item = kernel.storage.news[indexPath.row];
 	
 	[kernel.checksManager openCheckCardViewControllerForCheckUID: item.check.uid];
 }

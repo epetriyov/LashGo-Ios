@@ -462,11 +462,28 @@ static NSString *const kRequestUUID =		@"uuid";
 
 - (void) events {
 	[self startConnectionWithPath: kEventsPath
-							 type: URLConnectionTypeGET
-							 body: nil
+					  queryParams: @{@"subscriptions": @"true"}
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didGetEvents:) failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark - News
+
+- (void) didGetNews: (URLConnection *) connection {
+	NSArray *news = [_parser parseEvents: connection.downloadedData];
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetNews:)] == YES) {
+		[self.delegate dataProvider: self didGetNews: news];
+	}
+}
+
+- (void) news {
+	[self startConnectionWithPath: kEventsPath
+					  queryParams: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetNews:) failSelector: @selector(didFailGetImportantData:)];
 }
 
 #pragma mark - Photo
