@@ -89,6 +89,8 @@
 	[panelBgView addSubview: panelView];
 	
 	PhotoCountersPanelView *photoCountersView = [[PhotoCountersPanelView alloc] initWithFrame: CGRectMake(0, panelHeight - countersHeight, panelBgView.frame.size.width, countersHeight)];
+	[photoCountersView.likesButton addTarget: self action: @selector(likesAction:)
+							   forControlEvents: UIControlEventTouchUpInside];
 	[photoCountersView.commentsButton addTarget: self action: @selector(commentsAction:)
 					   forControlEvents: UIControlEventTouchUpInside];
 	[panelBgView addSubview: photoCountersView];
@@ -218,6 +220,13 @@
 
 - (void) sendPhotoAction: (id) sender {
 	
+}
+
+- (void) likesAction: (id) sender {
+	LGPhoto *photo = [self currentNotAdminPhoto];
+	if (photo != nil) {
+		[kernel.checksManager openPhotoVotesViewControllerFor: photo];
+	}
 }
 
 - (void) commentsAction: (id) sender {

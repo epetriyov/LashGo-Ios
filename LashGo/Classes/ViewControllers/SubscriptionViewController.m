@@ -76,6 +76,10 @@ static NSString *const kObservationKeyPath = @"isSubscribed";
 			_titleBarView.titleLabel.text = @"SubscriptionViewControllerUserSubscribtionsTitle".commonLocalizedString;
 			[kernel.userManager getSubscribtionsForUser: self.context];
 			break;
+		case SubscriptionViewControllerModePhotoVotes:
+			_titleBarView.titleLabel.text = @"SubscriptionViewControllerPhotoVotesTitle".commonLocalizedString;
+			[kernel.checksManager getPhotoVotesForPhoto: self.context];
+			break;
 		default:
 			break;
 	}

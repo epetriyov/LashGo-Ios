@@ -66,6 +66,10 @@
 	[_dataProvider photoCountersFor: photo];
 }
 
+- (void) getPhotoVotesForPhoto: (LGPhoto *) photo {
+	[_dataProvider photoVotesFor: photo];
+}
+
 - (void) getUsersForCheck: (LGCheck *) check {
 	[_dataProvider checkUsersFor: check];
 }
@@ -173,6 +177,13 @@
 - (void) openPhotoCommentsViewControllerFor: (LGPhoto *) photo {
 	CommentsViewController *vc = _viewControllersManager.commentsViewController;
 	vc.photo = photo;
+	[_viewControllersManager openViewController: vc animated: YES];
+}
+
+- (void) openPhotoVotesViewControllerFor: (LGPhoto *) photo {
+	SubscriptionViewController *vc = _viewControllersManager.subscriptionViewController;
+	vc.context = photo;
+    vc.mode = SubscriptionViewControllerModePhotoVotes;
 	[_viewControllersManager openViewController: vc animated: YES];
 }
 

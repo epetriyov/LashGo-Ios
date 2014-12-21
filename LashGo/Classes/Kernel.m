@@ -119,6 +119,11 @@
 	vc.comments = comments.items;
 }
 
+- (void) dataProvider: (DataProvider *) dataProvider didGetVotes: (ContextualArrayResult *) votes {
+	SubscriptionViewController *vc = [viewControllersManager getSubscriptionViewControllerWithContext: votes.context];
+	vc.subscriptions = votes.items;
+}
+
 - (void) dataProvider: (DataProvider *) dataProvider didGetEvents: (NSArray *) events {
 	self.storage.events = events;
 }

@@ -97,6 +97,7 @@
 "SubscriptionViewControllerCheckUsersTitle" = "Пользователи";
 "SubscriptionViewControllerUserSubscribersTitle" = "Подписчики";
 "SubscriptionViewControllerUserSubscribtionsTitle" = "Подписки";
+"SubscriptionViewControllerPhotoVotesTitle" = "Проголосовавшие";
 
 //TitleBar
 "TitleBarRightSaveBtnText" = "Cохр.";

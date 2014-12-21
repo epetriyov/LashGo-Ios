@@ -29,6 +29,7 @@
 
 - (void) getPhotosForCheck: (LGCheck *) check;
 - (void) getPhotoCountersForPhoto: (LGPhoto *) photo;
+- (void) getPhotoVotesForPhoto: (LGPhoto *) photo;
 - (void) getUsersForCheck: (LGCheck *) check;
 - (void) getVotePhotosForCheck: (LGCheck *) check;
 - (void) stopWaitingVotePhotos;
@@ -50,5 +51,6 @@
 - (void) openVoteViewControllerForCheck: (LGCheck *) check;
 
 - (void) openPhotoCommentsViewControllerFor: (LGPhoto *) photo;
+- (void) openPhotoVotesViewControllerFor: (LGPhoto *) photo;
 
 @end

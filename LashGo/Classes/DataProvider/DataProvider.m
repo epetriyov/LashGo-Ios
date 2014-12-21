@@ -37,6 +37,7 @@
 #define kPhotosPath			@"/photos/%@" //GET
 #define kPhotosCommentsPath	@"/photos/%lld/comments" //GET, POST
 #define kPhotosCountersPath	@"/photos/%lld/counters" //GET
+#define kPhotosVotesPath	@"/photos/%lld/votes" //GET"
 #define kPhotosVotePath		@"/photos/vote" //POST
 
 #define kUsersPath					@"/users"//GET
@@ -515,6 +516,31 @@ static NSString *const kRequestUUID =		@"uuid";
 						  context: inputData
 					allowMultiple: NO
 				   finishSelector: @selector(didGetPhotoCounters:) failSelector: @selector(didGetPhotoCounters:)];
+}
+
+#pragma mark -
+
+- (void) didGetPhotoVotes: (URLConnection *) connection {
+	NSArray *votes = nil;
+	if (connection.error == nil) {
+		votes = [_parser parseSubscriptions: connection.downloadedData];
+	}
+	ContextualArrayResult *result = [[ContextualArrayResult alloc] init];
+	result.items = votes;
+	result.context = connection.context;
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetVotes:)] == YES) {
+		[self.delegate dataProvider: self didGetVotes: result];
+	}
+}
+
+- (void) photoVotesFor: (LGPhoto *) inputData {
+	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosVotesPath, inputData.uid]
+							 type: URLConnectionTypeGET
+							 body: nil
+						  context: inputData
+					allowMultiple: NO
+				   finishSelector: @selector(didGetPhotoVotes:) failSelector: @selector(didGetPhotoVotes:)];
 }
 
 #pragma mark -

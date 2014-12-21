@@ -13,7 +13,8 @@
 typedef NS_ENUM(ushort, SubscriptionViewControllerMode) {
 	SubscriptionViewControllerModeCheckUsers = 0,
 	SubscriptionViewControllerModeUserSubscribers,
-	SubscriptionViewControllerModeUserSubscribtions
+	SubscriptionViewControllerModeUserSubscribtions,
+	SubscriptionViewControllerModePhotoVotes
 };
 
 @interface SubscriptionViewController : TitleBarViewController
