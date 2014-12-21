@@ -15,11 +15,13 @@
 
 #define kPhotoCollectionCellReusableId @"PhotoCollectionCellId"
 
+#define kObservationFollowStatusKeyPath @"subscription"
 static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 
 @interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
 	ProfileView __weak *_profileView;
 	UICollectionView __weak *_photosCollection;
+	UIButton __weak *_followButton;
 }
 
 @end
@@ -32,17 +34,23 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 	[kernel.userManager stopWaitingUserPhotos];
 }
 
-#pragma mark - Overrides
-
-- (CGRect) waitViewFrame {
-	return _photosCollection.frame;
+- (void) setUser:(LGUser *)user {
+	int32_t currentAccountUID = [AuthorizationManager sharedManager].account.userInfo.uid;
+	int32_t oldAccountUID = _user.uid;
+	int32_t newAccountUID = user.uid;
+	[_user removeObserver: self forKeyPath: kObservationFollowStatusKeyPath];
+	_user = user;
+	[_user addObserver: self forKeyPath: kObservationFollowStatusKeyPath options: 0 context: NULL];
+	
+	if ((newAccountUID == currentAccountUID &&
+		oldAccountUID != currentAccountUID) ||
+		(newAccountUID != currentAccountUID &&
+		 oldAccountUID == currentAccountUID)) {
+			[self refreshTitleBar];
+	}
 }
 
-- (void) loadView {
-	[super loadView];
-	
-	self.view.backgroundColor = [UIColor whiteColor];
-	
+- (void) refreshTitleBar {
 	[_titleBarView removeFromSuperview];
 	
 	NSMutableArray *buttons = [[NSMutableArray alloc] initWithCapacity: 1];
@@ -56,10 +64,9 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 		[buttons addObject: editButton];
 	} else {
 		UIButton *followButton = [[ViewFactory sharedFactory] userFollowWhiteButtonWithTarget: self
-																				action: @selector(followAction:)];
-		///!!!:Hidden for coming soon
-		followButton.hidden = YES;
+																					   action: @selector(followAction:)];
 		[buttons addObject: followButton];
+		_followButton = followButton;
 	}
 	
 	TitleBarView *tbView = [TitleBarView titleBarViewWithRightButtons: buttons];
@@ -68,6 +75,20 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 				forControlEvents: UIControlEventTouchUpInside];
 	[self.view addSubview: tbView];
 	_titleBarView = tbView;
+}
+
+#pragma mark - Overrides
+
+- (CGRect) waitViewFrame {
+	return _photosCollection.frame;
+}
+
+- (void) loadView {
+	[super loadView];
+	
+	self.view.backgroundColor = [UIColor whiteColor];
+	
+	[self refreshTitleBar];
 	
 	ProfileView *profileView = [[ProfileView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 100)];
 	[profileView setUserData: self.user];
@@ -107,19 +128,27 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+	_followButton.hidden = YES;
 	[kernel.userManager getUserPhotosForUser: self.user];
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
 						 change:(NSDictionary *)change context:(void *)context {
 	if ([keyPath isEqualToString: kObservationKeyPath] == YES && [object isKindOfClass: [Storage class]] == YES) {
-		if (self.user.uid == ((Storage *)object).lastViewProfileDetail.uid) {
-			[_profileView setUserData:((Storage *)object).lastViewProfileDetail];
+		LGUser *profileDetail = ((Storage *)object).lastViewProfileDetail;
+		
+		if (self.user.uid == profileDetail.uid) {
+			[_profileView setUserData: profileDetail];
+			self.user.subscription = profileDetail.subscription;
+			_followButton.hidden = NO;
 		}
+	} else if ([keyPath isEqualToString: kObservationFollowStatusKeyPath] == YES && object == self.user) {
+		_followButton.selected = ((LGUser *)object).subscription;
 	}
 }
 
 - (void) dealloc {
+	self.user = nil;
 	[kernel.storage removeObserver: self forKeyPath: kObservationKeyPath];
 }
 
@@ -130,7 +159,11 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 }
 
 - (void) followAction: (id) sender {
-	
+	if (self.user.subscription == YES) {
+		[kernel.userManager unsubscribeFromUser: self.user];
+	} else {
+		[kernel.userManager subscribeToUser: self.user];
+	}
 }
 
 - (void) subscribersAction: (id) sender {

@@ -33,8 +33,7 @@
 @property (nonatomic, assign) int32_t checksCount;
 @property (nonatomic, assign) int32_t commentsCount;
 @property (nonatomic, assign) int32_t likesCount;
-//passwordHash	passwordHash
-//Type: string
-//Multiple: false
+
+@property (nonatomic, assign) BOOL subscription;
 
 @end

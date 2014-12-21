@@ -40,7 +40,7 @@
 						 @(TaskbarButtonTypeMore)];
 	} else {
 		buttonsArray = @[@(TaskbarButtonTypeTask),
- //						 @(TaskbarButtonTypeNews),
+// 						 @(TaskbarButtonTypeNews),
 						 @(TaskbarButtonTypeMore)];
 	}
 	

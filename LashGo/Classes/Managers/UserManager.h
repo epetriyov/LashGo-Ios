@@ -29,7 +29,9 @@
 - (void) socialSignIn;
 
 - (void) subscribeTo: (LGSubscription *) subscription;
+- (void) subscribeToUser: (LGUser *) user;
 - (void) unsubscribeFrom: (LGSubscription *) subscription;
+- (void) unsubscribeFromUser: (LGUser *) user;
 
 - (void) openEventsViewVontroller;
 - (void) openNewsViewController;

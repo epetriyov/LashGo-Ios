@@ -164,10 +164,12 @@
 
 - (void) dataProvider: (DataProvider *) dataProvider didUserSubscribeTo: (LGSubscribe *) subscribe {
 	subscribe.subscription.isSubscribed = YES;
+	subscribe.subscription.user.subscription = YES;
 }
 
 - (void) dataProvider: (DataProvider *) dataProvider didUserUnsubscribeFrom: (LGSubscribe *) subscribe {
 	subscribe.subscription.isSubscribed = NO;
+	subscribe.subscription.user.subscription = NO;
 }
 
 #pragma mark - UIActionSheetDelegate implementation

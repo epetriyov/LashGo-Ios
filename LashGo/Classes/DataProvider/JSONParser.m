@@ -421,7 +421,8 @@
 		user.checksCount =		[rawUser[@"checksCount"] intValue];
 		user.commentsCount =	[rawUser[@"commentsCount"] intValue];
 		user.likesCount =		[rawUser[@"likesCount"] intValue];
-
+		
+		user.subscription =		[rawUser[@"subscription"] boolValue];
 	}
 	return user;
 }

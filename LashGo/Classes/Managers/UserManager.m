@@ -79,7 +79,27 @@
 	[_dataProvider userSubscribeTo: subscribe];
 }
 
+- (void) subscribeToUser: (LGUser *) user {
+	LGSubscription *subscription = [[LGSubscription alloc] init];
+	subscription.user = user;
+	subscription.isSubscribed = user.subscription;
+	
+	LGSubscribe *subscribe = [[LGSubscribe alloc] init];
+	subscribe.subscription = subscription;
+	[_dataProvider userSubscribeTo: subscribe];
+}
+
 - (void) unsubscribeFrom: (LGSubscription *) subscription {
+	LGSubscribe *subscribe = [[LGSubscribe alloc] init];
+	subscribe.subscription = subscription;
+	[_dataProvider userUnsubscribeFrom: subscribe];
+}
+
+- (void) unsubscribeFromUser: (LGUser *) user {
+	LGSubscription *subscription = [[LGSubscription alloc] init];
+	subscription.user = user;
+	subscription.isSubscribed = user.subscription;
+	
 	LGSubscribe *subscribe = [[LGSubscribe alloc] init];
 	subscribe.subscription = subscription;
 	[_dataProvider userUnsubscribeFrom: subscribe];
