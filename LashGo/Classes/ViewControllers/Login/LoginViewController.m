@@ -171,6 +171,14 @@
 	[self.view addSubview: socialLabel];
 }
 
+- (void) viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear: animated];
+	
+	[_emailField resignFirstResponder];
+	[_passwordField resignFirstResponder];
+	_passwordField.text = @"";
+}
+
 #pragma mark - Actions
 
 - (void) restorePass: (id) sender {
