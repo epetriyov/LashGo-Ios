@@ -83,6 +83,13 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 	return _photosCollection.frame;
 }
 
+- (instancetype) initWithKernel:(Kernel *)theKernel {
+	if (self = [super initWithKernel: theKernel]) {
+		[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
+	}
+	return self;
+}
+
 - (void) loadView {
 	[super loadView];
 	
@@ -123,8 +130,6 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 	[self.view addSubview: collectionView];
 	
 	_photosCollection = collectionView;
-	
-	[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
