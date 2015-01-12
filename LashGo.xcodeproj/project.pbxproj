@@ -374,7 +374,6 @@
 		84EABEC51A345F8F0031BF07 /* LGSubscription.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSubscription.m; sourceTree = "<group>"; };
 		84EABEC81A34600C0031BF07 /* LGSubscriptionsResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSubscriptionsResult.h; sourceTree = "<group>"; };
 		84EABEC91A34600C0031BF07 /* LGSubscriptionsResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSubscriptionsResult.m; sourceTree = "<group>"; };
-		84EB47391943025F001DEF81 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		84EB473B1943044C001DEF81 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		84EB473C1943044C001DEF81 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		84EC27A01A18AC25006317C2 /* CheckHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckHeaderView.h; sourceTree = "<group>"; };
@@ -708,7 +707,6 @@
 				84FF0238195EB47200B90CF9 /* FacebookSDK.framework */,
 				840E19EC194B43210023C0F6 /* Accounts.framework */,
 				84001FEA1949AA53004D9D7A /* Social.framework */,
-				84EB47391943025F001DEF81 /* FacebookSDK.framework */,
 				845D857E19029EB0004E10AB /* Foundation.framework */,
 				845D858019029EB0004E10AB /* CoreGraphics.framework */,
 				845D858219029EB0004E10AB /* UIKit.framework */,
