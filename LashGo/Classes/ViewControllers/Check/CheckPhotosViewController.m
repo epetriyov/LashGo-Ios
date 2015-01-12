@@ -63,6 +63,13 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 	return frame;
 }
 
+- (instancetype) initWithKernel:(Kernel *)theKernel {
+	if (self = [super initWithKernel: theKernel]) {
+		[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
+	}
+	return self;
+}
+
 - (void) loadView {
 	[super loadView];
 	
@@ -133,8 +140,6 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 	   forCellWithReuseIdentifier: kPhotoCollectionCellReusableId];
 	[contentScrollView addSubview: collectionView];
 	_photosCollection = collectionView;
-	
-	[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
 }
 
 - (void) dealloc {

@@ -61,6 +61,13 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 	return frame;
 }
 
+- (instancetype) initWithKernel:(Kernel *)theKernel {
+	if (self = [super initWithKernel: theKernel]) {
+		[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
+	}
+	return self;
+}
+
 - (void) loadView {
 	[super loadView];
 	
@@ -119,8 +126,6 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
 	[self.view addSubview: collectionView];
 	
 	_photosCollection = collectionView;
-	
-	[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
 	
 	[kernel.checksManager getVotePhotosForCheck: self.check];
 }

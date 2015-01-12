@@ -27,6 +27,13 @@
 
 @implementation EventsViewController
 
+- (instancetype) initWithKernel:(Kernel *)theKernel {
+	if (self = [super initWithKernel: theKernel]) {
+		[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
+	}
+	return self;
+}
+
 - (void) loadView {
 	[super loadView];
 	
@@ -49,8 +56,6 @@
 	[self.view addSubview: tableView];
 	
 	_tableView = tableView;
-	
-	[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options:0 context:NULL];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
