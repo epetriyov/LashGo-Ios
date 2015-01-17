@@ -30,6 +30,9 @@
 - (UIImage *) getImageWithName: (NSString *) imageName;
 - (UIButton *) buttonWithBGImageName:(NSString *) imageName target: (id) target action: (SEL) selector;
 
+//Common
+- (UIButton *) complainButton: (id) target action: (SEL) selector;
+
 //Check
 - (UIButton *) checkMakeFoto: (id) target action: (SEL) selector;
 - (UIButton *) checkSendFoto: (id) target action: (SEL) selector;

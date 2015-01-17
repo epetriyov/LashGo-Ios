@@ -13,7 +13,7 @@
 #import "AlertViewManager.h"
 #import "Common.h"
 
-@interface Kernel () <UIActionSheetDelegate> {
+@interface Kernel () <UIActionSheetDelegate, AlertViewManagerDelegate> {
 	DataProvider *_dataProvider;
 }
 
@@ -49,6 +49,7 @@
 											  dataProvider: _dataProvider
 												 vcManager: viewControllersManager];
 		
+		[AlertViewManager sharedManager].delegate = self;
 		[TaskbarManager sharedManager].delegate = self;
 		
 		[[NSNotificationCenter defaultCenter] addObserver: self
@@ -190,6 +191,14 @@
 			break;
 		default:
 			break;
+	}
+}
+
+#pragma mark - AlertViewManagerDelegate implementation
+
+- (void) alertViewManagerDidConfirmComplain: (AlertViewManager *) manager withContext: (id) context {
+	if ([context isKindOfClass: [LGPhoto class]] == YES) {
+		[_dataProvider photoComplainFor: context];
 	}
 }
 

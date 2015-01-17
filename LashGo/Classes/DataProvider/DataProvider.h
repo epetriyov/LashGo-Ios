@@ -42,6 +42,7 @@
 
 //- (void) photo: (NSString *) name;
 - (void) photoCommentsFor: (LGPhoto *) inputData;
+- (void) photoComplainFor:(LGPhoto *)inputData;
 - (void) photoCountersFor: (LGPhoto *) inputData;
 - (void) photoVotesFor: (LGPhoto *) inputData;
 //- (void) photoAddCommentFor: (int64_t) photoID;

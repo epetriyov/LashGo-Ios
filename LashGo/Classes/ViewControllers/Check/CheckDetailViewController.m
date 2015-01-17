@@ -8,6 +8,7 @@
 
 #import "CheckDetailViewController.h"
 
+#import "AlertViewManager.h"
 #import "CheckCardTimerPanelView.h"
 #import "PhotoCountersPanelView.h"
 #import "Kernel.h"
@@ -16,6 +17,7 @@
 #import "ViewFactory.h"
 
 @interface CheckDetailViewController () <UIScrollViewDelegate> {
+	UIButton __weak *_complainButton;
 	UIButton __weak *_sendPhotoButton;
 	PhotoCountersPanelView __weak *_photoCountersPanelView;
 }
@@ -37,7 +39,10 @@
 	UIButton *iconButton = [[ViewFactory sharedFactory] titleBarIconButtonWithTarget: self
 																			  action: @selector(iconAction:)];
 	UIButton *sendPhotoButton = nil;
-	UIButton *cameraButton = nil;
+//	UIButton *cameraButton = nil;
+	UIButton *complainButton = [[ViewFactory sharedFactory] complainButton: self action: @selector(complainAction:)];
+	_complainButton = complainButton;
+	
 	if (self.check != nil) {
 		[iconButton loadWebImageWithSizeThatFitsName: self.check.taskPhotoUrl placeholder: nil];
 		if (self.check.currentPickedUserPhoto != nil) {
@@ -59,7 +64,7 @@
 	
 	_sendPhotoButton = sendPhotoButton;
 	TitleBarView *tbView = [TitleBarView titleBarViewWithLeftSecondaryButton: iconButton
-																 rightButton: cameraButton
+																 rightButton: complainButton
 														rightSecondaryButton: sendPhotoButton];
 	if (self.check != nil) {
 		tbView.titleLabel.text = self.check.name;
@@ -150,7 +155,10 @@
 	
 	LGPhoto *currentPhoto = [self currentNotAdminPhoto];
 	if (currentPhoto != nil) {
+		_complainButton.hidden = NO;
 		[kernel.checksManager getPhotoCountersForPhoto: currentPhoto];
+	} else {
+		_complainButton.hidden = YES;
 	}
 }
 
@@ -216,6 +224,13 @@
 
 - (void) cameraAction: (id) sender {
 	[kernel.imagePickManager takePictureFor: self.check];
+}
+
+- (void) complainAction: (id) sender {
+	LGPhoto *photo = [self currentNotAdminPhoto];
+	if (photo != nil) {
+		[[AlertViewManager sharedManager] showAlertComplainConfirmWithContext: photo];
+	}
 }
 
 - (void) sendPhotoAction: (id) sender {

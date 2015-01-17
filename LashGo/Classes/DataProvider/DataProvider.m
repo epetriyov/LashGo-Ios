@@ -36,6 +36,7 @@
 
 #define kPhotosPath			@"/photos/%@" //GET
 #define kPhotosCommentsPath	@"/photos/%lld/comments" //GET, POST
+#define kPhotosComplainPath @"/photos/%lld/complain" //POST
 #define kPhotosCountersPath	@"/photos/%lld/counters" //GET
 #define kPhotosVotesPath	@"/photos/%lld/votes" //GET"
 #define kPhotosVotePath		@"/photos/vote" //POST
@@ -146,34 +147,32 @@ static NSString *const kRequestUUID =		@"uuid";
 						 context: (id) context
 				   allowMultiple: (BOOL) allowMultiple
 				  finishSelector: (SEL) finishSelector failSelector: (SEL) failSelector {
-	@synchronized (self) {
-		NSString *connectionKey = [[kWebServiceURL stringByAppendingString: path] stringByAppendingFormat: @"%d", theType];
-		
-		if (allowMultiple == NO) {
-			URLConnection *liveConnection = _liveConnections[connectionKey];
-			if (liveConnection.status == URLConnectionStatusStarted) {
-				return;
-			}
+	NSString *connectionKey = [[kWebServiceURL stringByAppendingString: path] stringByAppendingFormat: @"%d", theType];
+	
+	if (allowMultiple == NO) {
+		URLConnection *liveConnection = _liveConnections[connectionKey];
+		if (liveConnection.status == URLConnectionStatusStarted) {
+			return;
 		}
-		NSMutableDictionary *headerParamsDictionary = [self dictionaryWithHeaderParams];
-		URLConnection *connection = [_connectionManager connectionWithHost: kWebServiceURL
-																	 path: path
-															  queryParams: nil
-															 headerParams: headerParamsDictionary
-																	 body: bodyJSON
-																	 type: theType
-																   target: self
-														   finishSelector: finishSelector
-															 failSelector: failSelector];
-		connection.context = context;
-		
-		if (allowMultiple == NO) {
-			_liveConnections[connectionKey] = connection;
-		}
-		
-		[((AppDelegate *)[UIApplication sharedApplication].delegate) setNetworkActivityIndicatorVisible: YES];
-		[connection startAsync];
 	}
+	NSMutableDictionary *headerParamsDictionary = [self dictionaryWithHeaderParams];
+	URLConnection *connection = [_connectionManager connectionWithHost: kWebServiceURL
+																 path: path
+														  queryParams: nil
+														 headerParams: headerParamsDictionary
+																 body: bodyJSON
+																 type: theType
+															   target: self
+													   finishSelector: finishSelector
+														 failSelector: failSelector];
+	connection.context = context;
+	
+	if (allowMultiple == NO) {
+		_liveConnections[connectionKey] = connection;
+	}
+	
+	[((AppDelegate *)[UIApplication sharedApplication].delegate) setNetworkActivityIndicatorVisible: YES];
+	[connection startAsync];
 }
 
 - (void) startConnectionWithPath: (NSString *) path
@@ -182,36 +181,34 @@ static NSString *const kRequestUUID =		@"uuid";
 						 context: (id) context
 				   allowMultiple: (BOOL) allowMultiple
 				  finishSelector: (SEL) finishSelector failSelector: (SEL) failSelector {
-	@synchronized (self) {
-		NSString *connectionKey = [[kWebServiceURL stringByAppendingString: path] stringByAppendingFormat: @"%d", theType];
-		
-		if (allowMultiple == NO) {
-			URLConnection *liveConnection = _liveConnections[connectionKey];
-			if (liveConnection.status == URLConnectionStatusStarted) {
-				return;
-			}
+	NSString *connectionKey = [[kWebServiceURL stringByAppendingString: path] stringByAppendingFormat: @"%d", theType];
+	
+	if (allowMultiple == NO) {
+		URLConnection *liveConnection = _liveConnections[connectionKey];
+		if (liveConnection.status == URLConnectionStatusStarted) {
+			return;
 		}
-		NSMutableDictionary *headerParamsDictionary = [self dictionaryWithHeaderParams];
-		NSMutableURLRequest *request = [NSMutableURLRequest requestMultipartWithURL: [kWebServiceURL stringByAppendingString: path]
-																	   headerParams: headerParamsDictionary
-																		  paramData: data
-																		   fileName: @"photo"];
-		URLConnection *connection = [_connectionManager connectionWithHost: kWebServiceURL
-																	  path: path
-																	  type: theType
-																   request: request
-																	target: self
-															finishSelector: finishSelector
-															  failSelector: failSelector];
-		connection.context = context;
-		
-		if (allowMultiple == NO) {
-			_liveConnections[connectionKey] = connection;
-		}
-		
-		[((AppDelegate *)[UIApplication sharedApplication].delegate) setNetworkActivityIndicatorVisible: YES];
-		[connection startAsync];
 	}
+	NSMutableDictionary *headerParamsDictionary = [self dictionaryWithHeaderParams];
+	NSMutableURLRequest *request = [NSMutableURLRequest requestMultipartWithURL: [kWebServiceURL stringByAppendingString: path]
+																   headerParams: headerParamsDictionary
+																	  paramData: data
+																	   fileName: @"photo"];
+	URLConnection *connection = [_connectionManager connectionWithHost: kWebServiceURL
+																  path: path
+																  type: theType
+															   request: request
+																target: self
+														finishSelector: finishSelector
+														  failSelector: failSelector];
+	connection.context = context;
+	
+	if (allowMultiple == NO) {
+		_liveConnections[connectionKey] = connection;
+	}
+	
+	[((AppDelegate *)[UIApplication sharedApplication].delegate) setNetworkActivityIndicatorVisible: YES];
+	[connection startAsync];
 }
 
 - (NSError *) didFailGetImportantData: (URLConnection *) connection {
@@ -509,6 +506,21 @@ static NSString *const kRequestUUID =		@"uuid";
 						  context: inputData
 					allowMultiple: NO
 				   finishSelector: @selector(didGetPhotoComments:) failSelector: @selector(didGetPhotoComments:)];
+}
+
+#pragma mark -
+
+- (void) didPhotoComplain: (URLConnection *) connection {
+	
+}
+
+- (void) photoComplainFor: (LGPhoto *) inputData {
+	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosComplainPath, inputData.uid]
+							 type: URLConnectionTypePOST
+							 body: nil
+						  context: inputData
+					allowMultiple: NO
+				   finishSelector: @selector(didPhotoComplain:) failSelector: @selector(didPhotoComplain:)];
 }
 
 #pragma mark -

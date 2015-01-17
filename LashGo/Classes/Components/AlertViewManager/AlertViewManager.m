@@ -13,7 +13,14 @@
 #define kAlertDefaultYesText	@"Да"
 #define kAlertDefaultNoText		@"Нет"
 
+#define kComplainConfirmAlertView @"ComplainConfirmAlertView"
 #define kLogoutConfirmAlertView @"LogoutConfirmAlertView"
+
+@interface AlertViewManager () {
+	NSMutableDictionary *_alertContext;
+}
+
+@end
 
 @implementation AlertViewManager
 
@@ -30,6 +37,7 @@
 
 - (id) init {
 	if (self = [super init]) {
+		_alertContext = [[NSMutableDictionary alloc] init];
 		alertViews = [ [NSMutableDictionary alloc] init];
 		
 		return self;
@@ -44,6 +52,13 @@
 		alertViews[key] = alertView;
 		[alertView show];
 	}
+}
+
+- (void) showAlertView: (UIAlertView *) alertView withKey: (NSString *) key context: (id) context {
+	if (context != nil && _alertContext[key] == nil) {
+		_alertContext[key] = context;
+	}
+	[self showAlertView: alertView withKey: key];
 }
 
 - (void) closeAlertViewWithKey: (NSString *) key {
@@ -92,6 +107,17 @@
 	[alertView show];
 }
 
+#pragma mark -
+
+- (void) showAlertComplainConfirmWithContext: (id) context {
+	UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle: @"AlertComplainTitle".commonLocalizedString
+														 message: @"AlertComplainMessage".commonLocalizedString
+														delegate: self
+											   cancelButtonTitle: kAlertDefaultNoText.commonLocalizedString
+											   otherButtonTitles: kAlertDefaultYesText.commonLocalizedString, nil];
+	[self showAlertView: alertView withKey: kComplainConfirmAlertView context: context];
+}
+
 - (void) showAlertLogoutConfirm {
 	UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle: @"AlertLogoutTitle".commonLocalizedString
 														 message: @"AlertLogoutMessage".commonLocalizedString
@@ -104,14 +130,27 @@
 #pragma mark UIAlertViewDelegate methods
 
 - (void) alertView: (UIAlertView *) alertView didDismissWithButtonIndex: (NSInteger) buttonIndex {
-	NSArray *keys = [alertViews allKeysForObject: alertView];
 	NSString *key = nil;
+	id context = nil;
+	
+	NSArray *keys = [alertViews allKeysForObject: alertView];
 	if ([keys count] > 0) {
 		key = keys[0];
 		
 		[alertViews removeObjectForKey: key];
+		
+		context = _alertContext[key];
+		if (context != nil) {
+			[_alertContext removeObjectForKey: key];
+		}
 	}
 	
+	if ([key isEqualToString: kComplainConfirmAlertView] == YES) {
+		if (buttonIndex > 0 &&
+			[self.delegate respondsToSelector: @selector(alertViewManagerDidConfirmComplain:withContext:)] == YES) {
+			[self.delegate alertViewManagerDidConfirmComplain: self withContext: context];
+		}
+	}
 	if ([key isEqualToString: kLogoutConfirmAlertView] == YES) {
 		if (buttonIndex > 0 &&
 			[self.delegate respondsToSelector: @selector(alertViewManagerDidConfirmLogout:)] == YES) {

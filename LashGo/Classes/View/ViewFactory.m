@@ -192,6 +192,18 @@ static ViewFactory *viewFactory = nil;
 	return button;
 }
 
+#pragma mark - Common
+
+- (UIButton *) complainButton: (id) target action: (SEL) selector {
+	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 44, 44)];
+	
+	[button setImage: [UIImage imageNamed: @"blocked_led"] forState: UIControlStateNormal];
+	
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	
+	return button;
+}
+
 #pragma mark - Check
 
 - (UIButton *) checkMakeFoto: (id) target action: (SEL) selector {

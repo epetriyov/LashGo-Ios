@@ -23,6 +23,9 @@
 "AlertAuthErrorMessage" = "Неудалось авторизоваться на сервере, повторите попытку позже";
 "AlertErrorTitle" = "Ошибка";
 "AlertEmptyFieldsMessage" = "Все поля должны быть заполнены";
+
+"AlertComplainTitle" = "Пожаловаться";
+"AlertComplainMessage" = "Вы действительно хотите пожаловаться на данное фото?";
 "AlertLogoutTitle" = "Выход";
 "AlertLogoutMessage" = "Вы действительно хотите выйти?";
 

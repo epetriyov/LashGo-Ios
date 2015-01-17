@@ -319,8 +319,8 @@
 		photo.user = [self parseUser: rawPhoto[@"user"]];
 		photo.check = [self parseCheck: rawPhoto[@"check"]];
 		
-		photo.isBanned = [rawPhoto[@"isBanned"] boolValue];
-		photo.isWinner = [rawPhoto[@"isWinner"] boolValue];
+		photo.isBanned = [rawPhoto[@"banned"] boolValue];
+		photo.isWinner = [rawPhoto[@"winner"] boolValue];
 	}
 	return photo;
 }
