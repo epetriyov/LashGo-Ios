@@ -7,7 +7,7 @@
 //
 
 #import "AppAccount.h"
-#import "VKSdk.h"
+#import <VKSdk/VKSdk.h>
 
 @interface VkontakteAppAccount : AppAccount <VKSdkDelegate>
 
