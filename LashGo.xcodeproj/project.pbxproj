@@ -46,6 +46,7 @@
 		841C624219A397ED00BAEDBB /* Taskbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C623D19A397ED00BAEDBB /* Taskbar.m */; };
 		841C624319A397ED00BAEDBB /* TaskbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C623F19A397ED00BAEDBB /* TaskbarButton.m */; };
 		841C624419A397ED00BAEDBB /* TaskbarButtonLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 841C624019A397ED00BAEDBB /* TaskbarButtonLocalizable.strings */; };
+		841D1E7F1A6A984400880F75 /* libVKSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 841D1E7C1A6A983200880F75 /* libVKSdk.a */; };
 		8426F351191A661D00B4E336 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F34E191A661D00B4E336 /* BaseViewController.m */; };
 		8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F350191A661D00B4E336 /* TitleBarViewController.m */; };
 		8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F356191A6F6400B4E336 /* TitleBarView.m */; };
@@ -134,10 +135,23 @@
 		84FEE18019E028180067C264 /* ProfileEditTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEE17F19E028180067C264 /* ProfileEditTableViewCell.m */; };
 		84FEE18319E02E320067C264 /* ProfileWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FEE18219E02E320067C264 /* ProfileWelcomeViewController.m */; };
 		84FF0239195EB47200B90CF9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0238195EB47200B90CF9 /* FacebookSDK.framework */; };
-		84FF0294195ED69600B90CF9 /* libVKSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84FF0235195EB21800B90CF9 /* libVKSdk.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		841D1E7B1A6A983200880F75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 841D1E751A6A983200880F75 /* VKSdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3C7542D182133CC00964716;
+			remoteInfo = VKSdk;
+		};
+		841D1E7D1A6A983200880F75 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 841D1E751A6A983200880F75 /* VKSdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3BACC401865905B003158DA;
+			remoteInfo = VKSdkResources;
+		};
 		8427E61A19C5DB3300558649 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */;
@@ -165,20 +179,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 845D857A19029EB0004E10AB;
 			remoteInfo = LashGo;
-		};
-		84FF0234195EB21800B90CF9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 84E99C01194F26F3000C55E4 /* sdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F3C7542D182133CC00964716;
-			remoteInfo = VKSdk;
-		};
-		84FF0236195EB21800B90CF9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 84E99C01194F26F3000C55E4 /* sdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F3BACC401865905B003158DA;
-			remoteInfo = VKSdkResources;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -261,6 +261,7 @@
 		841C623E19A397ED00BAEDBB /* TaskbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskbarButton.h; sourceTree = "<group>"; };
 		841C623F19A397ED00BAEDBB /* TaskbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskbarButton.m; sourceTree = "<group>"; };
 		841C624019A397ED00BAEDBB /* TaskbarButtonLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = TaskbarButtonLocalizable.strings; sourceTree = "<group>"; };
+		841D1E751A6A983200880F75 /* VKSdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VKSdk.xcodeproj; path = LashGo/VKlib/sdk/VKSdk.xcodeproj; sourceTree = "<group>"; };
 		8426F34D191A661D00B4E336 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8426F34E191A661D00B4E336 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		8426F34F191A661D00B4E336 /* TitleBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBarViewController.h; sourceTree = "<group>"; };
@@ -366,7 +367,6 @@
 		84E98F321984ED7D00B422F4 /* JSONSerializableProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONSerializableProtocol.h; sourceTree = "<group>"; };
 		84E99B9B194F1CA3000C55E4 /* VkontakteAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VkontakteAppAccount.h; sourceTree = "<group>"; };
 		84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkontakteAppAccount.m; sourceTree = "<group>"; };
-		84E99C01194F26F3000C55E4 /* sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = sdk.xcodeproj; path = LashGo/VKlib/sdk/sdk.xcodeproj; sourceTree = "<group>"; };
 		84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VKSdkResources.bundle; path = LashGo/VKlib/VKSdkResources.bundle; sourceTree = "<group>"; };
 		84EABEC21A345F8F0031BF07 /* LGSubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSubscribe.h; sourceTree = "<group>"; };
 		84EABEC31A345F8F0031BF07 /* LGSubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSubscribe.m; sourceTree = "<group>"; };
@@ -436,9 +436,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841D1E7F1A6A984400880F75 /* libVKSdk.a in Frameworks */,
 				8427E62219C5DBC500558649 /* ImageIO.framework in Frameworks */,
 				8427E62019C5DB7400558649 /* libSDWebImage+WebP.a in Frameworks */,
-				84FF0294195ED69600B90CF9 /* libVKSdk.a in Frameworks */,
 				84FF0239195EB47200B90CF9 /* FacebookSDK.framework in Frameworks */,
 				840E19ED194B43210023C0F6 /* Accounts.framework in Frameworks */,
 				84001FEB1949AA53004D9D7A /* Social.framework in Frameworks */,
@@ -602,6 +602,15 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		841D1E761A6A983200880F75 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				841D1E7C1A6A983200880F75 /* libVKSdk.a */,
+				841D1E7E1A6A983200880F75 /* VKSdkResources.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8426F34C191A661D00B4E336 /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -680,8 +689,8 @@
 		845D857219029EB0004E10AB = {
 			isa = PBXGroup;
 			children = (
+				841D1E751A6A983200880F75 /* VKSdk.xcodeproj */,
 				8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */,
-				84E99C01194F26F3000C55E4 /* sdk.xcodeproj */,
 				84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */,
 				845D858419029EB0004E10AB /* LashGo */,
 				845D859D19029EB0004E10AB /* LashGoTests */,
@@ -1098,15 +1107,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		84FF0230195EB21800B90CF9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				84FF0235195EB21800B90CF9 /* libVKSdk.a */,
-				84FF0237195EB21800B90CF9 /* VKSdkResources.bundle */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		FE8F9616196D2CE400769722 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1180,12 +1180,12 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 84FF0230195EB21800B90CF9 /* Products */;
-					ProjectRef = 84E99C01194F26F3000C55E4 /* sdk.xcodeproj */;
-				},
-				{
 					ProductGroup = 8427E61219C5DB3300558649 /* Products */;
 					ProjectRef = 8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */;
+				},
+				{
+					ProductGroup = 841D1E761A6A983200880F75 /* Products */;
+					ProjectRef = 841D1E751A6A983200880F75 /* VKSdk.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1197,6 +1197,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		841D1E7C1A6A983200880F75 /* libVKSdk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libVKSdk.a;
+			remoteRef = 841D1E7B1A6A983200880F75 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		841D1E7E1A6A983200880F75 /* VKSdkResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VKSdkResources.bundle;
+			remoteRef = 841D1E7D1A6A983200880F75 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8427E61B19C5DB3300558649 /* libSDWebImage.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1216,20 +1230,6 @@
 			fileType = archive.ar;
 			path = "libSDWebImage+MKAnnotation.a";
 			remoteRef = 8427E61E19C5DB3300558649 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		84FF0235195EB21800B90CF9 /* libVKSdk.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libVKSdk.a;
-			remoteRef = 84FF0234195EB21800B90CF9 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		84FF0237195EB21800B90CF9 /* VKSdkResources.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = VKSdkResources.bundle;
-			remoteRef = 84FF0236195EB21800B90CF9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
