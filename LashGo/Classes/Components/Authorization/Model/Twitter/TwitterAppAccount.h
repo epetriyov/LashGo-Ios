@@ -15,6 +15,6 @@
 	NSString __strong *_accessToken;
 }
 
-@property (nonatomic, weak) UIView *selectAccountParentView;
+@property (nonatomic, weak) UIViewController *presentingViewController;
 
 @end

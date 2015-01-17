@@ -74,14 +74,15 @@ NSString *const kLastUsedAccountKey = @"lg_last_used_account_type";
 	[_account login];
 }
 
-- (void) loginUsingTwitterFromView: (UIView *) loginView {
+- (void) loginUsingTwitterFromViewController: (UIViewController *) loginViewController {
 	[self prepareAccountOfClass: [TwitterAppAccount class]];
-	((TwitterAppAccount *)_account).selectAccountParentView = loginView;
+	((TwitterAppAccount *)_account).presentingViewController = loginViewController;
 	[_account login];
 }
 
-- (void) loginUsingVkontakte {
+- (void) loginUsingVkontakteFromViewController: (UIViewController *) loginViewController {
 	[self prepareAccountOfClass: [VkontakteAppAccount class]];
+	((VkontakteAppAccount *)_account).presentingViewController = loginViewController;
 	[_account login];
 }
 

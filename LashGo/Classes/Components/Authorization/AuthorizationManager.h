@@ -20,8 +20,8 @@ extern NSString *const kAuthorizationNotification;
 
 - (void) loginUsingFacebook;
 - (void) loginUsingLashGo: (LGLoginInfo *) loginInfo;
-- (void) loginUsingTwitterFromView: (UIView *) loginView;
-- (void) loginUsingVkontakte;
+- (void) loginUsingTwitterFromViewController: (UIViewController *) loginViewController;
+- (void) loginUsingVkontakteFromViewController: (UIViewController *) loginViewController;
 
 - (void) registerUsingLashGo: (LGLoginInfo *) loginInfo;
 

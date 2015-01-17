@@ -56,7 +56,7 @@ static NSString *const TOKEN_KEY = @"my_application_access_token";
 }
 
 - (void) login {
-	[VKSdk authorize: @[VK_PER_STATS] revokeAccess:YES forceOAuth: YES inApp: NO];
+	[VKSdk authorize: @[VK_PER_STATS] revokeAccess:YES forceOAuth: NO inApp: YES];
 }
 
 - (void) logout {
@@ -73,8 +73,8 @@ static NSString *const TOKEN_KEY = @"my_application_access_token";
 #pragma mark - Methods
 
 - (void)vkSdkNeedCaptchaEnter:(VKError *)captchaError {
-//	VKCaptchaViewController *vc = [VKCaptchaViewController captchaControllerWithError:captchaError];
-//	[vc presentIn:self];
+	VKCaptchaViewController *vc = [VKCaptchaViewController captchaControllerWithError:captchaError];
+	[vc presentIn: self.presentingViewController];
 }
 
 - (void)vkSdkTokenHasExpired:(VKAccessToken *)expiredToken {
@@ -86,7 +86,7 @@ static NSString *const TOKEN_KEY = @"my_application_access_token";
 }
 
 - (void)vkSdkShouldPresentViewController:(UIViewController *)controller {
-//	[self presentViewController:controller animated:YES completion:nil];
+	[self.presentingViewController presentViewController:controller animated:YES completion:nil];
 }
 
 - (void)vkSdkAcceptedUserToken:(VKAccessToken *)token {

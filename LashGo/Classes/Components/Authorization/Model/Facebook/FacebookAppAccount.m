@@ -46,7 +46,7 @@
         // we check here to make sure we have a token before calling open
         if (_session.state == FBSessionStateCreatedTokenLoaded) {
             // even though we had a cached token, we need to login to make the session usable
-            [_session openWithBehavior: FBSessionLoginBehaviorUseSystemAccountIfPresent
+            [_session openWithBehavior: FBSessionLoginBehaviorWithFallbackToWebView
 					 completionHandler:^(FBSession *session,
 										 FBSessionState status,
 										 NSError *error) {
@@ -176,7 +176,7 @@
 	}
 	
 	// if the session isn't open, let's open it now and present the login UX to the user
-	[_session openWithBehavior: FBSessionLoginBehaviorUseSystemAccountIfPresent
+	[_session openWithBehavior: FBSessionLoginBehaviorForcingWebView
 			 completionHandler:^(FBSession *session,
 								 FBSessionState status,
 								 NSError *error) {

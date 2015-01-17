@@ -224,7 +224,7 @@
 //											 selector: @selector(authorizationSuccess)
 //												 name: kAuthorizationNotification
 //											   object: nil];
-	[[AuthorizationManager sharedManager] loginUsingTwitterFromView: self.view];
+	[[AuthorizationManager sharedManager] loginUsingTwitterFromViewController: self];
 }
 
 - (void) loginWithVkontakte: (id) sender {
@@ -232,7 +232,7 @@
 //											 selector: @selector(authorizationSuccess)
 //												 name: kAuthorizationNotification
 //											   object: nil];
-	[[AuthorizationManager sharedManager] loginUsingVkontakte];
+	[[AuthorizationManager sharedManager] loginUsingVkontakteFromViewController: self];
 }
 
 //- (void) authorizationSuccess {

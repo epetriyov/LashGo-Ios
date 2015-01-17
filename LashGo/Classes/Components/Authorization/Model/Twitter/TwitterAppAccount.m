@@ -174,7 +174,7 @@
         [sheet addButtonWithTitle:acct.username];
     }
     sheet.cancelButtonIndex = [sheet addButtonWithTitle:@"Cancel".commonLocalizedString];
-    [sheet showInView: self.selectAccountParentView];
+    [sheet showInView: self.presentingViewController.view];
 }
 
 @end

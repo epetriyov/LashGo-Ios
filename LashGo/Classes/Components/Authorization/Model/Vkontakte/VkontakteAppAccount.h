@@ -11,4 +11,6 @@
 
 @interface VkontakteAppAccount : AppAccount <VKSdkDelegate>
 
+@property (nonatomic, weak) UIViewController *presentingViewController;
+
 @end
