@@ -94,7 +94,7 @@ static NSString *const TOKEN_KEY = @"my_application_access_token";
 }
 - (void)vkSdkUserDeniedAccess:(VKError *)authorizationError {
 	[self.delegate authDidFinish: NO forAccount: self];
-	[[[UIAlertView alloc] initWithTitle:nil message:@"Access denied" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+//	[[[UIAlertView alloc] initWithTitle:nil message:@"Access denied" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
 }
 
 @end

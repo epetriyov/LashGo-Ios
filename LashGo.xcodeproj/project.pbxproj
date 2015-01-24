@@ -46,16 +46,16 @@
 		841C624219A397ED00BAEDBB /* Taskbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C623D19A397ED00BAEDBB /* Taskbar.m */; };
 		841C624319A397ED00BAEDBB /* TaskbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C623F19A397ED00BAEDBB /* TaskbarButton.m */; };
 		841C624419A397ED00BAEDBB /* TaskbarButtonLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 841C624019A397ED00BAEDBB /* TaskbarButtonLocalizable.strings */; };
-		841D1E811A6A9C3B00880F75 /* VKSdk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 841D1E801A6A9C3B00880F75 /* VKSdk.framework */; };
 		8426F351191A661D00B4E336 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F34E191A661D00B4E336 /* BaseViewController.m */; };
 		8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F350191A661D00B4E336 /* TitleBarViewController.m */; };
 		8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F356191A6F6400B4E336 /* TitleBarView.m */; };
 		8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F359191A6FF900B4E336 /* ViewFactory.m */; };
 		8426F35D191A754200B4E336 /* FontFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F35C191A754200B4E336 /* FontFactory.m */; };
-		8427E62019C5DB7400558649 /* libSDWebImage+WebP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8427E61D19C5DB3300558649 /* libSDWebImage+WebP.a */; };
 		8427E62219C5DBC500558649 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8427E62119C5DBC500558649 /* ImageIO.framework */; };
 		8434E44319D708D700DD4CA8 /* CheckSimpleDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434E44219D708D700DD4CA8 /* CheckSimpleDetailView.m */; };
 		84426D4619E158060068734B /* CheckDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84426D4519E158060068734B /* CheckDetailViewController.m */; };
+		8451232A1A74001200ABB3FD /* libVKSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 845123271A74000100ABB3FD /* libVKSdk.a */; };
+		8451232B1A74009E00ABB3FD /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8427E61B19C5DB3300558649 /* libSDWebImage.a */; };
 		845938721A067D6C00226007 /* VoteCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 845938711A067D6C00226007 /* VoteCollectionCell.m */; };
 		845A20FD19F265BB00AF9D24 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A20FC19F265BB00AF9D24 /* ProfileViewController.m */; };
 		845A210719F2694400AF9D24 /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 845A210619F2694400AF9D24 /* ProfileView.m */; };
@@ -162,6 +162,20 @@
 			remoteGlobalIDString = 531041E0157EAFA400BBABC3;
 			remoteInfo = "SDWebImage+MKAnnotation";
 		};
+		845123261A74000100ABB3FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 845123201A74000000ABB3FD /* VKSdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3C7542D182133CC00964716;
+			remoteInfo = VKSdk;
+		};
+		845123281A74000100ABB3FD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 845123201A74000000ABB3FD /* VKSdk.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F3BACC401865905B003158DA;
+			remoteInfo = VKSdkResources;
+		};
 		845D859B19029EB0004E10AB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 845D857319029EB0004E10AB /* Project object */;
@@ -250,7 +264,6 @@
 		841C623E19A397ED00BAEDBB /* TaskbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskbarButton.h; sourceTree = "<group>"; };
 		841C623F19A397ED00BAEDBB /* TaskbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskbarButton.m; sourceTree = "<group>"; };
 		841C624019A397ED00BAEDBB /* TaskbarButtonLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = TaskbarButtonLocalizable.strings; sourceTree = "<group>"; };
-		841D1E801A6A9C3B00880F75 /* VKSdk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdk.framework; path = LashGo/VKlib/VKSdk.framework; sourceTree = "<group>"; };
 		8426F34D191A661D00B4E336 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8426F34E191A661D00B4E336 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		8426F34F191A661D00B4E336 /* TitleBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBarViewController.h; sourceTree = "<group>"; };
@@ -267,6 +280,7 @@
 		8434E44219D708D700DD4CA8 /* CheckSimpleDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckSimpleDetailView.m; sourceTree = "<group>"; };
 		84426D4419E158060068734B /* CheckDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckDetailViewController.h; sourceTree = "<group>"; };
 		84426D4519E158060068734B /* CheckDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckDetailViewController.m; sourceTree = "<group>"; };
+		845123201A74000000ABB3FD /* VKSdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VKSdk.xcodeproj; path = LashGo/VKlib/sdk/VKSdk.xcodeproj; sourceTree = "<group>"; };
 		845938701A067D6C00226007 /* VoteCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoteCollectionCell.h; sourceTree = "<group>"; };
 		845938711A067D6C00226007 /* VoteCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteCollectionCell.m; sourceTree = "<group>"; };
 		845A20FB19F265BB00AF9D24 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -427,9 +441,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				841D1E811A6A9C3B00880F75 /* VKSdk.framework in Frameworks */,
+				8451232B1A74009E00ABB3FD /* libSDWebImage.a in Frameworks */,
+				8451232A1A74001200ABB3FD /* libVKSdk.a in Frameworks */,
 				8427E62219C5DBC500558649 /* ImageIO.framework in Frameworks */,
-				8427E62019C5DB7400558649 /* libSDWebImage+WebP.a in Frameworks */,
 				84FF0239195EB47200B90CF9 /* FacebookSDK.framework in Frameworks */,
 				840E19ED194B43210023C0F6 /* Accounts.framework in Frameworks */,
 				84001FEB1949AA53004D9D7A /* Social.framework in Frameworks */,
@@ -644,6 +658,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		845123211A74000000ABB3FD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				845123271A74000100ABB3FD /* libVKSdk.a */,
+				845123291A74000100ABB3FD /* VKSdkResources.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		845A210419F268E800AF9D24 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -671,6 +694,7 @@
 		845D857219029EB0004E10AB = {
 			isa = PBXGroup;
 			children = (
+				845123201A74000000ABB3FD /* VKSdk.xcodeproj */,
 				8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */,
 				84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */,
 				845D858419029EB0004E10AB /* LashGo */,
@@ -693,7 +717,6 @@
 		845D857D19029EB0004E10AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				841D1E801A6A9C3B00880F75 /* VKSdk.framework */,
 				8427E62119C5DBC500558649 /* ImageIO.framework */,
 				84FF0238195EB47200B90CF9 /* FacebookSDK.framework */,
 				840E19EC194B43210023C0F6 /* Accounts.framework */,
@@ -1169,6 +1192,10 @@
 					ProductGroup = 8427E61219C5DB3300558649 /* Products */;
 					ProjectRef = 8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */;
 				},
+				{
+					ProductGroup = 845123211A74000000ABB3FD /* Products */;
+					ProjectRef = 845123201A74000000ABB3FD /* VKSdk.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1198,6 +1225,20 @@
 			fileType = archive.ar;
 			path = "libSDWebImage+MKAnnotation.a";
 			remoteRef = 8427E61E19C5DB3300558649 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		845123271A74000100ABB3FD /* libVKSdk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libVKSdk.a;
+			remoteRef = 845123261A74000100ABB3FD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		845123291A74000100ABB3FD /* VKSdkResources.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VKSdkResources.bundle;
+			remoteRef = 845123281A74000100ABB3FD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1473,7 +1514,6 @@
 				INFOPLIST_FILE = "LashGo/LashGo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "../**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1493,7 +1533,6 @@
 				INFOPLIST_FILE = "LashGo/LashGo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "../**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
