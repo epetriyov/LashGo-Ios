@@ -21,6 +21,8 @@
 #import "LoginViewController.h"
 #import "RecoverViewController.h"
 
+#import "LicenseViewController.h"
+
 #import "SearchViewController.h"
 #import "StartViewController.h"
 
@@ -59,6 +61,8 @@
 @property (nonatomic, readonly) NewsViewController *newsViewController;
 
 @property (nonatomic, readonly) RecoverViewController *recoverViewController;
+
+@property (nonatomic, readonly) LicenseViewController *licenseViewController;
 
 @property (nonatomic, readonly) ProfileEditViewController *profileEditViewController;
 @property (nonatomic, readonly) ProfileWelcomeViewController *profileWelcomeViewController;

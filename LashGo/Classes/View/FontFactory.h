@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger, FontType) {
 	FontTypeCountersDarkTitle,
 	FontTypeLoginActionBtnTitle,
 	FontTypeLoginInputField,
+	FontTypeLoginLicense,
 	FontTypeLoginRestorePass,
 	FontTypeLoginSocialLabel,
 	FontTypeLoginWelcomeText,

@@ -14,6 +14,8 @@
 	CheckDetailViewController __weak *_checkDetailViewController;
 	VoteViewController __weak *_voteViewController;
 	
+	LicenseViewController __weak *_licenseViewController;
+	
 	ProfileEditViewController __weak *_profileEditViewController;
 	ProfileWelcomeViewController __weak *_profileWelcomeViewController;
 	ProfileViewController __weak *_profileViewController;
@@ -26,6 +28,7 @@
 @synthesize rootNavigationController;
 @dynamic isReturnToPreviousAvaliable;
 @dynamic recoverViewController, checkDetailViewController, voteViewController;
+@dynamic licenseViewController;
 @dynamic profileEditViewController, profileWelcomeViewController, profileViewController;
 @dynamic subscriptionViewController;
 
@@ -56,6 +59,15 @@
 
 - (RecoverViewController *) recoverViewController {
 	return [self createViewControllerOfClass: [RecoverViewController class]];
+}
+
+- (LicenseViewController *) licenseViewController {
+	LicenseViewController *vc = _licenseViewController;
+	if (vc == nil) {
+		vc = [self createViewControllerOfClass: [LicenseViewController class]];
+		_licenseViewController = vc;
+	}
+	return vc;
 }
 
 - (ProfileEditViewController *) profileEditViewController {

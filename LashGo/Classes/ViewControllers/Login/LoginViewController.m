@@ -35,9 +35,9 @@
 	//Configure welcome text
 	float offsetY = self.contentFrame.origin.y;
 	if ([Common is568hMode] == NO) {
-		offsetY += 10;
+		offsetY += 0;
 	} else {
-		offsetY += 92;
+		offsetY += 72;
 	}
 	
 	UILabel *welcomeLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.view.frame.size.width, 25)];
@@ -48,7 +48,13 @@
 	welcomeLabel.textColor = [FontFactory fontColorForType: FontTypeLoginWelcomeText];
 	[self.view addSubview: welcomeLabel];
 	
-	offsetY += welcomeLabel.frame.size.height + 25;
+	offsetY += welcomeLabel.frame.size.height;
+	
+	if ([Common is568hMode] == NO) {
+		offsetY += 5;
+	} else {
+		offsetY += 25;
+	}
 	
 	//Configure bg for fields
 	UIView *formView = [[UIView alloc] initWithFrame: CGRectMake(0, offsetY, self.view.frame.size.width, 87)];
@@ -126,15 +132,54 @@
 	//Configure actions
 	offsetY += 34;
 	
+	UILabel *licenseText = [[UILabel alloc] initWithFrame: CGRectMake(10, offsetY,
+																	  CGRectGetWidth(self.view.bounds) - 20, 35)];
+	licenseText.backgroundColor = [UIColor clearColor];
+	licenseText.font = [FontFactory fontWithType: FontTypeLoginRestorePass];
+	licenseText.numberOfLines = 2;
+	licenseText.textColor = [FontFactory fontColorForType: FontTypeLoginRestorePass];
+	licenseText.text = @"LoginVCLicenseText".commonLocalizedString;
+	[self.view addSubview: licenseText];
+	
+	offsetY += 20;
+	
+	UIButton *termsOfUseButton = [[UIButton alloc] initWithFrame: CGRectMake(0, offsetY, CGRectGetWidth(self.view.bounds), 35)];
+	termsOfUseButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	termsOfUseButton.contentEdgeInsets = UIEdgeInsetsMake(10, 20, 0, 0);
+	termsOfUseButton.titleLabel.font = [FontFactory fontWithType: FontTypeLoginLicense];
+	[termsOfUseButton setTitle: @"LoginVCTermsOfUseBtnTitle".commonLocalizedString
+					   forState: UIControlStateNormal];
+	[termsOfUseButton setTitleColor: [FontFactory fontColorForType: FontTypeLoginLicense]
+							forState: UIControlStateNormal];
+	[termsOfUseButton addTarget: self action: @selector(termsOfUseAction:) forControlEvents: UIControlEventTouchUpInside];
+	[self.view addSubview: termsOfUseButton];
+	
+	offsetY += 35;
+	
+	UIButton *privacyPolicyButton = [[UIButton alloc] initWithFrame: CGRectMake(0, offsetY, CGRectGetWidth(self.view.bounds), 35)];
+	privacyPolicyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+	privacyPolicyButton.contentEdgeInsets = UIEdgeInsetsMake(0, 20, 10, 0);
+	privacyPolicyButton.titleLabel.font = [FontFactory fontWithType: FontTypeLoginLicense];
+	[privacyPolicyButton setTitle: @"LoginVCPrivacyPolicyBtnTitle".commonLocalizedString
+					  forState: UIControlStateNormal];
+	[privacyPolicyButton setTitleColor: [FontFactory fontColorForType: FontTypeLoginLicense]
+						   forState: UIControlStateNormal];
+	[privacyPolicyButton addTarget: self action: @selector(privacyPolicyAction:) forControlEvents: UIControlEventTouchUpInside];
+	[self.view addSubview: privacyPolicyButton];
+	
+	offsetY = CGRectGetMaxY(privacyPolicyButton.frame) - 5;
+	
+	
 	UIButton *loginButton = [[ViewFactory sharedFactory] loginButtonWithTarget: self action: @selector(login:)];
 	loginButton.frameY = offsetY;
+	loginButton.frameWidth = CGRectGetMidX(self.view.bounds);
 	[self.view addSubview: loginButton];
-	
-	offsetY += loginButton.frame.size.height + 2;
 	
 	UIButton *registerButton = [[ViewFactory sharedFactory] loginButtonWithTarget: self
 																		   action: @selector(registration:)];
+	registerButton.frameX = CGRectGetMidX(self.view.bounds);
 	registerButton.frameY = offsetY;
+	registerButton.frameWidth = CGRectGetMidX(self.view.bounds);
 	[registerButton setTitle: @"LoginViewControllerRegisterBtnTitle".commonLocalizedString
 					forState: UIControlStateNormal];
 	[self.view addSubview: registerButton];
@@ -183,6 +228,14 @@
 
 - (void) restorePass: (id) sender {
 	[kernel.userManager openRecoverViewController];
+}
+
+- (void) termsOfUseAction: (id) sender {
+	[kernel.userManager openEULAViewController];
+}
+
+- (void) privacyPolicyAction: (id) sender {
+	[kernel.userManager openPrivacyPolicyViewController];
 }
 
 - (void) login: (id) sender {

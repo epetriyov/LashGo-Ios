@@ -88,6 +88,7 @@
 		849DD0C9199CBF9300DC86F6 /* SegmentedTextControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 849DD0C8199CBF9300DC86F6 /* SegmentedTextControl.m */; };
 		84A0DB1519D4457F009AD6DB /* RecoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0DB1419D4457F009AD6DB /* RecoverViewController.m */; };
 		84A0DB1F19D45A87009AD6DB /* VotePanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0DB1E19D45A87009AD6DB /* VotePanelView.m */; };
+		84A2E89A1A6BECBA001BFBD8 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2E8991A6BECBA001BFBD8 /* LicenseViewController.m */; };
 		84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6240A1998F4CD003BC2F1 /* Storage.m */; };
 		84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E624101998FBAD003BC2F1 /* ChecksManager.m */; };
 		84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B2196C226A0021D417 /* CheckCardViewController.m */; };
@@ -108,6 +109,8 @@
 		84EABEC71A345F8F0031BF07 /* LGSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EABEC51A345F8F0031BF07 /* LGSubscription.m */; };
 		84EABECA1A34600C0031BF07 /* LGSubscriptionsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EABEC91A34600C0031BF07 /* LGSubscriptionsResult.m */; };
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
+		84EB9EDB1A73BFA800F18D41 /* EULA.html in Resources */ = {isa = PBXBuildFile; fileRef = 84EB9ED91A73BFA800F18D41 /* EULA.html */; };
+		84EB9EDC1A73BFA800F18D41 /* PrivacyPolicy.html in Resources */ = {isa = PBXBuildFile; fileRef = 84EB9EDA1A73BFA800F18D41 /* PrivacyPolicy.html */; };
 		84EC27A21A18AC25006317C2 /* CheckHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC27A11A18AC25006317C2 /* CheckHeaderView.m */; };
 		84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC84F1197D4666001FA1F6 /* SearchViewController.m */; };
 		84EE64481A37472600192284 /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EE64471A37472600192284 /* EventsViewController.m */; };
@@ -285,7 +288,6 @@
 		845D858019029EB0004E10AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		845D858219029EB0004E10AB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		845D858619029EB0004E10AB /* LashGo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LashGo-Info.plist"; sourceTree = "<group>"; };
-		845D858819029EB0004E10AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		845D858A19029EB0004E10AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		845D858C19029EB0004E10AB /* LashGo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LashGo-Prefix.pch"; sourceTree = "<group>"; };
 		845D858D19029EB0004E10AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -294,7 +296,6 @@
 		845D859619029EB0004E10AB /* LashGoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LashGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		845D859719029EB0004E10AB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		845D859F19029EB0004E10AB /* LashGoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LashGoTests-Info.plist"; sourceTree = "<group>"; };
-		845D85A119029EB0004E10AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		845D85A319029EB0004E10AB /* LashGoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LashGoTests.m; sourceTree = "<group>"; };
 		845D85AE1902A543004E10AB /* Kernel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kernel.h; sourceTree = "<group>"; };
 		845D85AF1902A543004E10AB /* Kernel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Kernel.m; sourceTree = "<group>"; };
@@ -320,6 +321,8 @@
 		84A0DB1419D4457F009AD6DB /* RecoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecoverViewController.m; sourceTree = "<group>"; };
 		84A0DB1D19D45A87009AD6DB /* VotePanelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VotePanelView.h; sourceTree = "<group>"; };
 		84A0DB1E19D45A87009AD6DB /* VotePanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotePanelView.m; sourceTree = "<group>"; };
+		84A2E8981A6BECBA001BFBD8 /* LicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseViewController.h; sourceTree = "<group>"; };
+		84A2E8991A6BECBA001BFBD8 /* LicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseViewController.m; sourceTree = "<group>"; };
 		84E624091998F4CD003BC2F1 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
 		84E6240A1998F4CD003BC2F1 /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
 		84E6240F1998FBAD003BC2F1 /* ChecksManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChecksManager.h; sourceTree = "<group>"; };
@@ -362,6 +365,8 @@
 		84EABEC91A34600C0031BF07 /* LGSubscriptionsResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSubscriptionsResult.m; sourceTree = "<group>"; };
 		84EB473B1943044C001DEF81 /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
 		84EB473C1943044C001DEF81 /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
+		84EB9ED91A73BFA800F18D41 /* EULA.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = EULA.html; sourceTree = "<group>"; };
+		84EB9EDA1A73BFA800F18D41 /* PrivacyPolicy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PrivacyPolicy.html; sourceTree = "<group>"; };
 		84EC27A01A18AC25006317C2 /* CheckHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckHeaderView.h; sourceTree = "<group>"; };
 		84EC27A11A18AC25006317C2 /* CheckHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckHeaderView.m; sourceTree = "<group>"; };
 		84EC84F0197D4666001FA1F6 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
@@ -717,6 +722,8 @@
 		845D858519029EB0004E10AB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84EB9ED91A73BFA800F18D41 /* EULA.html */,
+				84EB9EDA1A73BFA800F18D41 /* PrivacyPolicy.html */,
 				845D858619029EB0004E10AB /* LashGo-Info.plist */,
 				845D858719029EB0004E10AB /* InfoPlist.strings */,
 				845D858A19029EB0004E10AB /* main.m */,
@@ -821,6 +828,8 @@
 				84E6D9AE196C20F00021D417 /* Check */,
 				84FA068219619F2B006A72AE /* Login */,
 				84FEE17319DFD9730067C264 /* User */,
+				84A2E8981A6BECBA001BFBD8 /* LicenseViewController.h */,
+				84A2E8991A6BECBA001BFBD8 /* LicenseViewController.m */,
 				84045AAA19225879006F2F24 /* RootNavigationControllerItemProtocol.h */,
 				8491557C19080301008D9120 /* RootNavigationController.h */,
 				8491557D19080301008D9120 /* RootNavigationController.m */,
@@ -1199,6 +1208,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				841C624419A397ED00BAEDBB /* TaskbarButtonLocalizable.strings in Resources */,
+				84EB9EDB1A73BFA800F18D41 /* EULA.html in Resources */,
+				84EB9EDC1A73BFA800F18D41 /* PrivacyPolicy.html in Resources */,
 				845D858919029EB0004E10AB /* InfoPlist.strings in Resources */,
 				84FA06891961A15A006A72AE /* Localizable.strings in Resources */,
 				845D859119029EB0004E10AB /* Images.xcassets in Resources */,
@@ -1290,6 +1301,7 @@
 				8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */,
 				84F8E8AC199BA7620054C9F8 /* CheckListViewController.m in Sources */,
 				84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */,
+				84A2E89A1A6BECBA001BFBD8 /* LicenseViewController.m in Sources */,
 				84EABEC61A345F8F0031BF07 /* LGSubscribe.m in Sources */,
 				84EE64481A37472600192284 /* EventsViewController.m in Sources */,
 				841C624319A397ED00BAEDBB /* TaskbarButton.m in Sources */,
@@ -1355,7 +1367,6 @@
 		845D858719029EB0004E10AB /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				845D858819029EB0004E10AB /* en */,
 				84E86E501A45F76A0086F0FF /* ru */,
 			);
 			name = InfoPlist.strings;
@@ -1364,7 +1375,6 @@
 		845D85A019029EB0004E10AB /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				845D85A119029EB0004E10AB /* en */,
 				84E86E511A45F76A0086F0FF /* ru */,
 			);
 			name = InfoPlist.strings;

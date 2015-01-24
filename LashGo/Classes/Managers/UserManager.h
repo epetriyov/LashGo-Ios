@@ -47,4 +47,7 @@
 - (void) openSubscribersWith: (LGUser *) user;
 - (void) openSubscribtionsWith: (LGUser *) user;
 
+- (void) openEULAViewController;
+- (void) openPrivacyPolicyViewController;
+
 @end

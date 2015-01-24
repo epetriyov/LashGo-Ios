@@ -45,6 +45,9 @@
 //NewsViewController
 "NewsViewControllerTitle" = "Новости";
 
+//LicenseViewController
+"LicenseVCTitle" = "Соглашение";
+
 //LoginViewController
 "LoginViewControllerTitle" = "Вход";
 "LoginViewControllerWelcomeText" = "С возвращением!";
@@ -54,6 +57,9 @@
 "LoginViewControllerLoginBtnTitle" = "Поехали!";
 "LoginViewControllerRegisterBtnTitle" = "Регистрация";
 "LoginViewControllerSocialLabelTitle" = "или войти через соцсети";
+"LoginVCLicenseText" = "Начиная использовать приложение вы автоматически соглашаетесь с:";
+"LoginVCTermsOfUseBtnTitle" = "- условия использования";
+"LoginVCPrivacyPolicyBtnTitle" = "- политика конфиденциальности";
 
 //ProfileEditViewController
 "ProfileEditViewControllerChangeAvatarBtnTitle" = "Сменить аватар";

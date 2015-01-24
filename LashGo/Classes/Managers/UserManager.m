@@ -165,4 +165,22 @@
 	[_viewControllersManager openViewController: vc animated: YES];
 }
 
+#pragma mark -
+
+- (void) openEULAViewController {
+	NSData *content = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"EULA"
+																					  ofType: @"html"]];
+	LicenseViewController *vc = _viewControllersManager.licenseViewController;
+	vc.content = content;
+	[_viewControllersManager.rootNavigationController presentViewController: vc animated: YES completion: nil];
+}
+
+- (void) openPrivacyPolicyViewController {
+	NSData *content = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"PrivacyPolicy"
+																					  ofType: @"html"]];
+	LicenseViewController *vc = _viewControllersManager.licenseViewController;
+	vc.content = content;
+	[_viewControllersManager.rootNavigationController presentViewController: vc animated: YES completion: nil];
+}
+
 @end
