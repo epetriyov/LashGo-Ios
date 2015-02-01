@@ -168,18 +168,20 @@
 #pragma mark -
 
 - (void) openEULAViewController {
-	NSData *content = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"EULA"
-																					  ofType: @"html"]];
+//	NSData *content = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"EULA"
+//																					  ofType: @"html"]];
 	LicenseViewController *vc = _viewControllersManager.licenseViewController;
-	vc.content = content;
+//	vc.content = content;
+	vc.contentURLString = @"http://lashgo.com/terms.html";
 	[_viewControllersManager.rootNavigationController presentViewController: vc animated: YES completion: nil];
 }
 
 - (void) openPrivacyPolicyViewController {
-	NSData *content = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"PrivacyPolicy"
-																					  ofType: @"html"]];
+//	NSData *content = [NSData dataWithContentsOfFile: [[NSBundle mainBundle] pathForResource: @"PrivacyPolicy"
+//																					  ofType: @"html"]];
 	LicenseViewController *vc = _viewControllersManager.licenseViewController;
-	vc.content = content;
+//	vc.content = content;
+	vc.contentURLString = @"http://lashgo.com/privacy.html";
 	[_viewControllersManager.rootNavigationController presentViewController: vc animated: YES completion: nil];
 }
 

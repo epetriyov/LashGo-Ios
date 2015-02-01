@@ -11,8 +11,9 @@
 #import "Common.h"
 #import "ViewFactory.h"
 
-@interface LicenseViewController () {
+@interface LicenseViewController () <UIWebViewDelegate> {
 	UIWebView __weak *_webView;
+	UIActivityIndicatorView __weak *_activityIndicator;
 }
 
 @end
@@ -34,6 +35,12 @@
 //	webView.scalesPageToFit = YES;
 	[self.view addSubview: webView];
 	_webView = webView;
+	
+	
+	UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
+	activityIndicator.center = webView.center;
+	[self.view addSubview: activityIndicator];
+	_activityIndicator = activityIndicator;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -41,11 +48,28 @@
 	
 	if (self.content != nil) {
 		[_webView loadData: self.content MIMEType: @"text/html" textEncodingName: @"UTF-8" baseURL: nil];
+	} else if (self.contentURLString) {
+		NSURLRequest *request = [NSURLRequest requestWithURL: [NSURL URLWithString: self.contentURLString]];
+		[_webView loadRequest: request];
 	}
 }
 
 - (void) closeAction: (id) sender {
 	[self.presentingViewController dismissViewControllerAnimated: YES completion: nil];
+}
+
+#pragma mark - UIWebViewDelegate
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+	[_activityIndicator startAnimating];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+	[_activityIndicator stopAnimating];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+	[_activityIndicator stopAnimating];
 }
 
 @end

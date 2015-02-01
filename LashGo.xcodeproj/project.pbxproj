@@ -109,8 +109,6 @@
 		84EABEC71A345F8F0031BF07 /* LGSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EABEC51A345F8F0031BF07 /* LGSubscription.m */; };
 		84EABECA1A34600C0031BF07 /* LGSubscriptionsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EABEC91A34600C0031BF07 /* LGSubscriptionsResult.m */; };
 		84EB473D1943044C001DEF81 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EB473C1943044C001DEF81 /* StartViewController.m */; };
-		84EB9EDB1A73BFA800F18D41 /* EULA.html in Resources */ = {isa = PBXBuildFile; fileRef = 84EB9ED91A73BFA800F18D41 /* EULA.html */; };
-		84EB9EDC1A73BFA800F18D41 /* PrivacyPolicy.html in Resources */ = {isa = PBXBuildFile; fileRef = 84EB9EDA1A73BFA800F18D41 /* PrivacyPolicy.html */; };
 		84EC27A21A18AC25006317C2 /* CheckHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC27A11A18AC25006317C2 /* CheckHeaderView.m */; };
 		84EC84F2197D4666001FA1F6 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EC84F1197D4666001FA1F6 /* SearchViewController.m */; };
 		84EE64481A37472600192284 /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EE64471A37472600192284 /* EventsViewController.m */; };
@@ -1249,8 +1247,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				841C624419A397ED00BAEDBB /* TaskbarButtonLocalizable.strings in Resources */,
-				84EB9EDB1A73BFA800F18D41 /* EULA.html in Resources */,
-				84EB9EDC1A73BFA800F18D41 /* PrivacyPolicy.html in Resources */,
 				845D858919029EB0004E10AB /* InfoPlist.strings in Resources */,
 				84FA06891961A15A006A72AE /* Localizable.strings in Resources */,
 				845D859119029EB0004E10AB /* Images.xcassets in Resources */,

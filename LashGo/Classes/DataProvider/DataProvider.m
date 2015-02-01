@@ -18,7 +18,8 @@
 //	#define USE_PREFETCHED_DATA
 #endif
 
-#define kWebServiceURL @"http://78.47.39.245:8080/lashgo-api"
+#define kWebServiceURL @"http://lashgo.com:8080/lashgo-api"
+//#define kWebServiceURL @"http://78.47.39.245:8080/lashgo-api"
 //#define kWebServiceURL @"http://109.195.38.41:1977/lashgo-api"
 #define kWebServicePhotoPath @"/photos/"
 

@@ -77,6 +77,7 @@
 	if ([AuthorizationManager sharedManager].account != nil) {
 		[self.checksManager openCheckCardViewController];
 	}
+	[UIActivityIndicatorView appearance].color = [UIColor colorWithRed:253.0/255.0 green: 5.0/255.0 blue: 160.0/255.0 alpha: 1.0];
 }
 
 - (void) startWaiting: (UIViewController *) viewController {

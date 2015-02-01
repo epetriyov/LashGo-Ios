@@ -11,5 +11,6 @@
 @interface LicenseViewController : TitleBarViewController
 
 @property (nonatomic, strong) NSData *content;
+@property (nonatomic, strong) NSString *contentURLString;
 
 @end
