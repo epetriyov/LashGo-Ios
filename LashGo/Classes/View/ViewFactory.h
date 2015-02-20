@@ -8,7 +8,10 @@
 @property (nonatomic, readonly) UIImage *checkDetailWinnerMedal;
 @property (nonatomic, readonly) UIImage *gradientPhotoTopImage;
 @property (nonatomic, readonly) UIImage *gradientPhotoBottomImage;
+@property (nonatomic, readonly) UIImage *iconAbout;
 @property (nonatomic, readonly) UIImage *iconEmail;
+@property (nonatomic, readonly) UIImage *iconLocation;
+@property (nonatomic, readonly) UIImage *iconName;
 @property (nonatomic, readonly) UIImage *iconPassword;
 @property (nonatomic, readonly) UIImage *lgLogoImage;
 @property (nonatomic, readonly) UIImage *loginViewControllerBgImage;

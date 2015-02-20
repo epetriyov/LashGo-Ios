@@ -17,7 +17,8 @@ static ViewFactory *viewFactory = nil;
 
 @dynamic checkDetailWinnerLed, checkDetailWinnerMedal;
 @dynamic gradientPhotoTopImage, gradientPhotoBottomImage;
-@dynamic iconEmail, iconPassword;
+
+@dynamic iconAbout, iconEmail, iconLocation, iconName, iconPassword;
 @dynamic lgLogoImage;
 @dynamic loginViewControllerBgImage;
 @dynamic startViewControllerBgImage, startViewControllerFrameImage, startViewControllerGradientImage, statusBarPreferredColor;
@@ -58,8 +59,20 @@ static ViewFactory *viewFactory = nil;
 	return [UIImage imageNamed: @"gradient_photo_bottom"];
 }
 
+- (UIImage *) iconAbout {
+	return [self getImageWithName: @"about"];
+}
+
 - (UIImage *) iconEmail {
 	return [self getImageWithName: @"e-mail"];
+}
+
+- (UIImage *) iconLocation {
+	return [self getImageWithName: @"location"];
+}
+
+- (UIImage *) iconName {
+	return [self getImageWithName: @"name"];
 }
 
 - (UIImage *) iconPassword {

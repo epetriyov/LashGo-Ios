@@ -33,6 +33,7 @@
 		8406256D1930CDEA0067C1CA /* LGRecoverInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406256C1930CDEA0067C1CA /* LGRecoverInfo.m */; };
 		840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8406256F1930CE850067C1CA /* LGRegisterInfo.m */; };
 		840625731930D10E0067C1CA /* LGSessionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 840625721930D10E0067C1CA /* LGSessionInfo.m */; };
+		84083A631A937DB2006C715E /* ProfileEditFieldData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84083A621A937DB2006C715E /* ProfileEditFieldData.m */; };
 		8409D07F19C4631400DFFEC6 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8409D07E19C4631400DFFEC6 /* UserManager.m */; };
 		8409D08519C486FC00DFFEC6 /* LashGoAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 8409D08419C486FC00DFFEC6 /* LashGoAppAccount.m */; };
 		840B4EB519A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m in Sources */ = {isa = PBXBuildFile; fileRef = 840B4EB419A387E700AA6DE1 /* NSDateFormatter+CustomFormats.m */; };
@@ -238,6 +239,8 @@
 		8406256F1930CE850067C1CA /* LGRegisterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGRegisterInfo.m; sourceTree = "<group>"; };
 		840625711930D10E0067C1CA /* LGSessionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSessionInfo.h; sourceTree = "<group>"; };
 		840625721930D10E0067C1CA /* LGSessionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSessionInfo.m; sourceTree = "<group>"; };
+		84083A611A937DB2006C715E /* ProfileEditFieldData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileEditFieldData.h; sourceTree = "<group>"; };
+		84083A621A937DB2006C715E /* ProfileEditFieldData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileEditFieldData.m; sourceTree = "<group>"; };
 		8409D07D19C4631400DFFEC6 /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		8409D07E19C4631400DFFEC6 /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		8409D08319C486FC00DFFEC6 /* LashGoAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LashGoAppAccount.h; sourceTree = "<group>"; };
@@ -525,6 +528,7 @@
 		840625551930AD1C0067C1CA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84083A601A937887006C715E /* ProfileEdit */,
 				84E98F311984ED7D00B422F4 /* RequestInput */,
 				84E6FCCD1A3C85BE0005DAD6 /* Comments */,
 				84EABEBB1A345F410031BF07 /* Subscriptions */,
@@ -559,6 +563,15 @@
 				8406255A1930B83B0067C1CA /* LGUser.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		84083A601A937887006C715E /* ProfileEdit */ = {
+			isa = PBXGroup;
+			children = (
+				84083A611A937DB2006C715E /* ProfileEditFieldData.h */,
+				84083A621A937DB2006C715E /* ProfileEditFieldData.m */,
+			);
+			path = ProfileEdit;
 			sourceTree = "<group>";
 		};
 		8409D08219C486C000DFFEC6 /* LashGo */ = {
@@ -1166,7 +1179,7 @@
 		845D857319029EB0004E10AB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Vitaliy Pykhtin";
 				TargetAttributes = {
 					845D859519029EB0004E10AB = {
@@ -1372,6 +1385,7 @@
 				84EABEC71A345F8F0031BF07 /* LGSubscription.m in Sources */,
 				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
 				84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */,
+				84083A631A937DB2006C715E /* ProfileEditFieldData.m in Sources */,
 				84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */,
 				84EEE4B219C9B21F009F83C6 /* CheckCardCountersPanelView.m in Sources */,
 				841BBF3019FFDDBB003A1FDC /* LGVotePhotosResult.m in Sources */,
@@ -1424,7 +1438,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1454,7 +1471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
@@ -1465,7 +1482,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1488,7 +1508,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

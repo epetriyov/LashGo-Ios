@@ -6,8 +6,22 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ProfileEditFieldData.h"
+
+@protocol ProfileEditTableViewCellDelegate;
 
 @interface ProfileEditTableViewCell : UITableViewCell
+
+@property (nonatomic, weak) id<ProfileEditTableViewCellDelegate> delegate;
+@property (nonatomic, weak) ProfileEditFieldData *fieldData;
+@property (nonatomic, readonly) UITextField *field;
+
+@end
+
+@protocol ProfileEditTableViewCellDelegate <NSObject>
+
+@required
+- (void) tableCellDidBeginEditing:(ProfileEditTableViewCell *) cell;
+- (void) tableCellDidEndEditing:(ProfileEditTableViewCell *) cell;
 
 @end

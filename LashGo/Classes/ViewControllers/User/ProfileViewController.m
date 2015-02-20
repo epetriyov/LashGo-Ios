@@ -160,7 +160,12 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 #pragma mark -
 
 - (void) editAction: (id) sender {
-	[kernel.userManager openProfileEditViewControllerWith: self.user];
+	LGUser *profileForEdit = kernel.storage.lastViewProfileDetail;
+	
+	if (self.user.uid != profileForEdit.uid) {
+		profileForEdit = self.user;
+	}
+	[kernel.userManager openProfileEditViewControllerWith: profileForEdit];
 }
 
 - (void) followAction: (id) sender {

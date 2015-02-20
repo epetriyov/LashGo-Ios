@@ -63,6 +63,12 @@
 
 //ProfileEditViewController
 "ProfileEditViewControllerChangeAvatarBtnTitle" = "Сменить аватар";
+"ProfileEditVCNameFieldTitle" = "Фамилия Имя Отчество";
+"ProfileEditVCLocationFieldTitle" = "Город";
+"ProfileEditVCEmailFieldTitle" = "Email";
+"ProfileEditVCAboutFieldTitle" = "О себе";
+"ProfileEditVCInterestsFieldTitle" = "Интересы";
+"ProfileEditVCPasswordFieldTitle" = "Сменить пароль";
 
 //ProfileWelcomeViewController
 "ProfileWelcomeViewControllerCompleteBtnTitle" = "ЗАПОЛНИТЬ ПРОФИЛЬ";
