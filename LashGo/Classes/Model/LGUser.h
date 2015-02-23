@@ -6,18 +6,9 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "JSONSerializableProtocol.h"
 
-@interface LGUser : NSObject <NSCoding> {
-	int32_t uid;
-	NSString *login;
-	NSString *fio;
-	NSString *about;
-	NSString *city;
-	NSDate *birthDate;
-	NSString *avatar;
-	NSString *email;
-}
+@interface LGUser : NSObject <NSCoding, JSONSerializableProtocol>
 
 @property (nonatomic, assign) int32_t uid;
 @property (nonatomic, strong) NSString *login;

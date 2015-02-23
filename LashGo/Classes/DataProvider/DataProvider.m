@@ -47,7 +47,7 @@
 #define kUsersMainScreenInfoPath	@"/users/main-screen-info" //GET
 #define kUsersPhotosPath			@"/users/photos" //GET
 #define kUsersPhotosByUIDPath		@"/users/%d/photos" //GET
-#define kUsersProfilePath			@"/users/profile" //GET
+#define kUsersProfilePath			@"/users/profile" //GET, PUT
 #define kUsersProfileByUIDPath		@"/users/%d/profile" //GET
 #define kUsersRecoverPath			@"/users/recover" //PUT
 #define kUsersRegisterPath			@"/users/register" //POST
@@ -713,6 +713,16 @@ static NSString *const kRequestUUID =		@"uuid";
 	[self startConnectionWithPath: [NSString stringWithFormat: kUsersProfileByUIDPath, userID]
 							 type: URLConnectionTypeGET
 							 body: nil
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetProfile:)
+					 failSelector: @selector(didFailGetImportantData:)];
+}
+
+- (void) userProfileUpdateWith: (LGUser *) inputData {
+	[self startConnectionWithPath: kUsersProfilePath
+							 type: URLConnectionTypePUT
+							 body: [inputData JSONObject]
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didGetProfile:)

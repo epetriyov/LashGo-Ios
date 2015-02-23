@@ -55,6 +55,7 @@
 - (void) userPhotosFor: (int32_t) userID;
 - (void) userProfile;
 - (void) userProfileFor: (int32_t) userID;
+- (void) userProfileUpdateWith: (LGUser *) inputData;
 - (void) userRecover: (LGRecoverInfo *) inputData;
 - (void) userRegister: (LGLoginInfo *) inputData;
 - (void) userSocialSignIn: (LGSocialInfo *) inputData;

@@ -8,15 +8,36 @@
 
 #import "LGUser.h"
 
+#import "Common.h"
+
 @implementation LGUser
 
-@synthesize uid, login, fio, about, city, birthDate, avatar, email;
-
 - (NSString *) fio {
-	if (fio == nil) {
-		return login;
+	if (_fio == nil) {
+		return _login;
 	}
-	return fio;
+	return _fio;
+}
+
+#pragma mark JSONSerializableProtocol implementation
+
+- (NSDictionary *) JSONObject {
+	NSMutableDictionary *result = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+								   @(_uid), @"id",
+								   _login, @"login", nil];
+	if ([Common isEmptyString: _fio] == NO) {
+		result[@"fio"] = _fio;
+	}
+	if ([Common isEmptyString: _about] == NO) {
+		result[@"about"] = _about;
+	}
+	if ([Common isEmptyString: _city] == NO) {
+		result[@"city"] = _city;
+	}
+	if ([Common isEmptyString: _email] == NO) {
+		result[@"email"] = _email;
+	}
+	return result;
 }
 
 #pragma mark - NSCoding protocol implementation

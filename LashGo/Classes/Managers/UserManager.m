@@ -56,6 +56,12 @@
 	[_dataProvider userSubscribtionsFor: user];
 }
 
+- (void) updateUser: (LGUser *) user {
+	[_dataProvider userProfileUpdateWith: user];
+}
+
+#pragma mark -
+
 - (void) recoverPasswordWithEmail: (NSString *) email {
 	LGRecoverInfo *recoverInfo = [[LGRecoverInfo alloc] init];
 	recoverInfo.email = email;
