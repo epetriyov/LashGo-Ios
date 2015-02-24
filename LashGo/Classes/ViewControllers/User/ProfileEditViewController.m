@@ -9,6 +9,7 @@
 #import "ProfileEditViewController.h"
 
 #import "Common.h"
+#import "Kernel.h"
 #import "UIImageView+LGImagesExtension.h"
 #import "ViewFactory.h"
 
@@ -152,7 +153,28 @@ typedef NS_ENUM(ushort, ProfileEditFieldDataType) {
 }
 
 - (void) saveAction: (id) sender {
+	[_contentTableView endEditing: YES];
 	
+	for (ProfileEditFieldData *fieldData in _contentItems) {
+		switch (fieldData.uid) {
+			case ProfileEditFieldDataTypeName:
+				self.user.fio = fieldData.value;
+				break;
+			case ProfileEditFieldDataTypeLocation:
+				self.user.city = fieldData.value;
+				break;
+			case ProfileEditFieldDataTypeEmail:
+				self.user.email = fieldData.value;
+				break;
+			case ProfileEditFieldDataTypeAbout:
+				self.user.about = fieldData.value;
+				break;
+			default:
+				break;
+		}
+	}
+	
+	[kernel.userManager updateUser: self.user];
 }
 
 #pragma mark -

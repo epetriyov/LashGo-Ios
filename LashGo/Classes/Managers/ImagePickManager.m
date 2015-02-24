@@ -111,12 +111,30 @@
         UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil , nil);
     }
 	
+	// Fixing to stick with only one orientation (UIImageOrientationUp in this case)
+	switch (imageToSave.imageOrientation) {
+		case UIImageOrientationDown:
+		case UIImageOrientationDownMirrored:
+		case UIImageOrientationLeft:
+		case UIImageOrientationLeftMirrored:
+		case UIImageOrientationRight:
+		case UIImageOrientationRightMirrored:
+			imageToSave = [UIImage imageWithCGImage:imageToSave.CGImage
+										scale:imageToSave.scale
+								  orientation:UIImageOrientationUp]; // change this if you need another orientation
+			break;
+		case UIImageOrientationUp:
+		case UIImageOrientationUpMirrored:
+			// The image is already in correct orientation
+			break;
+	}
+	
 	_currentCheck.currentPickedUserPhoto = imageToSave;
 	
 	//Sample
 //    NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];
 //    UIImage *originalImage, *editedImage, *imageToSave;
-//	
+//
 //    // Handle a still image capture
 //    if (CFStringCompare ((CFStringRef) mediaType, kUTTypeImage, 0)
 //		== kCFCompareEqualTo) {
