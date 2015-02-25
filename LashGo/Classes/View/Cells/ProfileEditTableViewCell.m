@@ -36,6 +36,7 @@
 		
 		UITextField *field = [[UITextField alloc] initWithFrame: fieldRect];
 		field.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+		field.clearButtonMode = UITextFieldViewModeWhileEditing;
 		field.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 		field.delegate = self;
 		[self.contentView addSubview: field];

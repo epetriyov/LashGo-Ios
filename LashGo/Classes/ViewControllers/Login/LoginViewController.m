@@ -90,6 +90,7 @@
 																			 formView.frame.size.width - formOffsetX, 40)];
 	emailField.delegate = self;
 	emailField.centerY = emailImageView.center.y;
+	emailField.clearButtonMode = UITextFieldViewModeWhileEditing;
 	emailField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 	emailField.backgroundColor = [UIColor clearColor];
 	emailField.font = [FontFactory fontWithType: FontTypeLoginInputField];
@@ -105,6 +106,7 @@
 																				formView.frame.size.width - formOffsetX, 40)];
 	passwordField.delegate = self;
 	passwordField.centerY = passwordImageView.center.y;
+	passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
 	passwordField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 	passwordField.backgroundColor = [UIColor clearColor];
 	passwordField.font = [FontFactory fontWithType: FontTypeLoginInputField];

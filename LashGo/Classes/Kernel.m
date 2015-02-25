@@ -52,6 +52,11 @@
 		[AlertViewManager sharedManager].delegate = self;
 		[TaskbarManager sharedManager].delegate = self;
 		
+		if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+			[UITextField appearance].tintColor = [UIColor colorWithRed: 1.0 green: 94.0/255.0 blue: 124.0/255.0 alpha: 1.0];
+		}
+		
+		
 		[[NSNotificationCenter defaultCenter] addObserver: self
 												 selector: @selector(authorizationSuccess)
 													 name: kAuthorizationNotification
@@ -162,6 +167,14 @@
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserProfile: (LGUser *) user {
 	self.storage.lastViewProfileDetail = user;
+}
+
+- (void) dataProvider: (DataProvider *) dataProvider didUserProfileUpdate: (LGUser *) user {
+	self.storage.lastViewProfileDetail = user;
+	if (self.viewControllersManager.rootNavigationController.topViewController ==
+		self.viewControllersManager.profileEditViewController) {
+		[self.viewControllersManager returnToPreviousViewController];
+	}
 }
 
 - (void) dataProvider: (DataProvider *) dataProvider didUserSubscribeTo: (LGSubscribe *) subscribe {

@@ -410,8 +410,8 @@
 		user.uid =		[rawUser[@"id"] intValue];
 		user.fio =		rawUser[@"fio"];
 		user.login =	rawUser[@"login"];
-//		user.about =	rawUser[@"about"];
-//		user.city =		rawUser[@"city"];
+		user.about =	rawUser[@"about"];
+		user.city =		rawUser[@"city"];
 //		user.birthDate;
 		user.avatar =	rawUser[@"avatar"];
 		user.email =	rawUser[@"email"];

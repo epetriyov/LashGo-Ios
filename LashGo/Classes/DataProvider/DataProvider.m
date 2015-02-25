@@ -719,13 +719,21 @@ static NSString *const kRequestUUID =		@"uuid";
 					 failSelector: @selector(didFailGetImportantData:)];
 }
 
+- (void) didProfileUpdate: (URLConnection *) connection {
+	LGUser *user = connection.context;
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didUserProfileUpdate:)] == YES) {
+		[self.delegate dataProvider: self didUserProfileUpdate: user];
+	}
+}
+
 - (void) userProfileUpdateWith: (LGUser *) inputData {
 	[self startConnectionWithPath: kUsersProfilePath
 							 type: URLConnectionTypePUT
 							 body: [inputData JSONObject]
-						  context: nil
+						  context: inputData
 					allowMultiple: NO
-				   finishSelector: @selector(didGetProfile:)
+				   finishSelector: @selector(didProfileUpdate:)
 					 failSelector: @selector(didFailGetImportantData:)];
 }
 

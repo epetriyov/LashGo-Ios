@@ -90,12 +90,12 @@ typedef NS_ENUM(ushort, ProfileEditFieldDataType) {
 	aboutFieldData.title = @"ProfileEditVCAboutFieldTitle".commonLocalizedString;
 	aboutFieldData.image = [ViewFactory sharedFactory].iconAbout;
 	
-	ProfileEditFieldData *passwordFieldData = [[ProfileEditFieldData alloc] init];
-	passwordFieldData.uid = ProfileEditFieldDataTypePassword;
-	passwordFieldData.title = @"ProfileEditVCPasswordFieldTitle".commonLocalizedString;
-	passwordFieldData.image = [ViewFactory sharedFactory].iconPassword;
+//	ProfileEditFieldData *passwordFieldData = [[ProfileEditFieldData alloc] init];
+//	passwordFieldData.uid = ProfileEditFieldDataTypePassword;
+//	passwordFieldData.title = @"ProfileEditVCPasswordFieldTitle".commonLocalizedString;
+//	passwordFieldData.image = [ViewFactory sharedFactory].iconPassword;
 	
-	_contentItems = @[nameFieldData, locationFieldData, emailFieldData, aboutFieldData, passwordFieldData];
+	_contentItems = @[nameFieldData, locationFieldData, emailFieldData, aboutFieldData/*, passwordFieldData*/];
 	
 	UITableView *userDataTableView = [[UITableView alloc] initWithFrame: self.view.bounds
 																  style: UITableViewStylePlain];
