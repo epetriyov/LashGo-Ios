@@ -24,6 +24,8 @@
 
 @property (nonatomic, weak) id<DataProviderDelegate> delegate;
 
+- (void) apnsRegisterWithToken: (NSString *) inputData;
+
 - (void) checks;
 - (void) checksSearch: (NSString *) inputData;
 - (void) checkFor: (LGCheck *) inputData;

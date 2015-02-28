@@ -47,6 +47,7 @@
 		841C624219A397ED00BAEDBB /* Taskbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C623D19A397ED00BAEDBB /* Taskbar.m */; };
 		841C624319A397ED00BAEDBB /* TaskbarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 841C623F19A397ED00BAEDBB /* TaskbarButton.m */; };
 		841C624419A397ED00BAEDBB /* TaskbarButtonLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 841C624019A397ED00BAEDBB /* TaskbarButtonLocalizable.strings */; };
+		8422E7171AA1ED8D00B6C305 /* PushNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8422E7161AA1ED8D00B6C305 /* PushNotificationManager.m */; };
 		8426F351191A661D00B4E336 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F34E191A661D00B4E336 /* BaseViewController.m */; };
 		8426F352191A661D00B4E336 /* TitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F350191A661D00B4E336 /* TitleBarViewController.m */; };
 		8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F356191A6F6400B4E336 /* TitleBarView.m */; };
@@ -265,6 +266,8 @@
 		841C623E19A397ED00BAEDBB /* TaskbarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskbarButton.h; sourceTree = "<group>"; };
 		841C623F19A397ED00BAEDBB /* TaskbarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskbarButton.m; sourceTree = "<group>"; };
 		841C624019A397ED00BAEDBB /* TaskbarButtonLocalizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = TaskbarButtonLocalizable.strings; sourceTree = "<group>"; };
+		8422E7151AA1ED8D00B6C305 /* PushNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushNotificationManager.h; sourceTree = "<group>"; };
+		8422E7161AA1ED8D00B6C305 /* PushNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushNotificationManager.m; sourceTree = "<group>"; };
 		8426F34D191A661D00B4E336 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		8426F34E191A661D00B4E336 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		8426F34F191A661D00B4E336 /* TitleBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBarViewController.h; sourceTree = "<group>"; };
@@ -910,6 +913,8 @@
 				84E624101998FBAD003BC2F1 /* ChecksManager.m */,
 				840425DB19CB1B5A00C5EDBF /* ImagePickManager.h */,
 				840425DC19CB1B5A00C5EDBF /* ImagePickManager.m */,
+				8422E7151AA1ED8D00B6C305 /* PushNotificationManager.h */,
+				8422E7161AA1ED8D00B6C305 /* PushNotificationManager.m */,
 				8409D07D19C4631400DFFEC6 /* UserManager.h */,
 				8409D07E19C4631400DFFEC6 /* UserManager.m */,
 			);
@@ -1292,6 +1297,7 @@
 				840625541930AB230067C1CA /* JSONParser.m in Sources */,
 				84F8E8A7199B5C580054C9F8 /* CheckCardCollectionCell.m in Sources */,
 				84FEE18019E028180067C264 /* ProfileEditTableViewCell.m in Sources */,
+				8422E7171AA1ED8D00B6C305 /* PushNotificationManager.m in Sources */,
 				84E8066519F5483D001BD593 /* PhotoViewController.m in Sources */,
 				849DD0C9199CBF9300DC86F6 /* SegmentedTextControl.m in Sources */,
 				84E6FCC31A3C56300005DAD6 /* PullToRefreshControl.m in Sources */,

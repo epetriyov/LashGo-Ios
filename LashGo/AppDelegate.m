@@ -33,6 +33,8 @@
 {
 	kernel = [[Kernel alloc] init];
 	
+	[kernel.pushNotificationManager registerRemoteNotifications];
+	
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -40,6 +42,12 @@
     [self.window makeKeyAndVisible];
 	
 	[kernel performOnColdWakeActions];
+	
+	NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+	if (userInfo != nil) {
+		//Notification actions
+		[kernel.pushNotificationManager didReceiveRemoteNotificationBeforeStart:userInfo];
+	}
 	
     return YES;
 }
@@ -80,6 +88,32 @@
 	}
 	
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible: (requestsCount > 0)];
+}
+
+#pragma mark -
+#pragma mark Push notification delegate
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
+	[kernel.pushNotificationManager didRegisterUserNotificationSettings: notificationSettings];
+}
+
+- (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
+	[kernel.pushNotificationManager didRegisterForRemoteNotificationsWithDeviceToken:devToken];
+}
+
+- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+	[kernel.pushNotificationManager didFailToRegisterForRemoteNotificationsWithError:err];
+}
+
+//- (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
+//	NSDictionary *dic = notif.userInfo;
+//    NSString *itemName = [notif.userInfo objectForKey:@"ToDoItemKey"];
+////    [viewController displayItem:itemName];  // custom method
+////    application.applicationIconBadgeNumber = notification.applicationIconBadgeNumber-1;
+//}
+
+- (void)application:(UIApplication *)app didReceiveRemoteNotification:(NSDictionary *)userInfo {
+	[kernel.pushNotificationManager didReceiveRemoteNotificationWhileRunning:userInfo];
 }
 
 @end

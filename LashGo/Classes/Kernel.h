@@ -11,6 +11,7 @@
 
 #import "ChecksManager.h"
 #import "ImagePickManager.h"
+#import "PushNotificationManager.h"
 #import "UserManager.h"
 
 #import "DataProvider.h"
@@ -25,6 +26,7 @@
 
 @property (nonatomic, readonly) ChecksManager *checksManager;
 @property (nonatomic, readonly)	ImagePickManager *imagePickManager;
+@property (nonatomic, readonly) PushNotificationManager *pushNotificationManager;
 @property (nonatomic, readonly) UserManager *userManager;
 
 @property (nonatomic, readonly) Storage *storage;

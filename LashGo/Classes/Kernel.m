@@ -45,6 +45,7 @@
 													 vcManager: viewControllersManager];
 		_imagePickManager = [[ImagePickManager alloc] initWithKernel: self
 														   vcManager: viewControllersManager];
+		_pushNotificationManager = [[PushNotificationManager alloc] initWithDataProvider: _dataProvider];
 		_userManager = [[UserManager alloc] initWithKernel: self
 											  dataProvider: _dataProvider
 												 vcManager: viewControllersManager];

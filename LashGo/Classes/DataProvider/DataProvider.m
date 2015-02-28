@@ -23,6 +23,9 @@
 //#define kWebServiceURL @"http://109.195.38.41:1977/lashgo-api"
 #define kWebServicePhotoPath @"/photos/"
 
+#define kAPNSRegisterPath		@"/apns/register" //POST
+#define kAPNSRegisterTestPath	@"/apns/test" //POST
+
 #define kChecksPath			@"/checks" //POST
 #define kChecksByUIDPath	@"/checks/%lld" //GET
 #define kChecksCurrentPath	@"/checks/current" //GET
@@ -218,6 +221,22 @@ static NSString *const kRequestUUID =		@"uuid";
 	[[AlertViewManager sharedManager] showAlertViewWithError: error];
 	
 	return error;
+}
+
+#pragma mark - APNS
+
+- (void) apnsRegisterWithToken:(NSString *)inputData {
+	NSString *path = nil;
+#ifdef DEBUG
+	path = kAPNSRegisterTestPath;
+#else
+	path = kAPNSRegisterPath;
+#endif
+	[self startConnectionWithPath: path
+					  queryParams: @{@"token": inputData}
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: nil failSelector: nil];
 }
 
 #pragma mark - Checks
