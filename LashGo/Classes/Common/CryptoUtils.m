@@ -46,13 +46,28 @@
 
 @implementation NSData (CryptoExtension)
 
+- (NSString *) hexString {
+	const unsigned char *dataBuffer = (const unsigned char *)[self bytes];
+	
+	if (!dataBuffer)
+		return [NSString string];
+	
+	NSUInteger      dataLength  = [self length];
+	NSMutableString	*hexString  = [NSMutableString stringWithCapacity:(dataLength * 2)];
+	
+	for (uint i = 0; i < dataLength; ++i)
+		[hexString appendFormat: @"%02x", dataBuffer[i]];
+	
+	return hexString;
+}
+
 - (NSString *) md5 {
 	unsigned char result[CC_MD5_DIGEST_LENGTH];
 	CC_MD5([self bytes], (CC_LONG)[self length], result);
 	
 	NSMutableString *output = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
 	
-    for(uint i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
+    for(uint i = 0; i < CC_MD5_DIGEST_LENGTH; ++i)
 		[output appendFormat:@"%02x", result[i]];
 	
     return  output;

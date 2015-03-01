@@ -130,6 +130,8 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear: animated];
+	
 	_followButton.hidden = YES;
 	[kernel.userManager getUserPhotosForUser: self.user];
 }

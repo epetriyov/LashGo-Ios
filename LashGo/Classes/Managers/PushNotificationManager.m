@@ -1,5 +1,6 @@
 #import "PushNotificationManager.h"
 #import "DataProvider.h"
+#import "CryptoUtils.h"
 
 @interface PushNotificationManager () {
 	DataProvider __weak *_dataProvider;
@@ -122,14 +123,8 @@
 	[UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 	
     // Get a hex string from the device token with no spaces or < >
-	NSString *deviceTokenString = nil;
+	NSString *deviceTokenString = [deviceToken hexString];
 	
-	if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
-		deviceTokenString = [deviceToken base64Encoding];
-	} else {
-		deviceTokenString = [deviceToken base64EncodedStringWithOptions: 0];
-	}
- 
 //    self.deviceToken = [[[[[_deviceToken description]
 //						  stringByReplacingOccurrencesOfString: @"<" withString: @""] 
 //						 stringByReplacingOccurrencesOfString: @">" withString: @""] 

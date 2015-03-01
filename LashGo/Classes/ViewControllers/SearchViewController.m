@@ -174,7 +174,7 @@ typedef NS_ENUM(ushort, SearchMode) {
 #pragma mark - Table delegate implementation
 //!!!:Hidden for coming soon
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	CGFloat height;
+	CGFloat height = 44;
 	if (_segmentedControl.selectedIndex == SearchModeChecks) {
 		height = [CheckListTableViewCell height];
 	} else if (_segmentedControl.selectedIndex == SearchModeUsers) {
