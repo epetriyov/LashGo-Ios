@@ -68,7 +68,16 @@
         __weak UIImageView *wself = self;
         id <SDWebImageOperation> operation = [SDWebImageManager.sharedManager downloadImageWithURL:url options: 0 progress: nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             if (!wself) return;
-			UIImage __weak *resizedImage = [Common generateThumbnailForImage: image withSize: self.frame.size];
+			
+			//Hack, some times imageView.frame inside UITableViewCell is empty, try to get placeholer size instead
+			CGSize imageDisplaySize;
+			if (CGRectIsEmpty(wself.frame) == NO) {
+				imageDisplaySize = wself.frame.size;
+			} else {
+				imageDisplaySize = wself.image.size;
+			}
+			UIImage __weak *resizedImage = [Common generateThumbnailForImage: image withSize: imageDisplaySize];
+			
             dispatch_main_sync_safe(^{
                 if (!wself) return;
                 if (resizedImage) {
@@ -96,8 +105,16 @@
         __weak UIImageView *wself = self;
         id <SDWebImageOperation> operation = [SDWebImageManager.sharedManager downloadImageWithURL:url options: 0 progress: nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             if (!wself) return;
+			
+			//Hack, some times imageView.frame inside UITableViewCell is empty, try to get placeholer size instead
+			CGSize imageDisplaySize;
+			if (CGRectIsEmpty(wself.frame) == NO) {
+				imageDisplaySize = wself.frame.size;
+			} else {
+				imageDisplaySize = wself.image.size;
+			}
 			UIImage __weak *resizedImage = [Common generateThumbnailForImage: image
-																	withSize: self.frame.size gradient: YES];
+																	withSize: imageDisplaySize gradient: YES];
             dispatch_main_sync_safe(^{
                 if (!wself) return;
                 if (resizedImage) {

@@ -27,7 +27,7 @@
         __weak UIButton *wself = self;
         id <SDWebImageOperation> operation = [SDWebImageManager.sharedManager downloadImageWithURL:url options: 0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             if (!wself) return;
-			UIImage __weak *resizedImage = [Common generateThumbnailForImage: image withSize: self.frame.size];
+			UIImage __weak *resizedImage = [Common generateThumbnailForImage: image withSize: wself.frame.size];
             dispatch_main_sync_safe(^{
                 __strong UIButton *sself = wself;
                 if (!sself) return;
@@ -55,7 +55,7 @@
         id <SDWebImageOperation> operation = [SDWebImageManager.sharedManager downloadImageWithURL:url options: 0 progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
             if (!wself) return;
 			UIImage __weak *resizedImage = [Common generateThumbnailForImage: image
-																	withSize: self.frame.size gradient: YES];
+																	withSize: wself.frame.size gradient: YES];
             dispatch_main_sync_safe(^{
                 __strong UIButton *sself = wself;
                 if (!sself) return;
