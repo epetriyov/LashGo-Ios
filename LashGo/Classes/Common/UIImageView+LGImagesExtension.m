@@ -54,57 +54,29 @@
 }
 
 - (void) loadWebImageWithSizeThatFitsName: (NSString *) imageName placeholder: (UIImage *) placeholder {
-	NSURL *url = nil;
-	
-	[self sd_cancelCurrentImageLoad];
-//    objc_setAssociatedObject(self, &imageURLKey, url, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-	
-    self.image = placeholder;
-    
-	if (imageName != nil) {
-		url = [Common imageLoadingURLForName: imageName];
-	}
-    if (url) {
-        __weak UIImageView *wself = self;
-        id <SDWebImageOperation> operation = [SDWebImageManager.sharedManager downloadImageWithURL:url options: 0 progress: nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            if (!wself) return;
-			
-			//Hack, some times imageView.frame inside UITableViewCell is empty, try to get placeholer size instead
-			CGSize imageDisplaySize;
-			if (CGRectIsEmpty(wself.frame) == NO) {
-				imageDisplaySize = wself.frame.size;
-			} else {
-				imageDisplaySize = wself.image.size;
-			}
-			UIImage __weak *resizedImage = [Common generateThumbnailForImage: image withSize: imageDisplaySize];
-			
-            dispatch_main_sync_safe(^{
-                if (!wself) return;
-                if (resizedImage) {
-                    wself.image = resizedImage;
-                    [wself setNeedsLayout];
-                }
-            });
-        }];
-        [self sd_setImageLoadOperation:operation forKey:@"UIImageViewImageLoad"];
-    }
+	[self loadWebImageWithSizeThatFitsName: imageName placeholder: placeholder shaded: NO];
 }
 
 - (void) loadWebImageShadedWithSizeThatFitsName: (NSString *) imageName placeholder: (UIImage *) placeholder {
+	[self loadWebImageWithSizeThatFitsName: imageName placeholder: placeholder shaded: YES];
+}
+
+- (void) loadWebImageWithSizeThatFitsName: (NSString *) imageName placeholder: (UIImage *) placeholder
+										 shaded: (BOOL) shaded {
 	NSURL *url = nil;
 	
 	[self sd_cancelCurrentImageLoad];
 	//    objc_setAssociatedObject(self, &imageURLKey, url, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 	
-    self.image = placeholder;
-    
+	self.image = placeholder;
+	
 	if (imageName != nil) {
 		url = [Common imageLoadingURLForName: imageName];
 	}
-    if (url) {
-        __weak UIImageView *wself = self;
-        id <SDWebImageOperation> operation = [SDWebImageManager.sharedManager downloadImageWithURL:url options: 0 progress: nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
-            if (!wself) return;
+	if (url) {
+		__weak UIImageView *wself = self;
+		id <SDWebImageOperation> operation = [SDWebImageManager.sharedManager downloadImageWithURL:url options: 0 progress: nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+			if (!wself) return;
 			
 			//Hack, some times imageView.frame inside UITableViewCell is empty, try to get placeholer size instead
 			CGSize imageDisplaySize;
@@ -114,17 +86,17 @@
 				imageDisplaySize = wself.image.size;
 			}
 			UIImage __weak *resizedImage = [Common generateThumbnailForImage: image
-																	withSize: imageDisplaySize gradient: YES];
-            dispatch_main_sync_safe(^{
-                if (!wself) return;
-                if (resizedImage) {
-                    wself.image = resizedImage;
-                    [wself setNeedsLayout];
-                }
-            });
-        }];
-        [self sd_setImageLoadOperation:operation forKey:@"UIImageViewImageLoad"];
-    }
+																	withSize: imageDisplaySize gradient: shaded];
+			dispatch_main_sync_safe(^{
+				if (!wself) return;
+				if (resizedImage) {
+					wself.image = resizedImage;
+					[wself setNeedsLayout];
+				}
+			});
+		}];
+		[self sd_setImageLoadOperation:operation forKey:@"UIImageViewImageLoad"];
+	}
 }
 
 - (void) cancelWebImageLoad {
