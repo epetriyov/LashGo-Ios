@@ -126,13 +126,14 @@ static NSString *const kRequestUUID =		@"uuid";
 		}
 	}
 	NSMutableDictionary *headerParamsDictionary = [self dictionaryWithHeaderParams];
+	id target = failSelector == nil || finishSelector == nil ? nil : self;
 	URLConnection *connection = [_connectionManager connectionWithHost: kWebServiceURL
 																  path: path
 														   queryParams: params
 														  headerParams: headerParamsDictionary
 																  body: nil
 																  type: URLConnectionTypeGET
-																target: self
+																target: target
 														finishSelector: finishSelector
 														  failSelector: failSelector];
 	connection.context = context;
@@ -160,13 +161,14 @@ static NSString *const kRequestUUID =		@"uuid";
 		}
 	}
 	NSMutableDictionary *headerParamsDictionary = [self dictionaryWithHeaderParams];
+	id target = failSelector == nil || finishSelector == nil ? nil : self;
 	URLConnection *connection = [_connectionManager connectionWithHost: kWebServiceURL
 																 path: path
 														  queryParams: nil
 														 headerParams: headerParamsDictionary
 																 body: bodyJSON
 																 type: theType
-															   target: self
+															   target: target
 													   finishSelector: finishSelector
 														 failSelector: failSelector];
 	connection.context = context;
@@ -194,6 +196,7 @@ static NSString *const kRequestUUID =		@"uuid";
 		}
 	}
 	NSMutableDictionary *headerParamsDictionary = [self dictionaryWithHeaderParams];
+	id target = failSelector == nil || finishSelector == nil ? nil : self;
 	NSMutableURLRequest *request = [NSMutableURLRequest requestMultipartWithURL: [kWebServiceURL stringByAppendingString: path]
 																   headerParams: headerParamsDictionary
 																	  paramData: data
@@ -202,7 +205,7 @@ static NSString *const kRequestUUID =		@"uuid";
 																  path: path
 																  type: theType
 															   request: request
-																target: self
+																target: target
 														finishSelector: finishSelector
 														  failSelector: failSelector];
 	connection.context = context;
@@ -225,8 +228,12 @@ static NSString *const kRequestUUID =		@"uuid";
 
 #pragma mark - APNS
 
-- (void) success: (URLConnection *) conn {
-	
+- (void) apnsSuccess: (URLConnection *) connection {
+	DLog(@"%@", [NSString stringWithData: connection.downloadedData]);
+}
+
+- (void) apnsFailure: (URLConnection *) connection {
+	DLog(@"%@", [NSString stringWithData: connection.downloadedData]);
 }
 
 - (void) apnsRegisterWithToken:(NSString *)inputData {
@@ -241,7 +248,7 @@ static NSString *const kRequestUUID =		@"uuid";
 							 body:@{@"token": inputData}
 						  context: nil
 					allowMultiple: NO
-				   finishSelector: @selector(success:) failSelector: @selector(success:)];
+				   finishSelector: @selector(apnsSuccess:) failSelector: @selector(apnsFailure:)];
 }
 
 #pragma mark - Checks

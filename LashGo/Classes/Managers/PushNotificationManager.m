@@ -1,4 +1,6 @@
 #import "PushNotificationManager.h"
+
+#import "AlertViewManager.h"
 #import "DataProvider.h"
 #import "CryptoUtils.h"
 
@@ -149,6 +151,9 @@
 
 - (void) didReceiveRemoteNotification:(NSDictionary *)userInfo {
     DLog(@"remote notification: %@",[userInfo description]);
+	
+	[[AlertViewManager sharedManager] showAlertViewWithTitle: @"Тестовое сообщение"
+												  andMessage: [NSString stringWithFormat: @"Получен APN: %@", [userInfo description]]];
 	
 //	BBPushNotificationPayload *payload = [self parsePushNotificationPayloadInfo:userInfo];
 //	
