@@ -57,7 +57,6 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 	if (self.user.uid == [AuthorizationManager sharedManager].account.userInfo.uid) {
 		UIButton *editButton = [[ViewFactory sharedFactory] userEditButtonWithTarget: self
 																			  action: @selector(editAction:)];
-		editButton.hidden = YES;
 		[buttons addObject: editButton];
 	} else {
 		UIButton *followButton = [[ViewFactory sharedFactory] userFollowWhiteButtonWithTarget: self
