@@ -46,6 +46,7 @@
 #define kPhotosVotePath		@"/photos/vote" //POST
 
 #define kUsersPath					@"/users"//GET
+#define kUsersAvatarPath			@"/users/avatar" //POST
 #define kUsersLoginPath				@"/users/login" //POST
 #define kUsersMainScreenInfoPath	@"/users/main-screen-info" //GET
 #define kUsersPhotosPath			@"/users/photos" //GET
@@ -650,6 +651,22 @@ static NSString *const kRequestUUID =		@"uuid";
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didGetUsersSearch:) failSelector: @selector(didGetUsersSearch:)];
+}
+
+#pragma mark -
+
+- (void) didUserAvatarUpdate: (URLConnection *) connection {
+	
+}
+
+- (void) userAvatarUpdateWith: (NSData *) inputData {
+	[self startConnectionWithPath: kUsersAvatarPath
+							 type: URLConnectionTypeMULTIPART
+							 data: inputData
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didUserAvatarUpdate:)
+					 failSelector: @selector(didFailGetImportantData:)];
 }
 
 #pragma mark -

@@ -51,6 +51,7 @@
 - (void) photoVote: (LGVoteAction *) inputData;
 
 - (void) usersSearch: (NSString *) inputData;
+- (void) userAvatarUpdateWith: (NSData *) inputData;
 - (void) userLogin: (LGLoginInfo *) inputData;
 - (void) userMainScreenInfo;
 - (void) userPhotos;

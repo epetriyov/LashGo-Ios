@@ -21,6 +21,7 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 @interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
 	ProfileView __weak *_profileView;
 	UICollectionView __weak *_photosCollection;
+	UIButton __weak *_editButton;
 	UIButton __weak *_followButton;
 }
 
@@ -57,7 +58,9 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 	if (self.user.uid == [AuthorizationManager sharedManager].account.userInfo.uid) {
 		UIButton *editButton = [[ViewFactory sharedFactory] userEditButtonWithTarget: self
 																			  action: @selector(editAction:)];
+		editButton.hidden = YES;
 		[buttons addObject: editButton];
+		_editButton = editButton;
 	} else {
 		UIButton *followButton = [[ViewFactory sharedFactory] userFollowWhiteButtonWithTarget: self
 																					   action: @selector(followAction:)];
@@ -144,6 +147,7 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 			[_profileView setUserData: profileDetail];
 			self.user.subscription = profileDetail.subscription;
 			_followButton.hidden = NO;
+			_editButton.hidden = NO;
 		}
 	} else if ([keyPath isEqualToString: kObservationFollowStatusKeyPath] == YES && object == self.user) {
 		_followButton.selected = ((LGUser *)object).subscription;
