@@ -656,7 +656,17 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark -
 
 - (void) didUserAvatarUpdate: (URLConnection *) connection {
+	if ([self.delegate respondsToSelector: @selector(dataProviderDidUserAvatarUpdate:)] == YES) {
+		[self.delegate dataProviderDidUserAvatarUpdate: self];
+	}
+}
+
+- (void) didFailUserAvatarUpdate: (URLConnection *) connection {
+	[self didFailGetImportantData: connection];
 	
+	if ([self.delegate respondsToSelector: @selector(dataProviderDidFailUserAvatarUpdate:)] == YES) {
+		[self.delegate dataProviderDidFailUserAvatarUpdate: self];
+	}
 }
 
 - (void) userAvatarUpdateWith: (NSData *) inputData {

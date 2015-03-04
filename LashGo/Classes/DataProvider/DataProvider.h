@@ -89,6 +89,8 @@
 - (void) dataProvider: (DataProvider *) dataProvider didGetPhotoWithCounters: (LGPhoto *) photo;
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetUsersSearch: (NSArray *) users;
+- (void) dataProviderDidUserAvatarUpdate: (DataProvider *) dataProvider;
+- (void) dataProviderDidFailUserAvatarUpdate: (DataProvider *) dataProvider;
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserPhotos: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserProfile: (LGUser *) user;
 - (void) dataProvider: (DataProvider *) dataProvider didUserProfileUpdate: (LGUser *) user;

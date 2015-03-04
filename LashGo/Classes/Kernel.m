@@ -178,6 +178,14 @@
 	}
 }
 
+- (void) dataProviderDidUserAvatarUpdate: (DataProvider *) dataProvider {
+	[self.viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [ProfileEditViewController class]];
+}
+
+- (void) dataProviderDidFailUserAvatarUpdate: (DataProvider *) dataProvider {
+	[self.viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [ProfileEditViewController class]];
+}
+
 - (void) dataProvider: (DataProvider *) dataProvider didUserSubscribeTo: (LGSubscribe *) subscribe {
 	subscribe.subscription.isSubscribed = YES;
 	subscribe.subscription.user.subscription = YES;

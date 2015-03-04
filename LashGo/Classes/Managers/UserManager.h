@@ -26,6 +26,7 @@
 - (void) getSubscribtionsForUser: (LGUser *) user;
 
 - (void) updateUser: (LGUser *) user;
+- (void) updateUserAvatar: (UIImage *) image;
 
 - (void) recoverPasswordWithEmail: (NSString *) email;
 - (void) socialSignIn;

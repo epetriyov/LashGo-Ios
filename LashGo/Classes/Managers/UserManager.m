@@ -56,8 +56,16 @@
 	[_dataProvider userSubscribtionsFor: user];
 }
 
+#pragma mark -
+
 - (void) updateUser: (LGUser *) user {
 	[_dataProvider userProfileUpdateWith: user];
+}
+
+- (void) updateUserAvatar: (UIImage *) image {
+	[_viewControllersManager.rootNavigationController addWaitViewControllerOfClass: [ProfileEditViewController class]];
+	NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
+	[_dataProvider userAvatarUpdateWith: imageData];
 }
 
 #pragma mark -
