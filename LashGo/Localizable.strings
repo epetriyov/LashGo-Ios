@@ -13,6 +13,10 @@
 "Да" = "Да";
 "Нет" = "Нет";
 
+//APNS
+"CHECK_STARTED" = "Начался новый чек %@";
+"VOTE_STARTED" = "Началось голосование %@";
+
 //PullToRefresh
 "PullToRefreshPullToRefreshText" = "потяните для обновления...";
 "PullToRefreshPullToFetchMoreText" = "потяните для подгрузки...";
@@ -23,6 +27,10 @@
 "AlertAuthErrorMessage" = "Неудалось авторизоваться на сервере, повторите попытку позже";
 "AlertErrorTitle" = "Ошибка";
 "AlertEmptyFieldsMessage" = "Все поля должны быть заполнены";
+
+"AlertCheckActivityTitle" = "Это интересно";
+"AlertCheckActivityBtnOkTitle" = "Открыть";
+"AlertCheckActivityBtnCancelTitle" = "Отмена";
 
 "AlertComplainTitle" = "Пожаловаться";
 "AlertComplainMessage" = "Вы действительно хотите пожаловаться на данное фото?";

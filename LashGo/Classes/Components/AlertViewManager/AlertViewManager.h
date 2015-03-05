@@ -21,6 +21,8 @@
 - (void) showAlertAuthorizationFails;
 - (void) showAlertEmptyFields;
 
+- (void) showAlertCheckActivityViewConfirmWithMessage: (NSString *) message context: (id) context;
+
 - (void) showAlertComplainConfirmWithContext: (id) context;
 - (void) showAlertLogoutConfirm;
 
@@ -29,6 +31,7 @@
 @protocol AlertViewManagerDelegate <NSObject>
 
 @optional
+- (void) alertViewManagerDidConfirmCheckActivityView: (AlertViewManager *) manager withContext: (id) context;
 - (void) alertViewManagerDidConfirmComplain: (AlertViewManager *) manager withContext: (id) context;
 - (void) alertViewManagerDidConfirmLogout: (AlertViewManager *) manager;
 

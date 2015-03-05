@@ -219,6 +219,12 @@
 
 #pragma mark - AlertViewManagerDelegate implementation
 
+- (void) alertViewManagerDidConfirmCheckActivityView: (AlertViewManager *) manager withContext: (id) context {
+	if ([context isKindOfClass: [PushNotificationPayload class]] == YES) {
+		[self.checksManager openCheckCardViewControllerForCheckUID: ((PushNotificationPayload *) context).checkUID];
+	}
+}
+
 - (void) alertViewManagerDidConfirmComplain: (AlertViewManager *) manager withContext: (id) context {
 	if ([context isKindOfClass: [LGPhoto class]] == YES) {
 		[_dataProvider photoComplainFor: context];

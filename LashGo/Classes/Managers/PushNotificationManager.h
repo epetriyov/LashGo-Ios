@@ -1,6 +1,13 @@
 
 @class DataProvider;
 
+@interface PushNotificationPayload : NSObject
+
+@property (nonatomic, strong) NSString *message;
+@property (nonatomic, assign) int64_t checkUID;
+
+@end
+
 @interface PushNotificationManager : NSObject
 
 @property (nonatomic, readonly) BOOL didReceivedNotificationBeforeStart;

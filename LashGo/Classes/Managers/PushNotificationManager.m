@@ -1,8 +1,13 @@
 #import "PushNotificationManager.h"
 
 #import "AlertViewManager.h"
+#import "Common.h"
 #import "DataProvider.h"
 #import "CryptoUtils.h"
+
+@implementation PushNotificationPayload
+
+@end
 
 @interface PushNotificationManager () {
 	DataProvider __weak *_dataProvider;
@@ -71,29 +76,18 @@
 
 #pragma mark -
 
-//- (BBPushNotificationPayload *) parsePushNotificationPayloadInfo: (NSDictionary *) info {
-//	BBPushNotificationPayload *payload = [[[BBPushNotificationPayload alloc] init] autorelease];
-//	NSDictionary *tmpDict = [info objectForKey:@"aps"];
-//	payload.badgeNumber = [[tmpDict valueForKey:@"badge"] intValue];
-//	
-//	tmpDict =					[tmpDict objectForKey:@"alert"];
-//	payload.text =				[tmpDict valueForKey:@"body"];
-//	payload.actionButtonText =	[tmpDict valueForKey:@"action-loc-key"];
-//	
-//	tmpDict =				[info objectForKey:@"misc"];
-//	payload.showCode =		[tmpDict valueForKey:@"nicode"];
-//	NSString *payloadType = [tmpDict valueForKey:@"type"];
-//	
-//	if ([payloadType isEqualToString:kBBPushNotificationTypeBreakingNewsKey]) {
-//		payload.type = BBPushNotificationTypeBreakingNews;
-//	} else if ([payloadType isEqualToString:kBBPushNotificationTypeTuneInNowKey]) {
-//		payload.type = BBPushNotificationTypeTuneInNow;
-//	} else if ([payloadType isEqualToString:kBBPushNotificationTypePodcastsAlerts]) {
-//		payload.type = BBPushNotificationTypePodcastsAlerts;
-//	}
-//	
-//	return payload;
-//}
+- (PushNotificationPayload *) parsePushNotificationPayloadInfo: (NSDictionary *) info {
+	PushNotificationPayload *payload = [[PushNotificationPayload alloc] init];
+	NSDictionary *rawAlert = info[@"aps"][@"alert"];
+	
+	NSString *messageFormat =	((NSString *)rawAlert[@"loc-key"]).commonLocalizedString;
+	NSArray *messageArgs =		rawAlert[@"loc-args"];
+	
+	payload.message =			[NSString stringWithFormat: messageFormat, [messageArgs firstObject]];
+	payload.checkUID =			[info[@"check_id"] longLongValue];
+	
+	return payload;
+}
 
 - (void) registerRemoteNotifications {
     //Register for notifications
@@ -127,12 +121,6 @@
     // Get a hex string from the device token with no spaces or < >
 	NSString *deviceTokenString = [deviceToken hexString];
 	
-//    self.deviceToken = [[[[[_deviceToken description]
-//						  stringByReplacingOccurrencesOfString: @"<" withString: @""] 
-//						 stringByReplacingOccurrencesOfString: @">" withString: @""] 
-//						stringByReplacingOccurrencesOfString: @" " withString: @""]
-//						stringByReplacingOccurrencesOfString: @"-" withString: @""];
-	
 	DLog(@"Device Token: %@", deviceTokenString);
 	
 	if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1) {
@@ -152,48 +140,10 @@
 - (void) didReceiveRemoteNotification:(NSDictionary *)userInfo {
     DLog(@"remote notification: %@",[userInfo description]);
 	
-	[[AlertViewManager sharedManager] showAlertViewWithTitle: @"Тестовое сообщение"
-												  andMessage: [NSString stringWithFormat: @"Получен APN: %@", [userInfo description]]];
+	PushNotificationPayload *payload = [self parsePushNotificationPayloadInfo:userInfo];
 	
-//	BBPushNotificationPayload *payload = [self parsePushNotificationPayloadInfo:userInfo];
-//	
-//	self.pushNotificationShowCode = payload.showCode;
-//	[UIApplication sharedApplication].applicationIconBadgeNumber = payload.badgeNumber;
-//	
-//	switch (payload.type) {
-//		case BBPushNotificationTypeBreakingNews:
-//            if ([Commons stringIsEmpty:payload.showCode] == NO)
-//			[[AlertViewManager sharedManager] showPushNotificationBreakingNewsAlertViewWithMessage:payload.showCode
-//																				 actionButtonTitle:payload.actionButtonText
-//                                                                                       messageText:payload.text];
-//            else
-//            [[AlertViewManager sharedManager] showPushNotificationBreakingNewsAlertViewWithMessage:payload.text
-//                                                                                 actionButtonTitle:payload.actionButtonText 
-//                                                                                       messageText:payload.text];
-//			break;
-//		case BBPushNotificationTypeTuneInNow:
-//            if ([Commons stringIsEmpty:payload.showCode] == NO)
-//			[[AlertViewManager sharedManager] showPushNotificationTuneInAlertsAlertViewWithMessage:payload.showCode
-//																				 actionButtonTitle:payload.actionButtonText
-//                                                                                       messageText:payload.text];
-//            else
-//            [[AlertViewManager sharedManager] showPushNotificationTuneInAlertsAlertViewWithMessage:payload.text
-//                                                                                 actionButtonTitle:payload.actionButtonText
-//                                                                                       messageText:payload.text];
-//			break;
-//		case BBPushNotificationTypePodcastsAlerts:
-//            if ([Commons stringIsEmpty:payload.showCode] == NO)
-//			[[AlertViewManager sharedManager] showPushNotificationFavoritesAlertViewWithMessage:payload.showCode
-//																			  actionButtonTitle:payload.actionButtonText
-//                                                                                    messageText:payload.text];
-//            else
-//            [[AlertViewManager sharedManager] showPushNotificationFavoritesAlertViewWithMessage:payload.text
-//                                                                              actionButtonTitle:payload.actionButtonText
-//                                                                                    messageText:payload.text];
-//			break;
-//		default:
-//			break;
-//	}
+	[[AlertViewManager sharedManager] showAlertCheckActivityViewConfirmWithMessage: payload.message
+																		   context: payload];
 }
 
 - (void) didReceiveRemoteNotificationBeforeStart:(NSDictionary *)userInfo {

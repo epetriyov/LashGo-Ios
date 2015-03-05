@@ -13,6 +13,7 @@
 #define kAlertDefaultYesText	@"Да"
 #define kAlertDefaultNoText		@"Нет"
 
+#define kCheckActivityAlertView @"CheckActivityAlertView"
 #define kComplainConfirmAlertView @"ComplainConfirmAlertView"
 #define kLogoutConfirmAlertView @"LogoutConfirmAlertView"
 
@@ -109,6 +110,15 @@
 
 #pragma mark -
 
+- (void) showAlertCheckActivityViewConfirmWithMessage: (NSString *) message context: (id) context {
+	UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle: @"AlertCheckActivityTitle".commonLocalizedString
+														 message: message
+														delegate: self
+											   cancelButtonTitle: @"AlertCheckActivityBtnCancelTitle".commonLocalizedString
+											   otherButtonTitles: @"AlertCheckActivityBtnOkTitle".commonLocalizedString, nil];
+	[self showAlertView: alertView withKey: kCheckActivityAlertView context: context];
+}
+
 - (void) showAlertComplainConfirmWithContext: (id) context {
 	UIAlertView *alertView = [ [UIAlertView alloc] initWithTitle: @"AlertComplainTitle".commonLocalizedString
 														 message: @"AlertComplainMessage".commonLocalizedString
@@ -145,12 +155,18 @@
 		}
 	}
 	
+	if ([key isEqualToString: kCheckActivityAlertView] == YES) {
+		if (buttonIndex > 0 &&
+			[self.delegate respondsToSelector: @selector(alertViewManagerDidConfirmCheckActivityView:withContext:)] == YES) {
+			[self.delegate alertViewManagerDidConfirmCheckActivityView: self withContext: context];
+		}
+	} else
 	if ([key isEqualToString: kComplainConfirmAlertView] == YES) {
 		if (buttonIndex > 0 &&
 			[self.delegate respondsToSelector: @selector(alertViewManagerDidConfirmComplain:withContext:)] == YES) {
 			[self.delegate alertViewManagerDidConfirmComplain: self withContext: context];
 		}
-	}
+	} else
 	if ([key isEqualToString: kLogoutConfirmAlertView] == YES) {
 		if (buttonIndex > 0 &&
 			[self.delegate respondsToSelector: @selector(alertViewManagerDidConfirmLogout:)] == YES) {
