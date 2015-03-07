@@ -184,6 +184,7 @@
 
 - (void) dataProviderDidUserAvatarUpdate: (DataProvider *) dataProvider {
 	[self.viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [ProfileEditViewController class]];
+	[self.userManager getUserProfile];
 }
 
 - (void) dataProviderDidFailUserAvatarUpdate: (DataProvider *) dataProvider {

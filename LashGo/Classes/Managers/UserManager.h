@@ -19,6 +19,7 @@
 				   dataProvider: (DataProvider *) dataProvider
 					  vcManager: (ViewControllersManager *) vcManager;
 
+- (void) getUserProfile;
 - (void) getUsersSearch: (NSString *) searchText;
 - (void) getUserPhotosForUser: (LGUser *) user;
 - (void) stopWaitingUserPhotos;

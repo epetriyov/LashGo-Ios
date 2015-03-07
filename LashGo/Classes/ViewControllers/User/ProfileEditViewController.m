@@ -29,11 +29,17 @@ typedef NS_ENUM(ushort, ProfileEditFieldDataType) {
 	UIView __weak *_activeResponder;
 	
 	UITableView __weak *_contentTableView;
+	
+	UIImage *_image;
 }
 
 @end
 
 @implementation ProfileEditViewController
+
+- (CGRect) waitViewFrame {
+	return self.view.frame;
+}
 
 - (void) loadView {
 	[super loadView];
@@ -149,7 +155,10 @@ typedef NS_ENUM(ushort, ProfileEditFieldDataType) {
 #pragma mark - Action
 									
 - (void) changeAvatarAction: (id) sender {
-	
+	[kernel.imagePickManager takePictureWith:^(UIImage *image) {
+		_image = image;
+		[_avatarImageView loadSizeThatFits: image];
+	}];
 }
 
 - (void) saveAction: (id) sender {
@@ -173,7 +182,7 @@ typedef NS_ENUM(ushort, ProfileEditFieldDataType) {
 				break;
 		}
 	}
-	
+	[kernel.userManager updateUserAvatar: _image];
 	[kernel.userManager updateUser: self.user];
 }
 

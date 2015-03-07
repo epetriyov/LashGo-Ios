@@ -684,7 +684,7 @@ static NSString *const kRequestUUID =		@"uuid";
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didUserAvatarUpdate:)
-					 failSelector: @selector(didFailGetImportantData:)];
+					 failSelector: @selector(didFailUserAvatarUpdate:)];
 }
 
 #pragma mark -

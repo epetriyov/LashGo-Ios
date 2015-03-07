@@ -11,11 +11,14 @@
 
 @class LGCheck;
 
+typedef void (^ImagePickHandler)(UIImage *image);
+
 @interface ImagePickManager : NSObject
 
 - (instancetype) initWithKernel: (Kernel *) kernel
 					  vcManager: (ViewControllersManager *) vcManager;
 
 - (void) takePictureFor: (LGCheck *) check;
+- (void) takePictureWith: (ImagePickHandler) imageHandling;
 
 @end

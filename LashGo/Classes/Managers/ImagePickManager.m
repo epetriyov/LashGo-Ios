@@ -19,6 +19,8 @@
 	ViewControllersManager __weak *_viewControllersManager;
 	
 	LGCheck __weak *_currentCheck;
+	
+	ImagePickHandler _handlingBlock;
 }
 
 @end
@@ -38,6 +40,23 @@
 
 - (void) takePictureFor: (LGCheck *) check {
 	_currentCheck = check;
+	
+	if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] == YES) {
+		UIActionSheet *activeSheet = [[UIActionSheet alloc] initWithTitle: nil
+																 delegate: self
+														cancelButtonTitle: @"ImagePickerActionSheetCancelTitle".commonLocalizedString
+												   destructiveButtonTitle: nil
+														otherButtonTitles:
+									  @"ImagePickerActionSheetCameraTitle".commonLocalizedString,
+									  @"ImagePickerActionSheetLibraryTitle".commonLocalizedString, nil];
+		[activeSheet showInView: _viewControllersManager.rootNavigationController.topViewController.view];
+	} else {
+		[self startImagePickerControllerWith: UIImagePickerControllerSourceTypePhotoLibrary];
+	}
+}
+
+- (void) takePictureWith: (ImagePickHandler) imageHandling {
+	_handlingBlock = imageHandling;
 	
 	if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] == YES) {
 		UIActionSheet *activeSheet = [[UIActionSheet alloc] initWithTitle: nil
@@ -115,6 +134,11 @@
 	imageToSave = imageWithOrientationUp(imageToSave);
 	
 	_currentCheck.currentPickedUserPhoto = imageToSave;
+	_currentCheck = nil;
+	
+	_handlingBlock(imageToSave);
+	_handlingBlock = nil;
+	
 	
 	//Sample
 //    NSString *mediaType = [info objectForKey: UIImagePickerControllerMediaType];

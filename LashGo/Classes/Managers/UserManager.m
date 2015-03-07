@@ -35,6 +35,10 @@
 
 #pragma mark - Methods
 
+- (void) getUserProfile {
+	[_dataProvider userProfile];
+}
+
 - (void) getUsersSearch: (NSString *) searchText {
 	[_dataProvider usersSearch: searchText];
 }

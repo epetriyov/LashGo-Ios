@@ -58,7 +58,7 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 	if (self.user.uid == [AuthorizationManager sharedManager].account.userInfo.uid) {
 		UIButton *editButton = [[ViewFactory sharedFactory] userEditButtonWithTarget: self
 																			  action: @selector(editAction:)];
-		editButton.hidden = YES;
+		editButton.enabled = NO;
 		[buttons addObject: editButton];
 		_editButton = editButton;
 	} else {
@@ -147,7 +147,7 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 			[_profileView setUserData: profileDetail];
 			self.user.subscription = profileDetail.subscription;
 			_followButton.hidden = NO;
-			_editButton.hidden = NO;
+			_titleBarView.rightButton.enabled = YES;
 		}
 	} else if ([keyPath isEqualToString: kObservationFollowStatusKeyPath] == YES && object == self.user) {
 		_followButton.selected = ((LGUser *)object).subscription;
