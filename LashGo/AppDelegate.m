@@ -44,6 +44,10 @@
 	[kernel performOnColdWakeActions];
 	
 	NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+//	userInfo = @{@"aps":@{@"alert":@{@"loc-key": @"CHECK_STARTED",
+//									 @"loc-args": @[@"Назв"]}},
+//				 @"check_id":@"125"};
+	
 	if (userInfo != nil) {
 		//Notification actions
 		[kernel.pushNotificationManager didReceiveRemoteNotificationBeforeStart:userInfo];

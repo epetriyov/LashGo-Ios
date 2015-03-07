@@ -36,7 +36,7 @@
 }
 
 - (void) getChecks {
-	[_dataProvider checks];
+	[_dataProvider checksWithContext: nil];
 }
 
 - (void) getChecksSearch: (NSString *) searchText {
@@ -91,7 +91,7 @@
 - (void) openCheckCardViewController {
 	[_viewControllersManager openCheckCardViewController];
 	if ([_kernel.storage.checks count] <= 0) {
-		[_dataProvider checks];
+		[_dataProvider checksWithContext: nil];
 	}
 }
 
@@ -103,23 +103,30 @@
 	}
 	[_viewControllersManager openCheckCardViewController];
 	if ([_kernel.storage.checks count] <= 0) {
-		[_dataProvider checks];
+		[_dataProvider checksWithContext: nil];
 	}
 }
 
-- (void) openCheckCardViewControllerForCheckUID: (int64_t) checkUID {
+- (BOOL) openCheckCardViewControllerForCheckUID: (int64_t) checkUID {
 	for (LGCheck *item in _kernel.storage.checks) {
 		if (item.uid == checkUID) {
 			[self openCheckCardViewControllerFor: item];
-			return;
+			return YES;
 		}
+	}
+	return NO;
+}
+
+- (void) openCheckCardViewControllerWithFetchForCheckUID: (int64_t) checkUID {
+	if ([self openCheckCardViewControllerForCheckUID: checkUID] == NO) {
+		[_dataProvider checksWithContext: @(checkUID)];
 	}
 }
 
 - (void) openCheckListViewController {
 	[_viewControllersManager openCheckListViewController];
 	if ([_kernel.storage.checks count] <= 0) {
-		[_dataProvider checks];
+		[_dataProvider checksWithContext: nil];
 	}
 }
 

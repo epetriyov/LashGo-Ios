@@ -38,7 +38,9 @@
 
 - (void) openCheckCardViewController;
 - (void) openCheckCardViewControllerFor: (LGCheck *) check;
-- (void) openCheckCardViewControllerForCheckUID: (int64_t) checkUID;
+///YES - check opened, NO - check not found
+- (BOOL) openCheckCardViewControllerForCheckUID: (int64_t) checkUID;
+- (void) openCheckCardViewControllerWithFetchForCheckUID: (int64_t) checkUID;
 - (void) openCheckListViewController;
 
 - (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check;

@@ -100,10 +100,14 @@
 	[self.userManager openLoginViewController];
 }
 
-- (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (NSArray *) checks {
-	[self.storage updateChecksWith: checks];
+- (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (ContextualArrayResult *) checks {
+	[self.storage updateChecksWith: checks.items];
 	[self.viewControllersManager.checkCardViewController refresh];
 	[self.viewControllersManager.checkListViewController refresh];
+	
+	if ([checks.context isKindOfClass: [NSNumber class]] == YES) {
+		[self.checksManager openCheckCardViewControllerForCheckUID: [checks.context longLongValue]];
+	}
 }
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecksSearch: (NSArray *) checks {
@@ -221,7 +225,7 @@
 
 - (void) alertViewManagerDidConfirmCheckActivityView: (AlertViewManager *) manager withContext: (id) context {
 	if ([context isKindOfClass: [PushNotificationPayload class]] == YES) {
-		[self.checksManager openCheckCardViewControllerForCheckUID: ((PushNotificationPayload *) context).checkUID];
+		[self.checksManager openCheckCardViewControllerWithFetchForCheckUID: ((PushNotificationPayload *) context).checkUID];
 	}
 }
 

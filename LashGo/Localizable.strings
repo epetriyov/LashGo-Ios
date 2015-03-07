@@ -28,7 +28,7 @@
 "AlertErrorTitle" = "Ошибка";
 "AlertEmptyFieldsMessage" = "Все поля должны быть заполнены";
 
-"AlertCheckActivityTitle" = "Это интересно";
+"AlertCheckActivityTitle" = "Это интересно!";
 "AlertCheckActivityBtnOkTitle" = "Открыть";
 "AlertCheckActivityBtnCancelTitle" = "Отмена";
 
