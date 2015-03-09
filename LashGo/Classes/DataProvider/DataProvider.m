@@ -183,12 +183,13 @@ static NSString *const kRequestUUID =		@"uuid";
 }
 
 - (void) startConnectionWithPath: (NSString *) path
-							type: (URLConnectionType) theType
+					   paramName: (NSString *) paramName
 							data: (NSData *) data
 						 context: (id) context
 				   allowMultiple: (BOOL) allowMultiple
 				  finishSelector: (SEL) finishSelector failSelector: (SEL) failSelector {
-	NSString *connectionKey = [[kWebServiceURL stringByAppendingString: path] stringByAppendingFormat: @"%d", theType];
+	URLConnectionType connectionType = URLConnectionTypeMULTIPART;
+	NSString *connectionKey = [[kWebServiceURL stringByAppendingString: path] stringByAppendingFormat: @"%d", connectionType];
 	
 	if (allowMultiple == NO) {
 		URLConnection *liveConnection = _liveConnections[connectionKey];
@@ -200,11 +201,12 @@ static NSString *const kRequestUUID =		@"uuid";
 	id target = failSelector == nil || finishSelector == nil ? nil : self;
 	NSMutableURLRequest *request = [NSMutableURLRequest requestMultipartWithURL: [kWebServiceURL stringByAppendingString: path]
 																   headerParams: headerParamsDictionary
+																	  paramName: paramName
 																	  paramData: data
-																	   fileName: @"photo"];
+																	   fileName: paramName];
 	URLConnection *connection = [_connectionManager connectionWithHost: kWebServiceURL
 																  path: path
-																  type: theType
+																  type: connectionType
 															   request: request
 																target: target
 														finishSelector: finishSelector
@@ -391,7 +393,7 @@ static NSString *const kRequestUUID =		@"uuid";
 - (void) checkAddPhoto: (LGCheck *) inputData {
 	NSData *imageData = UIImageJPEGRepresentation(inputData.currentPickedUserPhoto, 0.7);
 	[self startConnectionWithPath: [NSString stringWithFormat: kChecksPhotosPath, inputData.uid]
-							 type: URLConnectionTypeMULTIPART
+						paramName: @"photo"
 							 data: imageData
 						  context: inputData
 					allowMultiple: NO
@@ -679,7 +681,7 @@ static NSString *const kRequestUUID =		@"uuid";
 
 - (void) userAvatarUpdateWith: (NSData *) inputData {
 	[self startConnectionWithPath: kUsersAvatarPath
-							 type: URLConnectionTypeMULTIPART
+						paramName: @"avatar"
 							 data: inputData
 						  context: nil
 					allowMultiple: NO

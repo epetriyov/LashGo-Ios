@@ -105,7 +105,7 @@
 		case 0:
 			[self startImagePickerControllerWith: UIImagePickerControllerSourceTypeCamera];
 			break;
-		default:
+		case 1:
 			[self startImagePickerControllerWith: UIImagePickerControllerSourceTypePhotoLibrary];
 			break;
 	}

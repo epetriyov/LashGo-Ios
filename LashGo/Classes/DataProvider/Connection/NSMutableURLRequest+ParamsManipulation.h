@@ -23,7 +23,8 @@ typedef enum {
 							headerParams: (NSDictionary *) headerParams;
 + (NSMutableURLRequest *) requestMultipartWithURL: (NSString *) url
 									 headerParams: (NSDictionary *) headerParams
-										paramData:(NSData *)paramData fileName:(NSString *)name;
+										paramName: (NSString *) paramName
+										paramData: (NSData *) paramData fileName:(NSString *)name;
 
 - (void) addValue: (NSString *) value forQueryParameter: (NSString *) name;
 

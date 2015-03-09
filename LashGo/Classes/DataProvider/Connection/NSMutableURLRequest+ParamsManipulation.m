@@ -52,7 +52,8 @@
 
 + (NSMutableURLRequest *) requestMultipartWithURL: (NSString *) url
 									 headerParams: (NSDictionary *) headerParams
-										paramData: (NSData *)paramData fileName:(NSString *)name {
+										paramName: (NSString *) paramName
+										paramData: (NSData *) paramData fileName:(NSString *)name {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: [NSURL URLWithString: url]];
 	
 	[request setHTTPMethod: @"POST"];
@@ -67,7 +68,7 @@
 	
     NSMutableData *tempPostData = [NSMutableData data];
     [tempPostData appendData:[[NSString stringWithFormat:@"--%@\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [tempPostData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"photo\"; filename=\"%@\"\r\n", name] dataUsingEncoding:NSUTF8StringEncoding]];
+    [tempPostData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", paramName, name] dataUsingEncoding:NSUTF8StringEncoding]];
     [tempPostData appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
     [tempPostData appendData:paramData];
     [tempPostData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] dataUsingEncoding:NSUTF8StringEncoding]];
