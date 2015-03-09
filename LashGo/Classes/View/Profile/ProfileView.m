@@ -18,9 +18,7 @@
 	UIImageView *_avatarImageView;
 	
 	UILabel *_subscribesLabel;
-	UILabel *_subscribesCountLabel;
 	UILabel *_subscribersLabel;
-	UILabel *_subscribersCountLabel;
 	UILabel *_countersLabel;
 	
 	UILabel *_fioLabel;
@@ -45,61 +43,38 @@
 		
 		float bottomOffsetY = 100;
 		float followCaps = 15;
-		float followCountCaps = 5;
 		float followCountHeight = 19;
 		
-		_subscribesLabel = [[UILabel alloc] init];
+		_subscribesLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, bottomOffsetY - followCountHeight,
+																		   CGRectGetWidth(requiredFrame) - followCaps,
+																		   followCountHeight)];
 		_subscribesLabel.backgroundColor = [UIColor clearColor];
 		_subscribesLabel.font = [FontFactory fontWithType: FontTypeProfileLabels];
 		_subscribesLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabels];
-		_subscribesLabel.text = [@"ProfileViewControllerSubscribes" stringByAppendingString:
-								 [Common pluralSuffix: 0]].commonLocalizedString;
-		[_subscribesLabel sizeToFit];
-		_subscribesLabel.frameY = bottomOffsetY - _subscribesLabel.frame.size.height;
-		_subscribesLabel.frameX = frame.size.width - _subscribesLabel.frame.size.width - followCaps;
+		_subscribesLabel.textAlignment = NSTextAlignmentRight;
+		_subscribesLabel.attributedText = [self subscribeLabelWithCount: 0
+															  text: [@"ProfileViewControllerSubscribes" stringByAppendingString:
+																	 [Common pluralSuffix: 0]].commonLocalizedString];
 		[self addSubview: _subscribesLabel];
 		
-		_subscribesCountLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, bottomOffsetY - followCountHeight,
-																		   _subscribesLabel.frame.origin.x - followCountCaps,
-																		   followCountHeight)];
-		_subscribesCountLabel.backgroundColor = [UIColor clearColor];
-		_subscribesCountLabel.font = [FontFactory fontWithType: FontTypeProfileLabelsFollowCount];
-		_subscribesCountLabel.textAlignment = NSTextAlignmentRight;
-		_subscribesCountLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabelsFollowCount];
-		[self addSubview: _subscribesCountLabel];
-		
-		_subscriptionsButton = [[UIButton alloc] initWithFrame: CGRectMake(_subscribesLabel.frame.origin.x - 30,
-																		   _subscribesCountLabel.frame.origin.y,
-																		   self.bounds.size.width - _subscribesLabel.frame.origin.x + 30,
-																		   _subscribesCountLabel.frame.size.height)];
+		_subscriptionsButton = [[UIButton alloc] initWithFrame: _subscribesLabel.frame];
 		[self addSubview: _subscriptionsButton];
 		
 		bottomOffsetY += 42;
 		
-		_subscribersLabel = [[UILabel alloc] init];
+		_subscribersLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, bottomOffsetY - followCountHeight,
+																		   CGRectGetWidth(requiredFrame) - followCaps,
+																		   followCountHeight)];
 		_subscribersLabel.backgroundColor = [UIColor clearColor];
 		_subscribersLabel.font = [FontFactory fontWithType: FontTypeProfileLabels];
 		_subscribersLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabels];
-		_subscribersLabel.text = [@"ProfileViewControllerSubscribers" stringByAppendingString:
-								  [Common pluralSuffix: 0]].commonLocalizedString;
-		[_subscribersLabel sizeToFit];
-		_subscribersLabel.frameY = bottomOffsetY - _subscribersLabel.frame.size.height;
-		_subscribersLabel.frameX = frame.size.width - _subscribersLabel.frame.size.width - followCaps;
+		_subscribersLabel.textAlignment = NSTextAlignmentRight;
+		_subscribersLabel.attributedText = [self subscribeLabelWithCount: 0
+																		 text: [@"ProfileViewControllerSubscribers" stringByAppendingString:
+																				[Common pluralSuffix: 0]].commonLocalizedString];
 		[self addSubview: _subscribersLabel];
 		
-		_subscribersCountLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, bottomOffsetY - followCountHeight,
-																		   _subscribersLabel.frame.origin.x - followCountCaps,
-																		   followCountHeight)];
-		_subscribersCountLabel.backgroundColor = [UIColor clearColor];
-		_subscribersCountLabel.font = [FontFactory fontWithType: FontTypeProfileLabelsFollowCount];
-		_subscribersCountLabel.textAlignment = NSTextAlignmentRight;
-		_subscribersCountLabel.textColor = [FontFactory fontColorForType: FontTypeProfileLabelsFollowCount];
-		[self addSubview: _subscribersCountLabel];
-		
-		_subscribersButton = [[UIButton alloc] initWithFrame: CGRectMake(_subscribersLabel.frame.origin.x - 30,
-																		 _subscribersCountLabel.frame.origin.y,
-																		 self.bounds.size.width - _subscribersLabel.frame.origin.x + 30,
-																		 _subscribersCountLabel.frame.size.height)];
+		_subscribersButton = [[UIButton alloc] initWithFrame: _subscribersLabel.frame];
 		[self addSubview: _subscribersButton];
 		
 		//Bottom to top
@@ -150,16 +125,30 @@
 			checksCount, checksCountLabel, commentsCount, commentsCountLabel, likesCount, likesCountLabel];
 }
 
+- (NSAttributedString *) subscribeLabelWithCount: (int32_t) count text: (NSString *) text {
+	NSString *format = @"%0d ";
+	NSMutableString *resultString = [[NSMutableString alloc] initWithFormat: format, count];
+	NSUInteger countLength = [resultString length];
+	
+	[resultString appendString: text];
+	
+	NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]
+												initWithString:resultString];
+	[attributedStr addAttribute: NSFontAttributeName value: [FontFactory fontWithType: FontTypeProfileLabelsFollowCount]
+						 range: NSMakeRange(0, countLength)];
+	return attributedStr;
+}
+
 - (void) setUserData: (LGUser *) user {
 	[_avatarImageView loadWebImageShadedWithSizeThatFitsName: user.avatar
 										   placeholder: [ViewFactory sharedFactory].userProfileAvatarPlaceholder];
-	NSString *format = @"%0d ";
-	_subscribesCountLabel.text =	[[NSString alloc] initWithFormat: format, user.userSubscribes];
-	_subscribesLabel.text = [@"ProfileViewControllerSubscribes" stringByAppendingString:
-							 [Common pluralSuffix: user.userSubscribes]].commonLocalizedString;
-	_subscribersCountLabel.text =	[[NSString alloc] initWithFormat: format, user.userSubscribers];
-	_subscribersLabel.text = [@"ProfileViewControllerSubscribers" stringByAppendingString:
-							  [Common pluralSuffix: user.userSubscribers]].commonLocalizedString;
+	
+	_subscribesLabel.attributedText =	[self subscribeLabelWithCount: user.userSubscribes
+																	text: [@"ProfileViewControllerSubscribes" stringByAppendingString:
+																		   [Common pluralSuffix: user.userSubscribes]].commonLocalizedString];
+	_subscribersLabel.attributedText = [self subscribeLabelWithCount: user.userSubscribers
+																	 text:[@"ProfileViewControllerSubscribers" stringByAppendingString:
+																		   [Common pluralSuffix: user.userSubscribers]].commonLocalizedString];
 	_countersLabel.text =			[self pluralizedStringWithChecks: user.checksCount
 													comments:user.commentsCount
 													   likes:user.likesCount];
