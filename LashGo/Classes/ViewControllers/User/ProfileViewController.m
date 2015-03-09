@@ -43,10 +43,11 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 	_user = user;
 	[_user addObserver: self forKeyPath: kObservationFollowStatusKeyPath options: 0 context: NULL];
 	
-	if ((newAccountUID == currentAccountUID &&
+	if (self.isViewLoaded == YES &&
+		((newAccountUID == currentAccountUID &&
 		oldAccountUID != currentAccountUID) ||
 		(newAccountUID != currentAccountUID &&
-		 oldAccountUID == currentAccountUID)) {
+		 oldAccountUID == currentAccountUID))) {
 			[self refreshTitleBar];
 	}
 }
@@ -58,7 +59,7 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 	if (self.user.uid == [AuthorizationManager sharedManager].account.userInfo.uid) {
 		UIButton *editButton = [[ViewFactory sharedFactory] userEditButtonWithTarget: self
 																			  action: @selector(editAction:)];
-		editButton.enabled = NO;
+		editButton.hidden = YES;
 		[buttons addObject: editButton];
 		_editButton = editButton;
 	} else {
@@ -146,8 +147,9 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 		if (self.user.uid == profileDetail.uid) {
 			[_profileView setUserData: profileDetail];
 			self.user.subscription = profileDetail.subscription;
-			_followButton.hidden = NO;
-			_titleBarView.rightButton.enabled = YES;
+//			_followButton.hidden = NO;
+//			_editButton.enabled = YES;
+			_titleBarView.rightButton.hidden = NO;
 		}
 	} else if ([keyPath isEqualToString: kObservationFollowStatusKeyPath] == YES && object == self.user) {
 		_followButton.selected = ((LGUser *)object).subscription;
@@ -155,7 +157,9 @@ static NSString *const kObservationKeyPath = @"lastViewProfileDetail";
 }
 
 - (void) dealloc {
-	self.user = nil;
+	if (_user != nil) {
+		[_user removeObserver: self forKeyPath: kObservationFollowStatusKeyPath];
+	}
 	[kernel.storage removeObserver: self forKeyPath: kObservationKeyPath];
 }
 
