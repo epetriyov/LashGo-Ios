@@ -15,7 +15,9 @@
 - (instancetype) initWithDataProvider: (DataProvider *) dataProvider;
 
 - (void) registerRemoteNotifications;
+#ifdef __IPHONE_8_0
 - (void) didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings;
+#endif
 - (void) didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
 - (void) didFailToRegisterForRemoteNotificationsWithError:(NSError *) error;
 

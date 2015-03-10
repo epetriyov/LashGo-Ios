@@ -91,26 +91,32 @@
 
 - (void) registerRemoteNotifications {
     //Register for notifications
+#ifdef __IPHONE_8_0
 	if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1) {
+#endif
 		[[UIApplication sharedApplication]
 		 registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
 											 UIRemoteNotificationTypeSound |
 											 UIRemoteNotificationTypeAlert)];
+#ifdef __IPHONE_8_0
 	} else {
 		UIUserNotificationSettings *unSettings = [UIUserNotificationSettings settingsForTypes: UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound
 																				   categories: nil];
 		[[UIApplication sharedApplication] registerUserNotificationSettings: unSettings];
 	}
+#endif
 	
 	//Local notifications for test
 //	[self scheduleLocalNotification];
 }
 
+#ifdef __IPHONE_8_0
 - (void) didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
 	if (notificationSettings.types != UIUserNotificationTypeNone) {
 		[[UIApplication sharedApplication] registerForRemoteNotifications];
 	}
 }
+#endif
 
 #pragma mark -
 
@@ -123,12 +129,16 @@
 	
 	DLog(@"Device Token: %@", deviceTokenString);
 	
+#ifdef __IPHONE_8_0
 	if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_7_1) {
+#endif
 		if ([[UIApplication sharedApplication] enabledRemoteNotificationTypes] == UIRemoteNotificationTypeNone) {
 			DLog(@"Notifications are disabled for this application. Not registering");
 			return;
 		}
+#ifdef __IPHONE_8_0
 	}
+#endif
 
 	[_dataProvider apnsRegisterWithToken: deviceTokenString];
 }

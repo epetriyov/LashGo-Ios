@@ -97,9 +97,11 @@
 #pragma mark -
 #pragma mark Push notification delegate
 
+#ifdef __IPHONE_8_0
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
 	[kernel.pushNotificationManager didRegisterUserNotificationSettings: notificationSettings];
 }
+#endif
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken {
 	[kernel.pushNotificationManager didRegisterForRemoteNotificationsWithDeviceToken:devToken];
