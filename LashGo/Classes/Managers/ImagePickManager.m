@@ -133,11 +133,16 @@
 	// Fixing to stick with only one orientation (UIImageOrientationUp in this case)
 	imageToSave = imageWithOrientationUp(imageToSave);
 	
-	_currentCheck.currentPickedUserPhoto = imageToSave;
-	_currentCheck = nil;
+	if (_currentCheck != nil) {
+		_currentCheck.currentPickedUserPhoto = imageToSave;
+		_currentCheck = nil;
+	}
 	
-	_handlingBlock(imageToSave);
-	_handlingBlock = nil;
+	if (_handlingBlock != NULL) {
+		_handlingBlock(imageToSave);
+		_handlingBlock = NULL;
+	}
+	
 	
 	
 	//Sample
