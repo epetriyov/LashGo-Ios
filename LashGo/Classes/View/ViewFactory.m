@@ -454,7 +454,7 @@ static ViewFactory *viewFactory = nil;
 
 - (UIButton *) userFollowWhiteButtonWithTarget:(id)target action:(SEL)selector {
 	UIImage *normalImage = [UIImage imageNamed: @"ic_follow_w"];
-	UIImage *selectedImage = [UIImage imageNamed: @"ic_unfollow"];
+	UIImage *selectedImage = [UIImage imageNamed: @"ic_unfollow_w"];
 	UIButton *button = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, normalImage.size.width,
 																   normalImage.size.height)];
 	[button setImage: normalImage forState: UIControlStateNormal];
