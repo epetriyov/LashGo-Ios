@@ -21,6 +21,7 @@
 
 @interface EventsViewController () <UITableViewDataSource, UITableViewDelegate, EventTableViewCellDelegate> {
 	UITableView __weak *_tableView;
+	UILabel __weak *_emptyListLabel;
 }
 
 @end
@@ -56,6 +57,11 @@
 	[self.view addSubview: tableView];
 	
 	_tableView = tableView;
+	
+	UILabel *emptyListLabel = [[ViewFactory sharedFactory] emptyListLabelWithFrame: contentFrame
+																		   andText: @"EventsEmptyLabel".commonLocalizedString];
+	[self.view addSubview:emptyListLabel];
+	_emptyListLabel = emptyListLabel;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -69,6 +75,8 @@
 		[_tableView beginUpdates];
 		[_tableView reloadSections: [NSIndexSet indexSetWithIndex:0] withRowAnimation: UITableViewRowAnimationAutomatic];
 		[_tableView endUpdates];
+		
+		_emptyListLabel.alpha = [kernel.storage.events count] <= 0 ? 1 : 0;
 	}
 }
 

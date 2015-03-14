@@ -41,8 +41,6 @@
 	self.window.rootViewController = kernel.viewControllersManager.rootNavigationController;
     [self.window makeKeyAndVisible];
 	
-	[kernel performOnColdWakeActions];
-	
 	NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
 //	userInfo = @{@"aps":@{@"alert":@{@"loc-key": @"CHECK_STARTED",
 //									 @"loc-args": @[@"Назв"]}},
@@ -52,6 +50,8 @@
 		//Notification actions
 		[kernel.pushNotificationManager didReceiveRemoteNotificationBeforeStart:userInfo];
 	}
+	
+	[kernel performOnColdWakeActions];
 	
     return YES;
 }

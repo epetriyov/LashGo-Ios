@@ -11,6 +11,7 @@
 @interface PushNotificationManager : NSObject
 
 @property (nonatomic, readonly) BOOL didReceivedNotificationBeforeStart;
+@property (nonatomic, readonly) PushNotificationPayload *lastPayload;
 
 - (instancetype) initWithDataProvider: (DataProvider *) dataProvider;
 

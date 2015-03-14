@@ -10,6 +10,7 @@
 
 #import "Common.h"
 #import "Kernel.h"
+#import "UIColor+CustomColors.h"
 #import "UIImageView+LGImagesExtension.h"
 #import "ViewFactory.h"
 
@@ -59,7 +60,7 @@ typedef NS_ENUM(ushort, ProfileEditFieldDataType) {
 	_titleBarView = tbView;
 	
 	_avatarImageView = [[UIImageView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 240)];
-	_avatarImageView.backgroundColor = [UIColor colorWithRed: 0 green: 172.0/255.0 blue: 193.0/255.0 alpha: 1.0];
+	_avatarImageView.backgroundColor = [UIColor colorWithAppColorType: AppColorTypeTint];
 	_avatarImageView.contentMode = UIViewContentModeBottom;
 	_avatarImageView.userInteractionEnabled = YES;
 	[_avatarImageView loadWebImageWithSizeThatFitsName: self.user.avatar

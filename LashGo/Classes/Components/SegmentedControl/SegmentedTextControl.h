@@ -8,25 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol SegmentedTextControlDelegate;
+///Implements UIControlValueChanged on user select new index
+@interface SegmentedTextControl : UIControl
 
-@interface SegmentedTextControl : UIView {
-	NSMutableArray *buttons;
-}
-
-@property (nonatomic, weak) id<SegmentedTextControlDelegate> delegate;
 @property (nonatomic, assign) ushort selectedIndex;
 
-- (id) initWithItemsCount: (ushort) count;
-- (id) initWithButtonsTexts: (NSArray *) buttonsTexts
-			  buttonsBgName: (NSString *) buttonsBg
-					 bgName: (NSString *) bg;
-
-@end
-
-@protocol SegmentedTextControlDelegate <NSObject>
-
-@required
-- (void) segmentedControl: (SegmentedTextControl *) segmentedTextControl selectedIndexChangedTo: (ushort) selectedIndex;
+- (instancetype) initWithFrame: (CGRect) frame
+				  buttonsTexts: (NSArray *) buttonsTexts
+				 buttonsBgName: (NSString *) buttonsBg
+						bgName: (NSString *) bg;
+- (instancetype) initWithFrame: (CGRect) frame
+				  buttonsTexts: (NSArray *) buttonsTexts
+						bgName: (NSString *) bg
+	  contentVerticalAlignment: (UIControlContentVerticalAlignment) verticalAlignment;
 
 @end

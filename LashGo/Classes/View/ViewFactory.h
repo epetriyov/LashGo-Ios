@@ -35,6 +35,7 @@
 
 //Common
 - (UIButton *) complainButton: (id) target action: (SEL) selector;
+- (UILabel *) emptyListLabelWithFrame: (CGRect) frame andText: (NSString *) text;
 
 //Check
 - (UIButton *) checkMakeFoto: (id) target action: (SEL) selector;

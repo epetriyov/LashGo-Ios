@@ -80,7 +80,8 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		}
 		
 		CGRect checkViewFrame = CGRectMake(0, offsetY,
-										   self.contentView.frame.size.width, 204);
+										   self.contentView.frame.size.width,
+										   CGRectGetWidth(self.contentView.bounds) - 116);
 		
 		_checkView = [[CheckDetailView alloc] initWithFrame: checkViewFrame
 												  imageCaps: 18 progressLineWidth: 10];

@@ -53,6 +53,8 @@
 		8426F357191A6F6400B4E336 /* TitleBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F356191A6F6400B4E336 /* TitleBarView.m */; };
 		8426F35A191A6FF900B4E336 /* ViewFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F359191A6FF900B4E336 /* ViewFactory.m */; };
 		8426F35D191A754200B4E336 /* FontFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8426F35C191A754200B4E336 /* FontFactory.m */; };
+		842701EB1AB43B5000D74ECC /* SegmentedTextControlButtonFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 842701E91AB43B5000D74ECC /* SegmentedTextControlButtonFactory.m */; };
+		842701F51AB43E0F00D74ECC /* UIColor+CustomColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 842701F41AB43E0F00D74ECC /* UIColor+CustomColors.m */; };
 		8427E62219C5DBC500558649 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8427E62119C5DBC500558649 /* ImageIO.framework */; };
 		8434E44319D708D700DD4CA8 /* CheckSimpleDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8434E44219D708D700DD4CA8 /* CheckSimpleDetailView.m */; };
 		84426D4619E158060068734B /* CheckDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84426D4519E158060068734B /* CheckDetailViewController.m */; };
@@ -278,6 +280,10 @@
 		8426F359191A6FF900B4E336 /* ViewFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewFactory.m; sourceTree = "<group>"; };
 		8426F35B191A754200B4E336 /* FontFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontFactory.h; sourceTree = "<group>"; };
 		8426F35C191A754200B4E336 /* FontFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontFactory.m; sourceTree = "<group>"; };
+		842701E91AB43B5000D74ECC /* SegmentedTextControlButtonFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentedTextControlButtonFactory.m; sourceTree = "<group>"; };
+		842701EA1AB43B5000D74ECC /* SegmentedTextControlButtonFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentedTextControlButtonFactory.h; sourceTree = "<group>"; };
+		842701F31AB43E0F00D74ECC /* UIColor+CustomColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColors.h"; sourceTree = "<group>"; };
+		842701F41AB43E0F00D74ECC /* UIColor+CustomColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColors.m"; sourceTree = "<group>"; };
 		8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SDWebImage.xcodeproj; path = LashGo/SDWebImageLib/SDWebImage.xcodeproj; sourceTree = "<group>"; };
 		8427E62119C5DBC500558649 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		8434E44119D708D700DD4CA8 /* CheckSimpleDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckSimpleDetailView.h; sourceTree = "<group>"; };
@@ -647,6 +653,8 @@
 				845A210919F290BC00AF9D24 /* PhotoCollectionCell.m */,
 				8426F35B191A754200B4E336 /* FontFactory.h */,
 				8426F35C191A754200B4E336 /* FontFactory.m */,
+				842701F31AB43E0F00D74ECC /* UIColor+CustomColors.h */,
+				842701F41AB43E0F00D74ECC /* UIColor+CustomColors.m */,
 				8426F358191A6FF900B4E336 /* ViewFactory.h */,
 				8426F359191A6FF900B4E336 /* ViewFactory.m */,
 			);
@@ -891,6 +899,8 @@
 			children = (
 				849DD0C7199CBF9300DC86F6 /* SegmentedTextControl.h */,
 				849DD0C8199CBF9300DC86F6 /* SegmentedTextControl.m */,
+				842701EA1AB43B5000D74ECC /* SegmentedTextControlButtonFactory.h */,
+				842701E91AB43B5000D74ECC /* SegmentedTextControlButtonFactory.m */,
 			);
 			path = SegmentedControl;
 			sourceTree = "<group>";
@@ -1371,6 +1381,7 @@
 				840425DD19CB1B5A00C5EDBF /* ImagePickManager.m in Sources */,
 				84045AA919224A04006F2F24 /* UIView+CGExtension.m in Sources */,
 				8405D0461A2A0CEB00A1C512 /* SubscriptionViewController.m in Sources */,
+				842701F51AB43E0F00D74ECC /* UIColor+CustomColors.m in Sources */,
 				8434E44319D708D700DD4CA8 /* CheckSimpleDetailView.m in Sources */,
 				84062512193088F30067C1CA /* DownloadableItem.m in Sources */,
 				845D858B19029EB0004E10AB /* main.m in Sources */,
@@ -1390,6 +1401,7 @@
 				845A20FD19F265BB00AF9D24 /* ProfileViewController.m in Sources */,
 				84EABEC71A345F8F0031BF07 /* LGSubscription.m in Sources */,
 				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
+				842701EB1AB43B5000D74ECC /* SegmentedTextControlButtonFactory.m in Sources */,
 				84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */,
 				84083A631A937DB2006C715E /* ProfileEditFieldData.m in Sources */,
 				84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */,

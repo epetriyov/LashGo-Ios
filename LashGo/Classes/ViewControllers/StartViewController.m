@@ -12,6 +12,7 @@
 #import "Common.h"
 #import "FontFactory.h"
 #import "Kernel.h"
+#import "UIColor+CustomColors.h"
 #import "UIView+CGExtension.h"
 #import "ViewFactory.h"
 
@@ -65,7 +66,7 @@
 	[self.view addSubview: startButton];
 	
 	UIButton *loginButton = [[UIButton alloc] initWithFrame:CGRectMake(0, offsetY, buttonsWidth, buttonsHeight)];
-	loginButton.backgroundColor = [UIColor colorWithRed: 1.0 green: 94.0/255.0 blue: 124.0/255.0 alpha: 1.0];
+	loginButton.backgroundColor = [UIColor colorWithAppColorType: AppColorTypeSecondaryTint];
 	loginButton.titleLabel.font = [FontFactory fontWithType: FontTypeStartScreenButtons];
 	[loginButton setTitleColor: [FontFactory fontColorForType: FontTypeStartScreenButtons]
 					  forState: UIControlStateNormal];

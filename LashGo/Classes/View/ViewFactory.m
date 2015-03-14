@@ -217,6 +217,16 @@ static ViewFactory *viewFactory = nil;
 	return button;
 }
 
+- (UILabel *) emptyListLabelWithFrame: (CGRect) frame andText: (NSString *) text {
+	UILabel *emptyListLabel = [[UILabel alloc] initWithFrame: frame];
+	emptyListLabel.alpha = 0;
+	emptyListLabel.font = [FontFactory fontWithType: FontTypeEmptyListLabel];
+	emptyListLabel.text = text;
+	emptyListLabel.textColor = [FontFactory fontColorForType: FontTypeEmptyListLabel];
+	emptyListLabel.textAlignment = NSTextAlignmentCenter;
+	return emptyListLabel;
+}
+
 #pragma mark - Check
 
 - (UIButton *) checkMakeFoto: (id) target action: (SEL) selector {

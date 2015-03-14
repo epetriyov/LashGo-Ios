@@ -12,6 +12,7 @@
 
 #import "AlertViewManager.h"
 #import "Common.h"
+#import "UIColor+CustomColors.h"
 
 @interface Kernel () <UIActionSheetDelegate, AlertViewManagerDelegate> {
 	DataProvider *_dataProvider;
@@ -54,9 +55,9 @@
 		[TaskbarManager sharedManager].delegate = self;
 		
 		if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
-			[UITextField appearance].tintColor = [UIColor colorWithRed: 1.0 green: 94.0/255.0 blue: 124.0/255.0 alpha: 1.0];
+			[UITextField appearance].tintColor = [UIColor colorWithAppColorType: AppColorTypeSecondaryTint];
 		}
-		
+		[UIActivityIndicatorView appearance].color = [UIColor colorWithAppColorType: AppColorTypeSecondaryTint];
 		
 		[[NSNotificationCenter defaultCenter] addObserver: self
 												 selector: @selector(authorizationSuccess)
@@ -80,10 +81,11 @@
 }
 
 - (void) performOnColdWakeActions {
-	if ([AuthorizationManager sharedManager].account != nil) {
+	if (self.pushNotificationManager.lastPayload != nil) {
+		[self.checksManager openCheckCardViewControllerWithFetchForCheckUID: self.pushNotificationManager.lastPayload.checkUID];
+	} else if ([AuthorizationManager sharedManager].account != nil) {
 		[self.checksManager openCheckCardViewController];
 	}
-	[UIActivityIndicatorView appearance].color = [UIColor colorWithRed:253.0/255.0 green: 5.0/255.0 blue: 160.0/255.0 alpha: 1.0];
 }
 
 - (void) startWaiting: (UIViewController *) viewController {

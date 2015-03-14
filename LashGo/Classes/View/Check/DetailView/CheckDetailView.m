@@ -212,8 +212,11 @@
 	if (self.type == CheckDetailTypeOpen) {
 		if (_makePhotoButton == nil) {
 			_makePhotoButton = [[ViewFactory sharedFactory] checkMakeFoto: self action: @selector(makePhotoAction:)];
-			_makePhotoButton.frameX = 199;
-			_makePhotoButton.frameY = 8;
+			CGPoint position = CGPointMake(CGRectGetMidX(_scrollView.frame), CGRectGetMidY(_scrollView.frame));
+			CGFloat radius = CGRectGetWidth(_scrollView.frame) / 2;
+			position.x += radius * cos(7 * M_PI_4);
+			position.y += radius * sin(7 * M_PI_4);
+			_makePhotoButton.center = position;
 			
 			[self addSubview: _makePhotoButton];
 		}
@@ -222,8 +225,11 @@
 	} else if (self.type == CheckDetailTypeVote) {
 		if (_voteButton == nil) {
 			_voteButton = [[ViewFactory sharedFactory] checkVote: self action: @selector(voteAction:)];
-			_voteButton.frameX = 199;
-			_voteButton.frameY = 8;
+			CGPoint position = CGPointMake(CGRectGetMidX(_scrollView.frame), CGRectGetMidY(_scrollView.frame));
+			CGFloat radius = CGRectGetWidth(_scrollView.frame) / 2;
+			position.x += radius * cos(7 * M_PI_4);
+			position.y += radius * sin(7 * M_PI_4);
+			_voteButton.center = position;
 			
 			[self addSubview: _voteButton];
 		}

@@ -157,11 +157,16 @@
 }
 
 - (void) didReceiveRemoteNotificationBeforeStart:(NSDictionary *)userInfo {
-	[self didReceiveRemoteNotification:userInfo];
+	PushNotificationPayload *payload = [self parsePushNotificationPayloadInfo:userInfo];
+	
+	_lastPayload = payload;
 }
 
 - (void) didReceiveRemoteNotificationWhileRunning:(NSDictionary *)userInfo {
-	[self didReceiveRemoteNotification:userInfo];
+	PushNotificationPayload *payload = [self parsePushNotificationPayloadInfo:userInfo];
+	
+	[[AlertViewManager sharedManager] showAlertCheckActivityViewConfirmWithMessage: payload.message
+																		   context: payload];
 }
 
 - (void) didReceiveLocalNotification:(UILocalNotification *)notif {

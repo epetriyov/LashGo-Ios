@@ -11,6 +11,7 @@
 #import "Common.h"
 #import "FontFactory.h"
 #import "ViewFactory.h"
+#import "UIColor+CustomColors.h"
 #import "UIView+CGExtension.h"
 #import "UIImageView+LGImagesExtension.h"
 
@@ -35,7 +36,7 @@
     self = [super initWithFrame: requiredFrame];
     if (self) {
 		_avatarImageView = [[UIImageView alloc] initWithFrame: self.bounds];
-		_avatarImageView.backgroundColor = [UIColor colorWithRed: 0 green: 172.0/255.0 blue: 193.0/255.0 alpha: 1.0];
+		_avatarImageView.backgroundColor = [UIColor colorWithAppColorType: AppColorTypeTint];
 		_avatarImageView.contentMode = UIViewContentModeBottom;
 		_avatarImageView.userInteractionEnabled = YES;
 		_avatarImageView.image = [ViewFactory sharedFactory].userProfileAvatarPlaceholder;

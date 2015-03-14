@@ -240,13 +240,7 @@ static NSString *const kRequestUUID =		@"uuid";
 }
 
 - (void) apnsRegisterWithToken:(NSString *)inputData {
-	NSString *path = nil;
-#ifdef DEBUG
-	path = kAPNSRegisterTestPath;
-#else
-	path = kAPNSRegisterPath;
-#endif
-	[self startConnectionWithPath: path
+	[self startConnectionWithPath: kAPNSRegisterPath
 							 type: URLConnectionTypePOST
 							 body:@{@"token": inputData}
 						  context: nil

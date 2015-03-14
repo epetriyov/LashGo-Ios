@@ -10,6 +10,7 @@
 
 #import "CheckListTableViewCell.h"
 #import "SubscriptionTableViewCell.h"
+#import "SegmentedTextControl.h"
 
 #import "Common.h"
 #import "Kernel.h"
@@ -64,14 +65,12 @@ typedef NS_ENUM(ushort, SearchMode) {
 	
 	float offsetY = self.contentFrame.origin.y;
 	
-	SegmentedTextControl *segmentedControl = [[SegmentedTextControl alloc] initWithButtonsTexts: @[@"SearchPeople".commonLocalizedString,
+	SegmentedTextControl *segmentedControl = [[SegmentedTextControl alloc] initWithFrame: CGRectMake(0, offsetY, CGRectGetWidth(self.view.bounds), 45)
+																			buttonsTexts: @[@"SearchPeople".commonLocalizedString,
 																								   @"SearchChecks".commonLocalizedString]
-															buttonsBgName: @"sc_2button"
-																   bgName: @"sc_bg"];
-	segmentedControl.delegate = self;
-	CGPoint segmentedControlCenter = segmentedControl.center;
-	segmentedControlCenter.y += offsetY;
-	segmentedControl.center = segmentedControlCenter;
+																				  bgName: nil contentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+	[segmentedControl addTarget: self action: @selector(segmentedControlSelectedIndexChanged:)
+			   forControlEvents: UIControlEventValueChanged];
 	[self.view addSubview: segmentedControl];
 	_segmentedControl = segmentedControl;
 	
@@ -148,7 +147,7 @@ typedef NS_ENUM(ushort, SearchMode) {
 
 #pragma mark - SegmentedTextControlDelegate implementation
 
-- (void) segmentedControl: (SegmentedTextControl *) segmentedControl selectedIndexChangedTo: (ushort) selectedIndex {
+- (void) segmentedControlSelectedIndexChanged: (SegmentedTextControl *) segmentedControl {
 	[self reloadTableData];
 }
 

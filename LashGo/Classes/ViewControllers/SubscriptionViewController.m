@@ -20,6 +20,7 @@ static NSString *const kObservationKeyPath = @"isSubscribed";
 
 @interface SubscriptionViewController () <UITableViewDataSource, UITableViewDelegate, SubscriptionTableViewCellDelegate> {
 	UITableView __weak *_tableView;
+	UILabel __weak *_emptyListLabel;
 	NSMutableSet *_currentObservationSet;
 }
 
@@ -33,6 +34,7 @@ static NSString *const kObservationKeyPath = @"isSubscribed";
 	[kernel stopWaiting: self];
 	[_tableView reloadData];
 	self.waitViewHidden = YES;
+	_emptyListLabel.alpha = [self.subscriptions count] <= 0 ? 1 : 0;
 }
 
 - (instancetype) initWithKernel:(Kernel *)theKernel {
@@ -63,20 +65,25 @@ static NSString *const kObservationKeyPath = @"isSubscribed";
 	
 	_tableView = tableView;
 	
+	NSString *emptyLabelText = nil;
 	switch (self.mode) {
 		case SubscriptionViewControllerModeCheckUsers:
+			emptyLabelText = @"CheckUsersEmptyLabel".commonLocalizedString;
 			_titleBarView.titleLabel.text = @"SubscriptionViewControllerCheckUsersTitle".commonLocalizedString;
 			[kernel.checksManager getUsersForCheck: self.context];
 			break;
 		case SubscriptionViewControllerModeUserSubscribers:
+			emptyLabelText = @"SubscribersEmptyLabel".commonLocalizedString;
 			_titleBarView.titleLabel.text = @"SubscriptionViewControllerUserSubscribersTitle".commonLocalizedString;
 			[kernel.userManager getSubscribersForUser: self.context];
 			break;
 		case SubscriptionViewControllerModeUserSubscribtions:
+			emptyLabelText = @"SubscribtionsEmptyLabel".commonLocalizedString;
 			_titleBarView.titleLabel.text = @"SubscriptionViewControllerUserSubscribtionsTitle".commonLocalizedString;
 			[kernel.userManager getSubscribtionsForUser: self.context];
 			break;
 		case SubscriptionViewControllerModePhotoVotes:
+			emptyLabelText = @"VotesEmptyLabel".commonLocalizedString;
 			_titleBarView.titleLabel.text = @"SubscriptionViewControllerPhotoVotesTitle".commonLocalizedString;
 			[kernel.checksManager getPhotoVotesForPhoto: self.context];
 			break;
@@ -84,6 +91,11 @@ static NSString *const kObservationKeyPath = @"isSubscribed";
 			break;
 	}
 	self.waitViewHidden = NO;
+	
+	UILabel *emptyListLabel = [[ViewFactory sharedFactory] emptyListLabelWithFrame: contentFrame
+																		   andText: emptyLabelText];
+	[self.view addSubview:emptyListLabel];
+	_emptyListLabel = emptyListLabel;
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object

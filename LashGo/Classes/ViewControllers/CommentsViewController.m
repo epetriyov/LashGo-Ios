@@ -16,6 +16,7 @@
 
 @interface CommentsViewController () <UITableViewDataSource, UITableViewDelegate> {
 	UITableView __weak *_tableView;
+	UILabel __weak *_emptyListLabel;
 }
 
 @end
@@ -27,6 +28,8 @@
 	
 	[_tableView reloadData];
 	self.waitViewHidden = YES;
+	
+	_emptyListLabel.alpha = [self.comments count] <= 0 ? 1 : 0;
 }
 
 - (void	) loadView {
@@ -47,6 +50,11 @@
 	[self.view addSubview: tableView];
 	
 	_tableView = tableView;
+	
+	UILabel *emptyListLabel = [[ViewFactory sharedFactory] emptyListLabelWithFrame: contentFrame
+																		  andText: @"CommentsEmptyLabel".commonLocalizedString];
+	[self.view addSubview:emptyListLabel];
+	_emptyListLabel = emptyListLabel;
 	
 	[kernel.checksManager getCommentsForPhoto: self.photo];
 	self.waitViewHidden = NO;

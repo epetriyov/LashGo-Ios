@@ -17,6 +17,15 @@
 "CHECK_STARTED" = "Начался новый чек %@";
 "VOTE_STARTED" = "Началось голосование %@";
 
+//Empty list labels
+"CheckUsersEmptyLabel" = "Нет пользователей";
+"CommentsEmptyLabel" = "Нет комментариев";
+"EventsEmptyLabel" = "Нет уведомлений";
+"NewsEmptyLabel" = "Нет новостей";
+"SubscribersEmptyLabel" = "Нет подписчиков";
+"SubscribtionsEmptyLabel" = "Нет подписок";
+"VotesEmptyLabel" = "Нет проголосовавших";
+
 //PullToRefresh
 "PullToRefreshPullToRefreshText" = "потяните для обновления...";
 "PullToRefreshPullToFetchMoreText" = "потяните для подгрузки...";
@@ -95,9 +104,9 @@
 "ProfileViewControllerCountersCheckFew" = "чека";
 "ProfileViewControllerCountersCheckMany" = "чеков";
 
-"ProfileViewControllerCountersCommentOne" = "коментарий";
-"ProfileViewControllerCountersCommentFew" = "коментария";
-"ProfileViewControllerCountersCommentMany" = "коментариев";
+"ProfileViewControllerCountersCommentOne" = "комментарий";
+"ProfileViewControllerCountersCommentFew" = "комментария";
+"ProfileViewControllerCountersCommentMany" = "комментариев";
 
 "ProfileViewControllerCountersLikeOne" = "лайк";
 "ProfileViewControllerCountersLikeFew" = "лайка";
