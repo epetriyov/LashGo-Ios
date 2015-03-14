@@ -1,5 +1,6 @@
 #import "TaskbarButton.h"
 #import "FontFactory.h"
+#import "UIColor+CustomColors.h"
 
 @implementation TaskbarButton
 
@@ -55,6 +56,8 @@
 		if (title != nil) {
 			self.titleLabel.font = [FontFactory fontWithType: FontTypeTaskbarButtons];
 			[self setTitleColor: [FontFactory fontColorForType: FontTypeTaskbarButtons] forState: UIControlStateNormal];
+			[self setTitleColor: [UIColor colorWithAppColorType: AppColorTypeSecondaryTint]
+					   forState: UIControlStateHighlighted];
 			[self setTitle: title forState: UIControlStateNormal];
 			
 			self.titleEdgeInsets = UIEdgeInsetsMake(34, - self.imageView.image.size.width, 0, 0);

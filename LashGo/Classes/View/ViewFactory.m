@@ -23,7 +23,7 @@ static ViewFactory *viewFactory = nil;
 @dynamic iconAbout, iconEmail, iconLocation, iconName, iconPassword;
 @dynamic lgLogoImage;
 @dynamic loginViewControllerBgImage;
-@dynamic startViewControllerBgImage, startViewControllerFrameImage, startViewControllerGradientImage, statusBarPreferredColor;
+@dynamic startViewControllerBgImage, startViewControllerFrameImage, statusBarPreferredColor;
 @dynamic subscribeCellButton;
 @dynamic timerCheckOpenImage;
 @dynamic taskbarBackgroundView, taskbarLightBackgroundView;
@@ -90,15 +90,21 @@ static ViewFactory *viewFactory = nil;
 }
 
 - (UIImage *) startViewControllerBgImage {
-	return [self getImageWithName: @"photo_intro"];
+	NSMutableString *imageName = [NSMutableString stringWithString: @"LaunchImage"];
+	float screenHeight = CGRectGetHeight([UIScreen mainScreen].bounds);
+	if (screenHeight > 667) {
+		[imageName appendString: @"-800-Portrait-736h"];
+	} else if (screenHeight > 568) {
+		[imageName appendString: @"-800-667h"];
+	} else if (screenHeight > 480) {
+		[imageName appendString: @"-568h"];
+	}
+	return [UIImage imageNamed: imageName];
+//	return [self getImageWithName: imageName];
 }
 
 - (UIImage *) startViewControllerFrameImage {
 	return [self getImageWithName: @"frame"];
-}
-
-- (UIImage *) startViewControllerGradientImage {
-	return [self getImageWithName: @"gradient_intro"];
 }
 
 - (UIColor *) statusBarPreferredColor {

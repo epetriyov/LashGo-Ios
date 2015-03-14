@@ -28,12 +28,8 @@
 	UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].startViewControllerBgImage];
 	[self.view insertSubview: backgroundImageView atIndex: 0];
 	
-	UIImageView *gradientImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].startViewControllerGradientImage];
-	gradientImageView.frameWidth = backgroundImageView.frame.size.width;
-	[backgroundImageView addSubview: gradientImageView];
-	
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].lgLogoImage];
-	logoImageView.frameX = 175;
+	logoImageView.frameX = CGRectGetWidth(self.view.bounds) - CGRectGetWidth(logoImageView.bounds) - 19;
 	logoImageView.frameY = 57;
 	[self.view addSubview: logoImageView];
 	
