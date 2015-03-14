@@ -91,7 +91,7 @@
 	
 	UIButton *recoverButton = [[ViewFactory sharedFactory] loginButtonWithTarget: self action: @selector(recoverAction:)];
 	[recoverButton setTitle: @"RecoverViewControllerRecoverBtnTitle".commonLocalizedString forState: UIControlStateNormal];
-	recoverButton.frameY = offsetY;
+	recoverButton.frame = CGRectMake(10, offsetY, CGRectGetWidth(self.view.bounds) - 20, 44);
 	[recoverButton addTarget: self action: @selector(recoverAction:) forControlEvents: UIControlEventTouchUpInside];
 	[self.view addSubview: recoverButton];
 }

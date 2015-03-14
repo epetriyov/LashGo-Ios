@@ -10,6 +10,8 @@ typedef NS_ENUM(NSInteger, FontType) {
 	FontTypeCommentsCellTitle,
 	FontTypeCommentsCellDescription,
 	FontTypeCommentsCellDate,
+	FontTypeCommentsInputField,
+	FontTypeCommentsInputBtn,
 	FontTypeCountersTitle,
 	FontTypeCountersDarkTitle,
 	FontTypeEmptyListLabel,

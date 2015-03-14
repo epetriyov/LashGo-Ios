@@ -93,6 +93,10 @@
 		84A0DB1519D4457F009AD6DB /* RecoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0DB1419D4457F009AD6DB /* RecoverViewController.m */; };
 		84A0DB1F19D45A87009AD6DB /* VotePanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0DB1E19D45A87009AD6DB /* VotePanelView.m */; };
 		84A2E89A1A6BECBA001BFBD8 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2E8991A6BECBA001BFBD8 /* LicenseViewController.m */; };
+		84E52CB11AB47A5C002CBA35 /* CommentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB01AB47A5C002CBA35 /* CommentsTableView.m */; };
+		84E52CB41AB47E60002CBA35 /* CommentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB31AB47E60002CBA35 /* CommentInputView.m */; };
+		84E52CB71AB48F2E002CBA35 /* LGCommentSendAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB61AB48F2E002CBA35 /* LGCommentSendAction.m */; };
+		84E52CBC1AB49BDE002CBA35 /* NSObject+KeyboardManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CBA1AB49BDE002CBA35 /* NSObject+KeyboardManagement.m */; };
 		84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6240A1998F4CD003BC2F1 /* Storage.m */; };
 		84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E624101998FBAD003BC2F1 /* ChecksManager.m */; };
 		84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6D9B2196C226A0021D417 /* CheckCardViewController.m */; };
@@ -347,6 +351,15 @@
 		84A0DB1E19D45A87009AD6DB /* VotePanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotePanelView.m; sourceTree = "<group>"; };
 		84A2E8981A6BECBA001BFBD8 /* LicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseViewController.h; sourceTree = "<group>"; };
 		84A2E8991A6BECBA001BFBD8 /* LicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseViewController.m; sourceTree = "<group>"; };
+		84E52CAF1AB47A5C002CBA35 /* CommentsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableView.h; sourceTree = "<group>"; };
+		84E52CB01AB47A5C002CBA35 /* CommentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableView.m; sourceTree = "<group>"; };
+		84E52CB21AB47E60002CBA35 /* CommentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentInputView.h; sourceTree = "<group>"; };
+		84E52CB31AB47E60002CBA35 /* CommentInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentInputView.m; sourceTree = "<group>"; };
+		84E52CB51AB48F2E002CBA35 /* LGCommentSendAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCommentSendAction.h; sourceTree = "<group>"; };
+		84E52CB61AB48F2E002CBA35 /* LGCommentSendAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCommentSendAction.m; sourceTree = "<group>"; };
+		84E52CB91AB49BDE002CBA35 /* NSObject+KeyboardManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KeyboardManagement.h"; sourceTree = "<group>"; };
+		84E52CBA1AB49BDE002CBA35 /* NSObject+KeyboardManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KeyboardManagement.m"; sourceTree = "<group>"; };
+		84E52CBB1AB49BDE002CBA35 /* ScrollableEditableContentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollableEditableContentProtocol.h; sourceTree = "<group>"; };
 		84E624091998F4CD003BC2F1 /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
 		84E6240A1998F4CD003BC2F1 /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
 		84E6240F1998FBAD003BC2F1 /* ChecksManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChecksManager.h; sourceTree = "<group>"; };
@@ -481,6 +494,7 @@
 			children = (
 				84F8E89A199A2DB00054C9F8 /* AlertViewManager */,
 				84001FED1949AD8B004D9D7A /* Authorization */,
+				84E52CB81AB49BDE002CBA35 /* KeyboardManagement */,
 				84E6FCC01A3C56300005DAD6 /* PullToRefresh */,
 				849DD0C6199CBF9300DC86F6 /* SegmentedControl */,
 			);
@@ -644,6 +658,7 @@
 			isa = PBXGroup;
 			children = (
 				84FEE17D19E024450067C264 /* Cells */,
+				84E52CA71AB47A39002CBA35 /* Comments */,
 				84F8E8A0199B5C580054C9F8 /* Check */,
 				845A210419F268E800AF9D24 /* Profile */,
 				841C623819A397ED00BAEDBB /* TaskBar */,
@@ -916,6 +931,27 @@
 			path = Vote;
 			sourceTree = "<group>";
 		};
+		84E52CA71AB47A39002CBA35 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				84E52CAF1AB47A5C002CBA35 /* CommentsTableView.h */,
+				84E52CB01AB47A5C002CBA35 /* CommentsTableView.m */,
+				84E52CB21AB47E60002CBA35 /* CommentInputView.h */,
+				84E52CB31AB47E60002CBA35 /* CommentInputView.m */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		84E52CB81AB49BDE002CBA35 /* KeyboardManagement */ = {
+			isa = PBXGroup;
+			children = (
+				84E52CB91AB49BDE002CBA35 /* NSObject+KeyboardManagement.h */,
+				84E52CBA1AB49BDE002CBA35 /* NSObject+KeyboardManagement.m */,
+				84E52CBB1AB49BDE002CBA35 /* ScrollableEditableContentProtocol.h */,
+			);
+			path = KeyboardManagement;
+			sourceTree = "<group>";
+		};
 		84E6240E1998FB28003BC2F1 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -962,6 +998,8 @@
 			children = (
 				84E6FCD21A3C85EE0005DAD6 /* LGComment.h */,
 				84E6FCD31A3C85EE0005DAD6 /* LGComment.m */,
+				84E52CB51AB48F2E002CBA35 /* LGCommentSendAction.h */,
+				84E52CB61AB48F2E002CBA35 /* LGCommentSendAction.m */,
 			);
 			path = Comments;
 			sourceTree = "<group>";
@@ -1336,6 +1374,7 @@
 				840625611930BDF80067C1CA /* LGContent.m in Sources */,
 				840625701930CE850067C1CA /* LGRegisterInfo.m in Sources */,
 				84FD8959194C44E7001139DF /* OAuthCore.m in Sources */,
+				84E52CB41AB47E60002CBA35 /* CommentInputView.m in Sources */,
 				841BBF2D19FFDC4B003A1FDC /* LGVotePhoto.m in Sources */,
 				84E6FCD71A3C86870005DAD6 /* ContextualArrayResult.m in Sources */,
 				848AB3931A46C164004E95AB /* NewsViewController.m in Sources */,
@@ -1375,6 +1414,7 @@
 				8405D03D1A2A050300A1C512 /* SubscriptionTableViewCell.m in Sources */,
 				84FEE18319E02E320067C264 /* ProfileWelcomeViewController.m in Sources */,
 				849DD0C3199C9D5800DC86F6 /* CheckListTableViewCell.m in Sources */,
+				84E52CB71AB48F2E002CBA35 /* LGCommentSendAction.m in Sources */,
 				8491557A1907FC78008D9120 /* Common.m in Sources */,
 				84A0DB1519D4457F009AD6DB /* RecoverViewController.m in Sources */,
 				84EEE4B619C9C42C009F83C6 /* CheckDrawingsDetailView.m in Sources */,
@@ -1386,6 +1426,7 @@
 				84062512193088F30067C1CA /* DownloadableItem.m in Sources */,
 				845D858B19029EB0004E10AB /* main.m in Sources */,
 				84F8E89D199A2DB00054C9F8 /* AlertViewManager.m in Sources */,
+				84E52CBC1AB49BDE002CBA35 /* NSObject+KeyboardManagement.m in Sources */,
 				8409D07F19C4631400DFFEC6 /* UserManager.m in Sources */,
 				84EEE4B919C9D1CB009F83C6 /* VoteViewController.m in Sources */,
 				84EABECA1A34600C0031BF07 /* LGSubscriptionsResult.m in Sources */,
@@ -1403,6 +1444,7 @@
 				8406255B1930B83B0067C1CA /* LGUser.m in Sources */,
 				842701EB1AB43B5000D74ECC /* SegmentedTextControlButtonFactory.m in Sources */,
 				84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */,
+				84E52CB11AB47A5C002CBA35 /* CommentsTableView.m in Sources */,
 				84083A631A937DB2006C715E /* ProfileEditFieldData.m in Sources */,
 				84FD8957194C44E7001139DF /* NSData+Base64.m in Sources */,
 				84EEE4B219C9B21F009F83C6 /* CheckCardCountersPanelView.m in Sources */,

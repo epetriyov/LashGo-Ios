@@ -10,6 +10,7 @@
 
 #import "ContextualArrayResult.h"
 //#import "LGCheck.h"
+#import "LGCommentSendAction.h"
 #import "LGLoginInfo.h"
 #import "LGRecoverInfo.h"
 //#import "LGRegisterInfo.h"
@@ -30,7 +31,7 @@
 - (void) checksSearch: (NSString *) inputData;
 - (void) checkFor: (LGCheck *) inputData;
 - (void) checkCurrent;
-- (void) checkAddCommentFor: (int64_t) checkID;//Not finished
+- (void) checkAddCommentFor: (LGCommentSendAction *) inputData;
 - (void) checkCommentsFor: (int64_t) checkID;
 - (void) checkAddPhoto: (LGCheck *) inputData;
 - (void) checkPhotosFor: (int64_t) checkID;
@@ -44,10 +45,10 @@
 
 //- (void) photo: (NSString *) name;
 - (void) photoCommentsFor: (LGPhoto *) inputData;
+- (void) photoAddCommentFor: (LGCommentSendAction *) inputData;
 - (void) photoComplainFor:(LGPhoto *)inputData;
 - (void) photoCountersFor: (LGPhoto *) inputData;
 - (void) photoVotesFor: (LGPhoto *) inputData;
-//- (void) photoAddCommentFor: (int64_t) photoID;
 - (void) photoVote: (LGVoteAction *) inputData;
 
 - (void) usersSearch: (NSString *) inputData;

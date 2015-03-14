@@ -11,6 +11,7 @@
 @class ViewControllersManager;
 
 @class LGCheck;
+@class LGCommentSendAction;
 @class LGPhoto;
 @class LGVoteAction;
 
@@ -34,6 +35,7 @@
 - (void) getVotePhotosForCheck: (LGCheck *) check;
 - (void) stopWaitingVotePhotos;
 
+- (void) sendCommentWith: (LGCommentSendAction *) commentAction;
 - (void) voteWith: (LGVoteAction *) voteAction;
 
 - (void) openCheckCardViewController;

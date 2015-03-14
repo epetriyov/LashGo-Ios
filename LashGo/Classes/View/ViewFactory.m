@@ -1,6 +1,8 @@
 #import "ViewFactory.h"
+
 #import "FontFactory.h"
 #import "Common.h"
+#import "UIColor+CustomColors.h"
 
 static ViewFactory *viewFactory = nil;
 
@@ -346,10 +348,24 @@ static ViewFactory *viewFactory = nil;
 #pragma mark - Login
 
 - (UIButton *) loginButtonWithTarget: (id) target action: (SEL) selector {
-	UIButton *button = [self buttonWithBGImageName: @"button_go" target: target action: selector];
+	UIButton *button = [[UIButton alloc] init];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	
+	button.clipsToBounds = YES;
+	button.layer.cornerRadius = 5;
 	button.titleLabel.font = [FontFactory fontWithType: FontTypeLoginActionBtnTitle];
 	[button setTitle: @"LoginViewControllerLoginBtnTitle".commonLocalizedString forState: UIControlStateNormal];
 	[button setTitleColor: [FontFactory fontColorForType: FontTypeLoginActionBtnTitle] forState: UIControlStateNormal];
+	
+	CGRect rect = CGRectMake(0, 0, 1, 1);
+	UIGraphicsBeginImageContext(rect.size);
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	CGContextSetFillColorWithColor(context, [UIColor colorWithAppColorType: AppColorTypeSecondaryTint].CGColor);
+	CGContextFillRect(context, rect);
+	UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	
+	[button setBackgroundImage: image forState: UIControlStateNormal];
 	
 	return button;
 }

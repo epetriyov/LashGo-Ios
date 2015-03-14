@@ -38,6 +38,7 @@
 		case FontTypeVotePager:					return [UIFont fontWithName: kDefaultFont size: 15];
 		case FontTypeLoginWelcomeText:			return [UIFont fontWithName: kDefaultFontLight size: 24];
 		case FontTypeTaskbarButtons:			return [UIFont fontWithName: kDefaultFont size: 10];
+		case FontTypeCommentsInputField:
 		case FontTypeTitleBarButtons:			return [UIFont fontWithName: kDefaultFont size: 17];
 		case FontTypeTitleBarLogoDescription:	return [UIFont fontWithName: kDefaultFontCondensedBold size: 9];
 		case FontTypeCheckListHeaderTitle:
@@ -48,6 +49,7 @@
 		case FontTypeEmptyListLabel:
 		case FontTypeStartScreenButtons:		return [UIFont fontWithName: kDefaultFontMedium size: 12];
 		case FontTypeSubscriptionTitle:			return [UIFont fontWithName: kDefaultFont size: 16];
+		case FontTypeCommentsInputBtn:
 		case FontTypeTitleBarTitle:				return [UIFont fontWithName: kDefaultFontMedium size: 17];
 		case FontTypeVoteCheckTitle:			return [UIFont fontWithName: kDefaultFontMedium size: 15];
 		case FontTypeVoteTimer:					return [UIFont fontWithName: kDefaultFontMedium size: 14];
@@ -63,6 +65,7 @@
 		case FontTypeCheckCardTitle:		return [UIColor colorWithWhite: 1.0 alpha: 204.0/255.0];
 		case FontTypeCommentsCellDescription:
 		case FontTypeCountersDarkTitle:		return [UIColor colorWithWhite: 114.0/255.0 alpha: 1.0];//same as B2 0(178)
+		case FontTypeCommentsInputBtn:
 		case FontTypeTaskbarButtons:		return [UIColor colorWithRed:141.0/255.0
 															 green:144.0/255.0
 															  blue:144.0/255.0 alpha:1.0];

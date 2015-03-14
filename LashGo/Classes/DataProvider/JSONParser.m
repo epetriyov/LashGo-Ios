@@ -63,7 +63,7 @@
 			} else {
 				msgCode = @"ErrorServerErrorParsingTitle".commonLocalizedString;
 				code = (int)connection.response.statusCode;
-				errorMsg = @{NSLocalizedDescriptionKey: [NSHTTPURLResponse localizedStringForStatusCode: code]};
+				errorMsg = @{NSLocalizedDescriptionKey: @"ErrorServerErrorParsingMessage".commonLocalizedString};
 			}
 		}
 		@catch (NSException *exception) {

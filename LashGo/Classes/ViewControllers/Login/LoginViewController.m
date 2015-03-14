@@ -171,17 +171,18 @@
 	
 	offsetY = CGRectGetMaxY(privacyPolicyButton.frame) - 5;
 	
+	float buttonsGaps = 10;
+	float buttonsWidth = CGRectGetWidth(self.view.bounds) / 2 - buttonsGaps * 2;
+	float buttonsHeight = 44;
 	
 	UIButton *loginButton = [[ViewFactory sharedFactory] loginButtonWithTarget: self action: @selector(login:)];
-	loginButton.frameY = offsetY;
-	loginButton.frameWidth = CGRectGetMidX(self.view.bounds);
+	loginButton.frame = CGRectMake(buttonsGaps, offsetY, buttonsWidth, buttonsHeight);
 	[self.view addSubview: loginButton];
 	
 	UIButton *registerButton = [[ViewFactory sharedFactory] loginButtonWithTarget: self
 																		   action: @selector(registration:)];
-	registerButton.frameX = CGRectGetMidX(self.view.bounds);
-	registerButton.frameY = offsetY;
-	registerButton.frameWidth = CGRectGetMidX(self.view.bounds);
+	registerButton.frame = CGRectMake(CGRectGetMaxX(loginButton.frame) + buttonsGaps * 2, offsetY,
+									  buttonsWidth, buttonsHeight);
 	[registerButton setTitle: @"LoginViewControllerRegisterBtnTitle".commonLocalizedString
 					forState: UIControlStateNormal];
 	[self.view addSubview: registerButton];

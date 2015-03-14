@@ -10,6 +10,7 @@
 
 #import "Common.h"
 #import "Kernel.h"
+#import "NSObject+KeyboardManagement.h"
 #import "UIColor+CustomColors.h"
 #import "UIImageView+LGImagesExtension.h"
 #import "ViewFactory.h"
@@ -37,6 +38,14 @@ typedef NS_ENUM(ushort, ProfileEditFieldDataType) {
 @end
 
 @implementation ProfileEditViewController
+
+- (UIScrollView *) contentScrollView {
+	return _contentTableView;
+}
+
+- (UIView *) activeFirstResponder {
+	return _activeResponder;
+}
 
 - (CGRect) waitViewFrame {
 	return self.view.frame;
@@ -225,54 +234,6 @@ typedef NS_ENUM(ushort, ProfileEditFieldDataType) {
 - (void) tableCellDidEndEditing:(ProfileEditTableViewCell *)cell {
 	_activeResponder = nil;
 	_contentTableView.scrollEnabled = NO;
-}
-
-#pragma mark - Keyboard notifications
-
-// Called when the UIKeyboardDidShowNotification is sent.
-- (void)keyboardWillBeShown:(NSNotification*)aNotification
-{
-	NSDictionary* info = [aNotification userInfo];
-	CGRect kbRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-	
-	CGRect intersectionRect = CGRectIntersection(_contentTableView.frame, kbRect);
- 
-	UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, intersectionRect.size.height, 0.0);
-	_contentTableView.contentInset = contentInsets;
-	_contentTableView.scrollIndicatorInsets = contentInsets;
- 
-	// If active text field is hidden by keyboard, scroll it so it's visible
-	CGRect activeResponderRect = [_contentTableView convertRect:_activeResponder.frame toView: nil];
-	if (CGRectIntersectsRect(activeResponderRect, intersectionRect)) {
-		[_contentTableView scrollRectToVisible: _activeResponder.frame animated:YES];
-	}
-}
-
-//// Called when the UIKeyboardDidShowNotification is sent.
-//- (void)keyboardWasShown:(NSNotification*)aNotification
-//{
-//	NSDictionary* info = [aNotification userInfo];
-//	CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-// 
-//	UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-//	_contentTableView.contentInset = contentInsets;
-//	_contentTableView.scrollIndicatorInsets = contentInsets;
-// 
-//	// If active text field is hidden by keyboard, scroll it so it's visible
-//	// Your app might not need or want this behavior.
-//	CGRect aRect = self.view.frame;
-//	aRect.size.height -= kbSize.height;
-//	if (!CGRectContainsPoint(aRect, activeField.frame.origin) ) {
-//		[self.scrollView scrollRectToVisible:activeField.frame animated:YES];
-//	}
-//}
-
-// Called when the UIKeyboardWillHideNotification is sent
-- (void)keyboardWillBeHidden:(NSNotification*)aNotification
-{
-	UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-	_contentTableView.contentInset = contentInsets;
-	_contentTableView.scrollIndicatorInsets = contentInsets;
 }
 
 @end

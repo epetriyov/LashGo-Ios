@@ -349,14 +349,15 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark -
 
 - (void) didCheckAddComment: (URLConnection *) connection {
-	
+	LGCommentSendAction *commentAction = connection.context;
+	[self checkCommentsFor: commentAction.checkUID];
 }
 
-- (void) checkAddCommentFor: (int64_t) checkID {
-	[self startConnectionWithPath: [NSString stringWithFormat: kChecksCommentsPath, checkID]
+- (void) checkAddCommentFor: (LGCommentSendAction *) inputData {
+	[self startConnectionWithPath: [NSString stringWithFormat: kChecksCommentsPath, inputData.checkUID]
 							 type: URLConnectionTypePOST
-							 body: nil
-						  context: nil
+							 body: [inputData JSONObject]
+						  context: inputData
 					allowMultiple: NO
 				   finishSelector: @selector(didCheckAddComment:) failSelector: @selector(didFailGetImportantData:)];
 }
@@ -543,6 +544,22 @@ static NSString *const kRequestUUID =		@"uuid";
 						  context: inputData
 					allowMultiple: NO
 				   finishSelector: @selector(didGetPhotoComments:) failSelector: @selector(didGetPhotoComments:)];
+}
+
+- (void) didPhotoAddComment: (URLConnection *) connection {
+	LGCommentSendAction *commentAction = connection.context;
+	if (commentAction.photo != nil) {
+		[self photoCommentsFor: commentAction.photo];
+	}
+}
+
+- (void) photoAddCommentFor: (LGCommentSendAction *) inputData {
+	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosCommentsPath, inputData.photo.uid]
+							 type: URLConnectionTypePOST
+							 body: [inputData JSONObject]
+						  context: inputData
+					allowMultiple: NO
+				   finishSelector: @selector(didPhotoAddComment:) failSelector: @selector(didFailGetImportantData:)];
 }
 
 #pragma mark -

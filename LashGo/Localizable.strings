@@ -55,6 +55,8 @@
 
 //CommentsViewController
 "CommentsViewControllerTitle" = "Комментарии";
+"CommentsVCInputBtnTitle" = "Отпр.";
+"CommentsVCInputPlaceholder" = "Ваш комментарий";
 
 //EventsViewController
 "EventsViewControllerTitle" = "Уведомления";

@@ -11,17 +11,29 @@
 #import "CommentTableViewCell.h"
 #import "Common.h"
 #import "Kernel.h"
+#import "NSObject+KeyboardManagement.h"
 #import "UIImageView+LGImagesExtension.h"
 #import "ViewFactory.h"
+
+#import "CommentsTableView.h"
 
 @interface CommentsViewController () <UITableViewDataSource, UITableViewDelegate> {
 	UITableView __weak *_tableView;
 	UILabel __weak *_emptyListLabel;
+	CommentInputView __weak *_inputView;
 }
 
 @end
 
 @implementation CommentsViewController
+
+- (UIScrollView *) contentScrollView {
+	return _tableView;
+}
+
+- (UIView *) activeFirstResponder {
+	return nil;
+}
 
 - (void) setComments:(NSArray *)comments {
 	_comments = comments;
@@ -39,15 +51,18 @@
 	
 	CGRect contentFrame = self.contentFrame;
 	
-	UITableView *tableView = [[UITableView alloc] initWithFrame: contentFrame style: UITableViewStylePlain];
+	UITableView *tableView = [[CommentsTableView alloc] initWithFrame: contentFrame style: UITableViewStylePlain];
 	//	tableView.backgroundColor = [UIColor colorWithRed: 0.92 green: 0.925 blue: 0.93 alpha: 1.0];
 	//	tableView.contentInset = UIEdgeInsetsMake(0, 0, tableFrame.size.height - contentFrame.size.height, 0);
 	tableView.dataSource = self;
 	tableView.delegate = self;
-	tableView.tableFooterView = [[UIView alloc] init];
-	tableView.rowHeight = 60;
-	tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	[self.view addSubview: tableView];
+	
+	_inputView = (CommentInputView *)tableView.inputAccessoryView;
+	[_inputView.actionButton addTarget: self action: @selector(sendCommentAction:)
+					  forControlEvents: UIControlEventTouchUpInside];
+	
+	[tableView becomeFirstResponder];
 	
 	_tableView = tableView;
 	
@@ -58,6 +73,33 @@
 	
 	[kernel.checksManager getCommentsForPhoto: self.photo];
 	self.waitViewHidden = NO;
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+	[super viewWillAppear: animated];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(keyboardWillBeShown:)
+												 name:UIKeyboardWillShowNotification object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(keyboardWillBeHidden:)
+												 name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void) viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear: animated];
+	
+	[[NSNotificationCenter defaultCenter] removeObserver: self name: UIKeyboardWillShowNotification object: nil];
+	[[NSNotificationCenter defaultCenter] removeObserver: self name: UIKeyboardWillHideNotification object: nil];
+}
+
+#pragma mark - Methods
+
+- (void) sendCommentAction: (id) sender {
+	LGCommentSendAction *comment = [[LGCommentSendAction alloc] init];
+	comment.photo = self.photo;
+	comment.comment = _inputView.textField.text;
+	[kernel.checksManager sendCommentWith: comment];
 }
 
 #pragma mark - UITableViewDelegate implementation
