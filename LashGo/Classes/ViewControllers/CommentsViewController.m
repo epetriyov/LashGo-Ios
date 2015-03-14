@@ -96,10 +96,13 @@
 #pragma mark - Methods
 
 - (void) sendCommentAction: (id) sender {
-	LGCommentSendAction *comment = [[LGCommentSendAction alloc] init];
-	comment.photo = self.photo;
-	comment.comment = _inputView.textField.text;
-	[kernel.checksManager sendCommentWith: comment];
+	LGComment *comment = [[LGComment alloc] init];
+	comment.content = _inputView.textField.text;
+	
+	LGCommentAction *commentAction = [[LGCommentAction alloc] init];
+	commentAction.context = self.photo;
+	commentAction.comment = comment;
+	[kernel.checksManager sendCommentWith: commentAction];
 }
 
 #pragma mark - UITableViewDelegate implementation
@@ -144,6 +147,30 @@
 										 placeholder: [ViewFactory sharedFactory].titleBarAvatarPlaceholder];
 	
 	return cell;
+}
+
+#pragma mark - Methods for edit
+
+- (NSString *) tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return @"Delete".commonLocalizedString;
+}
+
+- (BOOL) tableView: (UITableView *) theTableView canEditRowAtIndexPath: (NSIndexPath *) indexPath {
+	LGComment *item = self.comments[indexPath.row];
+	LGUser *currentUser = [AuthorizationManager sharedManager].account.userInfo;
+	
+	return currentUser != nil && item.user.uid == [AuthorizationManager sharedManager].account.userInfo.uid;
+}
+
+- (void) tableView: (UITableView *) theTableView commitEditingStyle: (UITableViewCellEditingStyle) editingStyle forRowAtIndexPath: (NSIndexPath *) indexPath {
+	if (editingStyle == UITableViewCellEditingStyleDelete) {
+		LGComment *item = self.comments[indexPath.row];
+		
+		LGCommentAction *commentAction = [[LGCommentAction alloc] init];
+		commentAction.context = self.photo;
+		commentAction.comment = item;
+		[kernel.checksManager removeCommentWith: commentAction];
+	}
 }
 
 @end

@@ -349,12 +349,14 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark -
 
 - (void) didCheckAddComment: (URLConnection *) connection {
-	LGCommentSendAction *commentAction = connection.context;
-	[self checkCommentsFor: commentAction.checkUID];
+	LGCommentAction *commentAction = connection.context;
+	LGCheck *check = commentAction.context;
+	[self checkCommentsFor: check.uid];
 }
 
-- (void) checkAddCommentFor: (LGCommentSendAction *) inputData {
-	[self startConnectionWithPath: [NSString stringWithFormat: kChecksCommentsPath, inputData.checkUID]
+- (void) checkAddCommentFor: (LGCommentAction *) inputData {
+	LGCheck *check = inputData.context;
+	[self startConnectionWithPath: [NSString stringWithFormat: kChecksCommentsPath, check.uid]
 							 type: URLConnectionTypePOST
 							 body: [inputData JSONObject]
 						  context: inputData
@@ -473,14 +475,17 @@ static NSString *const kRequestUUID =		@"uuid";
 #pragma mark - Comment
 
 - (void) didCommentRemove: (URLConnection *) connection {
-	
+	LGCommentAction *commentAction = connection.context;
+	if ([commentAction.context isKindOfClass: [LGPhoto class]] == YES) {
+		[self photoCommentsFor: commentAction.context];
+	}
 }
 
-- (void) commentRemove: (int64_t) commentID {
-	[self startConnectionWithPath: [NSString stringWithFormat: kCommentsPath, commentID]
+- (void) commentRemove: (LGCommentAction *) inputData {
+	[self startConnectionWithPath: [NSString stringWithFormat: kCommentsPath, inputData.comment.uid]
 							 type: URLConnectionTypeDELETE
 							 body: nil
-						  context: nil
+						  context: inputData
 					allowMultiple: NO
 				   finishSelector: @selector(didCommentRemove:) failSelector: @selector(didFailGetImportantData:)];
 }
@@ -547,14 +552,15 @@ static NSString *const kRequestUUID =		@"uuid";
 }
 
 - (void) didPhotoAddComment: (URLConnection *) connection {
-	LGCommentSendAction *commentAction = connection.context;
-	if (commentAction.photo != nil) {
-		[self photoCommentsFor: commentAction.photo];
+	LGCommentAction *commentAction = connection.context;
+	if ([commentAction.context isKindOfClass: [LGPhoto class]] == YES) {
+		[self photoCommentsFor: commentAction.context];
 	}
 }
 
-- (void) photoAddCommentFor: (LGCommentSendAction *) inputData {
-	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosCommentsPath, inputData.photo.uid]
+- (void) photoAddCommentFor: (LGCommentAction *) inputData {
+	LGPhoto *photo = inputData.context;
+	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosCommentsPath, photo.uid]
 							 type: URLConnectionTypePOST
 							 body: [inputData JSONObject]
 						  context: inputData

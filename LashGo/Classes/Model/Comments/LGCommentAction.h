@@ -8,12 +8,12 @@
 
 #import "JSONSerializableProtocol.h"
 
+#import "LGComment.h"
 #import "LGPhoto.h"
 
-@interface LGCommentSendAction : NSObject <JSONSerializableProtocol>
+@interface LGCommentAction : NSObject <JSONSerializableProtocol>
 
-@property (nonatomic, assign) int64_t checkUID;
-@property (nonatomic, strong) LGPhoto *photo;
-@property (nonatomic, strong) NSString *comment;
+@property (nonatomic, strong) id context;
+@property (nonatomic, strong) LGComment *comment;
 
 @end

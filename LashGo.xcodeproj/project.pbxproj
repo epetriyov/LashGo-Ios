@@ -95,7 +95,7 @@
 		84A2E89A1A6BECBA001BFBD8 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2E8991A6BECBA001BFBD8 /* LicenseViewController.m */; };
 		84E52CB11AB47A5C002CBA35 /* CommentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB01AB47A5C002CBA35 /* CommentsTableView.m */; };
 		84E52CB41AB47E60002CBA35 /* CommentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB31AB47E60002CBA35 /* CommentInputView.m */; };
-		84E52CB71AB48F2E002CBA35 /* LGCommentSendAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB61AB48F2E002CBA35 /* LGCommentSendAction.m */; };
+		84E52CB71AB48F2E002CBA35 /* LGCommentAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB61AB48F2E002CBA35 /* LGCommentAction.m */; };
 		84E52CBC1AB49BDE002CBA35 /* NSObject+KeyboardManagement.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CBA1AB49BDE002CBA35 /* NSObject+KeyboardManagement.m */; };
 		84E6240B1998F4CD003BC2F1 /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E6240A1998F4CD003BC2F1 /* Storage.m */; };
 		84E624111998FBAD003BC2F1 /* ChecksManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E624101998FBAD003BC2F1 /* ChecksManager.m */; };
@@ -355,8 +355,8 @@
 		84E52CB01AB47A5C002CBA35 /* CommentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableView.m; sourceTree = "<group>"; };
 		84E52CB21AB47E60002CBA35 /* CommentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentInputView.h; sourceTree = "<group>"; };
 		84E52CB31AB47E60002CBA35 /* CommentInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentInputView.m; sourceTree = "<group>"; };
-		84E52CB51AB48F2E002CBA35 /* LGCommentSendAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCommentSendAction.h; sourceTree = "<group>"; };
-		84E52CB61AB48F2E002CBA35 /* LGCommentSendAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCommentSendAction.m; sourceTree = "<group>"; };
+		84E52CB51AB48F2E002CBA35 /* LGCommentAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGCommentAction.h; sourceTree = "<group>"; };
+		84E52CB61AB48F2E002CBA35 /* LGCommentAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGCommentAction.m; sourceTree = "<group>"; };
 		84E52CB91AB49BDE002CBA35 /* NSObject+KeyboardManagement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KeyboardManagement.h"; sourceTree = "<group>"; };
 		84E52CBA1AB49BDE002CBA35 /* NSObject+KeyboardManagement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KeyboardManagement.m"; sourceTree = "<group>"; };
 		84E52CBB1AB49BDE002CBA35 /* ScrollableEditableContentProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollableEditableContentProtocol.h; sourceTree = "<group>"; };
@@ -998,8 +998,8 @@
 			children = (
 				84E6FCD21A3C85EE0005DAD6 /* LGComment.h */,
 				84E6FCD31A3C85EE0005DAD6 /* LGComment.m */,
-				84E52CB51AB48F2E002CBA35 /* LGCommentSendAction.h */,
-				84E52CB61AB48F2E002CBA35 /* LGCommentSendAction.m */,
+				84E52CB51AB48F2E002CBA35 /* LGCommentAction.h */,
+				84E52CB61AB48F2E002CBA35 /* LGCommentAction.m */,
 			);
 			path = Comments;
 			sourceTree = "<group>";
@@ -1414,7 +1414,7 @@
 				8405D03D1A2A050300A1C512 /* SubscriptionTableViewCell.m in Sources */,
 				84FEE18319E02E320067C264 /* ProfileWelcomeViewController.m in Sources */,
 				849DD0C3199C9D5800DC86F6 /* CheckListTableViewCell.m in Sources */,
-				84E52CB71AB48F2E002CBA35 /* LGCommentSendAction.m in Sources */,
+				84E52CB71AB48F2E002CBA35 /* LGCommentAction.m in Sources */,
 				8491557A1907FC78008D9120 /* Common.m in Sources */,
 				84A0DB1519D4457F009AD6DB /* RecoverViewController.m in Sources */,
 				84EEE4B619C9C42C009F83C6 /* CheckDrawingsDetailView.m in Sources */,

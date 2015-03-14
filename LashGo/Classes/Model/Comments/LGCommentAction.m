@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "LGCommentSendAction.h"
+#import "LGCommentAction.h"
 
-@implementation LGCommentSendAction
+@implementation LGCommentAction
 
 - (NSDictionary *) JSONObject {
-	return @{@"comment": self.comment};
+	return @{@"comment": self.comment.content};
 }
 
 @end

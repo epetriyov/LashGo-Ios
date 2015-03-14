@@ -83,10 +83,14 @@
 	[_viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [VoteViewController class]];
 }
 
-- (void) sendCommentWith: (LGCommentSendAction *) commentAction {
-	if (commentAction.photo != nil) {
+- (void) sendCommentWith: (LGCommentAction *) commentAction {
+	if ([commentAction.context isKindOfClass: [LGPhoto class]] == YES) {
 		[_dataProvider photoAddCommentFor: commentAction];
 	}
+}
+
+- (void) removeCommentWith: (LGCommentAction *) commentAction {
+	[_dataProvider commentRemove: commentAction];
 }
 
 - (void) voteWith: (LGVoteAction *) voteAction  {
