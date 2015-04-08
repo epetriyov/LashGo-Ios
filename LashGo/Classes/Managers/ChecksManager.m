@@ -186,6 +186,9 @@
 }
 
 - (void) openVoteViewControllerForCheck: (LGCheck *) check {
+	if ([_kernel isUnauthorizedActionAllowed] == NO) {
+		return;
+	}
 	VoteViewController *voteViewController = _viewControllersManager.voteViewController;
 	voteViewController.check = check;
 	[_viewControllersManager openViewController: voteViewController animated: YES];

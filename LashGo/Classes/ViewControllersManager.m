@@ -198,7 +198,17 @@
 #pragma mark -
 
 - (void) openStartViewController {
-	[self openViewControllerAndMakeItFirst: startViewController animated: YES];
+	if ([self.rootNavigationController.topViewController isKindOfClass: [StartViewController class]] == YES) {
+		return;
+	}
+	
+	//Open as it always was root
+	NSMutableArray *vcStack = [[NSMutableArray alloc] initWithArray: rootNavigationController.viewControllers
+														  copyItems: NO];
+	[vcStack insertObject: startViewController atIndex: 0];
+	[self.rootNavigationController setViewControllers: vcStack animated: NO];
+	
+	[self openViewController: startViewController animated: YES];
 }
 
 - (void) openCheckCardViewController {

@@ -217,6 +217,18 @@
 	socialLabel.textAlignment = NSTextAlignmentCenter;
 	socialLabel.textColor = [FontFactory fontColorForType: FontTypeLoginSocialLabel];
 	[self.view addSubview: socialLabel];
+	
+	//To prevent screens manipulation before account status refreshed
+	[[NSNotificationCenter defaultCenter] addObserver: self
+											 selector: @selector(accountMonitoringStopAction)
+												 name: kAuthorizationNotification
+											   object: nil];
+}
+
+- (void) dealloc {
+	if (self.isViewLoaded == YES) {
+		[[NSNotificationCenter defaultCenter] removeObserver: self name: kAuthorizationNotification object: nil];
+	}
 }
 
 - (void) viewWillDisappear:(BOOL)animated {
@@ -251,6 +263,7 @@
 	loginInfo.login = _emailField.text;
 	loginInfo.passwordHash = _passwordField.text.md5;
 	
+	[self accountMonitoringStartAction];
 	[[AuthorizationManager sharedManager] loginUsingLashGo: loginInfo];
 }
 
@@ -264,6 +277,7 @@
 	loginInfo.login = _emailField.text;
 	loginInfo.passwordHash = _passwordField.text.md5;
 	
+	[self accountMonitoringStartAction];
 	[[AuthorizationManager sharedManager] registerUsingLashGo: loginInfo];
 }
 
@@ -272,6 +286,7 @@
 //											 selector: @selector(authorizationSuccess)
 //												 name: kAuthorizationNotification
 //											   object: nil];
+	[self accountMonitoringStartAction];
 	[[AuthorizationManager sharedManager] loginUsingFacebook];
 }
 
@@ -280,6 +295,7 @@
 //											 selector: @selector(authorizationSuccess)
 //												 name: kAuthorizationNotification
 //											   object: nil];
+	[self accountMonitoringStartAction];
 	[[AuthorizationManager sharedManager] loginUsingTwitterFromViewController: self];
 }
 
@@ -288,12 +304,25 @@
 //											 selector: @selector(authorizationSuccess)
 //												 name: kAuthorizationNotification
 //											   object: nil];
+	[self accountMonitoringStartAction];
 	[[AuthorizationManager sharedManager] loginUsingVkontakteFromViewController: self];
 }
 
 //- (void) authorizationSuccess {
 //	[[NSNotificationCenter defaultCenter] removeObserver: self name: kAuthorizationNotification object: nil];
 //}
+
+#pragma mark - Methods
+
+- (void) accountMonitoringStartAction {
+	self.canGoBack = NO;
+	self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+}
+
+- (void) accountMonitoringStopAction {
+	self.canGoBack = YES;
+	self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+}
 
 #pragma mark - TextField delegate implementation
 

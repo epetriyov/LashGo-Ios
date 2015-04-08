@@ -39,6 +39,10 @@
 #pragma mark - Methods 
 
 - (void) takePictureFor: (LGCheck *) check {
+	if ([_kernel isUnauthorizedActionAllowed] == NO) {
+		return;
+	}
+	
 	_currentCheck = check;
 	
 	if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera] == YES) {

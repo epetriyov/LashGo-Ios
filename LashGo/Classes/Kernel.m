@@ -96,6 +96,14 @@
 	[viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [viewController class]];
 }
 
+- (BOOL) isUnauthorizedActionAllowed {
+	if ([AuthorizationManager sharedManager].account.sessionID == nil) {
+		[viewControllersManager openLoginViewController];
+		return NO;
+	}
+	return YES;
+}
+
 #pragma mark - DataProviderDelegate implementation
 
 - (void) dataProviderDidRecoverPass: (DataProvider *) dataProvider {

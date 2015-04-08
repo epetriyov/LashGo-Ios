@@ -37,4 +37,6 @@
 - (void) startWaiting: (UIViewController *) viewController;
 - (void) stopWaiting: (UIViewController *) viewController;
 
+- (BOOL) isUnauthorizedActionAllowed;
+
 @end
