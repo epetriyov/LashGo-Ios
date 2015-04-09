@@ -87,6 +87,7 @@
 		case FontTypeProfileLabelsFollowCount:
 		case FontTypeStartScreenButtons:
 		case FontTypeTitleBarButtons:
+		case FontTypeTitleBarTitle:
 		case FontTypeUserChangeAvatarTitle:	return [UIColor whiteColor];
 		case FontTypeCheckListCellDescription:
 		case FontTypeCommentsCellDate:

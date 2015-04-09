@@ -12,6 +12,7 @@
 
 #import "AlertViewManager.h"
 #import "Common.h"
+#import "FontFactory.h"
 #import "UIColor+CustomColors.h"
 
 @interface Kernel () <UIActionSheetDelegate, AlertViewManagerDelegate> {
@@ -54,8 +55,24 @@
 		[AlertViewManager sharedManager].delegate = self;
 		[TaskbarManager sharedManager].delegate = self;
 		
-		if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+		UIColor *appTintColor = [UIColor colorWithAppColorType: AppColorTypeTint];
+		
+		if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+			[UINavigationBar appearance].tintColor = appTintColor;
+			[UINavigationBar appearance].titleTextAttributes = @{UITextAttributeFont : [FontFactory fontWithType: FontTypeTitleBarTitle],
+																 UITextAttributeTextColor : [FontFactory fontColorForType: FontTypeTitleBarTitle]};
+		} else {
+			[UINavigationBar appearance].barTintColor = appTintColor;
+			[UINavigationBar appearance].tintColor = [FontFactory fontColorForType: FontTypeTitleBarButtons];
+			[UINavigationBar appearance].titleTextAttributes = @{NSFontAttributeName : [FontFactory fontWithType: FontTypeTitleBarTitle],
+																 NSForegroundColorAttributeName : [FontFactory fontColorForType: FontTypeTitleBarTitle]};
 			[UITextField appearance].tintColor = [UIColor colorWithAppColorType: AppColorTypeSecondaryTint];
+			
+#ifdef __IPHONE_8_0
+			if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_7_1) {
+				[UINavigationBar appearance].translucent = NO;
+			}
+#endif
 		}
 		[UIActivityIndicatorView appearance].color = [UIColor colorWithAppColorType: AppColorTypeSecondaryTint];
 		
