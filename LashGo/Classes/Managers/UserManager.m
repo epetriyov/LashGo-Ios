@@ -92,6 +92,9 @@
 #pragma mark -
 
 - (void) subscribeTo: (LGSubscription *) subscription {
+	if ([_kernel isUnauthorizedActionAllowed] == NO) {
+		return;
+	}
 	LGSubscribe *subscribe = [[LGSubscribe alloc] init];
 	subscribe.subscription = subscription;
 	[_dataProvider userSubscribeTo: subscribe];
@@ -102,12 +105,13 @@
 	subscription.user = user;
 	subscription.isSubscribed = user.subscription;
 	
-	LGSubscribe *subscribe = [[LGSubscribe alloc] init];
-	subscribe.subscription = subscription;
-	[_dataProvider userSubscribeTo: subscribe];
+	[self subscribeTo: subscription];
 }
 
 - (void) unsubscribeFrom: (LGSubscription *) subscription {
+	if ([_kernel isUnauthorizedActionAllowed] == NO) {
+		return;
+	}
 	LGSubscribe *subscribe = [[LGSubscribe alloc] init];
 	subscribe.subscription = subscription;
 	[_dataProvider userUnsubscribeFrom: subscribe];
@@ -118,9 +122,7 @@
 	subscription.user = user;
 	subscription.isSubscribed = user.subscription;
 	
-	LGSubscribe *subscribe = [[LGSubscribe alloc] init];
-	subscribe.subscription = subscription;
-	[_dataProvider userUnsubscribeFrom: subscribe];
+	[self unsubscribeFrom: subscription];
 }
 
 #pragma mark -

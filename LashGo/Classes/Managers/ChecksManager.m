@@ -84,6 +84,9 @@
 }
 
 - (void) sendCommentWith: (LGCommentAction *) commentAction {
+	if ([_kernel isUnauthorizedActionAllowed] == NO) {
+		return;
+	}
 	if ([commentAction.context isKindOfClass: [LGPhoto class]] == YES) {
 		[_dataProvider photoAddCommentFor: commentAction];
 	}
