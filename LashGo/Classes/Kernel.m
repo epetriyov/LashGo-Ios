@@ -113,8 +113,12 @@
 	[viewControllersManager.rootNavigationController removeWaitViewControllerOfClass: [viewController class]];
 }
 
+- (BOOL) isUnauthorizedMode {
+	return [Common isEmptyString: [AuthorizationManager sharedManager].account.sessionID];
+}
+
 - (BOOL) isUnauthorizedActionAllowed {
-	if ([AuthorizationManager sharedManager].account.sessionID == nil) {
+	if ([self isUnauthorizedMode] == YES) {
 		[viewControllersManager openLoginViewController];
 		return NO;
 	}
@@ -231,18 +235,28 @@
 #pragma mark - UIActionSheetDelegate implementation
 
 - (void) showMenu {
+	NSString *actionBtnTitle;
+	if ([self isUnauthorizedMode] == YES) {
+		actionBtnTitle = @"LoginViewControllerTitle".commonLocalizedString;
+	} else {
+		actionBtnTitle = @"MenuActionSheetLogoutTitle".commonLocalizedString;
+	}
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle: nil delegate: self
 													cancelButtonTitle: @"ImagePickerActionSheetCancelTitle".commonLocalizedString
 											   destructiveButtonTitle: nil
-													otherButtonTitles: @"MenuActionSheetLogoutTitle".commonLocalizedString, nil];
+													otherButtonTitles: actionBtnTitle, nil];
 	[actionSheet showInView: viewControllersManager.rootNavigationController.topViewController.view];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	switch (buttonIndex) {
 		case 0:
-			[[AuthorizationManager sharedManager].account logout];
-			[viewControllersManager openStartViewController];
+			if ([self isUnauthorizedMode] == YES) {
+				[viewControllersManager openLoginViewController];
+			} else {
+				[[AuthorizationManager sharedManager].account logout];
+				[viewControllersManager openStartViewController];
+			}
 			break;
 		default:
 			break;
