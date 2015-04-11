@@ -234,7 +234,7 @@
 }
 
 - (void) sendPhotoAction: (id) sender {
-	
+	[kernel.checksManager addPhotoForCheck: self.check];
 }
 
 - (void) likesAction: (id) sender {
