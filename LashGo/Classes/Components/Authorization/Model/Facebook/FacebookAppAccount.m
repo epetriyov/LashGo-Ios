@@ -144,10 +144,10 @@
 //		if (authingSHKFacebook == self) {	// the state can change for a lot of reasons that are out of the login loop
 		if (self.logoutProcess == YES) {
 			self.logoutProcess = NO;
-
 			[self.delegate logoutFinishedForAccount: self];
 		} else {
-			[self.delegate authDidFinish: NO forAccount: self];
+			BOOL cancelled = [error.userInfo[@"com.facebook.sdk:ErrorLoginFailedReason"] isEqualToString: @"com.facebook.sdk:UserLoginCancelled"];
+			[self.delegate authDidFinish: NO forAccount: self canceled: cancelled];
 		}
 		
 //		}else{

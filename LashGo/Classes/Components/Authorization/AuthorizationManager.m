@@ -97,6 +97,10 @@ NSString *const kLastUsedAccountKey = @"lg_last_used_account_type";
 #pragma mark - AppAccountDelegate implementation
 
 - (void) authDidFinish: (BOOL) success forAccount: (AppAccount *) account {
+	[self authDidFinish: success forAccount: account canceled: NO];
+}
+
+- (void) authDidFinish: (BOOL) success forAccount: (AppAccount *) account canceled: (BOOL) isCanceled {
 	if (account == _account) {
 		NSUserDefaults *defs = [NSUserDefaults standardUserDefaults];
 		if (success == NO) {
@@ -107,8 +111,9 @@ NSString *const kLastUsedAccountKey = @"lg_last_used_account_type";
 		}
 		[defs synchronize];
 	}
-	[[NSNotificationCenter defaultCenter] postNotificationName: kAuthorizationNotification object: nil];
-	
+	if (isCanceled == NO) {
+		[[NSNotificationCenter defaultCenter] postNotificationName: kAuthorizationNotification object: nil];
+	}
 }
 
 - (void) logoutFinishedForAccount: (AppAccount *) account {

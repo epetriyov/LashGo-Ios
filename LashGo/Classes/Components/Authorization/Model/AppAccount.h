@@ -48,6 +48,7 @@ typedef NS_ENUM(short, AppAccountType) {
 
 @required
 - (void) authDidFinish: (BOOL) success forAccount: (AppAccount *) account;
+- (void) authDidFinish: (BOOL) success forAccount: (AppAccount *) account canceled: (BOOL) isCanceled;
 - (void) logoutFinishedForAccount: (AppAccount *) account;
 
 @end
