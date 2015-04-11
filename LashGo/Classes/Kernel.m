@@ -256,6 +256,7 @@
 			} else {
 				[[AuthorizationManager sharedManager].account logout];
 				[viewControllersManager openStartViewController];
+				[_storage updateChecksWith: @[]];
 			}
 			break;
 		default:
