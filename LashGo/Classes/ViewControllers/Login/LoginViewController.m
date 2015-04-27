@@ -29,7 +29,9 @@
 	_titleBarView.titleLabel.text = @"LoginViewControllerTitle".commonLocalizedString;
 	_titleBarView.backgroundColor = [UIColor clearColor];
 	
-	UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].loginViewControllerBgImage];
+	UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame: self.view.bounds];
+	backgroundImageView.contentMode = UIViewContentModeScaleToFill;
+	backgroundImageView.image = [ViewFactory sharedFactory].loginViewControllerBgImage;
 	[self.view insertSubview:backgroundImageView atIndex: 0];
 	
 	//Configure welcome text
