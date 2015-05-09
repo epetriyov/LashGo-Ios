@@ -94,6 +94,7 @@
 		84A0DB1F19D45A87009AD6DB /* VotePanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0DB1E19D45A87009AD6DB /* VotePanelView.m */; };
 		84A2E89A1A6BECBA001BFBD8 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2E8991A6BECBA001BFBD8 /* LicenseViewController.m */; };
 		84C74F9D1AFE40BD000353A6 /* libCrittercism_v5_2_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C74F9B1AFE40BD000353A6 /* libCrittercism_v5_2_0.a */; };
+		84C74FA71AFE4424000353A6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C74FA61AFE4424000353A6 /* SystemConfiguration.framework */; };
 		84E52CB11AB47A5C002CBA35 /* CommentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB01AB47A5C002CBA35 /* CommentsTableView.m */; };
 		84E52CB41AB47E60002CBA35 /* CommentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB31AB47E60002CBA35 /* CommentInputView.m */; };
 		84E52CB71AB48F2E002CBA35 /* LGCommentAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB61AB48F2E002CBA35 /* LGCommentAction.m */; };
@@ -358,6 +359,7 @@
 		84C74F991AFE40BD000353A6 /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
 		84C74F9A1AFE40BD000353A6 /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
 		84C74F9B1AFE40BD000353A6 /* libCrittercism_v5_2_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v5_2_0.a; sourceTree = "<group>"; };
+		84C74FA61AFE4424000353A6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		84E52CAF1AB47A5C002CBA35 /* CommentsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableView.h; sourceTree = "<group>"; };
 		84E52CB01AB47A5C002CBA35 /* CommentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableView.m; sourceTree = "<group>"; };
 		84E52CB21AB47E60002CBA35 /* CommentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentInputView.h; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				84FF0239195EB47200B90CF9 /* FacebookSDK.framework in Frameworks */,
 				840E19ED194B43210023C0F6 /* Accounts.framework in Frameworks */,
 				84001FEB1949AA53004D9D7A /* Social.framework in Frameworks */,
+				84C74FA71AFE4424000353A6 /* SystemConfiguration.framework in Frameworks */,
 				845D858119029EB0004E10AB /* CoreGraphics.framework in Frameworks */,
 				845D858319029EB0004E10AB /* UIKit.framework in Frameworks */,
 				845D857F19029EB0004E10AB /* Foundation.framework in Frameworks */,
@@ -767,6 +770,7 @@
 				84FF0238195EB47200B90CF9 /* FacebookSDK.framework */,
 				840E19EC194B43210023C0F6 /* Accounts.framework */,
 				84001FEA1949AA53004D9D7A /* Social.framework */,
+				84C74FA61AFE4424000353A6 /* SystemConfiguration.framework */,
 				845D857E19029EB0004E10AB /* Foundation.framework */,
 				845D858019029EB0004E10AB /* CoreGraphics.framework */,
 				845D858219029EB0004E10AB /* UIKit.framework */,
