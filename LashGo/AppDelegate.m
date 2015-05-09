@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "Crittercism.h"
+
 @implementation AppDelegate
 
 
@@ -31,6 +33,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	[Crittercism enableWithAppID:@"554c2a168172e25e67906c30"];
+	
 	kernel = [[Kernel alloc] init];
 	
 	[kernel.pushNotificationManager registerRemoteNotifications];

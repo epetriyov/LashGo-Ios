@@ -93,6 +93,7 @@
 		84A0DB1519D4457F009AD6DB /* RecoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0DB1419D4457F009AD6DB /* RecoverViewController.m */; };
 		84A0DB1F19D45A87009AD6DB /* VotePanelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A0DB1E19D45A87009AD6DB /* VotePanelView.m */; };
 		84A2E89A1A6BECBA001BFBD8 /* LicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84A2E8991A6BECBA001BFBD8 /* LicenseViewController.m */; };
+		84C74F9D1AFE40BD000353A6 /* libCrittercism_v5_2_0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C74F9B1AFE40BD000353A6 /* libCrittercism_v5_2_0.a */; };
 		84E52CB11AB47A5C002CBA35 /* CommentsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB01AB47A5C002CBA35 /* CommentsTableView.m */; };
 		84E52CB41AB47E60002CBA35 /* CommentInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB31AB47E60002CBA35 /* CommentInputView.m */; };
 		84E52CB71AB48F2E002CBA35 /* LGCommentAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E52CB61AB48F2E002CBA35 /* LGCommentAction.m */; };
@@ -351,6 +352,12 @@
 		84A0DB1E19D45A87009AD6DB /* VotePanelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VotePanelView.m; sourceTree = "<group>"; };
 		84A2E8981A6BECBA001BFBD8 /* LicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicenseViewController.h; sourceTree = "<group>"; };
 		84A2E8991A6BECBA001BFBD8 /* LicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicenseViewController.m; sourceTree = "<group>"; };
+		84C74F961AFE40BD000353A6 /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
+		84C74F971AFE40BD000353A6 /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
+		84C74F981AFE40BD000353A6 /* CrittercismConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismConfig.h; sourceTree = "<group>"; };
+		84C74F991AFE40BD000353A6 /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
+		84C74F9A1AFE40BD000353A6 /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
+		84C74F9B1AFE40BD000353A6 /* libCrittercism_v5_2_0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v5_2_0.a; sourceTree = "<group>"; };
 		84E52CAF1AB47A5C002CBA35 /* CommentsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableView.h; sourceTree = "<group>"; };
 		84E52CB01AB47A5C002CBA35 /* CommentsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableView.m; sourceTree = "<group>"; };
 		84E52CB21AB47E60002CBA35 /* CommentInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentInputView.h; sourceTree = "<group>"; };
@@ -464,6 +471,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C74F9D1AFE40BD000353A6 /* libCrittercism_v5_2_0.a in Frameworks */,
 				8451232B1A74009E00ABB3FD /* libSDWebImage.a in Frameworks */,
 				8451232A1A74001200ABB3FD /* libVKSdk.a in Frameworks */,
 				8427E62219C5DBC500558649 /* ImageIO.framework in Frameworks */,
@@ -731,6 +739,7 @@
 		845D857219029EB0004E10AB = {
 			isa = PBXGroup;
 			children = (
+				84C74F951AFE40BD000353A6 /* CrittercismSDK */,
 				845123201A74000000ABB3FD /* VKSdk.xcodeproj */,
 				8427E61119C5DB3300558649 /* SDWebImage.xcodeproj */,
 				84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */,
@@ -929,6 +938,19 @@
 				84A0DB1E19D45A87009AD6DB /* VotePanelView.m */,
 			);
 			path = Vote;
+			sourceTree = "<group>";
+		};
+		84C74F951AFE40BD000353A6 /* CrittercismSDK */ = {
+			isa = PBXGroup;
+			children = (
+				84C74F961AFE40BD000353A6 /* CRFilter.h */,
+				84C74F971AFE40BD000353A6 /* Crittercism.h */,
+				84C74F981AFE40BD000353A6 /* CrittercismConfig.h */,
+				84C74F991AFE40BD000353A6 /* CrittercismDelegate.h */,
+				84C74F9A1AFE40BD000353A6 /* dsym_upload.sh */,
+				84C74F9B1AFE40BD000353A6 /* libCrittercism_v5_2_0.a */,
+			);
+			path = CrittercismSDK;
 			sourceTree = "<group>";
 		};
 		84E52CA71AB47A39002CBA35 /* Comments */ = {
@@ -1198,6 +1220,7 @@
 				845D857719029EB0004E10AB /* Sources */,
 				845D857819029EB0004E10AB /* Frameworks */,
 				845D857919029EB0004E10AB /* Resources */,
+				84C74FA51AFE4365000353A6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1329,6 +1352,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		84C74FA51AFE4365000353A6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_ID=\"554c2a168172e25e67906c30\"\nAPI_KEY=\"vxDiVpX2uvoCZnGPUTLsvHps92S3AfWq\"\nsource \"${SRCROOT}\"/CrittercismSDK/dsym_upload.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		845D857719029EB0004E10AB /* Sources */ = {
@@ -1589,6 +1628,10 @@
 				GCC_PREFIX_HEADER = "LashGo/LashGo-Prefix.pch";
 				INFOPLIST_FILE = "LashGo/LashGo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CrittercismSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1608,6 +1651,10 @@
 				GCC_PREFIX_HEADER = "LashGo/LashGo-Prefix.pch";
 				INFOPLIST_FILE = "LashGo/LashGo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CrittercismSDK",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
