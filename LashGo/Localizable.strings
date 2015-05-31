@@ -17,6 +17,7 @@
 //APNS
 "CHECK_STARTED" = "Начался новый чек %@";
 "VOTE_STARTED" = "Началось голосование %@";
+"CHECK_FINISHED" = "Закончился чек %@";
 
 //Empty list labels
 "CheckUsersEmptyLabel" = "Нет пользователей";
