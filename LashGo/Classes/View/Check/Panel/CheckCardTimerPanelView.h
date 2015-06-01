@@ -16,6 +16,7 @@ typedef NS_ENUM(ushort, CheckCardTimerPanelMode) {
 @interface CheckCardTimerPanelView : UIView
 
 @property (nonatomic, assign) CheckCardTimerPanelMode mode;
+@property (nonatomic, assign) NSTimeInterval startDate;
 @property (nonatomic, assign) NSTimeInterval timeLeft;
 @property (nonatomic, readonly) UIButton *playersButton;
 @property (nonatomic, assign) int32_t playersCount;

@@ -130,7 +130,8 @@
 	
 	cell.textLabel.text = [[item.user.fio stringByAppendingString: @" "]
 						   stringByAppendingString: item.action.commonLocalizedString];
-	cell.detailTextLabel.text = [[NSDateFormatter dateFormatterShortDate] stringFromDate: item.eventDate];
+	cell.detailTextLabel.text = [[NSDateFormatter dateFormatterWithDisplayMediumDateFormat]
+								 stringFromDate: item.eventDate];
 	[cell.imageView loadWebImageWithSizeThatFitsName: item.user.avatar
 										 placeholder: [ViewFactory sharedFactory].titleBarAvatarPlaceholder];
 	[cell setCheckPhotoUrl: item.check.taskPhotoUrl];

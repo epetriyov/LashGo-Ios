@@ -9,11 +9,13 @@
 #import "CheckCardTimerPanelView.h"
 
 #import "FontFactory.h"
+#import "NSDateFormatter+CustomFormats.h"
 #import "ViewFactory.h"
 #import "UIView+CGExtension.h"
 
 @interface CheckCardTimerPanelView () {
 	UIImageView *_icon;
+	UILabel *_startDateLabel;
 	UILabel *_timeLeftLabel;
 	
 	UIButton *_playersButton;
@@ -31,6 +33,13 @@
 
 - (void) setPlayersCount:(int32_t)playersCount {
 	[_playersButton setTitle: [NSString stringWithFormat: @"%d", playersCount] forState: UIControlStateNormal];
+}
+
+- (void) setStartDate:(NSTimeInterval)startDate {
+	_startDate = startDate;
+	
+	NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatterWithDisplayMediumDateFormat];
+	_startDateLabel.text = [dateFormatter stringFromDate: [NSDate dateWithTimeIntervalSinceReferenceDate: startDate]];
 }
 
 - (void) setTimeLeft:(NSTimeInterval)timeLeft {
@@ -55,10 +64,21 @@
     if (self) {
 		self.mode = mode;
 		
-		float offsetX = frame.size.width / 2 - 30;
+		float gapsX = 8;
+		float offsetX = frame.size.width / 2 - 30; //offset for timeleft label
+		
 		_icon = [[UIImageView alloc] initWithImage: [ViewFactory sharedFactory].timerCheckOpenImage];
 		_icon.frameX = offsetX;
 		[self addSubview: _icon];
+		
+		_startDateLabel = [[UILabel alloc] initWithFrame: CGRectMake(gapsX, 0,
+																	 CGRectGetMinX(_icon.frame) - gapsX * 2,
+																	 CGRectGetHeight(_icon.frame))];
+		_startDateLabel.backgroundColor = [UIColor clearColor];
+		_startDateLabel.font = [FontFactory fontWithType: FontTypeVoteTimer];
+		_startDateLabel.textAlignment = NSTextAlignmentLeft;
+		_startDateLabel.textColor = [FontFactory fontColorForType: FontTypeCountersTitle];
+		[self addSubview: _startDateLabel];
 		
 		offsetX += _icon.frame.size.width;
 		
@@ -84,7 +104,7 @@
 				break;
 		}
 		
-		shareButton.frameX = 8;
+		shareButton.frameX = gapsX;
 		[shareButton setTitle: @"7" forState: UIControlStateNormal];
 		shareButton.hidden = YES;
 		[self addSubview: shareButton];

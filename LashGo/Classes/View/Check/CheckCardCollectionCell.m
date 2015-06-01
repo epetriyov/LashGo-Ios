@@ -49,6 +49,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	[self refresh];
 	
 	_panelView.playersCount = check.counters.playersCount;
+	_panelView.startDate = check.startDate;
 }
 
 #pragma mark -
@@ -74,7 +75,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		
 		offsetY += _textLabel.frame.size.height;
 		if (is568hMode == NO) {
-			offsetY += 16;
+			offsetY += 10;
 		} else {
 			offsetY += 24;
 		}
@@ -92,28 +93,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		
 		offsetY += _checkView.frame.size.height;
 		
-		if (is568hMode == NO) {
-			offsetY += 16;
-		} else {
-			offsetY += 23;
-		}
-		
-		int numberOfLines = 3;
-		CGFloat lineHeight;
-		if (is568hMode == NO) {
-			lineHeight = 16;
-		} else {
-			lineHeight = 23;
-		}
-		
-		_detailTextLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.contentView.frame.size.width, lineHeight * numberOfLines)];
-		_detailTextLabel.font = [FontFactory fontWithType: FontTypeCheckCardDescription];
-		_detailTextLabel.numberOfLines = numberOfLines;
-		_detailTextLabel.textAlignment = NSTextAlignmentCenter;
-		_detailTextLabel.textColor = [FontFactory fontColorForType: FontTypeCheckCardDescription];
-		_detailTextLabel.backgroundColor = [UIColor clearColor];
-		[self.contentView addSubview: _detailTextLabel];
-		
+		//Bottom panel
 		float panelHeight = 31;
 		
 		_panelView = [[CheckCardTimerPanelView alloc] initWithFrame: CGRectMake(0, self.contentView.frame.size.height - panelHeight, self.contentView.frame.size.width, panelHeight)];
@@ -121,6 +101,20 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		[_panelView.playersButton addTarget: self action: @selector(usersAction:)
 						   forControlEvents: UIControlEventTouchUpInside];
 		[self.contentView addSubview: _panelView];
+		///////
+		
+		float descriptionGapsY = 7;
+		offsetY += descriptionGapsY;
+		
+		float detailTextHeight = CGRectGetMinY(_panelView.frame) - descriptionGapsY - offsetY;
+		
+		_detailTextLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.contentView.frame.size.width, detailTextHeight)];
+		_detailTextLabel.font = [FontFactory fontWithType: FontTypeCheckCardDescription];
+		_detailTextLabel.numberOfLines = CGRectGetHeight(_detailTextLabel.frame) / [_detailTextLabel.font lineHeight];
+		_detailTextLabel.textAlignment = NSTextAlignmentCenter;
+		_detailTextLabel.textColor = [FontFactory fontColorForType: FontTypeCheckCardDescription];
+		_detailTextLabel.backgroundColor = [UIColor clearColor];
+		[self.contentView addSubview: _detailTextLabel];
     }
     return self;
 }

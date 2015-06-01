@@ -6,12 +6,16 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @interface NSDateFormatter (CustomFormats)
 
 + (NSDateFormatter *) dateFormatterWithFullDateFormat;
 + (NSDateFormatter *) dateFormatterWithDateOnlyFormat;
-+ (NSDateFormatter *) dateFormatterShortDate;
++ (NSDateFormatter *) dateFormatterWithHistoryPeriodPickerShortFormat;
++ (NSDateFormatter *) dateFormatterWithDisplayShortDateFormat;
++ (NSDateFormatter *) dateFormatterWithDisplayShortDateAndTimeFormat;
++ (NSDateFormatter *) dateFormatterWithDisplayMediumDateFormat;
++ (NSDateFormatter *) dateFormatterWithDisplayLongDateFormat;
++ (NSDateFormatter *) dateFormatterWithDisplayTimeShortFormat;
++ (NSDateFormatter *) dateFormatterWithTimeHourOnly;
 
 @end
