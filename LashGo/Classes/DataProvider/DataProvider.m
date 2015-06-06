@@ -39,7 +39,8 @@
 #define kEventsPath	@"/events" //GET
 
 #define kPhotosPath			@"/photos/%@" //GET
-#define kPhotosCommentsPath	@"/photos/%lld/comments" //GET, POST
+#define kPhotosCommentsPath	@"/photos/%lld/comments" //GET
+#define kPhotosCommentAddPath	@"/photos/%lld/comments/new" //POST
 #define kPhotosComplainPath @"/photos/%lld/complain" //POST
 #define kPhotosCountersPath	@"/photos/%lld/counters" //GET
 #define kPhotosVotesPath	@"/photos/%lld/votes" //GET"
@@ -579,7 +580,7 @@ static NSString *const kRequestUUID =		@"uuid";
 
 - (void) photoAddCommentFor: (LGCommentAction *) inputData {
 	LGPhoto *photo = inputData.context;
-	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosCommentsPath, photo.uid]
+	[self startConnectionWithPath: [NSString stringWithFormat: kPhotosCommentAddPath, photo.uid]
 							 type: URLConnectionTypePOST
 							 body: [inputData JSONObject]
 						  context: inputData

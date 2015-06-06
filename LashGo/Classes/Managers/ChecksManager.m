@@ -113,7 +113,10 @@
 }
 
 - (void) openCheckCardViewControllerFor: (LGCheck *) check {
-	NSUInteger index = [_kernel.storage.checks indexOfObject: check];
+	NSUInteger index = [_kernel.storage.checks indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+		LGCheck *item = obj;
+		return item.uid == check.uid;
+	}];
 	if (index != NSNotFound) {
 		NSIndexPath *indexPath = [NSIndexPath indexPathForRow: index inSection: 0];
 		_viewControllersManager.checkCardViewController.indexToShowOnAppear = indexPath;

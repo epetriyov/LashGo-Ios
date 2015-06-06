@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "TitleBarViewController.h"
+#import "TaskBarViewController.h"
 
-@interface NewsViewController : TitleBarViewController
+@interface NewsViewController : TaskBarViewController
 
 @end
