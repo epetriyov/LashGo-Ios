@@ -147,11 +147,13 @@
 
 //Checks
 "ChecksTitle" = "Задания";
+"ChecksActionTitle" = "Акции";
 "ChecksActiveHeaderTitle" = "Активные";
 "ChecksVoteHeaderTitle" = "Идет голосование";
 "ChecksClosedHeaderTitle" = "Завершенные";
 "ChecksSendUserImageTitle" = "отправить";
 "CheckPhotosViewControllerTitle" = "Результаты голосования";
+"CheckActionsDescription" = "Участвуй в акциях. Набирай наибольшее количество голосов. Забирай приз у сотрудника компании";
 
 //Twitter errors
 "ERROR_TITLE_MSG" = "Упс"; //"Oops"

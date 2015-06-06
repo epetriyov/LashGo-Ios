@@ -27,6 +27,7 @@
 
 - (void) apnsRegisterWithToken: (NSString *) inputData;
 
+- (void) checksActions;
 - (void) checksWithContext: (id) context;
 - (void) checksSearch: (NSString *) inputData;
 - (void) checkFor: (LGCheck *) inputData;
@@ -74,6 +75,7 @@
 
 @optional
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (ContextualArrayResult *) checks;
+- (void) dataProvider: (DataProvider *) dataProvider didGetChecksActions: (NSArray *) checksActions;
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecksSearch: (NSArray *) checks;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckPhotos: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetCheckVotePhotos: (LGVotePhotosResult *) votePhotos;

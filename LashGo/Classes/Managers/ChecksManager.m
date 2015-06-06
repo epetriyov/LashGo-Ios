@@ -39,6 +39,10 @@
 	[_dataProvider checksWithContext: nil];
 }
 
+- (void) getChecksActions {
+	[_dataProvider checksActions];
+}
+
 - (void) getChecksSearch: (NSString *) searchText {
 	[_dataProvider checksSearch: searchText];
 }
@@ -141,6 +145,12 @@
 	if ([_kernel.storage.checks count] <= 0) {
 		[_dataProvider checksWithContext: nil];
 	}
+}
+
+- (void) openCheckActionListViewController {
+	CheckActionListViewController *vc = _viewControllersManager.checkActionListViewController;
+	[_viewControllersManager openViewController: vc animated: YES];
+	[_dataProvider checksActions];
 }
 
 - (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check {

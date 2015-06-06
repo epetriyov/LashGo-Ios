@@ -41,8 +41,6 @@
 																					   action: @selector(openSearchAction:)];
 	UIButton *incomeButton = [[ViewFactory sharedFactory] titleBarRightIncomeButtonWithTarget: self
 																					   action: @selector(openIncomeAction:)];
-	///!!!:Hidden for coming soon
-	incomeButton.hidden = YES;
 	TitleBarView *tbView = [TitleBarView titleBarViewWithLeftButton: listButton
 												 rightButton: searchButton
 												searchButton: incomeButton];
@@ -125,6 +123,7 @@
 - (void) openIncomeAction: (id) sender {
 //	[kernel.userManager openProfileEditViewControllerWith: nil];
 //	[kernel.userManager openProfileWelcomeViewControllerWith: nil];
+	[kernel.checksManager openCheckActionListViewController];
 }
 
 #pragma mark - UICollectionViewDataSource implementation

@@ -250,6 +250,25 @@ static NSString *const kRequestUUID =		@"uuid";
 
 #pragma mark - Checks
 
+- (void) didGetChecksActions: (URLConnection *) connection {
+	NSArray *checks = [_parser parseChecks: connection.downloadedData];
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetChecksActions:)] == YES) {
+		[self.delegate dataProvider: self didGetChecksActions: checks];
+	}
+}
+
+- (void) checksActions {
+	[self startConnectionWithPath: kChecksPath
+					  queryParams: @{@"check_type" : @"ACTION"}
+						  context: nil
+					allowMultiple: NO
+				   finishSelector: @selector(didGetChecksActions:)
+					 failSelector: @selector(didFailGetImportantData:)];
+}
+
+#pragma mark -
+
 - (void) didGetChecks: (URLConnection *) connection {
 	NSArray *checks = [_parser parseChecks: connection.downloadedData];
 	

@@ -12,6 +12,7 @@
 @interface Storage : NSObject
 
 @property (nonatomic, readonly) NSArray *checks;
+@property (nonatomic, strong) NSArray *checksActions;
 @property (nonatomic, strong) NSArray *checkPhotos;
 @property (nonatomic, strong) LGVotePhotosResult *checkVotePhotos;
 @property (nonatomic, strong) NSArray *events;

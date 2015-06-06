@@ -141,6 +141,10 @@
 	}
 }
 
+- (void) dataProvider: (DataProvider *) dataProvider didGetChecksActions: (NSArray *) checksActions {
+	_storage.checksActions = checksActions;
+}
+
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecksSearch: (NSArray *) checks {
 	_storage.searchChecks = checks;
 }

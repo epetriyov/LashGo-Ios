@@ -128,6 +128,7 @@
 		84EEE4B619C9C42C009F83C6 /* CheckDrawingsDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE4B519C9C42C009F83C6 /* CheckDrawingsDetailView.m */; };
 		84EEE4B919C9D1CB009F83C6 /* VoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EEE4B819C9D1CB009F83C6 /* VoteViewController.m */; };
 		84F5003B19AB6C1400DC21C7 /* TaskBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F5003A19AB6C1400DC21C7 /* TaskBarViewController.m */; };
+		84F619051B2321CD00AC8606 /* CheckActionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F619041B2321CD00AC8606 /* CheckActionListViewController.m */; };
 		84F65A8F19827CFE003BF42A /* URLSecurity.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F65A8E19827CFE003BF42A /* URLSecurity.m */; };
 		84F8AE75198FB4E7009EC5A6 /* LGSocialInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8AE74198FB4E7009EC5A6 /* LGSocialInfo.m */; };
 		84F8E89D199A2DB00054C9F8 /* AlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F8E89C199A2DB00054C9F8 /* AlertViewManager.m */; };
@@ -431,6 +432,8 @@
 		84EEE4B819C9D1CB009F83C6 /* VoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoteViewController.m; sourceTree = "<group>"; };
 		84F5003919AB6C1400DC21C7 /* TaskBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskBarViewController.h; sourceTree = "<group>"; };
 		84F5003A19AB6C1400DC21C7 /* TaskBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskBarViewController.m; sourceTree = "<group>"; };
+		84F619031B2321CD00AC8606 /* CheckActionListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckActionListViewController.h; sourceTree = "<group>"; };
+		84F619041B2321CD00AC8606 /* CheckActionListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckActionListViewController.m; sourceTree = "<group>"; };
 		84F65A8D19827CFE003BF42A /* URLSecurity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLSecurity.h; sourceTree = "<group>"; };
 		84F65A8E19827CFE003BF42A /* URLSecurity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLSecurity.m; sourceTree = "<group>"; };
 		84F8AE73198FB4E7009EC5A6 /* LGSocialInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSocialInfo.h; sourceTree = "<group>"; };
@@ -1000,6 +1003,8 @@
 				84E6D9B2196C226A0021D417 /* CheckCardViewController.m */,
 				84F8E8AA199BA7620054C9F8 /* CheckListViewController.h */,
 				84F8E8AB199BA7620054C9F8 /* CheckListViewController.m */,
+				84F619031B2321CD00AC8606 /* CheckActionListViewController.h */,
+				84F619041B2321CD00AC8606 /* CheckActionListViewController.m */,
 				84EEE4B719C9D1CB009F83C6 /* VoteViewController.h */,
 				84EEE4B819C9D1CB009F83C6 /* VoteViewController.m */,
 				84426D4419E158060068734B /* CheckDetailViewController.h */,
@@ -1477,6 +1482,7 @@
 				84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */,
 				841C624119A397ED00BAEDBB /* TaskbarManager.m in Sources */,
 				845D85BC1902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m in Sources */,
+				84F619051B2321CD00AC8606 /* CheckActionListViewController.m in Sources */,
 				845D85BE1902AA00004E10AB /* URLConnectionManager.m in Sources */,
 				840625641930C8EF0067C1CA /* LGgcmRegistrationId.m in Sources */,
 				840425DA19CB16EB00C5EDBF /* CheckCardTimerPanelView.m in Sources */,

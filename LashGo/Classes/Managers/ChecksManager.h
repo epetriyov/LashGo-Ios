@@ -22,6 +22,7 @@
 					  vcManager: (ViewControllersManager *) vcManager;
 
 - (void) getChecks;
+- (void) getChecksActions;
 - (void) getChecksSearch: (NSString *) searchText;
 
 - (void) getCommentsForPhoto: (LGPhoto *) photo;
@@ -45,6 +46,7 @@
 - (BOOL) openCheckCardViewControllerForCheckUID: (int64_t) checkUID;
 - (void) openCheckCardViewControllerWithFetchForCheckUID: (int64_t) checkUID;
 - (void) openCheckListViewController;
+- (void) openCheckActionListViewController;
 
 - (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check;
 - (void) openCheckDetailViewControllerUserFor: (LGCheck *) check;

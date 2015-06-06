@@ -1,32 +1,31 @@
 //
-//  CheckListViewController.m
+//  CheckActionListViewController.m
 //  LashGo
 //
-//  Created by Vitaliy Pykhtin on 13.08.14.
-//  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
+//  Created by Vitaliy Pykhtin on 06.06.15.
+//  Copyright (c) 2015 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "CheckListViewController.h"
+#import "CheckActionListViewController.h"
 
-#import "CheckListTableViewCell.h"
 #import "Common.h"
 #import "FontFactory.h"
 #import "Kernel.h"
-#import "LGCheck.h"
-#import "PullToRefreshControl.h"
 #import "UIImageView+LGImagesExtension.h"
 #import "ViewFactory.h"
 
+#import "CheckListTableViewCell.h"
+#import "PullToRefreshControl.h"
+#import "SegmentedTextControl.h"
+
 #define kOffsetToActivateDataFetch 50
+#define kObservationKeyPath @"checksActions"
 
-typedef NS_ENUM(NSInteger, CheckListSection) {
-	CheckListSectionActive = 0,
-	CheckListSectionVote,
-	CheckListSectionClosed
-};
-
-@interface CheckListViewController () {
+@interface CheckActionListViewController () <UITableViewDataSource, UITableViewDelegate> {
+	SegmentedTextControl __weak *_segmentedControl;
+	
 	UITableView __weak *_tableView;
+	NSArray *_contentModel;
 	
 	NSTimer *_progressTimer;
 	
@@ -35,31 +34,49 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 
 @end
 
-@implementation CheckListViewController
+@implementation CheckActionListViewController
+
+- (instancetype) initWithKernel:(Kernel *)theKernel {
+	if (self = [super initWithKernel: theKernel]) {
+		[kernel.storage addObserver: self forKeyPath: kObservationKeyPath options: 0 context: nil];
+	}
+	return self;
+}
 
 - (void) loadView {
 	[super loadView];
 	
-	//Reconfigure titleBar
-	[_titleBarView removeFromSuperview];
-	UIButton *cardsButton = [[ViewFactory sharedFactory] titleBarCheckCardsButtonWithTarget: self
-																					 action: @selector(switchToCardsAction:)];
-	UIButton *searchButton = [[ViewFactory sharedFactory] titleBarRightSearchButtonWithTarget: self
-																					   action: @selector(openSearchAction:)];
-	UIButton *incomeButton = [[ViewFactory sharedFactory] titleBarRightIncomeButtonWithTarget: self
-																					   action: @selector(openIncomeAction:)];
-	TitleBarView *tbView = [TitleBarView titleBarViewWithLeftButton: cardsButton
-														rightButton: searchButton
-													   searchButton: incomeButton];
-	tbView.titleLabel.text = @"ChecksTitle".commonLocalizedString;
-	[self.view addSubview: tbView];
-	_titleBarView = tbView;
+	_titleBarView.titleLabel.text = @"ChecksActionTitle".commonLocalizedString;
 	
 	CGRect contentFrame = self.contentFrame;
+	float offsetY = CGRectGetMinY(contentFrame);
 	
-//	CGRect tableFrame = self.view.frame;
-//	tableFrame.origin.y = contentFrame.origin.y;
-//	tableFrame.size.height -= contentFrame.origin.y;
+	SegmentedTextControl *segmentedControl = [[SegmentedTextControl alloc] initWithFrame: CGRectMake(0, offsetY, CGRectGetWidth(self.view.bounds), 45)
+																			buttonsTexts: @[@"ChecksActiveHeaderTitle".commonLocalizedString,
+																							@"ChecksClosedHeaderTitle".commonLocalizedString]
+																				  bgName: nil contentVerticalAlignment:UIControlContentVerticalAlignmentCenter];
+	[segmentedControl addTarget: self action: @selector(segmentedControlSelectedIndexChanged:)
+			   forControlEvents: UIControlEventValueChanged];
+	[self.view addSubview: segmentedControl];
+	_segmentedControl = segmentedControl;
+	
+	offsetY += CGRectGetHeight(segmentedControl.frame);
+	contentFrame.origin.y += CGRectGetHeight(segmentedControl.frame);
+	contentFrame.size.height += CGRectGetHeight(segmentedControl.frame);
+	
+	UILabel *descriptionLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY,
+																		   CGRectGetWidth(contentFrame), 53)];
+	descriptionLabel.backgroundColor = _titleBarView.backgroundColor;
+	descriptionLabel.font = [FontFactory fontWithType: FontTypeSegmentedTextControl];
+	descriptionLabel.textColor = [UIColor whiteColor];
+	descriptionLabel.textAlignment = NSTextAlignmentCenter;
+	descriptionLabel.text = @"CheckActionsDescription".commonLocalizedString;
+	descriptionLabel.numberOfLines = 3;
+	[self.view addSubview: descriptionLabel];
+	
+	offsetY += CGRectGetHeight(descriptionLabel.frame);
+	contentFrame.origin.y += CGRectGetHeight(descriptionLabel.frame);
+	contentFrame.size.height += CGRectGetHeight(descriptionLabel.frame);
 	
 	UITableView *tableView = [[UITableView alloc] initWithFrame: contentFrame style: UITableViewStylePlain];
 	tableView.backgroundColor = [UIColor colorWithRed: 0.92 green: 0.925 blue: 0.93 alpha: 1.0];
@@ -81,8 +98,8 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	[super didReceiveMemoryWarning];
+	// Dispose of any resources that can be recreated.
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -99,6 +116,17 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	[_progressTimer invalidate];
 }
 
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+						 change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqualToString: kObservationKeyPath] == YES && [object isKindOfClass: [Storage class]] == YES) {
+		[self refresh];
+	}
+}
+
+- (void) dealloc {
+	[kernel.storage removeObserver: self forKeyPath: kObservationKeyPath];
+}
+
 #pragma mark - Methods
 
 - (void) refreshVisiblePage {
@@ -112,26 +140,41 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 }
 
 - (void) refresh {
-	[_tableView reloadData];
+	NSTimeInterval nowTime = [NSDate timeIntervalSinceReferenceDate];
+	
+	_contentModel = [kernel.storage.checksActions filteredArrayUsingPredicate:
+					 [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+		LGCheck *checkAction = (LGCheck *)evaluatedObject;
+		
+		BOOL result;
+		
+		if (_segmentedControl.selectedIndex > 0) {
+			result = nowTime >= checkAction.closeDate;
+		} else {
+			result = nowTime < checkAction.closeDate;
+		}
+		return result;
+	}]];
+	
 	[fullRefreshControl setActive: NO forScrollView: _tableView];
+	
+	[_tableView beginUpdates];
+	[_tableView reloadSections: [NSIndexSet indexSetWithIndex:0] withRowAnimation: UITableViewRowAnimationAutomatic];
+	[_tableView endUpdates];
+	
+//		_emptyListLabel.alpha = [kernel.storage.news count] <= 0 ? 1 : 0;
 }
 
 - (void) fetchFullData: (PullToRefreshControl *) sender {
 	if (sender.isActive == YES) {
-		[kernel.checksManager getChecks];
+		[kernel.checksManager getChecksActions];
 	}
 }
 
-- (void) switchToCardsAction: (id) sender {
-	[kernel.checksManager openCheckCardViewController];
-}
+#pragma mark - SegmentedTextControlDelegate implementation
 
-- (void) openSearchAction: (id) sender {
-	[kernel.viewControllersManager openSearchViewController];
-}
-
-- (void) openIncomeAction: (id) sender {
-	[kernel.checksManager openCheckActionListViewController];
+- (void) segmentedControlSelectedIndexChanged: (SegmentedTextControl *) segmentedControl {
+	[self refresh];
 }
 
 #pragma mark - Table delegate implementation
@@ -145,9 +188,9 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 //	UIView *resultView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, tableView.frame.size.width, 40)];
 //	resultView.backgroundColor = tableView.backgroundColor;
 //	//Generate section header
-//	
+//
 //	float offsetX = 15;
-//	
+//
 //	UILabel *headerTextLabel = [[UILabel alloc] initWithFrame:
 //								CGRectMake(offsetX, resultView.frame.size.height / 2,
 //										   resultView.frame.size.width - offsetX * 2,
@@ -155,9 +198,9 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 //	headerTextLabel.font = [FontFactory fontWithType: FontTypeCheckListHeaderTitle];
 //	[headerTextLabel setTextColor: [FontFactory fontColorForType: FontTypeCheckListHeaderTitle]];
 //	headerTextLabel.backgroundColor = [UIColor clearColor];
-//	
+//
 //	[resultView addSubview: headerTextLabel];
-//	
+//
 //	if (section == CheckListSectionActive) {
 //		headerTextLabel.text = @"ChecksActiveHeaderTitle".commonLocalizedString;
 //	} else if (section == CheckListSectionVote) {
@@ -165,22 +208,14 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 //	} else if (section == CheckListSectionClosed) {
 //		headerTextLabel.text = @"ChecksClosedHeaderTitle".commonLocalizedString;
 //	}
-//	
+//
 //	return resultView;
 //}
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[theTableView deselectRowAtIndexPath: indexPath animated: YES];
 	
-	LGCheck *item;
-	
-	if (indexPath.section == CheckListSectionActive) {
-		item = kernel.storage.checks[indexPath.row];
-	} else if (indexPath.section == CheckListSectionVote) {
-		item = nil;
-	} else if (indexPath.section == CheckListSectionClosed) {
-		item = nil;
-	}
+	LGCheck *item = _contentModel[indexPath.row];
 	
 	if (item != nil) {
 		[kernel.checksManager openCheckCardViewControllerFor: item];
@@ -190,38 +225,16 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 #pragma mark -
 #pragma mark Table view data source methods
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	short count = 1;
-    return count;
-}
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	short numberOfRows = 0;
-	if (section == CheckListSectionActive) {
-		numberOfRows = [kernel.storage.checks count];
-	} else if (section == CheckListSectionVote) {
-		numberOfRows = 0;
-	} else if (section == CheckListSectionClosed) {
-		numberOfRows = 0;
-	}
-    return numberOfRows;
+	return [_contentModel count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-    static NSString *CellIdentifier = @"Cell";
+	static NSString *CellIdentifier = @"Cell";
 	
-	LGCheck *item;
-	
-	if (indexPath.section == CheckListSectionActive) {
-		item = kernel.storage.checks[indexPath.row];
-	} else if (indexPath.section == CheckListSectionVote) {
-		item = nil;
-	} else if (indexPath.section == CheckListSectionClosed) {
-		item = nil;
-	}
+	LGCheck *item = _contentModel[indexPath.row];
 	
 	CheckListTableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil) {
