@@ -10,6 +10,11 @@
 #import "LGPhoto.h"
 #import "LGUser.h"
 
+typedef NS_ENUM(ushort, CheckType) {
+	CheckTypeSelfie = 0,
+	CheckTypeAction
+};
+
 @interface LGCheck : NSObject
 
 @property (nonatomic, assign) int64_t uid;
@@ -18,6 +23,8 @@
 @property (nonatomic, assign) NSTimeInterval startDate;
 @property (nonatomic, assign) NSTimeInterval voteDate;
 @property (nonatomic, assign) NSTimeInterval closeDate;
+
+@property (nonatomic, assign) CheckType type;
 
 @property (nonatomic, assign) NSTimeInterval duration;
 @property (nonatomic, assign) NSTimeInterval voteDuration;

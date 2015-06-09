@@ -62,7 +62,7 @@
 	
 	offsetY += CGRectGetHeight(segmentedControl.frame);
 	contentFrame.origin.y += CGRectGetHeight(segmentedControl.frame);
-	contentFrame.size.height += CGRectGetHeight(segmentedControl.frame);
+	contentFrame.size.height -= CGRectGetHeight(segmentedControl.frame);
 	
 	UILabel *descriptionLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY,
 																		   CGRectGetWidth(contentFrame), 53)];
@@ -76,7 +76,7 @@
 	
 	offsetY += CGRectGetHeight(descriptionLabel.frame);
 	contentFrame.origin.y += CGRectGetHeight(descriptionLabel.frame);
-	contentFrame.size.height += CGRectGetHeight(descriptionLabel.frame);
+	contentFrame.size.height -= CGRectGetHeight(descriptionLabel.frame);
 	
 	UITableView *tableView = [[UITableView alloc] initWithFrame: contentFrame style: UITableViewStylePlain];
 	tableView.backgroundColor = [UIColor colorWithRed: 0.92 green: 0.925 blue: 0.93 alpha: 1.0];
@@ -218,7 +218,7 @@
 	LGCheck *item = _contentModel[indexPath.row];
 	
 	if (item != nil) {
-		[kernel.checksManager openCheckCardViewControllerFor: item];
+		[kernel.checksManager openCheckActionCardViewControllerWithCheckUID: item.uid];
 	}
 }
 

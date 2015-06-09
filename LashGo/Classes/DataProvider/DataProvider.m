@@ -261,7 +261,7 @@ static NSString *const kRequestUUID =		@"uuid";
 
 - (void) checksActions {
 	[self startConnectionWithPath: kChecksPath
-					  queryParams: @{@"check_type" : @"ACTION"}
+					  queryParams: @{@"check_type" : kCheckTypeAction}
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didGetChecksActions:)

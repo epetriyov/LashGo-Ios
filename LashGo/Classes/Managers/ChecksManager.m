@@ -150,6 +150,19 @@
 	}
 }
 
+- (void) openCheckActionCardViewControllerWithCheckUID: (int64_t) checkUID {
+	NSUInteger index = [_kernel.storage.checksActions indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+		LGCheck *item = obj;
+		return item.uid == checkUID;
+	}];
+	CheckActionCardViewController *vc = _viewControllersManager.checkActionCardViewController;
+	if (index != NSNotFound) {
+		NSIndexPath *indexPath = [NSIndexPath indexPathForRow: index inSection: 0];
+		vc.indexToShowOnAppear = indexPath;
+	}
+	[_viewControllersManager openViewController: vc animated: YES];
+}
+
 - (void) openCheckActionListViewController {
 	CheckActionListViewController *vc = _viewControllersManager.checkActionListViewController;
 	[_viewControllersManager openViewController: vc animated: YES];

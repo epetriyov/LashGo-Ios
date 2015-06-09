@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "Singleton.h"
 
+#define kCheckTypeAction @"ACTION"
+#define kCheckTypeSelfie @"SELFIE"
+
 @interface NSString (CommonExtension)
 
 @property (nonatomic, readonly) NSString *commonLocalizedString;

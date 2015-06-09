@@ -11,6 +11,7 @@
 @interface ViewControllersManager () {
 	SearchViewController *_searchViewController;
 	
+	CheckActionCardViewController __weak *_checkActionCardViewController;
 	CheckActionListViewController __weak *_checkActionListViewController;
 	
 	CheckDetailViewController __weak *_checkDetailViewController;
@@ -29,6 +30,7 @@
 
 @synthesize rootNavigationController;
 @dynamic isReturnToPreviousAvaliable;
+@dynamic checkActionCardViewController;
 @dynamic checkActionListViewController;
 @dynamic recoverViewController, checkDetailViewController, voteViewController;
 @dynamic licenseViewController;
@@ -39,6 +41,15 @@
 
 - (BOOL) isReturnToPreviousAvaliable {
 	return [rootNavigationController.viewControllers count] > 1;
+}
+
+- (CheckActionCardViewController *) checkActionCardViewController {
+	CheckActionCardViewController *vc = _checkActionCardViewController;
+	if (vc == nil) {
+		vc = [self createViewControllerOfClass: [CheckActionCardViewController class]];
+		_checkActionCardViewController = vc;
+	}
+	return vc;
 }
 
 - (CheckActionListViewController *) checkActionListViewController {

@@ -66,7 +66,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 			offsetY = 21;
 		}
 		
-		_textLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.contentView.frame.size.width, 20)];
+		_textLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.contentView.frame.size.width, 23)];
 		_textLabel.font = [FontFactory fontWithType: FontTypeCheckCardTitle];
 		_textLabel.textAlignment = NSTextAlignmentCenter;
 		_textLabel.textColor = [FontFactory fontColorForType: FontTypeCheckCardTitle];
@@ -75,7 +75,7 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		
 		offsetY += _textLabel.frame.size.height;
 		if (is568hMode == NO) {
-			offsetY += 10;
+			offsetY += 7;
 		} else {
 			offsetY += 24;
 		}

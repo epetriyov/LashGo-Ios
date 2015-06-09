@@ -46,6 +46,7 @@
 - (BOOL) openCheckCardViewControllerForCheckUID: (int64_t) checkUID;
 - (void) openCheckCardViewControllerWithFetchForCheckUID: (int64_t) checkUID;
 - (void) openCheckListViewController;
+- (void) openCheckActionCardViewControllerWithCheckUID: (int64_t) checkUID;
 - (void) openCheckActionListViewController;
 
 - (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check;

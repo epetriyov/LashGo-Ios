@@ -299,6 +299,7 @@
 			[self.userManager openProfileViewController];
 			break;
 		case TaskbarButtonTypeTask:
+			[self.checksManager openCheckListViewController];
 			break;
 		default:
 			break;

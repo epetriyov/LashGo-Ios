@@ -132,6 +132,11 @@
 		check.duration =	[rawCheck[@"duration"] intValue] * durationSectionSeconds;
 		check.voteDuration = [rawCheck[@"voteDuration"] intValue] * durationSectionSeconds;
 		
+		NSString *rawType = rawCheck[@"checkType"];
+		if ([rawType isEqualToString: kCheckTypeAction] == YES) {
+			check.type = CheckTypeAction;
+		}
+		
 		check.voteDate =	check.startDate + check.duration;
 		check.closeDate =	check.voteDate + check.voteDuration;
 		
@@ -176,6 +181,11 @@
 		
 		check.duration =	[rawCheck[@"duration"] intValue] * durationSectionSeconds;
 		check.voteDuration = [rawCheck[@"voteDuration"] intValue] * durationSectionSeconds;
+		
+		NSString *rawType = rawCheck[@"checkType"];
+		if ([rawType isEqualToString: kCheckTypeAction] == YES) {
+			check.type = CheckTypeAction;
+		}
 		
 		check.voteDate =	check.startDate + check.duration;
 		check.closeDate =	check.voteDate + check.voteDuration;
