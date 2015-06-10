@@ -13,6 +13,7 @@
 	
 	CheckActionCardViewController __weak *_checkActionCardViewController;
 	CheckActionListViewController __weak *_checkActionListViewController;
+	CheckActionWinnerViewController __weak *_checkActionWinnerViewController;
 	
 	CheckDetailViewController __weak *_checkDetailViewController;
 	VoteViewController __weak *_voteViewController;
@@ -32,6 +33,7 @@
 @dynamic isReturnToPreviousAvaliable;
 @dynamic checkActionCardViewController;
 @dynamic checkActionListViewController;
+@dynamic checkActionWinnerViewController;
 @dynamic recoverViewController, checkDetailViewController, voteViewController;
 @dynamic licenseViewController;
 @dynamic profileEditViewController, profileWelcomeViewController, profileViewController;
@@ -57,6 +59,15 @@
 	if (vc == nil) {
 		vc = [self createViewControllerOfClass: [CheckActionListViewController class]];
 		_checkActionListViewController = vc;
+	}
+	return vc;
+}
+
+- (CheckActionWinnerViewController *) checkActionWinnerViewController {
+	CheckActionWinnerViewController *vc = _checkActionWinnerViewController;
+	if (vc == nil) {
+		vc = [self createViewControllerOfClass: [CheckActionWinnerViewController class]];
+		_checkActionWinnerViewController = vc;
 	}
 	return vc;
 }

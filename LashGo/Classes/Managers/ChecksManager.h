@@ -48,6 +48,7 @@
 - (void) openCheckListViewController;
 - (void) openCheckActionCardViewControllerWithCheckUID: (int64_t) checkUID;
 - (void) openCheckActionListViewController;
+- (void) openCheckActionWinnerViewControllerWith: (LGCheck *) check;
 
 - (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check;
 - (void) openCheckDetailViewControllerUserFor: (LGCheck *) check;

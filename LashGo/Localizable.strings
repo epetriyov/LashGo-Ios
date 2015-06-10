@@ -154,6 +154,8 @@
 "ChecksSendUserImageTitle" = "отправить";
 "CheckPhotosViewControllerTitle" = "Результаты голосования";
 "CheckActionsDescription" = "Участвуй в акциях. Набирай наибольшее количество голосов. Забирай приз у сотрудника компании";
+"CheckWinnerHelp" = "Покажи этот экран сотруднику";
+"CheckWinnerText" = "ПОБЕДИТЕЛЬ!";
 
 //Twitter errors
 "ERROR_TITLE_MSG" = "Упс"; //"Oops"

@@ -115,6 +115,7 @@
 		84E91BE419FBD4E100DD1873 /* CheckPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E91BE319FBD4E100DD1873 /* CheckPhotosViewController.m */; };
 		84E99B9D194F1CA3000C55E4 /* VkontakteAppAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */; };
 		84E99C34194F26F3000C55E4 /* VKSdkResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */; };
+		84EA02441B28755400C9A610 /* CheckActionWinnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EA02431B28755400C9A610 /* CheckActionWinnerViewController.m */; };
 		84EABEC61A345F8F0031BF07 /* LGSubscribe.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EABEC31A345F8F0031BF07 /* LGSubscribe.m */; };
 		84EABEC71A345F8F0031BF07 /* LGSubscription.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EABEC51A345F8F0031BF07 /* LGSubscription.m */; };
 		84EABECA1A34600C0031BF07 /* LGSubscriptionsResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 84EABEC91A34600C0031BF07 /* LGSubscriptionsResult.m */; };
@@ -405,6 +406,8 @@
 		84E99B9B194F1CA3000C55E4 /* VkontakteAppAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VkontakteAppAccount.h; sourceTree = "<group>"; };
 		84E99B9C194F1CA3000C55E4 /* VkontakteAppAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VkontakteAppAccount.m; sourceTree = "<group>"; };
 		84E99C04194F26F3000C55E4 /* VKSdkResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = VKSdkResources.bundle; path = LashGo/VKlib/VKSdkResources.bundle; sourceTree = "<group>"; };
+		84EA02421B28755400C9A610 /* CheckActionWinnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckActionWinnerViewController.h; sourceTree = "<group>"; };
+		84EA02431B28755400C9A610 /* CheckActionWinnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckActionWinnerViewController.m; sourceTree = "<group>"; };
 		84EABEC21A345F8F0031BF07 /* LGSubscribe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSubscribe.h; sourceTree = "<group>"; };
 		84EABEC31A345F8F0031BF07 /* LGSubscribe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSubscribe.m; sourceTree = "<group>"; };
 		84EABEC41A345F8F0031BF07 /* LGSubscription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSubscription.h; sourceTree = "<group>"; };
@@ -1010,6 +1013,8 @@
 				84F6190E1B248F3A00AC8606 /* CheckActionCardViewController.m */,
 				84F619031B2321CD00AC8606 /* CheckActionListViewController.h */,
 				84F619041B2321CD00AC8606 /* CheckActionListViewController.m */,
+				84EA02421B28755400C9A610 /* CheckActionWinnerViewController.h */,
+				84EA02431B28755400C9A610 /* CheckActionWinnerViewController.m */,
 				84EEE4B719C9D1CB009F83C6 /* VoteViewController.h */,
 				84EEE4B819C9D1CB009F83C6 /* VoteViewController.m */,
 				84426D4419E158060068734B /* CheckDetailViewController.h */,
@@ -1486,6 +1491,7 @@
 				84EABECA1A34600C0031BF07 /* LGSubscriptionsResult.m in Sources */,
 				8406256A1930CB0A0067C1CA /* LGPhoto.m in Sources */,
 				84E6D9B3196C226A0021D417 /* CheckCardViewController.m in Sources */,
+				84EA02441B28755400C9A610 /* CheckActionWinnerViewController.m in Sources */,
 				841C624119A397ED00BAEDBB /* TaskbarManager.m in Sources */,
 				845D85BC1902AA00004E10AB /* NSMutableURLRequest+ParamsManipulation.m in Sources */,
 				84F619051B2321CD00AC8606 /* CheckActionListViewController.m in Sources */,

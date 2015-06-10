@@ -169,6 +169,12 @@
 	[_dataProvider checksActions];
 }
 
+- (void) openCheckActionWinnerViewControllerWith: (LGCheck *) check {
+	CheckActionWinnerViewController *vc = _viewControllersManager.checkActionWinnerViewController;
+	vc.check = check;
+	[_viewControllersManager openViewController: vc animated: YES];
+}
+
 - (void) openCheckDetailViewControllerAdminFor: (LGCheck *) check {
 	CheckDetailViewController *vc = _viewControllersManager.checkDetailViewController;
 	vc.check = check;
