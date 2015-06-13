@@ -78,7 +78,8 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 	
 	_titleBarView.titleLabel.text = @"CheckPhotosViewControllerTitle".commonLocalizedString;
 	
-	float offsetY = self.contentFrame.origin.y;
+	CGRect contentBounds = self.contentFrame;
+	float offsetY = CGRectGetMinY(contentBounds);
 	
 	CheckHeaderView *checkView = [[CheckHeaderView alloc] initWithFrame: CGRectMake(0, offsetY,
 																				   self.view.frame.size.width,
@@ -91,9 +92,10 @@ static NSString *const kObservationKeyPath = @"checkPhotos";
 	_checkHeaderView = checkView;
 	
 	//Configuring scrollable area
-	offsetY += checkView.frame.size.height;
+	contentBounds.origin.y += CGRectGetHeight(checkView.frame);
+	contentBounds.size.height -= CGRectGetHeight(checkView.frame);
 	
-	CGRect scrollFrame = CGRectMake(0, offsetY, self.view.frame.size.width, self.view.frame.size.height - offsetY);
+	CGRect scrollFrame = contentBounds;
 	
 	UIScrollView *contentScrollView = [[UIScrollView alloc] initWithFrame: scrollFrame];
 	contentScrollView.contentSize = CGSizeMake(scrollFrame.size.width * 2, scrollFrame.size.height);

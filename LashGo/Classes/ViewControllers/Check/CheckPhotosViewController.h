@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "TitleBarViewController.h"
+#import "TaskBarViewController.h"
 
 #import "LGCheck.h"
 
-@interface CheckPhotosViewController : TitleBarViewController
+@interface CheckPhotosViewController : TaskBarViewController
 
 @property (nonatomic, strong) LGCheck *check;
 

@@ -147,7 +147,7 @@
 }
 
 - (void) openCheckListViewController {
-	[_viewControllersManager openCheckListViewController];
+	[_viewControllersManager openViewControllerBelowFirst: _viewControllersManager.checkListViewController];
 	if ([_kernel.storage.checks count] <= 0) {
 		[_dataProvider checksWithContext: nil];
 	}

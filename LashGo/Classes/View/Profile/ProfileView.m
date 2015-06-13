@@ -32,7 +32,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
 	CGRect requiredFrame = frame;
-	requiredFrame.size.height = 280;
+	requiredFrame.size.height = 240;
     self = [super initWithFrame: requiredFrame];
     if (self) {
 		_avatarImageView = [[UIImageView alloc] initWithFrame: self.bounds];

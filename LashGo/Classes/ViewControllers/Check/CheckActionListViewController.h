@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "TitleBarViewController.h"
+#import "TaskBarViewController.h"
 
-@interface CheckActionListViewController : TitleBarViewController
+@interface CheckActionListViewController : TaskBarViewController
 
 @end

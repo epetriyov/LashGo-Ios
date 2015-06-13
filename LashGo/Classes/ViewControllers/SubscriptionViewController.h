@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Vitaliy Pykhtin. All rights reserved.
 //
 
-#import "TitleBarViewController.h"
+#import "TaskBarViewController.h"
 
 #import "LGCheck.h"
 
@@ -17,7 +17,7 @@ typedef NS_ENUM(ushort, SubscriptionViewControllerMode) {
 	SubscriptionViewControllerModePhotoVotes
 };
 
-@interface SubscriptionViewController : TitleBarViewController
+@interface SubscriptionViewController : TaskBarViewController
 
 @property (nonatomic, strong) id context;
 @property (nonatomic, assign) SubscriptionViewControllerMode mode;

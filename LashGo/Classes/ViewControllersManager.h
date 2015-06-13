@@ -81,6 +81,7 @@
 
 - (void) openViewController: (UIViewController *) viewController animated: (BOOL) animated;
 - (void) openViewControllerAboveFirst: (UIViewController *) viewController animated: (BOOL) animated;
+- (void) openViewControllerBelowFirst: (UIViewController *) viewController;
 - (void) returnToPreviousViewController;
 
 - (CommentsViewController *) getCommentsViewControllerWithContext: (id) context;

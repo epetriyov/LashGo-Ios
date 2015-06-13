@@ -197,6 +197,14 @@
 	[rootNavigationController setViewControllers: @[_checkCardViewController, viewController] animated: YES];
 }
 
+- (void) openViewControllerBelowFirst: (UIViewController *) viewController {
+	if (rootNavigationController.topViewController != viewController) {
+		[rootNavigationController setViewControllers: @[viewController, rootNavigationController.topViewController]
+											animated: NO];
+		[rootNavigationController popToRootViewControllerAnimated: YES];
+	}
+}
+
 #pragma mark - Methods
 
 - (void) returnToPreviousViewController {

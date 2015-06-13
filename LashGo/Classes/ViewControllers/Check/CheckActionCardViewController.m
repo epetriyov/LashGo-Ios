@@ -23,6 +23,10 @@
 
 @implementation CheckActionCardViewController
 
+- (TaskbarContentType) taskbarContentType {
+	return TaskbarContentTypeDark;
+}
+
 - (void) loadView {
 	[super loadView];
 	
