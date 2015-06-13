@@ -156,6 +156,7 @@
 "CheckActionsDescription" = "Участвуй в акциях. Набирай наибольшее количество голосов. Забирай приз у сотрудника компании";
 "CheckWinnerHelp" = "Покажи этот экран сотруднику";
 "CheckWinnerText" = "ПОБЕДИТЕЛЬ!";
+"CheckGetPrizeText" = "Получить приз";
 
 //Twitter errors
 "ERROR_TITLE_MSG" = "Упс"; //"Oops"

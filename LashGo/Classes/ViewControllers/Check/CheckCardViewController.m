@@ -19,6 +19,7 @@
 
 @interface CheckCardViewController () <CheckCardCollectionCellDelegate> {
 	UICollectionView __weak *_collectionView;
+	NSArray *_contentModel;
 	
 	NSTimer *_progressTimer;
 }
@@ -29,6 +30,13 @@
 
 - (TaskbarContentType) taskbarContentType {
 	return TaskbarContentTypeDark;
+}
+
+- (instancetype) initWithKernel:(Kernel *)theKernel {
+	if (self = [super initWithKernel: theKernel]) {
+		[kernel.storage addObserver: self forKeyPath: kLGStorageChecksSelfieObservationPath options: 0 context: nil];
+	}
+	return self;
 }
 
 - (void) loadView {
@@ -99,6 +107,17 @@
 	[_progressTimer invalidate];
 }
 
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+						 change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqualToString: kLGStorageChecksSelfieObservationPath] == YES && [object isKindOfClass: [Storage class]] == YES) {
+		[self refresh];
+	}
+}
+
+- (void) dealloc {
+	[kernel.storage removeObserver: self forKeyPath: kLGStorageChecksSelfieObservationPath];
+}
+
 #pragma mark - Methods
 
 - (void) refreshVisiblePage {
@@ -109,6 +128,8 @@
 }
 
 - (void) refresh {
+	_contentModel = kernel.storage.checksSelfie;
+	
 	[_collectionView reloadData];
 }
 
@@ -133,7 +154,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-	return [kernel.storage.checks count];
+	return [_contentModel count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -143,7 +164,7 @@
 																		   forIndexPath:indexPath];
 	newCell.delegate = self;
 	
-	LGCheck *check = kernel.storage.checks[indexPath.row];
+	LGCheck *check = _contentModel[indexPath.row];
 	newCell.check = check;
 //	newCell.textLabel.text = check.name;
 //	newCell.detailTextLabel.text = check.descr;

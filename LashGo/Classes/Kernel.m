@@ -132,9 +132,7 @@
 }
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecks: (ContextualArrayResult *) checks {
-	[self.storage updateChecksWith: checks.items];
-	[self.viewControllersManager.checkCardViewController refresh];
-	[self.viewControllersManager.checkListViewController refresh];
+	_storage.checks = checks.items;
 	
 	if ([checks.context isKindOfClass: [NSNumber class]] == YES) {
 		[self.checksManager openCheckCardViewControllerForCheckUID: [checks.context longLongValue]];
@@ -142,7 +140,7 @@
 }
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecksActions: (NSArray *) checksActions {
-	_storage.checksActions = checksActions;
+//	_storage.checksActions = checksActions;
 }
 
 - (void) dataProvider: (DataProvider *) dataProvider didGetChecksSearch: (NSArray *) checks {
@@ -260,7 +258,8 @@
 			} else {
 				[[AuthorizationManager sharedManager].account logout];
 				[viewControllersManager openStartViewController];
-				[_storage updateChecksWith: @[]];
+				_storage.checks = nil;
+//				[_storage updateChecksWith: @[]];
 			}
 			break;
 		default:

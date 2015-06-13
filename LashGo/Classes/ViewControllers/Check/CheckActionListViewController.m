@@ -94,6 +94,8 @@
 																				 kOffsetToActivateDataFetch)];
 	[fullRefreshControl addTarget: self action: @selector(fetchFullData:) forControlEvents: UIControlEventValueChanged];
 	[tableView addSubview: fullRefreshControl];
+	
+	[self refresh];
 }
 
 - (void)didReceiveMemoryWarning
@@ -167,7 +169,7 @@
 
 - (void) fetchFullData: (PullToRefreshControl *) sender {
 	if (sender.isActive == YES) {
-		[kernel.checksManager getChecksActions];
+		[kernel.checksManager getChecks];
 	}
 }
 
@@ -218,7 +220,7 @@
 	LGCheck *item = _contentModel[indexPath.row];
 	
 	if (item != nil) {
-		[kernel.checksManager openCheckActionCardViewControllerWithCheckUID: item.uid];
+		[kernel.checksManager openCheckActionCardViewControllerWith: item];
 	}
 }
 

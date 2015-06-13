@@ -39,9 +39,9 @@
 	[_dataProvider checksWithContext: nil];
 }
 
-- (void) getChecksActions {
-	[_dataProvider checksActions];
-}
+//- (void) getChecksActions {
+//	[_dataProvider checksActions];
+//}
 
 - (void) getChecksSearch: (NSString *) searchText {
 	[_dataProvider checksSearch: searchText];
@@ -112,25 +112,28 @@
 	}
 }
 
-- (void) openCheckCardViewControllerFor: (LGCheck *) check {
-	NSUInteger index = [_kernel.storage.checks indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-		LGCheck *item = obj;
-		return item.uid == check.uid;
-	}];
+- (void) openCheckCardViewControllerWith: (LGCheck *) check {
+	NSUInteger index = [_kernel.storage.checksSelfie indexOfObjectIdenticalTo: check];
 	if (index != NSNotFound) {
 		NSIndexPath *indexPath = [NSIndexPath indexPathForRow: index inSection: 0];
 		_viewControllersManager.checkCardViewController.indexToShowOnAppear = indexPath;
 	}
 	[_viewControllersManager openCheckCardViewController];
-	if ([_kernel.storage.checks count] <= 0) {
-		[_dataProvider checksWithContext: nil];
-	}
 }
 
 - (BOOL) openCheckCardViewControllerForCheckUID: (int64_t) checkUID {
 	for (LGCheck *item in _kernel.storage.checks) {
 		if (item.uid == checkUID) {
-			[self openCheckCardViewControllerFor: item];
+			switch (item.type) {
+				case CheckTypeAction:
+					[self openCheckActionCardViewControllerWith: item];
+					break;
+				case CheckTypeSelfie:
+					[self openCheckCardViewControllerWith: item];
+					break;
+				default:
+					break;
+			}
 			return YES;
 		}
 	}
@@ -150,11 +153,8 @@
 	}
 }
 
-- (void) openCheckActionCardViewControllerWithCheckUID: (int64_t) checkUID {
-	NSUInteger index = [_kernel.storage.checksActions indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-		LGCheck *item = obj;
-		return item.uid == checkUID;
-	}];
+- (void) openCheckActionCardViewControllerWith: (LGCheck *) check {
+	NSUInteger index = [_kernel.storage.checksActions indexOfObjectIdenticalTo: check];
 	CheckActionCardViewController *vc = _viewControllersManager.checkActionCardViewController;
 	if (index != NSNotFound) {
 		NSIndexPath *indexPath = [NSIndexPath indexPathForRow: index inSection: 0];

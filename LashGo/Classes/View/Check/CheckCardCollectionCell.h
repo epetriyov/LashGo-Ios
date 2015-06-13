@@ -12,6 +12,7 @@
 extern NSString *const kCheckCardCollectionCellReusableId;
 
 typedef NS_ENUM(ushort, CheckCardCollectionCellEvents) {
+	CheckCardCollectionCellEventGetPrize,
 	CheckCardCollectionCellEventOpenImage,
 	CheckCardCollectionCellEventOpenUserImage,
 	CheckCardCollectionCellEventOpenUsers,

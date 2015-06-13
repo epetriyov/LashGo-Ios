@@ -212,7 +212,7 @@
 
 - (void) iconAction: (id) sender {
 	if (self.check != nil) {
-		[kernel.checksManager openCheckCardViewControllerFor: self.check];
+		[kernel.checksManager openCheckCardViewControllerForCheckUID: self.check.uid];
 	} else if (self.photo != nil) {
 		if (self.photo.user != nil) {
 			[kernel.userManager openProfileViewControllerWith: self.photo.user];

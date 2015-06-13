@@ -7,7 +7,10 @@
 //
 
 #import "CheckCardCollectionCell.h"
+
+#import "AuthorizationManager.h"
 #import "FontFactory.h"
+#import "ViewFactory.h"
 
 #import "CheckCardTimerPanelView.h"
 #import "Common.h"
@@ -18,7 +21,11 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 @interface CheckCardCollectionCell () <CheckDetailViewDelegate> {
 	CheckDetailView *_checkView;
 	CheckCardTimerPanelView *_panelView;
-//	NSTimer *_progressTimer;
+	
+	UIButton *_getPrizeButton;
+	
+	CGRect _detailLabelFrame;
+	CGRect _detailLabelShortFrame;
 }
 
 @end
@@ -106,14 +113,34 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		float descriptionGapsY = 7;
 		offsetY += descriptionGapsY;
 		
+		float buttonGaps = 20;
+		float buttonsWidth = CGRectGetWidth(self.contentView.bounds) - buttonGaps * 2;
+		float buttonsHeight = 40;
 		float detailTextHeight = CGRectGetMinY(_panelView.frame) - descriptionGapsY - offsetY;
 		
-		_detailTextLabel = [[UILabel alloc] initWithFrame: CGRectMake(0, offsetY, self.contentView.frame.size.width, detailTextHeight)];
+		_getPrizeButton = [[UIButton alloc] initWithFrame: CGRectMake(buttonGaps, offsetY, buttonsWidth, buttonsHeight)];
+		[_getPrizeButton addTarget: self action: @selector(getPrizeAction:)
+				  forControlEvents: UIControlEventTouchUpInside];
+		_getPrizeButton.hidden = YES;
+		[_getPrizeButton setTitle: @"CheckGetPrizeText".commonLocalizedString forState: UIControlStateNormal];
+		[_getPrizeButton setTitleColor: [FontFactory fontColorForType: FontTypeVoteTimer]
+							  forState: UIControlStateNormal];
+		[_getPrizeButton setTitleColor: [UIColor grayColor] forState: UIControlStateHighlighted];
+		
+		[self.contentView addSubview: _getPrizeButton];
+		
+		_detailLabelFrame = CGRectMake(0, offsetY, CGRectGetWidth(self.contentView.frame), detailTextHeight);
+		_detailLabelShortFrame = _detailLabelFrame;
+		_detailLabelShortFrame.origin.y += buttonsHeight;
+		_detailLabelShortFrame.size.height -= buttonsHeight;
+		
+		_detailTextLabel = [[UILabel alloc] initWithFrame: _detailLabelFrame];
 		_detailTextLabel.font = [FontFactory fontWithType: FontTypeCheckCardDescription];
 		_detailTextLabel.numberOfLines = CGRectGetHeight(_detailTextLabel.frame) / [_detailTextLabel.font lineHeight];
 		_detailTextLabel.textAlignment = NSTextAlignmentCenter;
 		_detailTextLabel.textColor = [FontFactory fontColorForType: FontTypeCheckCardDescription];
 		_detailTextLabel.backgroundColor = [UIColor clearColor];
+		_detailTextLabel.adjustsFontSizeToFitWidth = YES;
 		[self.contentView addSubview: _detailTextLabel];
     }
     return self;
@@ -125,18 +152,12 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 	CheckDetailType currentType;
 	if (now > _check.closeDate) {
 		currentType = CheckDetailTypeClosed;
-//		[_progressTimer invalidate];
-//		_progressTimer = nil;
 	} else {
 		if (now > _check.voteDate) {
 			currentType = CheckDetailTypeVote;
 		} else {
 			currentType = CheckDetailTypeOpen;
 		}
-//		if ([_progressTimer isValid] == NO) {
-//			_progressTimer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector:@selector(refresh)
-//															userInfo:nil repeats:YES];
-//		}
 	}
 	if (self.type != currentType) {
 		self.type = currentType;
@@ -159,6 +180,22 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 		progress = fdim(now, _check.voteDate) / _check.voteDuration;
 	}
 	_checkView.progressValue = progress;
+	
+	BOOL isPrizeBtnHidden = YES;
+	if ([AuthorizationManager sharedManager].account != nil && _check.winnerPhoto != nil) {
+		int32_t currentAccountUID = [AuthorizationManager sharedManager].account.userInfo.uid;
+		isPrizeBtnHidden = !(_check.winnerPhoto.user.uid == currentAccountUID && _check.type == CheckTypeAction);
+	}
+	[self setGetPrizeButtonHidden: isPrizeBtnHidden];
+}
+
+- (void) setGetPrizeButtonHidden: (BOOL) hidden {
+	_getPrizeButton.hidden = hidden;
+	if (hidden == YES) {
+		_detailTextLabel.frame = _detailLabelFrame;
+	} else {
+		_detailTextLabel.frame = _detailLabelShortFrame;
+	}
 }
 
 - (NSString *) reuseIdentifier {
@@ -167,6 +204,10 @@ NSString *const kCheckCardCollectionCellReusableId = @"kCheckCardCollectionCellR
 
 - (void) usersAction: (id) sender {
 	[self.delegate actionWithCheck: self.check forEvent: CheckCardCollectionCellEventOpenUsers];
+}
+
+- (void) getPrizeAction: (id) sender {
+	[self.delegate actionWithCheck: self.check forEvent: CheckCardCollectionCellEventGetPrize];
 }
 
 #pragma mark - CheckDetailViewDelegate implementation

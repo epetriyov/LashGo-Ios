@@ -143,6 +143,9 @@
 
 - (void) actionWithCheck:(LGCheck *)check forEvent:(CheckCardCollectionCellEvents)event {
 	switch (event) {
+		case CheckCardCollectionCellEventGetPrize:
+			[kernel.checksManager openCheckActionWinnerViewControllerWith: check];
+			break;
 		case CheckCardCollectionCellEventOpenImage:
 			[kernel.checksManager openCheckDetailViewControllerAdminFor: check];
 			break;

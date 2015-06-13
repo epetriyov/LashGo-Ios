@@ -9,10 +9,14 @@
 #import "LGUser.h"
 #import "LGVotePhotosResult.h"
 
+extern NSString *const kLGStorageChecksActionObservationPath;
+extern NSString *const kLGStorageChecksSelfieObservationPath;
+
 @interface Storage : NSObject
 
-@property (nonatomic, readonly) NSArray *checks;
-@property (nonatomic, strong) NSArray *checksActions;
+@property (nonatomic, strong) NSArray *checks;
+@property (nonatomic, readonly) NSArray *checksActions;
+@property (nonatomic, readonly) NSArray *checksSelfie;
 @property (nonatomic, strong) NSArray *checkPhotos;
 @property (nonatomic, strong) LGVotePhotosResult *checkVotePhotos;
 @property (nonatomic, strong) NSArray *events;
@@ -20,7 +24,5 @@
 @property (nonatomic, strong) LGUser *lastViewProfileDetail;
 @property (nonatomic, strong) NSArray *searchChecks;
 @property (nonatomic, strong) NSArray *searchUsers;
-
-- (void) updateChecksWith: (NSArray *) newValues;
 
 @end

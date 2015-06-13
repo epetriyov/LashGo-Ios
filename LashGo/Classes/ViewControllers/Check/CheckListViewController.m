@@ -27,6 +27,7 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 
 @interface CheckListViewController () {
 	UITableView __weak *_tableView;
+	NSArray *_contentModel;
 	
 	NSTimer *_progressTimer;
 	
@@ -36,6 +37,13 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 @end
 
 @implementation CheckListViewController
+
+- (instancetype) initWithKernel:(Kernel *)theKernel {
+	if (self = [super initWithKernel: theKernel]) {
+		[kernel.storage addObserver: self forKeyPath: kLGStorageChecksSelfieObservationPath options: 0 context: nil];
+	}
+	return self;
+}
 
 - (void) loadView {
 	[super loadView];
@@ -99,6 +107,17 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	[_progressTimer invalidate];
 }
 
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+						 change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqualToString: kLGStorageChecksSelfieObservationPath] == YES && [object isKindOfClass: [Storage class]] == YES) {
+		[self refresh];
+	}
+}
+
+- (void) dealloc {
+	[kernel.storage removeObserver: self forKeyPath: kLGStorageChecksSelfieObservationPath];
+}
+
 #pragma mark - Methods
 
 - (void) refreshVisiblePage {
@@ -112,7 +131,11 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 }
 
 - (void) refresh {
-	[_tableView reloadData];
+	_contentModel = kernel.storage.checksSelfie;
+	
+	[_tableView beginUpdates];
+	[_tableView reloadSections: [NSIndexSet indexSetWithIndex:0] withRowAnimation: UITableViewRowAnimationAutomatic];
+	[_tableView endUpdates];
 	[fullRefreshControl setActive: NO forScrollView: _tableView];
 }
 
@@ -175,7 +198,7 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	LGCheck *item;
 	
 	if (indexPath.section == CheckListSectionActive) {
-		item = kernel.storage.checks[indexPath.row];
+		item = _contentModel[indexPath.row];
 	} else if (indexPath.section == CheckListSectionVote) {
 		item = nil;
 	} else if (indexPath.section == CheckListSectionClosed) {
@@ -183,7 +206,7 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	}
 	
 	if (item != nil) {
-		[kernel.checksManager openCheckCardViewControllerFor: item];
+		[kernel.checksManager openCheckCardViewControllerWith: item];
 	}
 }
 
@@ -199,7 +222,7 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	short numberOfRows = 0;
 	if (section == CheckListSectionActive) {
-		numberOfRows = [kernel.storage.checks count];
+		numberOfRows = [_contentModel count];
 	} else if (section == CheckListSectionVote) {
 		numberOfRows = 0;
 	} else if (section == CheckListSectionClosed) {
@@ -216,7 +239,7 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 	LGCheck *item;
 	
 	if (indexPath.section == CheckListSectionActive) {
-		item = kernel.storage.checks[indexPath.row];
+		item = _contentModel[indexPath.row];
 	} else if (indexPath.section == CheckListSectionVote) {
 		item = nil;
 	} else if (indexPath.section == CheckListSectionClosed) {

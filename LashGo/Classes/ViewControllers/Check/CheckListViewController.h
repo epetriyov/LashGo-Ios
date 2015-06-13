@@ -10,6 +10,4 @@
 
 @interface CheckListViewController : TaskBarViewController <UITableViewDataSource, UITableViewDelegate>
 
-- (void) refresh;
-
 @end
