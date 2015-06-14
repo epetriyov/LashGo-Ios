@@ -96,6 +96,7 @@
 - (void) dataProviderDidFailUserAvatarUpdate: (DataProvider *) dataProvider;
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserPhotos: (NSArray *) photos;
 - (void) dataProvider: (DataProvider *) dataProvider didGetUserProfile: (LGUser *) user;
+- (void) dataProvider: (DataProvider *) dataProvider didGetMainScreenInfo: (LGMainScreenInfo *) info;
 - (void) dataProvider: (DataProvider *) dataProvider didUserProfileUpdate: (LGUser *) user;
 - (void) dataProvider: (DataProvider *) dataProvider didUserSubscribeTo: (LGSubscribe *) subscribe;
 - (void) dataProvider: (DataProvider *) dataProvider didUserUnsubscribeFrom: (LGSubscribe *) subscribe;

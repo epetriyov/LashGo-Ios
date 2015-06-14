@@ -1,6 +1,15 @@
 #import "TaskbarButton.h"
+
 #import "FontFactory.h"
+#import "Storage.h"
 #import "UIColor+CustomColors.h"
+
+@interface TaskbarButton ()
+
+@property (nonatomic, strong) UILabel *counterLabel;
+@property (nonatomic, strong) NSObject *observer;
+
+@end
 
 @implementation TaskbarButton
 
@@ -50,6 +59,48 @@
 		self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		self.imageView.contentMode = UIViewContentModeCenter;
 		
+		short counterWidth = 18;
+		short counterHeight = 10;
+		_counterLabel = [[UILabel alloc] initWithFrame: CGRectMake(CGRectGetWidth(self.frame) - counterWidth,
+																   0, counterWidth, counterHeight)];
+		_counterLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+		_counterLabel.font = [FontFactory fontWithType: FontTypeMainScreenCounters];
+		_counterLabel.backgroundColor = [UIColor whiteColor];
+		_counterLabel.clipsToBounds = YES;
+		_counterLabel.layer.cornerRadius = CGRectGetHeight(_counterLabel.frame) / 2;
+		_counterLabel.textColor = [FontFactory fontColorForType: FontTypeMainScreenCounters];
+		_counterLabel.textAlignment = NSTextAlignmentCenter;
+		_counterLabel.hidden = YES;
+		[self addSubview: _counterLabel];
+		
+		TaskbarButton __weak *wself = self;
+		
+		self.observer = [[NSNotificationCenter defaultCenter] addObserverForName: kLGStorageMainScreenInfoChangedNotification
+														  object: nil
+														   queue: [NSOperationQueue mainQueue]
+													  usingBlock:^(NSNotification *note) {
+														  LGMainScreenInfo *info = note.object;
+														  
+														  BOOL isHidden = YES;
+														  switch (wself.type) {
+															  case TaskbarButtonTypeTask:
+																  isHidden = info.tasksCount <= 0;
+																  wself.counterLabel.text = [NSString stringWithFormat: @"%d", info.tasksCount];
+																  break;
+															  case TaskbarButtonTypeFollow:
+																  isHidden = info.subscribesCount <= 0;
+																  wself.counterLabel.text = [NSString stringWithFormat: @"%d", info.subscribesCount];
+																  break;
+															  case TaskbarButtonTypeNews:
+																  isHidden = info.newsCount <= 0;
+																  wself.counterLabel.text = [NSString stringWithFormat: @"%d", info.newsCount];
+																  break;
+															  default:
+																  break;
+														  }
+														  wself.counterLabel.hidden = isHidden;
+													  }];
+		
 		[self loadImagesWithName: [NSString stringWithFormat: @"tb_btn_%d", buttonType]];
 		
 		NSString *title = [self localizedTitleForType: buttonType];
@@ -73,6 +124,10 @@
 		}
 	}
 	return self;
+}
+
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver: self.observer];
 }
 
 @end

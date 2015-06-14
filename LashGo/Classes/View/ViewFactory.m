@@ -451,7 +451,22 @@ static ViewFactory *viewFactory = nil;
 }
 
 - (UIButton *) titleBarRightIncomeButtonWithTarget: (id) target action: (SEL) selector {
-	UIButton *button = [self buttonWithBGImageName: @"ic_notifications" target: target action: selector];
+	UIImage *image = [UIImage imageNamed: @"ic_notifications.png"];
+	UIButton *button = [ [UIButton alloc] initWithFrame: CGRectMake(0, 0, image.size.width, 44)];
+	[button setImage: image forState: UIControlStateNormal];
+	[button addTarget: target action: selector forControlEvents: UIControlEventTouchUpInside];
+	
+	button.titleLabel.font = [FontFactory fontWithType: FontTypeMainScreenCounters];
+	button.titleLabel.backgroundColor = [UIColor whiteColor];
+	button.titleLabel.layer.cornerRadius = 5;
+	[button setTitleColor: [FontFactory fontColorForType: FontTypeMainScreenCounters] forState: UIControlStateNormal];
+//	[button setTitle: @" 10 " forState: UIControlStateNormal];
+	
+	button.titleEdgeInsets = UIEdgeInsetsMake(-12, - button.imageView.image.size.width, 0, 0);
+	
+	float titleWidth = [Common labelWidthWithFont: button.titleLabel.font text: button.titleLabel.text];
+	button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, - titleWidth);
+	
 	return button;
 }
 

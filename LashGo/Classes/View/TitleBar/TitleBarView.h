@@ -13,6 +13,8 @@
 @property (nonatomic, readonly) UIButton *rightButton;
 @property (nonatomic, readonly) CGRect contentFrame;
 
+- (void) setRightButtonCounter: (int32_t) count;
+
 + (TitleBarView *) titleBarViewWithLogo;
 + (TitleBarView *) titleBarViewWithLogoAndRightButtonWithText: (NSString *) text;
 + (TitleBarView *) titleBarViewWithRightButtonWithText: (NSString *) text;

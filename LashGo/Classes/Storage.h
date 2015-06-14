@@ -8,9 +8,12 @@
 
 #import "LGUser.h"
 #import "LGVotePhotosResult.h"
+#import "LGMainScreenInfo.h"
 
 extern NSString *const kLGStorageChecksActionObservationPath;
 extern NSString *const kLGStorageChecksSelfieObservationPath;
+
+extern NSString *const kLGStorageMainScreenInfoChangedNotification;
 
 @interface Storage : NSObject
 
@@ -24,5 +27,7 @@ extern NSString *const kLGStorageChecksSelfieObservationPath;
 @property (nonatomic, strong) LGUser *lastViewProfileDetail;
 @property (nonatomic, strong) NSArray *searchChecks;
 @property (nonatomic, strong) NSArray *searchUsers;
+
+@property (nonatomic, strong) LGMainScreenInfo *mainScreenInfo;
 
 @end

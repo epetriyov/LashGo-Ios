@@ -13,6 +13,8 @@
 NSString *const kLGStorageChecksActionObservationPath = @"checksActions";
 NSString *const kLGStorageChecksSelfieObservationPath = @"checksSelfie";
 
+NSString *const kLGStorageMainScreenInfoChangedNotification = @"LGStorageMainScreenInfoChangedNotification";
+
 @interface Storage ()
 //{
 //	NSMutableArray *_checks;
@@ -55,6 +57,13 @@ NSString *const kLGStorageChecksSelfieObservationPath = @"checksSelfie";
 	_checks = checks;
 	self.checksActions = checksAction;
 	self.checksSelfie = checksSelfie;
+}
+
+- (void) setMainScreenInfo:(LGMainScreenInfo *)mainScreenInfo {
+	_mainScreenInfo = mainScreenInfo;
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName: kLGStorageMainScreenInfoChangedNotification
+														object: mainScreenInfo];
 }
 
 //#pragma mark - Standard

@@ -207,6 +207,10 @@
 	self.storage.lastViewProfileDetail = user;
 }
 
+- (void) dataProvider: (DataProvider *) dataProvider didGetMainScreenInfo: (LGMainScreenInfo *) info {
+	self.storage.mainScreenInfo = info;
+}
+
 - (void) dataProvider: (DataProvider *) dataProvider didUserProfileUpdate: (LGUser *) user {
 	self.storage.lastViewProfileDetail = user;
 	if (self.viewControllersManager.rootNavigationController.topViewController ==

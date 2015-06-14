@@ -2,12 +2,15 @@
 
 #import "Common.h"
 #import "FontFactory.h"
+#import "Storage.h"
 #import "UIView+CGExtension.h"
 #import "ViewFactory.h"
 
 @interface TitleBarView () {
 	UISearchBar *_searchBar;
 }
+
+@property (nonatomic, strong) NSObject *counterObserver;
 
 @end
 
@@ -59,6 +62,18 @@
 		[self addSubview: titleLabel];
     }
     return self;
+}
+
+- (void) dealloc {
+	[[NSNotificationCenter defaultCenter] removeObserver: self.counterObserver];
+}
+
+- (void) setRightButtonCounter: (int32_t) count {
+	NSString *countString = nil;
+	if (count > 0) {
+		countString = [NSString stringWithFormat: @" %d ", count];
+	}
+	[rightButton setTitle: countString forState: UIControlStateNormal];
 }
 
 + (CGRect) titleBarRect {
@@ -267,6 +282,17 @@
 	searchButton.frameX = rightButton.frame.origin.x - (searchButton.frame.size.width);
 	searchButton.centerY = centerY;
 	[titleBar addSubview: searchButton];
+	
+	TitleBarView __weak *wself = titleBar;
+	
+	titleBar.counterObserver =
+	[[NSNotificationCenter defaultCenter] addObserverForName: kLGStorageMainScreenInfoChangedNotification
+													  object: nil
+													   queue: [NSOperationQueue mainQueue]
+												  usingBlock:^(NSNotification *note) {
+													  LGMainScreenInfo *info = note.object;
+													  [wself setRightButtonCounter: info.actionCount];
+												  }];
 	
 	return titleBar;
 }

@@ -347,6 +347,19 @@
 	return sessionInfo;
 }
 
+- (LGMainScreenInfo *) parseMainScreenInfo: (NSData *) jsonData {
+	NSDictionary *rawData = [self parseJSONData: jsonData][@"result"];
+	
+	LGMainScreenInfo *mainScreenInfo = [[LGMainScreenInfo alloc] init];
+	
+	mainScreenInfo.tasksCount		= [rawData[@"tasksCount"] intValue];
+	mainScreenInfo.newsCount		= [rawData[@"newsCount"] intValue];
+	mainScreenInfo.subscribesCount	= [rawData[@"subscribesCount"] intValue];
+	mainScreenInfo.actionCount		= [rawData[@"actionCount"] intValue];
+	
+	return mainScreenInfo;
+}
+
 - (LGRegisterInfo *) parseLoginInfo: (NSData *) jsonData {
 	NSDictionary *rawData = [self parseJSONData: jsonData][@"result"];
 	

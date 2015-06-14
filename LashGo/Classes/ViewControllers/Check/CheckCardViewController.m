@@ -50,8 +50,8 @@
 	UIButton *incomeButton = [[ViewFactory sharedFactory] titleBarRightIncomeButtonWithTarget: self
 																					   action: @selector(openIncomeAction:)];
 	TitleBarView *tbView = [TitleBarView titleBarViewWithLeftButton: listButton
-												 rightButton: searchButton
-												searchButton: incomeButton];
+												 rightButton: incomeButton
+												searchButton: searchButton];
 	tbView.titleLabel.text = @"ChecksTitle".commonLocalizedString;
 	[self.view addSubview: tbView];
 	_titleBarView = tbView;

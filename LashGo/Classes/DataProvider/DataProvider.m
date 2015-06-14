@@ -14,6 +14,8 @@
 #import "Common.h"
 #import "URLConnectionManager.h"
 
+#import "NSDateFormatter+CustomFormats.h"
+
 #ifdef DEBUG
 //	#define USE_PREFETCHED_DATA
 #endif
@@ -754,17 +756,27 @@ static NSString *const kRequestUUID =		@"uuid";
 
 #pragma mark -
 
-- (void) didGetMainScreenInfo: (URLConnection *) connection {
+- (void) didFailGetMainScreenInfo: (URLConnection *) connection {
 	
 }
 
+- (void) didGetMainScreenInfo: (URLConnection *) connection {
+	LGMainScreenInfo *info = [_parser parseMainScreenInfo: connection.downloadedData];
+	
+	if ([self.delegate respondsToSelector: @selector(dataProvider:didGetMainScreenInfo:)] == YES) {
+		[self.delegate dataProvider: self didGetMainScreenInfo:info];
+	}
+}
+
 - (void) userMainScreenInfo {
-	[self startConnectionWithPath: kUsersMainScreenInfoPath type: URLConnectionTypeGET
-							 body: nil
+	NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatterWithFullDateFormat];
+	[self startConnectionWithPath: kUsersMainScreenInfoPath
+					  queryParams: @{@"news_last_view" : [dateFormatter stringFromDate: [NSDate date]],
+									 @"subscriptions_last_view" : [dateFormatter stringFromDate: [NSDate date]]}
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didGetMainScreenInfo:)
-					 failSelector: @selector(didFailGetImportantData:)];
+					 failSelector: @selector(didFailGetMainScreenInfo:)];
 }
 
 #pragma mark -

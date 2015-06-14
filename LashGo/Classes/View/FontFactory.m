@@ -27,6 +27,7 @@
 		case FontTypeLoginActionBtnTitle:		return [UIFont fontWithName: kDefaultFontMedium size: 18];
 		case FontTypeLoginInputField:			return [UIFont fontWithName: kDefaultFontLight size: 17];
 		case FontTypeLoginLicense:				return [UIFont fontWithName: kDefaultFontBold size: 13];
+		case FontTypeMainScreenCounters:		return [UIFont fontWithName: kDefaultFont size: 9];
 		case FontTypeProfileFIO:				return [UIFont fontWithName: kDefaultFontMedium size: 21];
 		case FontTypeProfileLabels:				return [UIFont fontWithName: kDefaultFont size: 12];
 		case FontTypeProfileLabelsCount:		return [UIFont fontWithName: kDefaultFont size: 14];
@@ -93,6 +94,7 @@
 		case FontTypeCommentsCellDate:
 		case FontTypeVoteCheckDescription:
 		case FontTypeVotePager:				return [UIColor colorWithWhite: 151.0/255.0 alpha: 1];//same as 80 0(128)
+		case FontTypeMainScreenCounters:
 		case FontTypeVoteTimer:				return [UIColor colorWithAppColorType: AppColorTypeSecondaryTint];
 		case FontTypeSubscriptionTitle:		return [UIColor colorWithWhite: 98.0/255.0 alpha: 1];//same as E5 0
 		default: return [UIColor blackColor];

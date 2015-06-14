@@ -93,6 +93,17 @@ static NSString *const kUUIDDeviceKey = @"lg_uuid_device_key";
 	return result;
 }
 
++ (CGFloat) labelWidthWithFont: (UIFont *) font text: (NSString *) text {
+	CGFloat textWidth;
+	if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+		textWidth = [text sizeWithFont: font].width;
+	} else {
+		textWidth = ceil([text sizeWithAttributes:
+						  @{NSFontAttributeName: font}].width);
+	}
+	return textWidth;
+}
+
 + (NSURL *) imageLoadingURLForName: (NSString *) name {
 	NSString *urlString;
 	if ([name hasPrefix: @"http"] == YES) {
