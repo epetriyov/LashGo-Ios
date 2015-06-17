@@ -198,8 +198,11 @@ static NSString *const kVoteCollectionCellReusableId = @"VoteCollectionCellReusa
             break;
         }
     }
-    [_photosCollection scrollToItemAtIndexPath: [NSIndexPath indexPathForRow: pageIndexToScroll inSection: 0]
-                              atScrollPosition: UICollectionViewScrollPositionCenteredHorizontally animated: NO];
+	if ([kernel.storage.checkVotePhotos.votePhotos count] > 0) {
+		[_photosCollection scrollToItemAtIndexPath: [NSIndexPath indexPathForRow: pageIndexToScroll inSection: 0]
+								  atScrollPosition: UICollectionViewScrollPositionCenteredHorizontally animated: NO];
+	}
+	
 	[self refreshPagerWith: pageIndexToScroll];
 }
 
