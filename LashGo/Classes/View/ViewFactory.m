@@ -458,6 +458,7 @@ static ViewFactory *viewFactory = nil;
 	
 	button.titleLabel.font = [FontFactory fontWithType: FontTypeMainScreenCounters];
 	button.titleLabel.backgroundColor = [UIColor whiteColor];
+	button.titleLabel.clipsToBounds = YES;
 	button.titleLabel.layer.cornerRadius = 5;
 	[button setTitleColor: [FontFactory fontColorForType: FontTypeMainScreenCounters] forState: UIControlStateNormal];
 //	[button setTitle: @" 10 " forState: UIControlStateNormal];

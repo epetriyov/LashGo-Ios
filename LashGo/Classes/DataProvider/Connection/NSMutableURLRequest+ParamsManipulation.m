@@ -94,7 +94,21 @@
 			if (resultString.length > 0) {
 				[resultString appendString: @"&"];
 			}
-			[resultString appendFormat: @"%@=%@", paramName, paramValue];
+			
+			NSString *escapedParamValue = nil;
+			if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+				CFStringRef escapedValue = CFURLCreateStringByAddingPercentEscapes(NULL,
+																				   (CFStringRef) paramValue,
+																				   NULL,
+																				   (CFStringRef) @"!*'();:@&=+$,./?%#[]",
+																				   kCFStringEncodingUTF8);
+				escapedParamValue = CFBridgingRelease(escapedValue);
+			} else {
+				escapedParamValue = [paramValue stringByAddingPercentEncodingWithAllowedCharacters:
+									 [NSCharacterSet alphanumericCharacterSet]];
+			}
+			
+			[resultString appendFormat: @"%@=%@", paramName, escapedParamValue];
 		}
 	}
 	return resultString;
@@ -111,7 +125,7 @@
 	} else {
 		url = [url stringByAppendingFormat: @"&%@", paramsString];
 	}
-	[self setURL: [NSURL URLWithString: [url stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]]];
+	[self setURL: [NSURL URLWithString: url]];
 }
 
 - (void) addValue: (NSString *) value forQueryParameter: (NSString *) name {
