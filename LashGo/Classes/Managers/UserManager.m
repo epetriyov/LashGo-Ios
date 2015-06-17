@@ -35,6 +35,10 @@
 
 #pragma mark - Methods
 
+- (void) getUserCounters {
+	[_dataProvider userMainScreenInfo];
+}
+
 - (void) getUserProfile {
 	[_dataProvider userProfile];
 }

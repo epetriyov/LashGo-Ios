@@ -109,7 +109,6 @@
 	[_viewControllersManager openCheckCardViewController];
 	if ([_kernel.storage.checks count] <= 0) {
 		[_dataProvider checksWithContext: nil];
-		[_dataProvider userMainScreenInfo];
 	}
 }
 
@@ -135,7 +134,6 @@
 				default:
 					break;
 			}
-			[_dataProvider userMainScreenInfo];
 			return YES;
 		}
 	}
@@ -152,7 +150,6 @@
 	[_viewControllersManager openViewControllerBelowFirst: _viewControllersManager.checkListViewController];
 	if ([_kernel.storage.checks count] <= 0) {
 		[_dataProvider checksWithContext: nil];
-        [_dataProvider userMainScreenInfo];
 	}
 }
 

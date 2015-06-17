@@ -770,9 +770,20 @@ static NSString *const kRequestUUID =		@"uuid";
 
 - (void) userMainScreenInfo {
 	NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatterWithFullDateFormat];
+	
+	NSDate *newsDate = [AuthorizationManager sharedManager].account.userInfo.newsLastViewDate;
+	NSDate *subscriptionsDate = [AuthorizationManager sharedManager].account.userInfo.newsLastViewDate;
+	
+	if (newsDate == nil) {
+		newsDate = [NSDate dateWithTimeIntervalSinceReferenceDate: 0];
+	}
+	if (subscriptionsDate == nil) {
+		subscriptionsDate = [NSDate dateWithTimeIntervalSinceReferenceDate: 0];
+	}
+	
 	[self startConnectionWithPath: kUsersMainScreenInfoPath
-					  queryParams: @{@"news_last_view" : [dateFormatter stringFromDate: [NSDate date]],
-									 @"subscriptions_last_view" : [dateFormatter stringFromDate: [NSDate date]]}
+					  queryParams: @{@"news_last_view" : [dateFormatter stringFromDate: newsDate],
+									 @"subscriptions_last_view" : [dateFormatter stringFromDate: subscriptionsDate]}
 						  context: nil
 					allowMultiple: NO
 				   finishSelector: @selector(didGetMainScreenInfo:)

@@ -73,33 +73,37 @@
 		_counterLabel.hidden = YES;
 		[self addSubview: _counterLabel];
 		
-		TaskbarButton __weak *wself = self;
-		
-		self.observer = [[NSNotificationCenter defaultCenter] addObserverForName: kLGStorageMainScreenInfoChangedNotification
-														  object: nil
-														   queue: [NSOperationQueue mainQueue]
-													  usingBlock:^(NSNotification *note) {
-														  LGMainScreenInfo *info = note.object;
-														  
-														  BOOL isHidden = YES;
-														  switch (wself.type) {
-															  case TaskbarButtonTypeTask:
-																  isHidden = info.tasksCount <= 0;
-																  wself.counterLabel.text = [NSString stringWithFormat: @"%d", info.tasksCount];
-																  break;
-															  case TaskbarButtonTypeFollow:
-																  isHidden = info.subscribesCount <= 0;
-																  wself.counterLabel.text = [NSString stringWithFormat: @"%d", info.subscribesCount];
-																  break;
-															  case TaskbarButtonTypeNews:
-																  isHidden = info.newsCount <= 0;
-																  wself.counterLabel.text = [NSString stringWithFormat: @"%d", info.newsCount];
-																  break;
-															  default:
-																  break;
-														  }
-														  wself.counterLabel.hidden = isHidden;
-													  }];
+		if (type == TaskbarButtonTypeTask ||
+			type == TaskbarButtonTypeFollow ||
+			type == TaskbarButtonTypeNews) {
+			TaskbarButton __weak *wself = self;
+			
+			self.observer = [[NSNotificationCenter defaultCenter] addObserverForName: kLGStorageMainScreenInfoChangedNotification
+																			  object: nil
+																			   queue: [NSOperationQueue mainQueue]
+																		  usingBlock:^(NSNotification *note) {
+							  LGMainScreenInfo *info = note.object;
+							  
+							  BOOL isHidden = YES;
+							  switch (wself.type) {
+								  case TaskbarButtonTypeTask:
+									  isHidden = info.tasksCount <= 0;
+									  wself.counterLabel.text = [NSString stringWithFormat: @"%d", info.tasksCount];
+									  break;
+								  case TaskbarButtonTypeFollow:
+									  isHidden = info.subscribesCount <= 0;
+									  wself.counterLabel.text = [NSString stringWithFormat: @"%d", info.subscribesCount];
+									  break;
+								  case TaskbarButtonTypeNews:
+									  isHidden = info.newsCount <= 0;
+									  wself.counterLabel.text = [NSString stringWithFormat: @"%d", info.newsCount];
+									  break;
+								  default:
+									  break;
+							  }
+							  wself.counterLabel.hidden = isHidden;
+						  }];
+		}
 		
 		[self loadImagesWithName: [NSString stringWithFormat: @"tb_btn_%d", buttonType]];
 		

@@ -69,6 +69,11 @@
 	
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+	[AuthorizationManager sharedManager].account.userInfo.newsLastViewDate = [NSDate date];
+	[[AuthorizationManager sharedManager].account storeDataAsync];
+}
+
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
 						 change:(NSDictionary *)change context:(void *)context {
 	if ([keyPath isEqualToString: kObservationKeyPath] == YES && [object isKindOfClass: [Storage class]] == YES) {

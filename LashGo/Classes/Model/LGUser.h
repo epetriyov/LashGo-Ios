@@ -27,4 +27,7 @@
 
 @property (nonatomic, assign) BOOL subscription;
 
+@property (nonatomic, strong) NSDate *newsLastViewDate;
+@property (nonatomic, strong) NSDate *subscriptionsLastViewDate;
+
 @end

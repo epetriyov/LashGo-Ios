@@ -57,6 +57,9 @@
 	[coder encodeInt32: self.checksCount forKey: @"checksCount"];
 	[coder encodeInt32: self.commentsCount forKey: @"commentsCount"];
 	[coder encodeInt32: self.likesCount forKey: @"likesCount"];
+	
+	[coder encodeObject: _newsLastViewDate forKey: NSStringFromSelector(@selector(newsLastViewDate))];
+	[coder encodeObject: _subscriptionsLastViewDate forKey: NSStringFromSelector(@selector(subscriptionsLastViewDate))];
 }
 
 -(id) initWithCoder: (NSCoder*) coder {
@@ -75,6 +78,11 @@
 		self.checksCount =		[coder decodeInt32ForKey: @"checksCount"];
 		self.commentsCount =	[coder decodeInt32ForKey: @"commentsCount"];
 		self.likesCount =		[coder decodeInt32ForKey: @"likesCount"];
+		
+		self.newsLastViewDate =	[coder decodeObjectOfClass: [NSDate class]
+													forKey: NSStringFromSelector(@selector(newsLastViewDate))];
+		self.subscriptionsLastViewDate = [coder decodeObjectOfClass: [NSDate class]
+															 forKey: NSStringFromSelector(@selector(subscriptionsLastViewDate))];
 	}
 	return self;
 }

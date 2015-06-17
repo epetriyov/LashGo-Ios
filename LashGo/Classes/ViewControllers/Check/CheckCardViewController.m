@@ -102,6 +102,12 @@
 	}
 }
 
+- (void) viewDidAppear:(BOOL)animated {
+	[super viewDidAppear: animated];
+	
+	[kernel.userManager getUserCounters];
+}
+
 - (void) viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear: animated];
 	[_progressTimer invalidate];
