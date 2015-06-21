@@ -154,7 +154,7 @@ typedef NS_ENUM(NSInteger, CheckListSection) {
 }
 
 - (void) openIncomeAction: (id) sender {
-	[kernel.checksManager openCheckActionListViewController];
+	[kernel.userManager openNewsViewController];
 }
 
 #pragma mark - Table delegate implementation

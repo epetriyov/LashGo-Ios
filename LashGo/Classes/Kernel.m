@@ -295,8 +295,8 @@
 		case TaskbarButtonTypeMore:
 			[self showMenu];
 			break;
-		case TaskbarButtonTypeNews:
-			[self.userManager openNewsViewController];
+		case TaskbarButtonTypeActions:
+			[self.checksManager openCheckActionListViewController];
 			break;
 		case TaskbarButtonTypeProfile:
 			[self.userManager openProfileViewController];

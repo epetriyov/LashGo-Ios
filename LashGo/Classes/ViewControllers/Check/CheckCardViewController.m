@@ -150,7 +150,7 @@
 - (void) openIncomeAction: (id) sender {
 //	[kernel.userManager openProfileEditViewControllerWith: nil];
 //	[kernel.userManager openProfileWelcomeViewControllerWith: nil];
-	[kernel.checksManager openCheckActionListViewController];
+	[kernel.userManager openNewsViewController];
 }
 
 #pragma mark - UICollectionViewDataSource implementation

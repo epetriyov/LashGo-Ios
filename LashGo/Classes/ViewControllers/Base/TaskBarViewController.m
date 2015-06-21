@@ -34,13 +34,13 @@
 	
 	if ([AuthorizationManager sharedManager].account != nil) {
 		buttonsArray = @[@(TaskbarButtonTypeTask),
+						 @(TaskbarButtonTypeActions),
 						 @(TaskbarButtonTypeFollow),
-						 @(TaskbarButtonTypeNews),
 						 @(TaskbarButtonTypeProfile),
 						 @(TaskbarButtonTypeMore)];
 	} else {
 		buttonsArray = @[@(TaskbarButtonTypeTask),
-// 						 @(TaskbarButtonTypeNews),
+// 						 @(TaskbarButtonTypeActions),
 						 @(TaskbarButtonTypeMore)];
 	}
 	

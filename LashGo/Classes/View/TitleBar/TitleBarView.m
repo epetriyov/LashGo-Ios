@@ -291,7 +291,7 @@
 													   queue: [NSOperationQueue mainQueue]
 												  usingBlock:^(NSNotification *note) {
 													  LGMainScreenInfo *info = note.object;
-													  [wself setRightButtonCounter: info.actionCount];
+													  [wself setRightButtonCounter: info.newsCount];
 												  }];
 	
 	return titleBar;
