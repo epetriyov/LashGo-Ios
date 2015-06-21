@@ -137,6 +137,9 @@
 }
 
 - (void) openNewsViewController {
+	if ([_kernel isUnauthorizedActionAllowed] == NO) {
+		return;
+	}
 	[_viewControllersManager openViewController: _viewControllersManager.newsViewController animated: YES];
 	[_dataProvider news];
 }
