@@ -151,7 +151,8 @@
 		BOOL result;
 		
 		if (_segmentedControl.selectedIndex > 0) {
-			result = nowTime >= checkAction.closeDate;
+			result = [AuthorizationManager sharedManager].account.userInfo != nil &&
+			checkAction.winnerPhoto.user.uid == [AuthorizationManager sharedManager].account.userInfo.uid;
 		} else {
 			result = nowTime < checkAction.closeDate;
 		}
