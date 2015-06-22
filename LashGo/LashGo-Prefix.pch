@@ -10,6 +10,10 @@
 #warning "This project uses features only available in iOS SDK 6.0 and later."
 #endif
 
+#ifdef DEBUG
+//	#define USE_PREFETCHED_DATA
+#endif
+
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>

@@ -357,6 +357,13 @@
 	mainScreenInfo.subscribesCount	= [rawData[@"subscribesCount"] intValue];
 	mainScreenInfo.actionCount		= [rawData[@"actionCount"] intValue];
 	
+#ifdef USE_PREFETCHED_DATA
+	mainScreenInfo.tasksCount		= 125;
+	mainScreenInfo.newsCount		= 3;
+	mainScreenInfo.subscribesCount	= 7;
+	mainScreenInfo.actionCount		= 2;
+#endif
+	
 	return mainScreenInfo;
 }
 
